@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Under the Cosmic Banyan Tree</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#FAF5ED;--bg-card:#FFFBF5;--bg-hero:#F5ECD8;
+  --text:#2C1A0E;--text-mid:#6B4C30;--text-muted:#9A7858;
+  --gold:#C8962E;--gold-dk:#854F0B;--gold-lt:#F5D898;--gold-pale:#FBF2E0;
+  --sage:#5A8A5A;
+  --border:#E0CDB0;--border-lt:#EDE0CA;
+  --c1:#C8762E;--c2:#5A8A5A;--c3:#B06040;--c4:#8A5060;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7}
+
+/* NAV */
+#top-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,245,237,0.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:.35rem 1.2rem .45rem;
+}
+.nav-global{display:flex;align-items:center;gap:.35rem;padding-bottom:.35rem;border-bottom:1px solid var(--border-lt);margin-bottom:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold-dk)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:var(--gold-pale);border-color:var(--gold-lt);color:var(--gold-dk)}
+.nav-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.session-pills{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.pill{padding:4px 13px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.pill:hover{border-color:var(--gold);color:var(--gold-dk)}
+.pill.active{background:var(--gold-pale);border-color:var(--gold);color:var(--gold-dk);font-weight:500}
+.glossary-btn{padding:4px 13px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.glossary-btn:hover{border-color:var(--sage);color:var(--sage)}
+
+/* SEARCH */
+.search-wrap{position:relative}
+.search-wrap input{padding:5px 12px 5px 30px;font-size:13px;border:1px solid var(--border);border-radius:20px;background:var(--bg-card);color:var(--text);width:200px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--gold)}
+.search-wrap input::placeholder{color:var(--text-muted)}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;pointer-events:none}
+#search-results{position:absolute;top:calc(100% + 4px);right:0;width:340px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;box-shadow:0 4px 20px rgba(44,26,14,.12);max-height:360px;overflow-y:auto;z-index:200;display:none}
+.sr-item{padding:.6rem 1rem;cursor:pointer;border-bottom:1px solid var(--border-lt);font-size:13px}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--gold-pale)}
+.sr-label{font-size:10px;font-weight:500;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase;margin-bottom:2px}
+.sr-text{color:var(--text)}
+.sr-text mark{background:rgba(200,150,46,.25);color:var(--gold-dk);border-radius:2px;padding:0 1px}
+.search-empty{padding:1rem;font-size:13px;color:var(--text-muted);text-align:center}
+
+/* HERO */
+#hero{background:#0a0618;overflow:hidden}
+.hero-img-wrap{position:relative;height:clamp(260px,38vw,520px);overflow:hidden}
+.hero-tree-img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;opacity:.92}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,6,24,.25) 0%,transparent 25%,transparent 72%,rgba(10,6,24,.55) 100%)}
+.realm-label{position:absolute;left:50%;transform:translateX(-50%);font-size:8.5px;letter-spacing:3px;font-family:'Cormorant Garamond',Georgia,serif;color:rgba(255,235,180,.8);white-space:nowrap}
+.realm-top{top:12px}
+.realm-bottom{bottom:12px;color:rgba(180,220,170,.8)}
+.hero-text{text-align:center;padding:1rem 1rem 1.75rem;background:#0a0618}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:400;letter-spacing:.05em;line-height:1.15;margin-bottom:.3rem;
+  background:linear-gradient(135deg,#F0CC60 0%,#FFE8A0 40%,#D4960A 70%,#F5D070 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(200,180,140,.75);letter-spacing:.15em}
+
+/* TRANSITION from hero to page */
+.hero-to-page{height:32px;background:linear-gradient(to bottom,#0a0618,var(--bg))}
+
+/* MAIN LAYOUT */
+main{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
+
+/* STORY SECTIONS */
+.story-section-wrap{margin-bottom:3.5rem;padding-top:.5rem}
+.story-header{margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid currentColor}
+.story-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;line-height:1.2;color:var(--text);margin-bottom:.2rem}
+.story-source{font-size:11px;color:var(--text-muted);letter-spacing:.12em;font-style:italic}
+
+/* CONTEXT NOTE */
+.context-note{background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1.5rem}
+.context-label{font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--gold-dk);margin-bottom:.35rem}
+.context-note p{font-size:13px;color:var(--text-mid);line-height:1.65}
+
+/* STORY BODY */
+.story-body{margin-bottom:1.5rem}
+.story-heading{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:.5rem;padding-left:.75rem;border-left:2px solid var(--border)}
+.story-body p{font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:.75rem}
+.story-body p:last-child{margin-bottom:0}
+
+/* CHARACTERS */
+.section-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);margin-bottom:.75rem}
+.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.5rem}
+.char-card{background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:.75rem .85rem;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.char-card:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(200,150,46,.1)}
+.char-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;margin-bottom:.4rem;color:#fff}
+.char-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--text);margin-bottom:.15rem}
+.char-role{font-size:10px;letter-spacing:.15em;margin-bottom:.3rem}
+.char-teaser{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* CONNECTIONS */
+.connections-box{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.1rem;margin-bottom:1rem}
+.connections-box p{font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:.85rem}
+.connections-box p:last-child{margin-bottom:0}
+
+/* POSE & CONCEPT INLINE LINKS */
+.pose-link{color:var(--gold-dk);border-bottom:1.5px solid var(--gold);cursor:pointer;font-style:normal}
+.pose-link:hover{background:rgba(200,150,46,.1);border-radius:2px}
+.concept-link{color:var(--sage);border-bottom:1px dashed var(--sage);cursor:pointer}
+.concept-link:hover{background:rgba(90,138,90,.08);border-radius:2px}
+
+/* SOURCES */
+.sources-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.source-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.source-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+/* GUIDING QUESTIONS */
+.questions-list{border-top:1px solid var(--border-lt);padding-top:1rem;margin-bottom:1rem}
+.q-item{display:flex;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--border-lt);align-items:flex-start}
+.q-num{font-size:12px;font-weight:500;color:var(--gold);min-width:18px;padding-top:2px}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-mid);line-height:1.7}
+
+/* CHARACTER MODAL */
+#char-modal{position:fixed;inset:0;background:rgba(44,26,14,.5);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+#char-modal.open{display:flex}
+.char-modal-inner{background:var(--bg-card);border-radius:14px;max-width:520px;width:100%;padding:1.5rem;max-height:80vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--text-muted);line-height:1}
+.modal-close:hover{color:var(--text)}
+.char-modal-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--text);margin-bottom:.2rem}
+.char-modal-role{font-size:11px;letter-spacing:.18em;margin-bottom:.35rem}
+.char-modal-story{font-size:12px;color:var(--text-muted);font-style:italic;margin-bottom:.75rem}
+.char-modal-desc{font-size:14px;color:var(--text-mid);line-height:1.8}
+
+/* POSE MODAL */
+#pose-modal{position:fixed;inset:0;background:rgba(44,26,14,.5);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+#pose-modal.open{display:flex}
+.pose-modal-inner{background:var(--bg-card);border-radius:14px;max-width:460px;width:100%;padding:1.5rem;position:relative}
+.pose-modal-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.15rem}
+.pose-modal-skt{font-size:13px;font-style:italic;color:var(--gold-dk);margin-bottom:.6rem}
+.pose-modal-conn{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:1rem}
+.pose-modal-link{display:inline-block;padding:.5rem 1.1rem;border:1px solid var(--gold);color:var(--gold-dk);text-decoration:none;border-radius:20px;font-size:13px}
+.pose-modal-link:hover{background:var(--gold-pale)}
+
+/* GLOSSARY DRAWER */
+#glossary-drawer{position:fixed;top:0;right:0;bottom:0;width:360px;max-width:100%;background:var(--bg-card);border-left:1px solid var(--border);z-index:200;transform:translateX(100%);transition:transform .3s ease;overflow-y:auto;padding:1.5rem}
+#glossary-drawer.open{transform:translateX(0)}
+.glossary-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.glossary-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text)}
+.g-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-muted)}
+.g-search{width:100%;padding:.5rem .75rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);margin-bottom:1rem;font-family:'DM Sans',sans-serif;outline:none}
+.g-search:focus{border-color:var(--gold)}
+.glossary-term{border-bottom:1px solid var(--border-lt);padding:.75rem 0}
+.g-term{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.1rem}
+.g-skt{font-size:11px;font-style:italic;color:var(--gold-dk);margin-bottom:.25rem}
+.g-def{font-size:13px;color:var(--text-mid);line-height:1.65}
+.g-link{font-size:11px;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border-lt);margin-top:.3rem;display:inline-block}
+.g-link:hover{color:var(--gold-dk)}
+
+/* ALL CHARACTERS */
+.all-char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:.6rem}
+.char-story-label{font-size:10px;padding:2px 7px;border-radius:10px;color:#fff;letter-spacing:.05em;display:inline-block;margin-bottom:.35rem;font-weight:500}
+
+
+/* FOOTER */
+.footer-bridge{border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.footer-bridge-label{font-size:12px;color:var(--text-muted)}
+.bridge-link{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border);border-radius:20px;transition:all .15s}
+.bridge-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.bridge-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yoga-family-tree.html" class="nav-page">Yoga Family Tree</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page current">Cosmic Banyan Tree</a>
+  </div>
+  <div class="nav-row">
+    <div class="session-pills" id="session-pills">
+      <button class="pill active" data-target="section-intro">Overview</button>
+      <button class="pill" data-target="section-s1">Shiva &amp; Sati</button>
+      <button class="pill" data-target="section-s2">Prahlada's Devotion</button>
+      <button class="pill" data-target="section-s3">Vamana &amp; Bali</button>
+      <button class="pill" data-target="section-s4">The Ramayana</button>
+      <button class="pill" data-target="section-characters">Characters</button>
+      <button class="glossary-btn" id="open-glossary">Glossary</button>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      <input type="text" id="search-input" placeholder="Search…" autocomplete="off"/>
+      <div id="search-results"></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-img-wrap">
+    <img src="tree.png" alt="The Cosmic Banyan Tree — branches reaching upward into the spiritual realm, roots descending into the material world" class="hero-tree-img"/>
+    <div class="hero-overlay">
+      <div class="realm-label realm-top">THE SPIRITUAL REALM — branches reaching toward the eternal</div>
+      <div class="realm-label realm-bottom">THE MATERIAL WORLD — roots extending into manifest creation</div>
+    </div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-title">Under the Cosmic Banyan Tree</div>
+    <div class="hero-subtitle">Vedic philosophy and the living roots of yoga</div>
+  </div>
+</header>
+<div class="hero-to-page"></div>
+
+<!-- MAIN CONTENT -->
+<main id="content"></main>
+
+<!-- CHARACTER MODAL -->
+<div id="char-modal" role="dialog" aria-modal="true">
+  <div class="char-modal-inner">
+    <button class="modal-close" id="char-modal-close" aria-label="Close">&times;</button>
+    <div class="char-modal-name" id="cm-name"></div>
+    <div class="char-modal-role" id="cm-role"></div>
+    <div class="char-modal-story" id="cm-story"></div>
+    <div class="char-modal-desc" id="cm-desc"></div>
+  </div>
+</div>
+
+<!-- POSE MODAL -->
+<div id="pose-modal" role="dialog" aria-modal="true">
+  <div class="pose-modal-inner">
+    <button class="modal-close" id="pose-modal-close" aria-label="Close">&times;</button>
+    <div class="pose-modal-name" id="pm-name"></div>
+    <div class="pose-modal-skt" id="pm-skt"></div>
+    <div class="pose-modal-conn" id="pm-conn"></div>
+    <a href="yoga-family-tree.html" class="pose-modal-link">View in pose library &rarr;</a>
+  </div>
+</div>
+
+<!-- GLOSSARY DRAWER -->
+<div id="glossary-drawer" role="complementary" aria-label="Sanskrit glossary">
+  <div class="glossary-header">
+    <div class="glossary-title">Sanskrit &amp; Vedic glossary</div>
+    <button class="g-close" id="close-glossary" aria-label="Close glossary">&times;</button>
+  </div>
+  <input type="text" id="g-search" class="g-search" placeholder="Filter terms…"/>
+  <div id="glossary-list"></div>
+</div>
+
+<script>
+/* ============================
+   DATA
+   ============================ */
+const POSES = {
+  6:  {en:'Warrior Pose II',       skt:'Virabhadrasana II',
+       conn:'Named for Virabhadra, the fierce being Shiva created from his grief after Sati\'s death. Warrior II is not aggression. It is the shape of divine sorrow that has found its footing and become purposeful action.'},
+  20: {en:'Warrior Pose I',        skt:'Virabhadrasana I',
+       conn:'Virabhadra\'s first act was to stride toward Daksha\'s ceremony with purposeful, grief-born intention. The strong back-foot grounding and upward reach of Warrior I capture the quality of that arrival.'},
+  46: {en:'Warrior Pose III',      skt:'Virabhadrasana III',
+       conn:'The single-pointed focus of Warrior III embodies Virabhadra\'s concentrated intention: the distillation of grief into precise, unwavering action directed at its purpose.'},
+  36: {en:'Tree Pose',             skt:'Vrksasana',
+       conn:'In the tradition of Bali Maharaja, Tree Pose asks: can you be rooted enough to stand on one leg, open enough to give, and still enough to receive? Integrity and surrender held in one shape.'},
+  73: {en:'Half Splits Pose',      skt:'Ardha Hanumanasana',
+       conn:'Named for Hanuman, whose leap across the ocean to Lanka is one of the tradition\'s great acts of devoted service. Half Splits is the preparatory space of surrender just before the leap.'},
+  99: {en:'Fish Pose',             skt:'Matsyasana',
+       conn:'Named for Matsya, the first avatar of Vishnu, the fish who swam through the primordial waters to preserve the sacred Vedas. The pose opens the throat and chest: the seat of the knowledge the avatar came to protect.'},
+  118:{en:'Dancer Pose',           skt:'Natarajasana',
+       conn:'Named for Nataraja, Shiva in his cosmic dance. The Tandava is the rhythm of creation and dissolution intertwined. This pose holds both the ecstatic aliveness of creation and the graceful release of the old.'},
+  133:{en:'Humble Warrior Pose',   skt:'Baddha Virabhadrasana',
+       conn:'The warrior energy bowing adds the dimension of surrender to strength: Virabhadra\'s power turned inward, toward the earth, toward the divine.'},
+  335:{en:'Lion Pose',             skt:'Simhasana',
+       conn:'Named for the lion, the form Narasimha took to protect Prahlada. The full exhale of Lion Pose carries Narasimha\'s roar: the sound that dissolves what cannot be sustained.'},
+  346:{en:'Shiva Twist Pose',      skt:'Parivrtta Natarajasana',
+       conn:'A revolving Dancer Pose, evoking the turning of Shiva\'s cosmic dance: the cycling of creation and dissolution that the Tandava enacts at the heart of existence.'},
+  363:{en:'Humble Warrior Prayer', skt:'Bhakti Virabhadrasana',
+       conn:'Bhakti (devotion) names this pose directly. The fierce warrior bows with prayer hands, showing that strength and surrender are not opposites but aspects of the same wholeness.'},
+  368:{en:'Splits Pose',           skt:'Hanumanasana',
+       conn:'Named for Hanuman\'s legendary leap across the ocean to Lanka to find Sita. The full extension of the pose is the shape of complete trust, complete devotion, complete surrender to the purpose at hand.'},
+};
+
+const CHARACTERS = {
+  shiva:       {name:'Shiva',           role:'Deity',       color:'#C8762E', story:'Shiva &amp; Sati',
+    desc:'The Adi Yogi, the first yogi, and the source of all yogic knowledge. Simultaneously the great ascetic who has burned away all attachment and the passionate devotee who is undone by love. The Tandava, his cosmic dance, is the rhythm of creation and dissolution. Every yoga practice that works with energy, breath, or meditation traces its lineage to Shiva.'},
+  sati:        {name:'Sati / Parvati',  role:'Shakti',      color:'#C8762E', story:'Shiva &amp; Sati',
+    desc:'Shakti, the primordial feminine energy, appears in two forms: Sati, whose radical fidelity leads her to self-immolation rather than dishonor her husband; and Parvati, reborn, who wins Shiva back through extraordinary tapas. In the energetic body of yoga, Shakti is the kundalini energy: the coiled potential at the base of the spine.'},
+  daksha:      {name:'Daksha',          role:'Prajapati',   color:'#C8762E', story:'Shiva &amp; Sati',
+    desc:'A co-creator of the world with genuine spiritual accomplishment and cosmic authority. His story is a study in how spiritual power without humility becomes the most dangerous kind of trap. His pride prevents him from honoring what his daughter loves. He calls his preference a principle.'},
+  virabhadra:  {name:'Virabhadra',      role:'Fierce Form', color:'#C8762E', story:'Shiva &amp; Sati',
+    desc:'Created from Shiva\'s own grief after Sati\'s death. Virabhadra is not a demon or an enemy; he is the purposeful action that arises when love meets injustice and grief finds its footing. The three Warrior poses bear his name.'},
+  jaya_vijaya: {name:'Jaya &amp; Vijaya', role:'Gatekeepers', color:'#5A8A5A', story:'Prahlada\'s Devotion',
+    desc:'The twin gatekeepers of Vaikuntha, cursed for blocking the Four Kumaras at the gate. Given a choice between seven devotional births or three hostile ones, they choose intensity over duration. Their arc is the structural backbone of the Bhagavatam.'},
+  kumaras:     {name:'The Four Kumaras',role:'Child Saints', color:'#5A8A5A', story:'Prahlada\'s Devotion',
+    desc:'Sanaka, Sanatana, Sanandana, and Sanat-kumara: the mind-born sons of Brahma who appear eternally as young children though they are among the most realized beings in existence. They refused to procreate, choosing instead endless contemplation.'},
+  varaha:      {name:'Varaha',          role:'Avatar',      color:'#5A8A5A', story:'Prahlada\'s Devotion',
+    desc:'The third avatar of Vishnu, the cosmic boar who dives into the primordial waters to rescue the earth goddess Bhudevi from Hiranyaksha. After the battle, Varaha holds the earth gently on his tusks: one of the most beloved images in Vaishnava devotional art.'},
+  prahlada:    {name:'Prahlada',        role:'Devotee',     color:'#5A8A5A', story:'Prahlada\'s Devotion',
+    desc:'One of the greatest devotees in the Vedic tradition and the primary teaching figure for bhakti. A child who heard the teachings of Narada Muni in the womb and knows Vishnu as the ground of all things. His father\'s attempts to destroy his devotion through poison, fire, and violence all fail.'},
+  narasimha:   {name:'Narasimha',       role:'Avatar',      color:'#5A8A5A', story:'Prahlada\'s Devotion',
+    desc:'The fourth avatar of Vishnu: half-lion, half-man. His form fits no category and satisfies every condition simultaneously. He arrives at the exact intersection of all of Hiranyakashipu\'s carefully constructed loopholes. His ferocity can only be calmed by the touch of Prahlada.'},
+  vamana:      {name:'Vamana',          role:'Avatar',      color:'#B06040', story:'Vamana &amp; Bali',
+    desc:'The fifth avatar of Vishnu: a dwarf brahmin student, the first recognizably human form in the evolutionary sequence. Vamana approaches the most powerful being in the three worlds as a beggar, asking for almost nothing, concealing everything. He becomes Trivikrama — the one whose strides span the universe — in a single breath.'},
+  bali:        {name:'Bali Maharaja',   role:'Demon King',  color:'#B06040', story:'Vamana &amp; Bali',
+    desc:'Perhaps the most beloved demon in all of the Puranas. Generous without limit, truthful without exception, courageous beyond calculation. When his guru warns him that granting Vamana\'s boon will cost him everything, Bali grants it anyway with full awareness. What returns is better than anything calculation could have produced.'},
+  rama:        {name:'Rama',            role:'Avatar',      color:'#8A5060', story:'The Ramayana',
+    desc:'The seventh avatar of Vishnu and the central figure of the Ramayana, celebrated as Maryada Purushottam: the ideal man. His divinity is almost entirely concealed within his humanity. He loves as a man, suffers as a man, and demonstrates dharma from within the constraints of a human life.'},
+  sita:        {name:'Sita',            role:'Goddess',     color:'#8A5060', story:'The Ramayana',
+    desc:'The goddess Lakshmi incarnate. Sita is not passive despite her trials. She chooses Rama at her svayamvara. She chooses exile. She refuses Hanuman\'s offer of rescue on her own terms. In every moment of apparent passivity, there is a profound and conscious choice.'},
+  hanuman:     {name:'Hanuman',         role:'Devotee',     color:'#8A5060', story:'The Ramayana',
+    desc:'Son of the wind god Vayu and the most beloved figure in Hindu devotional culture. Every gift he possesses — strength, scholarship, flight, poetry — is placed entirely in service of Rama without personal agenda. The iconic image of his chest opened to reveal Rama and Sita within his heart is the defining image of bhakti as a way of being.'},
+  ravana:      {name:'Ravana',          role:'Demon King',  color:'#8A5060', story:'The Ramayana',
+    desc:'The ten-headed king of Lanka: supreme scholar of the Vedas, devotee of Shiva, poet. His fatal flaw is not stupidity; it is the pride that cannot accept that what he most wants cannot be taken. He kidnaps Sita but will not force her: he requires her willing love and cannot see that his actions have made it permanently impossible.'},
+};
+
+const GLOSSARY = [
+  {term:'Avatar',    skt:'avatar',           url:'https://www.wisdomlib.org/definition/avatar',
+   def:'A direct descent of the divine into the material world. The sequence mirrors evolutionary biology: fish, tortoise, boar, half-lion, dwarf, warrior-sage, ideal king, divine human.'},
+  {term:'Bhakti',    skt:'bhakti',           url:'https://www.wisdomlib.org/definition/bhakti',
+   def:'Devotional service: the yoga of love. Understood in the Bhagavatam as the highest form of practice because it operates through the heart. Prahlada\'s story is its primary teaching text.'},
+  {term:'Dharma',    skt:'dharma',           url:'https://www.wisdomlib.org/definition/dharma',
+   def:'From a root meaning "to uphold." Simultaneously cosmic order, sacred duty, righteousness, and the natural law that holds everything together. Always contextual: the dharma of a king differs from that of a sage.'},
+  {term:'Guna',      skt:'guna',             url:'https://www.wisdomlib.org/definition/guna',
+   def:'The three qualities of manifest existence: tamas (inertia), rajas (activity, passion), and sattva (clarity, harmony). Spiritual practice generally cultivates sattva and uses rajas purposefully.'},
+  {term:'Ishvara pranidhana', skt:'Ishvara pranidhana', url:'https://www.wisdomlib.org/definition/ishvara-pranidhana',
+   def:'Surrender to the divine: the fifth niyama in Patanjali\'s Yoga Sutras. Requires relinquishing not just actions but outcomes. Bali\'s gift to Vamana is its defining story.'},
+  {term:'Karma',     skt:'karma',            url:'https://www.wisdomlib.org/definition/karma',
+   def:'Action, and the principle that every action creates an energy that returns to its source. The quality of intention and the direction of attention both matter.'},
+  {term:'Leela',     skt:'leela',            url:'https://www.wisdomlib.org/definition/lila',
+   def:'Divine play. The stories of Vishnu\'s avatars are acts of Leela: play that reveals the nature of spiritual reality. Seeing life as Leela is itself a practice.'},
+  {term:'Nama-japa', skt:'nama-japa',        url:'https://www.wisdomlib.org/definition/namajapa',
+   def:'Repetition of the divine name. The tradition holds that the name carries the actual presence of the divine. Prahlada\'s continuous chanting under persecution is its primary teaching text.'},
+  {term:'Nishkama karma', skt:'nishkama karma', url:'https://www.wisdomlib.org/definition/nishkama',
+   def:'Action without attachment to its fruits: the central teaching of the Bhagavad Gita. Rama\'s dharmic action across the Ramayana is its primary story.'},
+  {term:'Pratipaksha bhavana', skt:'pratipaksha bhavana', url:'https://www.wisdomlib.org/definition/pratipaksha',
+   def:'The cultivation of the opposite: a teaching from Patanjali. Not suppression of negative states but transformation so complete that what remains is capable of their opposite.'},
+  {term:'Purusharthas', skt:'purusharthas',  url:'https://www.wisdomlib.org/definition/purushartha',
+   def:'The four goals of human life: dharma (duty), artha (material welfare), kama (desire and love), moksha (liberation). Bali holds dharma first and receives all four.'},
+  {term:'Rasa',      skt:'rasa',             url:'https://www.wisdomlib.org/definition/rasa',
+   def:'Taste or flavor: the specific emotional-spiritual quality of a devotional experience. Receiving a story\'s rasa is itself a spiritual practice.'},
+  {term:'Sat-chit-ananda', skt:'sat-chit-ananda', url:'https://www.wisdomlib.org/definition/sat-cit-ananda',
+   def:'The nature of the spiritual realm: timeless existence (sat), full consciousness (chit), and bliss (ananda). The Cosmic Banyan image makes this concrete: the spiritual roots above are sat-chit-ananda; the material branches below are the reflection.'},
+  {term:'Satya',     skt:'satya',            url:'https://www.wisdomlib.org/definition/satya',
+   def:'Truthfulness: the second yama. Not only speaking truthfully, but refusing to live inside a lie even when the lie would be more comfortable. Sita\'s final act is its deepest expression.'},
+  {term:'Shakti Pitha', skt:'shakti pitha',  url:'https://www.wisdomlib.org/definition/shakti-pitha',
+   def:'Sacred sites created where Sati\'s body fell as Shiva carried it in grief. Wherever a piece fell, the earth became sacred. There are 51 such sites across South Asia, honored to this day.'},
+  {term:'Svadhyaya', skt:'svadhyaya',        url:'https://www.wisdomlib.org/definition/svadhyaya',
+   def:'Self-study: the fourth niyama. Includes examination of what we are most intensely drawn to, most afraid of, most in conflict with.'},
+  {term:'Tapas',     skt:'tapas',            url:'https://www.wisdomlib.org/definition/tapas',
+   def:'Literally heat or fire. The disciplined effort that burns away what is extraneous, refining the practitioner toward clarity. Parvati\'s tapas to win Shiva back is its defining story.'},
+  {term:'Vaikuntha', skt:'vaikuntha',        url:'https://www.wisdomlib.org/definition/vaikuntha',
+   def:'The eternal spiritual realm: the residence of Vishnu. The gate where Jaya and Vijaya stand is the boundary between the eternal and the manifest.'},
+  {term:'Viveka',    skt:'viveka',           url:'https://www.wisdomlib.org/definition/viveka',
+   def:'Discernment: the capacity to distinguish what is real from what is not, what is dharmic from what is not. Vibhishana\'s defection from Ravana to Rama is its defining story.'},
+  {term:'Yagya',     skt:'yagya',            url:'https://www.wisdomlib.org/definition/yajna',
+   def:'Fire sacrifice or ceremony. Daksha\'s exclusion of Shiva and Sati from his yagya, and Bali\'s great yagya at which Vamana arrives, are both pivotal moments in these stories.'},
+];
+
+const STORIES = [
+  {
+    id:'s1', color:'#C8762E',
+    title:'Shiva, Sati, and the first act of sacrifice',
+    source:'Srimad Bhagavatam, Canto 4',
+    thisStory:'A human story about pride, love, and what grief does when the cosmos allows itself to feel it completely. It needs no prior context and stands fully on its own.',
+    sources:[
+      {label:'Vedabase: SB Canto 4', url:'https://vedabase.io/en/library/sb/4/'},
+      {label:'Wisdomlib: Sati', url:'https://www.wisdomlib.org/definition/sati'},
+      {label:'Wisdomlib: Daksha', url:'https://www.wisdomlib.org/definition/daksha'},
+      {label:'Wisdomlib: Shakti Pitha', url:'https://www.wisdomlib.org/definition/shakti-pitha'},
+      {label:'Wisdomlib: Virabhadra', url:'https://www.wisdomlib.org/definition/virabhadra'},
+    ],
+    sections:[
+      {heading:'Shiva and Shakti',
+       text:`Shiva and Shakti are not two separate beings who happened to meet. They are two aspects of a single reality. Shiva is pure awareness: consciousness at rest. Shakti is the creative power of that consciousness: energy in motion. Without Shakti, Shiva is shava, a corpse. Without Shiva, Shakti is undirected energy without form. Their union is the creative act at the heart of existence itself.
+Shiva is the Adi Yogi, the first yogi, who sits in endless meditation at the edge of the world. He is simultaneously the great ascetic who has burned away all attachment and the passionate devotee who will be undone by love. Every yoga practice that works with energy, breath, or stillness traces its lineage to him.`},
+      {heading:'The tragedy of Sati',
+       text:`Sati is born as the daughter of Daksha, one of the great progenitors of the world. She falls in love with Shiva and marries him over her father's fierce objection. Daksha considers Shiva an ascetic outsider, unworthy of his daughter. His objection is not spiritual discernment. It is wounded pride.
+Daksha organizes a great yagya, a cosmic gathering of the celestials, and deliberately excludes Shiva and Sati. She attends anyway, hoping presence might heal what absence cannot. What she finds is catastrophic. Daksha humiliates Shiva publicly before the assembled heavens. Unable to remain in a hall where her husband is degraded, Sati ends her life in the sacred fire. Her name means "true" or "virtuous." Her act is one of radical, terrible integrity.`},
+      {heading:'Grief, the Shakti Pithas, and forgiveness',
+       text:`When news reaches Shiva, his grief is not contained or philosophical. It is absolute. He retrieves Sati's body and wanders the cosmos carrying her, inconsolable. His grief is so vast it disrupts cosmic order. Vishnu intervenes compassionately, gently cutting Sati's body into pieces as Shiva wanders, releasing him incrementally. Wherever a piece falls, a Shakti Pitha is created: a sacred site where the divine feminine is especially present. There are 51 such sites across South Asia, honored to this day. Where grief is fully felt, the ground becomes sacred.
+Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony is destroyed. But Shiva's ultimate act is not revenge. It is forgiveness: he restores what was broken, even restoring Daksha's life. Sati is reborn as Parvati. Through extraordinary <span class="concept-link" data-id="Tapas">tapas</span>, she wins Shiva back. The story does not end in loss. It ends in a new beginning, bought by patience and fire.`},
+    ],
+    characterIds:['shiva','sati','daksha','virabhadra'],
+    connections:`
+<p>The Warrior poses — <span class="pose-link" data-id="20">Warrior I</span>, <span class="pose-link" data-id="6">Warrior II</span>, and <span class="pose-link" data-id="46">Warrior III</span> — are named for Virabhadra, the fierce being created from Shiva's grief. These poses are not about aggression. They are the shape of divine sorrow that has found its footing and become purposeful action. <span class="pose-link" data-id="133">Humble Warrior</span> and <span class="pose-link" data-id="363">Bhakti Virabhadrasana</span> add the dimension of surrender: the fierce warrior bowing toward the earth, toward the divine.</p>
+<p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> and <span class="pose-link" data-id="346">Shiva Twist</span> are named for Nataraja, Shiva in his cosmic dance. The Tandava is the rhythm of creation and dissolution intertwined: both the destruction of the old and the ecstatic aliveness of the new, held in one shape.</p>
+<p>Daksha's story teaches what Patanjali calls asmita (ego-sense): how spiritual accomplishment without humility becomes the most dangerous trap. Shiva's forgiveness after moving through complete grief and complete ferocity is <span class="concept-link" data-id="Pratipaksha bhavana">pratipaksha bhavana</span> at its fullest: transformation so complete that what remains is capable of the opposite.</p>`,
+    questions:[
+      'Daksha\'s harm comes not from violence but from pride that cannot honor what his daughter loves. Where in your own life does pride disguise itself as discernment, protecting a preference by calling it a principle?',
+      'Shiva\'s grief is so vast it disrupts cosmic order. What does it mean for a spiritual tradition to say that grief this complete is not a problem to be solved, but part of the universe\'s own process of healing?',
+      'Sati chose to remain true to what she loved even at the cost of her life. Without romanticizing that act, what are the things in your life that you will not dishonor regardless of external pressure?',
+      'Parvati does not simply wait for Shiva to return. She performs tapas: she earns the reunion through disciplined practice. What does that suggest about the relationship between spiritual discipline and the recovery of what has been lost?',
+      'In Warrior pose, you stand in the shape of a being born of divine grief transformed into action. How does knowing that history change the quality of your attention in the pose?',
+    ],
+  },
+  {
+    id:'s2', color:'#5A8A5A',
+    title:'The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting',
+    source:'Srimad Bhagavatam, Cantos 3 through 7',
+    thisStory:'Three complete stories woven together: the Jaya-Vijaya teaching on karma and attention; Varaha\'s rescue of the earth; and Prahlada, the primary teaching text for devotional practice in all of Vedic literature.',
+    sources:[
+      {label:'Vedabase: SB Canto 7 (Prahlada)', url:'https://vedabase.io/en/library/sb/7/'},
+      {label:'Vedabase: SB Canto 3 (Varaha)', url:'https://vedabase.io/en/library/sb/3/'},
+      {label:'Wisdomlib: Prahlada', url:'https://www.wisdomlib.org/definition/prahlada'},
+      {label:'Wisdomlib: Narasimha', url:'https://www.wisdomlib.org/definition/narasimha'},
+      {label:'Wisdomlib: Varaha', url:'https://www.wisdomlib.org/definition/varaha'},
+    ],
+    sections:[
+      {heading:'The gate and the curse',
+       text:`Jaya and Vijaya are the gatekeepers of Vaikuntha, the eternal spiritual realm. The Four Kumaras arrive and are stopped at the gate. The Kumaras curse them: they will lose their divine bodies and be born into the material world as demons.
+When Vishnu appears, he does not reverse the curse. He says, in essence: this was just. Devotees are not stopped at my gate. Then he offers Jaya and Vijaya a choice: seven births as his devotees, thinking of him with love, or three births as his enemies, thinking of him with hatred and fear. Both lead home. The shorter path requires greater intensity. Jaya and Vijaya choose three births. The intensity of attention, the Bhagavatam proposes, matters more than its surface quality.`},
+      {heading:'Varaha: the rescue of the earth',
+       text:`In their first demonic birth, Jaya and Vijaya become Hiranyaksha and Hiranyakashipu. Hiranyaksha, drunk on power, seizes the earth herself and drags her to the bottom of the cosmic ocean.
+Vishnu descends as Varaha, the cosmic boar. He dives into the primordial waters, battles Hiranyaksha, and defeats him. Then, in one of the most tender images in the Puranas, Varaha lifts the earth gently on his tusks and carries her back to the surface. The earth goddess Bhudevi responds with worship: what love it is, she says, that you come for me. The rasa of this moment is simultaneously heroic and tender.`},
+      {heading:'Prahlada and the god in the pillar',
+       text:`Hiranyakashipu performs tremendous <span class="concept-link" data-id="Tapas">tapas</span> and claims a boon: he cannot be killed by man or beast, inside or outside, by day or by night, on the ground or in the air, by any weapon. He becomes the most powerful being in the three worlds and declares himself god. His own son refuses.
+Prahlada is a child of perhaps five or six. He heard the teachings of Narada Muni in the womb and knows Vishnu as the ground of all things. He will not stop chanting Vishnu's name. His father tries everything: poison, fire, crushing, drowning. Prahlada survives each time, absorbed in Vishnu. Finally Hiranyakashipu demands: where is this Vishnu you claim is everywhere? Is he in this pillar? He strikes it. Narasimha emerges: half-lion, half-human, at dusk, at the threshold, across his lap. Every loophole closed. His ferocity afterward can be calmed only by Prahlada's touch.`},
+    ],
+    characterIds:['jaya_vijaya','kumaras','varaha','prahlada','narasimha'],
+    connections:`
+<p>Prahlada's story is the foundational text for <span class="concept-link" data-id="Nama-japa">nama-japa</span> (mantra repetition). His unbroken chanting under conditions of persecution shows what the practice builds over time: an attention that cannot be interrupted by circumstance. <span class="pose-link" data-id="335">Lion Pose (Simhasana)</span> carries the energy of Narasimha's roar — the sound that dissolves what cannot be sustained.</p>
+<p>The Jaya-Vijaya story speaks to <span class="concept-link" data-id="Karma">karma</span> and <span class="concept-link" data-id="Svadhyaya">svadhyaya</span> (self-study): the quality of attention matters more than its apparent direction. What we give our complete, unbroken attention to, we move toward. Narasimha's emergence from the pillar teaches that the divine is not elsewhere: it is in the structure of matter, present everywhere Prahlada's chanting has been.</p>
+<p><span class="pose-link" data-id="99">Fish Pose (Matsyasana)</span> is named for Matsya, the first avatar of Vishnu, whose story precedes this arc in the Bhagavatam. The chest-opening quality of the pose reflects the seat of knowledge the avatar came to protect.</p>`,
+    questions:[
+      'Jaya and Vijaya chose three intense hostile births over seven devotional ones. What does that say about the spiritual weight of whatever you return to most obsessively — your fears, resentments, fixations?',
+      'Prahlada\'s devotion was not acquired through practice in this life. He carried it as a given. Have you ever known something with that quality of certainty, prior to evidence, prior to argument? What was it, and what happened when it was tested?',
+      'Hiranyakashipu built his invincibility on conditions he believed covered every possibility, until something arrived from a direction he never thought to guard. Where in your own life do you build protections around a belief that feel airtight?',
+      'Narasimha\'s ferocity can only be calmed by Prahlada\'s touch. What does it mean that the most terrifying expression of the divine is soothed only by the most vulnerable expression of devotion?',
+      'Prahlada says Vishnu is everywhere, even in the pillar, even in his father. How does your practice change when you hold the possibility that what you practice on — the body, the breath, the mat — is itself a form of the divine?',
+    ],
+  },
+  {
+    id:'s3', color:'#B06040',
+    title:'The dwarf who measured the universe',
+    source:'Srimad Bhagavatam, Canto 8, and the Rig Veda',
+    thisStory:'Vamana\'s three steps and Bali\'s knowing gift form a complete teaching on surrender, the nature of generosity, and the grace that comes from giving with open hands. It needs no prior context.',
+    sources:[
+      {label:'Vedabase: SB Canto 8', url:'https://vedabase.io/en/library/sb/8/'},
+      {label:'Wisdomlib: Vamana', url:'https://www.wisdomlib.org/definition/vamana'},
+      {label:'Wisdomlib: Bali Maharaja', url:'https://www.wisdomlib.org/definition/bali'},
+      {label:'Wisdomlib: Trivikrama', url:'https://www.wisdomlib.org/definition/trivikrama'},
+      {label:'Rig Veda: Vishnu\'s three steps (I.154)', url:'https://www.sacred-texts.com/hin/rigveda/rv01154.htm'},
+    ],
+    sections:[
+      {heading:'Bali\'s conquest and Vamana\'s arrival',
+       text:`Bali Maharaja, the demon king, has performed such immense <span class="concept-link" data-id="Tapas">tapas</span> and accumulated such extraordinary virtue — generosity, truthfulness, courage — that he has conquered the three worlds. Even Indra and the celestials have been displaced. The cosmic balance has shifted: power rests with a being whose integrity is, by almost any measure, greater than those he has displaced.
+Vishnu descends as Vamana, a dwarf brahmin student, and arrives at Bali's great yagya. Bali has pledged to give anything asked of him. Vamana asks for three steps of land, as much as his small feet can cover in three paces. Bali's guru Shukracharya recognizes Vamana immediately as Vishnu in disguise and warns Bali clearly: this is a trap. Do not grant it. Bali listens, considers, and grants the boon anyway.`},
+      {heading:'The three steps of Trivikrama',
+       text:`Bali's reasoning is not ignorance. He says, in essence: if this is indeed Vishnu himself come to take from me, what greater fortune could there be than to give to the Lord? He sees through the disguise and chooses to give with full awareness of the cost. This is not generosity born of not knowing what is being offered. It is generosity born of knowing exactly what is being given, and to whom, and choosing it freely.
+Vamana expands into Trivikrama, the one who traverses all three worlds. With one step he covers the entire earth. With the second, all the heavens. No place remains for the third step. Bali, who has pledged, offers his own head. Vishnu places his foot on Bali's head and sends him down to Sutala, a realm described in the Bhagavatam as more serene and beautiful than the heavens the celestials fought over. Vishnu himself takes his place as the guard at Bali's gate. And he promises: in a future cosmic cycle, Bali will become Indra.`},
+    ],
+    characterIds:['vamana','bali'],
+    connections:`
+<p><span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span> — surrender to the divine — is the fifth niyama in Patanjali's Yoga Sutras and sometimes described as the most direct path to samadhi. Bali's gift is its defining story: giving with full awareness of the cost, trusting that what returns will exceed what was offered. <span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> asks a similar question: can you be rooted enough to stand, open enough to give, and still enough to receive, all at once?</p>
+<p>The story also illustrates <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> from the Bhagavad Gita: action without attachment to fruits. Bali offers the three worlds and receives a more beautiful kingdom and the personal presence of Vishnu. The return is better than anything calculation could produce.</p>
+<p>Vamana's smallness is the teaching. The divine does not always arrive in forms we recognize. The beginner's pose can contain everything. The student who appears unremarkable may carry depths that have not yet found their expansion.</p>`,
+    questions:[
+      'Bali gave with full awareness of what it would cost him. What is the difference between giving without knowing the cost and giving with full knowledge? Does awareness change the quality of what is offered?',
+      'Shukracharya gave Bali accurate counsel, and Bali chose not to follow it because something deeper was calling. Have you ever received correct advice and chosen not to take it? What did that feel like, and what happened?',
+      'Vishnu becomes Bali\'s doorman. The divine does not punish Bali; it comes to live with him. What does it suggest about surrender that the one who receives everything also gives everything back in the most intimate form?',
+      'Bali is a demon who is more virtuous than most celestials in these stories. Where in your own life do you find genuine spiritual quality in unexpected places or people?',
+      'Ishvara pranidhana asks not just for surrender of outcomes but for trust that what returns will be sufficient. Where is that trust easiest for you? Where is it hardest?',
+    ],
+  },
+  {
+    id:'s4', color:'#8A5060',
+    title:'The Ramayana: love, dharma, and the weight of kingship',
+    source:'Valmiki\'s Ramayana',
+    thisStory:'The Ramayana needs no prior knowledge of the Puranas to be entered fully. It is a complete world — every character introduced within its own arc, every tension established from within.',
+    sources:[
+      {label:'Valmiki Ramayana (Sanskrit & English)', url:'https://valmikiramayan.net/'},
+      {label:'Sacred Texts: Ramayana (Griffith)', url:'https://www.sacred-texts.com/hin/rama/'},
+      {label:'Wisdomlib: Rama', url:'https://www.wisdomlib.org/definition/rama'},
+      {label:'Wisdomlib: Sita', url:'https://www.wisdomlib.org/definition/sita'},
+      {label:'Wisdomlib: Hanuman', url:'https://www.wisdomlib.org/definition/hanuman'},
+      {label:'Wisdomlib: Ravana', url:'https://www.wisdomlib.org/definition/ravana'},
+    ],
+    sections:[
+      {heading:'Rama: the avatar who lives as a man',
+       text:`Rama is born to King Dasharatha of Ayodhya, the eldest of four sons. He is celebrated as Maryada Purushottam: the ideal man, the perfection of human virtue. Unlike the avatars before him, his divinity is almost entirely concealed within his humanity. He loves as a man, suffers as a man, and demonstrates <span class="concept-link" data-id="Dharma">dharma</span> from within the constraints of a human life. What makes his character so enduring and so humanly painful is that his perfection costs him everything personally. He does not suffer from weakness or mistake. He suffers because he is right.`},
+      {heading:'The exile and Sita\'s abduction',
+       text:`Dasharatha's youngest queen Kaikeyi calls in two boons on the eve of Rama's coronation: she wants her own son Bharata crowned, and she wants Rama exiled for fourteen years. Rama accepts immediately, without complaint, and walks away from kingship as if removing a garment. Sita insists on accompanying him. Lakshmana does not consider staying behind.
+In the forest, the demon Ravana, king of Lanka, becomes fixated on Sita. He lures Rama away with a golden deer illusion and carries Sita away to Lanka. Ravana is genuinely accomplished: scholar, devotee of Shiva, poet. His fatal flaw is the pride that cannot accept that what he most wants cannot be taken.`},
+      {heading:'Hanuman\'s search and Sita\'s choice',
+       text:`Rama's grief at Sita's absence is absolute. He searches the forests asking the trees and rivers whether they have seen her. Through the monkey king Sugriva and his general Hanuman, he learns where Sita has been taken. Hanuman crosses the ocean to Lanka, finds Sita in Ravana's garden, and offers immediately to carry her back. She refuses. She will not be rescued by Hanuman. She will be rescued by Rama. Her refusal is not passivity; it is a precise understanding of what the moment requires. Her courage sustained across months of captivity is equal to any warrior's valor in the field.`},
+      {heading:'The war, the return, Diwali, and the final sorrow',
+       text:`Rama builds a bridge across the ocean, each stone inscribed with his name floating on the water, and wages war against Lanka. Ravana's noble brother Vibhishana defects to Rama's side, unable to support adharma even in service of family loyalty. Ravana is slain. Sita is freed. And then Rama, before all the assembled armies and the world, asks her to prove her purity. He does not want to do this. He loves her absolutely. But he is a king: a king's judgment must be accepted by his people. The trial by fire is not Rama's cruelty; it is his sacrifice.
+The people light lamps through Ayodhya to guide them home. This is Diwali. But the story does not end there. Years later, a washerman questions publicly how the king could accept a wife who lived in another man's house. Rama sends Sita away again, into the forest, while she is pregnant with their sons. He mourns her absence for the rest of his life, never remarries, and uses a golden statue of Sita for every ritual requiring a queen. When their sons eventually recite the Ramayana before him, recognition is complete but too late. Sita refuses to return. She calls on the earth to receive her, and the earth opens. The Ramayana presents this not as justice but as tragedy.`},
+    ],
+    characterIds:['rama','sita','hanuman','ravana'],
+    connections:`
+<p><span class="pose-link" data-id="368">Hanumanasana (Splits Pose)</span> is named for Hanuman's legendary leap across the ocean to Lanka to find Sita. The full extension of the pose is the shape of complete trust, complete devotion, and complete surrender to the purpose at hand. <span class="pose-link" data-id="73">Ardha Hanumanasana (Half Splits)</span> is the preparatory moment: the breath just before the leap.</p>
+<p>The Ramayana is a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> in its most painful form: Rama acts from dharma in every moment, releasing personal desire from the outcome. <span class="concept-link" data-id="Satya">Satya</span> (truthfulness) is Sita's defining quality. Her final act — calling on the earth rather than returning to prove herself once more — is the most radical expression of satya in all four stories.</p>
+<p>Hanuman's relationship with Rama is one of the tradition's deepest templates for the guru-student relationship. Every gift he possesses is placed entirely in service of Rama with no personal agenda. This is <span class="concept-link" data-id="Bhakti">bhakti</span> in action: not love that bypasses understanding, but wisdom entirely in service of love. Diwali, the festival of lights that marks Rama's return, is understood as the soul recognizing its source: the moment when what was hidden in darkness becomes visible again.</p>`,
+    questions:[
+      'Rama walks away from kingship as if removing a garment, without visible struggle. Is this admirable detachment or a concerning absence of human attachment? What does your answer reveal about your own relationship to renunciation?',
+      'Sita refuses Hanuman\'s offer to carry her home, insisting on being rescued by Rama alone. What are the things in your own life you know need to be done in a particular way, even when a faster or easier path is available?',
+      'The trial by fire asks Sita to prove publicly what she already knows privately. When have you been asked to prove your worth to people who should already know it? What did you do?',
+      'Rama does not place his love for Sita above his dharma as king. The Ramayana neither condemns nor easily celebrates this. Where in your own life do your roles come into irreconcilable conflict? How do you choose?',
+      'Hanuman\'s defining image is his chest opened to reveal Rama and Sita within his heart — a being entirely occupied by devotion. What would it mean for your practice, work, or relationships to be that completely given to something?',
+      'The Ramayana\'s final tragedy is caused not by a villain but by social expectation: one washerman\'s comment that Rama cannot ignore. What collective expectations in your own cultural context cause harm that no single person intends?',
+    ],
+  },
+];
+
+/* ============================
+   RENDER
+   ============================ */
+const extLink = `<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+function renderIntro(){
+  return `<section class="story-section-wrap" id="section-intro">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);margin-bottom:.75rem">The image of the banyan tree</h2>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into the light, while the roots descend into the dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the manifest world below. To trace any branch back to where it meets the trunk is a form of yoga in itself. These four stories are that practice.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em> and Valmiki's <em>Ramayana</em>. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas — open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span> — the law that sustains all things — and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span> — devotion, love, service — which the tradition holds as the path most direct to the divine.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: not interventions driven by necessity, but a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone — what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories are not only about what happened. They are about what the listening does to the listener.</p>
+  </section>`;
+}
+
+function renderStory(s){
+  const storyHTML = s.sections.map(sec=>`
+    <div class="story-body">
+      <h3 class="story-heading">${sec.heading}</h3>
+      ${sec.text.split('\n').filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('')}
+    </div>`).join('');
+
+  const charCards = s.characterIds.map(id=>{
+    const c = CHARACTERS[id];
+    if(!c) return '';
+    const initials = c.name.replace(/&amp;/g,'&').split(/[\/\s&]+/).filter(w=>w&&w.length>1).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    return `<div class="char-card" onclick="openChar('${id}')">
+      <div class="char-avatar" style="background:${c.color}">${initials}</div>
+      <div class="char-name">${c.name}</div>
+      <div class="char-role" style="color:${c.color}">${c.role.toUpperCase()}</div>
+      <div class="char-teaser">${c.desc.substring(0,90)}…</div>
+    </div>`;
+  }).join('');
+
+  const sourcesHTML = s.sources.map(src=>`<a href="${src.url}" class="source-link" target="_blank" rel="noopener">${extLink}${src.label}</a>`).join('');
+
+  const questions = s.questions.map((q,i)=>`
+    <div class="q-item">
+      <span class="q-num">${i+1}.</span>
+      <span class="q-text">${q}</span>
+    </div>`).join('');
+
+  return `<section class="story-section-wrap" id="section-${s.id}">
+    <div class="story-header" style="border-color:${s.color}">
+      <h2 class="story-title">${s.title}</h2>
+      <div class="story-source">${s.source}</div>
+    </div>
+    <div class="context-note">
+      <div class="context-label">THIS STORY</div>
+      <p>${s.thisStory}</p>
+    </div>
+    ${storyHTML}
+    <div class="section-label" style="margin-top:1.5rem">CHARACTERS</div>
+    <div class="char-grid">${charCards}</div>
+    <div class="section-label">CONNECTIONS TO PRACTICE</div>
+    <div class="connections-box">${s.connections}</div>
+    <div class="section-label">SOURCES &amp; FURTHER READING</div>
+    <div class="sources-wrap">${sourcesHTML}</div>
+    <div class="section-label">GUIDING QUESTIONS</div>
+    <div class="questions-list">${questions}</div>
+  </section>`;
+}
+
+function renderAllCharacters(){
+  const cards = Object.entries(CHARACTERS).map(([id,c])=>{
+    const initials = c.name.replace(/&amp;/g,'&').split(/[\/\s&]+/).filter(w=>w&&w.length>1).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    return `<div class="char-card" onclick="openChar('${id}')">
+      <span class="char-story-label" style="background:${c.color}">${c.story.replace('&amp;','&')}</span>
+      <div class="char-name">${c.name}</div>
+      <div class="char-role" style="color:${c.color}">${c.role.toUpperCase()}</div>
+      <div class="char-teaser">${c.desc.substring(0,90)}…</div>
+    </div>`;
+  }).join('');
+  return `<section class="story-section-wrap" id="section-characters">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--text);margin-bottom:.35rem">All characters</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem">Click any character for full details.</p>
+    <div class="all-char-grid">${cards}</div>
+  </section>`;
+}
+
+function renderFooter(){
+  return `<div class="footer-bridge">
+    <span class="footer-bridge-label">Explore the physical practice:</span>
+    <a href="yoga-family-tree.html" class="bridge-link">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><line x1="9.5" y1="13.5" x2="6" y2="13"/><line x1="14.5" y1="13.5" x2="18" y2="13"/></svg>
+      Yoga family tree
+    </a>
+    <a href="yoga-muscle-diagram.html" class="bridge-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/></svg>
+      Muscle diagram
+    </a>
+    <a href="index.html" class="bridge-link">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      Hub
+    </a>
+  </div>`;
+}
+
+const content = document.getElementById('content');
+content.innerHTML = renderIntro() + STORIES.map(renderStory).join('') + renderAllCharacters() + renderFooter();
+
+/* ============================
+   GLOSSARY
+   ============================ */
+function renderGlossary(filter){
+  const terms = filter ? GLOSSARY.filter(g=>g.term.toLowerCase().includes(filter)||g.def.toLowerCase().includes(filter)) : GLOSSARY;
+  return terms.map(g=>`
+    <div class="glossary-term">
+      <div class="g-term">${g.term}</div>
+      <div class="g-skt">${g.skt}</div>
+      <div class="g-def">${g.def}</div>
+      ${g.url ? `<a href="${g.url}" class="g-link" target="_blank" rel="noopener">Wisdomlib &rarr;</a>` : ''}
+    </div>`).join('');
+}
+document.getElementById('glossary-list').innerHTML = renderGlossary('');
+document.getElementById('g-search').addEventListener('input',function(){
+  document.getElementById('glossary-list').innerHTML = renderGlossary(this.value.toLowerCase().trim());
+});
+document.getElementById('open-glossary').addEventListener('click',()=>document.getElementById('glossary-drawer').classList.add('open'));
+document.getElementById('close-glossary').addEventListener('click',()=>document.getElementById('glossary-drawer').classList.remove('open'));
+
+/* ============================
+   MODALS
+   ============================ */
+window.openChar = function(id){
+  const c = CHARACTERS[id];
+  if(!c) return;
+  document.getElementById('cm-name').textContent = c.name.replace(/&amp;/g,'&');
+  document.getElementById('cm-role').textContent = c.role.toUpperCase();
+  document.getElementById('cm-role').style.color = c.color;
+  document.getElementById('cm-story').textContent = c.story.replace(/&amp;/g,'&');
+  document.getElementById('cm-desc').textContent = c.desc;
+  document.getElementById('char-modal').classList.add('open');
+};
+document.getElementById('char-modal-close').addEventListener('click',()=>document.getElementById('char-modal').classList.remove('open'));
+document.getElementById('char-modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+
+document.getElementById('content').addEventListener('click',function(e){
+  const pl = e.target.closest('.pose-link');
+  if(!pl) return;
+  const id = parseInt(pl.dataset.id);
+  const p = POSES[id];
+  if(!p) return;
+  document.getElementById('pm-name').textContent = p.en;
+  document.getElementById('pm-skt').textContent = p.skt;
+  document.getElementById('pm-conn').textContent = p.conn;
+  document.getElementById('pose-modal').classList.add('open');
+});
+document.getElementById('pose-modal-close').addEventListener('click',()=>document.getElementById('pose-modal').classList.remove('open'));
+document.getElementById('pose-modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+
+document.getElementById('content').addEventListener('click',function(e){
+  const cl = e.target.closest('.concept-link');
+  if(!cl) return;
+  const id = cl.dataset.id;
+  const gs = document.getElementById('g-search');
+  gs.value = id;
+  document.getElementById('glossary-list').innerHTML = renderGlossary(id.toLowerCase());
+  document.getElementById('glossary-drawer').classList.add('open');
+});
+
+/* ============================
+   NAV SCROLL SPY
+   ============================ */
+const pills = document.querySelectorAll('.pill');
+pills.forEach(p=>{
+  p.addEventListener('click',function(){
+    const target = document.getElementById(this.dataset.target);
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const sectionIds = ['section-intro','section-s1','section-s2','section-s3','section-s4','section-characters'];
+const pillMap = {};
+pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
+let scrollTimer;
+window.addEventListener('scroll',function(){
+  clearTimeout(scrollTimer);
+  scrollTimer=setTimeout(()=>{
+    let active = sectionIds[0];
+    const navH = document.getElementById('top-nav').offsetHeight + 10;
+    for(const id of sectionIds){
+      const el = document.getElementById(id);
+      if(el && el.getBoundingClientRect().top <= navH) active = id;
+    }
+    pills.forEach(p=>p.classList.remove('active'));
+    if(pillMap[active]) pillMap[active].classList.add('active');
+  },60);
+},{passive:true});
+
+/* ============================
+   SEARCH
+   ============================ */
+const searchIndex = [];
+function buildIndex(){
+  document.querySelectorAll('.story-section-wrap').forEach(sec=>{
+    const secId = sec.id;
+    const secTitle = sec.querySelector('h2')?.textContent?.trim() || secId;
+    sec.querySelectorAll('p,.q-text,.char-name,.char-teaser').forEach(el=>{
+      const txt = el.textContent.trim();
+      if(txt.length > 20) searchIndex.push({text:txt, secId, secTitle});
+    });
+  });
+  GLOSSARY.forEach(g=>searchIndex.push({text:g.term+' '+g.def, secId:'glossary', secTitle:'Glossary: '+g.term, glossaryId:g.term}));
+}
+buildIndex();
+
+const inp = document.getElementById('search-input');
+const res = document.getElementById('search-results');
+inp.addEventListener('input',function(){
+  const q = this.value.trim().toLowerCase();
+  if(!q){res.style.display='none';return;}
+  const hits=[], seen=new Set();
+  for(const item of searchIndex){
+    if(item.text.toLowerCase().includes(q)){
+      const key = item.secId+'|'+item.secTitle;
+      if(!seen.has(key)){seen.add(key);hits.push(item);if(hits.length>=8)break;}
+    }
+  }
+  if(!hits.length){
+    res.innerHTML='<div class="search-empty">No results for "'+q+'"</div>';
+    res.style.display='block';
+    return;
+  }
+  const snippet=t=>{const i=t.toLowerCase().indexOf(q);const s=Math.max(0,i-30);const e=Math.min(t.length,i+q.length+50);let sl=t.slice(s,e);if(s>0)sl='…'+sl;if(e<t.length)sl+='…';return sl.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),m=>`<mark>${m}</mark>`);};
+  res.innerHTML=hits.map(h=>`
+    <div class="sr-item" onclick="jumpTo('${h.secId}','${h.glossaryId||''}')">
+      <div class="sr-label">${h.secTitle}</div>
+      <div class="sr-text">${snippet(h.text)}</div>
+    </div>`).join('');
+  res.style.display='block';
+});
+window.jumpTo = function(secId, glossaryId){
+  res.style.display='none'; inp.value='';
+  if(glossaryId){
+    const gs=document.getElementById('g-search');
+    gs.value=glossaryId;
+    document.getElementById('glossary-list').innerHTML=renderGlossary(glossaryId.toLowerCase());
+    document.getElementById('glossary-drawer').classList.add('open');
+    return;
+  }
+  const el=document.getElementById(secId);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+};
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.search-wrap')) res.style.display='none';
+});
+</script>
+</body>
+</html>

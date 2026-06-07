@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yoga Muscle Diagram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;scroll-behavior:smooth}
+body{background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);background-attachment:fixed;font-family:'DM Sans',Georgia,sans-serif;color:#f0e6d3;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0a0a14}::-webkit-scrollbar-thumb{background:#2a2240;border-radius:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseGlow{0%,100%{opacity:0.38}50%{opacity:0.62}}
+.muscle-region{cursor:pointer;transition:opacity 0.18s}
+.muscle-region:hover{opacity:0.72!important}
+.muscle-region.active{opacity:0.82!important}
+#detail-panel{animation:fadeIn 0.22s ease-out}
+.fam-chip{display:inline-block;padding:4px 12px;border-radius:14px;font-size:0.72rem;cursor:pointer;margin:3px;transition:opacity 0.15s}
+.fam-chip:hover{opacity:0.75}
+.muscle-grid{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:0 auto;max-width:820px;padding:0 1rem 0.5rem}
+.m-pill{font-size:0.7rem;padding:4px 13px;border-radius:14px;cursor:pointer;border:1px solid;transition:all 0.15s;white-space:nowrap}
+.m-pill:hover{filter:brightness(1.25)}
+.m-pill.active{box-shadow:0 0 12px currentColor}
+.global-nav{position:sticky;top:0;z-index:500;display:flex;align-items:center;gap:.4rem;padding:.45rem 1.1rem;background:rgba(5,1,12,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+.global-nav a{font-size:11.5px;color:rgba(240,230,211,.45);text-decoration:none;padding:4px 13px;border-radius:16px;border:1px solid transparent;transition:all .15s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.global-nav a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.15)}
+.global-nav a.current{background:rgba(255,255,255,.07);color:#f0e6d3;border-color:rgba(255,255,255,.18)}
+.global-nav .home{color:rgba(240,230,211,.3);padding-right:.6rem;border-right:1px solid rgba(255,255,255,.1);margin-right:.2rem}
+.global-nav .home:hover{color:rgba(240,230,211,.65);border-right-color:rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+<nav class="global-nav">
+  <a href="index.html" class="home">The Living Practice</a>
+  <a href="yoga-family-tree.html">Yoga Family Tree</a>
+  <a href="yoga-muscle-diagram.html" class="current">Muscle Diagram</a>
+  <a href="cosmic-banyan.html">Cosmic Banyan Tree</a>
+</nav>
+<div id="app" style="max-width:860px;margin:0 auto;padding-bottom:3rem"></div>
+<script>
+const C={
+  root:    {e:"Root",    s:"Muladhara",   glow:"#FF5555",hex:"#6B1A1A"},
+  sacral:  {e:"Sacral",  s:"Svadhisthana",glow:"#FF8C00",hex:"#7A3000"},
+  solar:   {e:"Solar",   s:"Manipura",    glow:"#FFD700",hex:"#7A5C00"},
+  heart:   {e:"Heart",   s:"Anahata",     glow:"#00E676",hex:"#0B4F28"},
+  throat:  {e:"Throat",  s:"Vishuddha",   glow:"#40C4FF",hex:"#083265"},
+  thirdEye:{e:"3rd Eye", s:"Ajna",        glow:"#CE93D8",hex:"#2E005E"},
+  crown:   {e:"Crown",   s:"Sahasrara",   glow:"#EA80FC",hex:"#400068"},
+};
+
+const FAM_INFO={
+  tadasana:       {name:"Mountain / Standing", ch:"root",    B:"Mountain Pose",    I:"Tree Pose",             A:"Standing Split"},
+  virabhadrasana: {name:"Warriors",            ch:"root",    B:"Warrior I",        I:"Warrior III",           A:"Exalted Warrior"},
+  kapota:         {name:"Hip Openers",         ch:"sacral",  B:"Reclined Fig. Four",I:"Half Pigeon",          A:"Full Pigeon"},
+  malasana:       {name:"Squats",              ch:"sacral",  B:"Supported Squat",  I:"Garland Pose",          A:"Lotus Pose"},
+  parivrtta:      {name:"Twists",              ch:"solar",   B:"Supine Twist",     I:"Half Lord of Fishes",   A:"Revolved Side Angle"},
+  phalakasana:    {name:"Core + Arm Balances", ch:"solar",   B:"Wall Plank",       I:"Side Plank",            A:"Crow Pose"},
+  bhujangasana:   {name:"Backbends",           ch:"heart",   B:"Sphinx Pose",      I:"Cobra Pose",            A:"Wheel Pose"},
+  trikonasana:    {name:"Lateral Bends",       ch:"heart",   B:"Seated Side Bend", I:"Triangle Pose",         A:"Half Moon"},
+  matsyasana:     {name:"Throat Openers",      ch:"throat",  B:"Supported Fish",   I:"Fish Pose",             A:"Lotus Fish"},
+  vrksasana:      {name:"Balancing Poses",     ch:"throat",  B:"Standing Fig. Four",I:"Tree Pose",            A:"Dancer's Pose"},
+  uttanasana:     {name:"Forward Folds",       ch:"thirdEye",B:"Bent-Knee Fold",   I:"Seated Forward Fold",   A:"Sleeping Tortoise"},
+  gomukhasana:    {name:"Shoulder Openers",    ch:"thirdEye",B:"Eagle Arms",       I:"Puppy Pose",            A:"Cow Face Full"},
+  viparita:       {name:"Inversions",          ch:"crown",   B:"Downward Dog",     I:"Shoulderstand",         A:"Handstand"},
+  savasana:       {name:"Restorative",         ch:"crown",   B:"Corpse Pose",      I:"Reclined Bound Angle",  A:"Yoga Nidra"},
+};
+
+const MUSCLES={
+  neck:{
+    name:"Neck",detail:"Sternocleidomastoid, Anterior Scalenes, Deep Cervical Extensors",
+    note:"Directly surrounds the vagus nerve's cervical pathway. Throat openers and Lion's Breath vibrate the larynx and send direct afferent signals along the superior laryngeal branch.",
+    chakra:"throat",view:"front",
+    strengthen:["matsyasana","parivrtta","tadasana"],stretch:["matsyasana","virabhadrasana"],
+    front:[{cx:197,cy:90,rx:7,ry:18},{cx:213,cy:90,rx:7,ry:18}],back:[]
+  },
+  chest:{
+    name:"Pectorals",detail:"Pectoralis Major & Pectoralis Minor",
+    note:"Shortened in sedentary postures; opening the chest is central to heart chakra work. Backbends create active lengthening that expands thoracic breathing capacity.",
+    chakra:"heart",view:"front",
+    strengthen:["phalakasana"],stretch:["bhujangasana","gomukhasana","virabhadrasana","viparita"],
+    front:[{cx:180,cy:162,rx:30,ry:34},{cx:230,cy:162,rx:30,ry:34}],back:[]
+  },
+  shoulders_front:{
+    name:"Shoulders",detail:"Anterior & Medial Deltoids, Rotator Cuff (full arc)",
+    note:"The shoulder is the most mobile joint in the body. A full range of yoga practice restores internal rotation, external rotation, flexion, and extension in a balanced arc.",
+    chakra:"crown",view:"front",
+    strengthen:["virabhadrasana","viparita","phalakasana"],stretch:["gomukhasana"],
+    front:[{cx:148,cy:120,rx:24,ry:22},{cx:262,cy:120,rx:24,ry:22}],back:[]
+  },
+  serratus:{
+    name:"Serratus Anterior",detail:"Serratus Anterior ('boxer's muscle')",
+    note:"Prevents scapular winging; critical for safe plank, Chaturanga, and all inversions. Strengthened every time the shoulder blade is protracted under load.",
+    chakra:"heart",view:"front",
+    strengthen:["virabhadrasana","phalakasana","trikonasana","viparita"],stretch:[],
+    front:[{cx:158,cy:208,rx:13,ry:42},{cx:252,cy:208,rx:13,ry:42}],back:[]
+  },
+  core_rectus:{
+    name:"Rectus Abdominis",detail:"Rectus Abdominis (the 'six-pack' muscle)",
+    note:"Contracts in boat pose and Chaturanga; lengthens in backbends. Training the rectus in yoga always pairs with deep core activation, not isolation.",
+    chakra:"solar",view:"front",
+    strengthen:["phalakasana","uttanasana","parivrtta"],stretch:["bhujangasana"],
+    front:[{cx:205,cy:228,rx:22,ry:55}],back:[]
+  },
+  obliques:{
+    name:"Obliques",detail:"Internal & External Obliques",
+    note:"The spiral stabilizers of the spine. Every twist contracts one side and lengthens the other. Lateral bends engage the QL and obliques together. Core of Manipura (solar plexus) work.",
+    chakra:"solar",view:"front",
+    strengthen:["parivrtta","phalakasana","trikonasana"],stretch:["parivrtta","trikonasana"],
+    front:[{cx:170,cy:230,rx:18,ry:52},{cx:240,cy:230,rx:18,ry:52}],back:[]
+  },
+  hip_flexors:{
+    name:"Hip Flexors",detail:"Iliopsoas, Rectus Femoris, Pectineus, Sartorius",
+    note:"The body's primary stress-holding complex. Chronic sitting shortens the psoas, compressing the lumbar spine. Warriors and backbends stretch it; forward folds and boat pose strengthen it.",
+    chakra:"sacral",view:"front",
+    strengthen:["uttanasana","viparita"],stretch:["virabhadrasana","bhujangasana","malasana","kapota"],
+    front:[{cx:186,cy:310,rx:20,ry:24},{cx:224,cy:310,rx:20,ry:24}],back:[]
+  },
+  adductors:{
+    name:"Inner Thighs",detail:"Adductor Magnus, Longus, Brevis, Gracilis, Pectineus",
+    note:"Often overlooked but critical for hip stability. The adductor magnus also functions as a hip extensor. Wide-stance and external rotation poses create deep inner-thigh lengthening.",
+    chakra:"sacral",view:"front",
+    strengthen:["kapota","malasana"],stretch:["virabhadrasana","kapota","trikonasana","malasana"],
+    front:[{cx:197,cy:388,rx:16,ry:58},{cx:213,cy:388,rx:16,ry:58}],back:[]
+  },
+  quadriceps:{
+    name:"Quadriceps",detail:"Rectus Femoris, Vastus Medialis, Lateralis & Intermedius",
+    note:"Primary movers for knee extension and hip flexion. Strengthened in all standing and squat poses. The vastus medialis oblique (VMO) is especially important for knee health and balance.",
+    chakra:"root",view:"front",
+    strengthen:["virabhadrasana","malasana","phalakasana","tadasana","vrksasana"],stretch:["kapota","bhujangasana"],
+    front:[{cx:173,cy:392,rx:25,ry:68},{cx:237,cy:392,rx:25,ry:68}],back:[]
+  },
+  tibialis:{
+    name:"Anterior Lower Leg",detail:"Tibialis Anterior, Fibularis (Peroneus) Longus & Brevis",
+    note:"Essential for ankle dorsiflexion, arch support, and lateral ankle stability. These muscles govern the quality of every foot strike and the medial arch in standing poses.",
+    chakra:"root",view:"front",
+    strengthen:["tadasana","vrksasana"],stretch:[],
+    front:[{cx:170,cy:482,rx:12,ry:42},{cx:240,cy:482,rx:12,ry:42}],back:[]
+  },
+  trapezius:{
+    name:"Trapezius",detail:"Upper, Middle & Lower Trapezius",
+    note:"The trapezius has three distinct regions with opposite actions. Upper trap elevates the shoulder; mid-trap retracts; lower trap depresses. All three regions must be balanced for healthy shoulders.",
+    chakra:"throat",view:"back",
+    strengthen:["tadasana","virabhadrasana","gomukhasana"],stretch:["uttanasana","matsyasana"],
+    front:[],back:[{cx:615,cy:132,rx:62,ry:38}]
+  },
+  upper_back:{
+    name:"Upper Back",detail:"Rhomboids, Middle Trapezius, Mid-Spine Stabilizers",
+    note:"The antidote to forward-head posture and rounded shoulders. Strengthening the rhomboids and mid-trap restores the scapular position needed for safe overhead and backbend practice.",
+    chakra:"heart",view:"back",
+    strengthen:["tadasana","gomukhasana","bhujangasana"],stretch:[],
+    front:[],back:[{cx:615,cy:172,rx:40,ry:30}]
+  },
+  lats:{
+    name:"Latissimus Dorsi",detail:"Latissimus Dorsi & Teres Major",
+    note:"The broadest muscle in the body. Latissimus dorsi connects the arm to the pelvis and is strengthened in arm balances and inversions. Stretched in overhead lateral work and Gomukhasana.",
+    chakra:"heart",view:"back",
+    strengthen:["viparita","bhujangasana"],stretch:["trikonasana","gomukhasana"],
+    front:[],back:[{cx:575,cy:235,rx:22,ry:75},{cx:655,cy:235,rx:22,ry:75}]
+  },
+  erector_spinae:{
+    name:"Erector Spinae",detail:"Iliocostalis, Longissimus, Spinalis (bilateral columns)",
+    note:"The primary spine extensors. Strengthened in backbends and standing; deeply released in forward folds. The erectors must be balanced with deep core (multifidus) for spinal health.",
+    chakra:"heart",view:"back",
+    strengthen:["tadasana","bhujangasana","malasana"],stretch:["uttanasana","malasana","viparita"],
+    front:[],back:[{cx:603,cy:235,rx:12,ry:75},{cx:627,cy:235,rx:12,ry:75}]
+  },
+  ql:{
+    name:"Quadratus Lumborum",detail:"Quadratus Lumborum (QL), Multifidus",
+    note:"The QL is the primary lateral flexor of the lumbar spine and a key stabilizer. It is both strengthened (concave side) and stretched (convex side) in every lateral bend.",
+    chakra:"heart",view:"back",
+    strengthen:["trikonasana","bhujangasana"],stretch:["trikonasana","parivrtta"],
+    front:[],back:[{cx:594,cy:300,rx:18,ry:30},{cx:636,cy:300,rx:18,ry:30}]
+  },
+  glutes_max:{
+    name:"Gluteus Maximus",detail:"Gluteus Maximus (largest muscle in the body)",
+    note:"Prime mover for hip extension and pelvic stability. Activated in all backbend and lunge patterns. Releases deeply in pigeon and seated forward folds when the femur is internally rotated.",
+    chakra:"root",view:"back",
+    strengthen:["virabhadrasana","bhujangasana","malasana","viparita"],stretch:["kapota","uttanasana"],
+    front:[],back:[{cx:596,cy:332,rx:38,ry:44},{cx:634,cy:332,rx:38,ry:44}]
+  },
+  glutes_med:{
+    name:"Hip Abductors",detail:"Gluteus Medius, Gluteus Minimus, Tensor Fasciae Latae (TFL)",
+    note:"The single most important muscles for pelvic neutrality. Weakness here shows as hip drop (Trendelenburg sign) in single-leg standing. The entire balancing family trains these directly.",
+    chakra:"root",view:"back",
+    strengthen:["tadasana","vrksasana","trikonasana","kapota"],stretch:["kapota"],
+    front:[],back:[{cx:572,cy:305,rx:24,ry:28},{cx:658,cy:305,rx:24,ry:28}]
+  },
+  deep_rotators:{
+    name:"Deep Hip Rotators",detail:"Piriformis, Gemelli Superior & Inferior, Obturator Internus & Externus, Quadratus Femoris",
+    note:"Six small but powerful external rotators of the hip. The psoas and piriformis are the body's primary stress-storage muscles. Hip opening in yoga directly addresses held emotional and physical tension in this complex.",
+    chakra:"sacral",view:"back",
+    strengthen:["kapota"],stretch:["kapota"],
+    front:[],back:[{cx:592,cy:340,rx:18,ry:18},{cx:638,cy:340,rx:18,ry:18}]
+  },
+  hamstrings:{
+    name:"Hamstrings",detail:"Biceps Femoris, Semitendinosus, Semimembranosus",
+    note:"The most commonly tight muscle group in Western practitioners. Forward folds systematically lengthen the entire posterior fascial chain from heel to skull. Hamstring flexibility is linked to lower back health.",
+    chakra:"thirdEye",view:"back",
+    strengthen:["virabhadrasana","tadasana"],stretch:["uttanasana","viparita"],
+    front:[],back:[{cx:588,cy:400,rx:26,ry:66},{cx:642,cy:400,rx:26,ry:66}]
+  },
+  calves:{
+    name:"Calves",detail:"Gastrocnemius, Soleus, Plantaris",
+    note:"The gastrocnemius crosses both the knee and ankle; the soleus crosses only the ankle. Both are stretched in all standing and lunge poses with the heel grounded, and strengthened in any raised-heel work.",
+    chakra:"root",view:"back",
+    strengthen:["tadasana","virabhadrasana","vrksasana"],stretch:["virabhadrasana","malasana","viparita","uttanasana"],
+    front:[],back:[{cx:582,cy:482,rx:18,ry:46},{cx:648,cy:482,rx:18,ry:46}]
+  },
+  shoulders_back:{
+    name:"Posterior Shoulders",detail:"Posterior Deltoid, Infraspinatus, Teres Minor, Subscapularis, Supraspinatus",
+    note:"The rotator cuff must be balanced for safe inversions and backbends. External rotators (infraspinatus, teres minor) are trained in backbends; internal rotators (subscapularis) in shoulder openers.",
+    chakra:"crown",view:"back",
+    strengthen:["viparita","gomukhasana","bhujangasana"],stretch:["gomukhasana"],
+    front:[],back:[{cx:551,cy:130,rx:24,ry:22},{cx:679,cy:130,rx:24,ry:22}]
+  },
+  triceps:{
+    name:"Triceps",detail:"Triceps Brachii (all three heads)",
+    note:"Essential for Chaturanga, plank transitions, and arm balances. The long head of the triceps also extends the shoulder. In Gomukhasana, the bottom arm triceps are stretched.",
+    chakra:"crown",view:"back",
+    strengthen:["phalakasana","viparita","bhujangasana"],stretch:["gomukhasana"],
+    front:[],back:[{cx:532,cy:205,rx:14,ry:55},{cx:698,cy:205,rx:14,ry:55}]
+  },
+};
+
+// Body silhouette ellipses
+function bodyEllipses(cx0){
+  var E=[];
+  E.push({cx:cx0,cy:52,rx:30,ry:36});
+  E.push({cx:cx0,cy:93,rx:10,ry:12});
+  E.push({cx:cx0-58,cy:115,rx:30,ry:22,t:"rotate(-15,"+(cx0-58)+",115)"});
+  E.push({cx:cx0+58,cy:115,rx:30,ry:22,t:"rotate(15,"+(cx0+58)+",115)"});
+  E.push({cx:cx0,cy:210,rx:62,ry:95});
+  E.push({cx:cx0,cy:308,rx:62,ry:32});
+  E.push({cx:cx0-83,cy:200,rx:18,ry:65,t:"rotate(-8,"+(cx0-83)+",200)"});
+  E.push({cx:cx0+83,cy:200,rx:18,ry:65,t:"rotate(8,"+(cx0+83)+",200)"});
+  E.push({cx:cx0-93,cy:308,rx:14,ry:55,t:"rotate(-5,"+(cx0-93)+",308)"});
+  E.push({cx:cx0+93,cy:308,rx:14,ry:55,t:"rotate(5,"+(cx0+93)+",308)"});
+  E.push({cx:cx0-27,cy:395,rx:30,ry:72,t:"rotate(-3,"+(cx0-27)+",395)"});
+  E.push({cx:cx0+27,cy:395,rx:30,ry:72,t:"rotate(3,"+(cx0+27)+",395)"});
+  E.push({cx:cx0-33,cy:488,rx:20,ry:52,t:"rotate(2,"+(cx0-33)+",488)"});
+  E.push({cx:cx0+33,cy:488,rx:20,ry:52,t:"rotate(-2,"+(cx0+33)+",488)"});
+  E.push({cx:cx0-37,cy:533,rx:28,ry:12});
+  E.push({cx:cx0+37,cy:533,rx:28,ry:12});
+  return E;
+}
+
+var ACTIVE=null;
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function ellipseSVG(e,extra){
+  var t=e.t?' transform="'+e.t+'"':'';
+  return '<ellipse cx="'+e.cx+'" cy="'+e.cy+'" rx="'+e.rx+'" ry="'+e.ry+'"'+t+(extra||'')+'/>';
+}
+
+function buildBody(cx0,label){
+  var es=bodyEllipses(cx0);
+  var html='<g style="pointer-events:none">';
+  es.forEach(function(e){html+=ellipseSVG(e,' fill="#0a2820" stroke="#2ae8b8" stroke-width="0.8" opacity="0.9"');});
+  html+='</g>';
+  // Label
+  html+='<text x="'+cx0+'" y="565" text-anchor="middle" fill="#3a5a50" font-size="11" font-weight="500" style="font-family:\'DM Sans\',sans-serif;pointer-events:none;letter-spacing:0.18em;text-transform:uppercase">'+label+'</text>';
+  return html;
+}
+
+function buildMuscleRegions(){
+  var html='';
+  Object.keys(MUSCLES).forEach(function(mid){
+    var m=MUSCLES[mid];
+    var c=C[m.chakra];
+    var isActive=ACTIVE===mid;
+    var regions=m.front.concat(m.back);
+    if(!regions.length) return;
+    html+='<g class="muscle-region'+(isActive?' active':'')+'" data-mid="'+mid+'" style="opacity:'+(isActive?'0.82':'0.38')+'">';
+    regions.forEach(function(e){
+      html+=ellipseSVG(e,' fill="'+c.glow+'" stroke="'+c.glow+'" stroke-width="1.5" style="filter:drop-shadow(0 0 '+(isActive?'10':'5')+'px '+c.glow+')"');
+    });
+    html+='</g>';
+  });
+  return html;
+}
+
+function buildDiagram(){
+  return '<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">'+
+  '<svg viewBox="0 0 820 580" style="width:100%;max-width:820px;display:block;margin:0 auto;min-width:380px">'+
+  '<defs>'+
+  '<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
+  '</defs>'+
+  // Divider
+  '<line x1="410" y1="20" x2="410" y2="560" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 6"/>'+
+  // Bodies
+  buildBody(205,"Front View")+
+  buildBody(615,"Back View")+
+  // Muscle regions
+  buildMuscleRegions()+
+  '</svg></div>';
+}
+
+function buildDetail(){
+  if(!ACTIVE) return '<div style="text-align:center;padding:2rem 1rem;color:#4a3a2a;font-size:0.82rem;font-style:italic;font-family:\'Cormorant Garamond\',serif">Tap any highlighted muscle region above to explore its yoga connections</div>';
+  var m=MUSCLES[ACTIVE];
+  var c=C[m.chakra];
+  var strengthenFams=m.strengthen.map(function(fid){
+    var f=FAM_INFO[fid];if(!f) return "";
+    var fc=C[f.ch];
+    return '<span class="fam-chip" style="background:'+fc.hex+'20;border:1px solid '+fc.hex+'50;color:'+fc.glow+'">'+esc(f.name)+'</span>';
+  }).join("");
+  var stretchFams=m.stretch.map(function(fid){
+    var f=FAM_INFO[fid];if(!f) return "";
+    var fc=C[f.ch];
+    return '<span class="fam-chip" style="background:'+fc.hex+'20;border:1px solid '+fc.hex+'50;color:'+fc.glow+'">'+esc(f.name)+'</span>';
+  }).join("");
+  // Key poses from one strengthen + one stretch family
+  var exFams=[].concat(m.strengthen,m.stretch).filter(function(v,i,a){return a.indexOf(v)===i;}).slice(0,4);
+  var poseRows=exFams.map(function(fid){
+    var f=FAM_INFO[fid];if(!f) return "";
+    var fc=C[f.ch];
+    return '<div style="padding:9px 12px;background:'+fc.hex+'14;border:1px solid '+fc.hex+'30;border-left:3px solid '+fc.glow+';border-radius:8px">'+
+    '<div style="font-size:0.64rem;text-transform:uppercase;letter-spacing:0.18em;color:'+fc.glow+';margin-bottom:4px;font-weight:600">'+esc(f.name)+'</div>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#4caf50;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">B</span>'+esc(f.B)+'</div>'+
+    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#ff9800;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">I</span>'+esc(f.I)+'</div>'+
+    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#f44336;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">A</span>'+esc(f.A)+'</div>'+
+    '</div></div>';
+  }).join("");
+  return '<div id="detail-panel" style="max-width:760px;margin:0.5rem auto 1rem;padding:1.4rem 1.5rem;background:rgba(6,2,18,0.9);border:1px solid '+c.hex+';border-radius:14px;box-shadow:0 0 35px '+c.glow+'18;backdrop-filter:blur(12px)">'+
+  '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.8rem">'+
+  '<div>'+
+  '<div style="display:flex;align-items:center;gap:10px">'+
+  '<div style="width:12px;height:12px;border-radius:50%;background:'+c.glow+';box-shadow:0 0 10px '+c.glow+'"></div>'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.65rem;color:'+c.glow+';font-weight:400;letter-spacing:0.05em">'+esc(m.name)+'</div>'+
+  '</div>'+
+  '<div style="font-size:0.78rem;color:#8a7868;margin-top:3px">'+esc(m.detail)+'</div>'+
+  '<div style="margin-top:6px"><span style="font-size:0.67rem;padding:3px 10px;border-radius:14px;background:'+c.hex+'28;border:1px solid '+c.hex+'60;color:'+c.glow+'">'+c.e+' Chakra — '+c.s+'</span></div>'+
+  '</div>'+
+  '<button onclick="closeDetail()" style="background:none;border:none;color:#6a5a4a;font-size:1.9rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button>'+
+  '</div>'+
+  '<p style="font-size:0.82rem;color:#b0a080;line-height:1.65;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+c.hex+';padding-left:0.75rem;margin-bottom:0.9rem">'+esc(m.note)+'</p>'+
+  '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.9rem">'+
+  '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.4rem">Strengthened by</div><div style="display:flex;flex-wrap:wrap;gap:2px">'+(strengthenFams||'<span style="color:#4a3a2a;font-size:0.78rem">—</span>')+'</div></div>'+
+  '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.4rem">Stretched by</div><div style="display:flex;flex-wrap:wrap;gap:2px">'+(stretchFams||'<span style="color:#4a3a2a;font-size:0.78rem">—</span>')+'</div></div>'+
+  '</div>'+
+  '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.5rem">Key Poses by Family</div>'+
+  '<div style="display:grid;gap:6px">'+poseRows+'</div></div>'+
+  '</div>';
+}
+
+function buildMuscleGrid(){
+  var html='<div style="max-width:760px;margin:0.8rem auto 0.2rem;padding:0 1rem">'+
+  '<div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.28em;color:#4a3a2a;text-align:center;margin-bottom:0.55rem">Muscle Reference</div>'+
+  '<div class="muscle-grid">';
+  Object.keys(MUSCLES).forEach(function(mid){
+    var m=MUSCLES[mid];
+    var c=C[m.chakra];
+    var isActive=ACTIVE===mid;
+    html+='<span class="m-pill'+(isActive?' active':'')+'" data-mid="'+mid+'" style="background:'+c.hex+'20;border-color:'+c.hex+'55;color:'+c.glow+(isActive?';box-shadow:0 0 12px '+c.glow:'')+'">'+esc(m.name)+'</span>';
+  });
+  return html+'</div></div>';
+}
+
+function buildLegend(){
+  var html='<div style="max-width:760px;margin:1rem auto 0;padding:0 1rem;text-align:center">'+
+  '<div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.28em;color:#4a3a2a;margin-bottom:0.45rem">Chakra Color Key</div>'+
+  '<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.35rem">';
+  Object.keys(C).forEach(function(key){
+    var c=C[key];
+    html+='<div style="display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;background:'+c.hex+'16;border:1px solid '+c.hex+'55;font-size:0.67rem">'+
+    '<span style="width:7px;height:7px;border-radius:50%;background:'+c.glow+';display:inline-block;box-shadow:0 0 5px '+c.glow+'"></span>'+
+    '<span style="color:'+c.glow+';font-weight:500">'+c.e+'</span>'+
+    '<span style="color:#2a1a0a">|</span>'+
+    '<span style="color:#7a6858;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+c.s+'</span></div>';
+  });
+  return html+'</div></div>';
+}
+
+function render(){
+  var app=document.getElementById("app");
+  app.innerHTML=
+  // HEADER
+  '<div style="text-align:center;padding:2rem 1rem 0.8rem">'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.8rem,5vw,3.2rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#5ae8c8,#40C4FF,#CE93D8,#00E676);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1">Yoga Muscle Diagram</div>'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:#9a8878;letter-spacing:0.25em;font-size:0.85rem;margin-top:0.3rem">Anatomy of the Practice</div>'+
+  '<div style="margin-top:0.75rem;display:inline-flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;font-size:0.7rem">'+
+  '<a href="yoga-family-tree.html" style="color:#FFD700;border:1px solid #FFD70055;padding:3px 13px;border-radius:20px;text-decoration:none;font-size:0.7rem">&#8592; Yoga Family Tree</a>'+
+  '<span style="color:#888;border:1px solid #ffffff18;padding:3px 13px;border-radius:20px">Tap any muscle to explore</span>'+
+  '</div></div>'+
+  // DIAGRAM
+  buildDiagram()+
+  // MUSCLE GRID
+  buildMuscleGrid()+
+  // DETAIL PANEL
+  '<div style="max-width:820px;margin:0.5rem auto 0;padding:0 1rem">'+buildDetail()+'</div>'+
+  // LEGEND
+  buildLegend()+
+  '<div style="height:2rem"></div>';
+
+  // Attach muscle region click handlers
+  document.querySelectorAll(".muscle-region").forEach(function(g){
+    g.addEventListener("click",function(){
+      var mid=g.getAttribute("data-mid");
+      ACTIVE=(ACTIVE===mid)?null:mid;
+      render();
+      if(ACTIVE){
+        var dp=document.getElementById("detail-panel");
+        if(dp) setTimeout(function(){dp.scrollIntoView({behavior:"smooth",block:"nearest"});},80);
+      }
+    });
+  });
+  // Attach muscle pill click handlers
+  document.querySelectorAll(".m-pill").forEach(function(el){
+    el.addEventListener("click",function(){
+      var mid=el.getAttribute("data-mid");
+      ACTIVE=(ACTIVE===mid)?null:mid;
+      render();
+      if(ACTIVE){
+        var dp=document.getElementById("detail-panel");
+        if(dp) setTimeout(function(){dp.scrollIntoView({behavior:"smooth",block:"nearest"});},80);
+      }
+    });
+  });
+}
+
+function closeDetail(){ACTIVE=null;render();}
+
+render();
+</script>
+</body>
+</html>

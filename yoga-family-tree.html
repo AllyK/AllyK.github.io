@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yoga Family Tree</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;scroll-behavior:smooth}
+body{background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);background-attachment:fixed;font-family:'DM Sans',Georgia,sans-serif;color:#f0e6d3;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0a0a14}::-webkit-scrollbar-thumb{background:#2a2240;border-radius:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes helixPulse{0%,100%{opacity:0.55}50%{opacity:0.9}}
+@keyframes searchGlow{0%,100%{box-shadow:0 0 18px rgba(255,215,0,0.18)}50%{box-shadow:0 0 28px rgba(255,215,0,0.38)}}
+@keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.node-group,.chakra-node{cursor:pointer}
+input[type=text]{outline:none;font-family:'DM Sans',Georgia,sans-serif}
+input[type=text]::placeholder{color:#7a6a5a}
+#detail-panel,#chakra-panel{animation:fadeIn 0.25s ease-out}
+.helix-anim{animation:helixPulse 4s ease-in-out infinite}
+mark{background:rgba(255,215,0,0.35);color:#FFD700;border-radius:2px}
+.sr-row{display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.12s}
+.sr-row:hover{background:rgba(255,255,255,0.05)!important}
+.search-wrap{max-width:680px;margin:1rem auto 0.3rem;padding:0 1rem}
+.search-input-row{position:relative}
+.search-input-row input{width:100%;padding:13px 46px 13px 48px;background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,215,0,0.35);border-radius:14px;color:#f0e6d3;font-size:1rem;letter-spacing:0.02em;transition:border-color 0.2s,box-shadow 0.2s;animation:searchGlow 3s ease-in-out infinite}
+.search-input-row input:focus{border-color:rgba(255,215,0,0.7);box-shadow:0 0 22px rgba(255,215,0,0.25)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.1rem;color:#FFD700;pointer-events:none}
+.search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#7a6a5a;cursor:pointer;font-size:1.3rem;line-height:1}
+.search-label{text-align:center;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#7a5a2a;margin-bottom:0.5rem}
+/* Modal */
+#info-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:900;padding:1rem}
+#info-card{max-width:540px;width:100%;background:rgba(3,1,14,0.98);border-radius:18px;padding:1.7rem 1.9rem;max-height:84vh;overflow-y:auto;animation:modalIn 0.22s ease-out;position:relative}
+.muscle-link{cursor:pointer;border-bottom:1px dotted rgba(255,255,255,0.3);transition:opacity 0.15s}
+.muscle-link:hover{opacity:0.72}
+.move-tag{cursor:pointer!important;transition:filter 0.15s}
+.move-tag:hover{filter:brightness(1.35)}
+.info-cue{font-size:0.8rem;color:#b0a080;line-height:1.6;padding:4px 0 4px 12px;border-left:2px solid rgba(255,255,255,0.12);margin:3px 0}
+.global-nav{position:sticky;top:0;z-index:500;display:flex;align-items:center;gap:.4rem;padding:.45rem 1.1rem;background:rgba(5,1,12,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+.global-nav a{font-size:11.5px;color:rgba(240,230,211,.45);text-decoration:none;padding:4px 13px;border-radius:16px;border:1px solid transparent;transition:all .15s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.global-nav a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.15)}
+.global-nav a.current{background:rgba(255,255,255,.07);color:#f0e6d3;border-color:rgba(255,255,255,.18)}
+.global-nav .home{color:rgba(240,230,211,.3);padding-right:.6rem;border-right:1px solid rgba(255,255,255,.1);margin-right:.2rem}
+.global-nav .home:hover{color:rgba(240,230,211,.65);border-right-color:rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+<nav class="global-nav">
+  <a href="index.html" class="home">The Living Practice</a>
+  <a href="yoga-family-tree.html" class="current">Yoga Family Tree</a>
+  <a href="yoga-muscle-diagram.html">Muscle Diagram</a>
+  <a href="cosmic-banyan.html">Cosmic Banyan Tree</a>
+</nav>
+<div id="app" style="max-width:860px;margin:0 auto;padding-bottom:2rem"></div>
+<script>
+
+const C={
+  root:    {s:"Muladhara",   e:"Root",    hex:"#6B1A1A",glow:"#FF5555",y:900},
+  sacral:  {s:"Svadhisthana",e:"Sacral",  hex:"#7A3000",glow:"#FF8C00",y:760},
+  solar:   {s:"Manipura",    e:"Solar",   hex:"#7A5C00",glow:"#FFD700",y:620},
+  heart:   {s:"Anahata",     e:"Heart",   hex:"#0B4F28",glow:"#00E676",y:480},
+  throat:  {s:"Vishuddha",   e:"Throat",  hex:"#083265",glow:"#40C4FF",y:340},
+  thirdEye:{s:"Ajna",        e:"3rd Eye", hex:"#2E005E",glow:"#CE93D8",y:200},
+  crown:   {s:"Sahasrara",   e:"Crown",   hex:"#400068",glow:"#EA80FC",y:60},
+};
+
+const CHAKRA_DETAIL={
+  root:{element:"Earth",quality:"Stability & Grounding",location:"Base of spine, perineum",mantra:"LAM",petals:4,affirmation:"I am safe. I am grounded. I belong here.",qualities:["Security","Survival","Foundation","Physical identity","Belonging"],imbalance:"Fear, instability, financial anxiety, disconnection from the body",families:["tadasana","virabhadrasana"]},
+  sacral:{element:"Water",quality:"Creativity & Flow",location:"Lower abdomen, 2 in. below navel",mantra:"VAM",petals:6,affirmation:"I feel. I create. I flow freely.",qualities:["Creativity","Sensuality","Emotion","Fluidity","Pleasure"],imbalance:"Emotional numbness, guilt, rigidity, reproductive tension",families:["kapota","malasana"]},
+  solar:{element:"Fire",quality:"Power & Transformation",location:"Upper abdomen, solar plexus",mantra:"RAM",petals:10,affirmation:"I act. I transform. I am empowered.",qualities:["Personal power","Confidence","Will","Digestion","Transformation"],imbalance:"Low self-worth, victim mentality, digestive disorders, control issues",families:["parivrtta","phalakasana"]},
+  heart:{element:"Air",quality:"Love & Compassion",location:"Center of chest, cardiac plexus",mantra:"YAM",petals:12,affirmation:"I love. I am loved. I am open.",qualities:["Love","Compassion","Forgiveness","Empathy","Connection"],imbalance:"Grief, loneliness, bitterness, inability to give or receive love",families:["bhujangasana","trikonasana"]},
+  throat:{element:"Space (Akasha)",quality:"Communication & Truth",location:"Throat, cervical region",mantra:"HAM",petals:16,affirmation:"I speak. I express. My truth is heard.",qualities:["Communication","Authenticity","Expression","Listening","Creative voice"],imbalance:"Throat tension, inability to speak truth, secretiveness, poor listening",families:["matsyasana","vrksasana"]},
+  thirdEye:{element:"Light",quality:"Intuition & Clarity",location:"Between the brows, pineal gland",mantra:"OM",petals:2,affirmation:"I see. I know. I trust my intuition.",qualities:["Intuition","Wisdom","Perception","Clarity","Inner vision"],imbalance:"Confusion, poor judgment, headaches, disconnection from inner knowing",families:["uttanasana","gomukhasana"]},
+  crown:{element:"Consciousness",quality:"Unity & Transcendence",location:"Top of the head, cerebral cortex",mantra:"Silence / OM",petals:1000,affirmation:"I am. I know. I am one with all.",qualities:["Unity","Transcendence","Bliss","Enlightenment","Universal awareness"],imbalance:"Spiritual disconnection, depression, closed-mindedness, existential crisis",families:["viparita","savasana"]},
+};
+
+const MT={
+  "Axial Extension":            {bg:"#0a3535",bd:"#20b2aa",tx:"#7fffd4"},
+  "Hip Flexion + Extension":    {bg:"#3a1a06",bd:"#cd853f",tx:"#ffdead"},
+  "Hip External Rotation":      {bg:"#3a1600",bd:"#e07b39",tx:"#ffc087"},
+  "Deep Hip Flexion":           {bg:"#3a2000",bd:"#e09030",tx:"#ffd090"},
+  "Spinal Rotation":            {bg:"#2a2500",bd:"#daa520",tx:"#ffe580"},
+  "Core Stabilization":         {bg:"#1a2800",bd:"#9acd32",tx:"#c8ff5a"},
+  "Spinal Extension":           {bg:"#002a10",bd:"#32cd32",tx:"#90ff90"},
+  "Lateral Flexion":            {bg:"#002a20",bd:"#20c2a0",tx:"#7fffd4"},
+  "Cervical Extension":         {bg:"#001a3a",bd:"#4fc3f7",tx:"#b0e8ff"},
+  "Proprioceptive Integration": {bg:"#001535",bd:"#5599dd",tx:"#aaddff"},
+  "Spinal Flexion":             {bg:"#180a38",bd:"#9b7fd0",tx:"#d8b4fe"},
+  "Shoulder Flexion + Rotation":{bg:"#220a3a",bd:"#bb7fff",tx:"#e8c8ff"},
+  "Inversion":                  {bg:"#250050",bd:"#b06fe0",tx:"#ddb0ff"},
+  "Parasympathetic Rest":       {bg:"#1a0840",bd:"#9988ff",tx:"#ccc0ff"},
+};
+
+
+const MOVE_INFO={
+  "Axial Extension":{tagline:"Growing tall through the spine's central axis",desc:"Axial extension is not arching backward — it is the action of creating space between each vertebra along the spinal column while maintaining natural curves. It activates the deepest postural muscles (multifidus, transverse abdominis) and trains the body to organize itself around gravity with ease rather than effort.",cues:["Root the foundation — feet or sitting bones — earthward","Let the crown float upward as if suspended by a thread","Breathe into the sides and back of the ribcage to maintain length"],benefits:["Decompresses intervertebral discs","Activates multifidus and deep cervical stabilizers","Trains effortless upright posture","Physical expression of Muladhara — grounded and tall"],chakra:"root",families:["tadasana"]},
+  "Hip Flexion + Extension":{tagline:"Power through the split-stance lunge pattern",desc:"The warrior pattern trains both hips simultaneously — the front hip in flexion, the rear in extension. This bilateral demand is uniquely challenging: full hip flexor length on the back leg while the front hip loads the quadriceps and glutes. The pose builds courage and lower-body integration simultaneously.",cues:["Front knee tracks over the second toe","Draw the inner thighs gently toward each other","Lengthen the tailbone toward the back heel to neutralize the pelvis"],benefits:["Builds lower body power and stability","Opens hip flexors and strengthens glutes simultaneously","Prepares the body for athletic movement","Trains courage and groundedness (Muladhara)"],chakra:"root",families:["virabhadrasana"]},
+  "Hip External Rotation":{tagline:"The deep opening of the hip socket",desc:"External rotation of the femur in the acetabulum is the defining action of all hip-opening poses. The six deep external rotators — piriformis, gemelli, obturators, and quadratus femoris — must simultaneously engage and release. This is the area where the body stores the most chronic stress and emotion.",cues:["Flex the foot to protect the knee in external rotation","Think of the rotation beginning at the hip socket, not the knee","Allow time — the deep rotators release slowly under sustained load"],benefits:["Releases the psoas-piriformis stress complex","Improves hip joint mobility and range","Often catalyzes emotional release (Svadhisthana)","Directly addresses stored tension in the deep hip"],chakra:"sacral",families:["kapota"]},
+  "Deep Hip Flexion":{tagline:"Full hip and ankle flexion simultaneously",desc:"Deep hip flexion requires the hip to fold completely toward the torso while the ankle simultaneously reaches its maximum dorsiflexion. This is humanity's ancestral resting position — lost to chairs — and recovering it requires systematic work on the hip flexors, glutes, ankles, and thoracolumbar fascia together.",cues:["Open the knees wide to create space for the torso","Keep the heels weighted or prop them if they lift","Let the sacrum release toward the earth"],benefits:["Restores natural hip flexion range","Decompresses the sacrum and lumbar spine","Stretches the thoracolumbar fascia","Grounding — connects to Svadhisthana creativity"],chakra:"sacral",families:["malasana"]},
+  "Spinal Rotation":{tagline:"The detoxifying spiral of the spine",desc:"Spinal rotation is the motion most suppressed by modern living. The thoracic spine is designed for rotation but becomes stiff with forward posture. Twists mobilize the thoracic cage, wring the abdominal organs (stimulating digestion via the gut-brain axis), and require the obliques to work as true spiral stabilizers.",cues:["Lengthen first — never twist a compressed spine","The rotation comes from the core, not the arms pulling","Keep both sitting bones equally weighted in seated twists"],benefits:["Mobilizes the thoracic spine","Stimulates digestive organs and liver","Trains obliques as rotational stabilizers","Ignites Manipura fire and personal power"],chakra:"solar",families:["parivrtta"]},
+  "Core Stabilization":{tagline:"Building inner fire from the inside out",desc:"Core stabilization is not about visible abdominals — it is about the deep cylindrical canister of the trunk: transverse abdominis, multifidus, pelvic floor, and diaphragm co-contracting to maintain a neutral spine under load. All arm balances and planks radiate outward from this inner foundation.",cues:["Engage the pelvic floor and lower belly gently before loading the limbs","Think of zipping up from the pubic bone to the navel","The spine stays neutral — not flattened, not arched"],benefits:["Protects the spine in all weight-bearing poses","Trains the deep core cylinder","Foundation for all arm balances and inversions","Builds Manipura confidence and willpower"],chakra:"solar",families:["phalakasana"]},
+  "Spinal Extension":{tagline:"The counterpose to a forward-folding world",desc:"Modern life chronically flexes the spine — screens, desks, driving. Backbends are the antidote: they lengthen the entire anterior body, strengthen the posterior chain, and open the thoracic cage for deeper breathing. They require courage and cultivate the openness of Anahata.",cues:["Press the tops of the feet into the mat in prone backbends","Lift from the sternum, not from the lower back alone","Let the breath guide you — expand the chest with each inhale"],benefits:["Counteracts forward-head posture","Opens the chest for deeper breathing","Strengthens the entire posterior chain","Cultivates emotional courage — Anahata"],chakra:"heart",families:["bhujangasana"]},
+  "Lateral Flexion":{tagline:"Opening the neglected side body",desc:"The frontal plane — sideways movement — is the most undertrained in Western exercise. Lateral flexion stretches the intercostals (breathing muscles), the quadratus lumborum, and the entire lateral fascial line. The heart chakra expands sideways as well as forward: the ribs must breathe in all directions.",cues:["Think of stacking the ribs — top ribs lift away from the lower","Keep both sides of the waist long — don't collapse the lower side","The arm overhead creates traction through the entire side body"],benefits:["Opens intercostal breathing spaces","Stretches the lateral fascial line","Trains the QL and obliques","Expands Anahata beyond the front body into the full sphere"],chakra:"heart",families:["trikonasana"]},
+  "Cervical Extension":{tagline:"Opening the throat, the gateway of truth",desc:"The cervical spine's anterior chain — sternocleidomastoid, scalenes — is chronically shortened by forward-head posture. Cervical extension in throat openers stretches these tissues, stimulates vagal branches adjacent to the neck, and creates space in the anterior throat channel for authentic expression.",cues:["Support the weight of the head — never let it hang unsupported","Lengthen the back of the neck even as the front opens","Use the breath to soften what force cannot achieve"],benefits:["Releases cervical flexor tension","Stimulates the vagus nerve via laryngeal branches","Opens the anterior throat channel","Supports authentic expression — Vishuddha"],chakra:"throat",families:["matsyasana"]},
+  "Proprioceptive Integration":{tagline:"The nervous system's training ground",desc:"Proprioception is the body's sense of its own position in space — the sixth sense that allows movement without looking. Single-leg balance poses challenge the full proprioceptive system: vestibular, visual, and somatosensory inputs must integrate simultaneously. Every wobble is the nervous system learning.",cues:["Find a soft gaze (drishti) on a still point to reduce visual noise","Spread the standing foot's toes to increase the sensory surface area","Breathe — holding the breath increases rigidity and reduces proprioceptive feedback"],benefits:["Improves ankle stability and fall prevention","Trains neural efficiency and reaction time","Reveals and corrects asymmetries","Develops mental clarity — Vishuddha"],chakra:"throat",families:["vrksasana"]},
+  "Spinal Flexion":{tagline:"The yoga of surrender and release",desc:"Forward folds lengthen the entire posterior fascial line — from heel to skull — in one continuous chain. Head below heart creates baroreceptor changes that promote deep parasympathetic rest. Consciousness turns inward and the outward-facing mind begins to quiet. This is Ajna's contemplative work.",cues:["Hinge at the hip crease, not the waist","Bend the knees generously — the goal is hip flexion, not straight legs","Let the weight of the head release the neck completely"],benefits:["Lengthens the entire posterior fascial line","Activates parasympathetic rest","Decompresses the spine in flexion","Draws consciousness inward — Ajna"],chakra:"thirdEye",families:["uttanasana"]},
+  "Shoulder Flexion + Rotation":{tagline:"Restoring the full arc of shoulder mobility",desc:"The glenohumeral joint is the most mobile in the body — and the most neglected. Internal rotation, external rotation, overhead flexion, and extension all deteriorate without deliberate practice. This family restores the shoulder's full three-dimensional range and releases pectoral armor around the heart.",cues:["Think of both arms working simultaneously — not just the one you feel","Create space in the armpit — this releases the rotator cuff","Let the breath soften what stretching cannot force"],benefits:["Restores full shoulder range of motion","Releases pectoral and anterior shoulder tension","Improves thoracic breathing mechanics","Deepens perception — Ajna's expanding awareness"],chakra:"thirdEye",families:["gomukhasana"]},
+  "Inversion":{tagline:"Reversing gravity, shifting perspective",desc:"Any position where the heart is above the head is an inversion. Inversions reverse venous return, stimulate carotid sinus baroreceptors, and flood the system with parasympathetic tone. Shoulderstand applies the most direct vagal activation of any yoga pose — directly compressing the carotid sinus.",cues:["Build inversions from the ground up — core, legs, pelvis, then expression","In supported inversions, breathe into the chest","Come out slowly — the baroreceptor response takes a moment to settle"],benefits:["Powerful parasympathetic activation","Improves venous and lymphatic return","Shifts perspective — literally and neurologically","Direct activation of Sahasrara crown energy"],chakra:"crown",families:["viparita"]},
+  "Parasympathetic Rest":{tagline:"The active cultivation of conscious rest",desc:"Savasana and restorative poses are not passive — they are the active training of the rest-and-digest response. Measurable effects include reduced cortisol, improved heart rate variability, lower blood pressure, and activation of the dorsal vagal complex. The nervous system integrates the entire practice here.",cues:["Set up so thoroughly that there is no reason to move","Let the weight of each body part be fully held by the ground","Notice thoughts without following them — practice witnessing consciousness"],benefits:["Measurably reduces cortisol","Improves heart rate variability","Activates the dorsal vagal complex","Integration of the entire practice — Sahasrara"],chakra:"crown",families:["savasana"]},
+};
+
+
+const MUSCLE_INFO={
+  "Tibialis anterior":{loc:"Front of the lower leg, alongside the tibia (shinbone)",act:"Dorsiflexion — lifting the foot and toes upward; supports the medial arch of the foot",yoga:"Active in every standing pose. Lifts the inner arch in Tadasana, stabilizes the ankle in balancing poses, and is maximally challenged in Malasana where the ankle must reach full dorsiflexion.",tip:"To feel it: stand and lift all five toes off the floor while keeping the heel grounded. The muscle along the front of your shin that engages is the tibialis anterior.",mid:"tibialis"},
+  "Gastrocnemius":{loc:"Back of the lower leg; forms the upper, rounded calf. Crosses both the ankle and knee joints.",act:"Plantarflexion (pointing the foot); also assists knee flexion because it crosses two joints",yoga:"Stretched in Downward Dog, Warriors with back heel grounded, and Malasana. Strengthened in any raised-heel work and standing balances. Because it crosses the knee, it stretches most with the knee straight.",tip:"For a deeper gastrocnemius stretch: keep the knee straight and flex the foot. Bend the knee slightly to shift the load to the soleus instead.",mid:"calves"},
+  "Soleus":{loc:"Back of the lower leg; lies deep beneath the gastrocnemius. Crosses only the ankle joint.",act:"Plantarflexion and postural ankle control; slow-twitch dominant — the standing endurance muscle",yoga:"The true postural muscle of the ankle. Active in every standing moment. Stretched most effectively with a bent knee (unlike the gastrocnemius). Central to ankle stability in all standing work.",tip:"In a low squat (Malasana), the deep calf stretch you feel with a bent knee is the soleus. It requires more sustained time to release than the gastrocnemius.",mid:"calves"},
+  "Plantar fascia":{loc:"The thick band of connective tissue running along the sole of the foot, from heel to toes",act:"Supports the arch of the foot under load; stores and releases elastic energy with each step",yoga:"Activated in every standing pose. In Tadasana, pressing the four corners of the foot creates dynamic tension through the plantar fascia that lifts the arch. Tight plantar fascia can restrict ankle dorsiflexion in Malasana.",tip:"Roll a tennis ball along the sole of the foot for 2 minutes before standing poses. This directly mobilizes the plantar fascia and can dramatically improve dorsiflexion.",mid:"tibialis"},
+  "Vastus medialis oblique":{loc:"The innermost quadriceps; the teardrop-shaped muscle visible above and medial to the kneecap",act:"Knee extension; critical for proper patellar tracking and knee stability",yoga:"Essential for knee health in all standing and balancing poses. If the VMO weakens, the patella tracks laterally and knee pain follows. Tree Pose and single-leg balances specifically challenge it.",tip:"To activate: press the big toe firmly into the mat while holding a standing pose. The inner quad muscle above your kneecap engaging is the VMO.",mid:"quadriceps"},
+  "Vastus lateralis":{loc:"The outermost quadriceps, running along the outer thigh",act:"Knee extension; the largest of the four quadriceps muscles",yoga:"Primary workhorse in all lunge and squat patterns. Strengthened in Warriors and Malasana; needs balancing with the VMO for healthy patellar tracking.",tip:"If the outer thigh feels disproportionately tight, the vastus lateralis may be overdominant relative to the VMO — a common pattern that stresses the knee.",mid:"quadriceps"},
+  "Gluteus maximus":{loc:"The largest muscle in the body; forms the bulk of the buttock",act:"Hip extension (straightening the hip), external rotation, and pelvic stabilization",yoga:"Prime mover in all backbends and lunge poses. Gently engaged in Tadasana to support the pelvis. Deeply stretched when the hip is flexed and internally rotated — Pigeon Pose, forward folds.",tip:"In backbends, gently engage the glutes (think 'lift' not 'squeeze') to support the pelvis without compressing the lumbar spine.",mid:"glutes_max"},
+  "Gluteus medius":{loc:"Upper-outer portion of the buttock, from the iliac crest to the outer hip (greater trochanter)",act:"Hip abduction (moving leg outward); pelvic stabilization in single-leg stance — prevents the hip from dropping",yoga:"The single most important muscle for pelvic neutrality. In every single-leg pose, a weak gluteus medius allows the hip to drop (Trendelenburg sign). All balancing poses train this directly.",tip:"In single-leg balance, press firmly through the outer edge of the standing foot. This activates the peroneus longus chain into the gluteus medius — the body's lateral stability line.",mid:"glutes_med"},
+  "Gluteus minimus":{loc:"Deep to the gluteus medius at the outer hip; not visible from the surface",act:"Hip abduction and internal rotation; works with gluteus medius for pelvic stability",yoga:"Works in tandem with gluteus medius in all single-leg and standing poses. More active in poses requiring internal rotation of the standing leg.",tip:"The gluteus minimus and medius work as a team in yoga — you cannot isolate one without the other.",mid:"glutes_med"},
+  "Transverse abdominis":{loc:"The deepest layer of the abdominal wall; wraps horizontally around the trunk like a corset",act:"Creates intra-abdominal pressure to stabilize the lumbar spine; foundation of the core cylinder",yoga:"The most important muscle for spinal protection in all yoga. In plank, inversions, and arm balances, transverse abdominis must pre-activate before the limbs move. Works with multifidus, pelvic floor, and diaphragm.",tip:"To engage: exhale fully and draw the lower belly gently in and up — not a forceful suck-in. This subtle engagement should feel stable, like a lifting support.",mid:"core_rectus"},
+  "Multifidus":{loc:"Deep intrinsic back muscle; runs in short segments close to the vertebrae along the entire spine",act:"Segmental spinal stabilization; controls tiny movements between individual vertebrae",yoga:"The spine's anti-wobble system. Multifidus is the first muscle to atrophy in back pain. It activates reflexively when you maintain an upright spine and engage transverse abdominis.",tip:"You cannot consciously contract multifidus in isolation — it activates automatically with proper core engagement and spinal alignment.",mid:"erector_spinae"},
+  "Erector spinae":{loc:"Three-part bilateral muscle column running from the sacrum to the skull (iliocostalis, longissimus, spinalis)",act:"Extends and laterally flexes the spine; maintains upright posture",yoga:"Active in all upright poses; prime movers in backbends (Cobra, Locust); deeply released in forward folds. Work with multifidus as the two-tier posterior spinal stabilization system.",tip:"In forward folds, consciously soften the erector spinae — this requires active relaxation of the back muscles, not just pulling yourself deeper.",mid:"erector_spinae"},
+  "Iliopsoas":{loc:"Deep front of the hip. The iliacus lines the inner pelvis; the psoas major runs from the lumbar vertebrae. They join at the lesser trochanter of the femur.",act:"Primary hip flexor; also a lumbar spine flexor and stabilizer; the only muscle connecting the spine to the legs",yoga:"The most discussed muscle in yoga. The psoas is the body's primary stress-holding muscle. Shortened by sitting; released by Warriors, backbends, and hip openers; strengthened in forward folds and boat pose.",tip:"The sensation in the front of the back-leg hip in Warrior I is the iliopsoas stretching. Breathing into the front hip while grounding the back heel deepens this release safely.",mid:"hip_flexors"},
+  "Rectus femoris":{loc:"The central quad muscle; runs from the front of the pelvis over the kneecap to the tibia. The only quadriceps that crosses the hip joint.",act:"Knee extension AND hip flexion — it is the only quad muscle that acts on both joints",yoga:"Stretched in deep backbends (Camel, Wheel) and the back leg in Warriors. Because it crosses the hip, tight rectus femoris restricts hip extension more than the other quads.",tip:"In Warrior I, the tightness deep in the front of the back thigh (not the hip crease) is often the rectus femoris. Keep the back heel grounded to maximize this stretch.",mid:"quadriceps"},
+  "Biceps femoris":{loc:"The outer hamstring; runs from the sitting bone (ischial tuberosity) and femur to the outer knee",act:"Knee flexion; hip extension; external rotation of the tibia",yoga:"One of three hamstring muscles. Stretched in all forward folds and inversions. The pulling sensation along the outer back of the thigh in Uttanasana is often the biceps femoris.",tip:"Externally rotating the thighs slightly (rolling them outward) in seated forward folds brings the biceps femoris more directly into the stretch.",mid:"hamstrings"},
+  "Semitendinosus":{loc:"Inner hamstring; long and rope-like, visible on the inner back of the thigh and knee",act:"Knee flexion; hip extension; internal rotation of the tibia",yoga:"Stretched in forward folds with internal thigh rotation. In Janu Sirsasana (Head to Knee), the straight leg's inner hamstring is the primary target.",tip:"Internally rotating the thigh (rolling it inward) in a forward fold shifts the stretch from the outer to the inner hamstrings.",mid:"hamstrings"},
+  "Semimembranosus":{loc:"Inner hamstring group; broad and flat, lying deep to the semitendinosus",act:"Knee flexion; hip extension; internal rotation of the tibia",yoga:"Works with semitendinosus in all hamstring-lengthening poses. Together they form the inner hamstring group, most prominent in wide-legged and internal-rotation forward folds.",tip:"The inner back of the thigh in wide-legged forward folds targets the semimembranosus and semitendinosus together.",mid:"hamstrings"},
+  "Piriformis":{loc:"Deep in the buttock; runs from the front of the sacrum to the greater trochanter. The sciatic nerve typically passes beneath it.",act:"External rotation of the hip when the leg is straight; abduction when the hip is flexed. Changes function depending on hip position.",yoga:"One of the six deep external rotators targeted in the hip opener family. When tight, it can compress the sciatic nerve. Pigeon Pose (Kapotasana) is the most direct piriformis stretch in yoga.",tip:"If you feel tingling or numbness down the leg in Pigeon Pose, ease out — you may be compressing the sciatic nerve. Use a block under the hip to reduce depth.",mid:"deep_rotators"},
+  "Pectoralis major":{loc:"Large fan-shaped muscle covering the chest; extends from the clavicle and sternum to the upper arm",act:"Horizontal adduction (arm across chest); internal rotation; shoulder flexion",yoga:"Chronically shortened by forward posture. Lengthened in all backbends, chest openers, and shoulder stretches. The chest stretch in Camel Pose is primarily the pectoralis major and minor.",tip:"To feel the difference: in Gomukhasana (Cow Face Arms), the bottom arm stretches pectoralis major (internal rotation), while the top arm stretches the posterior shoulder.",mid:"chest"},
+  "Pectoralis minor":{loc:"Smaller, deeper muscle beneath the pectoralis major; connects ribs 3-5 to the coracoid process of the shoulder blade",act:"Protracts the scapula; depresses the shoulder; assists forced inhalation",yoga:"When tight, pulls the shoulder forward and limits thoracic breathing. Backbends and Gomukhasana directly lengthen the pectoralis minor.",tip:"The rounded-shoulder forward-head posture of desk work is largely driven by a tight pectoralis minor. Backbends and chest openers are its primary antidote.",mid:"chest"},
+  "Sternocleidomastoid":{loc:"The prominent muscle on the side of the neck; runs from behind the ear to the sternum and clavicle",act:"Both sides: flexes the neck. One side: rotates head opposite and tilts it same side",yoga:"Stretched in Fish Pose and all cervical extension poses. Directly surrounds the vagus nerve's cervical pathway — stretching this tissue can affect vagal tone. Active in twists for cervical rotation.",tip:"In Fish Pose, the prominent stretch along the sides of the throat is the sternocleidomastoid. Move slowly — this stretch is powerful.",mid:"neck"},
+  "Rhomboids":{loc:"Between the shoulder blades; connects the medial border of each scapula to the thoracic spine",act:"Retracts the scapulae (draws shoulder blades together and toward the spine)",yoga:"Strengthened in all poses with scapular retraction: Tadasana, Locust Pose, and cobra/backbend variations. Weakened by rounded-shoulder posture.",tip:"In Tadasana, draw your shoulder blades gently toward each other and down your back — this is the rhomboids and lower trapezius co-contracting.",mid:"upper_back"},
+  "Serratus anterior":{loc:"Along the lateral ribcage; connects the ribs to the inner surface of the shoulder blade",act:"Protracts the scapula; holds the shoulder blade flat against the ribcage; assists upward rotation overhead",yoga:"Critical for safe Chaturanga and inversions. A weak serratus causes shoulder blade winging. In plank and Downward Dog, the action of pushing the floor away is serratus activation.",tip:"Push the floor away in plank rather than just holding yourself up. The difference in shoulder position you feel is the serratus anterior engaging.",mid:"serratus"},
+  "Adductor magnus":{loc:"The largest adductor; inner thigh, from the sitting bone to the inner femur and medial knee",act:"Hip adduction; posterior fibers also extend the hip (functions partly like a hamstring)",yoga:"Stretched in wide-legged forward folds and Warrior II. The inner thigh sensation in Baddha Konasana (Butterfly) is largely the adductor magnus and brevis.",tip:"In Baddha Konasana, pressing the feet together and allowing the knees to release (not forcing them down) creates a safer, deeper adductor release.",mid:"adductors"},
+  "IT band":{loc:"Not a muscle — a thick band of fascia (iliotibial band) running along the outer thigh from hip to knee",act:"Stabilizes the knee and hip during movement; transmits force from the hip abductors to the tibia",yoga:"Cannot truly stretch like a muscle — it is dense connective tissue. Lateral yoga poses create useful tissue hydration and mobility. What feels like IT band tightness is often the TFL or gluteus maximus pulling on it.",tip:"The IT band itself has very few nerve endings. The pain or tightness attributed to it is usually in the surrounding muscles and fascia — address the TFL and glute max instead.",mid:"glutes_med"},
+  "Quadratus lumborum":{loc:"The deepest muscle of the back; connects the iliac crest to the lower ribs and lumbar vertebrae on each side",act:"Primary lateral flexor of the lumbar spine; also assists extension and stabilizes the pelvis",yoga:"Prime mover in all lateral bends. One side contracts while the other lengthens. Tight QL is a common cause of low back pain. Lateral breathing into the lower back directly massages this muscle.",tip:"In lateral bends, breathing into the back of the lower ribs on the lengthening side directly releases the quadratus lumborum there.",mid:"ql"},
+  "Diaphragm":{loc:"Dome-shaped primary breathing muscle separating the chest from the abdomen; attached to the lower ribs and lumbar spine",act:"Primary muscle of inhalation; contracts and flattens to pull air into the lungs; rises on exhale",yoga:"Every yoga pose is orchestrated by the diaphragm. In backbends it expands anteriorly; in twists it massages the organs; in inversions it works against gravity. Pranayama directly trains diaphragmatic awareness.",tip:"In Savasana, place one hand on the belly and one on the chest. The belly should rise before the chest for optimal diaphragmatic breathing.",mid:"glutes_max"},
+  "Infraspinatus":{loc:"Back of the shoulder blade; fills the lower infraspinous fossa",act:"External rotation of the humerus; posterior shoulder stability",yoga:"Active in backbends when the shoulder externally rotates. In Cobra, spinning the thumbs outward engages the infraspinatus and distributes load across the full rotator cuff.",tip:"In Bhujangasana, think of spinning the inner arms and thumbs outward — this external rotation action engages the infraspinatus and protects the shoulder.",mid:"shoulders_back"},
+  "Teres minor":{loc:"Below the infraspinatus on the back of the shoulder; connects the lateral scapular border to the upper arm",act:"External rotation of the humerus; works with infraspinatus as the posterior rotator cuff",yoga:"Works alongside infraspinatus in backbends and overhead poses. Part of the rotator cuff's posterior stabilizing team.",tip:"Teres minor and infraspinatus are almost always trained together in yoga — if you're engaging one, you're engaging both.",mid:"shoulders_back"},
+  "Intercostals":{loc:"Between the ribs; external intercostals aid inhalation, internal intercostals aid forced exhalation",act:"Expand and compress the ribcage for breathing; stabilize the thoracic cage",yoga:"Stretched in all lateral bends and twists. In Trikonasana, the stretch between the ribs is the intercostals lengthening to allow fuller lateral breathing.",tip:"Place hands on the sides of your ribcage in a seated pose. Breathe laterally — try to push your hands outward with each inhale. This is active intercostal breathing.",mid:"obliques"},
+  "Latissimus dorsi":{loc:"Broadest muscle of the back; runs from the lower spine and iliac crest to the inner upper arm — connecting the arm to the pelvis",act:"Pulls the arm downward and backward; internally rotates the humerus; extends the shoulder",yoga:"Strengthened in inversions and arm balances; stretched in Gomukhasana (top arm) and lateral bends. The lats connect arm to pelvis — engaging them stabilizes the whole trunk.",tip:"In Downward Dog, draw the shoulder blades toward each other and down while pulling the floor toward you. This engages the lats and protects the shoulders.",mid:"lats"},
+  "Ligamentum nuchae":{loc:"A thick elastic ligament running along the back of the neck from the skull to the seventh cervical vertebra",act:"Supports the weight of the head; limits neck flexion",yoga:"Gently released in forward folds and head-below-heart poses where gravity creates traction along the back of the neck.",tip:"The sensation of gentle pulling along the back of the neck as the head releases in Uttanasana (Standing Forward Fold) is partly the ligamentum nuchae releasing.",mid:"neck"},
+  "Middle deltoid":{loc:"The middle portion of the deltoid; the outer cap of the shoulder",act:"Abduction of the arm (lifting the arm to the side)",yoga:"Active in Warrior II and other lateral arm positions. Works with upper trapezius in Warrior I to lift the arms overhead.",tip:"In Warrior II, the effort to keep the arms lifted and extended is primarily the middle deltoid working against gravity.",mid:"shoulders_front"},
+  "Anterior scalenes":{loc:"On the side of the neck, running from the cervical vertebrae to the first rib",act:"Flex the neck; assist forced inhalation by elevating the first rib; laterally flex the neck",yoga:"Stretched in Fish Pose and cervical extension poses. Directly adjacent to the vagus nerve's cervical path — one of the key tissues released in throat-opener practices.",tip:"Chronic tension in the scalenes can compress the brachial plexus nerves, causing arm tingling. Throat openers and slow cervical extension release this area gently.",mid:"neck"},
+  "Deep cervical flexors":{loc:"Deep front-of-neck muscles: longus capitis and longus colli, running along the anterior cervical spine",act:"Flex the neck; stabilize the cervical spine against forward head posture",yoga:"Activated in Tadasana and any upright pose by the action of keeping the head over the spine ('chin tuck'). These muscles counter the chronic overpull of the sternocleidomastoid in forward-head posture.",tip:"In Tadasana, gently draw the chin slightly back and down (without tucking the chin to the chest). This subtle action activates the deep cervical flexors.",mid:"neck"},
+};
+
+const POSE_INFO={
+  "Tadasana":{purpose:"The foundational template for all standing poses. Every postural habit is revealed here — the goal is active ease, effortless vertical organization rather than rigid attention."},
+  "Urdhva Hastasana":{purpose:"Extends the standing foundation overhead, creating traction through the entire spine and lateral body. Teaches the arms and torso to work as one connected chain."},
+  "Anuvittasana":{purpose:"A gentle entry to backbending from standing, introducing thoracic extension while the feet remain grounded. Builds confidence for deeper backbends."},
+  "Utkatasana":{purpose:"Chair Pose builds eccentric quad strength, ankle dorsiflexion, and thoracic mobility simultaneously. Often called 'the uncomfortable pose' — it earns its reputation."},
+  "Vrksasana":{purpose:"Single-leg balance that trains the full proprioceptive system, reveals postural asymmetries, and cultivates mental steadiness through physical wobble."},
+  "Garudasana":{purpose:"Eagle Pose compresses and then releases the shoulders and IT band. The spiral wrapping demands precise balance and trains single-leg hip stability."},
+  "Eka Pada Utkatasana":{purpose:"One-Legged Chair intensifies the balance demand while deepening hip flexion on the raised leg and hip strengthening on the standing leg."},
+  "Urdhva Prasarita Eka Padasana":{purpose:"Standing Split lengthens the hamstring of the standing leg under full load — the most intense hamstring stretch in the standing family."},
+  "Ardha Uttanasana":{purpose:"Halfway Lift trains the neutral-spine hinge at the hip — a critical transitional shape that teaches the difference between spinal flexion and hip flexion."},
+  "Utthita Tadasana":{purpose:"Five-Pointed Star opens the chest and radiates energy outward through all four limbs simultaneously, expanding the energetic body in all directions."},
+  "Padahastasana":{purpose:"Gorilla Pose traps the hands under the feet, creating gentle traction through the wrists and forearms while deepening the forward fold."},
+  "Anjaneyasana":{purpose:"Low Lunge is the gateway to the warrior family — accessible and deeply effective. Stretches the hip flexors while beginning to build lower body strength."},
+  "Virabhadrasana I":{purpose:"Warrior I challenges the pelvis to stay square in a split stance — a complex demand that builds hip mobility, spinal extension, and lower body power simultaneously."},
+  "Virabhadrasana II":{purpose:"Warrior II opens the hips in external rotation while building lateral leg strength and shoulder endurance. A full-body pose that appears simple and isn't."},
+  "Viparita Virabhadrasana":{purpose:"Reverse Warrior creates a deep lateral stretch through the side body while maintaining the Warrior II foundation — the heart opens skyward."},
+  "Baddha Virabhadrasana":{purpose:"Humble Warrior takes the arms behind the back in an intense shoulder opener while folding the torso — a powerful combination of opening and grounding."},
+  "Virabhadrasana III":{purpose:"Warrior III is the most demanding balance in the warrior family. Full body integration is required — the torso, standing leg, and lifted leg must work as one."},
+  "Utthita Ashwa Sanchalanasana":{purpose:"High Lunge keeps the back knee lifted, building more quad and hip flexor strength than Low Lunge while preparing the base for Warrior I."},
+  "Skandasana":{purpose:"Side Lunge shifts all weight to one deeply bent leg while the other stretches long — an intense inner thigh and hip flexor opener in a lateral stance."},
+  "Supta Kapotasana":{purpose:"Reclined Figure Four is the most accessible hip opener — gravity does the work as the external rotators release without any ground contact required of the bent leg."},
+  "Baddha Konasana":{purpose:"Butterfly Pose works both adductors and external rotators in a supported position. Creative, fluid, grounding — the soul of Svadhisthana."},
+  "Ananda Balasana":{purpose:"Happy Baby creates gentle spinal traction while simultaneously opening the inner groin. Deeply calming to the nervous system — a natural decompressor."},
+  "Utthan Pristhasana":{purpose:"Lizard Pose brings the hip into deep flexion with external rotation — a direct approach to the hip flexor and external rotator complex. More intense than it appears."},
+  "Ardha Kapotasana":{purpose:"Half Pigeon is the signature hip opener of the yoga tradition. Targets the piriformis and external rotators on the bent-leg side with sustained, deep release."},
+  "Gomukhasana":{purpose:"Cow Face Pose (legs) stacks the knees in deep external rotation — an intense hip opener requiring patience and support before the full shape is possible."},
+  "Eka Pada Rajakapotasana":{purpose:"Full Pigeon adds a backbend to the signature hip opener, combining external rotation of the front hip with extension of the rear hip and spine."},
+  "Agnistambhasana":{purpose:"Fire Log / Double Pigeon stacks the shins parallel — a very intense hip and external rotator stretch requiring significant preparation to enter safely."},
+  "Mandukasana":{purpose:"Frog Pose opens both inner thighs and hip flexors simultaneously in a wide-legged kneeling position — intense and transformative for tight hips."},
+  "Mrigiasana":{purpose:"Deer Pose transitions between hip external and internal rotation in a single shape, making it a useful transition pose and a gentle hip opener."},
+  "Malasana (with blocks)":{purpose:"Supported Squat with blocks elevates the heels, making the deep squat accessible for tight calves and Achilles tendons."},
+  "Sukhasana":{purpose:"Easy Pose is the meditative seat — deceptively simple. For many practitioners it requires significant hip preparation. The goal is natural stability without effort."},
+  "Dandasana":{purpose:"Staff Pose is the seated equivalent of Tadasana. It requires and builds active hamstring flexibility, spinal extension, and shoulder girdle stability."},
+  "Malasana":{purpose:"Full Garland Pose is the ancestral squat restored. When the heels reach the floor, it means the ankles, calves, hips, and spine are all working together."},
+  "Virasana":{purpose:"Hero Pose stretches the quadriceps and ankle dorsiflexors from below. It requires significant knee stability and quad length to perform without props."},
+  "Utthita Balasana":{purpose:"Wide-Knee Child's Pose is both a restorative pose and a hip opener. The wide knees create space for the torso to release fully into the earth."},
+  "Padmasana":{purpose:"Lotus Pose is the royal seat of meditation — full external rotation and flexion of both hips. Requires thorough hip preparation. Never forced."},
+  "Padanguli Naman":{purpose:"Toe Squat creates an intense plantar fascia and toe flexor stretch — directly addressing the foot architecture that underpins all standing practice."},
+  "Supta Virasana":{purpose:"Reclined Hero deepens the quadriceps and hip flexor stretch by adding spinal extension to the seated Hero Pose foundation."},
+  "Vajrasana":{purpose:"Thunderbolt Pose is a kneeling meditation seat that gently stretches the quads and ankles while keeping the spine naturally upright — one of yoga's oldest sitting positions."},
+  "Hanumanasana":{purpose:"Monkey Pose (Full Splits) requires complete hip flexor length on the back leg and full hamstring length on the front — the most demanding pose in the squat family."},
+  "Supta Matsyendrasana":{purpose:"Supine Twist uses gravity and body weight for a passive spinal rotation — the most accessible version of the twist family, ideal for releasing the spine."},
+  "Parivrtta Sukhasana":{purpose:"Seated Simple Twist teaches the mechanics of rotation: lengthen first, then turn. A foundational pose for understanding how twists work."},
+  "Parivrtta Utkatasana":{purpose:"Revolved Chair combines the stability demand of Chair Pose with a spinal rotation, adding intensity to both the lower body and the twist."},
+  "Ardha Matsyendrasana":{purpose:"Half Lord of the Fishes is the classic seated twist — a deep thoracic rotation that compresses and massages the abdominal organs."},
+  "Marichyasana A":{purpose:"Marichi's Pose A focuses on forward fold with one knee raised — a combination of hamstring lengthening and the beginning of spinal rotation."},
+  "Parivrtta Trikonasana":{purpose:"Revolved Triangle requires the greatest rotational range of any standing twist — demanding both hamstring length and thoracic mobility simultaneously."},
+  "Parivrtta Parsvakonasana":{purpose:"Revolved Side Angle is one of the most demanding standing twists — combining a lunge, a deep rotation, and lateral extension in one shape."},
+  "Marichyasana D":{purpose:"Full Marichi's D combines a half-lotus, a forward fold, and a bound twist — considered one of the most complex seated poses in the Ashtanga tradition."},
+  "Parivrtta Padmasana":{purpose:"Twisted Lotus adds a deep spinal rotation to the full lotus base — requires both lotus preparation and significant thoracic mobility."},
+  "Bharadvajasana":{purpose:"Bharadvaja's Twist is a gentle seated twist accessible to most practitioners, using the legs as an asymmetric base to deepen the spinal rotation."},
+  "Phalakasana (wall)":{purpose:"Wall Plank allows learning of the core-plank relationship with reduced load — the ideal starting point for building deep core engagement."},
+  "Phalakasana":{purpose:"Full Plank Pose is the cornerstone of the core family. The whole body organizes itself as a single unit around a neutral spine."},
+  "Ardha Navasana":{purpose:"Boat with Bent Knees builds the hip-flexor and core integration needed for full Boat Pose, with a reduced lever arm and less intensity."},
+  "Vasisthasana":{purpose:"Side Plank isolates lateral core strength and shoulder stability — the serratus anterior, obliques, and gluteus medius must all work together."},
+  "Navasana":{purpose:"Full Boat Pose demands significant hip flexor strength and spinal integrity under load. The spine must stay extended while the hip flexors hold the legs at height."},
+  "Chaturanga Dandasana":{purpose:"Chaturanga is the pivot point of vinyasa practice — a halfway lowering that demands perfect shoulder, core, and leg coordination under full body load."},
+  "Bakasana":{purpose:"Crow Pose is the gateway arm balance. All body weight transfers to the hands; the elbows shelf the knees; the core must do everything to keep the hips light."},
+  "Vasisthasana variation":{purpose:"Side Plank with raised leg adds a hip abductor and balance challenge to the lateral core work, demanding full body integration in the side plane."},
+  "Tittibhasana":{purpose:"Firefly Pose requires deep hamstring flexibility and arm balance simultaneously — an advanced integration of the forward fold and arm balance traditions."},
+  "Tolasana":{purpose:"Scale Pose lifts the entire seated body off the ground on straight arms — primarily a shoulder depressor and core strength challenge."},
+  "Astavakrasana":{purpose:"Eight-Angle Pose twists the legs around one arm to create a suspended lateral arm balance — a unique combination of rotation and upper body strength."},
+  "Salamba Bhujangasana":{purpose:"Sphinx Pose is the gentlest backbend — the forearms support the weight and thoracic extension is natural rather than forced. The ideal starting point."},
+  "Ardha Bhujangasana":{purpose:"Baby Cobra keeps the hands floating — the backbend comes entirely from the back muscles rather than the arms pushing. Builds true posterior chain strength."},
+  "Setu Bandha Sarvangasana":{purpose:"Bridge Pose is the first load-bearing backbend. Glutes, hamstrings, and spinal extensors all activate together to lift the pelvis skyward."},
+  "Bhujangasana":{purpose:"Cobra Pose uses the arms to assist thoracic extension while continuing posterior chain activation. The chest opens fully for the first time."},
+  "Salabhasana":{purpose:"Locust Pose is the most direct way to build posterior chain strength — everything lifts without the arms. Reveals spinal extensor weakness clearly."},
+  "Urdhva Mukha Svanasana":{purpose:"Upward-Facing Dog is the signature backbend of vinyasa — a weight-bearing thoracic extension in which the thighs lift off the mat entirely."},
+  "Ustrasana":{purpose:"Camel Pose is a deep thoracic and hip flexor opener — the first backbend where the hands release from the floor entirely and the chest opens to the sky."},
+  "Dhanurasana":{purpose:"Bow Pose combines active hamstring pulling with passive spinal extension, creating a rocking lever that deepens the backbend with each breath."},
+  "Urdhva Dhanurasana":{purpose:"Wheel Pose is the full expression of spinal extension — shoulders, spine, and hips extend simultaneously under full body load."},
+  "Raja Kapotasana":{purpose:"King Pigeon combines the hip opener of Pigeon with full spinal extension and foot-to-head contact — one of the deepest backbends in the tradition."},
+  "Camatkarasana":{purpose:"Wild Thing is a flowing backbend from Downward Dog — one hand and one foot lift as the chest opens upward in a dynamic, expressive arc."},
+  "Ardha Bhekasana":{purpose:"Half Frog adds a quad and hip flexor stretch to a prone backbend — the bent leg pulls the foot toward the hip while the other leg grounds."},
+  "Parivrtta Sukhasana (lateral)":{purpose:"Seated Side Bend introduces lateral spinal flexion in a grounded position — the beginning of learning to breathe sideways and open the intercostals."},
+  "Parighasana":{purpose:"Gate Pose opens the side body with one knee on the ground and one leg extended — a distinctive and accessible lateral bend unique to the standing lateral family."},
+  "Trikonasana (block)":{purpose:"Supported Triangle lets the hand rest higher, enabling proper alignment — the spine stays long before deepening into the full expression."},
+  "Trikonasana":{purpose:"Triangle Pose is the defining lateral bend — three lines of the body extend simultaneously: the two legs and the spine reaching sideways in one plane."},
+  "Parsvakonasana":{purpose:"Extended Side Angle deepens Triangle by bending the front knee — adding lower body strength to the lateral opening and creating full lateral extension."},
+  "Ardha Chandrasana":{purpose:"Half Moon combines balance with lateral opening — the body creates a half-moon arc with one leg, one arm, and the torso all radiating from the standing hip."},
+  "Baddha Trikonasana":{purpose:"Bound Triangle adds a bind to the Triangle foundation, deepening the shoulder and chest opening while maintaining the lateral extension of the spine."},
+  "Ardha Chandrasana Chapasana":{purpose:"Sugarcane Pose adds a quad stretch to the Half Moon balance — bending the raised leg to catch the foot creates a backbend-lateral bend combination."},
+  "Tiryaka Tadasana":{purpose:"Standing Lateral Stretch introduces the side-body extension pattern from the most accessible foundation — a direct way to open the intercostals standing upright."},
+  "Griva Sanchalana":{purpose:"Neck Rolls gently mobilize all cervical joints and begin releasing the anterior neck tissue that accumulates tension from forward-head posture."},
+  "Simhasana (prep)":{purpose:"Lion's Breath (seated) begins training the expiratory muscles and laryngeal opening that send direct signals along the vagus nerve's superior laryngeal branch."},
+  "Salamba Matsyasana":{purpose:"Supported Fish uses a bolster or block to passively open the chest and cervical spine without muscular effort — deeply restorative for the anterior neck."},
+  "Matsyasana":{purpose:"Fish Pose actively extends the cervical spine while the elbows ground — the anterior neck opens fully and the chest lifts to create the characteristic fish arch."},
+  "Simhasana":{purpose:"Full Lion's Breath coordinates breath, sound, and facial expression — the roar vibrates the larynx and sends signals through the superior laryngeal vagal branch."},
+  "Bhramari Pranayama":{purpose:"Humming Bee Breath uses internal sound vibration to stimulate vagal branches — one of the most direct pranayama techniques for calming the nervous system."},
+  "Matsyasana (legs extended)":{purpose:"Extended Fish deepens the thoracic and cervical extension with straight legs, increasing the anterior body opening throughout the full length of the torso."},
+  "Matsyasana in Padmasana":{purpose:"Lotus Fish combines full hip external rotation with deep cervical extension — an advanced integration requiring significant preparation in both families."},
+  "Purvottanasana":{purpose:"Upward Plank creates a full anterior body opening from hands to feet — a reverse table-top that strongly stretches the chest, shoulders, and throat simultaneously."},
+  "Vrksasana (modification)":{purpose:"Tree at ankle is the most accessible balance — the foot barely lifts, the emphasis is on single-leg stability and the sense of rooting into the earth."},
+  "Sucirandhrasana (standing)":{purpose:"Standing Figure Four creates hip external rotation while balancing — an intense glute and piriformis stretch under full body weight."},
+  "Virabhadrasana III (wall)":{purpose:"Wall-supported Warrior III removes the balance challenge to focus on hip extension strength and spinal length before adding the full balance demand."},
+  "Natarajasana":{purpose:"Dancer's Pose combines balance, backbending, and hip flexor lengthening — one of the most graceful and demanding poses in the standing repertoire."},
+  "Parivrtta Ardha Chandrasana":{purpose:"Revolved Half Moon adds a twist to the balancing lateral extension — demanding simultaneous balance, hamstring length, and thoracic rotation."},
+  "Utthita Hasta Padangusthasana":{purpose:"Extended Hand-to-Big-Toe Pose holds the leg extended forward — a full hamstring stretch under balance conditions that demands core and hip stability."},
+  "Uttanasana (modification)":{purpose:"Forward Fold with Bent Knees teaches the hip hinge without hamstring restriction — the foundation of understanding how forward folds actually work."},
+  "Parsvottanasana (prep)":{purpose:"Pyramid Pose preparation with blocks trains the flat-back position and hamstring engagement that underpins the full expression of the pose."},
+  "Prasarita Padottanasana (prep)":{purpose:"Wide-Legged Fold to blocks offers a wide-stance hamstring opener that reduces the lever arm, making it accessible for many body types."},
+  "Uttanasana":{purpose:"Standing Forward Fold is the full hip flexion expression — the posterior fascial line opens from heel to skull in one continuous lengthening."},
+  "Parsvottanasana":{purpose:"Pyramid Pose is a single-leg forward fold with squared hips — an intense hamstring stretch that also works the hip flexors of the back leg."},
+  "Janu Sirsasana":{purpose:"Head-to-Knee Pose stretches the straight-leg hamstring while the bent leg adds inner thigh opening. Asymmetry reveals imbalances between sides."},
+  "Paschimottanasana":{purpose:"Seated Forward Fold is the foundational seated pose — the entire posterior chain lengthens as the torso folds over the straight legs."},
+  "Prasarita Padottanasana":{purpose:"Wide-Legged Standing Forward Fold decompresses the spine while lengthening the inner hamstrings and adductors. Gravity works with each exhale."},
+  "Kurmasana":{purpose:"Tortoise Pose folds the torso beneath the legs — the most demanding seated forward fold before Sleeping Tortoise, requiring extraordinary posterior chain length."},
+  "Supta Kurmasana":{purpose:"Sleeping Tortoise is one of the deepest forward folds in the tradition — the arms bind beneath the legs and the feet eventually cross behind the head."},
+  "Baddha Uttanasana":{purpose:"Bound Forward Fold adds a shoulder opener to the standing forward fold — the hands clasp behind the back and the arms lift as the torso hinges forward."},
+  "Parivrtta Surya Yantrasana":{purpose:"Compass Pose combines a seated forward fold with a lateral reach and a twist — one of the most complex seated shapes in the forward fold family."},
+  "Bhujangasana (wall variation)":{purpose:"Chest Stretch at the wall is the most accessible shoulder opener — one hand against the wall creates an isolated pectoral stretch without loading the wrists."},
+  "Parsva Balasana":{purpose:"Thread the Needle is a rotational shoulder and thoracic opener from all-fours — the arm threads beneath the torso for a passive thoracic twist."},
+  "Garudasana (arms only)":{purpose:"Eagle Arms seated trains shoulder internal rotation and scapular protraction without the balance demand — useful as a standalone shoulder release."},
+  "Uttana Shishosana":{purpose:"Puppy Pose is Downward Dog's gentler cousin — the hips stay over the knees while the chest releases toward the floor, opening the thoracic spine and shoulders."},
+  "Gomukhasana (arms)":{purpose:"Cow Face Arms opens both internal and external shoulder rotation simultaneously — one arm reaches overhead and behind while the other reaches up the back."},
+  "Uttana Shishosana (bind)":{purpose:"Puppy Pose with bind deepens the shoulder opening by adding external rotation to the grounded arm while maintaining the chest-to-floor release."},
+  "Paschima Namaskarasana":{purpose:"Reverse Prayer takes the hands into prayer behind the back — an intense wrist, forearm, and shoulder external rotation stretch."},
+  "Anahatasana":{purpose:"Melting Heart (Extended Puppy) is a gentle chest and shoulder opener — the chest drops toward the floor while the hips remain over the knees."},
+  "Adho Mukha Svanasana":{purpose:"Downward-Facing Dog is yoga's most used pose — a mild inversion, a hamstring opener, a shoulder strengthener, and a transitional shape between everything."},
+  "Viparita Karani":{purpose:"Legs Up the Wall is the most restorative inversion — gravity reverses venous return while the nervous system shifts into deep parasympathetic rest."},
+  "Salamba Setu Bandha":{purpose:"Supported Bridge with a block is a passive chest opener and mild inversion — gravity creates traction through the spine without muscular effort."},
+  "Ardha Pincha Mayurasana":{purpose:"Dolphin Pose builds forearm inversion strength and thoracic mobility as a preparatory stage for Headstand and Forearm Balance."},
+  "Halasana":{purpose:"Plow Pose places the feet beyond the head — a deep cervical flexion and hamstring opener that prepares the body for Shoulderstand."},
+  "Sarvangasana":{purpose:"Shoulderstand is the most powerful vagal activation pose in yoga — it directly compresses the carotid sinus baroreceptors, flooding the system with parasympathetic tone."},
+  "Sirsasana":{purpose:"Headstand is the king of yoga poses — full body weight on head and forearms while the entire system inverts. Requires thorough core, shoulder, and cervical preparation."},
+  "Pincha Mayurasana":{purpose:"Forearm Balance demands extraordinary shoulder stability and core integrity. The forearm base is less stable than handstand, making shoulder control more demanding."},
+  "Adho Mukha Vrksasana":{purpose:"Handstand is the pinnacle of arm balance and inversion — full body weight on the hands demands maximum shoulder strength, core integrity, and courage."},
+  "Sirsasana (prep)":{purpose:"Headstand Preparation builds the forearm-to-crown foundation and core connection before the feet leave the floor — the most important stage of headstand learning."},
+  "Savasana":{purpose:"Corpse Pose is the most important pose in yoga. The entire practice integrates here — physically, neurologically, and energetically. Full release is not passive; it is profound."},
+  "Balasana":{purpose:"Child's Pose is the resting counterpose — the spine softens into flexion, the hips release toward the heels, and the nervous system signals safety."},
+  "Makarasana":{purpose:"Crocodile Pose is the quintessential diaphragmatic breathing position — prone on the belly, the back body rises with each inhale. A foundation of pranayama practice."},
+  "Supta Baddha Konasana":{purpose:"Reclined Bound Angle uses gravity to open the inner groin and hips completely passively — a deeply restorative hip opener requiring no muscular effort."},
+  "Viparita Karani (chair)":{purpose:"Waterfall with chair variation reduces the inversion intensity while still creating the leg-elevation and nervous system rest effects of the full pose."},
+  "Yogic Sleep":{purpose:"Yoga Nidra is a guided meditation in conscious rest — the body sleeps while awareness remains. Measurably the deepest relaxation state accessible in yoga practice."},
+  "Supta Padmasana":{purpose:"Reclined Lotus brings the full external rotation of Lotus into a restorative position — the hips open passively while gravity assists the release over time."},
+  "Salamba Savasana":{purpose:"Bolster Savasana uses a bolster under the knees and sometimes the chest to create a fully supported resting position, releasing the psoas and lower back completely."},
+  "Savasana (knees bent)":{purpose:"Constructive Rest Position keeps the knees bent and feet flat — this relieves the psoas from its stretched position and is the most therapeutic neutral spine resting shape."},
+};
+
+const FAM=[
+  {id:"tadasana",name:"Mountain / Standing",sk:"Tadasana Kula",ch:"root",side:"L",move:"Axial Extension",vagus:false,
+   desc:"The origin of all yoga. Standing families build structural integrity, proprioception, and the grounded presence of Muladhara. Every upright pose is a conversation between the body and gravity.",
+   prime:["Tibialis anterior (dorsiflexion, medial arch lift)","Gastrocnemius, soleus (plantar stabilization)","Vastus medialis oblique, vastus lateralis, intermedius (knee extension)","Gluteus medius, minimus (pelvic neutrality, hip abduction)","Transverse abdominis, multifidus (deep spinal stabilization)","Erector spinae: iliocostalis, longissimus, spinalis (upright posture)","Rhomboids, mid-trapezius (scapular retraction)","Deep cervical flexors (head-over-spine alignment)"],
+   stretch:["Plantar fascia (arch activation with ground pressure)","Pectoralis minor (chest expansion)","Sternocleidomastoid (cervical elongation)","Gastrocnemius, soleus (mild in Tadasana)"],
+   poses:[{n:"Mountain Pose",s:"Tadasana",lv:"B"},{n:"Raised Arms Pose",s:"Urdhva Hastasana",lv:"B"},{n:"Five-Pointed Star",s:"Utthita Tadasana",lv:"B"},{n:"Standing Backbend",s:"Anuvittasana",lv:"B"},{n:"Halfway Lift",s:"Ardha Uttanasana",lv:"B"},{n:"Chair Pose",s:"Utkatasana",lv:"I"},{n:"Tree Pose",s:"Vrksasana",lv:"I"},{n:"Eagle Pose",s:"Garudasana",lv:"I"},{n:"Gorilla Pose",s:"Padahastasana",lv:"I"},{n:"One-Legged Chair",s:"Eka Pada Utkatasana",lv:"A"},{n:"Standing Split",s:"Urdhva Prasarita Eka Padasana",lv:"A"}]},
+  {id:"virabhadrasana",name:"Warriors",sk:"Virabhadrasana Kula",ch:"root",side:"R",move:"Hip Flexion + Extension",vagus:false,
+   desc:"Named for the warrior Virabhadra. The split-stance lunge pattern builds power through the front hip in flexion and the rear hip in extension simultaneously. Courage, focus, and lower-body integration are the hallmarks.",
+   prime:["Gluteus maximus (rear-leg hip extension, pelvic drive)","Rectus femoris, vastus group (front-knee extension under load)","Biceps femoris, semitendinosus, semimembranosus (rear hamstrings)","Iliopsoas (front-leg hip flexion stability)","Middle deltoid, upper trapezius (arm elevation in Warrior I)","Serratus anterior (scapular stabilization overhead)"],
+   stretch:["Iliopsoas, rectus femoris (rear-leg hip flexors)","Pectoralis major, minor (chest expansion in Warrior I overhead)","Adductor magnus, longus, brevis (inner thigh in Warrior II)","Gastrocnemius, soleus (rear-leg ankle)"],
+   poses:[{n:"Low Lunge",s:"Anjaneyasana",lv:"B"},{n:"Warrior I",s:"Virabhadrasana I",lv:"B"},{n:"Warrior II",s:"Virabhadrasana II",lv:"B"},{n:"High Lunge",s:"Utthita Ashwa Sanchalanasana",lv:"B"},{n:"Reverse Warrior",s:"Viparita Virabhadrasana",lv:"I"},{n:"Humble Warrior",s:"Baddha Virabhadrasana",lv:"I"},{n:"Warrior III",s:"Virabhadrasana III",lv:"I"},{n:"Side Lunge",s:"Skandasana",lv:"I"},{n:"Exalted Warrior",s:"Utthita Virabhadrasana",lv:"A"},{n:"Warrior I with bind",s:"Baddha Virabhadrasana I",lv:"A"}]},
+  {id:"kapota",name:"Hip Openers",sk:"Kapota Kula",ch:"sacral",side:"L",move:"Hip External Rotation",vagus:true,
+   vn:"Psoas release calms the nervous system via sacral plexus proximity to vagal branches. Deep hip work releases stored emotional tension and correlates with measurable parasympathetic activation.",
+   desc:"The seat of Svadhisthana. These poses target the deep external rotators and the psoas — the body's primary stress-holding muscle. Emotional release frequently accompanies sustained practice.",
+   prime:["Gluteus medius, minimus (hip abduction, neutral stabilization)","Piriformis, gemelli superior and inferior (external rotation, isometric hold)","Obturator internus, obturator externus (deep rotator engagement)","Quadratus femoris (posterior hip stability)","Adductor longus, brevis (inner-thigh stabilization in Baddha Konasana)"],
+   stretch:["Piriformis, gemelli, obturators (deep hip rotator complex)","Iliopsoas, rectus femoris (hip flexors, front leg in Pigeon)","Adductor magnus, longus, brevis, gracilis (medial thigh)","Gluteus maximus (blocks full external rotation)","IT band, tensor fasciae latae"],
+   poses:[{n:"Reclined Figure Four",s:"Supta Kapotasana",lv:"B"},{n:"Butterfly Pose",s:"Baddha Konasana",lv:"B"},{n:"Happy Baby",s:"Ananda Balasana",lv:"B"},{n:"Deer Pose",s:"Mrigiasana",lv:"B"},{n:"Lizard Pose",s:"Utthan Pristhasana",lv:"I"},{n:"Half Pigeon",s:"Ardha Kapotasana",lv:"I"},{n:"Cow Face Pose",s:"Gomukhasana",lv:"I"},{n:"Sleeping Swan",s:"Yin Kapotasana",lv:"I"},{n:"Full Pigeon",s:"Eka Pada Rajakapotasana",lv:"A"},{n:"Double Pigeon",s:"Agnistambhasana",lv:"A"},{n:"Frog Pose",s:"Mandukasana",lv:"A"}]},
+  {id:"malasana",name:"Squats",sk:"Malasana Kula",ch:"sacral",side:"R",move:"Deep Hip Flexion",vagus:false,
+   desc:"Deep squatting is humanity's oldest resting position. This family demands full ankle dorsiflexion and hip flexion simultaneously, creating powerful traction on the thoracolumbar fascia and sacrum.",
+   prime:["Gluteus maximus (eccentric descent, concentric rise)","Rectus femoris, vastus group (eccentric knee flexion control)","Tibialis anterior, fibularis longus (deep ankle dorsiflexion stability)","Adductor magnus (hip stabilization in wide stance)","Erector spinae, multifidus (axial extension with hip flexion)"],
+   stretch:["Gastrocnemius, soleus (deep ankle dorsiflexion demand)","Gluteus maximus (deep hip flexion release)","Thoracolumbar fascia (sacral traction in low squat)","Adductor magnus, longus (inner thigh in wide squat)"],
+   poses:[{n:"Supported Squat",s:"Malasana (with blocks)",lv:"B"},{n:"Easy Pose",s:"Sukhasana",lv:"B"},{n:"Staff Pose",s:"Dandasana",lv:"B"},{n:"Thunderbolt Pose",s:"Vajrasana",lv:"B"},{n:"Garland Pose",s:"Malasana",lv:"I"},{n:"Hero Pose",s:"Virasana",lv:"I"},{n:"Wide-Knee Child",s:"Utthita Balasana",lv:"I"},{n:"Lotus Pose",s:"Padmasana",lv:"A"},{n:"Toe Squat",s:"Padanguli Naman",lv:"A"},{n:"Reclined Hero",s:"Supta Virasana",lv:"A"},{n:"Monkey Pose",s:"Hanumanasana",lv:"A"}]},
+  {id:"parivrtta",name:"Twists",sk:"Parivrtta Kula",ch:"solar",side:"L",move:"Spinal Rotation",vagus:true,
+   vn:"Organ compression stimulates vagal afferents via the gut-brain axis. Hepatic, splenic, and intestinal massage activates parasympathetic tone through viscerosomatic reflexes along the vagal pathway.",
+   desc:"Twists ignite Manipura's fire. They wring out the abdominal organs, restore rotational mobility in the spine, and detoxify through visceral massage. The obliques learn to work as true spiral stabilizers.",
+   prime:["Internal oblique, ipsilateral (concentric rotation toward)","External oblique, contralateral (concentric rotation away)","Rotatores, multifidus (fine segmental spinal rotation)","Semispinalis thoracis (thoracic rotation control)","Sternocleidomastoid (cervical rotation, toward top arm)"],
+   stretch:["External oblique, contralateral side (lengthening under rotation)","Erector spinae, unilateral (decompression on lengthening side)","Piriformis, IT band (seated twist hip tension)","Intercostals (thoracic rotation expansion)","Quadratus lumborum (mild decompression)"],
+   poses:[{n:"Supine Twist",s:"Supta Matsyendrasana",lv:"B"},{n:"Seated Simple Twist",s:"Parivrtta Sukhasana",lv:"B"},{n:"Revolved Chair",s:"Parivrtta Utkatasana",lv:"B"},{n:"Half Lord of the Fishes",s:"Ardha Matsyendrasana",lv:"I"},{n:"Marichi's Pose A",s:"Marichyasana A",lv:"I"},{n:"Bharadvaja's Twist",s:"Bharadvajasana",lv:"I"},{n:"Revolved Triangle",s:"Parivrtta Trikonasana",lv:"I"},{n:"Revolved Side Angle",s:"Parivrtta Parsvakonasana",lv:"A"},{n:"Full Marichi's D",s:"Marichyasana D",lv:"A"},{n:"Twisted Lotus",s:"Parivrtta Padmasana",lv:"A"}]},
+  {id:"phalakasana",name:"Core + Arm Balances",sk:"Phalakasana Kula",ch:"solar",side:"R",move:"Core Stabilization",vagus:false,
+   desc:"The Phalakasana family builds personal power from the inside out. The deep core cylinder must activate first; all arm balances radiate from this central stability outward to the extremities.",
+   prime:["Transverse abdominis (deep core cylindrical co-contraction)","Rectus abdominis (anti-extension in plank)","Internal, external obliques (rotational and lateral stability)","Triceps brachii (elbow extension under full body load)","Anterior deltoid, pectoralis major (shoulder stabilization)","Serratus anterior (scapular protraction, anti-winging)","Quadriceps group, gluteus maximus (lower body rigidity)"],
+   stretch:["Pectoralis major, minor (mild chest broadening)","Iliopsoas, rectus femoris (hip flexors resisting anterior tilt)","Wrist flexors: flexor carpi radialis, ulnaris (joint prep)","Gastrocnemius, soleus (heels pressing back in plank)"],
+   poses:[{n:"Wall Plank",s:"Phalakasana (wall)",lv:"B"},{n:"Plank Pose",s:"Phalakasana",lv:"B"},{n:"Boat (bent knees)",s:"Ardha Navasana",lv:"B"},{n:"Side Plank",s:"Vasisthasana",lv:"I"},{n:"Boat Pose",s:"Navasana",lv:"I"},{n:"Chaturanga",s:"Chaturanga Dandasana",lv:"I"},{n:"Crow Pose",s:"Bakasana",lv:"A"},{n:"Scale Pose",s:"Tolasana",lv:"A"},{n:"Side Plank (raised leg)",s:"Vasisthasana variation",lv:"A"},{n:"Eight-Angle Pose",s:"Astavakrasana",lv:"A"},{n:"Firefly Pose",s:"Tittibhasana",lv:"A"}]},
+  {id:"bhujangasana",name:"Backbends",sk:"Bhujangasana Kula",ch:"heart",side:"L",move:"Spinal Extension",vagus:true,
+   vn:"Thoracic expansion activates pulmonary stretch receptors and cardiac vagal branches. Chest opening reduces sympathetic armor, and diaphragmatic deepening sends direct afferent signals along the vagus nerve.",
+   desc:"Heart openers counter the chronic forward folding of modern life. The posterior chain lifts actively while the anterior body surrenders. They cultivate courage, emotional vulnerability, and the opening of Anahata.",
+   prime:["Erector spinae: iliocostalis, longissimus, spinalis (full spinal extension)","Semispinalis, multifidus (thoracic extension and segmental stability)","Gluteus maximus (hip extension, pelvic stabilization)","Posterior deltoid, infraspinatus, teres minor (shoulder external rotation)","Triceps brachii (arm press in Cobra, Wheel)","Quadratus lumborum (lumbar extension contribution)"],
+   stretch:["Rectus abdominis (full anterior spine lengthening)","Iliopsoas, rectus femoris (hip flexors)","Pectoralis major, minor (chest broadening)","Anterior deltoid, biceps brachii (shoulder and elbow flexors)","Intercostals, anterior (thoracic expansion)","Sternocleidomastoid, anterior scalenes (cervical extension)"],
+   poses:[{n:"Sphinx Pose",s:"Salamba Bhujangasana",lv:"B"},{n:"Baby Cobra",s:"Ardha Bhujangasana",lv:"B"},{n:"Bridge Pose",s:"Setu Bandha Sarvangasana",lv:"B"},{n:"Cobra Pose",s:"Bhujangasana",lv:"I"},{n:"Locust Pose",s:"Salabhasana",lv:"I"},{n:"Half Frog Pose",s:"Ardha Bhekasana",lv:"I"},{n:"Upward Dog",s:"Urdhva Mukha Svanasana",lv:"I"},{n:"Camel Pose",s:"Ustrasana",lv:"I"},{n:"Wild Thing",s:"Camatkarasana",lv:"I"},{n:"Bow Pose",s:"Dhanurasana",lv:"A"},{n:"Wheel Pose",s:"Urdhva Dhanurasana",lv:"A"},{n:"King Pigeon",s:"Raja Kapotasana",lv:"A"}]},
+  {id:"trikonasana",name:"Lateral Bends",sk:"Trikonasana Kula",ch:"heart",side:"R",move:"Lateral Flexion",vagus:false,
+   desc:"The side body is the most neglected plane in Western movement. The Trikonasana family restores lateral mobility, opens the intercostal breathing spaces, and teaches the body to lengthen and expand sideways.",
+   prime:["Quadratus lumborum, concave side (lateral flexion prime mover)","Internal oblique, ipsilateral (lateral compression and support)","External oblique, contralateral (eccentric lengthening control)","Gluteus medius, tensor fasciae latae (hip stability in standing laterals)","Serratus anterior (rib cage lateral expansion)"],
+   stretch:["Quadratus lumborum, convex (contralateral lateral release)","Intercostals (opening the lateral breathing spaces)","Latissimus dorsi (with arm overhead)","Adductor magnus, longus (inner thigh in Triangle)","IT band, tensor fasciae latae (standing versions)"],
+   poses:[{n:"Seated Side Bend",s:"Parivrtta Sukhasana (lateral)",lv:"B"},{n:"Standing Lateral Stretch",s:"Tiryaka Tadasana",lv:"B"},{n:"Gate Pose",s:"Parighasana",lv:"B"},{n:"Triangle (supported)",s:"Trikonasana (block)",lv:"B"},{n:"Triangle Pose",s:"Trikonasana",lv:"I"},{n:"Extended Side Angle",s:"Parsvakonasana",lv:"I"},{n:"Reverse Warrior",s:"Viparita Virabhadrasana",lv:"I"},{n:"Half Moon",s:"Ardha Chandrasana",lv:"A"},{n:"Bound Triangle",s:"Baddha Trikonasana",lv:"A"},{n:"Sugarcane Pose",s:"Ardha Chandrasana Chapasana",lv:"A"}]},
+  {id:"matsyasana",name:"Throat Openers",sk:"Matsyasana Kula",ch:"throat",side:"L",move:"Cervical Extension",vagus:true,
+   vn:"Lion's Breath and humming (Bhramari) vibrate the larynx and vocal cords, sending direct afferent signals along the superior laryngeal branch of the vagus nerve. Fish Pose stretches the anterior neck tissue surrounding the vagus nerve's cervical path.",
+   desc:"Vishuddha governs authentic expression. This family opens the anterior channel of the neck and throat, directly stimulates vagal branches, and invites truthful sound and breath into the body's most constricted corridor.",
+   prime:["Deep cervical extensors: semispinalis cervicis, splenius capitis (cervical extension)","Upper trapezius (cervical support in passive extension)","Diaphragm (activated by deep breathing in throat poses)","Intercostals (rib expansion with chest opening)","Facial muscles: zygomaticus, orbicularis oris (Simhasana expression)"],
+   stretch:["Sternocleidomastoid (anterior neck prime mover)","Anterior scalenes, middle scalenes (vagus nerve pathway tissue)","Pectoralis major, minor (chest expansion in Fish)","Rectus abdominis (mild lengthening in deep Fish)"],
+   poses:[{n:"Neck Rolls",s:"Griva Sanchalana",lv:"B"},{n:"Lion's Breath (seated)",s:"Simhasana (prep)",lv:"B"},{n:"Supported Fish",s:"Salamba Matsyasana",lv:"B"},{n:"Fish Pose",s:"Matsyasana",lv:"I"},{n:"Upward Plank",s:"Purvottanasana",lv:"I"},{n:"Lion's Breath",s:"Simhasana",lv:"I"},{n:"Humming Bee Breath",s:"Bhramari Pranayama",lv:"I"},{n:"Extended Fish",s:"Matsyasana (legs extended)",lv:"A"},{n:"Lotus Fish",s:"Matsyasana in Padmasana",lv:"A"}]},
+  {id:"vrksasana",name:"Balancing Poses",sk:"Vrksasana Kula",ch:"throat",side:"R",move:"Proprioceptive Integration",vagus:false,
+   desc:"Balance poses demand full internal communication between body and mind. Single-leg standing reveals every asymmetry. The proprioceptive challenge trains the nervous system to stay clear and composed under wobble.",
+   prime:["Fibularis (peroneus) longus, brevis (ankle eversion and lateral stability)","Tibialis anterior, tibialis posterior (ankle inversion and arch stabilization)","Gluteus medius (single-leg hip abduction, pelvic leveling)","Vastus medialis oblique (VMO) (knee tracking under single-leg load)","Transverse abdominis, multifidus (deep core stabilization)","Soleus (postural ankle control, slow-twitch dominant)"],
+   stretch:["Iliopsoas, rectus femoris (raised-leg hip flexors)","Adductors (inner thigh in Tree Pose)","IT band, tensor fasciae latae","Plantar fascia"],
+   poses:[{n:"Tree at ankle",s:"Vrksasana (modification)",lv:"B"},{n:"Standing Figure Four",s:"Sucirandhrasana (standing)",lv:"B"},{n:"Warrior III (wall)",s:"Virabhadrasana III (wall)",lv:"B"},{n:"Tree Pose",s:"Vrksasana",lv:"I"},{n:"Eagle Pose",s:"Garudasana",lv:"I"},{n:"Warrior III",s:"Virabhadrasana III",lv:"I"},{n:"Extended Hand-to-Toe",s:"Utthita Hasta Padangusthasana",lv:"I"},{n:"Dancer's Pose",s:"Natarajasana",lv:"A"},{n:"Half Moon",s:"Ardha Chandrasana",lv:"A"},{n:"Revolved Half Moon",s:"Parivrtta Ardha Chandrasana",lv:"A"}]},
+  {id:"uttanasana",name:"Forward Folds",sk:"Uttanasana Kula",ch:"thirdEye",side:"L",move:"Spinal Flexion",vagus:true,
+   vn:"Abdominal compression activates afferent gut-vagus signaling. Head-below-heart baroreceptor changes promote deep parasympathetic rest. Forward folds draw energy inward, stimulating Ajna and the relaxation response simultaneously.",
+   desc:"Forward folds are the yoga of surrender. The entire posterior fascial line lengthens from heel to skull. The head drops below the heart, consciousness turns inward, and the busy outward-facing mind begins to quiet.",
+   prime:["Iliopsoas (primary hip flexion, spine-to-femur pull)","Rectus abdominis (facilitation of spinal flexion)","Pectineus, sartorius (hip flexion assistance)","Gastrocnemius, soleus (eccentric ankle stability under load)"],
+   stretch:["Biceps femoris, semimembranosus, semitendinosus (entire hamstring group)","Erector spinae: iliocostalis, longissimus (full posterior spinal release)","Multifidus, rotatores (deep spinal decompression)","Gastrocnemius, soleus (ankle dorsiflexion demand)","Ligamentum nuchae, upper trapezius (cervical release)","Gluteus maximus (hip extension lengthening)"],
+   poses:[{n:"Forward Fold (bent knees)",s:"Uttanasana (modification)",lv:"B"},{n:"Pyramid (hands on blocks)",s:"Parsvottanasana (prep)",lv:"B"},{n:"Wide-Leg Fold to blocks",s:"Prasarita Padottanasana (prep)",lv:"B"},{n:"Standing Forward Fold",s:"Uttanasana",lv:"I"},{n:"Pyramid Pose",s:"Parsvottanasana",lv:"I"},{n:"Head to Knee",s:"Janu Sirsasana",lv:"I"},{n:"Seated Forward Fold",s:"Paschimottanasana",lv:"I"},{n:"Bound Forward Fold",s:"Baddha Uttanasana",lv:"I"},{n:"Wide-Legged Fold",s:"Prasarita Padottanasana",lv:"A"},{n:"Compass Pose",s:"Parivrtta Surya Yantrasana",lv:"A"},{n:"Tortoise Pose",s:"Kurmasana",lv:"A"},{n:"Sleeping Tortoise",s:"Supta Kurmasana",lv:"A"}]},
+  {id:"gomukhasana",name:"Shoulder Openers",sk:"Gomukhasana Kula",ch:"thirdEye",side:"R",move:"Shoulder Flexion + Rotation",vagus:false,
+   desc:"The shoulder girdle is the body's most mobile joint complex and most neglected. This family restores the full arc of shoulder rotation, releases pectoral armor around the heart, and creates space for deeper breathing and open perception.",
+   prime:["Infraspinatus, teres minor (external rotation, top arm)","Subscapularis (internal rotation, bottom arm)","Rhomboids, mid-trapezius (scapular retraction and stability)","Serratus anterior (scapular protraction on protracting arm)","Lower trapezius (scapular depression, anti-shrug)"],
+   stretch:["Pectoralis major, minor (chest release)","Anterior deltoid (shoulder flexor lengthening)","Biceps brachii (elbow and shoulder flexor, top arm)","Triceps brachii (elbow extensor, bottom arm)","Latissimus dorsi (overhead arm in Eagle Arms)","Teres major (posterior axillary fold)"],
+   poses:[{n:"Chest Stretch at wall",s:"Bhujangasana (wall variation)",lv:"B"},{n:"Thread the Needle",s:"Parsva Balasana",lv:"B"},{n:"Melting Heart",s:"Anahatasana",lv:"B"},{n:"Eagle Arms seated",s:"Garudasana (arms only)",lv:"B"},{n:"Puppy Pose",s:"Uttana Shishosana",lv:"I"},{n:"Cow Face Arms",s:"Gomukhasana (arms)",lv:"I"},{n:"Puppy with bind",s:"Uttana Shishosana (bind)",lv:"I"},{n:"Cow Face full bind",s:"Gomukhasana",lv:"A"},{n:"Reverse Prayer",s:"Paschima Namaskarasana",lv:"A"}]},
+  {id:"viparita",name:"Inversions",sk:"Sirsasana Kula",ch:"crown",side:"L",move:"Inversion",vagus:true,
+   vn:"Inversions trigger the baroreflex through carotid sinus and jugular baroreceptors, flooding the body with parasympathetic tone. Shoulderstand applies direct compressive pressure to the carotid sinus, the most powerful single vagal activation point in yoga.",
+   desc:"Inversions reverse gravity and consciousness. They are the most powerful autonomic nervous system regulators in the yoga tradition, stimulating Sahasrara and shifting the practitioner's perspective from the inside out.",
+   prime:["Deltoids: anterior, middle, posterior (overhead shoulder stability)","Supraspinatus, infraspinatus (rotator cuff overhead)","Upper trapezius, levator scapulae (shoulder girdle elevation)","Serratus anterior (scapular stabilization in handstand and headstand)","Triceps brachii (elbow extension in arm-supported inversions)","Transverse abdominis, rectus abdominis (inverted core integrity)","Erector spinae, multifidus (spinal alignment while inverted)"],
+   stretch:["Erector spinae (full decompression, especially in Shoulderstand)","Biceps femoris, semimembranosus, semitendinosus (hamstrings)","Gastrocnemius, soleus (calves in Downward Dog and Plow)","Semispinalis capitis, splenius capitis (posterior neck in Shoulderstand)","Iliopsoas (hip extension against gravity)"],
+   poses:[{n:"Downward Dog",s:"Adho Mukha Svanasana",lv:"B"},{n:"Legs Up the Wall",s:"Viparita Karani",lv:"B"},{n:"Supported Bridge",s:"Salamba Setu Bandha",lv:"B"},{n:"Dolphin Pose",s:"Ardha Pincha Mayurasana",lv:"I"},{n:"Plow Pose",s:"Halasana",lv:"I"},{n:"Shoulderstand",s:"Sarvangasana",lv:"I"},{n:"Headstand Prep",s:"Sirsasana (prep)",lv:"I"},{n:"Headstand",s:"Sirsasana",lv:"A"},{n:"Forearm Balance",s:"Pincha Mayurasana",lv:"A"},{n:"Handstand",s:"Adho Mukha Vrksasana",lv:"A"}]},
+  {id:"savasana",name:"Restorative",sk:"Savasana Kula",ch:"crown",side:"R",move:"Parasympathetic Rest",vagus:true,
+   vn:"The deepest vagal activator in the yoga tradition. Restorative poses measurably improve heart rate variability (HRV), reduce salivary cortisol, lower blood pressure, and activate the rest-and-digest parasympathetic state via the dorsal vagal complex.",
+   desc:"The crown of the practice. Savasana Kula is not passive; it is the active cultivation of conscious rest. The entire nervous system integrates every physiological and neurological change of the practice into lasting transformation.",
+   prime:["Parasympathetic nervous system (dorsal vagal complex activated)","Diaphragm (slow, full diaphragmatic breathing rhythm)","Heart rate variability mechanism (vagal efferent modulation)","HPA axis: hypothalamus, pituitary, adrenal glands (cortisol regulation)"],
+   stretch:["Entire superficial back line: plantar fascia to occipital fascia","Thoracolumbar fascia (gravity-assisted supported release)","Iliopsoas (supported release with prop under knees)","Pectoralis major, minor (gravity-assisted chest opening)","Intercostals, diaphragm (slow deep breath expansion)"],
+   poses:[{n:"Corpse Pose",s:"Savasana",lv:"B"},{n:"Constructive Rest",s:"Savasana (knees bent)",lv:"B"},{n:"Child's Pose",s:"Balasana",lv:"B"},{n:"Crocodile Pose",s:"Makarasana",lv:"B"},{n:"Reclined Bound Angle",s:"Supta Baddha Konasana",lv:"B"},{n:"Bolster Savasana",s:"Salamba Savasana",lv:"B"},{n:"Supported Bridge",s:"Salamba Setu Bandha",lv:"I"},{n:"Reclined Hero",s:"Supta Virasana",lv:"I"},{n:"Waterfall (chair legs)",s:"Viparita Karani (chair)",lv:"I"},{n:"Yoga Nidra",s:"Yogic Sleep",lv:"A"},{n:"Reclined Lotus",s:"Supta Padmasana",lv:"A"}]},
+];
+
+const LV_COLOR={B:"#4caf50",I:"#ff9800",A:"#f44336"};
+const LV_LABEL={B:"Beginner",I:"Intermediate",A:"Advanced"};
+const W=820,H=980,TX=410,LX=88,RX=732,AMP=78;
+const YS=[900,760,620,480,340,200,60];
+
+const INDEX=[];
+FAM.forEach(function(f){
+  f.poses.forEach(function(p){INDEX.push({type:"pose",familyId:f.id,familyName:f.name,name:p.n,sanskrit:p.s,lv:p.lv,chakra:f.ch});});
+  f.prime.forEach(function(m){INDEX.push({type:"muscle",familyId:f.id,familyName:f.name,name:m,role:"strengthens",chakra:f.ch});});
+  f.stretch.forEach(function(m){INDEX.push({type:"muscle",familyId:f.id,familyName:f.name,name:m,role:"stretches",chakra:f.ch});});
+});
+let SEL=null,TAB="prime",CHAKRA_SEL=null,SQ="",POP=null;
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function hi(t,q){if(!q) return esc(t);var i=t.toLowerCase().indexOf(q.toLowerCase());if(i<0) return esc(t);return esc(t.slice(0,i))+"<mark>"+esc(t.slice(i,i+q.length))+"</mark>"+esc(t.slice(i+q.length));}
+function helixPath(sl){var d="M"+TX+","+YS[0];for(var i=0;i<YS.length-1;i++){var sy=YS[i],ey=YS[i+1],my=(sy+ey)/2,side=(i%2===0)?(sl?-AMP:AMP):(sl?AMP:-AMP);d+=" Q"+(TX+side)+","+my+" "+TX+","+ey;}return d;}
+
+function findMuscleKey(nm){
+  var nl=nm.toLowerCase();
+  var keys=Object.keys(MUSCLE_INFO);
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i].toLowerCase();
+    if(nl.indexOf(k)>=0||k.indexOf(nl)>=0) return keys[i];
+  }
+  // partial: first word match
+  var nw=nl.split(/[\s,]/)[0];
+  for(var i=0;i<keys.length;i++){
+    if(keys[i].toLowerCase().indexOf(nw)>=0) return keys[i];
+  }
+  return null;
+}
+
+function findMid(nm){
+  var k=findMuscleKey(nm);
+  return k&&MUSCLE_INFO[k]?MUSCLE_INFO[k].mid:null;
+}
+
+
+function buildSVG(){
+  var rungs="";
+  for(var i=0;i<YS.length-1;i++){var sy=YS[i],ey=YS[i+1],my=(sy+ey)/2,sA=(i%2===0)?-AMP:AMP,sB=-sA;[0.22,0.5,0.78].forEach(function(t){var xA=TX+2*t*(1-t)*sA,xB=TX+2*t*(1-t)*sB,y=Math.pow(1-t,2)*sy+2*t*(1-t)*my+Math.pow(t,2)*ey;rungs+='<line x1="'+xA.toFixed(1)+'" y1="'+y.toFixed(1)+'" x2="'+xB.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" filter="url(#hg)"/>';});}
+  var roots="";[-55,-28,0,28,55].forEach(function(dx){roots+='<path d="M'+TX+',948 Q'+(TX+dx*0.7).toFixed(1)+',968 '+(TX+dx*2.1).toFixed(1)+',990" stroke="#2e1005" stroke-width="4" fill="none" opacity="0.75"/>';});
+  var petals="";[0,40,80,120,160,200,240,280,320].forEach(function(a){var r=a*Math.PI/180,px=TX+Math.cos(r)*24,py=24+Math.sin(r)*8;petals+='<ellipse cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" rx="12" ry="5.5" fill="#400068" opacity="0.48" transform="rotate('+a+','+px.toFixed(1)+','+py.toFixed(1)+')" style="filter:drop-shadow(0 0 5px #EA80FC)"/>';});
+  var nodes="";
+  FAM.forEach(function(f){
+    var c=C[f.ch],y=c.y,x=f.side==="L"?LX:RX,isL=f.side==="L";
+    var cp1x=TX+(isL?-115:115),cp2x=x+(isL?55:-55);
+    var isSel=SEL&&SEL.id===f.id,fill=isSel?c.glow:c.hex,glow=isSel?16:7;
+    var words=f.name.split(" "),l1=words.slice(0,2).join(" "),l2=words.length>2?words.slice(2).join(" "):null;
+    nodes+='\n<g class="node-group" data-fid="'+f.id+'">';
+    nodes+='<path d="M'+TX+','+y+' C'+cp1x+','+(y-22)+' '+cp2x+','+y+' '+x+','+y+'" stroke="'+c.hex+'" stroke-width="2.5" fill="none" opacity="0.9"/>';
+    if(f.vagus) nodes+='<path d="M'+TX+','+y+' C'+cp1x+','+(y-22)+' '+cp2x+','+y+' '+x+','+y+'" stroke="#FFD700" stroke-width="1.6" fill="none" stroke-dasharray="6 8" opacity="0.85" style="filter:drop-shadow(0 0 4px #FFD700)"/>';
+    nodes+='<circle cx="'+x+'" cy="'+y+'" r="36" fill="'+c.hex+'" opacity="'+(isSel?0.38:0.16)+'" style="filter:drop-shadow(0 0 14px '+c.glow+')"/>';
+    nodes+='<circle cx="'+x+'" cy="'+y+'" r="29" fill="'+fill+'" stroke="'+(f.vagus?"#FFD700":c.glow)+'" stroke-width="'+(f.vagus?2.5:1.5)+'" style="filter:drop-shadow(0 0 '+glow+'px '+c.glow+')"/>';
+    nodes+='<text x="'+x+'" y="'+(l2?y-7:y-3)+'" text-anchor="middle" fill="white" font-size="8.5" font-weight="600" style="font-family:\'DM Sans\',sans-serif;pointer-events:none">'+esc(l1)+'</text>';
+    if(l2) nodes+='<text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" fill="white" font-size="8.5" font-weight="600" style="font-family:\'DM Sans\',sans-serif;pointer-events:none">'+esc(l2)+'</text>';
+    nodes+='<text x="'+x+'" y="'+(l2?y+18:y+9)+'" text-anchor="middle" fill="rgba(255,255,255,0.66)" font-size="6.5" style="font-family:\'Cormorant Garamond\',serif;font-style:italic;pointer-events:none">'+esc(f.sk.split(" ")[0])+'</text>';
+    nodes+='</g>';
+  });
+  var chakras="";
+  Object.keys(C).forEach(function(key){
+    var c=C[key],isSel=CHAKRA_SEL===key;
+    chakras+='<g class="chakra-node" data-chakra="'+key+'" style="cursor:pointer">';
+    chakras+='<circle cx="'+TX+'" cy="'+c.y+'" r="'+(isSel?26:22)+'" fill="'+c.hex+'" opacity="'+(isSel?0.45:0.28)+'" style="filter:drop-shadow(0 0 '+(isSel?18:12)+'px '+c.glow+')"/>';
+    chakras+='<circle cx="'+TX+'" cy="'+c.y+'" r="15" fill="'+c.hex+'" stroke="'+c.glow+'" stroke-width="'+(isSel?3:2)+'" style="filter:drop-shadow(0 0 8px '+c.glow+')"/>';
+    chakras+='<text x="'+TX+'" y="'+(c.y+2)+'" text-anchor="middle" fill="white" font-size="'+(c.e==="Solar"?7:6.5)+'" font-weight="700" style="font-family:\'DM Sans\',sans-serif;pointer-events:none">'+c.e+'</text>';
+    chakras+='<text x="'+(TX+22)+'" y="'+(c.y+4)+'" text-anchor="start" fill="'+c.glow+'" font-size="8.5" opacity="0.76" style="font-family:\'Cormorant Garamond\',serif;font-style:italic;pointer-events:none">'+c.s+'</text>';
+    chakras+='</g>';
+  });
+
+  return '<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">'+
+  '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-width:820px;display:block;margin:0 auto;min-width:340px">'+
+  '<defs>'+
+  '<linearGradient id="trunkGrad" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#6B1A1A"/><stop offset="17%" stop-color="#7A3000"/><stop offset="33%" stop-color="#7A5C00"/><stop offset="50%" stop-color="#0B4F28"/><stop offset="67%" stop-color="#083265"/><stop offset="83%" stop-color="#2E005E"/><stop offset="100%" stop-color="#400068"/></linearGradient>'+
+  '<linearGradient id="idaG" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#FF5555"/><stop offset="30%" stop-color="#FF8C00"/><stop offset="60%" stop-color="#40C4FF"/><stop offset="100%" stop-color="#EA80FC"/></linearGradient>'+
+  '<linearGradient id="pingG" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#FFD700"/><stop offset="40%" stop-color="#00E676"/><stop offset="70%" stop-color="#CE93D8"/><stop offset="100%" stop-color="#ffffff"/></linearGradient>'+
+  '<filter id="hg"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
+  '<filter id="bodyBlur" x="-30%" y="-5%" width="160%" height="115%"><feGaussianBlur stdDeviation="13"/></filter>'+
+  '</defs>'+
+  // Seated lotus/meditation figure — blurred ellipses
+  '<g filter="url(#bodyBlur)" opacity="0.13" fill="#5ae8c8" style="pointer-events:none">'+
+  '<ellipse cx="410" cy="82" rx="42" ry="52"/>'+
+  '<ellipse cx="410" cy="152" rx="18" ry="22"/>'+
+  '<ellipse cx="316" cy="240" rx="44" ry="24" transform="rotate(-20,316,240)"/>'+
+  '<ellipse cx="504" cy="240" rx="44" ry="24" transform="rotate(20,504,240)"/>'+
+  '<ellipse cx="410" cy="368" rx="82" ry="125"/>'+
+  '<ellipse cx="410" cy="565" rx="72" ry="102"/>'+
+  '<ellipse cx="410" cy="720" rx="88" ry="58"/>'+
+  '<ellipse cx="292" cy="478" rx="22" ry="90" transform="rotate(-14,292,478)"/>'+
+  '<ellipse cx="528" cy="478" rx="22" ry="90" transform="rotate(14,528,478)"/>'+
+  '<ellipse cx="262" cy="650" rx="16" ry="70" transform="rotate(-8,262,650)"/>'+
+  '<ellipse cx="558" cy="650" rx="16" ry="70" transform="rotate(8,558,650)"/>'+
+  '<ellipse cx="250" cy="758" rx="22" ry="26"/>'+
+  '<ellipse cx="570" cy="758" rx="22" ry="26"/>'+
+  '<ellipse cx="252" cy="840" rx="98" ry="38" transform="rotate(-5,252,840)"/>'+
+  '<ellipse cx="568" cy="840" rx="98" ry="38" transform="rotate(5,568,840)"/>'+
+  '<ellipse cx="442" cy="900" rx="88" ry="32" transform="rotate(8,442,900)"/>'+
+  '<ellipse cx="378" cy="900" rx="88" ry="32" transform="rotate(-8,378,900)"/>'+
+  '<ellipse cx="510" cy="920" rx="48" ry="18"/>'+
+  '<ellipse cx="310" cy="920" rx="48" ry="18"/>'+
+  '</g>'+
+  '<g class="helix-anim" style="pointer-events:none"><path d="'+helixPath(true)+'" fill="none" stroke="url(#idaG)" stroke-width="2.5" opacity="0.72" filter="url(#hg)"/><path d="'+helixPath(false)+'" fill="none" stroke="url(#pingG)" stroke-width="2.5" opacity="0.72" filter="url(#hg)"/>'+rungs+'</g>'+
+  roots+petals+
+  '<line x1="'+TX+'" y1="24" x2="'+TX+'" y2="950" stroke="url(#trunkGrad)" stroke-width="11" stroke-linecap="round" style="filter:drop-shadow(0 0 4px rgba(255,240,190,0.12))"/>'+
+  nodes+chakras+
+  '</svg></div>';
+}
+
+function buildPoseExamples(f,c){
+  var b=f.poses.find(function(p){return p.lv==="B";}),
+      ii=f.poses.find(function(p){return p.lv==="I";}),
+      a=f.poses.find(function(p){return p.lv==="A";});
+  var html='<div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid '+c.hex+'28">';
+  html+='<div style="font-size:0.63rem;text-transform:uppercase;letter-spacing:0.2em;color:'+c.glow+';margin-bottom:0.5rem;font-weight:600">Key Poses</div>';
+  html+='<div style="display:flex;gap:8px;flex-wrap:wrap">';
+  [b,ii,a].forEach(function(p){
+    if(!p) return;
+    html+='<div style="flex:1;min-width:130px;padding:7px 10px;background:'+c.hex+'14;border:1px solid '+c.hex+'30;border-left:3px solid '+LV_COLOR[p.lv]+';border-radius:7px">';
+    html+='<div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:'+LV_COLOR[p.lv]+';margin-bottom:3px;font-weight:600">'+LV_LABEL[p.lv]+'</div>';
+    html+='<div style="font-size:0.82rem;font-weight:500;color:#f0e6d3">'+esc(p.n)+'</div>';
+    html+='<div style="font-size:0.72rem;color:#a89878;font-style:italic;font-family:\'Cormorant Garamond\',serif;margin-top:2px">'+esc(p.s)+'</div>';
+    html+='</div>';
+  });
+  return html+'</div></div>';
+}
+
+
+function buildDetail(){
+  if(!SEL) return "";
+  var f=SEL,c=C[f.ch],mt=MT[f.move]||{bg:"#1a1a2a",bd:"#888",tx:"#ccc"};
+  var tabs=[["prime","Prime Movers"],["stretch","Muscles Stretched"],["poses","All Poses"]].map(function(p){
+    return '<button onclick="setTab(\''+p[0]+'\')" style="background:'+(TAB===p[0]?c.hex+"30":"none")+';border:1px solid '+(TAB===p[0]?c.hex:"transparent")+';border-bottom:none;color:'+(TAB===p[0]?c.glow:"#7a6a5a")+';padding:5px 14px;border-radius:6px 6px 0 0;cursor:pointer;font-size:0.72rem;font-family:inherit;font-weight:'+(TAB===p[0]?600:400)+'">'+p[1]+'</button>';
+  }).join("");
+  var content="";
+  if(TAB==="prime"||TAB==="stretch"){
+    var isStretch=TAB==="stretch";
+    var list=isStretch?f.stretch:f.prime;
+    content='<div style="display:grid;gap:5px">'+list.map(function(item,i){
+      var m=item.match(/^([^(]+)(?:\((.+)\))?/),nm=m?m[1].trim():item,pn=m&&m[2]?m[2]:"";
+      var hasInfo=!!findMuscleKey(nm);
+      var muscleHtml=hasInfo
+        ?'<strong class="muscle-link" onclick="openMuscleInfo(\''+nm.replace(/'/g,"\\'")+'\',\''+esc(c.glow)+'\')" style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>'
+        :'<strong style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>';
+      var mid=findMid(nm);
+      var diagLink=mid?'<a href="yoga-muscle-diagram.html" title="View on Muscle Diagram" style="margin-left:6px;font-size:0.72rem;color:'+c.glow+';opacity:0.6;text-decoration:none;cursor:pointer" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">&#9900;</a>':'';
+      return '<div style="display:flex;align-items:baseline;gap:8px;padding:5px 10px;background:'+(i%2===0?"rgba(255,255,255,0.022)":"transparent")+';border-radius:5px"><span style="color:'+c.glow+';font-size:0.6rem;flex-shrink:0">&#9658;</span><span style="font-size:0.82rem;color:#d8c8a8;line-height:1.4">'+muscleHtml+(pn?'<span style="color:#8a7868;font-size:0.76rem"> ('+esc(pn)+')</span>':'')+diagLink+'</span></div>';
+    }).join("")+'</div>'+buildPoseExamples(f,c);
+  } else {
+    content=["B","I","A"].map(function(lv){
+      var ps=f.poses.filter(function(p){return p.lv===lv;});
+      if(!ps.length) return "";
+      return '<div style="margin-bottom:0.75rem"><div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:6px;color:'+LV_COLOR[lv]+';font-weight:600">'+LV_LABEL[lv]+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:6px">'+ps.map(function(p){return '<div onclick="openPoseInfo(\''+p.s.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\',\''+f.id+'\')" style="padding:7px 10px;background:'+c.hex+'18;border:1px solid '+c.hex+'38;border-left:3px solid '+LV_COLOR[p.lv]+';border-radius:7px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background=\''+c.hex+'32\'" onmouseout="this.style.background=\''+c.hex+'18\'"><div style="font-size:0.83rem;font-weight:500;color:#f0e6d3">'+esc(p.n)+'</div><div style="font-size:0.73rem;margin-top:2px;color:#a89878;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+esc(p.s)+'</div><div style="font-size:0.62rem;color:'+c.glow+';margin-top:3px;opacity:0.7">tap for details &#9432;</div></div>';}).join("")+'</div></div>';
+    }).join("");
+  }
+  return '<div id="detail-panel" style="max-width:760px;margin:0.5rem auto 1rem;padding:1.4rem 1.5rem;background:rgba(6,2,18,0.88);border:1px solid '+c.hex+';border-radius:14px;box-shadow:0 0 35px '+c.glow+'18;backdrop-filter:blur(12px)">'+
+  '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">'+
+  '<div><div style="font-family:\'Cormorant Garamond\',serif;font-size:1.7rem;color:'+c.glow+';font-weight:400;letter-spacing:0.06em;line-height:1.15">'+esc(f.name)+'</div>'+
+  '<div style="font-style:italic;color:#a89880;font-size:0.88rem;margin-top:3px;font-family:\'Cormorant Garamond\',serif">'+esc(f.sk)+'</div>'+
+  '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.55rem">'+
+  '<span style="font-size:0.68rem;padding:3px 10px;border-radius:20px;background:'+c.hex+'28;border:1px solid '+c.hex+'65;color:'+c.glow+'">'+c.e+' Chakra ('+c.s+')</span>'+
+  '<span class="move-tag" onclick="openMoveInfo(\''+f.move+'\')" title="Click for movement info" style="font-size:0.68rem;padding:3px 10px;border-radius:20px;background:'+mt.bg+';border:1px solid '+mt.bd+';color:'+mt.tx+';font-weight:500;cursor:pointer">'+esc(f.move)+' &#9432;</span>'+
+  (f.vagus?'<span style="font-size:0.68rem;padding:3px 10px;border-radius:20px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.35);color:#FFD700">&#10022; Vagus Nerve</span>':'')+
+  '</div></div>'+
+  '<button onclick="closeDetail()" style="background:none;border:none;color:#6a5a4a;font-size:1.9rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>'+
+  '<p style="font-size:0.82rem;color:#b8a880;line-height:1.65;margin-top:0.9rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+c.hex+';padding-left:0.75rem">'+esc(f.desc)+'</p>'+
+  (f.vagus?'<div style="margin:0.85rem 0 0;padding:0.7rem 1rem;background:rgba(255,215,0,0.055);border:1px solid rgba(255,215,0,0.3);border-radius:8px;font-size:0.8rem;color:#FFD700;line-height:1.58"><strong>&#10022; Vagus Nerve:</strong> '+esc(f.vn)+'</div>':'')+
+  '<div style="display:flex;gap:4px;margin-top:1rem;border-bottom:1px solid '+c.hex+'35">'+tabs+'</div>'+
+  '<div style="margin-top:0.85rem;min-height:120px">'+content+'</div>'+
+  '<div style="margin-top:0.6rem;font-size:0.65rem;color:#4a3a2a;font-style:italic">&#9432; Click muscle names for anatomy info &nbsp;|&nbsp; &#9900; Links to muscle diagram</div>'+
+  '</div>';
+}
+
+function buildChakraDetail(){
+  if(!CHAKRA_SEL) return "";
+  var key=CHAKRA_SEL,c=C[key],d=CHAKRA_DETAIL[key];
+  if(!d) return "";
+  var famLinks=d.families.map(function(fid){
+    var f=FAM.find(function(x){return x.id===fid;});
+    if(!f) return "";
+    return '<span onclick="selFam(\''+fid+'\',\'prime\')" style="font-size:0.72rem;padding:4px 12px;border-radius:20px;background:'+c.hex+'22;border:1px solid '+c.hex+'55;color:'+c.glow+';cursor:pointer">'+esc(f.name)+'</span>';
+  }).join("");
+  var quals=d.qualities.map(function(q){return '<span style="font-size:0.7rem;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#d0c0a8">'+esc(q)+'</span>';}).join("");
+  return '<div id="chakra-panel" style="max-width:760px;margin:0.5rem auto 1rem;padding:1.4rem 1.5rem;background:rgba(6,2,18,0.88);border:1px solid '+c.hex+';border-radius:14px;box-shadow:0 0 35px '+c.glow+'22;backdrop-filter:blur(12px)">'+
+  '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">'+
+  '<div>'+
+  '<div style="display:flex;align-items:center;gap:12px">'+
+  '<div style="width:20px;height:20px;border-radius:50%;background:'+c.glow+';box-shadow:0 0 12px '+c.glow+';flex-shrink:0"></div>'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.75rem;color:'+c.glow+';font-weight:400;letter-spacing:0.06em">'+c.e+' Chakra</div>'+
+  '</div>'+
+  '<div style="font-style:italic;color:#a89880;font-size:0.9rem;margin-top:4px;font-family:\'Cormorant Garamond\',serif;letter-spacing:0.12em">'+c.s+'</div>'+
+  '<div style="font-size:0.7rem;color:'+c.glow+';margin-top:6px;opacity:0.8">'+esc(d.element)+' Element &nbsp;|&nbsp; Mantra: '+esc(d.mantra)+(d.petals<100?' &nbsp;|&nbsp; '+d.petals+' petals':''+' &nbsp;|&nbsp; 1,000 petals')+'</div>'+
+  '</div>'+
+  '<button onclick="closeChakra()" style="background:none;border:none;color:#6a5a4a;font-size:1.9rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>'+
+  '<div style="margin-top:0.8rem;font-size:0.78rem;color:#7a6a5a;letter-spacing:0.05em">'+esc(d.location)+'</div>'+
+  '<div style="margin-top:0.75rem;padding:0.65rem 1rem;background:'+c.hex+'18;border-left:3px solid '+c.glow+';border-radius:0 8px 8px 0;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:0.92rem;color:'+c.glow+'">'+esc(d.affirmation)+'</div>'+
+  '<div style="margin-top:0.9rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.25em;color:#5a4a3a;margin-bottom:0.45rem">Qualities</div><div style="display:flex;gap:6px;flex-wrap:wrap">'+quals+'</div></div>'+
+  '<div style="margin-top:0.85rem;padding:0.65rem 1rem;background:rgba(255,60,60,0.06);border:1px solid rgba(255,60,60,0.18);border-radius:8px;font-size:0.78rem;color:#cc8888;line-height:1.6"><strong style="color:#e09090">Imbalance:</strong> '+esc(d.imbalance)+'</div>'+
+  '<div style="margin-top:0.9rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.25em;color:#5a4a3a;margin-bottom:0.5rem">Yoga Families at this Chakra</div><div style="display:flex;gap:8px;flex-wrap:wrap">'+famLinks+'</div></div>'+
+  '</div>';
+}
+
+function buildInfoModal(){
+  if(!POP) return "";
+  var html='<div id="info-overlay" onclick="if(event.target.id===\'info-overlay\')closeInfo()">';
+  html+='<div id="info-card">';
+  if(POP.type==="move"){
+    var mv=MOVE_INFO[POP.key];
+    if(!mv){html+='</div></div>';return html;}
+    var c=C[mv.chakra];
+    html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">';
+    html+='<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.25em;color:'+c.glow+';margin-bottom:4px;font-weight:600">Movement Pattern</div>';
+    html+='<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:'+c.glow+';font-weight:400;letter-spacing:0.04em">'+esc(POP.key)+'</div>';
+    html+='<div style="font-style:italic;color:#8a7868;font-size:0.85rem;margin-top:2px;font-family:\'Cormorant Garamond\',serif">'+esc(mv.tagline)+'</div></div>';
+    html+='<button onclick="closeInfo()" style="background:none;border:none;color:#6a5a4a;font-size:1.8rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>';
+    html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+c.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(mv.desc)+'</p>';
+    if(mv.cues&&mv.cues.length){
+      html+='<div style="margin-bottom:0.9rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Embodiment Cues</div>';
+      mv.cues.forEach(function(cue){html+='<div class="info-cue">'+esc(cue)+'</div>';});
+      html+='</div>';
+    }
+    if(mv.benefits&&mv.benefits.length){
+      html+='<div style="margin-bottom:0.9rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Benefits</div>';
+      html+='<div style="display:flex;flex-wrap:wrap;gap:5px">';
+      mv.benefits.forEach(function(b){html+='<span style="font-size:0.72rem;padding:3px 10px;border-radius:12px;background:'+c.hex+'20;border:1px solid '+c.hex+'40;color:'+c.glow+'">'+esc(b)+'</span>';});
+      html+='</div></div>';
+    }
+    if(mv.families&&mv.families.length){
+      html+='<div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Primary Yoga Family</div>';
+      html+='<div style="display:flex;flex-wrap:wrap;gap:5px">';
+      mv.families.forEach(function(fid){
+        var fam=FAM.find(function(x){return x.id===fid;});
+        if(!fam) return;
+        html+='<span onclick="closeInfo();selFam(\''+fid+'\',\'prime\')" style="font-size:0.75rem;padding:4px 14px;border-radius:20px;background:'+c.hex+'22;border:1px solid '+c.glow+'55;color:'+c.glow+';cursor:pointer">'+esc(fam.name)+'</span>';
+      });
+      html+='</div>';
+    }
+  } else if(POP.type==="pose"){
+    var fam=FAM.find(function(x){return x.id===POP.famId;});
+    var lvc=LV_COLOR[POP.lv]||"#aaa";
+    var lvl=LV_LABEL[POP.lv]||POP.lv;
+    var pc=fam?C[fam.ch]:C.root;
+    var pi=POSE_INFO[POP.sk]||null;
+    html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.9rem">';
+    html+='<div>';
+    html+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">';
+    html+='<span style="font-size:0.62rem;padding:2px 9px;border-radius:10px;background:'+lvc+'25;border:1px solid '+lvc+'60;color:'+lvc+'">'+lvl+'</span>';
+    if(fam) html+='<span style="font-size:0.62rem;padding:2px 9px;border-radius:10px;background:'+pc.hex+'22;border:1px solid '+pc.hex+'55;color:'+pc.glow+'">'+esc(pc.e)+' Chakra</span>';
+    html+='</div>';
+    html+='<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:'+pc.glow+';font-weight:400;letter-spacing:0.04em;line-height:1.15">'+esc(POP.en)+'</div>';
+    html+='<div style="font-style:italic;color:#8a7868;font-size:0.88rem;margin-top:2px;font-family:\'Cormorant Garamond\',serif;letter-spacing:0.06em">'+esc(POP.sk)+'</div>';
+    if(fam) html+='<div style="margin-top:5px;font-size:0.7rem;color:#5a4a3a">Part of: <span onclick="closeInfo();selFam(\''+fam.id+'\',\'prime\')" style="color:'+pc.glow+';cursor:pointer;border-bottom:1px dotted '+pc.glow+'88">'+esc(fam.name)+'</span></div>';
+    html+='</div>';
+    html+='<button onclick="closeInfo()" style="background:none;border:none;color:#6a5a4a;font-size:1.8rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>';
+    if(pi&&pi.purpose){
+      html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(pi.purpose)+'</p>';
+    } else if(fam){
+      html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(fam.desc)+'</p>';
+    }
+    if(fam&&fam.prime&&fam.prime.length){
+      html+='<div style="margin-bottom:0.9rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Prime Movers (Family)</div>';
+      html+='<div style="display:grid;gap:4px">';
+      fam.prime.forEach(function(item){
+        var mm=item.match(/^([^(]+)(?:\((.+)\))?/),nm=mm?mm[1].trim():item,pn=mm&&mm[2]?mm[2]:"";
+        var hk=!!findMuscleKey(nm);
+        var mlink=hk?'<strong class="muscle-link" onclick="openMuscleInfo(\''+nm.replace(/'/g,"\\'")+'\',\''+esc(pc.glow)+'\')" style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>':'<strong style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>';
+        var dmid=findMid(nm);
+        var dlink=dmid?'<a href="yoga-muscle-diagram.html" title="View on Muscle Diagram" style="margin-left:5px;font-size:0.7rem;color:'+pc.glow+';opacity:0.6;text-decoration:none" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">&#9900;</a>':'';
+        html+='<div style="font-size:0.8rem;color:#d8c8a8;padding:3px 8px"><span style="color:'+pc.glow+';font-size:0.6rem;margin-right:5px">&#9658;</span>'+mlink+(pn?'<span style="color:#8a7868;font-size:0.74rem"> ('+esc(pn)+')</span>':'')+dlink+'</div>';
+      });
+      html+='</div></div>';
+    }
+    if(fam&&fam.stretch&&fam.stretch.length){
+      html+='<div style="margin-bottom:0.6rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Muscles Stretched (Family)</div>';
+      html+='<div style="display:grid;gap:4px">';
+      fam.stretch.forEach(function(item){
+        var mm=item.match(/^([^(]+)(?:\((.+)\))?/),nm=mm?mm[1].trim():item,pn=mm&&mm[2]?mm[2]:"";
+        var hk=!!findMuscleKey(nm);
+        var mlink=hk?'<strong class="muscle-link" onclick="openMuscleInfo(\''+nm.replace(/'/g,"\\'")+'\',\''+esc(pc.glow)+'\')" style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>':'<strong style="color:#f0e6d3;font-weight:500">'+esc(nm)+'</strong>';
+        var dmid=findMid(nm);
+        var dlink=dmid?'<a href="yoga-muscle-diagram.html" title="View on Muscle Diagram" style="margin-left:5px;font-size:0.7rem;color:'+pc.glow+';opacity:0.6;text-decoration:none" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">&#9900;</a>':'';
+        html+='<div style="font-size:0.8rem;color:#d8c8a8;padding:3px 8px"><span style="color:'+pc.glow+';font-size:0.6rem;margin-right:5px">&#9658;</span>'+mlink+(pn?'<span style="color:#8a7868;font-size:0.74rem"> ('+esc(pn)+')</span>':'')+dlink+'</div>';
+      });
+      html+='</div></div>';
+    }
+    html+='<div style="margin-top:0.5rem;font-size:0.65rem;color:#4a3a2a;font-style:italic">&#9432; Muscle data shown is for the family — individual pose emphasis may vary &nbsp;|&nbsp; &#9900; Links to muscle diagram</div>';
+  } else if(POP.type==="muscle"){
+    var mi=POP.key?MUSCLE_INFO[POP.key]:null;
+    var glow=POP.glow||"#5ae8c8";
+    html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">';
+    html+='<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.25em;color:'+glow+';margin-bottom:4px;font-weight:600">Muscle Anatomy</div>';
+    html+='<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:'+glow+';font-weight:400;letter-spacing:0.04em">'+esc(POP.key||POP.nm)+'</div></div>';
+    html+='<button onclick="closeInfo()" style="background:none;border:none;color:#6a5a4a;font-size:1.8rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>';
+    if(mi){
+      html+='<div style="margin-bottom:0.75rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.2em;color:#5a4a3a;margin-bottom:0.3rem">Location</div><div style="font-size:0.83rem;color:#d0c0a8;line-height:1.6">'+esc(mi.loc)+'</div></div>';
+      html+='<div style="margin-bottom:0.75rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.2em;color:#5a4a3a;margin-bottom:0.3rem">Primary Action</div><div style="font-size:0.83rem;color:#d0c0a8;line-height:1.6">'+esc(mi.act)+'</div></div>';
+      html+='<div style="margin-bottom:0.75rem;padding:0.6rem 0.9rem;background:rgba(90,232,200,0.05);border-left:2px solid '+glow+';border-radius:0 8px 8px 0"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.2em;color:#5a4a3a;margin-bottom:0.3rem">In Yoga Practice</div><div style="font-size:0.82rem;color:#c0b090;line-height:1.65;font-family:\'Cormorant Garamond\',serif;font-style:italic">'+esc(mi.yoga)+'</div></div>';
+      html+='<div style="padding:0.55rem 0.85rem;background:rgba(255,215,0,0.055);border:1px solid rgba(255,215,0,0.2);border-radius:8px;margin-bottom:0.8rem"><div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:#7a5a2a;margin-bottom:3px">How to Feel It</div><div style="font-size:0.8rem;color:#FFD700;line-height:1.6">'+esc(mi.tip)+'</div></div>';
+      if(mi.mid){
+        html+='<a href="yoga-muscle-diagram.html" style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;color:'+glow+';border:1px solid '+glow+'55;padding:6px 16px;border-radius:20px;text-decoration:none;background:rgba(90,232,200,0.06)" onmouseover="this.style.background=\'rgba(90,232,200,0.14)\'" onmouseout="this.style.background=\'rgba(90,232,200,0.06)\'">&#9900; View on Muscle Diagram</a>';
+      }
+    } else {
+      html+='<div style="font-size:0.84rem;color:#c0b090;line-height:1.65;font-family:\'Cormorant Garamond\',serif;font-style:italic;margin-bottom:1rem">This muscle appears in the yoga family anatomy. Explore it on the interactive muscle diagram.</div>';
+      html+='<a href="yoga-muscle-diagram.html" style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;color:'+glow+';border:1px solid '+glow+'55;padding:6px 16px;border-radius:20px;text-decoration:none;background:rgba(90,232,200,0.06)">&#9900; View on Muscle Diagram</a>';
+    }
+  }
+  html+='</div></div>';
+  return html;
+}
+function searchResults(q){
+  if(!q||q.trim().length<2) return "";
+  var lq=q.toLowerCase(),seen=new Set();
+  var res=INDEX.filter(function(r){
+    var key=r.type+r.familyId+(r.name||"")+(r.role||"")+(r.lv||"");
+    if(seen.has(key)) return false;
+    var match=(r.name&&r.name.toLowerCase().includes(lq))||(r.sanskrit&&r.sanskrit.toLowerCase().includes(lq));
+    if(match){seen.add(key);return true;}return false;
+  }).slice(0,40);
+  if(!res.length) return '<div style="text-align:center;padding:0.8rem;color:#7a6a5a;font-size:0.82rem">No matches for "'+esc(q)+'"</div>';
+  var poses=res.filter(function(r){return r.type==="pose";}),muscles=res.filter(function(r){return r.type==="muscle";});
+  var html='<div style="max-height:44vh;overflow-y:auto;background:rgba(5,2,15,0.95);border:1px solid rgba(255,255,255,0.12);border-radius:10px;backdrop-filter:blur(12px);margin-top:0.5rem">';
+  if(poses.length){
+    html+='<div style="padding:8px 14px 4px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:#7a6a5a;border-bottom:1px solid rgba(255,255,255,0.06)">Poses ('+poses.length+')</div>';
+    poses.forEach(function(r){var c=C[r.chakra];html+='<div class="sr-row" onclick="selFam(\''+r.familyId+'\',\'poses\')"><span style="width:7px;height:7px;border-radius:50%;background:'+c.glow+';box-shadow:0 0 5px '+c.glow+';display:inline-block;flex-shrink:0"></span><div style="flex:1;min-width:0"><span style="font-size:0.85rem;font-weight:500;color:#f0e6d3">'+hi(r.name,q)+'</span><span style="font-size:0.75rem;font-style:italic;color:#8a7a6a;margin-left:7px;font-family:\'Cormorant Garamond\',serif">'+hi(r.sanskrit,q)+'</span></div><span style="font-size:0.65rem;padding:1px 7px;border-radius:10px;background:'+LV_COLOR[r.lv]+'25;border:1px solid '+LV_COLOR[r.lv]+'60;color:'+LV_COLOR[r.lv]+';flex-shrink:0">'+LV_LABEL[r.lv]+'</span><span style="font-size:0.7rem;color:'+c.glow+';flex-shrink:0;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.familyName)+'</span></div>';});
+  }
+  if(muscles.length){
+    html+='<div style="padding:8px 14px 4px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:#7a6a5a;border-bottom:1px solid rgba(255,255,255,0.06)">Muscles ('+muscles.length+')</div>';
+    muscles.forEach(function(r){var c=C[r.chakra],m=(r.name||"").match(/^([^(]+)(?:\((.+)\))?/),mn=m?m[1].trim():r.name,mp=m&&m[2]?m[2]:"";html+='<div class="sr-row" onclick="selFam(\''+r.familyId+'\',\''+(r.role==="strengthens"?"prime":"stretch")+'\')"><span style="width:7px;height:7px;border-radius:50%;background:'+c.glow+';box-shadow:0 0 5px '+c.glow+';display:inline-block;flex-shrink:0"></span><div style="flex:1;min-width:0"><span style="font-size:0.83rem;color:#d8c8a8">'+hi(mn,q)+(mp?'<span style="color:#7a6a5a;font-size:0.76rem"> ('+esc(mp)+')</span>':'')+'</span></div><span style="font-size:0.65rem;padding:1px 8px;border-radius:10px;flex-shrink:0;background:'+(r.role==="strengthens"?"rgba(0,230,118,0.12)":"rgba(255,140,0,0.12)")+';border:1px solid '+(r.role==="strengthens"?"rgba(0,230,118,0.4)":"rgba(255,140,0,0.4)")+';color:'+(r.role==="strengthens"?"#00e676":"#ff8c00")+'">'+r.role+'</span><span style="font-size:0.7rem;color:'+c.glow+';flex-shrink:0;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.familyName)+'</span></div>';});
+  }
+  return html+"</div>";
+}
+
+
+function render(){
+  var app=document.getElementById("app");
+  var cc=Object.entries(C).reverse().map(function(entry){var key=entry[0],c=entry[1];return '<div onclick="selectChakra(\''+key+'\')" style="display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;background:'+c.hex+'16;border:1px solid '+c.hex+'55;font-size:0.68rem;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background=\''+c.hex+'30\'" onmouseout="this.style.background=\''+c.hex+'16\'"><span style="width:7px;height:7px;border-radius:50%;background:'+c.glow+';display:inline-block;box-shadow:0 0 5px '+c.glow+';flex-shrink:0"></span><span style="color:'+c.glow+';font-weight:500">'+c.e+'</span><span style="color:#2a1a0a">|</span><span style="color:#7a6858;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+c.s+'</span></div>';}).join("");
+  var mc=Object.entries(MT).map(function(e){return '<span class="move-tag" onclick="openMoveInfo(\''+e[0]+'\')" style="font-size:0.64rem;padding:2px 8px;border-radius:12px;background:'+e[1].bg+';border:1px solid '+e[1].bd+';color:'+e[1].tx+';cursor:pointer" title="Click for movement info">'+e[0]+'</span>';}).join("");
+  var lc=Object.entries(LV_COLOR).map(function(e){return '<span style="color:'+e[1]+'"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:'+e[1]+';margin-right:4px;vertical-align:middle"></span>'+LV_LABEL[e[0]]+'</span>';}).join("");
+
+  app.innerHTML=
+  '<div style="text-align:center;padding:2rem 1rem 0.8rem">'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(2rem,5.5vw,3.6rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#FF5555,#FF8C00,#FFD700,#00E676,#40C4FF,#CE93D8,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1">Yoga Family Tree</div>'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:#9a8878;letter-spacing:0.25em;font-size:0.88rem;margin-top:0.35rem">The Living Lineage of Asana</div>'+
+  '<div style="margin-top:0.85rem;display:inline-flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;font-size:0.7rem">'+
+  '<span style="color:#FFD700;border:1px solid #FFD70055;padding:3px 13px;border-radius:20px;box-shadow:0 0 8px #FFD70020">&#10022; Gold dashes = Vagus activation</span>'+
+  '<a href="yoga-muscle-diagram.html" style="color:#CE93D8;border:1px solid #CE93D855;padding:3px 13px;border-radius:20px;text-decoration:none;font-size:0.7rem">&#9884; Muscle Diagram</a>'+
+  '<span style="color:#888;border:1px solid #ffffff18;padding:3px 13px;border-radius:20px">Tap any node for details</span>'+
+  '</div></div>'+
+  '<div class="search-wrap">'+
+  '<div class="search-label">Search Poses, Muscles &amp; Sanskrit Names</div>'+
+  '<div class="search-input-row">'+
+  '<span class="search-icon">&#9906;</span>'+
+  '<input id="sbox" type="text" placeholder="e.g. hamstring, Warrior, Paschimottanasana, piriformis..." value="'+esc(SQ)+'" oninput="onSearch(this.value)"/>'+
+  (SQ?'<button class="search-clear" onclick="clearSearch()">&#215;</button>':'')+
+  '</div>'+
+  '<div id="sres">'+searchResults(SQ)+'</div>'+
+  '</div>'+
+  buildSVG()+
+  buildDetail()+buildChakraDetail()+
+  buildInfoModal()+
+  '<div style="max-width:760px;margin:1rem auto 0;padding:0 1rem;text-align:center"><div style="font-size:0.63rem;text-transform:uppercase;letter-spacing:0.3em;color:#4a3a2a;margin-bottom:0.55rem">Sushumna Nadi — Root to Crown <span style="text-transform:none;letter-spacing:0;font-style:italic">(click to explore)</span></div><div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.35rem">'+cc+'</div></div>'+
+  '<div style="max-width:760px;margin:0.6rem auto 0;padding:0 1rem;text-align:center;font-size:0.68rem;color:#5a4a3a"><span style="color:rgba(255,85,85,0.8);margin-right:4px">—</span><span style="margin-right:12px">Ida Nadi (lunar)</span><span style="color:rgba(255,215,0,0.8);margin-right:4px">—</span><span style="margin-right:12px">Pingala Nadi (solar)</span><span style="color:rgba(90,240,200,0.55);margin-right:4px">—</span><span>Pranamayakosha (energy body)</span></div>'+
+  '<div style="max-width:760px;margin:0.75rem auto 0;padding:0 1rem;text-align:center"><div style="font-size:0.63rem;text-transform:uppercase;letter-spacing:0.3em;color:#4a3a2a;margin-bottom:0.5rem">Movement Classifications <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#4a3a2a">(click any for details)</span></div><div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.3rem">'+mc+'</div></div>'+
+  '<div style="max-width:760px;margin:0.6rem auto 2rem;padding:0 1rem;text-align:center;display:flex;justify-content:center;gap:1rem;font-size:0.68rem">'+lc+'</div>';
+
+  document.querySelectorAll(".node-group").forEach(function(g){
+    g.addEventListener("click",function(){
+      var fid=g.getAttribute("data-fid"),f=FAM.find(function(x){return x.id===fid;});
+      if(!f) return;
+      SEL=(SEL&&SEL.id===f.id)?null:f;CHAKRA_SEL=null;TAB="prime";POP=null;
+      render();
+      if(SEL){var dp=document.getElementById("detail-panel");if(dp)setTimeout(function(){dp.scrollIntoView({behavior:"smooth",block:"nearest"});},80);}
+    });
+  });
+  document.querySelectorAll(".chakra-node").forEach(function(g){
+    g.addEventListener("click",function(){
+      var key=g.getAttribute("data-chakra");
+      CHAKRA_SEL=(CHAKRA_SEL===key)?null:key;SEL=null;POP=null;
+      render();
+      if(CHAKRA_SEL){var cp=document.getElementById("chakra-panel");if(cp)setTimeout(function(){cp.scrollIntoView({behavior:"smooth",block:"nearest"});},80);}
+    });
+  });
+  if(SQ){var sb=document.getElementById("sbox");if(sb){sb.focus();var v=sb.value.length;sb.setSelectionRange(v,v);}}
+}
+
+function closeDetail(){SEL=null;render();}
+function closeChakra(){CHAKRA_SEL=null;render();}
+function setTab(t){TAB=t;render();}
+function selFam(fid,tab){
+  var f=FAM.find(function(x){return x.id===fid;});if(!f) return;
+  SEL=f;TAB=tab||"prime";CHAKRA_SEL=null;SQ="";POP=null;
+  render();
+  setTimeout(function(){var dp=document.getElementById("detail-panel");if(dp)dp.scrollIntoView({behavior:"smooth",block:"nearest"});},80);
+}
+function onSearch(v){SQ=v;var sr=document.getElementById("sres");if(sr)sr.innerHTML=searchResults(v);}
+function clearSearch(){SQ="";render();}
+
+function openPoseInfo(sk,famId){
+  var fam=FAM.find(function(x){return x.id===famId;});
+  var pose=null;
+  if(fam) fam.poses.forEach(function(p){if(p.s===sk) pose=p;});
+  POP={type:"pose",sk:sk,en:pose?pose.n:sk,lv:pose?pose.lv:"",famId:famId};
+  render();
+  var mo=document.getElementById("info-overlay");
+  if(mo) mo.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function openMoveInfo(moveKey){
+  POP={type:"move",key:moveKey};
+  render();
+  var mo=document.getElementById("info-overlay");
+  if(mo) mo.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function openMuscleInfo(nm,glow){
+  var key=findMuscleKey(nm);
+  POP={type:"muscle",key:key||nm,nm:nm,glow:glow||"#5ae8c8"};
+  render();
+  var mo=document.getElementById("info-overlay");
+  if(mo) mo.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function closeInfo(){POP=null;render();}
+function selectChakra(key){
+  CHAKRA_SEL=key;SEL=null;POP=null;
+  render();
+  setTimeout(function(){
+    var cp=document.getElementById("chakra-panel");
+    if(cp) cp.scrollIntoView({behavior:"smooth",block:"nearest"});
+  },80);
+}
+
+render();
+</script>
+</body>
+</html>X+'" y1="24" x2="'+TX+'" y2="950" stroke="url(#trunkGrad
