@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Divine — Oneness &amp; Reciprocity</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#0c0905;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#f3ecdd;--text-mid:#d6c8ac;--text-muted:#a08d6f;
+  --gold:#F0C674;--gold-dk:#FFE3A0;--dawn:#FF9E80;--sage:#9FD9A6;--teal:#5AE8C8;
+  --border:rgba(240,198,116,0.26);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1100px 650px at 50% -6%, rgba(240,198,116,0.13), transparent 60%),
+    radial-gradient(800px 520px at 15% 22%, rgba(255,158,128,0.07), transparent 55%),
+    radial-gradient(800px 520px at 85% 30%, rgba(159,217,166,0.05), transparent 55%),
+    linear-gradient(180deg,#0c0905 0%,#120d07 55%,#0e0b06 100%);
+  background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(12,9,5,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(240,198,116,.15);border-color:var(--border);color:var(--gold)}
+#hero{position:relative;z-index:1;text-align:center;padding:2.8rem 1rem 1.4rem}
+.web{width:clamp(160px,36vw,240px);height:clamp(160px,36vw,240px);margin:0 auto 1.2rem}
+.web svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,3.7rem);font-weight:400;letter-spacing:.05em;line-height:1.1;
+  background:linear-gradient(110deg,#FF9E80,#F0C674 45%,#9FD9A6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:clamp(1rem,2.4vw,1.18rem);letter-spacing:.08em;max-width:640px;margin:.3rem auto 0}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.section{margin-bottom:3rem}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.9;margin-bottom:1rem}
+.section p{font-size:15px;color:var(--text-mid);line-height:1.9;margin-bottom:1rem}
+.section p:last-child{margin-bottom:0}
+.section em{color:var(--gold-dk);font-style:italic}
+.section a.inl{color:var(--gold-dk);border-bottom:1px solid var(--gold)}
+.define{background:linear-gradient(180deg,rgba(240,198,116,.12),rgba(159,217,166,.04));border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.5rem;margin:1.6rem 0}
+.define .label{font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--gold);margin-bottom:.6rem;text-transform:uppercase}
+.define p{font-size:15.5px;color:var(--text-mid);line-height:1.85;margin-bottom:.8rem}
+.define p:last-child{margin-bottom:0}
+.define strong{color:var(--gold-dk);font-weight:500}
+.verse{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.1rem 0}
+.verse .skt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold-dk);margin-bottom:.2rem}
+.verse .tr{font-size:14px;color:var(--text-mid);line-height:1.7}
+.verse .cite{font-size:11px;color:var(--text-muted);letter-spacing:.06em;margin-top:.35rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem;margin:1.3rem 0}
+.card{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.95rem 1.05rem;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.card h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.22rem;color:var(--text);margin-bottom:.1rem}
+.card .tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:.4rem;display:block}
+.card p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0 0 .5rem}
+.card a.src{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(90,232,200,.3)}
+.card a.src:hover{color:var(--gold-dk)}
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--sage);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin:0}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s}
+.source-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.questions{border-top:1px solid var(--border-lt);padding-top:1rem;margin-top:1.3rem}
+.q{display:flex;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--border-lt)}
+.q .n{font-size:12px;color:var(--gold);min-width:18px;padding-top:3px}
+.q .t{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text-mid);line-height:1.7}
+.footer{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.footer span{font-size:12px;color:var(--text-muted)}
+.footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
+.footer a:hover{border-color:var(--gold);color:var(--gold-dk)}
+</style>
+</head>
+<body>
+<nav id="top-nav">
+  <a href="index.html" class="nav-home">The Living Practice</a>
+  <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+  <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan</a>
+  <a href="meditation.html" class="nav-page">Breath &amp; Meditation</a>
+  <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="the-divine.html" class="nav-page current">The Divine</a>
+</nav>
+
+<header id="hero">
+  <div class="web">
+    <svg viewBox="0 0 220 220" aria-hidden="true">
+      <defs><radialGradient id="jewel" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFE8C0"/><stop offset="100%" stop-color="#F0C674" stop-opacity="0"/></radialGradient></defs>
+      <g stroke="rgba(240,198,116,.28)" stroke-width="1">
+        <line x1="110" y1="110" x2="110" y2="26"/><line x1="110" y1="110" x2="183" y2="68"/><line x1="110" y1="110" x2="183" y2="152"/><line x1="110" y1="110" x2="110" y2="194"/><line x1="110" y1="110" x2="37" y2="152"/><line x1="110" y1="110" x2="37" y2="68"/>
+        <line x1="110" y1="26" x2="183" y2="68"/><line x1="183" y1="68" x2="183" y2="152"/><line x1="183" y1="152" x2="110" y2="194"/><line x1="110" y1="194" x2="37" y2="152"/><line x1="37" y1="152" x2="37" y2="68"/><line x1="37" y1="68" x2="110" y2="26"/>
+      </g>
+      <g fill="#F0C674">
+        <circle cx="110" cy="26" r="4"/><circle cx="183" cy="68" r="4"/><circle cx="183" cy="152" r="4"/><circle cx="110" cy="194" r="4"/><circle cx="37" cy="152" r="4"/><circle cx="37" cy="68" r="4"/>
+      </g>
+      <circle cx="110" cy="110" r="30" fill="url(#jewel)"/>
+      <circle cx="110" cy="110" r="9" fill="#FFE8C0"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">The Divine</h1>
+  <p class="hero-sub">Oneness, and the reciprocity that binds all things, living and not</p>
+</header>
+
+<main>
+  <section class="section" id="intro">
+    <div class="eyebrow">Niyama &middot; Ishvara pranidhana</div>
+    <h2 class="s-title">What we mean by the divine</h2>
+    <p class="lead">The word <em>divine</em> arrives carrying many pictures. In some traditions it means a creator, a personal presence, a being who makes and watches the world. Those images are ancient and dear, and they have their place. In this living practice we hold the divine first in another way, one the yoga traditions have carried just as long.</p>
+    <div class="define">
+      <div class="label">The divine, here</div>
+      <p>In this practice, the <strong>divine is oneness</strong>: the single wholeness in which everything participates, the ground that every separate thing is a face of.</p>
+      <p>And the divine is <strong>reciprocity</strong>: the living give-and-take that binds all things, living and not, into one belonging. To touch the divine is to feel that nothing stands alone, that you are made of everything and everything is made, in part, of you.</p>
+      <p>You do not have to believe in a god to meet the divine in this sense. You only have to notice, clearly, that you inter-are with all that is.</p>
+    </div>
+    <p>Two great streams of the tradition carry this understanding. The first looks inward and finds that the many are secretly one. The second looks outward and finds that the one lives as endless mutual relationship. They meet in the middle, and the practice is how we learn to feel them.</p>
+  </section>
+
+  <section class="section" id="oneness">
+    <div class="eyebrow">The first stream &middot; non-duality</div>
+    <h2 class="s-title">The many are one: Advaita</h2>
+    <p class="lead">The Upanishads, the contemplative heart of the Vedas, return again and again to a single discovery: behind the countless forms of the world there is one reality, <em>Brahman</em>, and that reality is also the innermost Self, <em>Atman</em>, in every being. The divine is the wholeness, and you are not outside it.</p>
+    <div class="verse">
+      <div class="skt">Īśāvāsyam idaṃ sarvam</div>
+      <div class="tr">All this, whatever moves in this moving world, is pervaded by the divine. The opening words of the Isha Upanishad: there is no place the sacred is absent.</div>
+      <div class="cite">Isha Upanishad, verse 1</div>
+    </div>
+    <div class="verse">
+      <div class="skt">Sarvaṃ khalvidaṃ brahma</div>
+      <div class="tr">All this is indeed Brahman. The world and its source are one reality seen in two ways.</div>
+      <div class="cite">Chandogya Upanishad 3.14.1</div>
+    </div>
+    <div class="verse">
+      <div class="skt">Tat tvam asi</div>
+      <div class="tr">Thou art That. The wholeness you seek is the very awareness that is seeking. The drop is told, gently, that it has always been the ocean.</div>
+      <div class="cite">Chandogya Upanishad 6.8.7, one of the four mahavakyas</div>
+    </div>
+    <p>This is <em>Advaita</em>, not-two. The divine is the seamless being, consciousness, and bliss that the meditation tradition calls <a class="inl" href="meditation.html#sec-sca">sat-chit-ananda</a>. Realizing it is the aim of contemplative yoga: to know directly that the witness in you and the ground of all things are one.</p>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://shlokam.org/texts/ishavasya-1/" target="_blank" rel="noopener">Shlokam: Isha Upanishad v.1</a>
+      <a class="source-link" href="https://www.wisdomlib.org/hinduism/book/ishavasya-upanishad-shankara-bhashya/d/doc143810.html" target="_blank" rel="noopener">Wisdomlib: Ishavasya (Shankara)</a>
+      <a class="source-link" href="https://www.yogapedia.com/definition/10746/isavasyam-idam-sarvam" target="_blank" rel="noopener">Yogapedia: Isavasyam Idam Sarvam</a>
+    </div>
+  </section>
+
+  <section class="section" id="reciprocity">
+    <div class="eyebrow">The second stream &middot; reciprocity</div>
+    <h2 class="s-title">The one lives as relationship: interbeing</h2>
+    <p class="lead">If the first stream looks inward to find the one, the second looks outward and finds that the one is made entirely of relationship. Nothing exists by itself. Everything is woven of everything else, and that endless mutual belonging is itself the face of the divine.</p>
+    <div class="cards">
+      <div class="card"><span class="tag">Vedic</span><h4>Vasudhaiva Kutumbakam</h4><p>"The world is one family." A line from the Maha Upanishad, understood to embrace all people and all life alike: animals, plants, the whole living earth, one household.</p><a class="src" href="https://www.yogapedia.com/definition/6372/vasudeva-kutumbakam-yoga" target="_blank" rel="noopener">Yogapedia: Vasudhaiva Kutumbakam ↗</a></div>
+      <div class="card"><span class="tag">Buddhist</span><h4>Interbeing</h4><p>Thich Nhat Hanh&rsquo;s word for dependent co-arising: to be is to inter-be. In a sheet of paper he saw the cloud, the rain, the tree, the sun. Nothing can be, by itself alone.</p><a class="src" href="https://plumvillage.app/to-be-means-to-inter-be/" target="_blank" rel="noopener">Plum Village: To inter-be ↗</a></div>
+      <div class="card"><span class="tag">Buddhist</span><h4>Indra&rsquo;s Net</h4><p>A net stretching infinitely in all directions, a jewel at every knot, and each jewel reflecting every other. Touch one, and the whole net trembles. Each thing contains all things.</p><a class="src" href="https://www.learnreligions.com/indras-jewel-net-449827" target="_blank" rel="noopener">Indra&rsquo;s Net ↗</a></div>
+      <div class="card"><span class="tag">Living earth</span><h4>Reciprocity</h4><p>The give-and-take that sustains all life: breath traded with trees, water with clouds, nourishment with soil. To receive and to give back, in balance, is to live the divine as practice.</p><a class="src" href="https://plumvillage.org/community/order-of-interbeing" target="_blank" rel="noopener">Plum Village: Interbeing ↗</a></div>
+    </div>
+    <p>In this view the divine is not far away and not only within. It is the relationship itself, the breathing exchange between you and the tree, between the rain and the river, between one being and the next. Reverence becomes reciprocity: to honor the divine is to give back to the web that holds you.</p>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://plumvillage.org/community/order-of-interbeing" target="_blank" rel="noopener">Plum Village: The Order of Interbeing</a>
+      <a class="source-link" href="https://plato.stanford.edu/entries/buddhism-huayan/" target="_blank" rel="noopener">Stanford Encyclopedia: Huayan</a>
+      <a class="source-link" href="https://camlab.fas.harvard.edu/project/indras-net/" target="_blank" rel="noopener">Harvard CAMLab: Indra&rsquo;s Net</a>
+    </div>
+  </section>
+
+  <section class="section" id="practice">
+    <div class="eyebrow">The divine in practice</div>
+    <h2 class="s-title">How this lives on the mat</h2>
+    <p class="lead">This is the second limb, <em>Niyama</em>, and its final observance is <em>Ishvara pranidhana</em>, surrender to the divine. Read in this way, surrender is the practice of remembering oneness and acting from reciprocity. It threads through the whole of yoga.</p>
+    <p>In the <a class="inl" href="cosmic-banyan.html">Yamas</a>, the ethical roots, reciprocity becomes action: <em>ahimsa</em>, non-harming, is the simplest acknowledgment that another&rsquo;s life is woven with your own. In <a class="inl" href="yoga-family-tree.html">Asana</a>, the body learns that it is made of breath traded with the world. In <a class="inl" href="meditation.html">meditation</a>, the practitioner rests in the wholeness directly, until the boundary between self and all-that-is grows quiet.</p>
+    <p>Surrender to the divine, then, asks very little belief and a great deal of attention. It asks that you notice, in the pose and in the breath and in the meeting with another being, that you were never separate. The remembering is the worship.</p>
+    <div class="callout">
+      <div class="label">Where the streams meet</div>
+      <p>Non-duality says the many are one. Reciprocity says the one lives as the loving relationship of the many. Held together, they describe a single truth from two directions: you are the whole, and you belong to it. The divine is both the ocean and the trading of the waves.</p>
+    </div>
+    <div class="questions">
+      <div class="q"><span class="n">1.</span><span class="t">Where in an ordinary day do you most clearly feel that you inter-are with the world, that you are made of things outside yourself?</span></div>
+      <div class="q"><span class="n">2.</span><span class="t">If the divine is reciprocity, what are you receiving without yet giving back, and what might balance look like?</span></div>
+      <div class="q"><span class="n">3.</span><span class="t">Tat tvam asi: thou art That. Sitting quietly, can you sense the awareness in you as the same awareness that lights all things?</span></div>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.wisdomlib.org/definition/ishvara-pranidhana" target="_blank" rel="noopener">Wisdomlib: Ishvara Pranidhana</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/advaita" target="_blank" rel="noopener">Wisdomlib: Advaita</a>
+      <a class="source-link" href="https://shlokam.org/text/isha-upanishad.htm" target="_blank" rel="noopener">Shlokam: Isha Upanishad (full)</a>
+    </div>
+  </section>
+</main>
+
+<div class="footer">
+  <span>Connected limbs:</span>
+  <a href="cosmic-banyan.html">Yama, the ethical roots</a>
+  <a href="meditation.html#sec-sca">Samadhi, sat-chit-ananda</a>
+  <a href="index.html">The eight limbs</a>
+</div>
+</body>
+</html>

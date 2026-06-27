@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Expanding Universe Within — Meditation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#080614;--bg-2:#0e0a24;--bg-3:#1a0f2e;
+  --panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#ece8f6;--text-mid:#c3bcd8;--text-muted:#8d85a8;
+  --gold:#F0C674;--gold-dk:#FFD98A;--dawn:#FF9E80;
+  --violet:#B794F6;--violet-dk:#9F7AEA;--teal:#5AE8C8;
+  --border:rgba(183,148,246,0.22);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1200px 700px at 50% -8%, rgba(255,158,128,0.10), transparent 60%),
+    radial-gradient(900px 600px at 12% 18%, rgba(183,148,246,0.10), transparent 55%),
+    radial-gradient(900px 600px at 88% 12%, rgba(90,232,200,0.07), transparent 55%),
+    linear-gradient(180deg,#080614 0%,#0e0a24 45%,#1a0f2e 100%);
+  background-attachment:fixed;
+  color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh;
+}
+/* faint starfield */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20% 30%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1.2px 1.2px at 70% 22%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.1px 1.1px at 40% 70%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.3px 1.3px at 85% 60%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1px 1px at 55% 48%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1.2px 1.2px at 10% 80%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at 92% 84%, rgba(255,255,255,.3), transparent);
+  opacity:.5}
+
+/* NAV */
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(8,6,20,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-lt);padding:.35rem 1.2rem .45rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;padding-bottom:.35rem;border-bottom:1px solid var(--border-lt);margin-bottom:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(183,148,246,.14);border-color:var(--border);color:var(--violet)}
+.nav-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.session-pills{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.pill{padding:4px 13px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border-lt);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.pill:hover{border-color:var(--violet);color:var(--violet)}
+.pill.active{background:rgba(183,148,246,.16);border-color:var(--violet);color:var(--gold-dk);font-weight:500}
+.glossary-btn{padding:4px 13px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border-lt);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.glossary-btn:hover{border-color:var(--teal);color:var(--teal)}
+
+/* HERO */
+#hero{position:relative;z-index:1;overflow:hidden;text-align:center;padding:2.6rem 1rem 1.5rem}
+.hero-orbits{position:relative;width:clamp(180px,40vw,260px);height:clamp(180px,40vw,260px);margin:0 auto 1.4rem}
+.hero-orbits svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.4rem);font-weight:400;letter-spacing:.04em;line-height:1.12;margin-bottom:.4rem;
+  background:linear-gradient(110deg,#FF9E80 0%,#F0C674 32%,#B794F6 66%,#5AE8C8 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.4vw,1.18rem);color:var(--text-muted);letter-spacing:.1em;max-width:640px;margin:0 auto}
+
+/* MAIN */
+main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
+.section-wrap{margin-bottom:3.5rem;scroll-margin-top:96px}
+.section-header{margin-bottom:1.1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.section-eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:.4rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.1rem);font-weight:400;line-height:1.18;color:var(--text)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section-wrap p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section-wrap p:last-child{margin-bottom:0}
+.section-wrap em{color:var(--gold-dk);font-style:italic}
+.sub-heading{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--text);margin:1.6rem 0 .5rem;padding-left:.75rem;border-left:2px solid var(--violet-dk)}
+
+/* CALLOUT */
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin-bottom:.6rem}
+.callout p:last-child{margin-bottom:0}
+
+/* PRACTICE CARD (guided meditation / breath) */
+.practice{background:linear-gradient(180deg,rgba(183,148,246,.10),rgba(90,232,200,.05));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
+.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--text);margin-bottom:.7rem}
+.practice ol{margin:0 0 .2rem 1.1rem}
+.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
+
+/* FOUR REACHES DIAGRAM */
+.reaches{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:1.8rem;align-items:center;margin:1.5rem 0}
+@media(max-width:680px){.reaches{grid-template-columns:1fr;gap:1.1rem}}
+.reach-figure{position:relative;margin:0}
+.reach-figure img{width:100%;height:auto;display:block;border-radius:6px;
+  -webkit-mask-image:radial-gradient(125% 102% at 50% 44%, #000 52%, rgba(0,0,0,.65) 72%, rgba(0,0,0,0) 93%);
+  mask-image:radial-gradient(125% 102% at 50% 44%, #000 52%, rgba(0,0,0,.65) 72%, rgba(0,0,0,0) 93%)}
+.reach-figure::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:6px;
+  background:radial-gradient(125% 102% at 50% 44%, rgba(8,6,20,0) 58%, rgba(8,6,20,.55) 100%)}
+.reach-list{display:flex;flex-direction:column;gap:.7rem}
+.reach-item{padding:.7rem .9rem;border-radius:10px;background:var(--panel-2);border:1px solid var(--border-lt);border-left:3px solid var(--violet)}
+.reach-item .rh{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--text);margin-bottom:.15rem;display:flex;align-items:center;gap:.5rem}
+.reach-item .rk{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.reach-item p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:.25rem 0 0}
+.reach-universe{border-left-color:var(--dawn)}
+.reach-branches{border-left-color:var(--gold)}
+.reach-ground{border-left-color:var(--teal)}
+.reach-roots{border-left-color:var(--violet-dk)}
+
+/* TWO COLUMN COMPARE */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:680px){.compare{grid-template-columns:1fr}}
+.col{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:1.1rem 1.2rem}
+.col.vedic{border-top:3px solid var(--gold)}
+.col.buddhist{border-top:3px solid var(--teal)}
+.col h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.3rem;margin-bottom:.2rem;color:var(--text)}
+.col .tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.7rem;display:block}
+.col.vedic .tag{color:var(--gold)}
+.col.buddhist .tag{color:var(--teal)}
+.col p{font-size:13.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.6rem}
+.col p:last-child{margin-bottom:0}
+.diverge{background:linear-gradient(180deg,rgba(255,158,128,.10),transparent);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin:1rem 0}
+.diverge .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--dawn);margin-bottom:.4rem;text-transform:uppercase}
+
+/* EIGHT LIMBS */
+.limbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.7rem;margin:1.3rem 0}
+.limb{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.85rem .95rem;transition:border-color .15s,transform .15s;text-decoration:none;color:inherit;display:block}
+.limb:hover{border-color:var(--violet);transform:translateY(-2px)}
+.limb .num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--violet);line-height:1}
+.limb .ln{font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:var(--text);margin:.15rem 0 .05rem}
+.limb .le{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.limb p{font-size:12.5px;color:var(--text-mid);line-height:1.55;margin:0}
+.limb .here{display:inline-block;margin-top:.5rem;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+
+/* SAT CHIT ANANDA */
+.sca{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.3rem 0}
+@media(max-width:560px){.sca{grid-template-columns:1fr}}
+.sca-card{text-align:center;background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.2rem 1rem}
+.sca-card .skt{font-family:'Cormorant Garamond',serif;font-size:1.9rem;margin-bottom:.1rem;
+  background:linear-gradient(120deg,#FF9E80,#F0C674,#B794F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sca-card .en{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem}
+.sca-card p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0}
+
+/* CONCEPT LINKS */
+.concept-link{color:var(--teal);border-bottom:1px dashed var(--teal);cursor:pointer}
+.concept-link:hover{background:rgba(90,232,200,.10);border-radius:2px}
+
+/* SOURCES */
+.sources-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.2rem 0 .5rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.source-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.source-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin-top:1.2rem;margin-bottom:.2rem}
+
+/* QUESTIONS */
+.questions-list{border-top:1px solid var(--border-lt);padding-top:1rem;margin-top:1.2rem}
+.q-item{display:flex;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--border-lt);align-items:flex-start}
+.q-num{font-size:12px;font-weight:500;color:var(--gold);min-width:18px;padding-top:3px}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.7}
+
+/* GLOSSARY DRAWER */
+#glossary-drawer{position:fixed;top:0;right:0;bottom:0;width:370px;max-width:100%;background:#0d0a20;border-left:1px solid var(--border);z-index:200;transform:translateX(100%);transition:transform .3s ease;overflow-y:auto;padding:1.5rem}
+#glossary-drawer.open{transform:translateX(0)}
+.glossary-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.glossary-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text)}
+.g-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-muted)}
+.g-search{width:100%;padding:.5rem .75rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg-2);color:var(--text);margin-bottom:1rem;font-family:'DM Sans',sans-serif;outline:none}
+.g-search:focus{border-color:var(--violet)}
+.glossary-term{border-bottom:1px solid var(--border-lt);padding:.75rem 0}
+.g-term{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:400;color:var(--text);margin-bottom:.1rem}
+.g-skt{font-size:11px;font-style:italic;color:var(--gold-dk);margin-bottom:.25rem}
+.g-def{font-size:13px;color:var(--text-mid);line-height:1.65}
+.g-link{font-size:11px;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border-lt);margin-top:.3rem;display:inline-block}
+.g-link:hover{color:var(--gold-dk)}
+
+/* FOOTER */
+.footer-bridge{position:relative;z-index:1;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;max-width:880px;margin-left:auto;margin-right:auto;padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2.5rem}
+.footer-bridge-label{font-size:12px;color:var(--text-muted)}
+.bridge-link{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border-lt);border-radius:20px;transition:all .15s}
+.bridge-link:hover{border-color:var(--violet);color:var(--violet)}
+.bridge-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+
+/* TYPES OF MEDITATION */
+.mtypes{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:.7rem;margin:1.3rem 0}
+.mtype{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.9rem 1rem;transition:border-color .15s,transform .15s}
+.mtype:hover{border-color:var(--violet);transform:translateY(-2px)}
+.mtype h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.22rem;color:var(--text);margin-bottom:.05rem}
+.mtype .mt-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:.45rem;display:block}
+.mtype p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0 0 .55rem}
+.mtype a.mt-src{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(90,232,200,.3)}
+.mtype a.mt-src:hover{color:var(--gold-dk)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="meditation.html" class="nav-page current">Breath &amp; Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+  </div>
+  <div class="nav-row">
+    <div class="session-pills">
+      <button class="pill active" data-target="sec-intro">Overview</button>
+      <button class="pill" data-target="sec-ujjayi">Breath as Waves</button>
+      <button class="pill" data-target="sec-types">Types of Meditation</button>
+      <button class="pill" data-target="sec-reaches">Four Reaches</button>
+      <button class="pill" data-target="sec-rivers">Two Rivers</button>
+      <button class="pill" data-target="sec-mind">Mind &amp; Cognizer</button>
+      <button class="pill" data-target="sec-sca">Sat-Chit-Ananda</button>
+      <button class="glossary-btn" id="open-glossary">Glossary</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-orbits">
+    <svg viewBox="0 0 260 260" aria-hidden="true">
+      <defs>
+        <radialGradient id="core" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE8C0"/>
+          <stop offset="45%" stop-color="#F0C674"/>
+          <stop offset="100%" stop-color="#FF9E80"/>
+        </radialGradient>
+      </defs>
+      <g fill="none" stroke-width="1">
+        <circle cx="130" cy="130" r="118" stroke="rgba(90,232,200,.25)"/>
+        <circle cx="130" cy="130" r="92"  stroke="rgba(183,148,246,.35)"/>
+        <circle cx="130" cy="130" r="64"  stroke="rgba(240,198,116,.4)"/>
+        <circle cx="130" cy="130" r="38"  stroke="rgba(255,158,128,.45)"/>
+      </g>
+      <circle cx="248" cy="130" r="3.5" fill="#5AE8C8"/>
+      <circle cx="130" cy="38"  r="3"   fill="#B794F6"/>
+      <circle cx="66"  cy="130" r="2.6" fill="#F0C674"/>
+      <circle cx="168" cy="130" r="2.4" fill="#FF9E80"/>
+      <circle cx="130" cy="130" r="16" fill="url(#core)"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">The Expanding Universe Within</h1>
+  <p class="hero-subtitle">Breath as waves, the mind as cosmos, and the worlds discovered in stillness</p>
+</header>
+
+<main id="content">
+
+<!-- INTRO -->
+<section class="section-wrap" id="sec-intro">
+  <div class="section-header">
+    <div class="section-eyebrow">Meditation &mdash; The Living Practice</div>
+    <h2 class="section-title">Inner growth that expands like the universe</h2>
+  </div>
+  <p class="lead">The banyan tree carries much of this tradition's wisdom, picturing inner growth as a trunk rising year by year toward the light. Meditation adds a second image alongside it. Here growth expands in every direction at once, the way the universe expands, with no edge and no center that can be pointed to, each moment of stillness opening more space than the one before.</p>
+  <p>The cosmos holds every direction within it. When you sit and the breath grows quiet and the mind settles into ease, you begin to notice this directly. The stillness opens you wider. What seemed a small interior reveals itself as a doorway, and beyond it lies more room than the visible world seems to contain.</p>
+  <p>The tradition gives this expansion a structure, so that we do not get lost in it. It names four reaches that meditation can travel: down into the <em>subconscious</em> where the roots of who we are lie waiting, into the <em>material world</em> where the body sits breathing on the ground, up through the <em>metaphysical</em> where the subtle and the symbolic live, and out into <em>the world beyond</em>, the absolute realm where nothing is relative. This page is a map of those reaches, the breath that carries us between them, and the two great rivers of practice, Vedic and Buddhist, that have charted this territory for thousands of years.</p>
+  <div class="callout">
+    <div class="label">How to read this page</div>
+    <p>Words underlined with a dotted line, like <span class="concept-link" data-id="Samadhi">samadhi</span>, open the glossary. Each section ends with the sources it draws on, so you can follow any thread back to its root. Take it slowly. None of this is meant to be finished in one sitting, any more than a practice is.</p>
+  </div>
+</section>
+
+<!-- UJJAYI -->
+<section class="section-wrap" id="sec-ujjayi">
+  <div class="section-header">
+    <div class="section-eyebrow">Pranayama &mdash; the breath that carries</div>
+    <h2 class="section-title">Breath as waves, the exhale as the crash</h2>
+  </div>
+  <p class="lead">Before the mind can travel anywhere, the breath must become an ocean. The breath of meditation in this tradition is <em>Ujjayi</em>, often translated as the victorious breath, and just as often called the ocean breath, because that is exactly what it sounds like.</p>
+  <p>To breathe Ujjayi, you narrow the passage at the back of the throat, gently bringing the vocal folds toward one another so the air must whisper as it passes. The mouth stays closed; the breath moves only through the nose. The narrowing turns silent air into sound, a soft oceanic hush that rises on the inhale and falls on the exhale. The Sanskrit <em>ujjayi</em> joins <em>ut</em>, meaning upward or expanding, with <em>jaya</em>, meaning victory: the breath that expands and conquers through steadiness.</p>
+  <p>Listen to the surf and you already know the rhythm. The inhale is the wave gathering itself, drawing up and back, swelling as it rises toward the shore. It builds. It lifts. And then the exhale is the crash: the long, surrendered fall of water onto sand, the wave giving everything it gathered back to the beach. The inhale collects the world. The exhale lets it go. A meditation is nothing more than ten thousand of these waves, each one a small rehearsal of holding on and letting go.</p>
+  <p>This is why the exhale is where the practice deepens. A wave that only rises is a wave that never breaks. The crash, the release, the slight emptiness at the bottom of the breath before the next swell gathers, is where the nervous system softens and the mind loosens its grip. Lengthen the exhale and the waters grow calm. When the surface of the breath is calm, the depths beneath it become visible.</p>
+  <div class="practice">
+    <div class="label">Practice &mdash; the ocean breath</div>
+    <div class="p-title">Riding the wave</div>
+    <ol>
+      <li>Sit so the spine is tall and the shoulders are soft. Close the mouth. Let the breath move only through the nose.</li>
+      <li>On the inhale, imagine a wave gathering. Let it rise from the belly to the chest to the throat, slightly narrowing the back of the throat so the breath makes a soft oceanic sound, like wind through a shell.</li>
+      <li>At the top of the inhale, the wave is full and poised, about to break. Do not rush it.</li>
+      <li>On the exhale, let the wave crash: a slow, complete release through that same whispering throat, longer than the inhale, until the water has fully returned to the sea.</li>
+      <li>Rest for a heartbeat in the empty trough at the bottom. Then let the next wave gather on its own. Continue for ten breaths, then twenty, listening to the tide you are making.</li>
+    </ol>
+  </div>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Art of Living: Ujjayi</a>
+    <a href="https://www.yogabasics.com/practice/ujjayi-pranayama/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Basics: Ujjayi Pranayama</a>
+    <a href="https://www.wisdomlib.org/definition/ujjayi" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ujjayi</a>
+  </div>
+</section>
+
+<!-- TYPES OF MEDITATION -->
+<section class="section-wrap" id="sec-types">
+  <div class="section-header">
+    <div class="section-eyebrow">The wider landscape</div>
+    <h2 class="section-title">Many doors into stillness</h2>
+  </div>
+  <p class="lead">Ujjayi gives the breath a shape, and the breath is one doorway among many. Across the world's contemplative traditions, meditation has taken countless forms. Scholars often gather them into two broad gestures: <em>focused attention</em>, where the mind rests on a single object, and <em>open monitoring</em>, where awareness stays spacious and receptive. Within those two gestures live the practices below. Each one is a door, and all the doors open onto the same room.</p>
+  <div class="mtypes">
+    <div class="mtype"><span class="mt-tag">Open monitoring</span><h4>Mindfulness</h4><p>Resting attention on the present moment, meeting each thought, feeling, and sensation as it arises, and returning gently when the mind wanders.</p><a class="mt-src" href="https://www.mindful.org/what-is-mindfulness/" target="_blank" rel="noopener">Mindful.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Focused attention</span><h4>Concentration</h4><p>Holding the mind on a single object: the breath, a candle flame (trataka), a point of light. This is the seat of <span class="concept-link" data-id="Dharana">dharana</span>.</p><a class="mt-src" href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" target="_blank" rel="noopener">NCCIH (NIH) ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Heart practice</span><h4>Loving-Kindness (Metta)</h4><p>Cultivating goodwill, radiating warmth first toward yourself and then outward to all beings, until the circle of care includes everyone.</p><a class="mt-src" href="https://ggia.berkeley.edu/practice/loving_kindness_meditation" target="_blank" rel="noopener">Greater Good, Berkeley ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Somatic</span><h4>Body Scan</h4><p>Moving attention slowly through the body, part by part, softening tension and deepening the felt sense of being embodied.</p><a class="mt-src" href="https://www.mindful.org/beginners-body-scan-meditation/" target="_blank" rel="noopener">Mindful.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Sound</span><h4>Mantra &amp; Japa</h4><p>Repeating a sacred sound or phrase, silently or aloud, so the syllables gather the mind and carry it inward. Woven through the <a href="dharana.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">practice of focus</a>.</p><a class="mt-src" href="https://www.wisdomlib.org/definition/mantra" target="_blank" rel="noopener">Wisdomlib: Mantra ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Mantra-based</span><h4>Transcendental Meditation</h4><p>A mantra technique practiced for twenty minutes twice a day, settling the mind into a state of restful alertness.</p><a class="mt-src" href="https://www.tm.org/" target="_blank" rel="noopener">TM.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Insight</span><h4>Vipassana</h4><p>Observing sensations with steady equanimity to see directly into the changing, flowing nature of experience.</p><a class="mt-src" href="https://www.dhamma.org/en-US/about/vipassana" target="_blank" rel="noopener">Dhamma.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Zen</span><h4>Zazen</h4><p>"Just sitting" in upright, alert stillness, attentive to breath and posture, letting each thought arise and pass.</p><a class="mt-src" href="https://www.lionsroar.com/how-to-practice-zazen/" target="_blank" rel="noopener">Lion’s Roar ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Yogic rest</span><h4>Yoga Nidra</h4><p>"Yogic sleep": lying down and following guided stages into a deep, conscious relaxation that rests the whole system while awareness stays awake.</p><a class="mt-src" href="https://health.clevelandclinic.org/what-is-yoga-nidra" target="_blank" rel="noopener">Cleveland Clinic ↗</a></div>
+    <div class="mtype"><span class="mt-tag">In motion</span><h4>Walking Meditation</h4><p>Carrying meditative attention into movement, feeling each step and the shifting of weight as the object of awareness.</p><a class="mt-src" href="https://www.mindful.org/how-to-meditate-walking-meditation/" target="_blank" rel="noopener">Mindful.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Imagery</span><h4>Visualization</h4><p>Holding an inner image, light at the crown, roots from the seat, a sacred form, to focus and transform the mind. The <a href="#sec-reaches" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">four reaches</a> are a visualization.</p><a class="mt-src" href="https://www.headspace.com/meditation/visualization" target="_blank" rel="noopener">Headspace ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Breath</span><h4>Pranayama</h4><p>Meditation carried by the regulation of breath, of which Ujjayi, the ocean breath above, is one of the most beloved forms.</p><a class="mt-src" href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" target="_blank" rel="noopener">Art of Living ↗</a></div>
+  </div>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>NCCIH: Meditation &amp; Mindfulness</a>
+    <a href="https://www.medicalnewstoday.com/articles/320392" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Medical News Today: Eight types</a>
+    <a href="https://www.mindful.org/meditation/mindfulness-getting-started/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Mindful.org: Getting started</a>
+  </div>
+</section>
+
+<!-- FOUR REACHES -->
+<section class="section-wrap" id="sec-reaches">
+  <div class="section-header">
+    <div class="section-eyebrow">The map of meditation</div>
+    <h2 class="section-title">Roots, ground, branches, and the world beyond</h2>
+  </div>
+  <p class="lead">There is a meditation almost every practitioner meets sooner or later. You sit, and you imagine roots growing down from the base of your seat, threading into the earth, anchoring you. Then you imagine light rising up the spine and pouring out through the crown of the head, a column of brightness opening into the sky. In that single image, the whole map is drawn. Meditation reaches in both directions at once: down into what is hidden, up into what is vast.</p>
+  <div class="reaches">
+    <figure class="reach-figure">
+      <img src="meditation-map.png" alt="A meditator seated on a wooden deck beneath a radiant mandala sun, golden roots descending into the earth below: the map of meditation reaching from the subconscious roots, up through the material ground and the metaphysical branches, into the universe beyond."/>
+    </figure>
+    <div class="reach-list">
+      <div class="reach-item reach-universe">
+        <div class="rh">The World Beyond</div>
+        <div class="rk">Universe &middot; the absolute</div>
+        <p>The crown opens and the practice expands past the personal entirely, into the absolute realm where nothing is relative. This is the reach of <span class="concept-link" data-id="Samadhi">samadhi</span> and <span class="concept-link" data-id="Sat-Chit-Ananda">sat-chit-ananda</span>.</p>
+      </div>
+      <div class="reach-item reach-branches">
+        <div class="rh">The Metaphysical</div>
+        <div class="rk">Branches &middot; subtle worlds</div>
+        <p>Above the dense body lie the subtle and causal sheaths, the symbolic, energetic, dreaming layers the tradition calls the <span class="concept-link" data-id="Pancha Kosha">koshas</span> and the realms it calls <span class="concept-link" data-id="Loka">lokas</span>. Meditation as the discovery of worlds.</p>
+      </div>
+      <div class="reach-item reach-ground">
+        <div class="rh">The Material World</div>
+        <div class="rk">Ground &middot; the body breathing</div>
+        <p>The seat, the bones, the breath, the present moment. Meditation is also the discovery of <em>this</em> world, seen at last without the haze of distraction. The ground is not left behind; it is finally arrived at.</p>
+      </div>
+      <div class="reach-item reach-roots">
+        <div class="rh">The Subconscious</div>
+        <div class="rk">Roots &middot; what lies beneath</div>
+        <p>Roots descend from the seat into the dark and sustaining depths: memory, instinct, the buried patterns that move us before we choose. To meet them in stillness is the beginning of freedom from them.</p>
+      </div>
+    </div>
+  </div>
+  <h3 class="sub-heading">Discovery in two directions</h3>
+  <p>Notice that the same practice does two opposite things. It is a discovery of <em>other</em> worlds, the subtle planes the tradition names <span class="concept-link" data-id="Akasha">akasha</span> and the lokas, what later esoteric traditions called the astral. And it is a discovery of <em>this</em> world, the one already here, the breath and the body and the ordinary afternoon, which we have simply never been still enough to see. The mystic who travels furthest inward and the practitioner who arrives most fully in the present are describing the same journey from two ends.</p>
+  <p>And here the cosmic image returns. The roots reaching down and the light reaching up are only a beginner's compass, a way to orient a mind that still believes in up and down. The further the practice goes, the more those directions dissolve, until what remains is an expansion outward in every direction, the seated body a still point and the awareness around it opening like space without limit. The map is a tree. The territory is a universe.</p>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.wisdomlib.org/definition/kosha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Kosha (five sheaths)</a>
+    <a href="https://www.wisdomlib.org/definition/akasha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Akasha</a>
+    <a href="https://www.wisdomlib.org/definition/loka" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Loka</a>
+  </div>
+</section>
+
+<!-- TWO RIVERS -->
+<section class="section-wrap" id="sec-rivers">
+  <div class="section-header">
+    <div class="section-eyebrow">Vedic &amp; Buddhist approaches</div>
+    <h2 class="section-title">Two rivers from one mountain</h2>
+  </div>
+  <p class="lead">Meditation as we practice it flows from two great rivers. The older is the Vedic stream, the meditation of the Upanishads, the Yoga Sutras, and Vedanta. The younger, born from the same mountain roughly twenty-five centuries ago, is the Buddhist stream. The Buddha was raised in the world of Vedic practice and trained under its teachers before he set out on his own. To understand where the two part is to understand the deepest question meditation asks: what, exactly, is found at the center?</p>
+  <div class="compare">
+    <div class="col vedic">
+      <h4>The Vedic stream</h4>
+      <span class="tag">Atman &middot; the Self that is found</span>
+      <p>The Vedic path holds that beneath the changing layers of body, breath, and thought lies <em>atman</em>, the true Self: unchanging, eternal, pure awareness. Meditation peels back the <span class="concept-link" data-id="Pancha Kosha">koshas</span>, the sheaths that cover it, until the Self stands revealed and is recognized as one with <em>Brahman</em>, the ground of all being.</p>
+      <p>The journey is a homecoming. You travel inward to find what was always there. The drop discovers it was the ocean the whole time.</p>
+    </div>
+    <div class="col buddhist">
+      <h4>The Buddhist stream</h4>
+      <span class="tag">Anatta &middot; the Self that is not found</span>
+      <p>The Buddha looked for that permanent Self with the same rigor and reported that he could not find it. This is <em>anatta</em>, not-self: where we expect a fixed essence, there is instead a flowing process, five ever-changing bundles of form, feeling, perception, formation, and consciousness, the <em>skandhas</em>, with no unchanging owner behind them.</p>
+      <p>The journey is a release. You look for the self so closely that the search itself dissolves the illusion of a separate one. The drop sees that it was never separate to begin with.</p>
+    </div>
+  </div>
+  <div class="diverge">
+    <div class="label">Where the rivers part</div>
+    <p>This is the single great divergence, and it is worth naming clearly. The Vedic tradition meditates <em>toward</em> the Self; the Buddhist tradition meditates <em>through</em> the idea of a self until it lets go. <span class="concept-link" data-id="Atman">Atman</span> (an eternal Self) and <span class="concept-link" data-id="Anatta">anatta</span> (no eternal self) are the names of the two answers. Almost everything else they share: the ethics, the breath, the stages of concentration, the goal of freedom from suffering. They diverge on the nature of what is realized at the bottom of the stillness. The Buddha kept the entire Vedic architecture of practice and removed its keystone, the permanent Self, and built a path that needs no keystone to stand.</p>
+  </div>
+  <p>Held side by side, the two read as a koan the practice itself resolves. Many who go deep report that at a certain depth the difference between "the Self I found" and "the self that dissolved" stops meaning very much. Both traditions agree that whatever is there is not the small, anxious "I" that sat down to meditate. You may practice from either bank of the river. The water is the same.</p>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.wisdomlib.org/definition/atman" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Atman</a>
+    <a href="https://www.accesstoinsight.org/tipitaka/sn/sn22/sn22.059.than.html" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Access to Insight: Anatta Sutta</a>
+    <a href="https://www.britannica.com/topic/anatta" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Britannica: Anatta</a>
+  </div>
+</section>
+
+<!-- MIND & COGNIZER -->
+<section class="section-wrap" id="sec-mind">
+  <div class="section-header">
+    <div class="section-eyebrow">Vedic &amp; Buddhist psychology</div>
+    <h2 class="section-title">The mind, and the one who watches it</h2>
+  </div>
+  <p class="lead">Both traditions are, before anything else, sciences of the mind. And both begin from the same startling claim: the awareness that knows you are thinking stands distinct from the mind that thinks. Meditation is the practice of telling them apart.</p>
+  <h3 class="sub-heading">The Vedic instrument</h3>
+  <p>Vedic psychology does not speak of a single "mind." It describes an inner instrument, the <em>antahkarana</em>, with distinct functions. <span class="concept-link" data-id="Manas">Manas</span> is the sensory, restless, processing mind, the one that receives impressions and chatters. <span class="concept-link" data-id="Buddhi">Buddhi</span> is the discerning intellect, the faculty that decides and discriminates. <em>Ahamkara</em> is the I-maker, the function that stamps "mine" onto experience. And <em>chitta</em> is the deeper storehouse where impressions settle. The Yoga Sutras define yoga itself in one line as <em>chitta vritti nirodha</em>, the stilling of the whirlpools of the mind-field.</p>
+  <p>The crucial move is this: all of these are <em>instruments</em>. They are not the knower. Behind them, witnessing them, is <span class="concept-link" data-id="Atman">atman</span>, pure consciousness, the seer that the mind serves but cannot become. The cognition is the activity; the consciousness is what the activity happens within. To confuse the two, the tradition says, is the root of all suffering: we mistake the weather for the sky.</p>
+  <h3 class="sub-heading">The Buddhist analysis</h3>
+  <p>Buddhist psychology, the <em>Abhidharma</em>, performs a similar dissection and arrives at a subtly different place. It too distinguishes <em>citta</em>, the basic knowing or awareness, from <em>manas</em>, the mental processing that clings and constructs a sense of "I," from the mental factors that color each moment. But because there is no atman, no permanent witness, it does not place an eternal seer behind the process. Awareness here is itself a stream, a continuity of momentary knowings, each one arising and passing with its object.</p>
+  <p>So the divergence in psychology mirrors the divergence in metaphysics. The Vedic practitioner learns to rest <em>as</em> the witness, the unchanging awareness behind the mind. The Buddhist practitioner learns to watch awareness itself flow, finding freedom in seeing that there is nothing to stand apart, only this, arising and releasing, breath after breath.</p>
+  <div class="callout">
+    <div class="label">The shared insight</div>
+    <p>Strip away the disagreement and a single practical teaching remains, the one your own meditation will show you within minutes: thought is something that happens, like a sound or a sensation, and you are the space in which it is noticed. That space is calm and wide, the steady ground beneath its passing weather. Whether you call it the eternal Self or the flowing stream of knowing, learning to rest there is the whole art.</p>
+  </div>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.wisdomlib.org/definition/antahkarana" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Antahkarana</a>
+    <a href="https://www.wisdomlib.org/definition/citta" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Citta</a>
+    <a href="https://www.wisdomlib.org/definition/skandha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Skandha</a>
+  </div>
+</section>
+
+<!-- SAT CHIT ANANDA -->
+<section class="section-wrap" id="sec-sca">
+  <div class="section-header">
+    <div class="section-eyebrow">The world beyond &mdash; the absolute realm</div>
+    <h2 class="section-title">Sat-Chit-Ananda: where nothing is relative</h2>
+  </div>
+  <p class="lead">At the furthest reach of the practice, past the roots and the ground and the branches, the tradition points to the absolute realm, the one place where nothing is relative to anything else. It cannot be described, only approached, and the approach is made through three words that are not really three. <em>Sat-chit-ananda</em>: being, consciousness, bliss. The name Vedanta gives to the nature of the absolute itself.</p>
+  <div class="sca">
+    <div class="sca-card"><div class="skt">Sat</div><div class="en">Being &middot; Eternal</div><p>Pure existence, beyond time. Timelessness itself: that which simply <em>is</em>, untouched by beginning or end.</p></div>
+    <div class="sca-card"><div class="skt">Chit</div><div class="en">Consciousness &middot; Awake</div><p>Pure awareness, fully conscious of all things and all beings. The light by which anything is known at all.</p></div>
+    <div class="sca-card"><div class="skt">Ananda</div><div class="en">Bliss &middot; Ecstasy</div><p>Boundless joy, bliss, euphoria. The very texture of reality when nothing obstructs it.</p></div>
+  </div>
+  <p>This is what the tradition means by enlightenment, <em>moksha</em>, liberation: a realm entered, in which eternal being, total awareness, and unbroken bliss are revealed to be one single thing, your own deepest nature, never absent, only overlooked. In the map of the four reaches, this is the universe at the top of the diagram and the depth at the bottom meeting and turning out to be the same place.</p>
+  <div class="callout">
+    <div class="label">A bridge across traditions</div>
+    <p>Many who come to this practice from a Christian background find a familiar shape here. The absolute realm of sat-chit-ananda, eternal, all-knowing, and full of bliss, rhymes with what some Christian mystics have meant by heaven or by union with God: not a place reached after death so much as a reality always present, glimpsed when the veil thins. The vocabulary differs and the theologies are not identical. But the testimony of those who have touched it, in either language, is remarkably consistent: timeless, radiant, and at peace.</p>
+  </div>
+  <p>It is worth saying plainly that this realm is already and eternally the case, waiting only to be uncovered. The waves of the breath, the ethics of the yamas, the gathering of the mind: each one clears the obstructions to it. The work of meditation is to stop standing in its own light, so what was always present can shine through. And if a lifetime of practice does not arrive there, the tradition offers a quiet reassurance, told as a story between Arjuna and Krishna, that no step taken toward it is ever lost.</p>
+  <div class="callout" style="border-left-color:var(--violet)">
+    <div class="label" style="color:var(--violet)">Continue the thread</div>
+    <p>That story, of what happens to the meditator who runs out of life before reaching the world beyond, lives on the Cosmic Banyan page. <a href="cosmic-banyan.html#section-s7" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Read Arjuna's question and Krishna's answer &rarr;</a></p>
+  </div>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.yogapedia.com/definition/5838/sat-chit-ananda" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yogapedia: Sat-Chit-Ananda</a>
+    <a href="https://www.wisdomlib.org/concept/sat-chit-ananda" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Sat-chit-ananda</a>
+    <a href="https://hridaya-yoga.com/knowledge/concepts/sat-chit-ananda-pure-existence-awareness-bliss/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Hridaya Yoga: Sat-Chit-Ananda</a>
+  </div>
+  <div class="questions-list">
+    <div class="q-item"><span class="q-num">1.</span><span class="q-text">When you picture your own growth, do you see a tree climbing or a universe widening? What changes in the practice when you trade one image for the other?</span></div>
+    <div class="q-item"><span class="q-num">2.</span><span class="q-text">In the ocean breath, the exhale is the crash, the letting go. What in your life are you still only inhaling, gathering and holding, never quite allowing to break?</span></div>
+    <div class="q-item"><span class="q-num">3.</span><span class="q-text">The Vedic path seeks a Self to rest in; the Buddhist path releases the very idea of one. Sitting quietly right now, which feels truer to your own experience, and can you hold the question without rushing to an answer?</span></div>
+    <div class="q-item"><span class="q-num">4.</span><span class="q-text">If sat-chit-ananda is already present and only obscured, what is the obstruction you most often stand in the light of?</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- GLOSSARY DRAWER -->
+<div id="glossary-drawer" role="complementary" aria-label="Glossary">
+  <div class="glossary-header">
+    <div class="glossary-title">Glossary of meditation</div>
+    <button class="g-close" id="close-glossary" aria-label="Close glossary">&times;</button>
+  </div>
+  <input type="text" id="g-search" class="g-search" placeholder="Filter terms&hellip;"/>
+  <div id="glossary-list"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bridge">
+  <span class="footer-bridge-label">Continue the journey:</span>
+  <a href="cosmic-banyan.html" class="bridge-link"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12c0-3 2-5 5-5M12 12c0-3-2-5-5-5M12 12c0-2 1.5-4 4-4M12 12c0-2-1.5-4-4-4"/></svg>Cosmic Banyan Tree</a>
+  <a href="yoga-family-tree.html" class="bridge-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><line x1="9.5" y1="13.5" x2="6" y2="13"/><line x1="14.5" y1="13.5" x2="18" y2="13"/></svg>Yoga family tree</a>
+  <a href="index.html" class="bridge-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Hub</a>
+</div>
+
+<script>
+/* GLOSSARY DATA */
+const GLOSSARY = [
+  {term:'Ujjayi', skt:'ujjayi', url:'https://www.wisdomlib.org/definition/ujjayi',
+   def:'The victorious or ocean breath. A gentle narrowing of the throat turns the breath to a soft oceanic sound, the inhale gathering like a wave and the exhale crashing like surf. The carrier-breath of meditation.'},
+  {term:'Pranayama', skt:'prana + ayama', url:'https://www.wisdomlib.org/definition/pranayama',
+   def:'The regulation and expansion of life-force (prana) through the breath. The fourth limb of yoga, the bridge between the body and the mind.'},
+  {term:'Pratyahara', skt:'pratyahara', url:'https://www.wisdomlib.org/definition/pratyahara',
+   def:'Withdrawal of the senses from the outer world, drawing inward as a tortoise draws in its limbs. The fifth limb, and the true threshold of meditation.'},
+  {term:'Dharana', skt:'dharana', url:'https://www.wisdomlib.org/definition/dharana',
+   def:'Concentration; one-pointed focus of the mind on a single object such as the breath, a point of light, or a mantra. The sixth limb.'},
+  {term:'Dhyana', skt:'dhyana', url:'https://www.wisdomlib.org/definition/dhyana',
+   def:'Meditation proper: when concentration becomes effortless and the flow of awareness toward its object is unbroken. The seventh limb. The Pali form, jhana, became the Chinese Chan and the Japanese Zen.'},
+  {term:'Samadhi', skt:'samadhi', url:'https://www.wisdomlib.org/definition/samadhi',
+   def:'Absorption; the eighth limb, in which the meditator and the object of meditation merge and the separate sense of self dissolves into the absolute.'},
+  {term:'Yama', skt:'yama', url:'https://www.wisdomlib.org/definition/yama',
+   def:'The first limb: five ethical restraints toward the world, including non-harming (ahimsa) and truthfulness (satya). The roots of the practice.'},
+  {term:'Niyama', skt:'niyama', url:'https://www.wisdomlib.org/definition/niyama',
+   def:'The second limb: five inner observances, including purity, contentment, self-discipline, self-study, and surrender to the divine. <a href="the-divine.html" target="_blank" rel="noopener" style="color:var(--gold-dk)">What we mean by the divine &rarr;</a>'},
+  {term:'Asana', skt:'asana', url:'https://www.wisdomlib.org/definition/asana',
+   def:'The third limb: posture, originally the steady and comfortable seat that makes long meditation possible, later the whole physical practice of yoga.'},
+  {term:'Atman', skt:'atman', url:'https://www.wisdomlib.org/definition/atman',
+   def:'In the Vedic tradition, the true Self: eternal, unchanging, pure awareness, ultimately one with Brahman, the ground of all being. What meditation uncovers beneath the sheaths.'},
+  {term:'Anatta', skt:'anatta / anatman', url:'https://www.britannica.com/topic/anatta',
+   def:'In Buddhism, not-self: the teaching that no permanent, unchanging Self can be found. Where the Vedic tradition finds atman, the Buddha found a flowing process with no fixed owner. The great divergence between the two streams.'},
+  {term:'Manas', skt:'manas', url:'https://www.wisdomlib.org/definition/manas',
+   def:'The sensory, processing mind that receives impressions and chatters. One faculty of the inner instrument (antahkarana), distinct from the awareness that witnesses it.'},
+  {term:'Buddhi', skt:'buddhi', url:'https://www.wisdomlib.org/definition/buddhi',
+   def:'The discerning intellect; the faculty of judgment and discrimination within the inner instrument. The clear light of buddhi distinguishes the real from the unreal.'},
+  {term:'Pancha Kosha', skt:'pancha kosha', url:'https://www.wisdomlib.org/definition/kosha',
+   def:'The five sheaths that cover the Self: the physical, the energetic (breath), the mental, the wisdom, and the bliss bodies. Meditation peels them back, layer by layer, toward the center.'},
+  {term:'Akasha', skt:'akasha', url:'https://www.wisdomlib.org/definition/akasha',
+   def:'Space or ether: the subtlest of the five great elements and the medium of sound. In later esoteric traditions, the "akashic" field of subtle impression. The element through which the metaphysical reaches open.'},
+  {term:'Loka', skt:'loka', url:'https://www.wisdomlib.org/definition/loka',
+   def:'A world or plane of existence. The cosmology describes many lokas, from the dense material world to subtle and celestial realms, the worlds a meditator may discover within.'},
+  {term:'Mantra', skt:'mantra', url:'https://www.wisdomlib.org/definition/mantra',
+   def:'Sacred sound. A syllable or phrase repeated (japa) to gather the mind and carry it toward meditation. The tradition holds the sound itself to be a doorway, with Om as the seed-vibration of the absolute.'},
+  {term:'Nada', skt:'nada', url:'https://www.wisdomlib.org/definition/nada',
+   def:'The inner sound; the subtle vibration heard in deep stillness. Nada yoga is the path of meditation through sound.'},
+  {term:'Sat-Chit-Ananda', skt:'sat-cit-ananda', url:'https://www.yogapedia.com/definition/5838/sat-chit-ananda',
+   def:'Being, consciousness, bliss: the threefold nature of the absolute in Vedanta. Sat is eternal existence beyond time; chit is awareness fully conscious of all; ananda is boundless joy. This is enlightenment, the world beyond.'},
+  {term:'Moksha', skt:'moksha', url:'https://www.wisdomlib.org/definition/moksha',
+   def:'Liberation; release from the cycle of suffering and rebirth into the realization of one’s true nature. The fourth and final aim of human life.'},
+  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/buddhism/buddhanature/',
+   def:'The Mahayana teaching that the potential for full awakening is possessed equally by all beings, covered over like the sun behind clouds. Everyone, without exception, can become a Buddha.'},
+  {term:'Bodhisattva', skt:'bodhisattva', url:'https://www.lionsroar.com/the-bodhisattva-vow/',
+   def:'One who vows to attain full awakening for the sake of all beings, and to keep returning across lifetimes until every being is free. The bodhisattva vow extends into future lives.'},
+];
+
+const extLink = '<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+function renderGlossary(filter){
+  const f = (filter||'').toLowerCase().trim();
+  const terms = f ? GLOSSARY.filter(g=>g.term.toLowerCase().includes(f)||g.def.toLowerCase().includes(f)||g.skt.toLowerCase().includes(f)) : GLOSSARY;
+  if(!terms.length) return '<div style="font-size:13px;color:var(--text-muted);padding:1rem 0">No terms match that filter.</div>';
+  return terms.map(g=>`
+    <div class="glossary-term">
+      <div class="g-term">${g.term}</div>
+      <div class="g-skt">${g.skt}</div>
+      <div class="g-def">${g.def}</div>
+      ${g.url ? `<a href="${g.url}" class="g-link" target="_blank" rel="noopener">Source ${extLink}</a>` : ''}
+    </div>`).join('');
+}
+document.getElementById('glossary-list').innerHTML = renderGlossary('');
+document.getElementById('g-search').addEventListener('input',function(){
+  document.getElementById('glossary-list').innerHTML = renderGlossary(this.value);
+});
+const drawer = document.getElementById('glossary-drawer');
+document.getElementById('open-glossary').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('close-glossary').addEventListener('click',()=>drawer.classList.remove('open'));
+
+/* CONCEPT LINKS -> open glossary filtered */
+document.getElementById('content').addEventListener('click',function(e){
+  const cl = e.target.closest('.concept-link');
+  if(!cl) return;
+  const id = cl.dataset.id || cl.textContent;
+  const gs = document.getElementById('g-search');
+  gs.value = id;
+  document.getElementById('glossary-list').innerHTML = renderGlossary(id);
+  drawer.classList.add('open');
+});
+
+/* PILL NAV + SCROLLSPY */
+const pills = Array.from(document.querySelectorAll('.pill'));
+pills.forEach(p=>{
+  p.addEventListener('click',function(){
+    const t = document.getElementById(this.dataset.target);
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const sectionIds = pills.map(p=>p.dataset.target).filter(Boolean);
+const pillMap = {};
+pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
+let st;
+window.addEventListener('scroll',function(){
+  clearTimeout(st);
+  st=setTimeout(()=>{
+    let active = sectionIds[0];
+    const navH = document.getElementById('top-nav').offsetHeight + 14;
+    for(const id of sectionIds){
+      const el = document.getElementById(id);
+      if(el && el.getBoundingClientRect().top <= navH) active = id;
+    }
+    pills.forEach(p=>p.classList.remove('active'));
+    if(pillMap[active]) pillMap[active].classList.add('active');
+  },60);
+},{passive:true});
+
+/* ESC closes drawer */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') drawer.classList.remove('open'); });
+</script>
+</body>
+</html>

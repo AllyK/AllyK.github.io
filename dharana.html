@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dharana — The Art of Focus</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#070a16;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#e9ecf6;--text-mid:#bcc2d8;--text-muted:#838aa6;
+  --ac:#7FA8FF;--ac-dk:#A9C4FF;--gold:#F0C674;--teal:#5AE8C8;
+  --border:rgba(127,168,255,0.24);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1000px 600px at 50% -6%, rgba(127,168,255,0.12), transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, rgba(240,198,116,0.05), transparent 55%),
+    linear-gradient(180deg,#070a16 0%,#0a0d1f 55%,#0d1124 100%);
+  background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(1.3px 1.3px at 22% 28%,rgba(255,255,255,.5),transparent),radial-gradient(1.1px 1.1px at 68% 18%,rgba(255,255,255,.4),transparent),radial-gradient(1.2px 1.2px at 42% 66%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 84% 58%,rgba(255,255,255,.4),transparent),radial-gradient(1.1px 1.1px at 12% 78%,rgba(255,255,255,.3),transparent)}
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(7,10,22,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;letter-spacing:.06em}
+.nav-home:hover{color:var(--ac)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(127,168,255,.14);border-color:var(--border);color:var(--ac)}
+#hero{position:relative;z-index:1;text-align:center;padding:2.8rem 1rem 1.4rem}
+.focal{width:clamp(150px,34vw,220px);height:clamp(150px,34vw,220px);margin:0 auto 1.3rem}
+.focal svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,6vw,3.6rem);font-weight:400;letter-spacing:.05em;line-height:1.1;
+  background:linear-gradient(110deg,#A9C4FF,#7FA8FF 50%,#F0C674);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.hero-skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.18em;font-size:1.05rem;margin-bottom:.2rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:1rem;max-width:620px;margin:.4rem auto 0}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.section{margin-bottom:3rem}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p:last-child{margin-bottom:0}
+.section em{color:var(--gold);font-style:italic}
+.steps{counter-reset:s;list-style:none;margin:0}
+.flow{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0}
+.flow .f{flex:1;min-width:120px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.8rem .9rem;text-align:center}
+.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ac-dk)}
+.flow .f .fe{font-size:11px;color:var(--text-muted);letter-spacing:.08em}
+.flow .arrow{align-self:center;color:var(--ac);font-size:1.1rem}
+.objects{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:.7rem;margin:1.3rem 0}
+.obj{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.95rem 1.05rem;transition:border-color .15s,transform .15s}
+.obj:hover{border-color:var(--ac);transform:translateY(-2px)}
+.obj h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;color:var(--text);margin-bottom:.05rem}
+.obj .skt{font-size:11px;font-style:italic;color:var(--gold);margin-bottom:.4rem}
+.obj p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0 0 .5rem}
+.obj a.src{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(90,232,200,.3)}
+.obj a.src:hover{color:var(--gold)}
+.practice{background:linear-gradient(180deg,rgba(127,168,255,.1),rgba(240,198,116,.04));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
+.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:.7rem}
+.practice ol{margin:0 0 0 1.1rem}
+.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin:0}
+.callout a,.section a.inl{color:var(--ac-dk);border-bottom:1px solid var(--ac)}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.source-link:hover{border-color:var(--ac);color:var(--ac-dk)}
+.footer{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.footer span{font-size:12px;color:var(--text-muted)}
+.footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
+.footer a:hover{border-color:var(--ac);color:var(--ac-dk)}
+</style>
+</head>
+<body>
+<nav id="top-nav">
+  <a href="index.html" class="nav-home">The Living Practice</a>
+  <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+  <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan</a>
+  <a href="meditation.html" class="nav-page">Breath &amp; Meditation</a>
+  <a href="the-divine.html" class="nav-page">The Divine</a>
+  <a href="dharana.html" class="nav-page current">Dharana</a>
+</nav>
+
+<header id="hero">
+  <div class="focal">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke-width="1">
+        <circle cx="100" cy="100" r="92" stroke="rgba(127,168,255,.18)"/>
+        <circle cx="100" cy="100" r="72" stroke="rgba(127,168,255,.26)"/>
+        <circle cx="100" cy="100" r="52" stroke="rgba(127,168,255,.36)"/>
+        <circle cx="100" cy="100" r="32" stroke="rgba(169,196,255,.5)"/>
+      </g>
+      <g stroke="rgba(240,198,116,.5)" stroke-width="1">
+        <line x1="100" y1="8" x2="100" y2="60"/><line x1="100" y1="140" x2="100" y2="192"/>
+        <line x1="8" y1="100" x2="60" y2="100"/><line x1="140" y1="100" x2="192" y2="100"/>
+      </g>
+      <circle cx="100" cy="100" r="13" fill="#FFE8C0"/>
+      <circle cx="100" cy="100" r="22" fill="none" stroke="#F0C674" stroke-width="1.5" opacity=".7"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">Dharana</h1>
+  <div class="hero-skt">dhāraṇā &middot; the sixth limb</div>
+  <p class="hero-sub">Gathering the whole mind onto a single point, the art of focus that becomes meditation</p>
+</header>
+
+<main>
+  <section class="section" id="what">
+    <div class="eyebrow">The bridge limb</div>
+    <h2 class="s-title">Binding the mind to one point</h2>
+    <p class="lead">Patanjali defines dharana in a single line: <em>desha-bandhah chittasya dharana</em>, the binding of the mind-field to one place (Yoga Sutra 3.1). After the senses have been gathered inward through <span style="color:var(--ac-dk)">pratyahara</span>, dharana gives the quieted mind one thing to hold. The Sanskrit root <em>dhri</em> means to hold, to bear, to keep steady. Dharana is the holding.</p>
+    <p>The quality it builds is <em>ekagrata</em>, one-pointedness. A scattered mind is like sunlight spread across a room, warm but diffuse. Concentration is the same light gathered through a lens onto a single point, where it begins to burn. Nothing about the mind changes except its gathering, and everything changes.</p>
+    <p>Dharana is the bridge. Hold the point until the holding becomes effortless and unbroken, and concentration ripens into <span class="inl"><a href="meditation.html#sec-types">dhyana</a></span>, meditation. Let meditation deepen until the one who watches and the thing watched dissolve into each other, and that is <span class="inl"><a href="meditation.html#sec-sca">samadhi</a></span>. Patanjali names these three together as <em>samyama</em>, the inner instrument of yoga.</p>
+    <div class="flow">
+      <div class="f"><div class="fn">Pratyahara</div><div class="fe">senses withdrawn</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f" style="border-color:var(--border)"><div class="fn" style="color:var(--ac)">Dharana</div><div class="fe">one point held</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Dhyana</div><div class="fe">unbroken flow</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Samadhi</div><div class="fe">absorption</div></div>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.wisdomlib.org/hinduism/book/yoga-sutras-study/d/doc628765.html" target="_blank" rel="noopener">Wisdomlib: Yoga Sutra 3.1</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/dharana" target="_blank" rel="noopener">Wisdomlib: Dharana</a>
+    </div>
+  </section>
+
+  <section class="section" id="objects">
+    <div class="eyebrow">The objects of focus</div>
+    <h2 class="s-title">Where the mind can rest</h2>
+    <p class="lead">Dharana needs an object, a single place to bind the mind. The object can be outside you or within. Any of these is a complete doorway; choose one and return to it again and again.</p>
+    <div class="objects">
+      <div class="obj"><h4>Trataka</h4><div class="skt">trāṭaka &middot; steady gazing</div><p>Resting the open gaze on a candle flame without blinking until the eyes soften and fill, then holding the after-image within. The Hatha Yoga Pradipika (2.31) names it a cleanser of the eyes and the mind.</p><a class="src" href="https://yogainternational.com/article/view/candlelight-insight-trataka/" target="_blank" rel="noopener">Yoga International: Trataka ↗</a></div>
+      <div class="obj"><h4>Drishti</h4><div class="skt">dṛṣṭi &middot; the yogic gaze</div><p>The focal gaze points used inside the asanas: the tip of the nose, the horizon, the thumb. Drishti turns a physical pose into a moving dharana, and threads concentration through the whole <a class="src" href="yoga-family-tree.html" style="color:var(--ac-dk);border-color:var(--ac)">Asana</a> practice.</p><a class="src" href="https://www.yogajournal.com/yoga-101/philosophy/the-eye-of-the-beholder/" target="_blank" rel="noopener">Yoga Journal: Drishti ↗</a></div>
+      <div class="obj"><h4>The breath</h4><div class="skt">anapana &middot; the anchor</div><p>Counting and following each wave of the breath, returning the moment attention drifts. The breath is the most portable point of all, always present, always moving. It carries dharana straight into the <a class="src" href="meditation.html#sec-ujjayi" style="color:var(--ac-dk);border-color:var(--ac)">Breath page</a>.</p><a class="src" href="https://www.wisdomlib.org/definition/ekagrata" target="_blank" rel="noopener">Wisdomlib: Ekagrata ↗</a></div>
+      <div class="obj"><h4>Bija mantra &amp; japa</h4><div class="skt">japa &middot; a single sound</div><p>Repeating a seed-sound or sacred phrase, silently or aloud, so a single sound becomes the point the mind holds. Each repetition gathers the attention a little more completely.</p><a class="src" href="https://www.wisdomlib.org/definition/japa" target="_blank" rel="noopener">Wisdomlib: Japa ↗</a></div>
+      <div class="obj"><h4>Yantra &amp; mandala</h4><div class="skt">yantra &middot; a geometric image</div><p>Resting the eyes and mind on a sacred geometric form, letting its center draw the attention inward toward the still point at the heart of the pattern.</p><a class="src" href="https://www.wisdomlib.org/definition/yantra" target="_blank" rel="noopener">Wisdomlib: Yantra ↗</a></div>
+      <div class="obj"><h4>A center in the body</h4><div class="skt">bindu &middot; an inner point</div><p>Fixing attention on a single energetic center: the space between the brows, the heart, the navel. The point is felt rather than seen, and the body itself becomes the field of focus.</p><a class="src" href="https://www.wisdomlib.org/definition/trataka" target="_blank" rel="noopener">Wisdomlib: Trataka ↗</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="practice">
+    <div class="eyebrow">A first practice</div>
+    <h2 class="s-title">Trataka: the gathered flame</h2>
+    <p class="lead">Trataka is the most direct way to taste ekagrata, because the eyes give the mind something simple to hold. A candle is enough.</p>
+    <div class="practice">
+      <div class="label">Practice &middot; candle gazing</div>
+      <div class="p-title">One flame, one mind</div>
+      <ol>
+        <li>Sit tall in a dim, still room. Place a lit candle about an arm&rsquo;s length away, the flame level with your eyes.</li>
+        <li>Rest your open gaze softly on the brightest part of the flame. Let the eyes be steady and relaxed, blinking as little as feels comfortable.</li>
+        <li>When a thought arrives, notice it without following, and return the whole of your attention to the flame. This returning is the practice.</li>
+        <li>After a minute or two, gently close the eyes and hold the glowing after-image of the flame at the center of your inner vision for as long as it lasts.</li>
+        <li>When the image fades, open the eyes and begin again, two or three rounds. Close by letting the gaze and the breath rest soft.</li>
+      </ol>
+    </div>
+    <p>Begin with a few minutes. The point is steadiness, and steadiness grows quietly. If the eyes strain, soften the gaze or shorten the gazing and lengthen the inner holding.</p>
+  </section>
+
+  <section class="section" id="thread">
+    <div class="eyebrow">The connective tissue</div>
+    <h2 class="s-title">Dharana woven through the whole practice</h2>
+    <p>Once you recognize dharana, you find it everywhere. The drishti in a standing pose is dharana. The breath followed in pranayama is dharana. The mantra carried in chant is dharana. The same single gesture, gathering attention onto one point, wears many forms across the limbs, and each form trains the same quiet muscle of return.</p>
+    <p>This is why concentration is called the bridge. It connects the body of <span class="inl"><a href="yoga-family-tree.html">Asana</a></span> to the stillness of <span class="inl"><a href="meditation.html">meditation</a></span>, and it connects the outer practices to the inner ones. To strengthen dharana in any single place is to strengthen it in all of them.</p>
+    <div class="callout">
+      <div class="label">Samyama &middot; the inner trinity</div>
+      <p>When dharana, dhyana, and samadhi flow together on one object, the tradition calls it <em>samyama</em> (Yoga Sutra 3.4), the complete gathering. The Yoga Sutras describe samyama as the master key of the inner practice, the means by which the deepest knowing becomes available. It begins, always, with the simple act of holding one point.</p>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.swami-krishnananda.org/patanjali/raja_88.html" target="_blank" rel="noopener">Swami Krishnananda: Samyama</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/samyama" target="_blank" rel="noopener">Wisdomlib: Samyama</a>
+      <a class="source-link" href="https://yogainternational.com/article/view/candlelight-insight-trataka/" target="_blank" rel="noopener">Yoga International: Trataka</a>
+    </div>
+  </section>
+</main>
+
+<div class="footer">
+  <span>Continue along the limbs:</span>
+  <a href="meditation.html#sec-reaches">&larr; Pratyahara, the inward turn</a>
+  <a href="meditation.html#sec-types">Dhyana, meditation &rarr;</a>
+  <a href="index.html">The eight limbs</a>
+</div>
+</body>
+</html>

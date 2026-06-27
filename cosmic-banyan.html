@@ -180,18 +180,24 @@ main{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
 <nav id="top-nav">
   <div class="nav-global">
     <a href="index.html" class="nav-home">The Living Practice</a>
-    <a href="yoga-family-tree.html" class="nav-page">Yoga Family Tree</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
     <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
     <a href="cosmic-banyan.html" class="nav-page current">Cosmic Banyan Tree</a>
+    <a href="meditation.html" class="nav-page">Breath &amp; Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
   </div>
   <div class="nav-row">
     <div class="session-pills" id="session-pills">
       <button class="pill active" data-target="section-intro">Overview</button>
+      <button class="pill" data-target="section-yama">The Yamas</button>
       <button class="pill" data-target="section-s1">Shiva &amp; Sati</button>
       <button class="pill" data-target="section-s2">Prahlada's Devotion</button>
       <button class="pill" data-target="section-s3">Vamana &amp; Bali</button>
       <button class="pill" data-target="section-s4">The Ramayana</button>
       <button class="pill" data-target="section-s5">The Mahabharata</button>
+      <button class="pill" data-target="section-s6">Krishna</button>
+      <button class="pill" data-target="section-s7">Meditation &amp; Rebirth</button>
       <button class="pill" data-target="section-characters">Characters</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
     </div>
@@ -260,7 +266,7 @@ main{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
    ============================ */
 const POSES = {
   6:  {en:'Warrior Pose II',       skt:'Virabhadrasana II',
-       conn:'Named for Virabhadra, the fierce being Shiva created from his grief after Sati\'s death. Warrior II is not aggression. It is the shape of divine sorrow that has found its footing and become purposeful action.'},
+       conn:'Named for Virabhadra, the fierce being Shiva created from his grief after Sati\'s death. Warrior II is the shape of divine sorrow that has found its footing and become purposeful action.'},
   20: {en:'Warrior Pose I',        skt:'Virabhadrasana I',
        conn:'Virabhadra\'s first act was to stride toward Daksha\'s ceremony with purposeful, grief-born intention. The strong back-foot grounding and upward reach of Warrior I capture the quality of that arrival.'},
   46: {en:'Warrior Pose III',      skt:'Virabhadrasana III',
@@ -280,13 +286,15 @@ const POSES = {
   346:{en:'Shiva Twist Pose',      skt:'Parivrtta Natarajasana',
        conn:'A revolving Dancer Pose, evoking the turning of Shiva\'s cosmic dance: the cycling of creation and dissolution that the Tandava enacts at the heart of existence.'},
   363:{en:'Humble Warrior Prayer', skt:'Bhakti Virabhadrasana',
-       conn:'Bhakti (devotion) names this pose directly. The fierce warrior bows with prayer hands, showing that strength and surrender are not opposites but aspects of the same wholeness.'},
+       conn:'Bhakti (devotion) names this pose directly. The fierce warrior bows with prayer hands, showing that strength and surrender are aspects of the same wholeness.'},
   368:{en:'Splits Pose',           skt:'Hanumanasana',
        conn:'Named for Hanuman\'s legendary leap across the ocean to Lanka to find Sita. The full extension of the pose is the shape of complete trust, complete devotion, complete surrender to the purpose at hand.'},
    55:{en:'Lotus Pose',            skt:'Padmasana',
        conn:'The pose in which the teaching begins. On the battlefield of Kurukshetra, Arjuna sat collapsed in his chariot. The Bhagavad Gita is what arose from that stillness. Padmasana is the shape of a practitioner fully stopped — nothing left to do, nothing yet possible — and therefore completely available to receive what can only be heard in that condition.'},
    90:{en:'Bow Pose',              skt:'Dhanurasana',
        conn:'Arjuna\'s defining implement is his bow. The Bhagavad Gita begins at the moment he drops it. This pose is the shape of readiness before release: the body fully drawn back, everything coiled in preparation. What Krishna teaches Arjuna is the ability to be this bow — completely committed to the action — while releasing all attachment to where the arrow lands.'},
+   35:{en:'Happy Baby Pose',       skt:'Ananda Balasana',
+       conn:'Named for the divine infant at play. The pose recalls the quality of Baby Krishna in Vrindavan: complete, unself-conscious delight — a being whose whole existence is oriented toward joy rather than purpose or achievement. The tradition calls this quality leela. To find it in the body is to remember a mode of presence that precedes every agenda.'},
 };
 
 const CHARACTERS = {
@@ -323,7 +331,7 @@ const CHARACTERS = {
   kunti:       {name:'Kunti',           role:'Queen &amp; Mother', color:'#4A6888', story:'The Mahabharata',
     desc:'Mother of the Pandavas and keeper of a divine mantra she tested once in youth. Her first son Karna was set adrift on a river; she would watch him die on the battlefield without ever acknowledging him publicly. Her courage is quiet, enormous, and largely unwitnessed — the grief that holds a secret across an entire epic.'},
   draupadi:    {name:'Draupadi',        role:'Queen',       color:'#4A6888', story:'The Mahabharata',
-    desc:'Born from fire, married to five kings, humiliated in public before the entire assembly of the three worlds — and the tradition holds that her one act of complete surrender in that moment was the most direct channel to the divine in the entire epic. Draupadi is the Mahabharata\'s primary teaching figure for bhakti: not as comfort, but as the only force that works when everything else has failed.'},
+    desc:'Born from fire, married to five kings, humiliated in public before the entire assembly of the three worlds — and the tradition holds that her one act of complete surrender in that moment was the most direct channel to the divine in the entire epic. Draupadi is the Mahabharata\'s primary teaching figure for bhakti, the only force that works when everything else has failed.'},
   krishna_mb:  {name:'Krishna',         role:'Avatar &amp; Charioteer', color:'#4A6888', story:'The Mahabharata',
     desc:'The eighth avatar of Vishnu, who chose to be Arjuna\'s charioteer rather than take up arms himself. On the battlefield of Kurukshetra he spoke 700 verses to a collapsing warrior and delivered the central scripture of the yoga tradition. His death is as deliberate as his life: he allows a hunter\'s arrow to find his ankle, fulfills a curse, and departs like a lamp going out.'},
   arjuna:      {name:'Arjuna',          role:'Warrior &amp; Student', color:'#4A6888', story:'The Mahabharata',
@@ -333,7 +341,23 @@ const CHARACTERS = {
   yudhishtir:  {name:'Yudhishtir',      role:'King',        color:'#4A6888', story:'The Mahabharata',
     desc:'The eldest Pandava, son of Dharma himself. His adherence to dharma is absolute — and his one flaw is that dharma held as a code can be used against him. He loses kingdom, brothers, himself, and finally Draupadi at a rigged dice board. Decades later at the gates of heaven, faced with a final test, he will not abandon a dog. The dog becomes divine.'},
   duryodhana:  {name:'Duryodhana',      role:'Antagonist',  color:'#4A6888', story:'The Mahabharata',
-    desc:'The eldest of Dhritarashtra\'s one hundred sons. Brave, loyal to his allies, genuinely generous to Karna when the rest of the world was not — and constitutionally unable to accept that someone else might deserve more. His name means "dirty fighter" in Sanskrit. The tradition depicts him not as simply evil but as what jealousy becomes when it is never corrected across an entire life.'},
+    desc:'The eldest of Dhritarashtra\'s one hundred sons. Brave, loyal to his allies, genuinely generous to Karna when the rest of the world was not — and constitutionally unable to accept that someone else might deserve more. His name means "dirty fighter" in Sanskrit. The tradition depicts him as what jealousy becomes when it is never corrected across an entire life.'},
+  krishna_vr:  {name:'Krishna',         role:'Divine Child &amp; Avatar', color:'#4858B0', story:'The Life of Krishna',
+    desc:'The eighth avatar of Vishnu, the most beloved divine personality in the yoga traditions. Born in a prison cell, raised as a cowherd\'s son in Vrindavan, enchanting the world through play and beauty before any act of heroism. His characteristic form is the cowherd boy in threefold-bending pose, playing the flute. The Sanskrit meaning of his name: all-attractive.'},
+  vasudev:     {name:'Vasudev',         role:'Prince &amp; Father', color:'#4858B0', story:'The Life of Krishna',
+    desc:'Krishna\'s birth father and a prince of Mathura. On the night of Krishna\'s birth, he walked alone through storm and flood across the River Yamuna carrying the newborn child to safety in Vrindavan. The image of his crossing — the serpent Ananta Shesha spreading above them as an umbrella — is one of the most iconic in the entire tradition.'},
+  devaki:      {name:'Devaki',          role:'Queen &amp; Mother', color:'#4858B0', story:'The Life of Krishna',
+    desc:'Krishna\'s birth mother and sister of King Kamsa. She watched six of her children die before giving birth to the eighth. When Vishnu appeared in full radiance to announce he would be born to her, she asked him to conceal himself so Kamsa would not recognize him. Her love for Krishna, and the years of separation that followed, is one of the tradition\'s deepest teachings on longing.'},
+  kamsa:       {name:'Kamsa',           role:'King &amp; Antagonist', color:'#4858B0', story:'The Life of Krishna',
+    desc:'The king of Mathura and Devaki\'s brother. Powerful but governed entirely by fear: a prophecy heard once at a wedding controlled every decision he made for the rest of his life. He killed six infants trying to forestall the one he feared, and was defeated by that one with what the tradition describes as remarkable ease — a teaching on the disproportion between our fears and their actual object.'},
+  yashoda:     {name:'Yashoda',         role:'Foster Mother', color:'#4858B0', story:'The Life of Krishna',
+    desc:'Krishna\'s foster mother in Vrindavan. She does not know she is raising the Supreme Godhead — she simply loves the most beautiful, mischievous, irresistible child she has ever seen. The Bhagavatam lingers on her relationship with Krishna as the model for a love of the divine so natural and complete it contains no awe at all.'},
+  nanda:       {name:'Nanda',           role:'Foster Father', color:'#4858B0', story:'The Life of Krishna',
+    desc:'Krishna\'s foster father, leader of the cowherd community of Vrindavan. When Kaliya coiled around Krishna in the Yamuna, Nanda tried to wade in to rescue him and had to be held back by others. His love — completely unaware that the person he is rushing toward holds all things — is the tradition\'s image of what parental instinct looks like when directed at the divine.'},
+  balaram:     {name:'Balaram',         role:'Elder Brother', color:'#4858B0', story:'The Life of Krishna',
+    desc:'Krishna\'s elder companion throughout his life. Born of Rohini (another wife of Vasudev), he is technically Krishna\'s half-brother, but the tradition treats them as inseparable brothers. Where Krishna embodies sweetness and beauty, Balaram embodies strength and protection. Together they are understood as two complementary expressions of the divine fullness.'},
+  radha:       {name:'Sri Radha',       role:'Eternal Consort', color:'#4858B0', story:'The Life of Krishna',
+    desc:'The foremost of the gopis of Vrindavan and Krishna\'s eternal consort. There is no Krishna without Radha, and no Radha without Krishna — they are one being in two forms. The Bhakti tradition holds their love as the highest model of the soul\'s relationship with the divine. In Vrindavan, devotees call out simply: Radhe. The tradition considers this sufficient.'},
 };
 
 const GLOSSARY = [
@@ -346,7 +370,7 @@ const GLOSSARY = [
   {term:'Guna',      skt:'guna',             url:'https://www.wisdomlib.org/definition/guna',
    def:'The three qualities of manifest existence: tamas (inertia), rajas (activity, passion), and sattva (clarity, harmony). Spiritual practice generally cultivates sattva and uses rajas purposefully.'},
   {term:'Ishvara pranidhana', skt:'Ishvara pranidhana', url:'https://www.wisdomlib.org/definition/ishvara-pranidhana',
-   def:'Surrender to the divine: the fifth niyama in Patanjali\'s Yoga Sutras. Requires relinquishing not just actions but outcomes. Bali\'s gift to Vamana is its defining story.'},
+   def:'Surrender to the divine: the fifth niyama in Patanjali\'s Yoga Sutras. Requires relinquishing both actions and their outcomes. Bali\'s gift to Vamana is its defining story.'},
   {term:'Karma',     skt:'karma',            url:'https://www.wisdomlib.org/definition/karma',
    def:'Action, and the principle that every action creates an energy that returns to its source. The quality of intention and the direction of attention both matter.'},
   {term:'Leela',     skt:'leela',            url:'https://www.wisdomlib.org/definition/lila',
@@ -383,6 +407,16 @@ const GLOSSARY = [
    def:'The divine song: 700 verses spoken by Krishna to Arjuna on the battlefield of Kurukshetra, embedded within the Mahabharata. The central teaching is nishkama karma — act fully, without attachment to outcomes. It is the most-cited scripture in the yoga tradition.'},
   {term:'Swadharma', skt:'swadharma',       url:'https://www.wisdomlib.org/definition/svadharma',
    def:'One\'s own specific path of duty, distinct from dharma in general. The Bhagavad Gita holds that it is better to fulfill one\'s own swadharma imperfectly than another\'s perfectly. The Mahabharata tests this principle in every character: the question is never only what the right action is, but who you are while doing it.'},
+  {term:'Madhurya', skt:'madhurya',         url:'https://www.wisdomlib.org/definition/madhurya',
+   def:'Sweetness; the intimate quality of Krishna\'s divine aesthetic. Distinguished from aishwarya (majestic reverence), madhurya is the quality of love that meets God as a beloved friend, child, or lover. The Rasalila is its highest expression. The tradition considers it the most direct path to intimacy with the divine.'},
+  {term:'Rasalila', skt:'rasalila',         url:'https://www.wisdomlib.org/definition/rasalila',
+   def:'The circle dance of Krishna with the gopis under the autumn full moon: the highest symbol of devotional yoga in the Bhakti tradition. Krishna stands at the center; the gopis move on the circumference, holding hands. Their longing toward the center is the structure of all devotional practice.'},
+  {term:'Moksha', skt:'moksha', url:'https://www.wisdomlib.org/definition/moksha',
+   def:'Liberation; release from the cycle of birth and rebirth into the realization of one\'s true nature. The fourth and final aim of human life, and the destination of the meditative path. Krishna\'s teaching in Chapter 6 reassures Arjuna that no step taken toward moksha is ever lost.'},
+  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/buddhism/buddhanature/',
+   def:'The Mahayana Buddhist teaching that the potential for full awakening is possessed equally by all beings, covered over like the sun behind clouds. Everyone, without exception, carries the capacity to become a Buddha.'},
+  {term:'Bodhisattva', skt:'bodhisattva', url:'https://www.lionsroar.com/the-bodhisattva-vow/',
+   def:'One who vows to attain full awakening for the sake of all beings, and to keep returning across lifetimes until every being is free. The bodhisattva vow explicitly extends into future lives.'},
 ];
 
 const STORIES = [
@@ -403,11 +437,11 @@ const STORIES = [
        text:`Shiva and Shakti are not two separate beings who happened to meet. They are two aspects of a single reality. Shiva is pure awareness: consciousness at rest. Shakti is the creative power of that consciousness: energy in motion. Without Shakti, Shiva is shava, a corpse. Without Shiva, Shakti is undirected energy without form. Their union is the creative act at the heart of existence itself.
 Shiva is the Adi Yogi, the first yogi, who sits in endless meditation at the edge of the world. He is simultaneously the great ascetic who has burned away all attachment and the passionate devotee who will be undone by love. Every yoga practice that works with energy, breath, or stillness traces its lineage to him.`},
       {heading:'The tragedy of Sati',
-       text:`Sati is born as the daughter of Daksha, one of the great progenitors of the world. She falls in love with Shiva and marries him over her father's fierce objection. Daksha considers Shiva an ascetic outsider, unworthy of his daughter. His objection is not spiritual discernment. It is wounded pride.
+       text:`Sati is born as the daughter of Daksha, one of the great progenitors of the world. She falls in love with Shiva and marries him over her father's fierce objection. Daksha considers Shiva an ascetic outsider, unworthy of his daughter. His objection rises from wounded pride.
 Daksha organizes a great yagya, a cosmic gathering of the celestials, and deliberately excludes Shiva and Sati. She attends anyway, hoping presence might heal what absence cannot. What she finds is catastrophic. Daksha humiliates Shiva publicly before the assembled heavens. Unable to remain in a hall where her husband is degraded, Sati ends her life in the sacred fire. Her name means "true" or "virtuous." Her act is one of radical, terrible integrity.`},
       {heading:'Grief, the Shakti Pithas, and forgiveness',
-       text:`When news reaches Shiva, his grief is not contained or philosophical. It is absolute. He retrieves Sati's body and wanders the cosmos carrying her, inconsolable. His grief is so vast it disrupts cosmic order. Vishnu intervenes compassionately, gently cutting Sati's body into pieces as Shiva wanders, releasing him incrementally. Wherever a piece falls, a Shakti Pitha is created: a sacred site where the divine feminine is especially present. There are 51 such sites across South Asia, honored to this day. Where grief is fully felt, the ground becomes sacred.
-Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony is destroyed. But Shiva's ultimate act is not revenge. It is forgiveness: he restores what was broken, even restoring Daksha's life. Sati is reborn as Parvati. Through extraordinary <span class="concept-link" data-id="Tapas">tapas</span>, she wins Shiva back. The story does not end in loss. It ends in a new beginning, bought by patience and fire.`},
+       text:`When news reaches Shiva, his grief is absolute, beyond all containing or philosophy. He retrieves Sati's body and wanders the cosmos carrying her, inconsolable. His grief is so vast it disrupts cosmic order. Vishnu intervenes compassionately, gently cutting Sati's body into pieces as Shiva wanders, releasing him incrementally. Wherever a piece falls, a Shakti Pitha is created: a sacred site where the divine feminine is especially present. There are 51 such sites across South Asia, honored to this day. Where grief is fully felt, the ground becomes sacred.
+Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony is destroyed. But Shiva's ultimate act is forgiveness: he restores what was broken, even restoring Daksha's life. Sati is reborn as Parvati. Through extraordinary <span class="concept-link" data-id="Tapas">tapas</span>, she wins Shiva back. The story does not end in loss. It ends in a new beginning, bought by patience and fire.`},
     ],
     characterIds:['shiva','sati','daksha','virabhadra'],
     connections:`
@@ -415,8 +449,8 @@ Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony
 <p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> and <span class="pose-link" data-id="346">Shiva Twist</span> are named for Nataraja, Shiva in his cosmic dance. The Tandava is the rhythm of creation and dissolution intertwined: both the destruction of the old and the ecstatic aliveness of the new, held in one shape.</p>
 <p>Daksha's story teaches what Patanjali calls asmita (ego-sense): how spiritual accomplishment without humility becomes the most dangerous trap. Shiva's forgiveness after moving through complete grief and complete ferocity is <span class="concept-link" data-id="Pratipaksha bhavana">pratipaksha bhavana</span> at its fullest: transformation so complete that what remains is capable of the opposite.</p>`,
     questions:[
-      'Daksha\'s harm comes not from violence but from pride that cannot honor what his daughter loves. Where in your own life does pride disguise itself as discernment, protecting a preference by calling it a principle?',
-      'Shiva\'s grief is so vast it disrupts cosmic order. What does it mean for a spiritual tradition to say that grief this complete is not a problem to be solved, but part of the universe\'s own process of healing?',
+      'Daksha\'s harm flows from pride that cannot honor what his daughter loves. Where in your own life does pride disguise itself as discernment, protecting a preference by calling it a principle?',
+      'Shiva\'s grief is so vast it disrupts cosmic order. What does it mean for a spiritual tradition to say that grief this complete belongs to the universe\'s own process of healing?',
       'Sati chose to remain true to what she loved even at the cost of her life. Without romanticizing that act, what are the things in your life that you will not dishonor regardless of external pressure?',
       'Parvati does not simply wait for Shiva to return. She performs tapas: she earns the reunion through disciplined practice. What does that suggest about the relationship between spiritual discipline and the recovery of what has been lost?',
       'In Warrior pose, you stand in the shape of a being born of divine grief transformed into action. How does knowing that history change the quality of your attention in the pose?',
@@ -448,7 +482,7 @@ Prahlada is a child of perhaps five or six. He heard the teachings of Narada Mun
     characterIds:['jaya_vijaya','kumaras','varaha','prahlada','narasimha'],
     connections:`
 <p>Prahlada's story is the foundational text for <span class="concept-link" data-id="Nama-japa">nama-japa</span> (mantra repetition). His unbroken chanting under conditions of persecution shows what the practice builds over time: an attention that cannot be interrupted by circumstance. <span class="pose-link" data-id="335">Lion Pose (Simhasana)</span> carries the energy of Narasimha's roar — the sound that dissolves what cannot be sustained.</p>
-<p>The Jaya-Vijaya story speaks to <span class="concept-link" data-id="Karma">karma</span> and <span class="concept-link" data-id="Svadhyaya">svadhyaya</span> (self-study): the quality of attention matters more than its apparent direction. What we give our complete, unbroken attention to, we move toward. Narasimha's emergence from the pillar teaches that the divine is not elsewhere: it is in the structure of matter, present everywhere Prahlada's chanting has been.</p>
+<p>The Jaya-Vijaya story speaks to <span class="concept-link" data-id="Karma">karma</span> and <span class="concept-link" data-id="Svadhyaya">svadhyaya</span> (self-study): the quality of attention matters more than its apparent direction. What we give our complete, unbroken attention to, we move toward. Narasimha's emergence from the pillar teaches that the divine is here in the structure of matter, present everywhere Prahlada's chanting has been.</p>
 <p><span class="pose-link" data-id="99">Fish Pose (Matsyasana)</span> is named for Matsya, the first avatar of Vishnu, whose story precedes this arc in the Bhagavatam. The chest-opening quality of the pose reflects the seat of knowledge the avatar came to protect.</p>`,
     questions:[
       'Jaya and Vijaya chose three intense hostile births over seven devotional ones. What does that say about the spiritual weight of whatever you return to most obsessively — your fears, resentments, fixations?',
@@ -475,7 +509,7 @@ Prahlada is a child of perhaps five or six. He heard the teachings of Narada Mun
        text:`Bali Maharaja, the demon king, has performed such immense <span class="concept-link" data-id="Tapas">tapas</span> and accumulated such extraordinary virtue — generosity, truthfulness, courage — that he has conquered the three worlds. Even Indra and the celestials have been displaced. The cosmic balance has shifted: power rests with a being whose integrity is, by almost any measure, greater than those he has displaced.
 Vishnu descends as Vamana, a dwarf brahmin student, and arrives at Bali's great yagya. Bali has pledged to give anything asked of him. Vamana asks for three steps of land, as much as his small feet can cover in three paces. Bali's guru Shukracharya recognizes Vamana immediately as Vishnu in disguise and warns Bali clearly: this is a trap. Do not grant it. Bali listens, considers, and grants the boon anyway.`},
       {heading:'The three steps of Trivikrama',
-       text:`Bali's reasoning is not ignorance. He says, in essence: if this is indeed Vishnu himself come to take from me, what greater fortune could there be than to give to the Lord? He sees through the disguise and chooses to give with full awareness of the cost. This is not generosity born of not knowing what is being offered. It is generosity born of knowing exactly what is being given, and to whom, and choosing it freely.
+       text:`Bali's reasoning is not ignorance. He says, in essence: if this is indeed Vishnu himself come to take from me, what greater fortune could there be than to give to the Lord? He sees through the disguise and chooses to give with full awareness of the cost. This is generosity born of knowing exactly what is being given, and to whom, and choosing it freely.
 Vamana expands into Trivikrama, the one who traverses all three worlds. With one step he covers the entire earth. With the second, all the heavens. No place remains for the third step. Bali, who has pledged, offers his own head. Vishnu places his foot on Bali's head and sends him down to Sutala, a realm described in the Bhagavatam as more serene and beautiful than the heavens the celestials fought over. Vishnu himself takes his place as the guard at Bali's gate. And he promises: in a future cosmic cycle, Bali will become Indra.`},
     ],
     characterIds:['vamana','bali'],
@@ -488,7 +522,7 @@ Vamana expands into Trivikrama, the one who traverses all three worlds. With one
       'Shukracharya gave Bali accurate counsel, and Bali chose not to follow it because something deeper was calling. Have you ever received correct advice and chosen not to take it? What did that feel like, and what happened?',
       'Vishnu becomes Bali\'s doorman. The divine does not punish Bali; it comes to live with him. What does it suggest about surrender that the one who receives everything also gives everything back in the most intimate form?',
       'Bali is a demon who is more virtuous than most celestials in these stories. Where in your own life do you find genuine spiritual quality in unexpected places or people?',
-      'Ishvara pranidhana asks not just for surrender of outcomes but for trust that what returns will be sufficient. Where is that trust easiest for you? Where is it hardest?',
+      'Ishvara pranidhana asks for both the surrender of outcomes and the trust that what returns will be sufficient. Where is that trust easiest for you? Where is it hardest?',
     ],
   },
   {
@@ -514,20 +548,20 @@ In the forest, the demon Ravana, king of Lanka, becomes fixated on Sita. He lure
        text:`Rama's grief at Sita's absence is absolute. He searches the forests asking the trees and rivers whether they have seen her. Through the monkey king Sugriva and his general Hanuman, he learns where Sita has been taken. Hanuman crosses the ocean to Lanka, finds Sita in Ravana's garden, and offers immediately to carry her back. She refuses. She will not be rescued by Hanuman. She will be rescued by Rama. Her refusal is not passivity; it is a precise understanding of what the moment requires. Her courage sustained across months of captivity is equal to any warrior's valor in the field.`},
       {heading:'The war, the return, Diwali, and the final sorrow',
        text:`Rama builds a bridge across the ocean, each stone inscribed with his name floating on the water, and wages war against Lanka. Ravana's noble brother Vibhishana defects to Rama's side, unable to support adharma even in service of family loyalty. Ravana is slain. Sita is freed. And then Rama, before all the assembled armies and the world, asks her to prove her purity. He does not want to do this. He loves her absolutely. But he is a king: a king's judgment must be accepted by his people. The trial by fire is not Rama's cruelty; it is his sacrifice.
-The people light lamps through Ayodhya to guide them home. This is Diwali. But the story does not end there. Years later, a washerman questions publicly how the king could accept a wife who lived in another man's house. Rama sends Sita away again, into the forest, while she is pregnant with their sons. He mourns her absence for the rest of his life, never remarries, and uses a golden statue of Sita for every ritual requiring a queen. When their sons eventually recite the Ramayana before him, recognition is complete but too late. Sita refuses to return. She calls on the earth to receive her, and the earth opens. The Ramayana presents this not as justice but as tragedy.`},
+The people light lamps through Ayodhya to guide them home. This is Diwali. But the story does not end there. Years later, a washerman questions publicly how the king could accept a wife who lived in another man's house. Rama sends Sita away again, into the forest, while she is pregnant with their sons. He mourns her absence for the rest of his life, never remarries, and uses a golden statue of Sita for every ritual requiring a queen. When their sons eventually recite the Ramayana before him, recognition is complete but too late. Sita refuses to return. She calls on the earth to receive her, and the earth opens. The Ramayana presents this as tragedy.`},
     ],
     characterIds:['rama','sita','hanuman','ravana'],
     connections:`
 <p><span class="pose-link" data-id="368">Hanumanasana (Splits Pose)</span> is named for Hanuman's legendary leap across the ocean to Lanka to find Sita. The full extension of the pose is the shape of complete trust, complete devotion, and complete surrender to the purpose at hand. <span class="pose-link" data-id="73">Ardha Hanumanasana (Half Splits)</span> is the preparatory moment: the breath just before the leap.</p>
-<p>The Ramayana is a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> in its most painful form: Rama acts from dharma in every moment, releasing personal desire from the outcome. <span class="concept-link" data-id="Satya">Satya</span> (truthfulness) is Sita's defining quality. Her final act — calling on the earth rather than returning to prove herself once more — is the most radical expression of satya in all five stories.</p>
-<p>Hanuman's relationship with Rama is one of the tradition's deepest templates for the guru-student relationship. Every gift he possesses is placed entirely in service of Rama with no personal agenda. This is <span class="concept-link" data-id="Bhakti">bhakti</span> in action: not love that bypasses understanding, but wisdom entirely in service of love. Diwali, the festival of lights that marks Rama's return, is understood as the soul recognizing its source: the moment when what was hidden in darkness becomes visible again.</p>`,
+<p>The Ramayana is a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> in its most painful form: Rama acts from dharma in every moment, releasing personal desire from the outcome. <span class="concept-link" data-id="Satya">Satya</span> (truthfulness) is Sita's defining quality. Her final act — calling on the earth rather than returning to prove herself once more — is the most radical expression of satya in all the stories.</p>
+<p>Hanuman's relationship with Rama is one of the tradition's deepest templates for the guru-student relationship. Every gift he possesses is placed entirely in service of Rama with no personal agenda. This is <span class="concept-link" data-id="Bhakti">bhakti</span> in action: wisdom entirely in service of love. Diwali, the festival of lights that marks Rama's return, is understood as the soul recognizing its source: the moment when what was hidden in darkness becomes visible again.</p>`,
     questions:[
       'Rama walks away from kingship as if removing a garment, without visible struggle. Is this admirable detachment or a concerning absence of human attachment? What does your answer reveal about your own relationship to renunciation?',
       'Sita refuses Hanuman\'s offer to carry her home, insisting on being rescued by Rama alone. What are the things in your own life you know need to be done in a particular way, even when a faster or easier path is available?',
       'The trial by fire asks Sita to prove publicly what she already knows privately. When have you been asked to prove your worth to people who should already know it? What did you do?',
       'Rama does not place his love for Sita above his dharma as king. The Ramayana neither condemns nor easily celebrates this. Where in your own life do your roles come into irreconcilable conflict? How do you choose?',
       'Hanuman\'s defining image is his chest opened to reveal Rama and Sita within his heart — a being entirely occupied by devotion. What would it mean for your practice, work, or relationships to be that completely given to something?',
-      'The Ramayana\'s final tragedy is caused not by a villain but by social expectation: one washerman\'s comment that Rama cannot ignore. What collective expectations in your own cultural context cause harm that no single person intends?',
+      'The Ramayana\'s final tragedy is caused by social expectation: one washerman\'s comment that Rama cannot ignore. What collective expectations in your own cultural context cause harm that no single person intends?',
     ],
   },
   {
@@ -547,7 +581,7 @@ The people light lamps through Ayodhya to guide them home. This is Diwali. But t
     sections:[
       {heading:'The epic and its families',
        text:`The Mahabharata was composed by the sage Vyasadeva, who also appears within it as a character — the author who wrote himself into his own poem. At more than 100,000 verses, it contains four times the combined length of the Iliad and Odyssey. Embedded within it are 700 verses spoken by Krishna to Arjuna on a battlefield: the Bhagavad Gita. The epic has been called the fifth Veda and contains the declaration that whatever concerns <span class="concept-link" data-id="Dharma">dharma</span>, artha, kama, and moksha that exists elsewhere can be found here — but what is not here is found nowhere.
-At its center are two families of cousins: the five Pandava brothers (Yudhishtir, Bhima, Arjuna, Nakula, Sahadeva) and the one hundred sons of the blind king Dhritarashtra, led by Duryodhana. Where the Ramayana presents dharma and adharma in relative clarity, the Mahabharata refuses to. Almost every character is capable of both extraordinary virtue and grave error. That is the teaching: not which side to join, but how to act from dharma when the ground is inseparably gray.`},
+At its center are two families of cousins: the five Pandava brothers (Yudhishtir, Bhima, Arjuna, Nakula, Sahadeva) and the one hundred sons of the blind king Dhritarashtra, led by Duryodhana. Where the Ramayana presents dharma and adharma in relative clarity, the Mahabharata refuses to. Almost every character is capable of both extraordinary virtue and grave error. That is the teaching: how to act from dharma when the ground is inseparably gray.`},
       {heading:'Kunti\'s mantra and the shadow of Karna',
        text:`The Pandavas\' mother Kunti was given a mantra by the sage Durvasa to summon any deity and bear their child. As a young woman, untested and curious, she tried it once. The sun god appeared. Terrified, she placed the radiant newborn — armored and earringed at birth with divine gifts — in a basket and set him adrift on the river, as Moses would be set adrift centuries later. That child was Karna: raised by a charioteer, given the skill of the greatest warriors, denied the recognition that would have allowed him to use it freely. She would watch him die on the battlefield of Kurukshetra without ever publicly acknowledging whose son he was.
 Kunti married King Pandu, who received a curse that he would die if he made love to either of his wives. She used her mantra three more times: Dharma himself gave Yudhishtir, Vayu gave Bhima, Indra gave Arjuna. Her co-wife Madri called the Ashvins and the twins Nakula and Sahadeva were born. When Pandu eventually could not sustain the prohibition, Madri entered the funeral fire with him. Kunti raised all five alone.`},
@@ -564,14 +598,101 @@ Krishna\'s response does not begin with comfort. It begins with correction. You 
 <p>The Bhagavad Gita\'s teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> is the most direct scriptural source for why we practice without grasping at results: the work of today\'s pose is today\'s pose. The outcome — flexibility, strength, insight — is not the practice. The practice is the practice. <span class="pose-link" data-id="90">Bow Pose (Dhanurasana)</span> captures this exactly: the body fully drawn back, everything coiled and ready, released with complete commitment and no control over where the arrow lands.</p>
 <p>Draupadi\'s act of surrender — raising both hands when nothing else worked and calling only on the divine — is <span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span> (surrender to the divine) at its most extreme. Bhakti is not a comfort in this story; it is the last resort that becomes the most direct route. Every act of honest surrender in practice carries a trace of this gesture: the exhale that releases what the inhale was gripping.</p>
 <p><span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is associated with the Gita\'s teaching because it is the pose of the student who has gone completely still — the collapse before the arising. The <span class="pose-link" data-id="20">Warrior poses</span> that come after are the shape of having listened: purposeful action, fully committed, fully grounded, without the noise of attachment to what follows. The sequence from collapse to warrior is the Bhagavad Gita in asana.</p>
-<p>Karna\'s story is one of the tradition\'s deepest teachings on <span class="concept-link" data-id="Karma">karma</span>: the circumstances of birth were not his choosing, but the loyalty he chose within them was entirely his own. His arc asks whether the cards we are dealt are the story, or whether the manner of playing them is.</p>`,
+<p>Karna\'s story is one of the tradition\'s deepest teachings on <span class="concept-link" data-id="Karma">karma</span>: the circumstances of birth lay beyond his choosing, and the loyalty he chose within them was entirely his own. His arc asks whether the cards we are dealt are the story, or whether the manner of playing them is.</p>`,
     questions:[
-      'Arjuna sees people he loves on both sides of the battlefield and collapses because he cannot choose without destroying something precious. Where in your own life does paralysis come not from confusion about what is right but from the fact that acting rightly will cost you something you love?',
+      'Arjuna sees people he loves on both sides of the battlefield and collapses because he cannot choose without destroying something precious. Where in your own life does paralysis arise because acting rightly will cost you something you love, even when you can see what is right?',
       'The Bhagavad Gita teaches nishkama karma: act fully, release the outcome completely. Is this the same as not caring what happens? Where is the difference between non-attachment and indifference?',
       'Draupadi stopped calling on her husbands when they could not help and called only on the divine. What does it take to reach that point of complete surrender — and what in your life still prevents you from reaching it?',
       'Karna knew his true identity before the war and chose to fight for Duryodhana anyway, out of loyalty. He chose a certain loss with integrity over a possible victory with betrayal. Where in your own life have you made a similar choice, or faced one?',
       'Yudhishtir is the son of Dharma itself and still loses everything because he cannot refuse a challenge even when the challenge is designed to destroy him. How does holding a principle as a code make it possible for others to exploit that principle against you?',
       'At the gates of heaven, Yudhishtir refuses to enter without the dog who had accompanied him on the final journey. The test is whether he will abandon the lowest for the highest reward. Where in your life does a similar test arise — and how do you know which choice is dharmic?',
+    ],
+  },
+  {
+    id:'s6', color:'#4858B0',
+    title:'Krishna: the dance of divine love',
+    source:'Srimad Bhagavatam, Canto 10',
+    thisStory:'Unlike every other story in this tradition, the life of Krishna is primarily about sweetness — madhurya. He is born in a prison cell, raised as a cowherd\'s son, and defeats demons through play rather than war. His story is the heart of the Bhakti tradition and its central invitation: to fall completely in love with the divine, no longer at a distance.',
+    sources:[
+      {label:'Vedabase: SB Canto 10 (The Life of Krishna)', url:'https://vedabase.io/en/library/sb/10/'},
+      {label:'Sacred Texts: Bhagavata Purana Book 10', url:'https://www.sacred-texts.com/hin/sb/sb10a.htm'},
+      {label:'Wisdomlib: Krishna', url:'https://www.wisdomlib.org/definition/krishna'},
+      {label:'Wisdomlib: Radha', url:'https://www.wisdomlib.org/definition/radha'},
+      {label:'Wisdomlib: Rasalila', url:'https://www.wisdomlib.org/definition/rasalila'},
+      {label:'Wisdomlib: Govardhan', url:'https://www.wisdomlib.org/definition/govardhana'},
+    ],
+    sections:[
+      {heading:'The prophecy and the crossing of the Yamuna',
+       text:`At the wedding of Prince Vasudev and Devaki — the sister of King Kamsa — a voice spoke in the sky heard only by Kamsa: you will die at the hands of the eighth child born of your sister. Kamsa drew his sword at his own sister on her wedding day. Vasudev intervened with extraordinary calm: give us every child we have. Under your watch. You need fear nothing. Kamsa was pacified — and then manipulated by his ministers into imprisoning the couple instead.
+Child after child was born to Vasudev and Devaki, and Kamsa killed each one. Six children died this way. When Devaki was radiant with the eighth, both the imprisoned parents and Kamsa himself knew this was the one. Before the labor was complete, Vishnu appeared to them — four-armed, resplendent — to announce: I will be born to you. When Devaki asked him to conceal himself so Kamsa would not recognize him, Vishnu became a small, dark-complected boy. His skin, the texts say, was the color of a monsoon cloud. This was Krishna.
+That night, the prison guards fell asleep and the doors unlocked on their own. Vasudev carried the newborn across the flooded River Yamuna. The water rose to touch the child's feet; the thousand-headed serpent Ananta Shesha spread his hoods above them as an umbrella through the storm. In Vrindavan, the cowherd couple Nanda and Yashoda had just given birth to a baby girl. Vasudev exchanged the infants and walked back through the dark. When Kamsa seized the girl, she slipped from his hands, transformed into the goddess, and told him: the one who will end you has already escaped. Then she disappeared.`},
+      {heading:'The child who enchanted the world',
+       text:`Krishna grew up in Vrindavan as the son of cowherd farmers — his world the banks of the Yamuna, the surrounding forests, the rhythms of cattle and seasons. His elder companion was Balaram. The tradition presents Vrindavan as paradise because Krishna is in it: everything in the village — cows, calves, deer, trees, the river itself — exists under his spell.
+The stories of child Krishna are among the most beloved in all of yoga's traditions. He raids neighbors' pantries with his friends and feeds the stores of butter and cream to the monkeys. He throws tantrums before Yashoda when caught. He allows her to bind him to a mortar stone in frustration — the one who could dissolve the ropes with a thought held by love alone. The tradition's word for the quality these stories carry is <span class="concept-link" data-id="Leela">leela</span>: divine play, without agenda.
+From time to time, demons sent by Kamsa arrive looking for the prophesied child and are defeated — but never with war-like ferocity. When the great serpent Kaliya poisoned the Yamuna, birds dropping from the sky and cowherd boys fainting at the banks, Krishna jumped into the river. When Kaliya coiled around him and all of Vrindavan came running in panic, Krishna burst free and began to dance on the serpent's many bejeweled heads. The tradition describes it as a performance for the ages: the weight of the world landing, in the form of a dance. Kaliya was forgiven and sent to live in a faraway sea.`},
+      {heading:'Govardhan: the mountain held on the little finger',
+       text:`Each year, the residents of Vrindavan prepared a great festival for Indra, the celestial king of rain. When Krishna was old enough to ask why, he posed the question to his father: what does Indra know of our lives? The mountain next to our village — Govardhan Hill — gives us our pastures, our streams, our shelter and shade. Why make our offering to what is far and unaware, instead of what actually sustains us?
+With characteristically irresistible logic, Krishna persuaded the entire village to redirect the offering to Govardhan Hill. Indra noticed from the heavens. He felt the slight. He unleashed a storm of extraordinary fury — rain like pillars of stone, thunder that shook the earth, flooding that would drown the village. The residents of Vrindavan came to Krishna. He said: don't worry. And then he walked under Govardhan Hill and lifted the entire mountain on the little finger of his left hand — with the least possible effort, the tradition specifies — and held it as an umbrella over the village and all its animals for seven nights and seven days while Indra exhausted himself above.
+What the tradition considers most significant about those seven days is this: before them, the residents of Vrindavan had glimpsed Krishna in the ordinary rhythms of village life. This was the first time every being there — the animals, the children, the elders — could look at him without interruption, for as long as they could hold their gaze. The cowherd men propped their walking sticks up as if to help hold the mountain. The tradition presents this as the deepest quality of love in Vrindavan: it simply cannot see Krishna as God. Indra finally relented, descended with a divine cow, and asked forgiveness. Krishna sent him home with a gentle smile.`},
+      {heading:'The Rasalila: the dance under the autumn moon',
+       text:`In the months of autumn, under a full moon, in the deep forests along the banks of the Yamuna, Krishna stood in his characteristic threefold-bending form and began to play the flute. The tradition says when Krishna plays, everything finds its opposite: the river stills, the deer grow quiet, the calves stop nursing, the rocks soften. The sound made its way through the forest and reached the ears of the gopis — the cowherd maidens — wherever they were in the village: boiling milk, serving their elders, preparing for sleep. They dropped whatever they were doing and ran.
+Some were held back by their families. They sat down, closed their eyes, and meditated on Krishna in their hearts. The tradition holds that they received the same gift as those who made it to the forest. In a sacred grove under the full moon, Krishna began to dance with the gopis in a great circle, multiplying himself into as many forms as there were gopis, each one certain that Krishna was dancing only with her. This circle is called the Rasa Mandala: the highest symbol of devotional yoga. Krishna at the center; the souls on the circumference; the entire arrangement a geometry of love.
+In the midst of the dance, the gopis felt a moment of pride — surely we are the most fortunate beings on earth. In that instant, Krishna disappeared. He slipped away with Sri Radha, his eternal consort; when she too briefly felt pride, he disappeared from her as well. The gopis searched the forest, found Radha also bereft, gathered around her, held hands, and began to sing of Krishna together. In their longing, the tradition says, they felt his presence more completely than they had in the dance. When he returned, the circle resumed. What felt like one night, the Bhagavatam says, was the length of an entire cosmic age.`},
+    ],
+    characterIds:['krishna_vr','vasudev','devaki','yashoda','nanda','kamsa','balaram','radha'],
+    connections:`
+<p><span class="pose-link" data-id="35">Ananda Balasana (Happy Baby Pose)</span> is named for the quality that defines Krishna's years in Vrindavan: complete, unself-conscious delight — a being whose whole existence is oriented toward joy rather than purpose. This is <span class="concept-link" data-id="Leela">leela</span>. To find it in the body is to remember a mode of presence that precedes every agenda and every goal.</p>
+<p>The Rasa Mandala — the circle dance with Krishna at the center — is one of the tradition's central geometric teachings. The moment the gopis felt pride in being the most fortunate beings on earth — the moment they made themselves the center — the connection broke. Every practice orientation that places the practitioner at the center of the work runs this risk. The Rasa Mandala teaches that practice works when it is oriented outward, toward the source.</p>
+<p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> evokes the image of the divine in motion — God as dancer rather than judge or ruler. Though named for Shiva's Tandava, the image of the divine dancing belongs equally to Krishna. His dance on Kaliya's heads and his Rasalila with the gopis are both expressions of <span class="concept-link" data-id="Madhurya">madhurya</span>: the sweetness of love in complete freedom.</p>
+<p>The sound of Krishna's flute calling the gopis across the village is the <span class="concept-link" data-id="Bhakti">Bhakti</span> tradition's central image for devotional practice as a path available to all beings at all times — open to anyone with the capacity to hear a call and respond to it. Some gopis could not physically leave their homes. They meditated instead, and the tradition says they received the same gift. The point was the turning toward, not the arriving.</p>`,
+    questions:[
+      'Krishna defeats demons through play rather than through war. The tradition presents this as a specific quality of how the divine engages what opposes it. Where in your own life does playfulness disarm what force would only harden?',
+      'The gopis abandon milk boiling on the stove, elders waiting for their evening meal, all their external responsibilities — and run toward the forest. The tradition holds them up as the highest exemplars of devotion. What is the difference between this kind of abandonment and irresponsibility — and has anything in your life ever called you with that same completeness?',
+      'Yashoda does not know she is raising God. She scolds him, chases him, ties him to a stone. The tradition presents this as a higher form of love, one in which no distance of awe remains. Where in your own life do you relate to what is sacred without distance?',
+      'Krishna disappears the moment the gopis feel pride in the midst of the dance. He disappears again from Radha when she feels the same. What does this say about the relationship between pride and genuine connection — and when in your practice or relationships have you felt a similar withdrawal?',
+      'The residents of Vrindavan love Krishna so completely they cannot see him as God, even as he holds a mountain on his little finger. Their cowherd men prop up sticks to help hold it, because love cannot accept that the one it loves needs no help. Is there something you love so completely it removes your ability to see it clearly?',
+      'The Govardhan story redirects reverence from a distant celestial authority to the immediate, local source of nourishment. In your practice and your life, what distant abstractions receive your reverence — and what immediate, present sources of sustenance are going uncelebrated?',
+    ],
+  },
+  {
+    id:'s7', color:'#6C5CB8',
+    title:'The yogi who runs out of life: Arjuna\'s question about the path',
+    source:'Bhagavad Gita, Chapter 6 (Dhyana Yoga)',
+    thisStory:'A quiet, intimate exchange in the middle of the Gita, set apart from the battlefield drama. Arjuna asks the most human question a meditator can ask: what if I try, and die before I arrive? Krishna\'s answer reframes an entire lifetime of practice, and opens onto a contemplation about the shape of rebirth itself.',
+    sources:[
+      {label:'Holy Bhagavad Gita: Chapter 6, Verse 37', url:'https://www.holy-bhagavad-gita.org/chapter/6/verse/37/'},
+      {label:'Holy Bhagavad Gita: Chapter 6 (Dhyana Yog)', url:'https://www.holy-bhagavad-gita.org/chapter/6/'},
+      {label:'Vedabase: Bhagavad Gita Chapter 6', url:'https://vedabase.io/en/library/bg/6/'},
+      {label:'Lion’s Roar: Buddha-nature', url:'https://www.lionsroar.com/buddhism/buddhanature/'},
+      {label:'Lion’s Roar: The Bodhisattva Vow', url:'https://www.lionsroar.com/the-bodhisattva-vow/'},
+      {label:'Lion’s Roar: every being has been your mother', url:'https://www.lionsroar.com/motherhood-is-more-than-a-metaphor/'},
+    ],
+    sections:[
+      {heading:'Arjuna\'s fear',
+       text:`In the sixth chapter of the Bhagavad Gita, Krishna has just finished describing the path of meditation: the steady seat, the gathered breath, the mind drawn inward and held one-pointed until it rests in the Self. It is luminous, and it is demanding. Arjuna listens, and a very ordinary fear rises in him. He asks the question that every honest practitioner eventually asks.
+What happens, he says, to the one who has faith and sets out on this path, but whose mind wanders, who cannot hold the discipline, and who reaches the end of life without reaching the goal? Does such a person simply lose everything? Do they perish like a scattered cloud, torn from both worlds, having let go of the ordinary life for the sake of the spiritual one and arrived at neither?
+It is a fear about wasted effort. We have all felt it. To give years to a practice and to suspect, quietly, that we may run out of time before it ripens.`},
+      {heading:'Krishna\'s answer: no effort is ever lost',
+       text:`Krishna\'s reply is among the most reassuring passages in all of yoga\'s literature. Never, he says, is one who does good destroyed. Neither in this world nor the next does such a person come to ruin. No sincere step on this path is ever lost.
+The one who falls from the practice, he explains, endures. They dwell for a long time in radiant worlds, and then they are born again into a good and fortunate home, or, if their practice ran deep, into a family of the wise and the devoted, a birth the Gita calls very difficult to attain. And here is the heart of it: in that new life, the wisdom of the former life reawakens. The practitioner takes up the work again from where they left it, carried forward by the momentum of all they had already done. They are drawn toward the practice, Krishna says, even against their will, by the force of their past discipline.
+Nothing is wasted. The account is kept. You do not begin again from zero. Whenever you are reborn, you begin from what you have already reached. The unfinished meditation is not a failure; it is a seed planted in soil that will be there waiting for you. Across enough lifetimes, the practitioner is purified of every obstruction and arrives at the supreme goal.`},
+      {heading:'Rebirth is not a straight line',
+       text:`Here the teaching opens into a contemplation, and it is worth being clear about where the scripture ends and the reflection begins. The Gita promises that practice carries forward. What follows is one way of holding that promise.
+If practice is never lost and rebirth is the vehicle that carries it, then rebirth need not be imagined as a straight line, one life neatly after another in a single ascending column. The tradition describes samsara as beginningless and almost unimaginably vast: countless lives across countless ages. Tibetan Buddhism draws a striking conclusion from this vastness. Across beginningless time, it teaches, every single being has at some point been your own mother, has held and fed and protected you. The number of beings is finite; the number of your lives is not. Given enough time, every relationship has already been every relationship.
+Follow that thread and a quiet possibility appears. If the soul has worn every role across the long turning of time, then the distance between us and the most awakened beings who have ever lived is not a fixed gulf. The Mahayana names this directly as buddha-nature: the potential for full awakening belongs equally to every being, covered over only like the sun behind passing clouds. And the bodhisattva, by vow, returns again and again across lifetimes precisely so that this potential can ripen in all of us. So it is not unreasonable to hold, as a contemplation rather than a doctrine, that any one of us may, somewhere across the immense arc of our births, walk the path far enough to be born as an awakened one, a buddha or a bodhisattva. The seat you take this morning is one bead on a thread longer than history.`},
+    ],
+    characterIds:['arjuna','krishna_mb'],
+    connections:`
+<p>This chapter is the scriptural ground beneath the entire <a href="meditation.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Meditation</a> page. Krishna\'s instruction here, the steady seat and the gathered mind resting in the Self, is the practice the meditation page maps in detail, from the ocean breath to the absolute realm of <span class="concept-link" data-id="Sat-chit-ananda">sat-chit-ananda</span>.</p>
+<p><span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is the seat of this teaching. It is the same posture in which Arjuna receives the instruction and the same one the tradition prescribes for the meditation Krishna describes: the body fully stopped, the spine awake, nothing left to do but be available to what stillness reveals.</p>
+<p>The promise that no effort is lost is itself a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>: we practice without grasping at the result precisely because the result is not ours to control or to lose. The work of today\'s meditation is today\'s meditation. Its ripening belongs to a longer arc than this single life, and to a <span class="concept-link" data-id="Karma">karma</span> that keeps a more faithful account than we can. What this asks of us is <span class="concept-link" data-id="Bhakti">bhakti</span> in its quietest form: to keep returning to the seat, trusting the path even when we cannot see its end, on our way toward <span class="concept-link" data-id="Moksha">moksha</span>.</p>`,
+    questions:[
+      'Arjuna fears that years of sincere practice could amount to nothing if he runs out of time. Where in your own life do you hold back from beginning something because you are not sure you will live to finish it? What changes if no honest effort is ever truly lost?',
+      'Krishna says the practitioner is drawn back toward the path in the next life "even against their will," by the momentum of past discipline. What practices or longings in you feel less like choices and more like something you arrived already carrying?',
+      'The teaching reframes a lifetime of meditation as one bead on a very long thread. Does that make your daily practice feel smaller, or does it relieve the pressure to arrive? Sit with which response is actually yours.',
+      'The contemplation here holds that, across the vastness of rebirth, any being might one day awaken fully, even into the life of a buddha or bodhisattva. How does it change the way you regard the person beside you on the mat, or on the train, to consider that they carry that same potential?',
+      'The Tibetan teaching that every being has at some point been your mother is offered as a way to dissolve the boundary between self and other. Try holding it toward one person you find difficult. What loosens, and what resists?',
+      'Krishna keeps the account; we do the practice and release the outcome. Where is it hardest for you to act sincerely without needing to see the result in this lifetime?',
     ],
   },
 ];
@@ -584,10 +705,57 @@ const extLink = `<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 
 function renderIntro(){
   return `<section class="story-section-wrap" id="section-intro">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);margin-bottom:.75rem">The image of the banyan tree</h2>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into the light, while the roots descend into the dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the manifest world below. To trace any branch back to where it meets the trunk is a form of yoga in itself. These five stories are that practice.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em>, Valmiki's <em>Ramayana</em>, and the <em>Mahabharata</em>. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas — open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span> — the law that sustains all things — and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span> — devotion, love, service — which the tradition holds as the path most direct to the divine.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: not interventions driven by necessity, but a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone — what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories are not only about what happened. They are about what the listening does to the listener.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into the light, while the roots descend into the dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the manifest world below. To trace any branch back to where it meets the trunk is a form of yoga in itself. These stories are that practice.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em>, Valmiki's <em>Ramayana</em>, the <em>Mahabharata</em>, and the life of Krishna. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas — open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span> — the law that sustains all things — and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span> — devotion, love, service — which the tradition holds as the path most direct to the divine. <a href="the-divine.html" style="cursor:pointer;color:var(--gold-dk);border-bottom:1px solid var(--gold)">What we mean by &ldquo;the divine&rdquo; &rarr;</a></p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone — what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories are not only about what happened. They are about what the listening does to the listener.</p>
+  </section>`;
+}
+
+function renderYama(){
+  return `<section class="story-section-wrap" id="section-yama">
+    <div class="story-header" style="border-color:#C8762E">
+      <h2 class="story-title">Yama: the ethical ground beneath the stories</h2>
+      <div class="story-source">The first limb of yoga &middot; Patanjali&rsquo;s Yoga Sutras 2.30</div>
+    </div>
+    <div class="context-note">
+      <div class="context-label">WHY THIS COMES FIRST</div>
+      <p>Before posture, before breath, before meditation, yoga begins with <strong style="color:var(--gold-dk)">Yama</strong>: five ethical restraints that root the practice in how we meet the world. The stories on this page are where the tradition teaches the yamas, as living dilemmas met in the middle of love, loss, and impossible choice. Here is the ground; the stories are how it is walked.</p>
+    </div>
+    <div class="section-label">THE FIVE YAMAS</div>
+    <div class="char-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <div class="char-card" style="cursor:default">
+        <div class="char-name">Ahimsa</div>
+        <div class="char-role" style="color:#C8762E">NON-HARMING</div>
+        <div class="char-teaser">Reverence for life in thought, word, and deed. On the battlefield, Arjuna&rsquo;s collapse is framed first as ahimsa, and the <a href="#section-s5" style="color:var(--gold-dk)">Bhagavad Gita</a> reopens the question: the deepest harm can be the refusal of one&rsquo;s own dharma.</div>
+      </div>
+      <div class="char-card" style="cursor:default">
+        <div class="char-name">Satya</div>
+        <div class="char-role" style="color:#C8762E">TRUTHFULNESS</div>
+        <div class="char-teaser">Refusing to live inside a lie, even a comfortable one. <a href="#section-s4" style="color:var(--gold-dk)">Sita&rsquo;s</a> final act and <a href="#section-s5" style="color:var(--gold-dk)">Yudhishtir&rsquo;s</a> unbending honesty are satya carried to its furthest edge.</div>
+      </div>
+      <div class="char-card" style="cursor:default">
+        <div class="char-name">Asteya</div>
+        <div class="char-role" style="color:#C8762E">NON-STEALING</div>
+        <div class="char-teaser">Taking nothing that is not freely given, including another&rsquo;s freedom. <a href="#section-s4" style="color:var(--gold-dk)">Ravana</a> seizes what cannot be taken, while <a href="#section-s3" style="color:var(--gold-dk)">Bali</a> shows its opposite: the joy of giving all.</div>
+      </div>
+      <div class="char-card" style="cursor:default">
+        <div class="char-name">Brahmacharya</div>
+        <div class="char-role" style="color:#C8762E">WISE USE OF ENERGY</div>
+        <div class="char-teaser">The right channeling of vital force toward what matters. <a href="#section-s1" style="color:var(--gold-dk)">Shiva</a> the Adi Yogi and <a href="#section-s4" style="color:var(--gold-dk)">Hanuman&rsquo;s</a> every gift placed in service are brahmacharya as devotion.</div>
+      </div>
+      <div class="char-card" style="cursor:default">
+        <div class="char-name">Aparigraha</div>
+        <div class="char-role" style="color:#C8762E">NON-GRASPING</div>
+        <div class="char-teaser">Holding life with open hands. <a href="#section-s3" style="color:var(--gold-dk)">Bali</a> gives away the three worlds, and <a href="#section-s4" style="color:var(--gold-dk)">Rama</a> sets down a kingdom like a garment: aparigraha as freedom.</div>
+      </div>
+    </div>
+    <div class="section-label">SOURCES &amp; FURTHER READING</div>
+    <div class="sources-wrap">
+      <a href="https://www.wisdomlib.org/definition/yama" class="source-link" target="_blank" rel="noopener">${extLink}Wisdomlib: Yama</a>
+      <a href="https://www.wisdomlib.org/definition/ahimsa" class="source-link" target="_blank" rel="noopener">${extLink}Wisdomlib: Ahimsa</a>
+      <a href="https://www.wisdomlib.org/definition/aparigraha" class="source-link" target="_blank" rel="noopener">${extLink}Wisdomlib: Aparigraha</a>
+    </div>
   </section>`;
 }
 
@@ -675,7 +843,7 @@ function renderFooter(){
 }
 
 const content = document.getElementById('content');
-content.innerHTML = renderIntro() + STORIES.map(renderStory).join('') + renderAllCharacters() + renderFooter();
+content.innerHTML = renderIntro() + renderYama() + STORIES.map(renderStory).join('') + renderAllCharacters() + renderFooter();
 
 /* ============================
    GLOSSARY
@@ -747,7 +915,7 @@ pills.forEach(p=>{
     if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-const sectionIds = ['section-intro','section-s1','section-s2','section-s3','section-s4','section-characters'];
+const sectionIds = ['section-intro','section-yama','section-s1','section-s2','section-s3','section-s4','section-s5','section-s6','section-s7','section-characters'];
 const pillMap = {};
 pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
 let scrollTimer;
