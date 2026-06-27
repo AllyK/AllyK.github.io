@@ -59,13 +59,13 @@ mark{background:rgba(255,215,0,0.35);color:#FFD700;border-radius:2px}
 <script>
 
 const C={
-  root:    {s:"Muladhara",   e:"Root",    hex:"#6B1A1A",glow:"#FF5555",y:900},
-  sacral:  {s:"Svadhisthana",e:"Sacral",  hex:"#7A3000",glow:"#FF8C00",y:760},
-  solar:   {s:"Manipura",    e:"Solar",   hex:"#7A5C00",glow:"#FFD700",y:545},
-  heart:   {s:"Anahata",     e:"Heart",   hex:"#0B4F28",glow:"#00E676",y:360},
-  throat:  {s:"Vishuddha",   e:"Throat",  hex:"#083265",glow:"#40C4FF",y:165},
-  thirdEye:{s:"Ajna",        e:"3rd Eye", hex:"#2E005E",glow:"#CE93D8",y:95},
-  crown:   {s:"Sahasrara",   e:"Crown",   hex:"#400068",glow:"#EA80FC",y:28},
+  root:    {s:"Muladhara",   e:"Root",    hex:"#6B1A1A",glow:"#FF5555",y:860},
+  sacral:  {s:"Svadhisthana",e:"Sacral",  hex:"#7A3000",glow:"#FF8C00",y:730},
+  solar:   {s:"Manipura",    e:"Solar",   hex:"#7A5C00",glow:"#FFD700",y:600},
+  heart:   {s:"Anahata",     e:"Heart",   hex:"#0B4F28",glow:"#00E676",y:470},
+  throat:  {s:"Vishuddha",   e:"Throat",  hex:"#083265",glow:"#40C4FF",y:340},
+  thirdEye:{s:"Ajna",        e:"3rd Eye", hex:"#2E005E",glow:"#CE93D8",y:210},
+  crown:   {s:"Sahasrara",   e:"Crown",   hex:"#400068",glow:"#EA80FC",y:80},
 };
 
 const CHAKRA_DETAIL={
@@ -482,7 +482,7 @@ const FAM=[
 const LV_COLOR={B:"#4caf50",I:"#ff9800",A:"#f44336"};
 const LV_LABEL={B:"Beginner",I:"Intermediate",A:"Advanced"};
 const W=820,H=980,TX=410,LX=88,RX=732,AMP=78;
-const YS=[900,760,545,360,165,95,28];
+const YS=[860,730,600,470,340,210,80];
 
 const INDEX=[];
 FAM.forEach(function(f){
@@ -520,8 +520,8 @@ function findMid(nm){
 function buildSVG(){
   var rungs="";
   for(var i=0;i<YS.length-1;i++){var sy=YS[i],ey=YS[i+1],my=(sy+ey)/2,sA=(i%2===0)?-AMP:AMP,sB=-sA;[0.22,0.5,0.78].forEach(function(t){var xA=TX+2*t*(1-t)*sA,xB=TX+2*t*(1-t)*sB,y=Math.pow(1-t,2)*sy+2*t*(1-t)*my+Math.pow(t,2)*ey;rungs+='<line x1="'+xA.toFixed(1)+'" y1="'+y.toFixed(1)+'" x2="'+xB.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" filter="url(#hg)"/>';});}
-  var roots="";[-55,-28,0,28,55].forEach(function(dx){roots+='<path d="M'+TX+',948 Q'+(TX+dx*0.7).toFixed(1)+',968 '+(TX+dx*2.1).toFixed(1)+',990" stroke="#2e1005" stroke-width="4" fill="none" opacity="0.75"/>';});
-  var petals="";[0,40,80,120,160,200,240,280,320].forEach(function(a){var r=a*Math.PI/180,px=TX+Math.cos(r)*24,py=24+Math.sin(r)*8;petals+='<ellipse cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" rx="12" ry="5.5" fill="#400068" opacity="0.48" transform="rotate('+a+','+px.toFixed(1)+','+py.toFixed(1)+')" style="filter:drop-shadow(0 0 5px #EA80FC)"/>';});
+  var roots="";[-55,-28,0,28,55].forEach(function(dx){roots+='<path d="M'+TX+',900 Q'+(TX+dx*0.7).toFixed(1)+',930 '+(TX+dx*2.1).toFixed(1)+',962" stroke="#2e1005" stroke-width="4" fill="none" opacity="0.75"/>';});
+  var petals="";[0,40,80,120,160,200,240,280,320].forEach(function(a){var r=a*Math.PI/180,px=TX+Math.cos(r)*24,py=56+Math.sin(r)*8;petals+='<ellipse cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" rx="12" ry="5.5" fill="#400068" opacity="0.48" transform="rotate('+a+','+px.toFixed(1)+','+py.toFixed(1)+')" style="filter:drop-shadow(0 0 5px #EA80FC)"/>';});
   var nodes="";
   FAM.forEach(function(f){
     var c=C[f.ch],y=c.y,x=f.side==="L"?LX:RX,isL=f.side==="L";
@@ -556,33 +556,27 @@ function buildSVG(){
   '<linearGradient id="idaG" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#FF5555"/><stop offset="30%" stop-color="#FF8C00"/><stop offset="60%" stop-color="#40C4FF"/><stop offset="100%" stop-color="#EA80FC"/></linearGradient>'+
   '<linearGradient id="pingG" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#FFD700"/><stop offset="40%" stop-color="#00E676"/><stop offset="70%" stop-color="#CE93D8"/><stop offset="100%" stop-color="#ffffff"/></linearGradient>'+
   '<filter id="hg"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
-  '<filter id="bodyBlur" x="-30%" y="-5%" width="160%" height="115%"><feGaussianBlur stdDeviation="13"/></filter>'+
+  '<filter id="bodyBlur" x="-30%" y="-5%" width="160%" height="115%"><feGaussianBlur stdDeviation="9"/></filter>'+
   '</defs>'+
   // Seated lotus/meditation figure — blurred ellipses
-  '<g filter="url(#bodyBlur)" opacity="0.13" fill="#5ae8c8" style="pointer-events:none">'+
-  '<ellipse cx="410" cy="82" rx="42" ry="52"/>'+
-  '<ellipse cx="410" cy="152" rx="18" ry="22"/>'+
-  '<ellipse cx="316" cy="240" rx="44" ry="24" transform="rotate(-20,316,240)"/>'+
-  '<ellipse cx="504" cy="240" rx="44" ry="24" transform="rotate(20,504,240)"/>'+
-  '<ellipse cx="410" cy="368" rx="82" ry="125"/>'+
-  '<ellipse cx="410" cy="565" rx="72" ry="102"/>'+
-  '<ellipse cx="410" cy="720" rx="88" ry="58"/>'+
-  '<ellipse cx="292" cy="478" rx="22" ry="90" transform="rotate(-14,292,478)"/>'+
-  '<ellipse cx="528" cy="478" rx="22" ry="90" transform="rotate(14,528,478)"/>'+
-  '<ellipse cx="262" cy="650" rx="16" ry="70" transform="rotate(-8,262,650)"/>'+
-  '<ellipse cx="558" cy="650" rx="16" ry="70" transform="rotate(8,558,650)"/>'+
-  '<ellipse cx="250" cy="758" rx="22" ry="26"/>'+
-  '<ellipse cx="570" cy="758" rx="22" ry="26"/>'+
-  '<ellipse cx="252" cy="840" rx="98" ry="38" transform="rotate(-5,252,840)"/>'+
-  '<ellipse cx="568" cy="840" rx="98" ry="38" transform="rotate(5,568,840)"/>'+
-  '<ellipse cx="442" cy="900" rx="88" ry="32" transform="rotate(8,442,900)"/>'+
-  '<ellipse cx="378" cy="900" rx="88" ry="32" transform="rotate(-8,378,900)"/>'+
-  '<ellipse cx="510" cy="920" rx="48" ry="18"/>'+
-  '<ellipse cx="310" cy="920" rx="48" ry="18"/>'+
+  '<g filter="url(#bodyBlur)" opacity="0.15" fill="#5ae8c8" style="pointer-events:none">'+
+  // head
+  '<ellipse cx="410" cy="188" rx="54" ry="66"/>'+
+  // neck
+  '<ellipse cx="410" cy="300" rx="30" ry="44"/>'+
+  // torso: broad sloping shoulders -> tapered waist -> hips
+  '<path d="M262,374 C300,344 332,338 368,338 L452,338 C488,338 520,344 558,374 C540,430 498,448 490,500 C484,545 482,566 482,600 C482,652 498,674 508,708 C516,742 500,762 470,780 C448,794 372,794 350,780 C320,762 304,742 312,708 C322,674 338,652 338,600 C338,566 336,545 330,500 C322,448 280,430 262,374 Z"/>'+
+  // arms: drape down the sides, elbows out low, hands resting on the knees
+  '<path d="M548,374 Q598,500 600,610 Q598,674 548,716" fill="none" stroke="#5ae8c8" stroke-width="44" stroke-linecap="round"/>'+
+  '<path d="M272,374 Q222,500 220,610 Q222,674 272,716" fill="none" stroke="#5ae8c8" stroke-width="44" stroke-linecap="round"/>'+
+  // crossed legs in lotus — wide flat base, knees splayed to the sides
+  '<path d="M196,762 C166,796 178,840 242,856 C302,870 360,864 410,864 C460,864 518,870 578,856 C642,840 654,796 624,762 C600,738 536,734 484,748 C452,756 410,758 410,758 C368,756 336,738 284,738 C236,734 218,744 196,762 Z"/>'+
+  // crossed feet hint at the front-center of the base
+  '<ellipse cx="428" cy="880" rx="50" ry="17"/>'+
   '</g>'+
   '<g class="helix-anim" style="pointer-events:none"><path d="'+helixPath(true)+'" fill="none" stroke="url(#idaG)" stroke-width="2.5" opacity="0.72" filter="url(#hg)"/><path d="'+helixPath(false)+'" fill="none" stroke="url(#pingG)" stroke-width="2.5" opacity="0.72" filter="url(#hg)"/>'+rungs+'</g>'+
   roots+petals+
-  '<line x1="'+TX+'" y1="24" x2="'+TX+'" y2="950" stroke="url(#trunkGrad)" stroke-width="11" stroke-linecap="round" style="filter:drop-shadow(0 0 4px rgba(255,240,190,0.12))"/>'+
+  '<line x1="'+TX+'" y1="70" x2="'+TX+'" y2="858" stroke="url(#trunkGrad)" stroke-width="11" stroke-linecap="round" style="filter:drop-shadow(0 0 4px rgba(255,240,190,0.12))"/>'+
   nodes+chakras+
   '</svg></div>';
 }
