@@ -42,6 +42,7 @@ body{background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);back
   <a href="the-divine.html">The Divine</a>
 </nav>
 <div id="app" style="max-width:860px;margin:0 auto;padding-bottom:3rem"></div>
+<script src="pose-data.js"></script>
 <script>
 const C={
   root:    {e:"Root",    s:"Muladhara",   glow:"#FF5555",hex:"#6B1A1A"},
@@ -315,18 +316,30 @@ function buildDetail(){
     var fc=C[f.ch];
     return '<span class="fam-chip" style="background:'+fc.hex+'20;border:1px solid '+fc.hex+'50;color:'+fc.glow+'">'+esc(f.name)+'</span>';
   }).join("");
-  // Key poses from one strengthen + one stretch family
-  var exFams=[].concat(m.strengthen,m.stretch).filter(function(v,i,a){return a.indexOf(v)===i;}).slice(0,4);
+  // All poses from the flashcard library, for every family that works this muscle
+  var LVC={B:"#4caf50",I:"#ff9800",A:"#f44336"};
+  var exFams=[].concat(m.strengthen,m.stretch).filter(function(v,i,a){return a.indexOf(v)===i;});
   var poseRows=exFams.map(function(fid){
     var f=FAM_INFO[fid];if(!f) return "";
     var fc=C[f.ch];
+    var plist=(typeof YOGA_POSES!=="undefined"&&YOGA_POSES[fid])||null;
+    var inner;
+    if(plist){
+      inner='<div style="display:flex;gap:5px;flex-wrap:wrap;max-height:150px;overflow-y:auto;padding-right:4px">'+plist.map(function(p){
+        var vc=(typeof POSE_VARIATIONS!=="undefined"&&POSE_VARIATIONS[p.s])?POSE_VARIATIONS[p.s].length:0;
+        return '<span title="'+esc(p.s)+'" style="font-size:0.72rem;color:#d8c8a8;padding:2px 9px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid '+fc.hex+'40;white-space:nowrap"><span style="color:'+LVC[p.lv]+';font-size:0.62rem;font-weight:700;margin-right:4px">'+p.lv+'</span>'+esc(p.n)+(vc?'<span style="color:#FFD700;font-size:0.62rem;margin-left:4px">&#10022;'+vc+'</span>':'')+'</span>';
+      }).join("")+'</div>'+
+      '<div style="font-size:0.6rem;color:#5a4a3a;margin-top:5px;font-style:italic">&#10022; = adaptations on the pose &middot; full details on the <a href="yoga-family-tree.html" style="color:'+fc.glow+';text-decoration:none;border-bottom:1px dotted '+fc.glow+'66">Asana page</a></div>';
+    } else {
+      inner='<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+      '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#4caf50;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">B</span>'+esc(f.B)+'</div>'+
+      '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#ff9800;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">I</span>'+esc(f.I)+'</div>'+
+      '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#f44336;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">A</span>'+esc(f.A)+'</div>'+
+      '</div>';
+    }
     return '<div style="padding:9px 12px;background:'+fc.hex+'14;border:1px solid '+fc.hex+'30;border-left:3px solid '+fc.glow+';border-radius:8px">'+
-    '<div style="font-size:0.64rem;text-transform:uppercase;letter-spacing:0.18em;color:'+fc.glow+';margin-bottom:4px;font-weight:600">'+esc(f.name)+'</div>'+
-    '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
-    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#4caf50;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">B</span>'+esc(f.B)+'</div>'+
-    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#ff9800;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">I</span>'+esc(f.I)+'</div>'+
-    '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#f44336;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">A</span>'+esc(f.A)+'</div>'+
-    '</div></div>';
+    '<div style="font-size:0.64rem;text-transform:uppercase;letter-spacing:0.18em;color:'+fc.glow+';margin-bottom:5px;font-weight:600">'+esc(f.name)+(plist?' <span style="color:#8a7868;text-transform:none;letter-spacing:0;font-weight:400">&middot; '+plist.length+' poses</span>':'')+'</div>'+
+    inner+'</div>';
   }).join("");
   return '<div id="detail-panel" style="max-width:760px;margin:0.5rem auto 1rem;padding:1.4rem 1.5rem;background:rgba(6,2,18,0.9);border:1px solid '+c.hex+';border-radius:14px;box-shadow:0 0 35px '+c.glow+'18;backdrop-filter:blur(12px)">'+
   '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.8rem">'+
@@ -345,7 +358,7 @@ function buildDetail(){
   '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.4rem">Strengthened by</div><div style="display:flex;flex-wrap:wrap;gap:2px">'+(strengthenFams||'<span style="color:#4a3a2a;font-size:0.78rem">—</span>')+'</div></div>'+
   '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.4rem">Stretched by</div><div style="display:flex;flex-wrap:wrap;gap:2px">'+(stretchFams||'<span style="color:#4a3a2a;font-size:0.78rem">—</span>')+'</div></div>'+
   '</div>'+
-  '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.5rem">Key Poses by Family</div>'+
+  '<div><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#4a3a2a;margin-bottom:0.5rem">All Poses by Family</div>'+
   '<div style="display:grid;gap:6px">'+poseRows+'</div></div>'+
   '</div>';
 }

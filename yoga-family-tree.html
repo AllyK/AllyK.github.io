@@ -57,6 +57,7 @@ mark{background:rgba(255,215,0,0.35);color:#FFD700;border-radius:2px}
   <a href="the-divine.html">The Divine</a>
 </nav>
 <div id="app" style="max-width:860px;margin:0 auto;padding-bottom:2rem"></div>
+<script src="pose-data.js"></script>
 <script>
 
 const C={
@@ -480,6 +481,15 @@ const FAM=[
    poses:[{n:"Corpse Pose",s:"Savasana",lv:"B"},{n:"Constructive Rest",s:"Savasana (knees bent)",lv:"B"},{n:"Child's Pose",s:"Balasana",lv:"B"},{n:"Crocodile Pose",s:"Makarasana",lv:"B"},{n:"Reclined Bound Angle",s:"Supta Baddha Konasana",lv:"B"},{n:"Bolster Savasana",s:"Salamba Savasana",lv:"B"},{n:"Supported Bridge",s:"Salamba Setu Bandha",lv:"I"},{n:"Reclined Hero",s:"Supta Virasana",lv:"I"},{n:"Waterfall (chair legs)",s:"Viparita Karani (chair)",lv:"I"},{n:"Yoga Nidra",s:"Yogic Sleep",lv:"A"},{n:"Reclined Lotus",s:"Supta Padmasana",lv:"A"},{n:"Alternate Nostril Breath",s:"Nadi Shodhana",lv:"B"},{n:"Cooling Breath",s:"Sitali Pranayama",lv:"B"}]},
 ];
 
+// Merge the complete flashcard pose library (pose-data.js) into the families
+if(typeof YOGA_POSES!=="undefined"){
+  FAM.forEach(function(f){
+    (YOGA_POSES[f.id]||[]).forEach(function(p){
+      if(!f.poses.some(function(x){return x.s===p.s;})) f.poses.push(p);
+    });
+  });
+}
+
 const LV_COLOR={B:"#4caf50",I:"#ff9800",A:"#f44336"};
 const LV_LABEL={B:"Beginner",I:"Intermediate",A:"Advanced"};
 const W=820,H=980,TX=410,LX=88,RX=732,AMP=78;
@@ -491,6 +501,16 @@ FAM.forEach(function(f){
   f.prime.forEach(function(m){INDEX.push({type:"muscle",familyId:f.id,familyName:f.name,name:m,role:"strengthens",chakra:f.ch});});
   f.stretch.forEach(function(m){INDEX.push({type:"muscle",familyId:f.id,familyName:f.name,name:m,role:"stretches",chakra:f.ch});});
 });
+// Adaptations from the flashcards are searchable too - they open their base pose's family
+if(typeof POSE_VARIATIONS!=="undefined"){
+  FAM.forEach(function(f){
+    f.poses.forEach(function(p){
+      (POSE_VARIATIONS[p.s]||[]).forEach(function(v){
+        INDEX.push({type:"pose",familyId:f.id,familyName:f.name,name:v.n,sanskrit:v.s||p.s,lv:p.lv,chakra:f.ch});
+      });
+    });
+  });
+}
 let SEL=null,TAB="prime",CHAKRA_SEL=null,SQ="",POP=null;
 
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -625,7 +645,7 @@ function buildDetail(){
     content=["B","I","A"].map(function(lv){
       var ps=f.poses.filter(function(p){return p.lv===lv;});
       if(!ps.length) return "";
-      return '<div style="margin-bottom:0.75rem"><div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:6px;color:'+LV_COLOR[lv]+';font-weight:600">'+LV_LABEL[lv]+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:6px">'+ps.map(function(p){return '<div onclick="openPoseInfo(\''+p.s.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\',\''+f.id+'\')" style="padding:7px 10px;background:'+c.hex+'18;border:1px solid '+c.hex+'38;border-left:3px solid '+LV_COLOR[p.lv]+';border-radius:7px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background=\''+c.hex+'32\'" onmouseout="this.style.background=\''+c.hex+'18\'"><div style="font-size:0.83rem;font-weight:500;color:#f0e6d3">'+esc(p.n)+'</div><div style="font-size:0.73rem;margin-top:2px;color:#a89878;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+esc(p.s)+'</div><div style="font-size:0.62rem;color:'+c.glow+';margin-top:3px;opacity:0.7">tap for details &#9432;</div></div>';}).join("")+'</div></div>';
+      return '<div style="margin-bottom:0.75rem"><div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:6px;color:'+LV_COLOR[lv]+';font-weight:600">'+LV_LABEL[lv]+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:6px">'+ps.map(function(p){return '<div onclick="openPoseInfo(\''+p.s.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\',\''+f.id+'\')" style="padding:7px 10px;background:'+c.hex+'18;border:1px solid '+c.hex+'38;border-left:3px solid '+LV_COLOR[p.lv]+';border-radius:7px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background=\''+c.hex+'32\'" onmouseout="this.style.background=\''+c.hex+'18\'"><div style="font-size:0.83rem;font-weight:500;color:#f0e6d3">'+esc(p.n)+'</div><div style="font-size:0.73rem;margin-top:2px;color:#a89878;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+esc(p.s)+'</div>'+((typeof POSE_VARIATIONS!=="undefined"&&POSE_VARIATIONS[p.s]&&POSE_VARIATIONS[p.s].length)?'<div style="font-size:0.62rem;color:#FFD700;margin-top:3px;opacity:0.85">&#10022; '+POSE_VARIATIONS[p.s].length+' adaptation'+(POSE_VARIATIONS[p.s].length>1?'s':'')+' &middot; tap for details</div>':'<div style="font-size:0.62rem;color:'+c.glow+';margin-top:3px;opacity:0.7">tap for details &#9432;</div>')+'</div>';}).join("")+'</div></div>';
     }).join("");
   }
   return '<div id="detail-panel" style="max-width:760px;margin:0.5rem auto 1rem;padding:1.4rem 1.5rem;background:rgba(6,2,18,0.88);border:1px solid '+c.hex+';border-radius:14px;box-shadow:0 0 35px '+c.glow+'18;backdrop-filter:blur(12px)">'+
@@ -720,6 +740,8 @@ function buildInfoModal(){
     var lvl=LV_LABEL[POP.lv]||POP.lv;
     var pc=fam?C[fam.ch]:C.root;
     var pi=POSE_INFO[POP.sk]||null;
+    var pd=(typeof POSE_DATA!=="undefined"&&POSE_DATA[POP.sk])||null;
+    var vlist=(typeof POSE_VARIATIONS!=="undefined"&&POSE_VARIATIONS[POP.sk])||[];
     html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.9rem">';
     html+='<div>';
     html+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">';
@@ -733,6 +755,8 @@ function buildInfoModal(){
     html+='<button onclick="closeInfo()" style="background:none;border:none;color:#6a5a4a;font-size:1.8rem;cursor:pointer;line-height:1;padding:0 4px;flex-shrink:0" onmouseover="this.style.color=\'#f0e6d3\'" onmouseout="this.style.color=\'#6a5a4a\'">&#215;</button></div>';
     if(pi&&pi.purpose){
       html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(pi.purpose)+'</p>';
+    } else if(pd&&pd.d){
+      html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(pd.d)+'</p>';
     }
     var ad=ADAPT[POP.sk]||null;
     if(ad){
@@ -751,7 +775,21 @@ function buildInfoModal(){
       }
       html+='</div>';
     }
-    if(!(pi&&pi.purpose)&&fam){
+    if(vlist.length){
+      html+='<div style="margin-bottom:1rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Adaptations of this Pose</div><div style="display:grid;gap:4px">';
+      vlist.forEach(function(v){
+        html+='<div style="font-size:0.8rem;color:#c8b890;line-height:1.55;padding:5px 10px;background:rgba(255,255,255,0.03);border-left:2px solid '+pc.glow+'55;border-radius:0 5px 5px 0"><span style="color:'+pc.glow+';font-size:0.72rem;margin-right:5px">&#10022;</span><strong style="color:#f0e6d3;font-weight:500">'+esc(v.n)+'</strong>'+(v.s?' <span style="color:#8a7868;font-style:italic;font-family:\'Cormorant Garamond\',serif">'+esc(v.s)+'</span>':'')+(v.d?'<span style="color:#9a8a78"> &middot; '+esc(v.d)+'</span>':'')+'</div>';
+      });
+      html+='</div></div>';
+    }
+    if(pd&&(pd.st||pd.sr||pd.ct)){
+      html+='<div style="margin-bottom:1rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">This Pose &amp; the Muscles</div><div style="display:grid;gap:4px">';
+      if(pd.st) html+='<div style="font-size:0.8rem;color:#d8c8a8;line-height:1.55;padding:4px 10px;background:rgba(255,140,0,0.05);border-left:2px solid rgba(255,140,0,0.4);border-radius:0 5px 5px 0"><span style="color:#ff8c00;font-size:0.66rem;font-weight:600;letter-spacing:0.08em;margin-right:6px">STRETCHES</span>'+esc(pd.st)+'</div>';
+      if(pd.sr) html+='<div style="font-size:0.8rem;color:#d8c8a8;line-height:1.55;padding:4px 10px;background:rgba(0,230,118,0.05);border-left:2px solid rgba(0,230,118,0.4);border-radius:0 5px 5px 0"><span style="color:#00e676;font-size:0.66rem;font-weight:600;letter-spacing:0.08em;margin-right:6px">STRENGTHENS</span>'+esc(pd.sr)+'</div>';
+      if(pd.ct) html+='<div style="font-size:0.8rem;color:#d8c8a8;line-height:1.55;padding:4px 10px;background:rgba(64,196,255,0.05);border-left:2px solid rgba(64,196,255,0.4);border-radius:0 5px 5px 0"><span style="color:#40c4ff;font-size:0.66rem;font-weight:600;letter-spacing:0.08em;margin-right:6px">COUNTER POSE</span>'+esc(pd.ct)+'</div>';
+      html+='</div></div>';
+    }
+    if(!(pi&&pi.purpose)&&!(pd&&pd.d)&&fam){
       html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(fam.desc)+'</p>';
     }
     if(fam&&fam.prime&&fam.prime.length){
