@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Breath — Pranayama — The Living Practice</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root{
+  --bg:#080614;--bg-2:#0e0a24;--bg-3:#1a0f2e;
+  --panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#ece8f6;--text-mid:#c3bcd8;--text-muted:#8d85a8;
+  --gold:#F0C674;--gold-dk:#FFD98A;--dawn:#FF9E80;
+  --violet:#B794F6;--violet-dk:#9F7AEA;--teal:#5AE8C8;
+  --border:rgba(183,148,246,0.22);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1200px 700px at 50% -8%, rgba(255,158,128,0.10), transparent 60%),
+    radial-gradient(900px 600px at 12% 18%, rgba(183,148,246,0.10), transparent 55%),
+    radial-gradient(900px 600px at 88% 12%, rgba(90,232,200,0.07), transparent 55%),
+    linear-gradient(180deg,#080614 0%,#0e0a24 45%,#1a0f2e 100%);
+  background-attachment:fixed;
+  color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh;
+}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20% 30%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1.2px 1.2px at 70% 22%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.1px 1.1px at 40% 70%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.3px 1.3px at 85% 60%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1px 1px at 55% 48%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1.2px 1.2px at 10% 80%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at 92% 84%, rgba(255,255,255,.3), transparent);
+  opacity:.5}
+
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(8,6,20,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-lt);padding:.35rem 1.2rem .45rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;padding-bottom:.35rem;border-bottom:1px solid var(--border-lt);margin-bottom:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(183,148,246,.14);border-color:var(--border);color:var(--violet)}
+
+#hero{position:relative;z-index:1;overflow:hidden;text-align:center;padding:2.6rem 1rem 1.4rem}
+.hero-orbits{position:relative;width:clamp(160px,34vw,220px);height:clamp(160px,34vw,220px);margin:0 auto 1.2rem}
+.hero-orbits svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.4rem);font-weight:400;letter-spacing:.04em;line-height:1.12;margin-bottom:.4rem;
+  background:linear-gradient(110deg,#5AE8C8 0%,#F0C674 45%,#FF9E80 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.4vw,1.18rem);color:var(--text-muted);letter-spacing:.08em;max-width:640px;margin:0 auto}
+
+main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.2rem 4rem}
+.section-wrap{margin-bottom:2.6rem;scroll-margin-top:96px}
+.section-header{margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.section-eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:.4rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;line-height:1.18;color:var(--text)}
+.lead{font-size:15.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section-wrap p{font-size:14.5px;color:var(--text-mid);line-height:1.8;margin-bottom:.9rem}
+.section-wrap p:last-child{margin-bottom:0}
+.section-wrap em{color:var(--gold-dk);font-style:italic}
+
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.1rem 0}
+.callout.adapt{border-left-color:var(--teal)}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout.adapt .label{color:var(--teal)}
+.callout p{font-size:14px;color:var(--text-mid);margin-bottom:.6rem;line-height:1.7}
+.callout p:last-child{margin-bottom:0}
+.callout ul{margin:.3rem 0 .3rem 1.1rem}
+.callout li{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:.4rem}
+
+/* SEARCH + FILTER */
+.control-bar{position:sticky;top:38px;z-index:60;background:rgba(8,6,20,.92);backdrop-filter:blur(8px);border:1px solid var(--border-lt);border-radius:16px;padding:.9rem 1rem;margin:1.2rem 0 1.6rem}
+.search-row{display:flex;gap:.6rem;margin-bottom:.7rem}
+#tech-search{flex:1;padding:.6rem .9rem;font-size:14px;border:1px solid var(--border);border-radius:10px;background:var(--bg-2);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+#tech-search:focus{border-color:var(--violet)}
+#tech-search::placeholder{color:var(--text-muted)}
+.filter-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.filter-pill{padding:4px 12px;border-radius:20px;font-size:11.5px;cursor:pointer;border:1px solid var(--border-lt);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.filter-pill:hover{border-color:var(--violet)}
+.filter-pill.active{background:rgba(183,148,246,.18);border-color:var(--violet);color:var(--gold-dk)}
+.result-count{font-size:11.5px;color:var(--text-muted);margin-top:.6rem}
+
+/* TECH CARDS */
+.tech-grid{display:flex;flex-direction:column;gap:.8rem}
+.tech-card{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;overflow:hidden;transition:border-color .15s}
+.tech-card[open]{border-color:var(--border)}
+.tech-card summary{list-style:none;cursor:pointer;padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.tech-card summary::-webkit-details-marker{display:none}
+.tech-diagram{flex-shrink:0;width:64px;height:64px}
+.tech-diagram svg{width:100%;height:100%}
+.tech-heading{flex:1;min-width:180px}
+.tech-en{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--text);line-height:1.1}
+.tech-skt{font-size:11.5px;font-style:italic;color:var(--gold-dk);margin-top:.1rem}
+.tech-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
+.tag-pill{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(90,232,200,.3);border-radius:10px;padding:2px 8px}
+.tech-provenance{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.35rem}
+.prov-pill{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;border-radius:10px;padding:2px 9px;border:1px solid}
+.prov-pill.classical{color:var(--gold-dk);border-color:rgba(240,198,116,.4);background:rgba(240,198,116,.08)}
+.prov-pill.yogic{color:var(--violet);border-color:rgba(183,148,246,.4);background:rgba(183,148,246,.08)}
+.prov-pill.western{color:#7FA8FF;border-color:rgba(127,168,255,.4);background:rgba(127,168,255,.08)}
+.filter-pills.prov-filters{margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border-lt)}
+.filter-pill.prov{border-style:dashed}
+.filter-legend{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem;display:block}
+.tech-chevron{font-size:11px;color:var(--text-muted);transition:transform .2s}
+.tech-card[open] .tech-chevron{transform:rotate(180deg)}
+.tech-body{padding:0 1.1rem 1.2rem;border-top:1px solid var(--border-lt)}
+.tech-body h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--text);margin:1rem 0 .45rem}
+.tech-body ol,.tech-body ul{margin:0 0 .2rem 1.15rem}
+.tech-body li{font-size:13.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.45rem}
+.tech-benefit{background:rgba(90,232,200,.06);border:1px solid rgba(90,232,200,.2);border-radius:10px;padding:.7rem .9rem;margin-top:.3rem}
+.tech-benefit p{font-size:13.5px;color:var(--text-mid);margin:0;line-height:1.7}
+.tech-benefit .label{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;display:block}
+.source-link.peer{border-color:rgba(90,232,200,.35);color:var(--teal)}
+.source-link.peer:hover{border-color:var(--teal);color:var(--teal)}
+.tech-precaution{background:rgba(255,158,128,.07);border:1px solid rgba(255,158,128,.22);border-radius:10px;padding:.7rem .9rem;margin-top:.3rem}
+.tech-precaution p{font-size:13px;color:var(--text-mid);margin:0;line-height:1.65}
+.tech-precaution .label{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dawn);margin-bottom:.3rem;display:block}
+
+.sources-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 .2rem}
+.source-link{font-size:11px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 10px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.source-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.src-label{font-size:9.5px;font-weight:500;letter-spacing:.18em;color:var(--text-muted);text-transform:uppercase;margin-top:.9rem;margin-bottom:.2rem}
+
+/* MUDRA REFERENCE */
+.mudra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin:1.2rem 0}
+.mudra-card{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:1rem;text-align:center}
+.mudra-card svg{width:70px;height:70px;margin-bottom:.5rem}
+.mudra-card h5{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text);margin-bottom:.3rem}
+.mudra-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;margin:0}
+
+.legend-flow{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:11.5px;color:var(--text-muted);margin-top:.6rem}
+.legend-flow span{display:inline-flex;align-items:center;gap:6px}
+.legend-flow .dot{width:22px;height:0;border-top:2.5px solid}
+
+.footer-bridge{position:relative;z-index:1;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;max-width:960px;margin-left:auto;margin-right:auto;padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2.5rem}
+.footer-bridge-label{font-size:12px;color:var(--text-muted)}
+.bridge-link{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border-lt);border-radius:20px;transition:all .15s}
+.bridge-link:hover{border-color:var(--violet);color:var(--violet)}
+</style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+<defs>
+<marker id="a-in" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5AE8C8"/></marker>
+<marker id="a-out" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F0C674"/></marker>
+</defs>
+</svg>
+
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="pranayama.html" class="nav-page current">Breath</a>
+    <a href="meditation.html" class="nav-page">Breath &amp; Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="hero-orbits">
+    <svg viewBox="0 0 220 220" aria-hidden="true">
+      <g fill="none" stroke-width="1">
+        <circle cx="110" cy="110" r="98" stroke="rgba(90,232,200,.25)"/>
+        <circle cx="110" cy="110" r="74" stroke="rgba(240,198,116,.3)"/>
+        <circle cx="110" cy="110" r="50" stroke="rgba(255,158,128,.35)"/>
+      </g>
+      <path d="M60 110 Q85 70 110 110 Q135 150 160 110" fill="none" stroke="#5AE8C8" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="60" cy="110" r="4" fill="#5AE8C8"/>
+      <circle cx="160" cy="110" r="4" fill="#F0C674"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">Breath</h1>
+  <p class="hero-subtitle">Prāṇa, the life force, and āyāma, its expansion: a searchable field guide to the breath practices</p>
+</header>
+
+<main id="content">
+
+<section class="section-wrap" id="sec-intro">
+  <div class="section-header">
+    <div class="section-eyebrow">What pranayama is</div>
+    <h2 class="section-title">The deliberate shaping of breath</h2>
+  </div>
+  <p class="lead"><em>Pranayama</em> joins two Sanskrit roots: <em>prana</em>, the breath of life, and <em>ayama</em>, expansion or regulation. It is the deliberate modification of breathing, ranging from rapid diaphragmatic breathing to slow, deep breathing, alternate-nostril breathing, and breath retention, most often practiced seated. The tradition names four parts to every round: <em>puraka</em> (inhalation), <em>recaka</em> (exhalation), <em>antah kumbhaka</em> (breath held in), and <em>bahih kumbhaka</em> (breath held out). In Patanjali's Yoga Sutras, pranayama is the fourth limb of the eight-fold path.</p>
+  <p>A 2020 systematic review in the <em>International Journal of Yoga</em> gathered eighteen controlled trials on pranayama alone and found real, measurable effects: improved pulse rate, blood pressure, and lung function in bronchial asthma; better symptom and activity scores in COPD; reduced fatigue and anxiety in cancer patients; and lower blood pressure in hypertension. The proposed mechanisms are physiological and specific: slow, deep breathing stretches lung tissue in a way that shifts the autonomic nervous system from sympathetic toward parasympathetic dominance, largely through the vagus nerve, while forceful practices like Bhastrika and Kapalabhati train the inspiratory and expiratory muscles directly.</p>
+  <div class="callout">
+    <div class="label">Before you begin</div>
+    <p>Practice in a well-ventilated room, seated with an erect spine, on a fairly empty stomach. Keep the face and shoulders relaxed. Every technique below can be built slowly: fewer rounds, gentler force, shorter holds, always. If anything produces dizziness, breathlessness, or strain, return to normal breathing and ease off.</p>
+  </div>
+  <p>Use the search bar and the tags below to find a technique by name, in English or Sanskrit, or by what you need it for: calm, focus, warmth, sleep. Each card opens into full instructions, a note on the benefit and purpose, the hand position it uses, an adaptation for restricted or uneven nostril breathing, precautions, and the sources behind it. Each card also carries a small diagram of how the air flows.</p>
+  <div class="legend-flow">
+    <span><span class="dot" style="border-color:#5AE8C8"></span> Inhale</span>
+    <span><span class="dot" style="border-color:#F0C674"></span> Exhale</span>
+  </div>
+</section>
+
+<section class="section-wrap" id="sec-adapt">
+  <div class="section-header">
+    <div class="section-eyebrow">Practicing with a deviated septum or nasal restriction</div>
+    <h2 class="section-title">When one side doesn't open the way the other does</h2>
+  </div>
+  <p class="lead">Many people breathe more easily through one nostril than the other, whether from a deviated septum, chronic congestion, or the nasal cycle everyone experiences (the natural, hours-long alternation in which one nostril is dominant while the other rests). Nostril-specific pranayama can still be practiced with a few adjustments.</p>
+  <div class="callout adapt">
+    <div class="label">Adaptations</div>
+    <ul>
+      <li><strong>Open, don't force.</strong> Instead of pressing a finger fully across the blocked nostril, use the opposite hand's finger to gently press against the outer wall (the ala) of the restricted nostril, widening the airway rather than closing it further.</li>
+      <li><strong>Let the ratio be uneven.</strong> If air moves more slowly on one side, allow that side a longer count rather than straining to match the open side. The point is a full, unforced breath, not a symmetrical clock.</li>
+      <li><strong>Try the visualization variant.</strong> When one nostril cannot be closed or opened at will, breathe naturally through both and simply direct attention to the left side, then the right, in the same rhythm the physical practice would use. Several teachers and clinics describe this mental alternate-nostril breath as carrying much of the calming, focusing effect even without full physical closure.</li>
+      <li><strong>Warm the passage first.</strong> A warm shower, a few rounds of gentle Ujjayi, or a saline rinse beforehand can temporarily ease congestion enough to practice normally.</li>
+      <li><strong>Swap in a two-nostril technique.</strong> Ujjayi, Bhastrika, Kapalabhati, Dirga, Viloma, Sama Vritti, and Bahya all breathe through both nostrils at once and require no single-nostril closure, making them reliable substitutes for Nadi Shodhana, Surya Bhedana, or Chandra Bhedana on days when one side won't cooperate.</li>
+      <li><strong>Use a mouth-inhale technique for cooling work.</strong> Sheetali and Sitkari inhale through the mouth, so they deliver a cooling breath even when nasal breathing is difficult on both sides.</li>
+    </ul>
+    <p>A structural deviated septum that causes significant, chronic obstruction is worth mentioning to an ENT or your physician, particularly before attempting forceful practices like Bhastrika or Kapalabhati on the restricted side.</p>
+  </div>
+</section>
+
+<section class="section-wrap" id="sec-mudras">
+  <div class="section-header">
+    <div class="section-eyebrow">Hand positions</div>
+    <h2 class="section-title">The mudras used below</h2>
+  </div>
+  <p class="lead">Three hand positions recur through these techniques. Each card names which one it uses.</p>
+  <div class="mudra-grid">
+    <div class="mudra-card">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="62" r="20" fill="none" stroke="#B794F6" stroke-width="2"/><path d="M50 42 Q56 28 50 22 Q44 28 50 42" fill="none" stroke="#F0C674" stroke-width="2.5" stroke-linecap="round"/><path d="M34 50 Q20 46 14 50" fill="none" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/><path d="M34 58 Q18 58 12 62" fill="none" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/><path d="M36 68 Q22 74 16 80" fill="none" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/></svg>
+      <h5>Jnana / Chin Mudra</h5>
+      <p>Thumb and index finger touch in a soft circle; the other three fingers extend. Rests on the knee for most seated techniques.</p>
+    </div>
+    <div class="mudra-card">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="60" r="20" fill="none" stroke="#B794F6" stroke-width="2"/><path d="M60 46 Q68 30 62 24" fill="none" stroke="#F0C674" stroke-width="3" stroke-linecap="round"/><path d="M56 66 Q40 70 32 76" fill="none" stroke="#5AE8C8" stroke-width="2.5" stroke-linecap="round"/><path d="M58 58 Q42 56 34 58" fill="none" stroke="#5AE8C8" stroke-width="2.5" stroke-linecap="round"/><circle cx="42" cy="50" r="2.5" fill="#c3bcd8"/><circle cx="46" cy="46" r="2.5" fill="#c3bcd8"/></svg>
+      <h5>Vishnu Mudra</h5>
+      <p>Index and middle fingers fold into the palm; thumb closes the right nostril, ring and little fingers close the left. Used for every alternate- and single-nostril technique below.</p>
+    </div>
+    <div class="mudra-card">
+      <svg viewBox="0 0 100 100"><ellipse cx="50" cy="52" rx="26" ry="32" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="24" cy="48" r="5" fill="#F0C674" opacity=".8"/><circle cx="76" cy="48" r="5" fill="#F0C674" opacity=".8"/><circle cx="40" cy="42" r="2.5" fill="#c3bcd8"/><circle cx="60" cy="42" r="2.5" fill="#c3bcd8"/><path d="M34 68 Q50 76 66 68" fill="none" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/></svg>
+      <h5>Shanmukhi Mudra</h5>
+      <p>"Closing the seven gates": thumbs seal the ears, index fingers rest on the brow, middle fingers on closed eyes, ring fingers beside the nostrils, little fingers at the mouth's corners. Used for Bhramari.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" id="sec-directory">
+  <div class="section-header">
+    <div class="section-eyebrow">The directory</div>
+    <h2 class="section-title">Twenty-three breathing techniques</h2>
+  </div>
+  <p class="lead">Not every breath practice below comes from the same place. Some are named in the classical Hatha Yoga texts (the Hatha Yoga Pradipika and Gheranda Samhita); others belong to the broader living yogic tradition, including modern teaching lineages and programs like Sudarshan Kriya Yoga; and several are Western clinical or physiological techniques, some borrowed from pranayama and re-tested in hospitals and labs, others developed independently. Each card names its source, and the provenance filter below lets you sort by it. Within each card, peer-reviewed studies are listed first and marked in teal; the more accessible teaching sources follow.</p>
+
+  <div class="control-bar">
+    <div class="search-row">
+      <input type="text" id="tech-search" placeholder="Search by name or benefit — calm, sleep, focus, warmth&hellip;"/>
+    </div>
+    <span class="filter-legend">Filter by benefit</span>
+    <div class="filter-pills" id="filter-pills">
+      <button class="filter-pill" data-tag="calming">Calming</button>
+      <button class="filter-pill" data-tag="focus">Focus</button>
+      <button class="filter-pill" data-tag="energizing">Energizing</button>
+      <button class="filter-pill" data-tag="warming">Warming</button>
+      <button class="filter-pill" data-tag="cooling">Cooling</button>
+      <button class="filter-pill" data-tag="sleep">Sleep</button>
+      <button class="filter-pill" data-tag="respiratory">Respiratory</button>
+      <button class="filter-pill" data-tag="blood-pressure">Blood Pressure</button>
+      <button class="filter-pill" data-tag="detox">Detox</button>
+      <button class="filter-pill" data-tag="digestion">Digestion</button>
+      <button class="filter-pill" data-tag="balance">Balance</button>
+      <button class="filter-pill" data-tag="cognitive">Cognitive</button>
+    </div>
+    <span class="filter-legend">Filter by source</span>
+    <div class="filter-pills prov-filters" id="prov-pills">
+      <button class="filter-pill prov" data-prov="classical">Classical Pranayama Text</button>
+      <button class="filter-pill prov" data-prov="yogic">Yogic Tradition</button>
+      <button class="filter-pill prov" data-prov="western">Western Medicine</button>
+    </div>
+    <div class="result-count" id="result-count"></div>
+  </div>
+
+  <div class="tech-grid" id="tech-grid">
+<details class="tech-card" data-name="nadi shodhana alternate nostril breathing anuloma viloma nari shodhanam" data-benefits="balance autonomic nervous system attention memory calm blood pressure focus" data-tags="calming focus balance blood-pressure cognitive" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 42 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M58 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M35 20 A18 10 0 1 1 65 20" stroke="#c3bcd8" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Alternate Nostril Breathing</div>
+      <div class="tech-skt">Nadi Shodhana &middot; Anuloma Viloma</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Balance</span><span class="tag-pill">Blood Pressure</span><span class="tag-pill">Cognitive</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall in a comfortable cross-legged position or chair, spine long and shoulders soft. Rest the left hand on the left knee in Jnana mudra.</li>
+      <li>Bring the right hand to Vishnu mudra: fold the index and middle fingers into the palm, leaving the thumb, ring, and little fingers free.</li>
+      <li>Close the right nostril with the thumb. Inhale slowly and fully through the left nostril.</li>
+      <li>Close the left nostril with the ring finger, release the thumb, and exhale slowly through the right nostril.</li>
+      <li>Inhale through the right nostril, then close it with the thumb and exhale through the left. This completes one round.</li>
+      <li>Continue for 5&ndash;10 rounds, keeping the breath smooth and unforced.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The tradition's great balancing breath, evening the flow between the two nadis (ida and pingala) and quieting the mind before meditation. Controlled trials in the systematic review report lower blood pressure and pulse; a 2016 study in <em>Scientific Reports</em> found a single session improved fine-motor and spatial-memory retention, pointing to real gains in attention and cognitive control.</p></div>
+    <h4>Hand position</h4>
+    <p>Vishnu mudra on the breathing hand: index and middle fingers folded to the palm; thumb closes the right nostril, ring and little fingers close the left. The opposite hand rests in Jnana mudra on the knee.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>If one side is chronically restricted, let the breath be uneven rather than forced equal &mdash; a slower count on the tighter side is still a complete breath. To open a tight nostril, use the free hand to press the outer wall (ala) gently outward rather than closing it. See the <a href="#sec-adapt" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">deviated septum section above</a> for the visualization variant and other adjustments.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Children under 12 and anyone with a heart condition should practice without holding the breath between the inhale and exhale.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020 (systematic review)</a>
+      <a href="https://doi.org/10.1038/srep37069" class="source-link peer" target="_blank" rel="noopener">Yadav &amp; Mutha, Sci Rep 2016 (motor memory retention)</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="ujjayi ocean breath victorious breath" data-benefits="calm focus warmth respiratory slow breathing vagal tone asana" data-tags="calming focus respiratory" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Ocean Breath</div>
+      <div class="tech-skt">Ujjayi &middot; the Victorious Breath</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit with a tall spine, mouth closed, breathing only through the nose.</li>
+      <li>Gently narrow the back of the throat, as if slightly fogging a mirror or about to whisper a secret.</li>
+      <li>Inhale slowly through the nose, letting the breath brush the narrowed throat and make a soft, oceanic whisper.</li>
+      <li>Pause briefly at the top of the inhale without straining.</li>
+      <li>Exhale slowly through the nose with the same gentle throat constriction, longer than the inhale.</li>
+      <li>Continue for 5&ndash;10 minutes, or sustain it through an asana practice.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The audible throat friction naturally slows and lengthens each breath, exactly the slow-breathing pattern shown to raise vagal (parasympathetic) tone and steady the mind. It gently warms the body, builds concentration, and is the breath most often paired with a moving asana practice to keep attention anchored.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra resting on the knees; no nostril work is required.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils stay open throughout, so this is fully accessible regardless of nasal restriction. If nasal breathing is difficult on both sides, the same throat constriction can be practiced with the mouth held slightly open as a bridge technique until the passages clear.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid forcing the throat constriction if it causes strain; those with serious cardiac issues or hypertension should practice gently and briefly.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://www.yogabasics.com/practice/ujjayi-pranayama/" class="source-link" target="_blank" rel="noopener">Yoga Basics</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="bhramari bee breath humming bee breath" data-benefits="calm anxiety sleep focus nitric oxide blood pressure soothing" data-tags="calming sleep focus blood-pressure" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="54" r="4" fill="#F0C674"/><circle cx="82" cy="54" r="4" fill="#F0C674"/><path d="M42 58 Q35 50 28 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/><path d="M58 58 Q65 50 72 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/><path d="M42 26 q4 -5 8 0 q4 5 8 0" stroke="#5AE8C8" stroke-width="1.5" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Humming Bee Breath</div>
+      <div class="tech-skt">Bhramari</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Sleep</span><span class="tag-pill">Focus</span><span class="tag-pill">Blood Pressure</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit comfortably with the eyes closed and the face relaxed.</li>
+      <li>Raise the hands to the face and gently close the ear flaps (tragus) with the thumbs.</li>
+      <li>Rest the index fingers lightly on the brow, the middle fingers on the closed eyelids, and let the ring and little fingers rest beside the nose and mouth (Shanmukhi mudra).</li>
+      <li>Inhale deeply through the nose.</li>
+      <li>Exhale slowly through the nose while humming like a bee, feeling the vibration in the head and chest.</li>
+      <li>Repeat for 5&ndash;10 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The humming both lengthens the exhale and vibrates the sinuses, associated with a marked rise in nasal nitric oxide. Studied for lowering blood pressure and heart rate and calming the nervous system, it is a reliable pre-sleep and anti-anxiety practice that quiets mental chatter and draws the senses inward (pratyahara).</p></div>
+    <h4>Hand position</h4>
+    <p>Shanmukhi mudra, "closing the seven gates": thumbs seal the ears, index fingers on the brow, middle fingers on closed eyes, ring fingers beside the nostrils, little fingers at the corners of the mouth.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>No nostril closure is required, so this technique is fully accessible regardless of nasal restriction. If pressing the ears feels uncomfortable, resting the fingertips near the ear canal without fully sealing it still carries much of the calming effect.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Generally considered safe for most practitioners, with no significant precautions reported.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline (blood pressure)</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.stresscoach.app/blog/8-types-of-pranayama-breathing-and-their-benefits/" class="source-link" target="_blank" rel="noopener">Stresscoach</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="bhastrika bellows breath" data-benefits="energizing warming respiratory alertness metabolism strengthens breathing muscles" data-tags="energizing warming respiratory" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M16 50 Q30 56 40 58" stroke="#5AE8C8" stroke-width="3.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q70 56 84 50" stroke="#F0C674" stroke-width="3.5" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Bellows Breath</div>
+      <div class="tech-skt">Bhastrika</div>
+      <div class="tech-tags"><span class="tag-pill">Energizing</span><span class="tag-pill">Warming</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit in a comfortable meditative posture with the spine straight and eyes closed.</li>
+      <li>Inhale deeply through both nostrils, then exhale forcefully through the nose, pumping the navel toward the spine.</li>
+      <li>Let the next inhale follow immediately with equal force; keep inhale and exhale equally active and rhythmic.</li>
+      <li>Perform 10&ndash;20 forceful breaths, then take one deep inhale, hold briefly, and release slowly.</li>
+      <li>Rest with normal breathing before repeating for 2&ndash;3 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Named for the blacksmith's bellows, both inhale and exhale are forceful and equal. It raises metabolic heat and alertness, directly strengthens the inspiratory and expiratory muscles, and is used to shake off sluggishness and generate warmth. A classic morning or pre-practice energizer.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees; beginners sometimes rest the hands lightly on the belly to feel the pumping rhythm.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Because both nostrils stay open, a deviated septum is rarely a barrier here. Slow the pace or shorten the rounds if congestion makes forceful nasal breathing uncomfortable.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid with heart conditions, hypertension, pregnancy, vertigo, recent abdominal surgery, spinal conditions, glaucoma, or detached retina. Build up gradually and stop if lightheaded.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.stresscoach.app/blog/8-types-of-pranayama-breathing-and-their-benefits/" class="source-link" target="_blank" rel="noopener">Stresscoach</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="kapalabhati skull shining breath breath of fire kapalbhati" data-benefits="energizing detox respiratory cleansing abdominal tone lung function" data-tags="energizing detox respiratory" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M24 54 Q33 57 40 58" stroke="#5AE8C8" stroke-width="2" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 78 50" stroke="#F0C674" stroke-width="3.5" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Skull-Shining Breath</div>
+      <div class="tech-skt">Kapalabhati</div>
+      <div class="tech-tags"><span class="tag-pill">Energizing</span><span class="tag-pill">Detox</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Text (Shatkarma)</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall with the hands resting on the knees, palms down. Take a few natural breaths to settle.</li>
+      <li>Exhale sharply through the nose by pulling the navel in toward the spine; let the inhale that follows happen passively and naturally.</li>
+      <li>Continue short, active exhales with passive inhales, keeping the chest still, for one round of 20&ndash;30 breaths.</li>
+      <li>Rest with normal breathing, then repeat for 2&ndash;3 rounds, building endurance gradually.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Classed as a cleansing kriya rather than a pure pranayama, "skull-shining breath" is named for the bright, clear feeling it leaves in the head. The rapid active exhales tone the abdominal muscles, clear the respiratory passages, and are studied for improving pulmonary function. Deeply energizing and often used to clear mental fog.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees, or hands lightly on the belly for beginners learning to feel the pumping action.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils stay open, so nasal restriction is rarely a barrier; reduce speed and force if the nose feels irritated or congestion makes the sharp exhale uncomfortable.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid during pregnancy or menstruation, and with high or low blood pressure, heart disease, hernia, gastric ulcer, epilepsy, vertigo, migraine, significant nosebleeds, detached retina, glaucoma, stroke history, or recent abdominal surgery. A published case report links forceful practice to a pneumothorax, so build up gradually and stop with any chest discomfort.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020 (Johnson et al. 2004 pneumothorax case report)</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="sheetali sitali cooling breath rolled tongue" data-benefits="cooling calming reduces heat thirst soothing lowers temperature" data-tags="cooling calming" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M50 96 L50 82" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M42 58 Q35 50 28 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/><path d="M58 58 Q65 50 72 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Cooling Breath</div>
+      <div class="tech-skt">Sheetali</div>
+      <div class="tech-tags"><span class="tag-pill">Cooling</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit comfortably and take a few natural breaths.</li>
+      <li>Curl the tongue lengthwise into a tube and extend it slightly past the lips. (If you can't curl your tongue &mdash; a genetic trait not everyone has &mdash; use Sitkari instead.)</li>
+      <li>Inhale slowly through the tongue's tube, feeling the cool air.</li>
+      <li>Hold briefly, then draw the tongue in, close the mouth, and exhale slowly through the nose.</li>
+      <li>Repeat for 5&ndash;10 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Air drawn across the wet, curled tongue arrives cooled, which is why the tradition prescribes it for excess heat, thirst, and irritability. It calms the nervous system and is a natural choice on hot days, after vigorous practice, or whenever the body or temper runs hot.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>The inhale is through the mouth, so this works regardless of nostril restriction; if one nostril is blocked, the exhale can be released through the open side alone, or through the mouth instead of the nose.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Best avoided in cold weather or with an active cold, cough, congestion, asthma flare, or chronic constipation.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="sitkari hissing cooling breath teeth" data-benefits="cooling calming reduces heat alternative to sheetali soothing" data-tags="cooling calming" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M50 96 L50 82" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M42 58 Q35 50 28 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/><path d="M58 58 Q65 50 72 44" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Hissing Cooling Breath</div>
+      <div class="tech-skt">Sitkari</div>
+      <div class="tech-tags"><span class="tag-pill">Cooling</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit comfortably, open the lips in a slight smile, and bring the upper and lower teeth lightly together.</li>
+      <li>Inhale slowly through the gaps between the teeth, making a soft hissing sound.</li>
+      <li>Hold briefly, then close the mouth and exhale slowly through the nose.</li>
+      <li>Repeat for 5&ndash;10 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The through-the-teeth cousin of Sheetali, for those who can't roll the tongue. It delivers the same cooling, calming effect &mdash; easing heat, thirst, and agitation &mdash; and is often chosen for its accessibility.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Like Sheetali, the inhale is through the mouth, making this a reliable substitute for anyone who cannot fully close one nostril, or who cannot curl the tongue for Sheetali.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Same cautions as Sheetali: avoid in cold weather, with respiratory congestion, or with chronic constipation.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="surya bhedana suryabhedana right nostril solar breath" data-benefits="energizing warming alertness sympathetic activation heat" data-tags="energizing warming" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 42 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M58 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><text x="38" y="70" font-size="7" fill="#c3bcd8">R</text><text x="56" y="70" font-size="7" fill="#c3bcd8">L</text></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Right-Nostril Solar Breath</div>
+      <div class="tech-skt">Surya Bhedana</div>
+      <div class="tech-tags"><span class="tag-pill">Energizing</span><span class="tag-pill">Warming</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit comfortably and bring the right hand to Vishnu mudra.</li>
+      <li>Close the left nostril with the ring finger.</li>
+      <li>Inhale slowly and fully through the right nostril only.</li>
+      <li>Close the right nostril with the thumb, release the left, and exhale slowly through the left nostril.</li>
+      <li>This completes one round; repeat for 5&ndash;10 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Right-nostril breathing is traditionally linked to the "solar," heating pingala channel and to greater sympathetic activation and alertness. Used to raise energy, warmth, and drive &mdash; a morning or pre-activity breath rather than an evening one.</p></div>
+    <h4>Hand position</h4>
+    <p>Vishnu mudra, as in Nadi Shodhana, breathing only in the right-in, left-out direction.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>If the right nostril is the restricted side, use the free hand to gently draw the ala outward and widen it, or substitute Bhastrika or Kapalabhati for a similarly warming effect that doesn't require single-nostril closure. See the <a href="#sec-adapt" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">deviated septum section above</a> for more.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid with heart disease, high blood pressure, epilepsy, or fever, and after recent brain, heart, or abdominal surgery, since it raises internal heat.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="chandra bhedana left nostril lunar breath" data-benefits="cooling calming parasympathetic blood pressure evening soothing" data-tags="cooling calming blood-pressure" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M80 50 Q68 56 58 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M42 58 Q32 56 20 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><text x="38" y="70" font-size="7" fill="#c3bcd8">R</text><text x="56" y="70" font-size="7" fill="#c3bcd8">L</text></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Left-Nostril Lunar Breath</div>
+      <div class="tech-skt">Chandra Bhedana</div>
+      <div class="tech-tags"><span class="tag-pill">Cooling</span><span class="tag-pill">Calming</span><span class="tag-pill">Blood Pressure</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit comfortably and bring the right hand to Vishnu mudra.</li>
+      <li>Close the right nostril with the thumb.</li>
+      <li>Inhale slowly and fully through the left nostril only.</li>
+      <li>Close the left nostril with the ring finger, release the thumb, and exhale slowly through the right nostril.</li>
+      <li>This completes one round; repeat for 5&ndash;10 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The mirror of Surya Bhedana. Left-nostril breathing is linked to the "lunar," cooling ida channel and to parasympathetic (rest-and-digest) activation. Used to cool, calm, and quiet the system, often in the evening or to ease agitation; the left-nostril and vagal emphasis is also associated with lowering blood pressure.</p></div>
+    <h4>Hand position</h4>
+    <p>Vishnu mudra, breathing in the left-in, right-out direction.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>If the left nostril is restricted, substitute Sheetali or Sitkari for a comparable cooling effect that inhales through the mouth instead. See the <a href="#sec-adapt" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">deviated septum section above</a> for more adjustments.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid in heavy winter cold, with an active cold or congestion, or with low blood pressure or epilepsy.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="dirga dirgha three part breath complete yogic breath" data-benefits="calm focus respiratory full breath foundation diaphragmatic capacity" data-tags="calming focus respiratory" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><circle cx="50" cy="90" r="3" fill="none" stroke="#c3bcd8" stroke-width="1.5"/><circle cx="50" cy="90" r="6" fill="none" stroke="#c3bcd8" stroke-width="1"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Three-Part Breath</div>
+      <div class="tech-skt">Dirga &middot; the Complete Yogic Breath</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie down comfortably, one hand on the belly and one on the chest.</li>
+      <li>Inhale slowly and let the breath fill first the belly (feel the lower hand rise), then the lower ribs, then the upper chest &mdash; three parts of one continuous inhale.</li>
+      <li>Exhale in reverse: release from the chest, then the ribs, then draw the navel gently in to empty the belly.</li>
+      <li>Keep the transitions smooth so the breath feels like a single rising and falling wave.</li>
+      <li>Continue for 5&ndash;10 minutes.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The foundational breath of yoga: it teaches full use of the diaphragm and the whole breathing apparatus, which most people underuse. Calming and grounding, it builds breath awareness and lung capacity and is the base on which the more advanced pranayamas are built.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra required; the hands rest on the belly and chest to feel the three-part movement. Later they can rest in Jnana mudra on the knees.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so nasal restriction is not a barrier; if both sides are congested, the same three-part wave can be practiced with a soft mouth-breath until the nose clears.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. Simply avoid over-filling to the point of strain; the breath should stay smooth and comfortable.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="viloma interrupted wave breath" data-benefits="calm focus breath control lung capacity paused breathing" data-tags="calming focus respiratory" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 L28 53 M32 54 L40 57" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Interrupted Breath</div>
+      <div class="tech-skt">Viloma</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie comfortably and settle into a smooth natural breath.</li>
+      <li>Inhale in stages: draw in a third of a breath, pause for 2&ndash;3 seconds, inhale another third, pause again, then inhale the last third until the lungs are comfortably full.</li>
+      <li>Exhale smoothly and completely, or, for the exhale variation, release in the same staged, paused way.</li>
+      <li>Begin with the paused inhale and smooth exhale; later practice the paused exhale, then both together.</li>
+      <li>Continue for 5&ndash;8 rounds.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>"Against the wave" &mdash; the breath is deliberately interrupted rather than continuous. The staged pauses build fine breath control and lung capacity, lengthen the breath, and focus a busy mind by giving it a precise task. Calming, and often used to prepare for longer retentions.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees, or hands on the belly and ribs to feel each staged filling.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so nasal restriction is not a barrier. Keep the pauses short if congestion makes staged breathing feel effortful.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Keep the pauses gentle; those with high blood pressure or heart conditions should minimize or skip the held segments. Stop if lightheaded.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="sama vritti equal ratio breathing even breath" data-benefits="calm balance focus steady mind meditation preparation" data-tags="calming balance focus" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><text x="44" y="20" font-size="9" fill="#c3bcd8">=</text></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Equal-Ratio Breath</div>
+      <div class="tech-skt">Sama Vritti</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Balance</span><span class="tag-pill">Focus</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall and comfortable, breathing through the nose.</li>
+      <li>Inhale for a count of four.</li>
+      <li>Exhale for a count of four, matching the inhale exactly.</li>
+      <li>Keep the two halves even and unforced; as it becomes easy, lengthen both to a count of five or six.</li>
+      <li>Continue for 5&ndash;10 minutes.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>"Equal fluctuation" &mdash; matching inhale to exhale. The evenness steadies the mind and balances the nervous system, making it a favorite preparation for meditation and a simple anchor in anxious moments. It is the yogic sibling of the Western "box breathing" further down this directory.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees; no nostril work required.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so nasal restriction is not a barrier. If airflow is uneven, keep the counts even by feel rather than by force.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. Simply keep the counts comfortable and don't strain to hold a long ratio.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="bahya external retention breath bahya kumbhaka" data-benefits="digestion focus calm abdominal tone bandha retention" data-tags="digestion focus calming" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M60 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><rect x="34" y="94" width="32" height="4" rx="2" fill="#c3bcd8" opacity=".5"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">External Retention Breath</div>
+      <div class="tech-skt">Bahya &middot; Bahya Kumbhaka</div>
+      <div class="tech-tags"><span class="tag-pill">Digestion</span><span class="tag-pill">Focus</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall with the spine erect and hands resting on the knees.</li>
+      <li>Inhale fully, then exhale completely through the nose, emptying the lungs.</li>
+      <li>Hold the breath out (external retention). Traditionally this is combined with three locks: draw the chin toward the chest (jalandhara bandha), lift the pelvic floor (mula bandha), and draw the navel up and back toward the spine (uddiyana bandha).</li>
+      <li>Hold comfortably, then release the locks, lift the chin, and inhale slowly.</li>
+      <li>Repeat for 3&ndash;5 rounds, keeping every hold within easy reach.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>An advanced retention practice. The external hold with abdominal lock massages and tones the abdominal organs, is traditionally used to support digestion and core energy, and demands and builds sharp inward focus. Calming once mastered, it is usually learned after the gentler breaths are steady.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees; the "hand positions" that matter here are the three bandhas (throat, belly, pelvic floor) rather than a finger mudra.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used and the challenge is the breath-out hold, not airflow, so nasal restriction is not a barrier. Shorten the retention if congestion makes the following inhale feel urgent.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid the retention and abdominal lock during pregnancy or menstruation, and with heart disease, high blood pressure, hernia, ulcer, or glaucoma. Learn the bandhas with an experienced teacher.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="murcha murccha swooning breath fainting breath retaining" data-benefits="focus calm meditative deep stillness retention chin lock" data-tags="focus calming" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M35 18 A18 10 0 1 1 65 18" stroke="#c3bcd8" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/><path d="M42 30 Q50 36 58 30" stroke="#c3bcd8" stroke-width="1.5" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Swooning Breath</div>
+      <div class="tech-skt">Murcha</div>
+      <div class="tech-tags"><span class="tag-pill">Focus</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit in a stable, comfortable posture with the spine erect.</li>
+      <li>Inhale slowly and fully through both nostrils.</li>
+      <li>Retain the breath in and gently draw the chin toward the chest (jalandhara bandha), letting the gaze soften or the eyes turn slightly upward.</li>
+      <li>Hold only as long as it stays comfortable, then slowly lift the chin and exhale in a long, smooth stream.</li>
+      <li>Practice just 3&ndash;5 rounds, resting between them.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Named for the light, swooning, dreamlike stillness it can produce. An advanced retention practice used to induce a deeply calm, meditative, inward state and to quiet mental activity almost completely. Approached gently and briefly, it is a doorway toward meditation.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees, with jalandhara bandha (chin lock) as the defining "position." No nostril work required.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so nasal restriction is not a barrier; keep the retention brief if congestion makes the hold feel pressured.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Because it can produce lightheadedness by design, practice seated, never standing, and stop well before any real dizziness. Avoid with low or high blood pressure, heart conditions, epilepsy, or during pregnancy; best learned with a teacher.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="plavini floating breath advanced" data-benefits="focus advanced buoyancy retention air swallowing" data-tags="focus" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M30 94 Q50 88 70 94" stroke="#5AE8C8" stroke-width="1.5" fill="none"/><path d="M36 90 Q50 85 64 90" stroke="#5AE8C8" stroke-width="1" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Floating Breath</div>
+      <div class="tech-skt">Plavini</div>
+      <div class="tech-tags"><span class="tag-pill">Focus</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>This is an advanced, rarely taught practice; approach it only under experienced guidance.</li>
+      <li>Sit tall and take a few settling breaths.</li>
+      <li>Fill the lungs completely with a slow, full inhale, and, in the classical description, draw additional air into the stomach so the whole torso feels buoyant and full.</li>
+      <li>Retain the breath comfortably, feeling the sense of lightness.</li>
+      <li>Release slowly and completely, then rest before any repetition.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The classical texts describe Plavini as producing such buoyancy that the practitioner could float on water. In practical terms it is a mastery-level retention practice for cultivating deep breath control and one-pointed focus. Included here for completeness; it is not a beginner's breath.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana mudra on the knees; no nostril work required.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so nasal restriction is not a barrier; the practice's difficulty lies in the retention rather than in airflow.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Advanced and specialized. Not for beginners, and not to be self-taught. Avoid entirely with any cardiac, respiratory, digestive, or blood-pressure condition, and during pregnancy. Learn only from an experienced teacher.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="om chanting pranava japa mantra breath omkar aum" data-benefits="calm focus sleep vagal nitric oxide slow breath rate meditation blood pressure" data-tags="calming focus sleep blood-pressure" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M22 50 Q32 56 40 58" stroke="#5AE8C8" stroke-width="2" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q72 55 86 52" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M44 22 q6 -3 6 3 q0 6 -6 3 q-6 -3 0 -6" stroke="#F0C674" stroke-width="1.2" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">OM Chanting</div>
+      <div class="tech-skt">Pranava &middot; Omkara Japa</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Sleep</span><span class="tag-pill">Blood Pressure</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall and comfortable with the eyes closed and the face soft.</li>
+      <li>Inhale slowly and fully through the nose.</li>
+      <li>On the exhale, chant "OM" (A-U-M), letting the sound stretch across the whole out-breath: the open "aaah," the rounding "ooo," and the humming "mmm" that lingers.</li>
+      <li>Feel the vibration move through the chest, throat, and head. Let each inhale arrive naturally before the next chant.</li>
+      <li>Continue for 5&ndash;15 minutes, letting the breath rate slow of its own accord.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Chanting naturally stretches the exhale and slows breathing toward the ~6-breaths-per-minute range. Clinical work cited in the pranayama literature (including Italian studies on mantra recitation) links this slowing to increased vagal activity and greater nitric oxide release, with calmer heart rate and blood pressure. Deeply centering, it prepares the mind for meditation and eases the way toward sleep.</p></div>
+    <h4>Hand position</h4>
+    <p>Jnana or Chin mudra resting on the knees; no nostril work required.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>The inhale can be nasal or, if both sides are congested, a soft mouth-breath; the chant itself is on the exhale, so nasal restriction is not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. Simply let the breath stay comfortable and don't force the length of the chant.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.bmj.com/content/323/7327/1446" class="source-link peer" target="_blank" rel="noopener">Bernardi et al., BMJ 2001 (mantra &amp; slow breathing)</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="sudarshan kriya yoga sky breath meditation art of living cyclical" data-benefits="calm energizing focus balance depression anxiety stress ptsd wellbeing" data-tags="calming energizing focus balance" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M18 54 Q30 60 40 58" stroke="#5AE8C8" stroke-width="3" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q70 56 82 50" stroke="#F0C674" stroke-width="2" fill="none" marker-end="url(#a-out)"/><path d="M40 22 q10 4 0 8 q-10 -4 0 -8" stroke="#5AE8C8" stroke-width="1.2" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Sudarshan Kriya (SKY Breath)</div>
+      <div class="tech-skt">Sudarshan Kriya Yoga</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Energizing</span><span class="tag-pill">Focus</span><span class="tag-pill">Balance</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition (modern lineage)</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>SKY is a structured sequence taught in person by certified Art of Living instructors; the full rhythmic kriya is learned under guidance rather than from text.</li>
+      <li>It typically strings together several breaths in order: Ujjayi (slow victorious breath), Bhastrika (bellows breath), and the signature cyclical breathing done in slow, medium, and fast rhythms.</li>
+      <li>The rhythmic portion moves through cycles of breath at varying speeds, guided by count or recording.</li>
+      <li>A session usually closes with a period of rest and stillness.</li>
+      <li>Once learned, it is practiced daily at home; a shorter guided version is often used for maintenance.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>A modern, well-studied rhythmic breathing program. Peer-reviewed reviews report benefits for depression, anxiety, stress, and post-traumatic stress, along with improved wellbeing and antioxidant and immune measures. It is used both to calm and to energize, balancing the system through its slow-medium-fast structure.</p></div>
+    <h4>Hand position</h4>
+    <p>Hands rest in Jnana mudra on the knees for the seated portions; no single-nostril work is involved in the core cyclical breathing.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>The core practice uses both nostrils together, so nasal restriction is generally not a barrier. Mention any significant obstruction, or cardiac or respiratory conditions, to your instructor so pace and force can be adjusted.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Best learned in the structured course rather than improvised. Those with cardiac conditions, uncontrolled blood pressure, epilepsy, or during pregnancy should tell the instructor and practice gently.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3573542/" class="source-link peer" target="_blank" rel="noopener">Zope &amp; Zope, Int J Yoga 2013 (SKY review)</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="diaphragmatic breathing belly breathing calming breath nhs abdominal" data-benefits="calm respiratory stress anxiety relaxation foundation vagal blood pressure" data-tags="calming respiratory blood-pressure" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M22 52 Q32 57 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 78 52" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M36 88 Q50 98 64 88" stroke="#5AE8C8" stroke-width="1.5" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Diaphragmatic (Belly) Breathing</div>
+      <div class="tech-skt">Clinical &middot; "calming breath" (NHS)</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Respiratory</span><span class="tag-pill">Blood Pressure</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie somewhere comfortable. Let the breath flow in through the nose and out through the mouth, without forcing it.</li>
+      <li>Rest one hand on the chest and one on the belly.</li>
+      <li>Breathe in gently through the nose, counting steadily to five if you can, and feel the belly (not the chest) rise under the lower hand.</li>
+      <li>Let the breath flow out slowly through the mouth, again to a count of five.</li>
+      <li>Keep this soft, steady rhythm for 3&ndash;5 minutes.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The core clinical relaxation breath, recommended by the NHS for stress, anxiety, and panic. Slow diaphragmatic breathing engages the parasympathetic nervous system, easing the body out of the fight-or-flight response. It shares its mechanics with the yogic Dirga breath but comes from Western clinical practice; it is the simplest first breath to teach anyone in distress.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra. One hand on the chest, one on the belly, purely to feel the diaphragm doing the work rather than the upper chest.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>The NHS version inhales through the nose and exhales through the mouth; if the nose is fully congested, a gentle mouth-inhale still works. Nasal restriction is not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe for nearly everyone. If slow breathing ever brings on anxiety or breathlessness, return to your natural breath.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137615/" class="source-link peer" target="_blank" rel="noopener">Ma et al., Front Psychol 2017 (diaphragmatic breathing &amp; stress)</a>
+      <a href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/" class="source-link" target="_blank" rel="noopener">NHS: Breathing exercises for stress</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="pursed lip breathing copd breathlessness" data-benefits="respiratory breathlessness copd calm slows exhale airways open" data-tags="respiratory calming" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><ellipse cx="50" cy="80" rx="4" ry="3" fill="none" stroke="#8d85a8" stroke-width="1.5"/><path d="M22 52 Q32 57 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M50 98 L50 86" stroke="#F0C674" stroke-width="1.5" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Pursed-Lip Breathing</div>
+      <div class="tech-skt">Clinical / respiratory therapy</div>
+      <div class="tech-tags"><span class="tag-pill">Respiratory</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Relax the neck and shoulders and sit comfortably.</li>
+      <li>Breathe in slowly through the nose for about two counts, keeping the mouth closed.</li>
+      <li>Purse the lips as if about to whistle or gently blow out a candle.</li>
+      <li>Breathe out slowly and steadily through the pursed lips for about four counts &mdash; roughly twice as long as the inhale.</li>
+      <li>Repeat until the breath feels easier, especially during exertion or breathlessness.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>A cornerstone of pulmonary rehabilitation. The back-pressure from pursed lips keeps the airways open longer, slows the breathing rate, and helps empty stale air from the lungs, easing the breathlessness of COPD, asthma, and anxiety. It gives a person a concrete tool to regain control of the breath during exertion or a panic surge.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra; the "position" is the pursed lips that create gentle back-pressure on the exhale.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>If the nose is congested, the inhale can also be taken gently through slightly parted lips; the defining feature is the slow pursed-lip exhale, so nasal restriction is not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. Those with significant lung disease should learn it as part of a rehab program so it can be paired with activity pacing.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137615/" class="source-link peer" target="_blank" rel="noopener">Ma et al., Front Psychol 2017</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="coherent breathing resonance breathing hrv biofeedback six breaths" data-benefits="calm balance blood pressure heart rate variability baroreflex resonance" data-tags="calming balance blood-pressure" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 52 Q32 57 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 80 52" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M14 24 q6 -8 12 0 q6 8 12 0 q6 -8 12 0 q6 8 12 0" stroke="#5AE8C8" stroke-width="1.2" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Coherent / Resonance Breathing</div>
+      <div class="tech-skt">Clinical &middot; ~5&ndash;6 breaths per minute</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Balance</span><span class="tag-pill">Blood Pressure</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie comfortably and breathe through the nose.</li>
+      <li>Inhale smoothly for a count of about five or six seconds.</li>
+      <li>Exhale just as smoothly for the same five or six seconds, with no pause or hold at either end.</li>
+      <li>This gives roughly five to six breaths per minute &mdash; the "resonance" rate at which heart rate and breath synchronize.</li>
+      <li>Continue for 10&ndash;20 minutes; many people use a visual or audio pacer to hold the rhythm.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Slowing to around six breaths per minute maximizes heart-rate variability and strengthens the baroreflex, the system that regulates blood pressure. Well studied for lowering blood pressure, easing stress and anxiety, and producing a balanced, coherent physiological state. It is essentially the Western, instrument-measured formalization of the slow breathing the yogic tradition arrived at through chanting and Ujjayi.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra; hands rest wherever comfortable. The focus is entirely on the even five-to-six-second pace.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together and the breath is slow and soft, so nasal restriction is rarely a barrier; a gentle mouth-breath can be used if both sides are congested.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. If the slow pace feels like air hunger at first, lengthen the count gradually over several sessions.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5709795/" class="source-link peer" target="_blank" rel="noopener">Zaccaro et al., Front Hum Neurosci 2018 (slow breathing review)</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5772442/" class="source-link peer" target="_blank" rel="noopener">Russo et al., Breathe 2017 (physiology of slow breathing)</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="cyclic sighing physiological sigh double inhale extended exhale" data-benefits="calm mood anxiety lowers respiratory rate stanford fastest relief stress" data-tags="calming" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M18 48 Q30 54 40 57" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M24 54 Q32 56 40 58" stroke="#5AE8C8" stroke-width="1.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q72 55 86 52" stroke="#F0C674" stroke-width="3" fill="none" marker-end="url(#a-out)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Cyclic Sighing (Physiological Sigh)</div>
+      <div class="tech-skt">Clinical &middot; double-inhale, long exhale</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie comfortably and breathe normally to begin.</li>
+      <li>Inhale slowly through the nose until the lungs feel about full.</li>
+      <li>Without exhaling, take a second, short, sharp sip of air through the nose to top the lungs off completely (the "double inhale").</li>
+      <li>Then exhale slowly and fully through the mouth, letting the out-breath be longer than the whole inhale.</li>
+      <li>Repeat this cycle for about five minutes.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The physiological sigh is the body's own reset breath (we do it spontaneously when crying or falling asleep); the second inhale reopens collapsed air sacs and the long exhale offloads carbon dioxide. A 2023 Stanford randomized study found five minutes a day of cyclic sighing improved mood and lowered respiratory rate more than mindfulness meditation or other breathwork &mdash; making it one of the fastest-acting calming breaths available.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra; hands rest comfortably. The defining feature is the double-inhale followed by an extended exhale.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>If a nostril is blocked, the double inhale can be taken through the mouth; the extended exhale is already through the mouth, so nasal restriction is not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Very safe. Simply keep the double inhale gentle rather than gasping.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9873947/" class="source-link peer" target="_blank" rel="noopener">Balban et al., Cell Reports Medicine 2023 (Stanford, cyclic sighing)</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10741869/" class="source-link peer" target="_blank" rel="noopener">Fincham et al., 2023 (breathwork meta-analysis)</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="4-7-8 breathing four seven eight relaxing breath weil" data-benefits="calm sleep relaxation anxiety retention wind down" data-tags="calming sleep" data-prov="yogic western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M22 52 Q32 57 40 58" stroke="#5AE8C8" stroke-width="2" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q72 55 86 52" stroke="#F0C674" stroke-width="3" fill="none" marker-end="url(#a-out)"/><path d="M35 20 A18 10 0 1 1 65 20" stroke="#c3bcd8" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/><text x="30" y="13" font-size="6.5" fill="#c3bcd8">4&middot;7&middot;8</text></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">4-7-8 Breath</div>
+      <div class="tech-skt">"Relaxing Breath" &middot; pranayama-derived</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Sleep</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit or lie comfortably. Rest the tip of the tongue against the ridge behind the upper front teeth and keep it there throughout.</li>
+      <li>Exhale completely through the mouth around the tongue, making a soft whoosh.</li>
+      <li>Close the mouth and inhale quietly through the nose for a count of four.</li>
+      <li>Hold the breath for a count of seven.</li>
+      <li>Exhale completely through the mouth, whoosh, for a count of eight. This is one round.</li>
+      <li>Repeat for four rounds to start, building up slowly over time.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Popularized by Dr. Andrew Weil and adapted from yogic pranayama, this fixed 4-7-8 ratio emphasizes a long exhale and a breath-hold to tip the nervous system toward calm. Widely used as a wind-down and sleep aid and to interrupt anxiety or cravings. It sits between traditions: a yogic-derived retention breath repackaged in Western clinical wellness.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra; the only "position" is the tongue resting behind the upper teeth. Hands rest comfortably.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>The inhale is nasal but brief (four counts); if the nose is fully congested, a soft mouth-inhale can bridge it. The long exhale is through the mouth, so nasal restriction is largely not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>The 7-count hold can cause lightheadedness at first; practice seated or lying down and shorten the counts (keeping the 4:7:8 proportion) if needed. Those with low blood pressure, heart conditions, or pregnancy should keep the hold brief.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="box breathing square breathing tactical breathing navy seal" data-benefits="calm balance focus stress control tactical equal ratio hold" data-tags="calming balance focus" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M22 52 Q32 57 40 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M60 58 Q68 56 78 52" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><rect x="36" y="12" width="16" height="16" fill="none" stroke="#c3bcd8" stroke-width="1.5"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Box Breathing</div>
+      <div class="tech-skt">Square / Tactical Breathing</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Balance</span><span class="tag-pill">Focus</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit upright and comfortable, breathing through the nose.</li>
+      <li>Inhale for a count of four.</li>
+      <li>Hold the breath in for a count of four.</li>
+      <li>Exhale for a count of four.</li>
+      <li>Hold the breath out for a count of four. That completes one "box."</li>
+      <li>Repeat for 4&ndash;5 rounds, or a few minutes, keeping all four sides equal.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Four equal sides &mdash; in, hold, out, hold. The structure gives an anxious or overloaded mind a simple, absorbing pattern to follow, quickly steadying focus and calming the stress response; it's a staple of military and first-responder training for staying composed under pressure. It is the Western, retention-added cousin of the yogic Sama Vritti.</p></div>
+    <h4>Hand position</h4>
+    <p>No mudra; this is a tactical and clinical breathing drill, popularized by the military and by first responders, and studied directly in stress research. Hands rest comfortably.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used throughout, and the exhale can move through the nose or mouth, so nasal restriction of any kind is not a barrier.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Shorten the counts or drop the holds if lightheaded; those with respiratory or cardiac conditions should keep holds brief.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10741869/" class="source-link peer" target="_blank" rel="noopener">Fincham et al., 2023 (breathwork meta-analysis)</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9873947/" class="source-link peer" target="_blank" rel="noopener">Balban et al., Cell Reports Medicine 2023 (box-breathing arm)</a>
+      <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
+      <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
+    </div>
+  </div>
+</details>
+  </div>
+</section>
+
+</main>
+
+<div class="footer-bridge">
+  <span class="footer-bridge-label">Continue the journey:</span>
+  <a href="meditation.html#sec-ujjayi" class="bridge-link">Breath as meditation</a>
+  <a href="dharana.html" class="bridge-link">Dharana</a>
+  <a href="index.html" class="bridge-link">Hub</a>
+</div>
+
+<script>
+(function(){
+  const search = document.getElementById('tech-search');
+  const tagPills = Array.from(document.querySelectorAll('.filter-pill[data-tag]'));
+  const provPills = Array.from(document.querySelectorAll('.filter-pill[data-prov]'));
+  const cards = Array.from(document.querySelectorAll('.tech-card'));
+  const count = document.getElementById('result-count');
+  let activeTags = new Set();
+  let activeProv = new Set();
+
+  function apply(){
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card=>{
+      const name = card.dataset.name.toLowerCase();
+      const benefits = (card.dataset.benefits || '').toLowerCase();
+      const tags = card.dataset.tags.split(' ');
+      const provs = (card.dataset.prov || '').split(' ');
+      const matchesText = !q || name.includes(q) || benefits.includes(q);
+      const matchesTags = activeTags.size===0 || tags.some(t=>activeTags.has(t));
+      const matchesProv = activeProv.size===0 || provs.some(p=>activeProv.has(p));
+      const show = matchesText && matchesTags && matchesProv;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    count.textContent = visible + (visible===1 ? ' technique' : ' techniques');
+  }
+
+  search.addEventListener('input', apply);
+  tagPills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      const t = p.dataset.tag;
+      if(activeTags.has(t)){ activeTags.delete(t); p.classList.remove('active'); }
+      else { activeTags.add(t); p.classList.add('active'); }
+      apply();
+    });
+  });
+  provPills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      const t = p.dataset.prov;
+      if(activeProv.has(t)){ activeProv.delete(t); p.classList.remove('active'); }
+      else { activeProv.add(t); p.classList.add('active'); }
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
+
+</body>
+</html>
