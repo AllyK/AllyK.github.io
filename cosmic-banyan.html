@@ -197,8 +197,11 @@ main{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
       <button class="pill" data-target="section-s3">Vamana &amp; Bali</button>
       <button class="pill" data-target="section-s4">The Ramayana</button>
       <button class="pill" data-target="section-s5">The Mahabharata</button>
+      <button class="pill" data-target="section-s8">Krishna's Answer</button>
       <button class="pill" data-target="section-s6">Krishna</button>
       <button class="pill" data-target="section-s7">Meditation &amp; Rebirth</button>
+      <button class="pill" data-target="section-s9">A Thousand Suns</button>
+      <button class="pill" data-target="section-s10">The Upside-Down Banyan</button>
       <button class="pill" data-target="section-characters">Characters</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
     </div>
@@ -296,6 +299,20 @@ const POSES = {
        conn:'Arjuna\'s defining implement is his bow. The Bhagavad Gita begins at the moment he drops it. This pose is the shape of readiness before release: the body fully drawn back, everything coiled in preparation. What Krishna teaches Arjuna is the ability to be this bow — completely committed to the action — while releasing all attachment to where the arrow lands.'},
    35:{en:'Happy Baby Pose',       skt:'Ananda Balasana',
        conn:'Named for the divine infant at play. The pose recalls the quality of Baby Krishna in Vrindavan: complete, unself-conscious delight — a being whose whole existence is oriented toward joy rather than purpose or achievement. The tradition calls this quality leela. To find it in the body is to remember a mode of presence that precedes every agenda.'},
+  401:{en:'Corpse Pose',           skt:'Savasana',
+       conn:'The pose in which Chapter 2 of the Gita is rehearsed. Lying completely still, releasing effort, identity, and control, the practitioner spends a few minutes as what remains when the garment of the body is set down (Gita 2.22). The tradition places it at the end of practice as a conscious meditation on letting go.'},
+  402:{en:'Tortoise Pose',         skt:'Kurmasana',
+       conn:'The body folded into the exact image of Gita 2.58: limbs drawn in, torso become the shell, senses turned inward. Teachers link this pose directly to pratyahara, the fifth limb, and Krishna\'s tortoise is the scriptural root of that link.'},
+  403:{en:'Equal Standing',        skt:'Samasthiti',
+       conn:'Sama, even; sthiti, standing. The pose carries Gita 2.48 in its name: samatvam yoga uchyate, evenness is yoga. Every return to Samasthiti is a return to the same standing after success and after failure.'},
+  404:{en:'Child\'s Pose',         skt:'Balasana',
+       conn:'The body\'s way of asking for the gentle form back. Folding down and resting the forehead is the posture of Arjuna\'s request in Gita 11.45: the immensity acknowledged, the friendship restored. Surrender and safety in one shape.'},
+  405:{en:'Five-Pointed Star',     skt:'Utthita Tadasana',
+       conn:'The body opened in every direction at once, edges reaching, center steady: a small echo of the universal form Arjuna sees in Chapter 11, all directions held in a single body.'},
+  406:{en:'Downward-Facing Tree',  skt:'Adho Mukha Vrksasana',
+       conn:'The handstand\'s Sanskrit name is the tree turned upside down. The feet that root Tree Pose rise into the sky and the hands press down as new roots: for a breath or two the body takes the shape of the ashvattha of Gita 15.1, roots above, branches below.'},
+  407:{en:'Salutation Seal',       skt:'Anjali Mudra',
+       conn:'Arjuna\'s gesture before the universal form: kritanjali, palms pressed together (Gita 11.14). The gesture that opens and closes most classes repeats his response to seeing fully, reverence gathered at the heart.'},
 };
 
 const CHARACTERS = {
@@ -418,6 +435,10 @@ const GLOSSARY = [
    def:'The Mahayana Buddhist teaching that the potential for full awakening is possessed equally by all beings, covered over like the sun behind clouds. Everyone, without exception, carries the capacity to become a Buddha.'},
   {term:'Bodhisattva', skt:'bodhisattva', url:'https://www.lionsroar.com/the-bodhisattva-vow/',
    def:'One who vows to attain full awakening for the sake of all beings, and to keep returning across lifetimes until every being is free. The bodhisattva vow explicitly extends into future lives.'},
+  {term:'Pratyahara', skt:'pratyahara', url:'https://www.wisdomlib.org/definition/pratyahara',
+   def:'Withdrawal of the senses from their objects; the fifth limb of yoga. Krishna gives the tradition its defining image in Gita 2.58: the tortoise drawing its limbs into its shell. The senses come home, and the mind can turn toward its object.'},
+  {term:'Samatva', skt:'samatva', url:'https://www.wisdomlib.org/definition/samatva',
+   def:'Evenness of mind; equanimity. The Gita\'s working definition of yoga: samatvam yoga uchyate, evenness is yoga (2.48). The same steadiness in success and failure, gain and loss.'},
 ];
 
 const STORIES = [
@@ -610,6 +631,36 @@ Krishna\'s response does not begin with comfort. It begins with correction. You 
     ],
   },
   {
+    id:'s8', color:'#3E7A8A',
+    title:'What cannot be cut: Krishna\'s first answer',
+    source:'Bhagavad Gita, Chapter 2',
+    thisStory:'Picks up at the exact moment the Mahabharata story ends, with Arjuna collapsed on the chariot floor. Krishna\'s reply contains the seed of everything that follows: the deathless Self, evenness as the definition of yoga, and the tortoise that taught the tradition how to turn inward.',
+    sources:[
+      {label:'Vedabase: Bhagavad Gita Chapter 2', url:'https://vedabase.io/en/library/bg/2/'},
+      {label:'Shlokam: verse 2.58 with commentaries', url:'https://shlokam.org/bhagavad-gita/2-58/'},
+      {label:'Holy Bhagavad Gita: 2.58', url:'https://www.holy-bhagavad-gita.org/chapter/2/verse/58/'},
+      {label:'Wisdomlib: Sthitaprajna', url:'https://www.wisdomlib.org/definition/sthitaprajna'},
+      {label:'Tummee: Kurmasana and pratyahara', url:'https://www.tummee.com/yoga-poses/kurmasana'},
+      {label:'Yoga Journal: Corpse Pose', url:'https://www.yogajournal.com/poses/corpse-pose-2/'},
+      {label:'Insight Timer: the meaning of Savasana', url:'https://insighttimer.com/blog/savasana-meaning/'},
+    ],
+    sections:[
+      {heading:'The grief that argues well',
+       text:`Arjuna\'s collapse is articulate. He has reasons: the men across the field are his teachers, cousins, and grandfather. Krishna hears him out and answers with the oldest teaching in the book. You grieve for those who should not be grieved for, yet you speak words of wisdom (2.11). The wise, he says, grieve neither for the living nor for the dead.
+Then the teaching on the Self. What wears this body was never born and never dies (2.20). As a person discards worn garments and puts on new ones, the embodied Self discards worn bodies and takes on new ones (2.22). Weapons cannot cut it, fire cannot burn it, water cannot wet it, wind cannot dry it (2.23). Arjuna is grieving for garments.`},
+      {heading:'Evenness is yoga',
+       text:`Krishna then gives the working definition the whole tradition leans on. You have a right to the work alone, never to its fruits (2.47). This is <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>, and the next verse names its result: established in yoga, act, releasing attachment, the same in success and failure. Samatvam yoga uchyate, <span class="concept-link" data-id="Samatva">evenness is yoga</span> (2.48).`},
+      {heading:'How does such a person sit?',
+       text:`Arjuna\'s first question about realization is a question about the body. What does a person of steady wisdom look like, he asks: how do they speak, how do they sit, how do they walk (2.54)? Krishna answers with an animal. When a person can draw the senses back from their objects the way a tortoise draws its limbs into its shell, wisdom stands steady (2.58). The tradition would later name this movement <span class="concept-link" data-id="Pratyahara">pratyahara</span>, the fifth limb, and this verse is its oldest image. What is night for all beings, Krishna adds, the awakened one is awake in (2.69).`},
+    ],
+    characterIds:['krishna_mb','arjuna'],
+    connections:`
+<p><span class="pose-link" data-id="401">Corpse Pose (Savasana)</span> is where this chapter is rehearsed. Lying completely still, releasing effort, identity, and control, the practitioner spends a few minutes as the thing verses 2.20 through 2.23 describe: what remains when the garment is set down. Teachers across traditions describe Savasana as a conscious practice of letting go and a meditation on impermanence, which is why it closes the practice.</p>
+<p><span class="pose-link" data-id="402">Tortoise Pose (Kurmasana)</span> folds the body into the exact image of 2.58: limbs drawn in, torso become the shell, senses turned inward. Teachers link the pose directly to <span class="concept-link" data-id="Pratyahara">pratyahara</span>, and this verse is the scriptural root of that link.</p>
+<p><span class="pose-link" data-id="403">Equal Standing (Samasthiti)</span> carries 2.48 in its name: sama, even; sthiti, standing. Every time a teacher calls for Samasthiti, the instruction is the chapter\'s instruction: return to <span class="concept-link" data-id="Samatva">evenness</span>, the same pose after a wobble as after a perfect balance.</p>`,
+    questions:[],
+  },
+  {
     id:'s6', color:'#4858B0',
     title:'Krishna: the dance of divine love',
     source:'Srimad Bhagavatam, Canto 10',
@@ -695,6 +746,63 @@ Follow that thread and a quiet possibility appears. If the soul has worn every r
       'The Tibetan teaching that every being has at some point been your mother is offered as a way to dissolve the boundary between self and other. Try holding it toward one person you find difficult. What loosens, and what resists?',
       'Krishna keeps the account; we do the practice and release the outcome. Where is it hardest for you to act sincerely without needing to see the result in this lifetime?',
     ],
+  },
+  {
+    id:'s9', color:'#B08030',
+    title:'A thousand suns: Arjuna asks to see everything',
+    source:'Bhagavad Gita, Chapter 11 (Vishvarupa Darshana Yoga)',
+    thisStory:'The Gita\'s most cinematic chapter. Arjuna asks his friend to show what he actually is, and then has to ask him to stop.',
+    sources:[
+      {label:'Vedabase: Bhagavad Gita Chapter 11', url:'https://vedabase.io/en/library/bg/11/'},
+      {label:'Holy Bhagavad Gita: Chapter 11', url:'https://www.holy-bhagavad-gita.org/chapter/11/'},
+      {label:'Wisdomlib: Vishvarupa', url:'https://www.wisdomlib.org/definition/vishvarupa'},
+      {label:'Yoga Journal: Anjali Mudra', url:'https://www.yogajournal.com/yoga-101/for-beginners-anjali-mudra/'},
+      {label:'Yoga Journal: Child\'s Pose', url:'https://www.yogajournal.com/poses/child-s-pose/'},
+    ],
+    sections:[
+      {heading:'The request',
+       text:`Ten chapters in, Arjuna believes. Now he wants to see. Show me the imperishable form, he asks, if you think I can bear it (11.3-4). Krishna grants him a divine eye, because no ordinary eye can hold what comes next (11.8).`},
+      {heading:'The form',
+       text:`What Arjuna sees has no edges. Faces, eyes, arms, and mouths in every direction, ornaments and weapons without number, the light of a thousand suns rising at once (11.12), the entire universe gathered in one place inside one body (11.13). He also sees the terrifying part: the warriors of both armies streaming into blazing mouths like rivers running to the sea (11.26-28). His hair stands on end. He bows his head and presses his palms together (11.14).
+I am time, Krishna tells him, the destroyer of worlds; even without you, every warrior on this field will cease to be. Therefore arise, and be my instrument (11.32-33).`},
+      {heading:'The apology and the return',
+       text:`Arjuna, still shaking, apologizes for every casual word. For calling him Krishna, Yadava, friend. For the teasing at meals, on walks, resting on the same couch (11.41-42). Then he asks for the gentle form back (11.45-46). Krishna returns, first four-armed, then simply human (11.50), and Arjuna exhales: seeing your pleasant human form, I am composed and restored (11.51).
+The tradition reads tenderness here. The immensity is real, and the friendship is real, and practice happens mostly inside the friendship.`},
+    ],
+    characterIds:['krishna_mb','arjuna'],
+    connections:`
+<p><span class="pose-link" data-id="407">Anjali mudra</span> is Arjuna\'s gesture in this chapter. The word the text uses in 11.14 is kritanjali, palms pressed together, and it appears again each time he addresses the vast form. The gesture that opens and closes most classes is a small repetition of this moment: the honest response of a person who has glimpsed the scale of what holds them.</p>
+<p><span class="pose-link" data-id="404">Child\'s Pose (Balasana)</span> is the body\'s way of asking for the gentle form back. Folding down, closing the front of the body, resting the forehead: teachers describe the pose as surrender and a return to safety, which is precisely Arjuna\'s request in 11.45.</p>
+<p><span class="pose-link" data-id="405">Five-Pointed Star (Utthita Tadasana)</span>, on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">family tree</a>, can be practiced as the body\'s small echo of the vision: opened in every direction at once, edges reaching, center steady.</p>`,
+    questions:[],
+  },
+  {
+    id:'s10', color:'#4A7A50',
+    title:'The upside-down banyan: the tree with its roots in heaven',
+    source:'Bhagavad Gita, Chapter 15, verses 1-6',
+    thisStory:'The shortest story on this page and the source of its central image. The tree you have been scrolling under comes from these verses.',
+    sources:[
+      {label:'Vedabase: Bhagavad Gita Chapter 15', url:'https://vedabase.io/en/library/bg/15/'},
+      {label:'Shlokam: Chapter 15', url:'https://shlokam.org/gita/chapter-15.htm'},
+      {label:'Pragmatic Gita: the wisdom of the ashvattha tree', url:'https://pragmaticgita.com/inspiring-wisdom-of-the-ashvattha-tree/'},
+      {label:'Yoga International: the mythology behind Vrikshasana', url:'https://yogainternational.com/article/view/the-mythology-behind-vrikshasana-tree-pose/'},
+      {label:'Yoga Journal: Handstand', url:'https://www.yogajournal.com/poses/types/handstand/'},
+      {label:'Yogapedia: Adho Mukha Vrksasana', url:'https://www.yogapedia.com/definition/6316/adho-mukha-vrksasana'},
+      {label:'Yoga Journal: Tree Pose', url:'https://www.yogajournal.com/poses/tree-pose-2/'},
+    ],
+    sections:[
+      {heading:'Roots above, branches below',
+       text:`Krishna describes a tree unlike any tree in the world: an eternal ashvattha with its roots above and its branches below, whose leaves are the Vedic hymns. One who knows this tree, he says, knows the Vedas (15.1). Translators, including the Vedabase edition these pages draw on, often render the tree as a banyan. Its branches spread upward and downward, nourished by the <span class="concept-link" data-id="Guna">gunas</span>; its buds are the objects of the senses; and its secondary roots reach down into the human world, binding action to consequence (15.2).`},
+      {heading:'The axe',
+       text:`From inside the tree, its shape stays hidden: no end, no beginning, no foundation can be seen (15.3). So the instruction arrives with an edge. Cut down this deeply rooted tree with the strong axe of detachment, asanga-shastrena dridhena, and then seek the place from which no one returns (15.3-4).
+The verses are honest about scale. The world\'s entanglements form a living, growing system, and the practice\'s answer is a sharp tool, used deliberately, again and again.`},
+    ],
+    characterIds:['krishna_mb','arjuna'],
+    connections:`
+<p><span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> grows the tree right side up: foot rooting into the earth, trunk steady, crown and branches rising. Teachers map the eight limbs onto its parts, with the yamas and niyamas as roots and samadhi as the fruit, and the tradition of tree reverence behind the pose runs deep in Vedic culture.</p>
+<p><span class="pose-link" data-id="406">Downward-Facing Tree (Adho Mukha Vrksasana)</span> is the handstand\'s actual Sanskrit name, and it is Chapter 15 in the body. The feet that root Vrksasana rise into the sky, the hands press down as new roots, and for a breath or two the practitioner stands as the ashvattha of 15.1: roots above, branches below. Every inversion carries a trace of this verse, the practice of seeing the familiar world turned over.</p>
+<p>This story is also the reason this page looks the way it does. The banyan you entered under, branches reaching toward the eternal and roots extending into the manifest world, is the Gita\'s tree, drawn right side up so the stories can hang from its branches.</p>`,
+    questions:[],
   },
 ];
 
@@ -803,8 +911,8 @@ function renderStory(s){
     <div class="connections-box">${s.connections}</div>
     <div class="section-label">SOURCES &amp; FURTHER READING</div>
     <div class="sources-wrap">${sourcesHTML}</div>
-    <div class="section-label">GUIDING QUESTIONS</div>
-    <div class="questions-list">${questions}</div>
+    ${s.questions.length ? `<div class="section-label">GUIDING QUESTIONS</div>
+    <div class="questions-list">${questions}</div>` : ''}
   </section>`;
 }
 
@@ -916,7 +1024,7 @@ pills.forEach(p=>{
     if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-const sectionIds = ['section-intro','section-yama','section-s1','section-s2','section-s3','section-s4','section-s5','section-s6','section-s7','section-characters'];
+const sectionIds = ['section-intro','section-yama','section-s1','section-s2','section-s3','section-s4','section-s5','section-s8','section-s6','section-s7','section-s9','section-s10','section-characters'];
 const pillMap = {};
 pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
 let scrollTimer;
