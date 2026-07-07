@@ -184,7 +184,7 @@ main{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
     <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
     <a href="cosmic-banyan.html" class="nav-page current">Cosmic Banyan Tree</a>
     <a href="pranayama.html" class="nav-page">Breath</a>
-    <a href="meditation.html" class="nav-page">Breath &amp; Meditation</a>
+    <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
   </div>
@@ -889,20 +889,10 @@ function renderStory(s){
 
   const sourcesHTML = s.sources.map(src=>`<a href="${src.url}" class="source-link" target="_blank" rel="noopener">${extLink}${src.label}</a>`).join('');
 
-  const questions = s.questions.map((q,i)=>`
-    <div class="q-item">
-      <span class="q-num">${i+1}.</span>
-      <span class="q-text">${q}</span>
-    </div>`).join('');
-
   return `<section class="story-section-wrap" id="section-${s.id}">
     <div class="story-header" style="border-color:${s.color}">
       <h2 class="story-title">${s.title}</h2>
       <div class="story-source">${s.source}</div>
-    </div>
-    <div class="context-note">
-      <div class="context-label">THIS STORY</div>
-      <p>${s.thisStory}</p>
     </div>
     ${storyHTML}
     <div class="section-label" style="margin-top:1.5rem">CHARACTERS</div>
@@ -911,8 +901,6 @@ function renderStory(s){
     <div class="connections-box">${s.connections}</div>
     <div class="section-label">SOURCES &amp; FURTHER READING</div>
     <div class="sources-wrap">${sourcesHTML}</div>
-    ${s.questions.length ? `<div class="section-label">GUIDING QUESTIONS</div>
-    <div class="questions-list">${questions}</div>` : ''}
   </section>`;
 }
 
