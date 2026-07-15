@@ -73,6 +73,21 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
 .footer span{font-size:12px;color:var(--text-muted)}
 .footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
 .footer a:hover{border-color:var(--gold);color:var(--gold-dk)}
+
+/* FEEDBACK FORM */
+.lp-feedback{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.3rem}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row select option{background:#141008;color:#f3ecdd}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:rgba(240,198,116,.2)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -85,6 +100,8 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
   <a href="meditation.html" class="nav-page">Meditation</a>
   <a href="dharana.html" class="nav-page">Dharana</a>
   <a href="the-divine.html" class="nav-page current">The Divine</a>
+  <a href="about.html" class="nav-page">About</a>
+  <a href="support.html" class="nav-page">Support</a>
 </nav>
 
 <header id="hero">
@@ -197,5 +214,36 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
   <a href="meditation.html#sec-sca">Samadhi, sat-chit-ananda</a>
   <a href="index.html">The eight limbs</a>
 </div>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a teaching is held differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
 </body>
 </html>

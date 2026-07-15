@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support — The Living Practice</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#FAF5ED;--bg-card:#FFFBF5;
+  --text:#2C1A0E;--text-mid:#6B4C30;--text-muted:#9A7858;
+  --gold:#C8962E;--gold-dk:#854F0B;--gold-lt:#F5D898;--gold-pale:#FBF2E0;
+  --sage:#5A8A5A;
+  --border:#E0CDB0;--border-lt:#EDE0CA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7}
+
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(250,245,237,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:.45rem 1.2rem .5rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold-dk)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:var(--gold-pale);border-color:var(--gold-lt);color:var(--gold-dk)}
+
+main{max-width:760px;margin:0 auto;padding:2.5rem 1.2rem 2rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:400;letter-spacing:.03em;margin-bottom:.25rem}
+.subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.12em;font-size:1rem;margin-bottom:2rem}
+h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:2rem 0 .6rem;padding-bottom:.35rem;border-bottom:2px solid var(--gold-lt)}
+p{color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+a.inline{color:var(--gold-dk);border-bottom:1px solid var(--gold-lt);text-decoration:none}
+a.inline:hover{border-color:var(--gold)}
+.note{background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin:1.25rem 0;font-size:13.5px;color:var(--text-mid);line-height:1.7}
+
+/* GIVING TIERS */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin:1.4rem 0 .5rem}
+.tier{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.15rem;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s}
+.tier:hover{border-color:var(--gold);box-shadow:0 2px 14px rgba(200,150,46,.12)}
+.tier-amt{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--gold-dk);line-height:1}
+.tier-cadence{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin:.3rem 0 .55rem}
+.tier-covers{font-size:13px;color:var(--text-mid);line-height:1.6;flex:1;margin-bottom:.85rem}
+.tier-give{align-self:flex-start;padding:.45rem 1.15rem;font-size:12.5px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);text-decoration:none;cursor:pointer;transition:all .15s}
+.tier-give:hover{background:var(--gold-lt)}
+.tier.custom{background:linear-gradient(160deg,var(--gold-pale),var(--bg-card))}
+.give-hint{font-size:11.5px;color:var(--text-muted);line-height:1.6;margin-top:.4rem}
+
+/* GIVING PROGRESS */
+.give-status{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;margin:1.3rem 0}
+.give-status-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.give-status-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text)}
+.give-status-updated{font-size:11px;color:var(--text-muted);letter-spacing:.06em}
+.give-bar{height:14px;background:var(--gold-pale);border:1px solid var(--gold-lt);border-radius:20px;overflow:hidden;margin-bottom:.65rem}
+.give-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold-lt),var(--gold));border-radius:20px;transition:width .7s ease}
+.give-bar-fill.met{background:linear-gradient(90deg,#8FC98F,var(--sage))}
+.give-status-msg{font-size:13.5px;color:var(--text-mid);line-height:1.7}
+.give-status-msg strong{color:var(--gold-dk);font-weight:500}
+.give-badge{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#3E6B3E;background:rgba(90,138,90,.12);border:1px solid rgba(90,138,90,.35);border-radius:12px;padding:2px 9px;margin:0 .25rem}
+
+/* FEEDBACK FORM */
+.lp-feedback{max-width:760px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{border:none;margin:0 0 .3rem;padding:0}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:var(--gold-lt)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+.byline{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);padding-bottom:2rem}
+.byline a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yama.html" class="nav-page">Yama</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="pranayama.html" class="nav-page">Breath</a>
+    <a href="meditation.html" class="nav-page">Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="about.html" class="nav-page">About</a>
+    <a href="support.html" class="nav-page current">Support</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Support the work</h1>
+  <div class="subtitle">Dana &middot; the practice of giving</div>
+
+  <p>The Living Practice is free, and it will stay free. The philosophy, the sourced stories, the pose and muscle maps, the breath and meditation guides: none of it sits behind a paywall, and none of it ever will. Most of what is here descends from a living tradition that is not mine to sell. <a class="inline" href="yama.html">Yama</a> teaches asteya and aparigraha, non-stealing and non-grasping. Keeping the teachings open is part of the living practice.</p>
+
+  <p>What a site still needs is upkeep: a domain, a place to live on the web, and the hours it takes to write new pages, check sources, and answer the questions that come in. If the work has been useful to you and you are able to give, your gift keeps it online and growing. If you are not able to give, please use everything here freely. That is the whole point.</p>
+
+  <h2>On Dana</h2>
+  <p>Dana is the Sanskrit word for generosity, the practice of giving freely without expectation of return. In the yogic tradition, teaching was never sold. It was offered, and those who received it and could give something back did so as an act of practice in its own right. The gift kept the teaching alive and available to the next person, including the one who could not pay.</p>
+  <p>That is the model here. Think of a gift not as a price for what you have already read, which was freely given, but as a way of holding the door open behind you. Every contribution is welcomed with gratitude, and none is ever required.</p>
+
+  <h2>What your gift covers</h2>
+  <p>This site is small and static, so it costs little to run, and I want to be plain about that. Your giving goes to three things: the domain that carries the name, the hosting that keeps the pages reachable, and the time that turns research and training into new pages. The tiers below are framed around hosting so you can see exactly what a gift sustains. Anything beyond the running costs funds the writing itself.</p>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-amt">$8</div>
+      <div class="tier-cadence">A month online</div>
+      <div class="tier-covers">Roughly one month of hosting. Keeps the tree standing and the pages reachable.</div>
+      <a class="tier-give" data-amt="8" href="#give">Give $8</a>
+    </div>
+    <div class="tier">
+      <div class="tier-amt">$25</div>
+      <div class="tier-cadence">A season under the tree</div>
+      <div class="tier-covers">About three months online, one turn of the seasons of practice.</div>
+      <a class="tier-give" data-amt="25" href="#give">Give $25</a>
+    </div>
+    <div class="tier">
+      <div class="tier-amt">$100</div>
+      <div class="tier-cadence">A year, roots and all</div>
+      <div class="tier-covers">A full year of hosting and the domain renewed. The site&rsquo;s whole running cost, carried by one gift.</div>
+      <a class="tier-give" data-amt="100" href="#give">Give $100</a>
+    </div>
+    <div class="tier custom">
+      <div class="tier-amt">Any amount</div>
+      <div class="tier-cadence">Or give monthly</div>
+      <div class="tier-covers">Give what feels right, once or as a small recurring gift. Steady support is what lets new pages get written.</div>
+      <a class="tier-give" data-amt="" href="#give">Give a custom amount</a>
+    </div>
+  </div>
+  <p class="give-hint">A recurring gift, even a few dollars a month, is the most helpful of all: it turns upkeep from a worry into a rhythm, and it is what makes room for the research and writing that keep the site alive.</p>
+
+  <h2>Where the giving stands</h2>
+  <div class="give-status" id="give-status">
+    <div class="give-status-head">
+      <div class="give-status-title">This year&rsquo;s upkeep</div>
+      <div class="give-status-updated" id="give-updated"></div>
+    </div>
+    <div class="give-bar"><div class="give-bar-fill" id="give-bar-fill"></div></div>
+    <div class="give-status-msg" id="give-status-msg"></div>
+  </div>
+  <p>Once the year&rsquo;s upkeep is met, giving does not stop mattering. It changes direction. Every gift beyond the running costs goes to two things: future trainings that let this work deepen, and lowering the cost of what Rooted Action offers, so that programming, workshops, and classes carry a smaller price and reach more people. This figure is kept honest by hand and updated as gifts arrive.</p>
+
+  <div class="note">A promise, in the spirit of aparigraha: giving will never buy access to anything the rest of the site cannot reach for free. There is no members-only teaching, no locked page, no content held back for donors. A gift supports the commons. It never carves a private room inside it.</div>
+
+  <p><a class="inline" href="about.html">More about this work and Rooted Action</a> &middot; <a class="inline" href="https://allykrupar.com" target="_blank" rel="noopener">allykrupar.com</a></p>
+</main>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+
+<div class="byline"><a href="https://allykrupar.com" target="_blank" rel="noopener">allykrupar.com</a></div>
+
+<script>
+/* DONATION LINK
+   Set DONATE_URL to your donation page (Ko-fi, PayPal, Stripe, Donorbox,
+   Open Collective, or similar) and every "Give" button will point to it.
+   If your platform supports a preset amount in the URL, put the part before
+   the amount here and it will be appended automatically, e.g.
+   'https://ko-fi.com/allykrupar?amount='  or
+   'https://www.paypal.com/donate/?...&amount='
+   Leave it as '' while you decide; buttons will show a friendly note. */
+const DONATE_URL = "";
+const DONATE_URL_TAKES_AMOUNT = false; // set true if DONATE_URL ends where an amount should be appended
+
+document.querySelectorAll('.tier-give').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    if(!DONATE_URL){
+      e.preventDefault();
+      alert('Donations are almost ready. Ally still needs to add a donation link here (Ko-fi, PayPal, Stripe, or similar).');
+      return;
+    }
+    var amt = btn.getAttribute('data-amt');
+    var url = (DONATE_URL_TAKES_AMOUNT && amt) ? DONATE_URL + amt : DONATE_URL;
+    e.preventDefault();
+    window.open(url, '_blank', 'noopener');
+  });
+});
+
+/* GIVING PROGRESS
+   Update these four values by hand as gifts come in. The bar and the message
+   below "Where the giving stands" recompute automatically.
+     year            : the year this total covers
+     maintenanceGoal : what it costs to keep the site online for the year
+                       (hosting + domain). Adjust to your actual number.
+     raised          : total received so far this year toward maintenance
+     lastUpdated     : shown next to the bar, e.g. "July 2026" */
+const GIVING = { year: "2026", maintenanceGoal: 100, raised: 0, lastUpdated: "July 2026" };
+(function(){
+  var goal = GIVING.maintenanceGoal, raised = GIVING.raised;
+  var pct = goal > 0 ? Math.min(100, Math.round(raised / goal * 100)) : 0;
+  var fill = document.getElementById('give-bar-fill');
+  var msg  = document.getElementById('give-status-msg');
+  var upd  = document.getElementById('give-updated');
+  var fmt  = function(n){ return '$' + Number(n).toLocaleString(); };
+  if(upd) upd.textContent = GIVING.lastUpdated ? 'Updated ' + GIVING.lastUpdated : '';
+  if(fill) setTimeout(function(){ fill.style.width = pct + '%'; }, 90);
+  if(!msg) return;
+  if(raised < goal){
+    var remaining = goal - raised;
+    msg.innerHTML = '<strong>' + fmt(raised) + '</strong> of <strong>' + fmt(goal) +
+      '</strong> raised toward keeping the site online in ' + GIVING.year +
+      '. About ' + fmt(remaining) + ' still covers this year&rsquo;s hosting and domain. ' +
+      'Gifts beyond that go to future trainings and to lowering the cost of programming, workshops, and classes.';
+  } else {
+    if(fill) fill.classList.add('met');
+    var surplus = raised - goal;
+    var out = GIVING.year + ' maintenance is covered.<span class="give-badge">Upkeep met</span>Thank you. ' +
+      'Every gift from here goes to future trainings and to lowering the cost of programming, workshops, and classes.';
+    if(surplus > 0) out += ' So far <strong>' + fmt(surplus) + '</strong> beyond upkeep is already going to that.';
+    msg.innerHTML = out;
+  }
+})();
+
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

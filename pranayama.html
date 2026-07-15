@@ -164,6 +164,8 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="about.html" class="nav-page">About</a>
+    <a href="support.html" class="nav-page">Support</a>
   </div>
 </nav>
 
@@ -1404,5 +1406,35 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 })();
 </script>
 
+<section class="lp-feedback" id="lp-feedback" style="position:relative;z-index:1;max-width:900px;margin:0 auto;padding:1rem 1.2rem 3rem">
+  <div style="background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:0 0 .3rem">Questions, corrections, requests</h2>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.65;margin:0 0 1rem">This site is a living study. If a source deserves a second look, a technique is taught differently in your lineage, or there is a practice you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address" style="flex:1;min-width:220px;padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none"/>
+        <select id="lp-fb-type" style="padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps." style="width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem"></textarea>
+      <button type="submit" style="padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif">Send</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
 </body>
 </html>

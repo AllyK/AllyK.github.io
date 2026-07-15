@@ -337,3 +337,46 @@ const POSE_DATA={
 "Kurmasana":{"st":"Hamstrings, adductors, gluteus maximus, spinal extensors, shoulders","sr":"Pelvic floor","ct":"Seated cat/cow then gentle bridge"},
 "Eka Pada Koundinyasana I":{"d":"Asymmetric arm balance with twist","st":"Hamstrings, obliques, erector spinae, hip flexors","sr":"Serratus anterior, triceps, obliques, transverse abdominis, deltoids","ct":"Child's pose, then opposite side"}
 };
+
+// Stories from the Vedas matched to poses. Keys are Sanskrit names as used in
+// YOGA_POSES. Each entry lists the stories on cosmic-banyan.html that the pose
+// carries, with the anchor of the story section and a one-line connection.
+const POSE_STORIES={
+"Virabhadrasana I":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Named for Virabhadra, born from Shiva's grief: sorrow striding forward with purpose."}],
+"Virabhadrasana II":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Divine sorrow that has found its footing and become purposeful action."}],
+"Virabhadrasana III":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Virabhadra's concentrated intention: grief distilled into precise, unwavering action."}],
+"Virabhadrasana III (wall)":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Virabhadra's concentrated intention, supported."}],
+"Baddha Virabhadrasana":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"The fierce warrior bowing: strength and surrender in one shape."}],
+"Viparita Virabhadrasana":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"The warrior looks back at what was lost without leaving the ground."}],
+"Natarajasana":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Nataraja, Shiva's cosmic dance: creation and dissolution intertwined."},{story:"Krishna: the dance of divine love",anchor:"cosmic-banyan.html#section-s6",note:"The divine as dancer: Krishna on Kaliya's heads, weight arriving as grace."}],
+"Natarajasana II":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"Nataraja's dance, deepened."}],
+"Parivrtta Natarajasana":[{story:"Shiva, Sati, and the first act of sacrifice",anchor:"cosmic-banyan.html#section-s1",note:"The Tandava turning: the cycling of creation and dissolution."}],
+"Simhasana":[{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Narasimha's roar: the exhale that dissolves what cannot be sustained."}],
+"Simhasana (prep)":[{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Narasimha's roar, seated and gentle."}],
+"Matsyasana":[{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Matsya, the fish avatar who preserved the Vedas through the flood."}],
+"Salamba Matsyasana":[{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Matsya's chest-opening, supported."}],
+"Setu Bandha Sarvangasana":[{story:"The Ramayana: love, dharma, and the weight of kingship",anchor:"cosmic-banyan.html#section-s4",note:"The bridge to Lanka: each stone floats because of the name it carries."},{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Varaha lifts the earth gently and carries her home."}],
+"Vrksasana":[{story:"The upside-down banyan: the tree with its roots in heaven",anchor:"cosmic-banyan.html#section-s10",note:"The Gita's eternal tree, grown right side up: roots, trunk, crown."},{story:"The dwarf who measured the universe",anchor:"cosmic-banyan.html#section-s3",note:"Bali's question: rooted enough to stand, open enough to give, still enough to receive."}],
+"Vrksasana (modification)":[{story:"The upside-down banyan: the tree with its roots in heaven",anchor:"cosmic-banyan.html#section-s10",note:"The eternal tree, growing at its own pace."}],
+"Beginner Vrksasana":[{story:"The upside-down banyan: the tree with its roots in heaven",anchor:"cosmic-banyan.html#section-s10",note:"The eternal tree, growing at its own pace."}],
+"Adho Mukha Vrksasana":[{story:"The upside-down banyan: the tree with its roots in heaven",anchor:"cosmic-banyan.html#section-s10",note:"The ashvattha of Gita 15.1 in the body: roots above, branches below."}],
+"Hanumanasana":[{story:"The Ramayana: love, dharma, and the weight of kingship",anchor:"cosmic-banyan.html#section-s4",note:"Hanuman's leap across the ocean: complete trust, complete devotion."}],
+"Ardha Hanumanasana":[{story:"The Ramayana: love, dharma, and the weight of kingship",anchor:"cosmic-banyan.html#section-s4",note:"The shore before the leap: surrender gathering itself."}],
+"Anjaneyasana":[{story:"The Ramayana: love, dharma, and the weight of kingship",anchor:"cosmic-banyan.html#section-s4",note:"Named for Anjaneya, the child Hanuman, who leapt for the sun itself."}],
+"Dhanurasana":[{story:"The Mahabharata: the war within",anchor:"cosmic-banyan.html#section-s5",note:"Arjuna's bow: fully drawn, released without attachment to where the arrow lands."}],
+"Eka Pada Dhanurasana":[{story:"The Mahabharata: the war within",anchor:"cosmic-banyan.html#section-s5",note:"Arjuna's bow, drawn one limb at a time."}],
+"Padmasana":[{story:"The Mahabharata: the war within",anchor:"cosmic-banyan.html#section-s5",note:"The seat of the student gone completely still: the collapse before the arising."},{story:"The yogi who runs out of life: Arjuna's question about the path",anchor:"cosmic-banyan.html#section-s7",note:"The steady seat of Gita Chapter 6: nothing left to do but be available."}],
+"Ardha Padmasana":[{story:"The yogi who runs out of life: Arjuna's question about the path",anchor:"cosmic-banyan.html#section-s7",note:"The steady seat, approached with patience."}],
+"Ananda Balasana":[{story:"Krishna: the dance of divine love",anchor:"cosmic-banyan.html#section-s6",note:"The divine infant at play: leela, delight before any agenda."}],
+"Natvarasana":[{story:"Krishna: the dance of divine love",anchor:"cosmic-banyan.html#section-s6",note:"The cowherd at rest: ankle crossed, flute at the lips."}],
+"Savasana":[{story:"What cannot be cut: Krishna's first answer",anchor:"cosmic-banyan.html#section-s8",note:"What remains when the garment of the body is set down (Gita 2.22)."}],
+"Kurmasana":[{story:"What cannot be cut: Krishna's first answer",anchor:"cosmic-banyan.html#section-s8",note:"Gita 2.58 exactly: limbs drawn in, torso become the shell, senses turned inward."}],
+"Supta Kurmasana":[{story:"What cannot be cut: Krishna's first answer",anchor:"cosmic-banyan.html#section-s8",note:"The tortoise fully withdrawn: pratyahara embodied."}],
+"Samasthiti":[{story:"What cannot be cut: Krishna's first answer",anchor:"cosmic-banyan.html#section-s8",note:"Samatvam yoga uchyate (Gita 2.48): evenness is yoga."}],
+"Balasana":[{story:"A thousand suns: Arjuna asks to see everything",anchor:"cosmic-banyan.html#section-s9",note:"The body's way of asking for the gentle form back (Gita 11.45)."}],
+"Utthita Balasana":[{story:"A thousand suns: Arjuna asks to see everything",anchor:"cosmic-banyan.html#section-s9",note:"Asking for the gentle form back, knees wide."}],
+"Utthita Tadasana":[{story:"A thousand suns: Arjuna asks to see everything",anchor:"cosmic-banyan.html#section-s9",note:"A small echo of the universal form: opened in every direction, center steady."}],
+"Garudasana":[{story:"The upside-down banyan: the tree with its roots in heaven",anchor:"cosmic-banyan.html#section-s10",note:"The tangled secondary roots of the ashvattha, binding action to consequence."}],
+"Malasana":[{story:"The dwarf who measured the universe",anchor:"cosmic-banyan.html#section-s3",note:"The descent to Sutala: the humble realm more serene than the heavens."}],
+"Navasana":[{story:"The fallen gatekeepers, the cosmic boar, and the child who would not stop chanting",anchor:"cosmic-banyan.html#section-s2",note:"Crossing the primordial waters: the center holds."}]
+};

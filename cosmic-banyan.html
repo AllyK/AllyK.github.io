@@ -200,6 +200,33 @@ a.dir-chip.yama:hover{border-color:var(--gold)}
 a.gita-vlink{color:var(--gold-dk);border-bottom:1.5px dotted var(--gold);text-decoration:none}
 a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 
+/* STORY SEQUENCE */
+.seq-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem}
+.seq-intro{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:.9rem}
+.seq-steps{display:flex;flex-direction:column;gap:2px}
+.seq-step{display:flex;gap:.7rem;align-items:baseline;padding:.45rem .35rem;border-bottom:1px solid var(--border-lt)}
+.seq-step:last-child{border-bottom:none}
+.seq-num{font-size:11px;font-weight:500;color:var(--gold);min-width:20px;text-align:right}
+.seq-pose{font-size:13.5px;color:var(--text);font-weight:500;white-space:nowrap}
+.seq-skt{font-size:12px;font-style:italic;color:var(--gold-dk)}
+.seq-cue{font-size:12.5px;color:var(--text-muted);line-height:1.55}
+.seq-note{font-size:11.5px;color:var(--text-muted);font-style:italic;margin-top:.7rem;line-height:1.6}
+.seq-note a{color:var(--gold-dk);border-bottom:1px solid var(--gold-lt);text-decoration:none}
+
+/* FEEDBACK FORM */
+.lp-feedback{max-width:900px;margin:0 auto;padding:2rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.3rem}
+.lp-feedback .lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:var(--gold-lt)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+
 /* FOOTER */
 .footer-bridge{border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .footer-bridge-label{font-size:12px;color:var(--text-muted)}
@@ -222,6 +249,8 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="about.html" class="nav-page">About</a>
+    <a href="support.html" class="nav-page">Support</a>
   </div>
   <div class="nav-row">
     <div class="session-pills" id="session-pills">
@@ -260,13 +289,45 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
   </div>
   <div class="hero-text">
     <div class="hero-title">Under the Cosmic Banyan Tree</div>
-    <div class="hero-subtitle">Vedic philosophy and the living roots of yoga</div>
+    <div class="hero-subtitle">Stories from the Vedas, matched to the asanas and sequences that carry them</div>
   </div>
 </header>
 <div class="hero-to-page"></div>
 
 <!-- MAIN CONTENT -->
 <main id="content"></main>
+
+<!-- QUESTIONS, CORRECTIONS, REQUESTS -->
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
 
 <!-- CHARACTER MODAL -->
 <div id="char-modal" role="dialog" aria-modal="true">
@@ -502,6 +563,20 @@ Daksha organizes a great yagya, a cosmic gathering of the celestials, and delibe
 Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony is destroyed. But Shiva's ultimate act is forgiveness: he restores what was broken, even restoring Daksha's life. Sati is reborn as Parvati. Through extraordinary <span class="concept-link" data-id="Tapas">tapas</span>, she wins Shiva back. The story does not end in loss. It ends in a new beginning, bought by patience and fire.`},
     ],
     characterIds:['shiva','sati','daksha','virabhadra'],
+    seq:[
+      {n:'Child\'s Pose',s:'Balasana',c:'Begin folded, as grief begins: forehead to the earth.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Let feeling move through the spine in waves.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Ground through the hands; steady the breath.'},
+      {n:'Warrior I',s:'Virabhadrasana I',c:'Virabhadra arrives: grief striding forward with intention.'},
+      {n:'Warrior II',s:'Virabhadrasana II',c:'Sorrow finds its footing and its horizon.'},
+      {n:'Reverse Warrior',s:'Viparita Virabhadrasana',c:'Look back at what was lost without leaving the ground.'},
+      {n:'Humble Warrior',s:'Baddha Virabhadrasana',c:'The fierce one bows: strength turned toward the earth.'},
+      {n:'Vinyasa to the second side',s:'',c:'Repeat Warrior I through Humble Warrior on the other side.'},
+      {n:'Warrior III',s:'Virabhadrasana III',c:'Grief distilled to a single point of purpose.'},
+      {n:'Dancer Pose',s:'Natarajasana',c:'The Tandava: dissolution and creation held in one shape. Both sides.'},
+      {n:'Seated Forward Fold',s:'Paschimottanasana',c:'The ceremony ends; forgiveness folds everything back in.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Sati is reborn. Rest in what returns after complete release.'},
+    ],
     connections:`
 <p>The Warrior poses, <span class="pose-link" data-id="20">Warrior I</span>, <span class="pose-link" data-id="6">Warrior II</span>, and <span class="pose-link" data-id="46">Warrior III</span>, are named for Virabhadra, the fierce being created from Shiva's grief. These poses hold grief transformed into resolve, the shape of divine sorrow that has found its footing and become purposeful action. <span class="pose-link" data-id="133">Humble Warrior</span> and <span class="pose-link" data-id="363">Bhakti Virabhadrasana</span> add the dimension of surrender: the fierce warrior bowing toward the earth, toward the divine.</p>
 <p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> and <span class="pose-link" data-id="346">Shiva Twist</span> are named for Nataraja, Shiva in his cosmic dance. The Tandava is the rhythm of creation and dissolution intertwined: both the destruction of the old and the ecstatic aliveness of the new, held in one shape.</p>
@@ -538,6 +613,20 @@ Vishnu descends as Varaha, the cosmic boar. He dives into the primordial waters,
 Prahlada is a child of perhaps five or six. He heard the teachings of Narada Muni in the womb and knows Vishnu as the ground of all things. He will not stop chanting Vishnu's name. His father tries everything: poison, fire, crushing, drowning. Prahlada survives each time, absorbed in Vishnu. Finally Hiranyakashipu demands: where is this Vishnu you claim is everywhere? Is he in this pillar? He strikes it. Narasimha emerges: half-lion, half-human, at dusk, at the threshold, across his lap. Every loophole closed. His ferocity afterward can be calmed only by Prahlada's touch.`},
     ],
     characterIds:['jaya_vijaya','kumaras','varaha','prahlada','narasimha'],
+    seq:[
+      {n:'Easy Pose',s:'Sukhasana',c:'Sit with a silent repetition, as Prahlada chants: attention that circumstance cannot break.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Warm the spine while the repetition continues.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Steady the breath before the descent.'},
+      {n:'Low Lunge',s:'Anjaneyasana',c:'Devotion rising through a grounded base.'},
+      {n:'Garland Pose',s:'Malasana',c:'Varaha dives: close to the earth, close to what must be carried.'},
+      {n:'Vinyasa to seated',s:'',c:'Move through plank to the floor with the breath.'},
+      {n:'Boat Pose',s:'Navasana',c:'Crossing the primordial waters, the center holds.'},
+      {n:'Bridge Pose',s:'Setu Bandha Sarvangasana',c:'Varaha lifts the earth gently and carries her home.'},
+      {n:'Fish Pose',s:'Matsyasana',c:'Matsya, the first avatar: the throat and chest open around what must be protected.'},
+      {n:'Lion Pose',s:'Simhasana',c:'Narasimha\'s roar: the full exhale that dissolves what cannot be sustained.'},
+      {n:'Child\'s Pose',s:'Balasana',c:'Prahlada\'s touch: ferocity calmed by the most vulnerable gesture.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Rest as the pillar rests: the divine present in the structure of matter.'},
+    ],
     connections:`
 <p>Prahlada's story is the foundational text for <span class="concept-link" data-id="Nama-japa">nama-japa</span> (mantra repetition). His unbroken chanting under conditions of persecution shows what the practice builds over time: an attention that cannot be interrupted by circumstance. <span class="pose-link" data-id="335">Lion Pose (Simhasana)</span> carries the energy of Narasimha's roar, the sound that dissolves what cannot be sustained.</p>
 <p>The Jaya-Vijaya story speaks to <span class="concept-link" data-id="Karma">karma</span> and <span class="concept-link" data-id="Svadhyaya">svadhyaya</span> (self-study): the quality of attention matters more than its apparent direction. What we give our complete, unbroken attention to, we move toward. Narasimha's emergence from the pillar teaches that the divine is here in the structure of matter, present everywhere Prahlada's chanting has been.</p>
@@ -571,6 +660,20 @@ Vishnu descends as Vamana, a dwarf brahmin student, and arrives at Bali's great 
 Vamana expands into Trivikrama, the one who traverses all three worlds. With one step he covers the entire earth. With the second, all the heavens. No place remains for the third step. Bali, who has pledged, offers his own head. Vishnu places his foot on Bali's head and sends him down to Sutala, a realm described in the Bhagavatam as more serene and beautiful than the heavens the celestials fought over. Vishnu himself takes his place as the guard at Bali's gate. And he promises: in a future cosmic cycle, Bali will become Indra.`},
     ],
     characterIds:['vamana','bali'],
+    seq:[
+      {n:'Child\'s Pose',s:'Balasana',c:'Begin small, as Vamana arrives: concealing everything, asking for almost nothing.'},
+      {n:'Table to Downward Dog',s:'Bharmanasana, Adho Mukha Svanasana',c:'The ground before the strides.'},
+      {n:'Three-Legged Dog',s:'Tri Pada Adho Mukha Svanasana',c:'One leg rises: the first step gathers.'},
+      {n:'High Lunge',s:'Ashta Chandrasana',c:'The first stride covers the earth.'},
+      {n:'Warrior I, arms reaching',s:'Virabhadrasana I',c:'The second stride covers the heavens.'},
+      {n:'Standing Split',s:'Urdhva Prasarita Eka Padasana',c:'No place remains for the third step.'},
+      {n:'Standing Forward Fold',s:'Uttanasana',c:'Bali offers his own head, with full knowledge, freely.'},
+      {n:'Vinyasa to the second side',s:'',c:'Repeat the three strides on the other side.'},
+      {n:'Tree Pose',s:'Vrksasana',c:'Rooted enough to stand, open enough to give, still enough to receive. Both sides.'},
+      {n:'Garland Pose',s:'Malasana',c:'Descend to Sutala: the realm below, more serene than the heavens above.'},
+      {n:'Seated Forward Fold',s:'Paschimottanasana',c:'Surrender that trusts what returns will exceed what was offered.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Vishnu stands guard at the gate. Rest under that watch.'},
+    ],
     connections:`
 <p><span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span>, surrender to the divine, is the fifth niyama in Patanjali's Yoga Sutras and sometimes described as the most direct path to samadhi. Bali's gift is its defining story: giving with full awareness of the cost, trusting that what returns will exceed what was offered. <span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> asks a similar question: can you be rooted enough to stand, open enough to give, and still enough to receive, all at once?</p>
 <p>The story also illustrates <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> from the Bhagavad Gita: action without attachment to fruits. Bali offers the three worlds and receives a more beautiful kingdom and the personal presence of Vishnu. The return is better than anything calculation could produce.</p>
@@ -609,6 +712,19 @@ In the forest, the demon Ravana, king of Lanka, becomes fixated on Sita. He lure
 The people light lamps through Ayodhya to guide them home. This is Diwali. But the story does not end there. Years later, a washerman questions publicly how the king could accept a wife who lived in another man's house. Rama sends Sita away again, into the forest, while she is pregnant with their sons. He mourns her absence for the rest of his life, never remarries, and uses a golden statue of Sita for every ritual requiring a queen. When their sons eventually recite the Ramayana before him, recognition is complete but too late. Sita refuses to return. She calls on the earth to receive her, and the earth opens. The Ramayana presents this as tragedy.`},
     ],
     characterIds:['rama','sita','hanuman','ravana'],
+    seq:[
+      {n:'Mountain Pose, hands at heart',s:'Tadasana, Anjali Mudra',c:'The vow: dharma held before everything begins.'},
+      {n:'Sun Salutation A',s:'Surya Namaskar A',c:'Rama is born to the solar dynasty; salute the line he carries.'},
+      {n:'Low Lunge',s:'Anjaneyasana',c:'Named for Anjaneya, the child Hanuman, reaching for the sun itself.'},
+      {n:'Half Splits',s:'Ardha Hanumanasana',c:'The shore of the ocean: the breath just before the leap.'},
+      {n:'Vinyasa to the second side',s:'',c:'Repeat the lunge and half splits on the other side.'},
+      {n:'Warrior II',s:'Virabhadrasana II',c:'The army assembles at the water\'s edge. Both sides.'},
+      {n:'Half Pigeon',s:'Ardha Kapotasana',c:'Prepare the hips slowly; devotion has patience. Both sides.'},
+      {n:'Splits Pose, supported',s:'Hanumanasana',c:'The leap itself: complete trust, complete surrender to the purpose. Use props freely; the devotion is the pose.'},
+      {n:'Bridge Pose',s:'Setu Bandha Sarvangasana',c:'The bridge to Lanka: each stone floating because of the name it carries.'},
+      {n:'Reclined Bound Angle',s:'Supta Baddha Konasana',c:'Sita, held by the earth that receives her.'},
+      {n:'Corpse Pose',s:'Savasana',c:'The lamps of Diwali: what was hidden in darkness becomes visible.'},
+    ],
     connections:`
 <p><span class="pose-link" data-id="368">Hanumanasana (Splits Pose)</span> is named for Hanuman's legendary leap across the ocean to Lanka to find Sita. The full extension of the pose is the shape of complete trust, complete devotion, and complete surrender to the purpose at hand. <span class="pose-link" data-id="73">Ardha Hanumanasana (Half Splits)</span> is the preparatory moment: the breath just before the leap.</p>
 <p>The Ramayana is a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> in its most painful form: Rama acts from dharma in every moment, releasing personal desire from the outcome. <span class="concept-link" data-id="Satya">Satya</span> (truthfulness) is Sita's defining quality. Her final act, calling on the earth rather than returning to prove herself once more, is the most radical expression of satya in all the stories.</p>
@@ -652,6 +768,20 @@ On the first morning of the Battle of Kurukshetra, Arjuna asked Krishna to drive
 Krishna\'s response begins with correction. You grieve for those who should not be grieved for. The soul cannot be cut by weapons, cannot be burned, cannot be drowned. Then the teaching climbs: act from your <span class="concept-link" data-id="Swadharma">swadharma</span>, your own specific path of duty. Act without attachment to the fruits of action. This is <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>, the central instruction of the yoga tradition. Do not confuse the instrument\'s precision with the instrument\'s ownership of the outcome. There is something in you that watches the grief, watches the action, watches the collapse and the arising both, and is not disturbed by any of it. That witness is your deepest self. Arjuna listened, understood, rose, and fought.`},
     ],
     characterIds:['kunti','draupadi','krishna_mb','arjuna','karna','yudhishtir','duryodhana'],
+    seq:[
+      {n:'Child\'s Pose',s:'Balasana',c:'Arjuna collapsed on the chariot floor: the practice begins where he begins.'},
+      {n:'Easy Pose',s:'Sukhasana',c:'Krishna speaks; the student listens before he can move.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'The first stirrings of arising.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'The ground steadies under the hands.'},
+      {n:'Warrior I',s:'Virabhadrasana I',c:'Arise: swadharma taken up again.'},
+      {n:'Warrior II',s:'Virabhadrasana II',c:'Both armies in view, the gaze steady between them.'},
+      {n:'Triangle Pose',s:'Trikonasana',c:'The archer\'s precision: full extension without grasping.'},
+      {n:'Vinyasa to the second side',s:'',c:'Repeat the standing arc on the other side.'},
+      {n:'Bow Pose',s:'Dhanurasana',c:'The bow taken up again: fully drawn, released from attachment to where the arrow lands.'},
+      {n:'Half Lord of the Fishes',s:'Ardha Matsyendrasana',c:'Wring out the argument for despair. Both sides.'},
+      {n:'Lotus or Easy Pose',s:'Padmasana',c:'Samatvam yoga uchyate: evenness is yoga.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Rest as the witness that watches collapse and arising both.'},
+    ],
     connections:`
 <p>The Bhagavad Gita\'s teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> is the most direct scriptural source for why we practice without grasping at results: the work of today\'s pose is today\'s pose. Flexibility, strength, insight: these are outcomes. The practice itself is what we return to. <span class="pose-link" data-id="90">Bow Pose (Dhanurasana)</span> captures this exactly: the body fully drawn back, everything coiled and ready, released with complete commitment and no control over where the arrow lands.</p>
 <p>Draupadi\'s act of surrender, raising both hands when nothing else worked and calling only on the divine, is <span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span> (surrender to the divine) at its most extreme. In this story, bhakti is the last resort that becomes the most direct route. Every act of honest surrender in practice carries a trace of this gesture: the exhale that releases what the inhale was gripping.</p>
@@ -690,6 +820,18 @@ Then the teaching on the Self. What wears this body was never born and never die
        text:`Arjuna\'s first question about realization is a question about the body. What does a person of steady wisdom look like, he asks: how do they speak, how do they sit, how do they walk (2.54)? Krishna answers with an animal. When a person can draw the senses back from their objects the way a tortoise draws its limbs into its shell, wisdom stands steady (2.58). The tradition would later name this movement <span class="concept-link" data-id="Pratyahara">pratyahara</span>, the fifth limb, and this verse is its oldest image. What is night for all beings, Krishna adds, the awakened one is awake in (2.69).`},
     ],
     characterIds:['krishna_mb','arjuna'],
+    seq:[
+      {n:'Equal Standing',s:'Samasthiti',c:'Sama, even; sthiti, standing. The chapter\'s definition of yoga, taken as the starting shape.'},
+      {n:'Half Sun Salutations, repeated slowly',s:'Ardha Uttanasana flow',c:'The same movement after a wobble as after a perfect one: evenness rehearsed.'},
+      {n:'Standing Forward Fold',s:'Uttanasana',c:'The senses begin their turn inward.'},
+      {n:'Staff Pose',s:'Dandasana',c:'The steady seat: spine as the axis of attention.'},
+      {n:'Head to Knee',s:'Janu Sirsasana',c:'One limb at a time drawn back from the world. Both sides.'},
+      {n:'Seated Forward Fold',s:'Paschimottanasana',c:'The whole body folds toward its own quiet.'},
+      {n:'Butterfly Pose',s:'Baddha Konasana',c:'Gathering in: the limbs come home.'},
+      {n:'Tortoise Pose, or its prep',s:'Kurmasana',c:'The image of 2.58 exactly: limbs drawn in, torso become the shell.'},
+      {n:'Supine Twist',s:'Supta Matsyendrasana',c:'Release the effort of the fold. Both sides.'},
+      {n:'Corpse Pose, held long',s:'Savasana',c:'What remains when the garment is set down.'},
+    ],
     connections:`
 <p><span class="pose-link" data-id="401">Corpse Pose (Savasana)</span> is where this chapter is rehearsed. Lying completely still, releasing effort, identity, and control, the practitioner spends a few minutes as the thing verses 2.20 through 2.23 describe: what remains when the garment is set down. Teachers across traditions describe Savasana as a conscious practice of letting go and a meditation on impermanence, which is why it closes the practice.</p>
 <p><span class="pose-link" data-id="402">Tortoise Pose (Kurmasana)</span> folds the body into the exact image of 2.58: limbs drawn in, torso become the shell, senses turned inward. Teachers link the pose directly to <span class="concept-link" data-id="Pratyahara">pratyahara</span>, and this verse is the scriptural root of that link.</p>
@@ -728,6 +870,20 @@ Some were held back by their families. They sat down, closed their eyes, and med
 In the midst of the dance, the gopis felt a moment of pride, surely we are the most fortunate beings on earth. In that instant, Krishna disappeared. He slipped away with Sri Radha, his eternal consort; when she too briefly felt pride, he disappeared from her as well. The gopis searched the forest, found Radha also bereft, gathered around her, held hands, and began to sing of Krishna together. In their longing, the tradition says, they felt his presence more completely than they had in the dance. When he returned, the circle resumed. What felt like one night, the Bhagavatam says, was the length of an entire cosmic age.`},
     ],
     characterIds:['krishna_vr','vasudev','devaki','yashoda','nanda','kamsa','balaram','radha'],
+    seq:[
+      {n:'Easy Pose',s:'Sukhasana',c:'The flute sounds somewhere in the forest. Sit and hear it.'},
+      {n:'Circle of Joy',s:'Ananda Mandalasana',c:'The Rasa Mandala in miniature: the body circling its own center.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Playful waves through the spine.'},
+      {n:'Tiger Pose',s:'Vyaghrasana',c:'Leela: practice that has not forgotten how to play. Both sides.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Pause; let the forest go quiet.'},
+      {n:'Standing Side Bend',s:'Tiryaka Tadasana',c:'The threefold bend: Krishna\'s tribhanga curve at the hip, the heart, the neck. Both sides.'},
+      {n:'Lord Krishna\'s Pose',s:'Natvarasana',c:'The cowherd at rest: ankle crossed, flute at the lips. Both sides.'},
+      {n:'Dancer Pose',s:'Natarajasana',c:'The dance on Kaliya\'s heads: weight arriving as grace. Both sides.'},
+      {n:'Goddess Pose',s:'Utkata Konasana',c:'The circle widens; every gopi certain the dance is hers.'},
+      {n:'Happy Baby',s:'Ananda Balasana',c:'The divine infant: delight before any agenda.'},
+      {n:'Reclined Bound Angle',s:'Supta Baddha Konasana',c:'Under the autumn moon, longing becomes presence.'},
+      {n:'Corpse Pose',s:'Savasana',c:'One night, the length of a cosmic age.'},
+    ],
     connections:`
 <p><span class="pose-link" data-id="35">Ananda Balasana (Happy Baby Pose)</span> is named for the quality that defines Krishna's years in Vrindavan: complete, unself-conscious delight, a being whose whole existence is oriented toward joy rather than purpose. This is <span class="concept-link" data-id="Leela">leela</span>. To find it in the body is to remember a mode of presence that precedes every agenda and every goal.</p>
 <p>The Rasa Mandala, the circle dance with Krishna at the center, is one of the tradition's central geometric teachings. The moment the gopis felt pride in being the most fortunate beings on earth, the moment they made themselves the center, the connection broke. Every practice orientation that places the practitioner at the center of the work runs this risk. The Rasa Mandala teaches that practice works when it is oriented outward, toward the source.</p>
@@ -770,6 +926,19 @@ If practice is never lost and rebirth is the vehicle that carries it, then rebir
 Follow that thread and a quiet possibility appears. If the soul has worn every role across the long turning of time, then the distance between us and the most awakened beings who have ever lived can close. The Mahayana names this directly as buddha-nature: the potential for full awakening belongs equally to every being, covered over only like the sun behind passing clouds. And the bodhisattva, by vow, returns again and again across lifetimes precisely so that this potential can ripen in all of us. So we may reasonably hold, as a contemplation rather than a doctrine, that any one of us may, somewhere across the immense arc of our births, walk the path far enough to be born as an awakened one, a buddha or a bodhisattva. The seat you take this morning is one bead on a thread longer than history.`},
     ],
     characterIds:['arjuna','krishna_mb'],
+    seq:[
+      {n:'Child\'s Pose',s:'Balasana',c:'Begin where the practitioner who fears failure begins: folded, honest.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'The path resumes exactly where it was left.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Old momentum reawakens in the body.'},
+      {n:'Standing Forward Fold to Mountain',s:'Uttanasana, Tadasana',c:'Rise slowly: no step on this path is ever lost.'},
+      {n:'Tree Pose',s:'Vrksasana',c:'A steady seat begins as a steady stand. Both sides.'},
+      {n:'Eagle Pose',s:'Garudasana',c:'Concentration gathered around a single axis. Both sides.'},
+      {n:'Seated Forward Fold',s:'Paschimottanasana',c:'The senses fold inward toward the Self.'},
+      {n:'Butterfly Pose',s:'Baddha Konasana',c:'Preparing the hips for the seat the chapter prescribes.'},
+      {n:'Lotus, Half Lotus, or Easy Pose',s:'Padmasana',c:'The steady seat itself: body stopped, spine awake.'},
+      {n:'Seated Meditation',s:'Dhyanam',c:'One bead on a thread longer than history.'},
+      {n:'Corpse Pose',s:'Savasana',c:'The account is kept. Rest without anxiety about arrival.'},
+    ],
     connections:`
 <p>This chapter is the scriptural ground beneath the entire <a href="meditation.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Meditation</a> page. Krishna\'s instruction here, the steady seat and the gathered mind resting in the Self, is the practice the meditation page maps in detail, from the ocean breath to the absolute realm of <span class="concept-link" data-id="Sat-chit-ananda">sat-chit-ananda</span>.</p>
 <p><span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is the seat of this teaching. It is the same posture in which Arjuna receives the instruction and the same one the tradition prescribes for the meditation Krishna describes: the body fully stopped, the spine awake, nothing left to do but be available to what stillness reveals.</p>
@@ -806,6 +975,19 @@ I am time, Krishna tells him, the destroyer of worlds; even without you, every w
 The tradition reads tenderness here. The immensity is real, and the friendship is real, and practice happens mostly inside the friendship.`},
     ],
     characterIds:['krishna_mb','arjuna'],
+    seq:[
+      {n:'Mountain Pose, hands at heart',s:'Tadasana, Anjali Mudra',c:'Kritanjali: the gesture Arjuna returns to each time the vision overwhelms him.'},
+      {n:'Raised Arms Pose',s:'Urdhva Hastasana',c:'The request: show me what you actually are.'},
+      {n:'Five-Pointed Star',s:'Utthita Tadasana',c:'The form with no edges: opened in every direction at once.'},
+      {n:'Goddess Pose',s:'Utkata Konasana',c:'The immensity holds its ground.'},
+      {n:'Warrior II',s:'Virabhadrasana II',c:'The armies stream past on both sides. Both sides.'},
+      {n:'Reverse Warrior',s:'Viparita Virabhadrasana',c:'I am time: the horizon tilts. Both sides.'},
+      {n:'Wide-Legged Forward Fold',s:'Prasarita Padottanasana',c:'Bowing before what cannot be taken in standing up.'},
+      {n:'Camel Pose, gentle',s:'Ustrasana',c:'The heart cracked open by awe, within its own capacity.'},
+      {n:'Child\'s Pose',s:'Balasana',c:'The body asks for the gentle form back.'},
+      {n:'Easy Pose, hands at heart',s:'Sukhasana, Anjali Mudra',c:'The friendship restored: composed, human, near.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Practice happens mostly inside the friendship.'},
+    ],
     connections:`
 <p><span class="pose-link" data-id="407">Anjali mudra</span> is Arjuna\'s gesture in this chapter. The word the text uses in 11.14 is kritanjali, palms pressed together, and it appears again each time he addresses the vast form. The gesture that opens and closes most classes is a small repetition of this moment: the honest response of a person who has glimpsed the scale of what holds them.</p>
 <p><span class="pose-link" data-id="404">Child\'s Pose (Balasana)</span> is the body\'s way of asking for the gentle form back. Folding down, closing the front of the body, resting the forehead: teachers describe the pose as surrender and a return to safety, which is precisely Arjuna\'s request in 11.45.</p>
@@ -834,6 +1016,18 @@ The tradition reads tenderness here. The immensity is real, and the friendship i
 The verses are honest about scale. The world\'s entanglements form a living, growing system, and the practice\'s answer is a sharp tool, used deliberately, again and again.`},
     ],
     characterIds:['krishna_mb','arjuna'],
+    seq:[
+      {n:'Mountain Pose',s:'Tadasana',c:'The tree right side up: rooted where you stand.'},
+      {n:'Interlaced Fingers Overhead',s:'Urdhva Baddhanguliyasana',c:'Branches rising, nourished from below.'},
+      {n:'Tree Pose',s:'Vrksasana',c:'Roots, trunk, crown: the familiar orientation. Both sides.'},
+      {n:'Eagle Pose',s:'Garudasana',c:'The tangled secondary roots, binding action to consequence. Both sides.'},
+      {n:'Standing Forward Fold',s:'Uttanasana',c:'The crown descends toward the roots: the turning over begins.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Half inverted: hands and feet both rooted, the world tilting.'},
+      {n:'Dolphin Pose',s:'Ardha Pincha Mayurasana',c:'The forearms become the new ground.'},
+      {n:'Downward-Facing Tree, at the wall, or Legs Up the Wall',s:'Adho Mukha Vrksasana',c:'The ashvattha of 15.1: roots above, branches below. Choose the inversion that serves you today.'},
+      {n:'Child\'s Pose',s:'Balasana',c:'Return from the turned-over world.'},
+      {n:'Corpse Pose',s:'Savasana',c:'The axe of detachment set down; the place from which no one returns, glimpsed.'},
+    ],
     connections:`
 <p><span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> grows the tree right side up: foot rooting into the earth, trunk steady, crown and branches rising. Teachers map the eight limbs onto its parts, with the yamas and niyamas as roots and samadhi as the fruit, and the tradition of tree reverence behind the pose runs deep in Vedic culture.</p>
 <p><span class="pose-link" data-id="406">Downward-Facing Tree (Adho Mukha Vrksasana)</span> is the handstand\'s actual Sanskrit name, and it is Chapter 15 in the body. The feet that root Vrksasana rise into the sky, the hands press down as new roots, and for a breath or two the practitioner stands as the ashvattha of 15.1: roots above, branches below. Every inversion carries a trace of this verse, the practice of seeing the familiar world turned over.</p>
@@ -921,6 +1115,7 @@ function renderIntro(){
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into the light, while the roots descend into the dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the manifest world below. To trace any branch back to where it meets the trunk is a form of yoga in itself. These stories are that practice.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em>, Valmiki's <em>Ramayana</em>, the <em>Mahabharata</em>, and the life of Krishna. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas, open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise. Every Bhagavad Gita verse cited on this page, such as <a class="gita-vlink" href="https://vedabase.io/en/library/bg/15/1/" target="_blank" rel="noopener">15.1</a>, links directly to the Sanskrit and translation on <a class="gita-vlink" href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Vedabase</a>, so the scripture itself is always one click beneath the story.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span>, the law that sustains all things, and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span>, devotion, love, service, which the tradition holds as the path most direct to the divine. <a href="the-divine.html" style="cursor:pointer;color:var(--gold-dk);border-bottom:1px solid var(--gold)">What we mean by &ldquo;the divine&rdquo; &rarr;</a></p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">This page matches each story with the asanas that carry it and with a practice sequence that moves through its arc. Many poses are named directly for these figures: the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in the body changes the quality of attention it asks for. Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone, what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories do more than recount what happened. They work on the listener, through the act of listening itself. Psychology has measured a version of this claim: absorption in a story reshapes what the listener believes after it ends.</p>
     <div class="sources-wrap">
       <a href="https://pubmed.ncbi.nlm.nih.gov/11079236/" class="evidence-link" target="_blank" rel="noopener">${evLink}Green &amp; Brock 2000: narrative transportation shapes belief (JPSP)</a>
@@ -979,6 +1174,22 @@ function renderStory(s){
        <div class="sources-wrap">${meta.evidence.map(e=>`<a href="${e.url}" class="evidence-link" target="_blank" rel="noopener">${evLink}${e.label}</a>`).join('')}</div>`
     : '';
 
+  const seqHTML = (s.seq && s.seq.length)
+    ? `<div class="section-label">THE STORY IN SEQUENCE</div>
+       <div class="seq-wrap">
+         <p class="seq-intro">A short practice that moves through the arc of this story. Move with the breath, honor each transition, and let the story color the attention each shape asks for.</p>
+         <div class="seq-steps">${s.seq.map((st,i)=>`
+           <div class="seq-step">
+             <span class="seq-num">${i+1}</span>
+             <span class="seq-pose">${st.n}</span>
+             ${st.s?`<span class="seq-skt">${st.s}</span>`:''}
+             <span class="seq-cue">${st.c}</span>
+           </div>`).join('')}
+         </div>
+         <p class="seq-note">Instructions, adaptations, and anatomy for every pose here live on the <a href="yoga-family-tree.html">Asana family tree</a> and the <a href="yoga-muscle-diagram.html">muscle diagram</a>.</p>
+       </div>`
+    : '';
+
   return `<section class="story-section-wrap" id="section-${s.id}">
     <div class="story-header" style="border-color:${s.color}">
       <h2 class="story-title">${s.title}</h2>
@@ -990,6 +1201,7 @@ function renderStory(s){
     <div class="char-grid">${charCards}</div>
     <div class="section-label">CONNECTIONS TO PRACTICE</div>
     <div class="connections-box">${gitaLinkify(s.connections)}</div>
+    ${seqHTML}
     <div class="section-label">SOURCES &amp; FURTHER READING</div>
     <div class="sources-wrap">${sourcesHTML}</div>
     ${evidenceHTML}

@@ -41,6 +41,8 @@ body{background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);back
   <a href="meditation.html">Meditation</a>
   <a href="dharana.html">Dharana</a>
   <a href="the-divine.html">The Divine</a>
+  <a href="about.html">About</a>
+  <a href="support.html">Support</a>
 </nav>
 <div id="app" style="max-width:860px;margin:0 auto;padding-bottom:3rem"></div>
 <script src="pose-data.js"></script>
@@ -328,9 +330,10 @@ function buildDetail(){
     if(plist){
       inner='<div style="display:flex;gap:5px;flex-wrap:wrap;max-height:150px;overflow-y:auto;padding-right:4px">'+plist.map(function(p){
         var vc=(typeof POSE_VARIATIONS!=="undefined"&&POSE_VARIATIONS[p.s])?POSE_VARIATIONS[p.s].length:0;
-        return '<span title="'+esc(p.s)+'" style="font-size:0.72rem;color:#d8c8a8;padding:2px 9px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid '+fc.hex+'40;white-space:nowrap"><span style="color:'+LVC[p.lv]+';font-size:0.62rem;font-weight:700;margin-right:4px">'+p.lv+'</span>'+esc(p.n)+(vc?'<span style="color:#FFD700;font-size:0.62rem;margin-left:4px">&#10022;'+vc+'</span>':'')+'</span>';
+        var ps=(typeof POSE_STORIES!=="undefined"&&POSE_STORIES[p.s])?POSE_STORIES[p.s]:null;
+        return '<span title="'+esc(p.s)+'" style="font-size:0.72rem;color:#d8c8a8;padding:2px 9px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid '+fc.hex+'40;white-space:nowrap"><span style="color:'+LVC[p.lv]+';font-size:0.62rem;font-weight:700;margin-right:4px">'+p.lv+'</span>'+esc(p.n)+(vc?'<span style="color:#FFD700;font-size:0.62rem;margin-left:4px">&#10022;'+vc+'</span>':'')+(ps?'<a href="'+ps[0].anchor+'" title="'+esc(ps[0].story)+' &middot; '+esc(ps[0].note)+'" style="text-decoration:none;font-size:0.66rem;margin-left:4px">&#127795;</a>':'')+'</span>';
       }).join("")+'</div>'+
-      '<div style="font-size:0.6rem;color:#5a4a3a;margin-top:5px;font-style:italic">&#10022; = adaptations on the pose &middot; full details on the <a href="yoga-family-tree.html" style="color:'+fc.glow+';text-decoration:none;border-bottom:1px dotted '+fc.glow+'66">Asana page</a></div>';
+      '<div style="font-size:0.6rem;color:#5a4a3a;margin-top:5px;font-style:italic">&#10022; = adaptations on the pose &middot; &#127795; = carries a story from the Vedas, click to read it under the <a href="cosmic-banyan.html" style="color:'+fc.glow+';text-decoration:none;border-bottom:1px dotted '+fc.glow+'66">Cosmic Banyan</a> &middot; full details on the <a href="yoga-family-tree.html" style="color:'+fc.glow+';text-decoration:none;border-bottom:1px dotted '+fc.glow+'66">Asana page</a></div>';
     } else {
       inner='<div style="display:flex;gap:8px;flex-wrap:wrap">'+
       '<div style="font-size:0.78rem;color:#d8c8a8"><span style="color:#4caf50;font-size:0.65rem;font-weight:600;display:inline-block;margin-right:4px">B</span>'+esc(f.B)+'</div>'+
@@ -442,6 +445,37 @@ function render(){
 function closeDetail(){ACTIVE=null;render();}
 
 render();
+</script>
+
+<section class="lp-feedback" id="lp-feedback" style="max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem">
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#e8d9c0;margin:0 0 .3rem">Questions, corrections, requests</h2>
+    <p style="font-size:13px;color:#a89880;line-height:1.65;margin:0 0 1rem">This site is a living study. If an anatomical detail deserves a second look, a muscle mapping seems off, or there is something you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address" style="flex:1;min-width:220px;padding:.55rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none"/>
+        <select id="lp-fb-type" style="padding:.55rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none">
+          <option style="background:#151008">Question</option>
+          <option style="background:#151008">Correction</option>
+          <option style="background:#151008">Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps." style="width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem"></textarea>
+      <button type="submit" style="padding:.55rem 1.4rem;font-size:13px;border:1px solid #5ae8c866;border-radius:20px;background:rgba(90,232,200,.08);color:#5ae8c8;cursor:pointer;font-family:'DM Sans',sans-serif">Send</button>
+      <div style="font-size:11px;color:#6a5a4a;margin-top:.6rem;line-height:1.5">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
 </script>
 </body>
 </html>

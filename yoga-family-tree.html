@@ -56,6 +56,8 @@ mark{background:rgba(255,215,0,0.35);color:#FFD700;border-radius:2px}
   <a href="meditation.html">Meditation</a>
   <a href="dharana.html">Dharana</a>
   <a href="the-divine.html">The Divine</a>
+  <a href="about.html">About</a>
+  <a href="support.html">Support</a>
 </nav>
 <div id="app" style="max-width:860px;margin:0 auto;padding-bottom:2rem"></div>
 <script src="pose-data.js"></script>
@@ -1111,6 +1113,18 @@ function buildInfoModal(){
       if(pd.ct) html+='<div style="font-size:0.8rem;color:#d8c8a8;line-height:1.55;padding:4px 10px;background:rgba(64,196,255,0.05);border-left:2px solid rgba(64,196,255,0.4);border-radius:0 5px 5px 0"><span style="color:#40c4ff;font-size:0.66rem;font-weight:600;letter-spacing:0.08em;margin-right:6px">COUNTER POSE</span>'+esc(pd.ct)+'</div>';
       html+='</div></div>';
     }
+    var pst=(typeof POSE_STORIES!=="undefined"&&POSE_STORIES[POP.sk])||null;
+    if(pst&&pst.length){
+      html+='<div style="margin-bottom:1rem"><div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#5a4a3a;margin-bottom:0.4rem">Story from the Vedas</div><div style="display:grid;gap:4px">';
+      pst.forEach(function(st){
+        html+='<a href="'+st.anchor+'" style="display:block;text-decoration:none;font-size:0.8rem;color:#d8c8a8;line-height:1.55;padding:6px 10px;background:rgba(200,150,46,0.07);border-left:2px solid rgba(200,150,46,0.55);border-radius:0 5px 5px 0">'+
+        '<span style="font-size:0.72rem;margin-right:6px">&#127795;</span>'+
+        '<strong style="color:#f0e6d3;font-weight:500">'+esc(st.story)+'</strong>'+
+        '<span style="color:#9a8a78"> &middot; '+esc(st.note)+'</span>'+
+        '<span style="color:#e8c060;font-size:0.7rem"> &rarr; read under the Cosmic Banyan</span></a>';
+      });
+      html+='</div></div>';
+    }
     if(!(pi&&pi.purpose)&&!(pd&&pd.d)&&fam){
       html+='<p style="font-size:0.84rem;color:#c0b090;line-height:1.7;font-family:\'Cormorant Garamond\',serif;font-style:italic;border-left:2px solid '+pc.hex+';padding-left:0.75rem;margin-bottom:1rem">'+esc(fam.desc)+'</p>';
     }
@@ -1285,6 +1299,37 @@ function selectChakra(key){
 }
 
 render();
+</script>
+
+<section class="lp-feedback" id="lp-feedback" style="max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem">
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#e8d9c0;margin:0 0 .3rem">Questions, corrections, requests</h2>
+    <p style="font-size:13px;color:#a89880;line-height:1.65;margin:0 0 1rem">This site is a living study. If a pose deserves a second look, a family is organized differently in your lineage, or there is a pose you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address" style="flex:1;min-width:220px;padding:.55rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none"/>
+        <select id="lp-fb-type" style="padding:.55rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none">
+          <option style="background:#151008">Question</option>
+          <option style="background:#151008">Correction</option>
+          <option style="background:#151008">Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps." style="width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem"></textarea>
+      <button type="submit" style="padding:.55rem 1.4rem;font-size:13px;border:1px solid #FFD70066;border-radius:20px;background:rgba(255,215,0,.08);color:#FFD700;cursor:pointer;font-family:'DM Sans',sans-serif">Send</button>
+      <div style="font-size:11px;color:#6a5a4a;margin-top:.6rem;line-height:1.5">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
 </script>
 </body>
 </html>

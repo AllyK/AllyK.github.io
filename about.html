@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — The Living Practice</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#FAF5ED;--bg-card:#FFFBF5;
+  --text:#2C1A0E;--text-mid:#6B4C30;--text-muted:#9A7858;
+  --gold:#C8962E;--gold-dk:#854F0B;--gold-lt:#F5D898;--gold-pale:#FBF2E0;
+  --sage:#5A8A5A;
+  --border:#E0CDB0;--border-lt:#EDE0CA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7}
+
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(250,245,237,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:.45rem 1.2rem .5rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold-dk)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:var(--gold-pale);border-color:var(--gold-lt);color:var(--gold-dk)}
+
+main{max-width:760px;margin:0 auto;padding:2.5rem 1.2rem 2rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:400;letter-spacing:.03em;margin-bottom:.25rem}
+.subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.12em;font-size:1rem;margin-bottom:2rem}
+h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:2rem 0 .6rem;padding-bottom:.35rem;border-bottom:2px solid var(--gold-lt)}
+p{color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+a.inline{color:var(--gold-dk);border-bottom:1px solid var(--gold-lt);text-decoration:none}
+a.inline:hover{border-color:var(--gold)}
+.note{background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin:1.25rem 0;font-size:13.5px;color:var(--text-mid);line-height:1.7}
+
+.lp-feedback{max-width:760px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{border:none;margin:0 0 .3rem;padding:0}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:var(--gold-lt)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+.byline{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);padding-bottom:2rem}
+.byline a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yama.html" class="nav-page">Yama</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="pranayama.html" class="nav-page">Breath</a>
+    <a href="meditation.html" class="nav-page">Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="about.html" class="nav-page current">About</a>
+    <a href="support.html" class="nav-page">Support</a>
+  </div>
+</nav>
+
+<main>
+  <h1>About</h1>
+  <div class="subtitle">Dr. Ally Krupar &middot; Rooted Action</div>
+
+  <p>Yoga in the West is often taught faster than it is understood. Poses arrive without their stories, breath techniques without their physiology, and philosophy without its sources. The Living Practice began as my own answer to that gap: a study notebook, built in public, where every claim about the practice is traced back to something that can be read, checked, and questioned.</p>
+
+  <h2>Who I am</h2>
+  <p>I am a researcher by training and by temperament. My work sits at the intersection of education, participatory action research, and communities affected by crisis, and it has appeared in venues including Forced Migration Review, the Journal on Education in Emergencies, and NORRAG. The habits of that work carry over to this site: name the source, show the evidence, report plainly what is uncertain, and treat the people a practice is meant to serve as its first authority.</p>
+  <p>I am also a yoga student in the middle of teacher training. I am completing all 500 hours within two years, because that is how I roll: I did my PhD in four. The pace is quick, and the standard is the same one I hold my research to. Everything on this site was built as part of that training, which means it is a record of learning in motion. Where I have gotten something wrong, I want to know, and the form at the bottom of every page is there for exactly that.</p>
+
+  <h2>Rooted Action</h2>
+  <p>Rooted Action is the umbrella for this work: the place where my research practice and my movement practice meet. The name says the method. Action that serves people grows from roots, from evidence, from tradition honestly engaged, and from the communities in which a practice lives. Under it sit The Living Practice, my work bringing movement and contemplative practice into education settings, and the research that keeps both honest.</p>
+
+  <h2>This site</h2>
+  <p>The Living Practice follows the eight limbs. The <a class="inline" href="yama.html">yamas</a> are read with their sutras and the stories that teach them. The <a class="inline" href="yoga-family-tree.html">asana pages</a> map pose families to the muscles that move them on the <a class="inline" href="yoga-muscle-diagram.html">muscle diagram</a>. The <a class="inline" href="cosmic-banyan.html">Cosmic Banyan</a> matches stories from the Vedas with the poses and sequences that carry them. The <a class="inline" href="pranayama.html">breath</a>, <a class="inline" href="meditation.html">meditation</a>, and <a class="inline" href="dharana.html">dharana</a> pages pair traditional instruction with the peer-reviewed literature. Scripture links go to primary sources such as Vedabase and the Valmiki Ramayana, and research links go to the journals themselves.</p>
+
+  <div class="note">A note on authority: I write here as a student and a researcher. For the tradition itself, go to the sources linked throughout these pages and to teachers within living lineages. For medical questions, go to a clinician. This site will always show you where its claims come from so you can weigh them yourself.</div>
+
+  <p><a class="inline" href="https://allykrupar.com" target="_blank" rel="noopener">allykrupar.com</a></p>
+</main>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+
+<div class="byline"><a href="https://allykrupar.com" target="_blank" rel="noopener">allykrupar.com</a></div>
+
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
