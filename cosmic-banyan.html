@@ -200,6 +200,25 @@ a.dir-chip.yama:hover{border-color:var(--gold)}
 a.gita-vlink{color:var(--gold-dk);border-bottom:1.5px dotted var(--gold);text-decoration:none}
 a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 
+/* CANTO MAP */
+.canto-intro{font-size:13.5px;color:var(--text-mid);line-height:1.75;margin-bottom:1rem}
+.canto-list{display:flex;flex-direction:column;gap:.55rem}
+.canto-card{background:var(--bg-card);border:1px solid var(--border-lt);border-left:3px solid var(--gold-lt);border-radius:0 10px 10px 0;padding:.85rem 1rem;display:flex;gap:.9rem;transition:border-color .15s,box-shadow .15s}
+.canto-card:hover{border-color:var(--gold);border-left-color:var(--gold);box-shadow:0 2px 12px rgba(200,150,46,.1)}
+.canto-card.heart{border-left-color:var(--gold);background:linear-gradient(120deg,var(--gold-pale),var(--bg-card))}
+.canto-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);line-height:1;min-width:34px;text-align:right;padding-top:2px}
+.canto-body{flex:1}
+.canto-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text);line-height:1.25}
+.canto-sum{font-size:13px;color:var(--text-mid);line-height:1.65;margin:.3rem 0 .5rem}
+.canto-chips{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.canto-chip{font-size:10.5px;padding:2px 9px;border-radius:10px;text-decoration:none;display:inline-block;letter-spacing:.03em}
+.canto-chip.story{background:rgba(176,96,64,.09);color:#8A4A30;border:1px solid rgba(176,96,64,.28)}
+.canto-chip.story:hover{border-color:#B06040}
+.canto-chip.pose{background:var(--gold-pale);color:var(--gold-dk);border:1px solid var(--gold-lt);cursor:pointer}
+.canto-chip.pose:hover{border-color:var(--gold)}
+.canto-chip.src{background:transparent;color:var(--text-muted);border:1px solid var(--border-lt)}
+.canto-chip.src:hover{border-color:var(--gold);color:var(--gold-dk)}
+
 /* STORY SEQUENCE */
 .seq-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem}
 .seq-intro{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:.9rem}
@@ -208,6 +227,8 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 .seq-step:last-child{border-bottom:none}
 .seq-num{font-size:11px;font-weight:500;color:var(--gold);min-width:20px;text-align:right}
 .seq-pose{font-size:13.5px;color:var(--text);font-weight:500;white-space:nowrap}
+.seq-pose-link{color:var(--gold-dk);border-bottom:1.5px solid var(--gold-lt);text-decoration:none}
+.seq-pose-link:hover{border-bottom-color:var(--gold);background:rgba(200,150,46,.08);border-radius:2px}
 .seq-skt{font-size:12px;font-style:italic;color:var(--gold-dk)}
 .seq-cue{font-size:12.5px;color:var(--text-muted);line-height:1.55}
 .seq-note{font-size:11.5px;color:var(--text-muted);font-style:italic;margin-top:.7rem;line-height:1.6}
@@ -256,6 +277,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
     <div class="session-pills" id="session-pills">
       <button class="pill active" data-target="section-intro">Overview</button>
       <button class="pill" data-target="section-directory">Directory</button>
+      <button class="pill" data-target="section-cantos">The Twelve Cantos</button>
       <a class="pill" href="yama.html">The Yamas &rarr;</a>
       <button class="pill" data-target="section-s1">Shiva &amp; Sati</button>
       <button class="pill" data-target="section-s2">Prahlada's Devotion</button>
@@ -267,6 +289,8 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
       <button class="pill" data-target="section-s7">Meditation &amp; Rebirth</button>
       <button class="pill" data-target="section-s9">A Thousand Suns</button>
       <button class="pill" data-target="section-s10">The Upside-Down Banyan</button>
+      <button class="pill" data-target="section-s11">Churning the Ocean</button>
+      <button class="pill" data-target="section-s12">The Sages</button>
       <button class="pill" data-target="section-characters">Characters</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
     </div>
@@ -296,6 +320,17 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 
 <!-- MAIN CONTENT -->
 <main id="content"></main>
+
+<!-- DANA -->
+<section id="lp-dana" style="max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold-dk);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--bg-card);color:var(--gold-dk);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
 
 <!-- QUESTIONS, CORRECTIONS, REQUESTS -->
 <section class="lp-feedback" id="lp-feedback">
@@ -361,6 +396,7 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   <div id="glossary-list"></div>
 </div>
 
+<script src="pose-data.js"></script>
 <script>
 /* ============================
    DATA
@@ -410,6 +446,22 @@ const POSES = {
        conn:'The handstand\'s Sanskrit name is the tree turned upside down. The feet that root Tree Pose rise into the sky and the hands press down as new roots: for a breath or two the body takes the shape of the ashvattha of Gita 15.1, roots above, branches below.'},
   407:{en:'Salutation Seal',       skt:'Anjali Mudra',
        conn:'Arjuna\'s gesture before the universal form: kritanjali, palms pressed together (Gita 11.14). The gesture that opens and closes most classes repeats his response to seeing fully, reverence gathered at the heart.'},
+  408:{en:'Cobra Pose',            skt:'Bhujangasana',
+       conn:'Vasuki, king of serpents, offered his own body as the rope for churning the cosmic ocean, and held that strain while gods and demons hauled him back and forth for an age. Cobra Pose is that patient lifted spine: the serpent who becomes the instrument by which immortality is won.'},
+  409:{en:'Side Plank Pose',       skt:'Vasisthasana',
+       conn:'Named for Vasistha, greatest of the seven seers, whose power was never force. When a king came at him with an entire army, he answered with steadiness alone and the army broke against it. The pose asks the same thing: one hand, one edge of one foot, and no strain in the face.'},
+  410:{en:'Compass Pose',          skt:'Visvamitrasana',
+       conn:'Named for Vishvamitra, the king who could not take what he wanted by force and then spent lifetimes becoming a being who no longer needed to. The pose binds power and openness into one shape, which is precisely his arc.'},
+  411:{en:'Eight-Angle Pose',      skt:'Astavakrasana',
+       conn:'Named for Ashtavakra, cursed in the womb with eight bends in his body for correcting his father\'s recitation eight times. He grew into one of the tradition\'s great sages and won his father\'s freedom with words alone. The pose is bent in eight places and perfectly balanced.'},
+  412:{en:'Bharadvaja\'s Twist',   skt:'Bharadvajasana',
+       conn:'Named for Bharadvaja, who spent three entire lifetimes memorizing the Vedas and was shown at the end that all he had gathered amounted to three handfuls of earth taken from three mountains. The twist wrings out what is held and leaves room for what is still unlearned.'},
+  413:{en:'Half Lord of the Fishes', skt:'Ardha Matsyendrasana',
+       conn:'Named for Matsyendra, the listener in the fish\'s belly who overheard Shiva teaching yoga to Parvati and carried the teaching back to the world. The Hatha Yoga Pradipika salutes him by name among the founders of the practice. Every twist is a small act of overhearing.'},
+  414:{en:'Sage Marichi\'s Pose',  skt:'Marichyasana A',
+       conn:'Named for Marichi, whose name means a ray of light: mind-born son of Brahma, father of Kashyapa, grandfather of the sun itself. The pose draws the spine long as a beam and bows it forward, a candle tipped over to kindle another.'},
+  415:{en:'Flying Pigeon Pose',    skt:'Eka Pada Galavasana',
+       conn:'Named for Galava, the student who insisted on paying his teacher and was told to bring eight hundred white horses each with one black ear. The pose is what devotion looks like when it refuses to put itself down: perched, precarious, and entirely committed.'},
 };
 
 const CHARACTERS = {
@@ -471,6 +523,34 @@ const CHARACTERS = {
     desc:'Krishna\'s foster father, leader of the cowherd community of Vrindavan. When Kaliya coiled around Krishna in the Yamuna, Nanda tried to wade in to rescue him and had to be held back by others. His love, completely unaware that the person he is rushing toward holds all things, is the tradition\'s image of what parental instinct looks like when directed at the divine.'},
   balaram:     {name:'Balaram',         role:'Elder Brother', color:'#4858B0', story:'The Life of Krishna',
     desc:'Krishna\'s elder companion throughout his life. Born of Rohini (another wife of Vasudev), he is technically Krishna\'s half-brother, but the tradition treats them as inseparable brothers. Where Krishna embodies sweetness and beauty, Balaram embodies strength and protection. Together they are understood as two complementary expressions of the divine fullness.'},
+  kurma_av:    {name:'Kurma',           role:'Avatar',      color:'#2F8F9D', story:'The Churning of the Ocean',
+    desc:'The second avatar of Vishnu: the tortoise who descended to the floor of the cosmic ocean and let Mount Mandara rest on his back so the churning could proceed. The most self-effacing of the avatars. He does not fight, does not speak, and does not appear in the sky. He simply goes underneath the whole enterprise and bears it.'},
+  vasuki:      {name:'Vasuki',          role:'Serpent King', color:'#2F8F9D', story:'The Churning of the Ocean',
+    desc:'King of the serpents, who volunteered his own body as the rope for churning the cosmic ocean. Gods held one end, demons the other, and Vasuki was hauled back and forth for an age. He is the instrument that suffers the friction so that the nectar can come. The tradition does not pretend the cost was small.'},
+  dhanvantari: {name:'Dhanvantari',     role:'Divine Physician', color:'#2F8F9D', story:'The Churning of the Ocean',
+    desc:'The celestial physician who rose from the churned ocean carrying the pot of amrita, the nectar of immortality. He is honored as the origin of Ayurveda: the figure through whom medicine itself is understood to have entered the world, born from a labor undertaken in search of deathlessness.'},
+  mohini:      {name:'Mohini',          role:'Enchantress',  color:'#2F8F9D', story:'The Churning of the Ocean',
+    desc:'Vishnu in feminine form, the one who bewilders. When the demons seized the nectar, Mohini appeared, and they handed it to her willingly. The tradition is candid that the gods win by a trick. It is also candid that grasping is what made the trick possible.'},
+  lakshmi_g:   {name:'Sri Lakshmi',     role:'Goddess',      color:'#2F8F9D', story:'The Churning of the Ocean',
+    desc:'Goddess of fortune and abundance, who rose from the churned ocean seated on a lotus, flanked by elephants, and chose Vishnu. She is the treasure that was never the goal: the ocean was churned for immortality, and what it also gave was beauty, prosperity, and a lotus that opens on top of the water it grew through.'},
+  marichi:     {name:'Marichi',         role:'Seer',        color:'#8A6E3A', story:'The Sages',
+    desc:'One of the seven seers born from Brahma\'s mind, whose name means a ray of light. His dharma was to carry the light he received into a lineage: father of Kashyapa, grandfather of Surya the sun. Marichyasana bears his name.'},
+  kashyapa:    {name:'Kashyapa',        role:'Progenitor',  color:'#8A6E3A', story:'The Sages',
+    desc:'Son of Marichi and father of nearly everything that lives. Through his wife Aditi came the gods, through Diti the demons, through Kadru the serpents, and through Vinata the birds, including Garuda. Gods and demons are half-brothers in this telling, which is why their war reads less like good against evil and more like a family that cannot stop.'},
+  vasistha:    {name:'Vasistha',        role:'Seer',        color:'#8A6E3A', story:'The Sages',
+    desc:'The greatest of the seven seers and the family priest of the solar dynasty into which Rama was born. He held the wish-fulfilling cow Shabala, and when King Vishvamitra tried to take her by force, Vasistha defeated an entire army without leaving his hermitage. His power is the power of accumulated restraint. Vasisthasana bears his name.'},
+  vishvamitra: {name:'Vishvamitra',     role:'Royal Sage',  color:'#8A6E3A', story:'The Sages',
+    desc:'A king who could not take what he wanted from Vasistha by force, and understood that the power he lacked could not be seized at all. He abandoned his throne for the forest and undertook austerities across lifetimes until he was granted the title he wanted most, brahmarshi, from the mouth of the rival he had once attacked. He later becomes Rama\'s first teacher.'},
+  ashtavakra:  {name:'Ashtavakra',      role:'Sage',        color:'#8A6E3A', story:'The Sages',
+    desc:'Cursed in the womb by his own father for correcting his Vedic recitation eight times, and born with eight bends in his body. As a boy he went to King Janaka\'s court, was laughed at for his crooked form, and answered that the assembly judged him by his skin as a fool judges a river by its surface. He won the debate and freed his father. Astavakrasana bears his name.'},
+  galava:      {name:'Galava',          role:'Student',     color:'#8A6E3A', story:'The Sages',
+    desc:'Vishvamitra\'s pupil, who insisted on paying a teacher who wanted nothing, and pressed until the sage snapped that he would take eight hundred white horses each with a single black ear. The rest of Galava\'s story is the cost of that insistence, borne largely by a woman named Madhavi. Eka Pada Galavasana bears his name.'},
+  matsyendra:  {name:'Matsyendra',      role:'Adept',       color:'#8A6E3A', story:'The Sages',
+    desc:'The fish-lord: the listener who, in the traditional account, heard Shiva teaching yoga privately to Parvati from inside the belly of a fish, and carried the teaching back to the world. Teacher of Gorakhnath and a founder of the Nath lineage. The Hatha Yoga Pradipika names him among those who conquered time. Matsyendrasana bears his name.'},
+  bharadvaja:  {name:'Bharadvaja',      role:'Seer',        color:'#8A6E3A', story:'The Sages',
+    desc:'The sage who spent three full lifetimes doing nothing but memorizing the Vedas. At the end of the third, Indra appeared with three handfuls of earth and told him that this was what he had learned, and the mountains were the rest. Bharadvajasana bears his name.'},
+  durvasa:     {name:'Durvasa',         role:'Sage',        color:'#8A6E3A', story:'The Sages',
+    desc:'The sage of the short fuse, understood in some tellings as a portion of Shiva\'s own wrath housed in a human frame. His curses drive whole epics: it is Durvasa who gives young Kunti the mantra she tests once, on the sun, producing Karna and setting the Mahabharata in motion.'},
   radha:       {name:'Sri Radha',       role:'Eternal Consort', color:'#4858B0', story:'The Life of Krishna',
     desc:'The foremost of the gopis of Vrindavan and Krishna\'s eternal consort. There is no Krishna without Radha, and no Radha without Krishna: they are one being in two forms. The Bhakti tradition holds their love as the highest model of the soul\'s relationship with the divine. In Vrindavan, devotees call out simply: Radhe. The tradition considers this sufficient.'},
 };
@@ -822,7 +902,7 @@ Then the teaching on the Self. What wears this body was never born and never die
     characterIds:['krishna_mb','arjuna'],
     seq:[
       {n:'Equal Standing',s:'Samasthiti',c:'Sama, even; sthiti, standing. The chapter\'s definition of yoga, taken as the starting shape.'},
-      {n:'Half Sun Salutations, repeated slowly',s:'Ardha Uttanasana flow',c:'The same movement after a wobble as after a perfect one: evenness rehearsed.'},
+      {n:'Half Sun Salutations, repeated slowly',s:'Surya Namaskar A First Half',c:'The same movement after a wobble as after a perfect one: evenness rehearsed.'},
       {n:'Standing Forward Fold',s:'Uttanasana',c:'The senses begin their turn inward.'},
       {n:'Staff Pose',s:'Dandasana',c:'The steady seat: spine as the axis of attention.'},
       {n:'Head to Knee',s:'Janu Sirsasana',c:'One limb at a time drawn back from the world. Both sides.'},
@@ -874,7 +954,7 @@ In the midst of the dance, the gopis felt a moment of pride, surely we are the m
       {n:'Easy Pose',s:'Sukhasana',c:'The flute sounds somewhere in the forest. Sit and hear it.'},
       {n:'Circle of Joy',s:'Ananda Mandalasana',c:'The Rasa Mandala in miniature: the body circling its own center.'},
       {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Playful waves through the spine.'},
-      {n:'Tiger Pose',s:'Vyaghrasana',c:'Leela: practice that has not forgotten how to play. Both sides.'},
+      {n:'Tiger Pose',s:'Vyaghrasana Variation 1',c:'Leela: practice that has not forgotten how to play. Both sides.'},
       {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Pause; let the forest go quiet.'},
       {n:'Standing Side Bend',s:'Tiryaka Tadasana',c:'The threefold bend: Krishna\'s tribhanga curve at the hip, the heart, the neck. Both sides.'},
       {n:'Lord Krishna\'s Pose',s:'Natvarasana',c:'The cowherd at rest: ankle crossed, flute at the lips. Both sides.'},
@@ -1034,6 +1114,161 @@ The verses are honest about scale. The world\'s entanglements form a living, gro
 <p>This story is also the reason this page looks the way it does. The banyan you entered under, branches reaching toward the eternal and roots extending into the manifest world, is the Gita\'s tree, drawn right side up so the stories can hang from its branches.</p>`,
     questions:[],
   },
+  {
+    id:'s11', color:'#2F8F9D',
+    title:'The churning of the cosmic ocean',
+    source:'Srimad Bhagavatam, Canto 8',
+    thisStory:'The story that three separate poses carry between them: the tortoise underneath, the serpent as the rope, and the lotus that rises at the end. Gods and demons work the same rope for an age, and what comes up first is poison.',
+    sources:[
+      {label:'Vedabase: SB Canto 8 (the churning)', url:'https://vedabase.io/en/library/sb/8/'},
+      {label:'Wisdomlib: Samudra-manthana', url:'https://www.wisdomlib.org/definition/samudra-manthana'},
+      {label:'Wisdomlib: Kurma', url:'https://www.wisdomlib.org/definition/kurma'},
+      {label:'Wisdomlib: Vasuki', url:'https://www.wisdomlib.org/definition/vasuki'},
+      {label:'Wisdomlib: Dhanvantari', url:'https://www.wisdomlib.org/definition/dhanvantari'},
+      {label:'Wisdomlib: Nilakantha', url:'https://www.wisdomlib.org/definition/nilakantha'},
+      {label:'Balkaran 2022, The Stories Behind the Poses (Leaping Hare Press)', url:'https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses'},
+    ],
+    sections:[
+      {heading:'A truce, a mountain, and a rope',
+       text:`In the early ages the gods were not yet deathless. Weakened and losing ground, they were told the nectar of immortality did not exist anywhere to be fetched. It existed only as potential, dissolved through the milk ocean, and it would have to be worked for. Worse, the labor was too great for the gods alone. They would have to make a truce with the demons, their own half-brothers through Kashyapa, and share the result.
+So the two sides agreed. For a churning staff they uprooted Mount Mandara. For a rope they took Vasuki, king of serpents, who offered his own body. The gods took one end and the demons the other, and the mountain began to turn. Almost at once it sank, because nothing that large can spin on a seabed of mud. Vishnu descended as Kurma, the tortoise, went underneath the mountain, and let it rest and rotate on his back. The foundation of the story is a form of the divine that nobody is looking at: silent, submerged, bearing the weight so the work above can continue.`},
+      {heading:'The poison comes up first',
+       text:`They churned for an age. The first thing the ocean yielded was not nectar. It was halahala, a poison so virulent it began to consume the worlds, and both armies scattered before it. Neither side had prepared for the possibility that stirring the depths would bring up what was worst in them before it brought up what was best.
+Shiva came. He gathered the poison and drank it, and Parvati held his throat so it could travel no further into him. He neither swallowed it nor spat it out. He held it, and it stained his throat blue, and from that day he is Nilakantha, the blue-throated one. The tradition is precise here. The poison is not destroyed, and it is not passed along to anyone else. It is held, in the throat, by someone with enough practice to hold it without being destroyed and without setting it down on another.`},
+      {heading:'What the ocean gave',
+       text:`With the poison held, the churning resumed, and the ocean began to give. Kamadhenu, the wish-fulfilling cow, who would go to the sage Vasistha. The Kalpavriksha, the wishing tree. Airavata, the white elephant. The Kaustubha gem, which Vishnu set at his heart. And Sri Lakshmi, goddess of fortune, rising on a lotus, who surveyed everyone present and chose Vishnu.
+Last came Dhanvantari, the divine physician, holding the pot of amrita. The demons snatched it at once. Vishnu appeared as Mohini, and they handed her the pot willingly, and she served the gods. The Bhagavatam does not dress this up: the gods win by a trick, and the trick works only because grasping makes a being easy to lead. The nectar goes to the side that let go of it.`},
+    ],
+    characterIds:['kurma_av','vasuki','shiva','dhanvantari','mohini','lakshmi_g'],
+    seq:[
+      {n:'Easy Pose',s:'Sukhasana',c:'Two sides that do not trust each other agree to pull the same rope. Sit with that.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'The rope moves back and forth; the ocean begins to turn.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Mount Mandara set in place, the weight finding its base.'},
+      {n:'Tortoise Pose, or its prep',s:'Kurmasana',c:'Kurma goes underneath and bears the mountain, unseen, saying nothing.'},
+      {n:'Cobra Pose',s:'Bhujangasana',c:'Vasuki wraps the mountain and holds. The lift comes from patience, not force.'},
+      {n:'Locust Pose',s:'Salabhasana',c:'An age of churning. The strain is the practice, not an interruption of it.'},
+      {n:'Fish Pose',s:'Matsyasana',c:'The halahala rises. Shiva holds it at the throat: Nilakantha, blue-throated.'},
+      {n:'Camel Pose, gentle',s:'Ustrasana',c:'The throat open, holding what can be neither swallowed nor spat out. Stay inside your own capacity.'},
+      {n:'Lotus, Half Lotus, or Easy Pose',s:'Padmasana',c:'Lakshmi rises on the lotus, opening clean above the water it grew through.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Amrita. Rest as what was dissolved all along and still had to be worked for.'},
+    ],
+    connections:`
+<p>This is the one story on the page that no single pose can hold, so three of them share it. <span class="pose-link" data-id="402">Tortoise Pose (Kurmasana)</span> is Kurma bearing the mountain: the pose withdraws the limbs and asks the practitioner to become a base rather than a display. <span class="pose-link" data-id="408">Cobra Pose (Bhujangasana)</span> is Vasuki, the serpent who is the rope, lifting through the length of the spine while the strain runs through him. <span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is what surfaced at the end, the flower that grows through churned water and opens clean on top of it.</p>
+<p>The blue throat is the teaching most useful on the mat. Shiva does not absorb the poison and he does not pass it to anyone else. He holds it at the throat, which is exactly what a practice makes possible: the capacity to feel something fully without swallowing it into the body or discharging it onto whoever is nearest. <span class="pose-link" data-id="99">Fish Pose (Matsyasana)</span> and the throat openers are where that capacity gets rehearsed.</p>
+<p>The story also reframes what practice is for. The nectar was never hidden somewhere waiting to be found. It was dissolved through the whole ocean, real but unmanifest, and only sustained work brought it out of solution. That is <span class="concept-link" data-id="Tapas">tapas</span> in its plainest form. It is also honest about sequence: stir anything deeply enough and the poison surfaces before the nectar. Most practitioners meet the halahala first and conclude they are doing it wrong.</p>`,
+    questions:[
+      'The gods could not do this alone and had to work the same rope as the demons. Where is the thing you want only reachable in company with what you would rather not cooperate with?',
+      'Kurma bears the entire enterprise from underneath, unseen and silent, and nobody in the story thanks him. What in your own life is being held up by something you never look at?',
+      'The first yield of the churning is poison, not nectar. When your practice has stirred up something difficult, do you read that as failure or as the sequence working exactly as designed?',
+      'Shiva holds the poison at the throat: he neither swallows it nor spits it out. What would it take for you to hold a difficult feeling that way, without internalizing it and without handing it to someone else?',
+      'Vasuki is the instrument, and the friction runs through his body. Who or what absorbs the friction of the work you benefit from?',
+      'The demons lose the nectar because they grab it. Where has grasping cost you the very thing you were reaching for?',
+    ],
+  },
+  {
+    id:'s12', color:'#8A6E3A',
+    title:'The sages in the poses',
+    source:'The Ramayana, the Mahabharata, and the Hatha Yoga Pradipika',
+    thisStory:'A whole set of poses carries the name of a particular rishi, and each name is a compressed argument about what practice is for. These are the poses that turn out to be biographies.',
+    sources:[
+      {label:'Valmiki Ramayana (Vasistha & Vishvamitra, Bala Kanda)', url:'https://valmikiramayan.net/'},
+      {label:'Sacred Texts: Mahabharata (Ganguli)', url:'https://www.sacred-texts.com/hin/maha/index.htm'},
+      {label:'Wisdomlib: Marichi', url:'https://www.wisdomlib.org/definition/marichi'},
+      {label:'Wisdomlib: Vasistha', url:'https://www.wisdomlib.org/definition/vasistha'},
+      {label:'Wisdomlib: Vishvamitra', url:'https://www.wisdomlib.org/definition/vishvamitra'},
+      {label:'Wisdomlib: Ashtavakra', url:'https://www.wisdomlib.org/definition/ashtavakra'},
+      {label:'Wisdomlib: Matsyendranatha', url:'https://www.wisdomlib.org/definition/matsyendranatha'},
+      {label:'Wisdomlib: Bharadvaja', url:'https://www.wisdomlib.org/definition/bharadvaja'},
+      {label:'Balkaran 2022, The Stories Behind the Poses (Leaping Hare Press)', url:'https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses'},
+    ],
+    sections:[
+      {heading:'The rivalry that runs under half the tradition',
+       text:`King Vishvamitra was hunting and stopped at the hermitage of the sage Vasistha, who fed the king and his entire army from apparently nothing. The king asked how, and Vasistha showed him Shabala, the wish-fulfilling cow. Vishvamitra offered to buy her, then to trade a kingdom for her, then sent soldiers. Vasistha did not move. The army broke against him. A king with every worldly instrument at his disposal discovered there was a kind of power he could not purchase, seize, or defeat.
+What he did next is why the tradition keeps telling it. He did not go home and forget. He left the throne, went to the forest, and undertook austerities across an arc the texts measure in lifetimes, failing repeatedly and starting again, until at last he was granted the title he wanted most, brahmarshi, seer of Brahman. The tradition insists the recognition had to come from Vasistha's own mouth. The rival became the certifier. Vishvamitra then becomes the teacher who takes a young Rama into the forest and trains him.`},
+      {heading:'The crooked boy at the court',
+       text:`The sage Kahoda recited the Vedas nightly while his wife Sujata carried their child, and eight times the unborn child corrected his father's recitation from the womb. Humiliated, Kahoda cursed his own son to be born bent in eight places. The boy was Ashtavakra, whose name means exactly that: eight bends.
+While Ashtavakra was still a child, his father was defeated in debate at King Janaka's court and taken. Ashtavakra walked in to challenge the man who took him. The assembly of scholars looked at his crooked body and laughed out loud. He laughed back, and said he had come expecting scholars and found instead people who judge a person by their skin, the way a fool judges water by the pot that carries it. Then he won the debate, and his father was released. The tradition gives this story to a pose that is bent in eight directions and perfectly, effortlessly balanced.`},
+      {heading:'Three lifetimes, three handfuls',
+       text:`Bharadvaja gave his entire life to memorizing the Vedas, and it was not enough, so he was born again and did it again, and a third time again. At the end of the third life Indra appeared and asked what he had accomplished. Bharadvaja said he had nearly finished. Indra set three handfuls of earth in front of him and said: this is what you have learned in three lifetimes, and the Vedas are those mountains. Then he asked what Bharadvaja intended to do with a fourth life.
+The teaching is not that study is futile. It is that mastery is the wrong frame for it. Bharadvajasana is a twist, and a twist is the body's version of the same instruction: wring out what is being held so there is room for what has not been learned yet.`},
+      {heading:'Marichi, Matsyendra, and Galava',
+       text:`Marichi, whose name means a ray of light, is one of the seven seers born from Brahma's mind. His work was to pass light down a lineage: to his son Kashyapa, father of gods, demons, serpents and birds alike, and on to his grandson Surya, the sun. Marichyasana lengthens the spine into a beam and then bows it forward, a candle tipped over to light another.
+Matsyendra, the fish-lord, is the one who overheard. In the traditional account Shiva was teaching yoga privately to Parvati beside the ocean, she drifted off, and a fish listening in the water absorbed the entire teaching and became an adept. He carried it back to the world, taught Gorakhnath, and founded the Nath lineage. The <em>Hatha Yoga Pradipika</em> salutes him by name in its opening verses, which places a twist named for a listener at the root of hatha yoga itself.
+Galava insisted on paying his teacher. Vishvamitra wanted nothing and said so, but Galava pressed until the sage lost patience and demanded eight hundred white horses, each with a single black ear. What follows is a long accounting of that debt, paid mostly by a woman named Madhavi, whom Galava lends to three kings in exchange for horses. It is worth telling whole rather than as a charming footnote about a pose. Devotion that refuses to hear no becomes a bill that someone else pays.`},
+    ],
+    characterIds:['marichi','kashyapa','vasistha','vishvamitra','ashtavakra','bharadvaja','matsyendra','galava','durvasa'],
+    seq:[
+      {n:'Easy Pose',s:'Sukhasana',c:'Sit as the seven seers sit, before any of the stories start.'},
+      {n:'Sage Marichi\'s Pose',s:'Marichyasana A',c:'Marichi: the spine long as a ray of light, then bowed to kindle another. Both sides.'},
+      {n:'Bharadvaja\'s Twist',s:'Bharadvajasana',c:'Three lifetimes, three handfuls. Wring out what you are holding. Both sides.'},
+      {n:'Half Lord of the Fishes',s:'Ardha Matsyendrasana',c:'Matsyendra overhears the teaching and carries it back. Both sides.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Steady the ground before the sages ask for strength.'},
+      {n:'Plank Pose',s:'Phalakasana',c:'Vasistha\'s foundation: nothing dramatic, everything held.'},
+      {n:'Side Plank',s:'Vasisthasana',c:'An army breaks against a sage who simply does not move. Both sides.'},
+      {n:'Side Lunge',s:'Skandasana',c:'Open the hips toward the compass. Both sides.'},
+      {n:'Compass Pose, or its prep',s:'Visvamitrasana',c:'Vishvamitra: power and openness bound into one shape. Take the prep if that is today\'s pose. Both sides.'},
+      {n:'Eight-Angle Pose',s:'Astavakrasana',c:'Ashtavakra: bent in eight places, balanced anyway, laughing at the assembly.'},
+      {n:'Flying Pigeon Pose',s:'Eka Pada Galavasana',c:'Galava: devotion that will not put itself down. Notice what it costs to stay up.'},
+      {n:'Child\'s Pose',s:'Balasana',c:'Indra sets three handfuls of earth in front of you. Rest anyway.'},
+      {n:'Corpse Pose',s:'Savasana',c:'The lineage continues for a few minutes without your effort.'},
+    ],
+    connections:`
+<p>These poses are the tradition's way of keeping names in circulation. <span class="pose-link" data-id="409">Vasisthasana</span> and <span class="pose-link" data-id="410">Visvamitrasana</span> are two halves of one argument, and it is telling that the sage's pose is a plain steady line while the king's pose is the elaborate bind. Vasistha never needed the complexity. <span class="pose-link" data-id="411">Astavakrasana</span> puts the practitioner in a body bent in eight directions and asks for balance anyway, which is the entire content of Ashtavakra's answer at the court.</p>
+<p><span class="pose-link" data-id="412">Bharadvajasana</span> is the twist as epistemology: three lifetimes of learning came to three handfuls of earth, so wring out what you hold. <span class="pose-link" data-id="413">Ardha Matsyendrasana</span> honors a listener, and the <em>Hatha Yoga Pradipika</em> puts him among the founders, which quietly makes overhearing a legitimate way to receive a teaching. <span class="pose-link" data-id="414">Marichyasana</span> is a ray of light bowing to light something else, and <span class="pose-link" data-id="415">Eka Pada Galavasana</span> is devotion that has stopped listening: perched, committed, and unable to come down.</p>
+<p>Durvasa never got a pose, but he is already on this page. It is Durvasa who hands young Kunti the mantra she tests once, on the sun, which produces Karna, which sets <a href="#section-s5" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the Mahabharata</a> in motion. The sages are not a separate chapter of the tradition. They are the mechanism by which its plots begin.</p>`,
+    questions:[
+      'Vishvamitra could not buy, trade, or seize what Vasistha had, and that failure redirected his entire life. What have you wanted that could not be acquired, only become?',
+      'The tradition insists Vishvamitra\'s recognition had to come from Vasistha, the rival he once attacked. Whose acknowledgment would actually settle something in you, and what does it mean that you want it from them specifically?',
+      'Ashtavakra was laughed at for his body by a room of scholars and answered that they were judging the pot instead of the water. Where do you still meet a body, yours or someone else\'s, as though it were the person?',
+      'Kahoda cursed his own child for being right. What happens in you when someone junior corrects you accurately, and what do you do with it?',
+      'Indra told Bharadvaja that three lifetimes of study amounted to three handfuls of earth, and asked what he would do with a fourth. If mastery is off the table, what is your study for?',
+      'Galava would not accept that his teacher wanted nothing, and the debt he invented was paid largely by Madhavi. When your need to give back is refused, can you let the refusal stand, or does someone else end up carrying your insistence?',
+    ],
+  },
+];
+
+/* ============================
+   THE TWELVE CANTOS
+   The Bhagavatam's own order, 1 through 12. Canto titles follow the
+   Bhaktivedanta translation used throughout this page (vedabase.io/en/library/sb).
+   ============================ */
+const CANTOS = [
+  {n:1, title:'Creation', url:'https://vedabase.io/en/library/sb/1/',
+   sum:`The frame for everything that follows. Vyasa has already compiled the Vedas and is still restless; Narada tells him to write about the divine directly rather than around it. Meanwhile King Parikshit is cursed to die in seven days, and instead of fleeing he sits down on the riverbank to listen. Everything from here to Canto 12 is what gets said in those seven days. A dying man asks a question, and the answer takes twelve books.`,
+   stories:[], poses:[55,401]},
+  {n:2, title:'The Cosmic Manifestation', url:'https://vedabase.io/en/library/sb/2/',
+   sum:`Sukadeva answers the only question a dying man has time for: what should one hear, remember, and do? His reply opens into the virat-rupa, the universal form, in which the whole cosmos is described as a single body. The Gita's Chapter 11 vision has a sibling here.`,
+   stories:[{id:'s9',label:'A thousand suns'}], poses:[405]},
+  {n:3, title:'The Status Quo', url:'https://vedabase.io/en/library/sb/3/',
+   sum:`Varaha the boar dives to the floor of the ocean and lifts the earth back to the surface. Jaya and Vijaya are cursed at the gate of Vaikuntha, setting three lifetimes of enmity in motion. And Kapila, born as Devahuti's son, teaches his own mother Samkhya, which is among the oldest systematic philosophies underneath yoga.`,
+   stories:[{id:'s2',label:'Prahlada\'s devotion'}], poses:[]},
+  {n:4, title:'The Creation of the Fourth Order', url:'https://vedabase.io/en/library/sb/4/',
+   sum:`Daksha's sacrifice, Sati's death, Shiva's grief, and Virabhadra born from it: the canto that named the Warrior poses. It also gives us Dhruva, a slighted child who fixed his mind so completely on one point that he became the pole star, the fixed thing the whole sky turns around.`,
+   stories:[{id:'s1',label:'Shiva, Sati, and the first sacrifice'}], poses:[20,6,46,118]},
+  {n:5, title:'The Creative Impetus', url:'https://vedabase.io/en/library/sb/5/',
+   sum:`Rishabha renounces a kingdom. Jada Bharata, a realized king, rescues an orphaned deer and comes to love it so completely that the deer is his last thought at death, so he is born a deer. He gets one more human life and spends it refusing to speak. A hard, unsentimental teaching about where attachment actually lands us.`,
+   stories:[], poses:[401]},
+  {n:6, title:'Prescribed Duties for Mankind', url:'https://vedabase.io/en/library/sb/6/',
+   sum:`Ajamila, who wasted his life, calls out for his youngest son at the moment of death. The boy's name is Narayana, and the name alone saves him. The canto also gives us Vritrasura, a demon who turns out to be the most eloquent devotee in the book. This is the strongest scriptural ground for the practice of the name.`,
+   stories:[{id:'s2',label:'The child who would not stop chanting'}], poses:[]},
+  {n:7, title:'The Science of God', url:'https://vedabase.io/en/library/sb/7/',
+   sum:`Hiranyakashipu makes himself unkillable by every loophole he can imagine, and his small son Prahlada will not stop saying the name of the one he hates. Narasimha comes out of the pillar at dusk, on the threshold, across a lap. The tradition's primary teaching text for devotion.`,
+   stories:[{id:'s2',label:'Prahlada\'s devotion'}], poses:[335]},
+  {n:8, title:'Withdrawal of the Cosmic Creations', url:'https://vedabase.io/en/library/sb/8/',
+   sum:`The busiest canto on this page. Gajendra the elephant king, seized by a crocodile and exhausted, finally calls out and is answered. The gods and demons churn the cosmic ocean. Vamana asks Bali for three steps of land. And Matsya, the fish, carries the Vedas through the flood.`,
+   stories:[{id:'s11',label:'The churning of the ocean'},{id:'s3',label:'Vamana and Bali'}], poses:[402,408,55,36,99]},
+  {n:9, title:'Liberation', url:'https://vedabase.io/en/library/sb/9/',
+   sum:`The dynasties, told as a river of names. Ambarisha's steadiness outlasts Durvasa's rage, which is the clearest case in the book for what a practice actually builds. Rama's whole story passes through in compact form, and Bhagiratha brings the Ganga down from heaven, which takes generations.`,
+   stories:[{id:'s4',label:'The Ramayana'},{id:'s12',label:'The sages'}], poses:[368,73]},
+  {n:10, title:'The Summum Bonum', url:'https://vedabase.io/en/library/sb/10/', heart:true,
+   sum:`The heart of the text and by far the longest canto: ninety chapters on the life of Krishna. The prison birth, the crossing of the Yamuna, the butter and the mortar stone, Kaliya's heads, Govardhan lifted on a finger, the Rasalila under the autumn moon. Most people who love the Bhagavatam mean this canto.`,
+   stories:[{id:'s6',label:'The life of Krishna'}], poses:[35,118]},
+  {n:11, title:'General History', url:'https://vedabase.io/en/library/sb/11/',
+   sum:`Krishna's last teaching, the Uddhava Gita, and inside it the avadhuta's twenty-four gurus: the earth for patience, the wind for moving without attachment, the python for taking what comes, the moth for what beauty costs, the honeybee for gathering a little from many flowers. Then the Yadus destroy themselves and Krishna leaves.`,
+   stories:[], poses:[]},
+  {n:12, title:'The Age of Deterioration', url:'https://vedabase.io/en/library/sb/12/',
+   sum:`Kali-yuga is described without flattery, and Parikshit dies exactly as promised, seven days after he sat down. Then Markandeya is given a vision of the deluge: everything dissolved, nothing but water, and floating on the face of it a banyan leaf with an infant lying on it. He enters the child's mouth and finds the entire universe inside. This is the tree you are reading under.`,
+   stories:[{id:'s10',label:'The upside-down banyan'}], poses:[36,406]},
 ];
 
 /* ============================
@@ -1084,6 +1319,14 @@ const STORY_META = {
     evidence:[
       {label:'Sahdra, Shaver & Brown 2010: measuring nonattachment (J Personality Assessment)',url:'https://www.tandfonline.com/doi/abs/10.1080/00223890903425960'},
     ]},
+  s11:{archetypes:['The Avatar','The Deity','The Goddess','The Demon King','The Serpent'],yamas:['Aparigraha','Asteya','Ahimsa'],poses:[402,408,55,99],
+    evidence:[
+      {label:'Sahdra, Shaver & Brown 2010: measuring nonattachment (J Personality Assessment)',url:'https://www.tandfonline.com/doi/abs/10.1080/00223890903425960'},
+    ]},
+  s12:{archetypes:['The Sage','The Student','The Teacher','The King'],yamas:['Satya','Aparigraha','Asteya','Brahmacharya'],poses:[409,410,411,412,413,414,415],
+    evidence:[
+      {label:'Green & Brock 2000: narrative transportation shapes belief (JPSP)',url:'https://pubmed.ncbi.nlm.nih.gov/11079236/'},
+    ]},
 };
 
 /* ============================
@@ -1116,6 +1359,7 @@ function renderIntro(){
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em>, Valmiki's <em>Ramayana</em>, the <em>Mahabharata</em>, and the life of Krishna. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas, open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise. Every Bhagavad Gita verse cited on this page, such as <a class="gita-vlink" href="https://vedabase.io/en/library/bg/15/1/" target="_blank" rel="noopener">15.1</a>, links directly to the Sanskrit and translation on <a class="gita-vlink" href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Vedabase</a>, so the scripture itself is always one click beneath the story.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span>, the law that sustains all things, and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span>, devotion, love, service, which the tradition holds as the path most direct to the divine. <a href="the-divine.html" style="cursor:pointer;color:var(--gold-dk);border-bottom:1px solid var(--gold)">What we mean by &ldquo;the divine&rdquo; &rarr;</a></p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">This page matches each story with the asanas that carry it and with a practice sequence that moves through its arc. Many poses are named directly for these figures: the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in the body changes the quality of attention it asks for. Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">For the pose-by-pose mythology, the fullest guide in print is Raj Balkaran&rsquo;s <a href="https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)"><em>The Stories Behind the Poses</em></a> (Leaping Hare Press, 2022), which treats fifty postures and the tales behind them. Two of its threads shaped what you will find here: <a href="#section-s11" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the churning of the cosmic ocean</a>, a single story that three poses have to share, and <a href="#section-s12" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the sages in the poses</a>, where the asanas turn out to be biographies. The stories below are retold from the primary sources cited under each one.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone, what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories do more than recount what happened. They work on the listener, through the act of listening itself. Psychology has measured a version of this claim: absorption in a story reshapes what the listener believes after it ends.</p>
     <div class="sources-wrap">
       <a href="https://pubmed.ncbi.nlm.nih.gov/11079236/" class="evidence-link" target="_blank" rel="noopener">${evLink}Green &amp; Brock 2000: narrative transportation shapes belief (JPSP)</a>
@@ -1145,6 +1389,50 @@ function renderDirectory(){
     <div class="dir-count" id="dir-count"></div>
     <div class="dir-grid" id="dir-grid"></div>
   </section>`;
+}
+
+function renderCantos(){
+  const cards = CANTOS.map(c=>{
+    const storyChips = (c.stories||[]).map(s=>`<a class="canto-chip story" href="#section-${s.id}">${s.label} &rarr;</a>`).join('');
+    const poseChips = (c.poses||[]).map(id=>POSES[id]?`<span class="canto-chip pose pose-link" data-id="${id}" style="border-bottom:none">${POSES[id].en}</span>`:'').join('');
+    return `<div class="canto-card${c.heart?' heart':''}">
+      <div class="canto-num">${c.n}</div>
+      <div class="canto-body">
+        <div class="canto-title">${c.title}</div>
+        <div class="canto-sum">${gitaLinkify(c.sum)}</div>
+        <div class="canto-chips">
+          ${storyChips}${poseChips}
+          <a class="canto-chip src" href="${c.url}" target="_blank" rel="noopener">Canto ${c.n} on Vedabase &#8599;</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  return `<section class="story-section-wrap" id="section-cantos">
+    <div class="story-header" style="border-color:var(--gold)">
+      <h2 class="story-title">The twelve cantos</h2>
+      <div class="story-source">Srimad Bhagavatam, the whole shape of it, in the order the text tells it</div>
+    </div>
+    <p class="canto-intro">Most of the stories on this page come out of one book, and that book has a shape worth seeing whole. The stories above are arranged the way a practice is arranged, by theme and by what follows what. This list is arranged the way the <em>Bhagavatam</em> arranges itself, Canto 1 through Canto 12, because a map of a text is only useful in the text's own order. Read down the column and you can watch the arc: creation, then cosmology, then the long descent through dynasties into the life of Krishna at the heart of it, then dissolution and the child on the banyan leaf at the end. Each canto below links to the full text on <a href="https://vedabase.io/en/library/sb/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Vedabase</a>, to the stories on this page that live inside it, and to the poses those stories carry.</p>
+    <div class="canto-list">${cards}</div>
+  </section>`;
+}
+
+/* Poses named in a sequence link to their entry on the Asana family tree,
+   which in turn surfaces the muscles worked and links to the muscle diagram.
+   We only link a name when its Sanskrit maps to a real pose in the library. */
+const POSE_KEYS = (function(){
+  const set = new Set();
+  if(typeof YOGA_POSES!=="undefined") for(const f in YOGA_POSES) YOGA_POSES[f].forEach(p=>{ if(p.s) set.add(p.s); });
+  if(typeof POSE_VARIATIONS!=="undefined") for(const k in POSE_VARIATIONS) POSE_VARIATIONS[k].forEach(v=>{ if(v.s) set.add(v.s); });
+  return set;
+})();
+function seqPoseLink(name, skt){
+  if(!skt) return name;
+  const cand = skt.split(',')[0].trim();
+  if(POSE_KEYS.has(cand)){
+    return `<a class="seq-pose-link" href="yoga-family-tree.html#pose=${encodeURIComponent(cand)}" title="Open ${cand} on the Asana family tree, with its muscles and adaptations">${name}</a>`;
+  }
+  return name;
 }
 
 function renderStory(s){
@@ -1181,7 +1469,7 @@ function renderStory(s){
          <div class="seq-steps">${s.seq.map((st,i)=>`
            <div class="seq-step">
              <span class="seq-num">${i+1}</span>
-             <span class="seq-pose">${st.n}</span>
+             <span class="seq-pose">${seqPoseLink(st.n, st.s)}</span>
              ${st.s?`<span class="seq-skt">${st.s}</span>`:''}
              <span class="seq-cue">${st.c}</span>
            </div>`).join('')}
@@ -1244,7 +1532,7 @@ function renderFooter(){
 }
 
 const content = document.getElementById('content');
-content.innerHTML = renderIntro() + renderDirectory() + STORIES.map(renderStory).join('') + renderAllCharacters() + renderFooter();
+content.innerHTML = renderIntro() + renderDirectory() + renderCantos() + STORIES.map(renderStory).join('') + renderAllCharacters() + renderFooter();
 
 /* ============================
    STORY DIRECTORY: index, facets, filtering
@@ -1256,6 +1544,7 @@ function sourceTags(src){
   if(/Mahabharata/i.test(src)) tags.push('Mahabharata');
   if(/Gita/i.test(src)) tags.push('Bhagavad Gita');
   if(/Rig Veda/i.test(src)) tags.push('Rig Veda');
+  if(/Pradipika/i.test(src)) tags.push('Hatha Yoga Pradipika');
   return tags.length?tags:[src];
 }
 const DIR_ITEMS = STORIES.map(s=>{
@@ -1396,7 +1685,7 @@ pills.forEach(p=>{
     if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-const sectionIds = ['section-intro','section-directory','section-s1','section-s2','section-s3','section-s4','section-s5','section-s8','section-s6','section-s7','section-s9','section-s10','section-characters'];
+const sectionIds = ['section-intro','section-directory','section-cantos','section-s1','section-s2','section-s3','section-s4','section-s5','section-s8','section-s6','section-s7','section-s9','section-s10','section-s11','section-s12','section-characters'];
 const pillMap = {};
 pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
 let scrollTimer;
