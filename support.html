@@ -47,6 +47,15 @@ a.inline:hover{border-color:var(--gold)}
 .tier.custom{background:linear-gradient(160deg,var(--gold-pale),var(--bg-card))}
 .give-hint{font-size:11.5px;color:var(--text-muted);line-height:1.6;margin-top:.4rem}
 
+/* GET INVOLVED */
+.ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.4rem 0 .5rem}
+.way{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.15rem;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s}
+.way:hover{border-color:var(--sage);box-shadow:0 2px 14px rgba(90,138,90,.14)}
+.way-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--text);line-height:1.25;margin-bottom:.45rem}
+.way-desc{font-size:13px;color:var(--text-mid);line-height:1.6;flex:1;margin-bottom:.85rem}
+.way-act{align-self:flex-start;padding:.45rem 1.15rem;font-size:12.5px;border:1px solid var(--sage);border-radius:20px;background:rgba(90,138,90,.08);color:#3E6B3E;text-decoration:none;cursor:pointer;transition:all .15s}
+.way-act:hover{background:rgba(90,138,90,.18)}
+
 /* GIVING PROGRESS */
 .give-status{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;margin:1.3rem 0}
 .give-status-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
@@ -130,12 +139,12 @@ a.inline:hover{border-color:var(--gold)}
     </div>
     <div class="tier custom">
       <div class="tier-amt">Any amount</div>
-      <div class="tier-cadence">Or give monthly</div>
-      <div class="tier-covers">Give what feels right, once or as a small recurring gift. Steady support is what lets new pages get written.</div>
+      <div class="tier-cadence">Your own measure</div>
+      <div class="tier-covers">Give what feels right. Monthly giving opens here once Rooted Action&rsquo;s nonprofit registration is complete.</div>
       <a class="tier-give" data-amt="" href="#give">Give a custom amount</a>
     </div>
   </div>
-  <p class="give-hint">A recurring gift, even a few dollars a month, is the most helpful of all: it turns upkeep from a worry into a rhythm, and it is what makes room for the research and writing that keep the site alive.</p>
+  <p class="give-hint">A returning gift, even a few dollars whenever the season turns, is the most helpful of all: it turns upkeep from a worry into a rhythm, and it is what makes room for the research and writing that keep the site alive. Gifts go through PayPal to Ally Krupar.</p>
 
   <h2>Where the giving stands</h2>
   <div class="give-status" id="give-status">
@@ -150,13 +159,39 @@ a.inline:hover{border-color:var(--gold)}
 
   <div class="note">A promise, in the spirit of aparigraha: giving will never buy access to anything the rest of the site cannot reach for free. There is no members-only teaching, no locked page, no content held back for donors. A gift supports the commons. It never carves a private room inside it.</div>
 
+  <h2 id="get-involved">Get involved</h2>
+  <p>Money is one form of dana. Time, knowledge, and attention are others, and this work is built from all of them. Rooted Action is in the process of incorporating as a nonprofit in Washington, DC, which means the circle of people carrying this work is about to grow. Each of the four offerings below is a real contribution, received with the same gratitude as any gift above.</p>
+
+  <div class="ways">
+    <div class="way">
+      <div class="way-title">Volunteer with Rooted Action</div>
+      <div class="way-desc">Help carry programming, workshops, classes, and community events as Rooted Action takes shape. Whatever your skills, there is a place for them.</div>
+      <a class="way-act" id="volunteer-act" data-fbtype="Get involved" href="#lp-feedback">Raise your hand</a>
+    </div>
+    <div class="way">
+      <div class="way-title">Contribute knowledge</div>
+      <div class="way-desc">Share a story as your lineage tells it, suggest a source worth reading, review a translation, or send a correction. The site deepens through many voices.</div>
+      <a class="way-act" data-fbtype="Contribution" href="#lp-feedback">Share what you know</a>
+    </div>
+    <div class="way">
+      <div class="way-title">Practice and test</div>
+      <div class="way-desc">Take a sequence or a breath practice onto your mat, then write in about what the body found. Field notes from real practice shape every revision.</div>
+      <a class="way-act" data-fbtype="Practice note" href="#lp-feedback">Send a practice note</a>
+    </div>
+    <div class="way">
+      <div class="way-title">Share the work</div>
+      <div class="way-desc">Pass the site along to a student, a teacher, or a friend who would use it. Every share widens the circle and keeps the teachings moving.</div>
+      <a class="way-act" id="share-copy" href="#get-involved">Copy the site link</a>
+    </div>
+  </div>
+
   <p><a class="inline" href="about.html">More about this work and Rooted Action</a> &middot; <a class="inline" href="https://allykrupar.com" target="_blank" rel="noopener">allykrupar.com</a></p>
 </main>
 
 <section class="lp-feedback" id="lp-feedback">
   <div class="lp-feedback-inner">
     <h2>Questions, corrections, requests</h2>
-    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, there is a pose or topic you would like added, or you want to lend a hand, write below. Every message is welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div class="lp-fb-row">
         <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
@@ -164,6 +199,9 @@ a.inline:hover{border-color:var(--gold)}
           <option>Question</option>
           <option>Correction</option>
           <option>Request</option>
+          <option>Contribution</option>
+          <option>Practice note</option>
+          <option>Get involved</option>
         </select>
       </div>
       <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
@@ -184,14 +222,14 @@ a.inline:hover{border-color:var(--gold)}
    'https://ko-fi.com/allykrupar?amount='  or
    'https://www.paypal.com/donate/?...&amount='
    Leave it as '' while you decide; buttons will show a friendly note. */
-const DONATE_URL = "";
-const DONATE_URL_TAKES_AMOUNT = false; // set true if DONATE_URL ends where an amount should be appended
+const DONATE_URL = "https://www.paypal.me/AllyKrupar/";
+const DONATE_URL_TAKES_AMOUNT = true; // set true if DONATE_URL ends where an amount should be appended
 
 document.querySelectorAll('.tier-give').forEach(function(btn){
   btn.addEventListener('click', function(e){
     if(!DONATE_URL){
       e.preventDefault();
-      alert('Donations are almost ready. Ally still needs to add a donation link here (Ko-fi, PayPal, Stripe, or similar).');
+      alert('Donations open soon. Rooted Action is completing its nonprofit registration in Washington, DC, and the giving link will appear here the moment it is ready.');
       return;
     }
     var amt = btn.getAttribute('data-amt');
@@ -200,6 +238,52 @@ document.querySelectorAll('.tier-give').forEach(function(btn){
     window.open(url, '_blank', 'noopener');
   });
 });
+
+/* GET INVOLVED
+   Set VOLUNTEER_FORM_URL to your Google Form link once it exists and the
+   "Raise your hand" button will open it in a new tab. While it is empty,
+   the button leads to the email form below with "Get involved" preselected,
+   so volunteers can reach you today. */
+const VOLUNTEER_FORM_URL = "";
+(function(){
+  var v = document.getElementById('volunteer-act');
+  if(v && VOLUNTEER_FORM_URL){
+    v.href = VOLUNTEER_FORM_URL;
+    v.target = '_blank';
+    v.rel = 'noopener';
+    v.removeAttribute('data-fbtype');
+  }
+})();
+
+/* Get-involved cards preselect the matching topic in the form below */
+document.querySelectorAll('[data-fbtype]').forEach(function(a){
+  a.addEventListener('click', function(){
+    var sel = document.getElementById('lp-fb-type');
+    if(sel) sel.value = a.getAttribute('data-fbtype');
+  });
+});
+
+/* "Share the work" copies the site link */
+(function(){
+  var btn = document.getElementById('share-copy');
+  if(!btn) return;
+  var link = 'https://allyk.github.io';
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var done = function(){
+      btn.textContent = 'Link copied, thank you';
+      setTimeout(function(){ btn.textContent = 'Copy the site link'; }, 2200);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(link).then(done, done);
+    } else {
+      var t = document.createElement('textarea');
+      t.value = link; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch(err) {}
+      document.body.removeChild(t); done();
+    }
+  });
+})();
 
 /* GIVING PROGRESS
    Update these four values by hand as gifts come in. The bar and the message

@@ -190,6 +190,26 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 .mtype p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0 0 .55rem}
 .mtype a.mt-src{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(90,232,200,.3)}
 .mtype a.mt-src:hover{color:var(--gold-dk)}
+/* STRUCTURE BANDS */
+.band{position:relative;z-index:1;max-width:900px;margin:2.2rem auto .4rem;padding:0 1.2rem;display:flex;align-items:center;gap:.7rem}
+.band-word{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
+.band-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(183,148,246,.35),transparent)}
+.band-note{font-size:11.5px;color:var(--text-muted);font-style:italic}
+
+/* FACETED DIRECTORY */
+.fx-row{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:.5rem}
+.fx-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);min-width:62px}
+.fx{font-size:11.5px;padding:3px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap}
+.fx:hover{border-color:var(--violet);color:var(--text)}
+.fx.on{background:rgba(183,148,246,.14);border-color:var(--violet);color:#E5D6FF;font-weight:500}
+.fx-clear{font-size:11.5px;padding:3px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-muted);cursor:pointer;font-family:'DM Sans',sans-serif}
+.fx-clear:hover{border-color:var(--dawn);color:var(--dawn)}
+.mt-meta{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.45rem}
+.mt-pill{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:10px}
+.mt-pill.type{background:rgba(90,232,200,.1);color:var(--teal);border:1px solid rgba(90,232,200,.28)}
+.mt-pill.lin{background:rgba(240,198,116,.1);color:var(--gold);border:1px solid rgba(240,198,116,.28)}
+.mt-empty{padding:1.4rem;text-align:center;color:var(--text-muted);font-size:13px;border:1px dashed var(--border-lt);border-radius:10px;grid-column:1/-1}
+
 .med-controls{display:flex;align-items:center;gap:.8rem;margin:1.2rem 0 .4rem;flex-wrap:wrap}
 .med-controls input{flex:1;min-width:220px;max-width:430px;background:var(--panel);border:1px solid var(--border-lt);border-radius:20px;padding:.5rem 1rem;color:var(--text);font-family:inherit;font-size:13.5px;outline:none}
 .med-controls input:focus{border-color:var(--violet)}
@@ -230,13 +250,13 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
   <div class="nav-row">
     <div class="session-pills">
-      <button class="pill active" data-target="sec-intro">Overview</button>
-      <button class="pill" data-target="sec-ujjayi">Breath as Waves</button>
-      <button class="pill" data-target="sec-types">Types of Meditation</button>
+      <button class="pill active" data-target="sec-practice">Find a Practice</button>
+      <button class="pill" data-target="sec-intro">Overview</button>
       <button class="pill" data-target="sec-reaches">Four Reaches</button>
       <button class="pill" data-target="sec-rivers">Two Rivers</button>
       <button class="pill" data-target="sec-mind">Mind &amp; Cognizer</button>
       <button class="pill" data-target="sec-sca">Sat-Chit-Ananda</button>
+      <button class="pill" data-target="sec-resources">Resources</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
     </div>
   </div>
@@ -272,6 +292,27 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 
 <main id="content">
 
+<div class="band"><span class="band-word">Do &amp; interact</span><span class="band-rule"></span><span class="band-note">Find a practice, then read the map</span></div>
+
+<!-- PRACTICE DIRECTORY -->
+<section class="section-wrap" id="sec-practice">
+  <div class="section-header">
+    <div class="section-eyebrow">The practice directory</div>
+    <h2 class="section-title">Many doors into stillness</h2>
+  </div>
+  <p class="lead">Every practice below is a door, and the doors open onto the same room. Filter by <em>type</em>, what the practice asks your attention to do, or by <em>lineage</em>, the tradition that carries it. Scholars often sort meditation into focused attention, where the mind rests on one object, and open monitoring, where awareness stays wide and receptive. Other maps cut differently. Use whichever handle helps you find a seat today.</p>
+  <div class="med-controls">
+    <input type="text" id="med-search" placeholder="Search by name, tradition, or quality&hellip;" autocomplete="off"/>
+    <span id="med-count"></span>
+  </div>
+  <div class="fx-row" id="fx-types"><span class="fx-label">Type</span></div>
+  <div class="fx-row" id="fx-lineages"><span class="fx-label">Lineage</span></div>
+  <div class="fx-row"><button class="fx-clear" id="fx-clear">Clear filters</button></div>
+  <div class="mtypes" id="med-grid"></div>
+</section>
+
+<div class="band"><span class="band-word">Say &amp; read</span><span class="band-rule"></span><span class="band-note">The map, the breath, and the two rivers</span></div>
+
 <!-- INTRO -->
 <section class="section-wrap" id="sec-intro">
   <div class="section-header">
@@ -287,51 +328,8 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
 </section>
 
-<!-- UJJAYI -->
-<section class="section-wrap" id="sec-ujjayi">
-  <div class="section-header">
-    <div class="section-eyebrow">Pranayama &middot; the breath that carries</div>
-    <h2 class="section-title">Breath as waves, the exhale as the crash</h2>
-  </div>
-  <p class="lead">Before the mind can travel anywhere, the breath must become an ocean. The breath of meditation in this tradition is <em>Ujjayi</em>, often translated as the victorious breath, and just as often called the ocean breath, because that is exactly what it sounds like.</p>
-  <p>To breathe Ujjayi, you narrow the passage at the back of the throat, gently bringing the vocal folds toward one another so the air must whisper as it passes. The mouth stays closed; the breath moves only through the nose. The narrowing turns silent air into sound, a soft oceanic hush that rises on the inhale and falls on the exhale. The Sanskrit <em>ujjayi</em> joins <em>ut</em>, meaning upward or expanding, with <em>jaya</em>, meaning victory: the breath that expands and conquers through steadiness.</p>
-  <p>Listen to the surf and you already know the rhythm. The inhale is the wave gathering itself, drawing up and back, swelling as it rises toward the shore. It builds. It lifts. And then the exhale is the crash: the long, surrendered fall of water onto sand, the wave giving everything it gathered back to the beach. The inhale collects the world. The exhale lets it go. A meditation is nothing more than ten thousand of these waves, each one a small rehearsal of holding on and letting go.</p>
-  <p>This is why the exhale is where the practice deepens. A wave that only rises is a wave that never breaks. The crash, the release, the slight emptiness at the bottom of the breath before the next swell gathers, is where the nervous system softens and the mind loosens its grip. Lengthen the exhale and the waters grow calm. When the surface of the breath is calm, the depths beneath it become visible.</p>
-  <div class="practice">
-    <div class="label">Practice &middot; the ocean breath</div>
-    <div class="p-title">Riding the wave</div>
-    <ol>
-      <li>Sit so the spine is tall and the shoulders are soft. Close the mouth. Let the breath move only through the nose.</li>
-      <li>On the inhale, imagine a wave gathering. Let it rise from the belly to the chest to the throat, slightly narrowing the back of the throat so the breath makes a soft oceanic sound, like wind through a shell.</li>
-      <li>At the top of the inhale, the wave is full and poised, about to break. Do not rush it.</li>
-      <li>On the exhale, let the wave crash: a slow, complete release through that same whispering throat, longer than the inhale, until the water has fully returned to the sea.</li>
-      <li>Rest for a heartbeat in the empty trough at the bottom. Then let the next wave gather on its own. Continue for ten breaths, then twenty, listening to the tide you are making.</li>
-    </ol>
-  </div>
-  <div class="src-label">Sources &amp; further reading</div>
-  <div class="sources-wrap">
-    <a href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Art of Living: Ujjayi</a>
-    <a href="https://www.yogabasics.com/practice/ujjayi-pranayama/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Basics: Ujjayi Pranayama</a>
-    <a href="https://www.wisdomlib.org/definition/ujjayi" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ujjayi</a>
-  </div>
-  <div class="callout" style="border-left-color:var(--teal)">
-    <div class="label" style="color:var(--teal)">Go deeper</div>
-    <p>Ujjayi is one of thirteen pranayama techniques mapped in full on the <a href="pranayama.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Breath page</a>, searchable by name or by what you need, whether calm, focus, warmth, or sleep, with instructions, hand positions, and adaptations for restricted nostril breathing.</p>
-  </div>
-</section>
-
-<!-- TYPES OF MEDITATION -->
-<section class="section-wrap" id="sec-types">
-  <div class="section-header">
-    <div class="section-eyebrow">The wider landscape</div>
-    <h2 class="section-title">Many doors into stillness</h2>
-  </div>
-  <p class="lead">Ujjayi gives the breath a shape, and the breath is one doorway among many. Across the world's contemplative traditions, meditation has taken countless forms. Scholars often gather them into two broad gestures: <em>focused attention</em>, where the mind rests on a single object, and <em>open monitoring</em>, where awareness stays spacious and receptive. Other maps cut differently: directive practices that steer the mind toward a goal, and nondirective ones that let it work on its own; the Vedantic ladder of symbol, name, and Self. Within these maps live the practices below. Each one is a door, and all the doors open onto the same room. Search the directory by name, tradition, or quality; the links on each card, and the library at the end, carry the scholarship behind them.</p>
-  <div class="med-controls">
-    <input type="text" id="med-search" placeholder="Search the directory by name, tradition, or quality&hellip;"/>
-    <span id="med-count"></span>
-  </div>
-  <div class="mtypes">
+<!-- LEGACY: original hand-written practice cards, superseded by MED_PRACTICES -->
+<template id="legacy-types-cards">
     <div class="mtype"><span class="mt-tag">Open monitoring</span><h4>Mindfulness</h4><p>Resting attention on the present moment, meeting each thought, feeling, and sensation as it arises, and returning gently when the mind wanders.</p><a class="mt-src" href="https://www.mindful.org/what-is-mindfulness/" target="_blank" rel="noopener">Mindful.org ↗</a> <a class="mt-src" href="https://www.jstor.org/stable/41613530" target="_blank" rel="noopener">Hölzel et al. 2011 ↗</a></div>
     <div class="mtype"><span class="mt-tag">Focused attention</span><h4>Concentration</h4><p>Holding the mind on a single object: the breath, a candle flame (trataka), a point of light. This is the seat of <span class="concept-link" data-id="Dharana">dharana</span>.</p><a class="mt-src" href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" target="_blank" rel="noopener">NCCIH (NIH) ↗</a> <a class="mt-src" href="https://doi.org/10.1016/j.concog.2016.09.020" target="_blank" rel="noopener">Tsai &amp; Chou 2016 ↗</a></div>
     <div class="mtype"><span class="mt-tag">Heart practice</span><h4>Loving-Kindness (Metta)</h4><p>Cultivating goodwill, radiating warmth first toward yourself and then outward to all beings, until the circle of care includes everyone.</p><a class="mt-src" href="https://ggia.berkeley.edu/practice/loving_kindness_meditation" target="_blank" rel="noopener">Greater Good, Berkeley ↗</a> <a class="mt-src" href="https://doi.org/10.1016/j.ijpsycho.2015.04.017" target="_blank" rel="noopener">Lumma et al. 2015 ↗</a></div>
@@ -354,8 +352,10 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <div class="mtype"><span class="mt-tag">Vedanta · Upasana</span><h4>Self-Identification (Ahamgraha Upasana)</h4><p>Meditation on the self as one with the Supreme Self: I am this light. A double movement, holding the self as part of the divine and the divine as present in all beings. The mahavakyas, That thou art, I am Brahman, live here.</p><a class="mt-src" href="https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf" target="_blank" rel="noopener">Bhajanananda ↗</a></div>
     <div class="mtype"><span class="mt-tag">Subjective · Jnana</span><h4>Self-Inquiry (Nididhyasana)</h4><p>Tracing the sense of I back to its source, releasing every identification with neti, neti: not this, not this. The subjective pole of the Vedantic map, alive today in Ramana Maharshi's who-am-I inquiry.</p><a class="mt-src" href="https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf" target="_blank" rel="noopener">Bhajanananda ↗</a> <a class="mt-src" href="https://www.wisdomlib.org/definition/nididhyasana" target="_blank" rel="noopener">Wisdomlib: Nididhyasana ↗</a></div>
   </div>
-  <div class="src-label">Sources &amp; further reading · the practice library</div>
-  <div class="sources-wrap">
+</template>
+
+<div id="resources-anchor" hidden></div>
+<div class="sources-wrap" id="legacy-sources" hidden>
     <a href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>NCCIH: Meditation &amp; Mindfulness</a>
     <a href="https://www.medicalnewstoday.com/articles/320392" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Medical News Today: Eight types</a>
     <a href="https://www.mindful.org/meditation/mindfulness-getting-started/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Mindful.org: Getting started</a>
@@ -371,7 +371,6 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <a href="https://pubmed.ncbi.nlm.nih.gov/11140223/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Manocha: Why Meditation? (Australian Family Physician)</a>
     <a href="https://www.jstor.org/stable/20864282" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Haynes: Meditation and Health, an Annotated Bibliography (2004)</a>
   </div>
-</section>
 
 <!-- FOUR REACHES -->
 <section class="section-wrap" id="sec-reaches">
@@ -513,6 +512,25 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
 </section>
 
+<div class="band"><span class="band-word">Follow up &amp; resources</span><span class="band-rule"></span><span class="band-note">The scholarship behind the directory</span></div>
+
+<!-- RESOURCES -->
+<section class="section-wrap" id="sec-resources">
+  <div class="section-header">
+    <div class="section-eyebrow">The practice library</div>
+    <h2 class="section-title">Follow up</h2>
+  </div>
+  <p class="lead">Every practice in the directory carries its own links. Gathered here is the wider literature behind this page: the scholarly typologies that sort meditation into kinds, the clinical evidence, and the traditional accounts. Books link to their publisher, studies to the journal. Nothing is hosted on this site.</p>
+  <div class="src-label">Typologies, evidence, and traditional accounts</div>
+  <div class="sources-wrap" id="resources-slot"></div>
+  <div class="src-label">Continue on this site</div>
+  <div class="sources-wrap">
+    <a href="pranayama.html" class="source-link">The Breath: pranayama techniques</a>
+    <a href="dharana.html" class="source-link">Dharana: the practice of focus</a>
+    <a href="the-divine.html" class="source-link">The Divine: refuge, oneness, and reciprocity</a>
+    <a href="cosmic-banyan.html" class="source-link">The stories under the Cosmic Banyan</a>
+  </div>
+</section>
 </main>
 
 <!-- GLOSSARY DRAWER -->
@@ -644,24 +662,177 @@ window.addEventListener('scroll',function(){
 /* ESC closes drawer */
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') drawer.classList.remove('open'); });
 
-/* MEDITATION DIRECTORY SEARCH */
+/* The practice-library links live in #legacy-sources (hidden, mid-page) so the
+   long list of citations stays easy to hand-edit in one block. On load they are
+   moved into the Follow up section at the foot of the page. To add a source,
+   add an <a class="source-link"> to #legacy-sources. */
 (function(){
-  const inp = document.getElementById('med-search');
-  if(!inp) return;
-  const cards = Array.from(document.querySelectorAll('#sec-types .mtype'));
+  var src = document.getElementById('legacy-sources');
+  var slot = document.getElementById('resources-slot');
+  if(!src || !slot) return;
+  while(src.firstElementChild) slot.appendChild(src.firstElementChild);
+})();
+
+/* ============================
+   THE PRACTICE DIRECTORY
+   Each entry carries a type (what the practice asks attention to do) and a
+   lineage (the tradition carrying it). Books link to their publisher; texts and
+   studies link to a freely published or journal source. Add new practices here
+   and the filters pick them up automatically.
+   ============================ */
+const MED_PRACTICES = [
+  {n:'Mindfulness', type:['Open awareness'], lin:['Secular & clinical','Theravada'],
+   d:'Resting attention on the present moment, meeting each thought, feeling, and sensation as it arises, and returning gently when the mind wanders.',
+   links:[['Mindful.org','https://www.mindful.org/what-is-mindfulness/'],['Hölzel et al. 2011','https://www.jstor.org/stable/41613530']]},
+  {n:'Concentration', type:['Focus'], lin:['Yoga'],
+   d:'Holding the mind on a single object: the breath, a candle flame, a point of light. This is the seat of dharana.',
+   links:[['NCCIH (NIH)','https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know'],['Dharana on this site','dharana.html']]},
+  {n:'Loving-Kindness (Metta)', type:['Devotional','Heart'], lin:['Theravada'],
+   d:'Cultivating goodwill, radiating warmth first toward yourself and then outward to all beings, until the circle of care includes everyone.',
+   links:[['Greater Good, Berkeley','https://ggia.berkeley.edu/practice/loving_kindness_meditation'],['Lumma et al. 2015','https://doi.org/10.1016/j.ijpsycho.2015.04.017']]},
+  {n:'Body Scan', type:['Body'], lin:['Secular & clinical'],
+   d:'Moving attention slowly through the body, part by part, softening tension and deepening the felt sense of being embodied.',
+   links:[['Mindful.org','https://www.mindful.org/beginners-body-scan-meditation/']]},
+  {n:'Mantra & Japa', type:['Sound'], lin:['Yoga','Vedanta'],
+   d:'Repeating a sacred sound or phrase, silently or aloud, so the syllables gather the mind and carry it inward. Vedanta calls this nama upasana, meditation on the name.',
+   links:[['Wisdomlib: Mantra','https://www.wisdomlib.org/definition/mantra'],['Bhajanananda','https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf']]},
+  {n:'Transcendental Meditation', type:['Sound'], lin:['Modern lineages'],
+   d:'A mantra technique practiced for twenty minutes twice a day, settling the mind into a state of restful alertness.',
+   links:[['TM.org','https://www.tm.org/'],['Holen 2016','https://www.jstor.org/stable/j.ctvvn7fs.16']]},
+  {n:'Vipassana', type:['Insight'], lin:['Theravada'],
+   d:'Observing sensations with steady equanimity to see directly into the changing, flowing nature of experience.',
+   links:[['Dhamma.org','https://www.dhamma.org/en-US/about/vipassana']]},
+  {n:'Zazen', type:['Open awareness'], lin:['Zen'],
+   d:'"Just sitting" in upright, alert stillness, attentive to breath and posture, letting each thought arise and pass.',
+   links:[['Lion’s Roar','https://www.lionsroar.com/how-to-practice-zazen/']]},
+  {n:'Yoga Nidra', type:['Rest','Body'], lin:['Tantra & Kundalini'],
+   d:'"Yogic sleep": lying down and following guided stages into a deep, conscious relaxation that rests the whole system while awareness stays awake.',
+   links:[['Cleveland Clinic','https://health.clevelandclinic.org/what-is-yoga-nidra']]},
+  {n:'Walking Meditation', type:['Movement'], lin:['Zen'],
+   d:'Carrying meditative attention into movement, feeling each step and the shifting of weight as the object of awareness.',
+   links:[['Mindful.org','https://www.mindful.org/how-to-meditate-walking-meditation/'],['Plum Village','https://plumvillage.org/mindfulness/mindful-walking']]},
+  {n:'Visualization', type:['Visual'], lin:['Cross-tradition'],
+   d:'Holding an inner image, light at the crown, roots from the seat, a sacred form, to focus and transform the mind. The four reaches below are a visualization.',
+   links:[['Headspace','https://www.headspace.com/meditation/visualization']]},
+  {n:'Pranayama', type:['Breath'], lin:['Yoga'],
+   d:'Meditation carried by the regulation of breath, of which Ujjayi, the ocean breath, is one of the most beloved forms.',
+   links:[['The Breath page','pranayama.html'],['Art of Living','https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing']]},
+  {n:'MBSR', type:['Body','Open awareness'], lin:['Secular & clinical'],
+   d:'Mindfulness-Based Stress Reduction: the eight-week hospital course built from the body scan, sitting practice, and gentle yoga. The most studied meditation format in medicine.',
+   links:[['Gotink et al. 2015','https://doi.org/10.1371/journal.pone.0124344'],['Kabat-Zinn, Full Catastrophe Living · publisher','https://www.penguinrandomhouse.com/books/203446/full-catastrophe-living-by-jon-kabat-zinn/']]},
+  {n:'Nondirective Meditation', type:['Sound','Open awareness'], lin:['Modern lineages'],
+   d:'A sound or the breath repeated without effort while thoughts, images, and memories drift freely in the background. Scholars contrast directive practices, which steer the mind toward a goal, with nondirective ones that let the mind work on its own.',
+   links:[['Eifring 2016','https://www.jstor.org/stable/j.ctvvn7fs.6'],['Holen 2016','https://www.jstor.org/stable/j.ctvvn7fs.16']]},
+  {n:'Observing Thoughts', type:['Insight'], lin:['Secular & clinical'],
+   d:'Watching thoughts as passing events, noticing their arising and dissolving without following them. It directly trains the shift from having a thought to seeing one.',
+   links:[['Lumma et al. 2015','https://doi.org/10.1016/j.ijpsycho.2015.04.017'],['Liebmann et al. 2023','https://doi.org/10.1016/j.ijchp.2023.100388']]},
+  {n:'Perspective Training', type:['Insight'], lin:['Secular & clinical'],
+   d:'Contemplative perspective-taking: observing your own inner voices, then practicing seeing through another\'s eyes, often in structured pairs.',
+   links:[['Liebmann et al. 2023','https://doi.org/10.1016/j.ijchp.2023.100388']]},
+  {n:'Dynamic Meditation', type:['Movement','Breath'], lin:['Modern lineages'],
+   d:'Osho\'s five-stage moving practice: fast chaotic breathing, catharsis, the mantra hoo, sudden frozen stillness, then celebration. Built on the idea that a restless body must empty itself before it can sit.',
+   links:[['Iqbal et al. 2016','https://www.jstor.org/stable/26749241']]},
+  {n:'Mental Silence (Sahaja)', type:['Open awareness'], lin:['Modern lineages'],
+   d:'Aiming past relaxation toward complete inner silence, awareness without thought. This research tradition treats mental silence, rather than calm alone, as the mark that separates meditation from simple rest.',
+   links:[['Manocha, Aust Fam Physician','https://pubmed.ncbi.nlm.nih.gov/11140223/']]},
+  {n:'Symbol Meditation (Pratika Upasana)', type:['Visual','Sound'], lin:['Vedanta'],
+   d:'Resting the mind on a sacred support: OM, a flame, the sun, an image of the divine. The symbol is a doorway; the practice carries the mind through it toward what it represents.',
+   links:[['Bhajanananda','https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf'],['Wisdomlib: Upasana','https://www.wisdomlib.org/definition/upasana']]},
+  {n:'Self-Identification (Ahamgraha Upasana)', type:['Self-inquiry'], lin:['Vedanta'],
+   d:'Meditation on the self as one with the Supreme Self. A double movement, holding the self as part of the divine and the divine as present in all beings. The mahavakyas live here.',
+   links:[['Bhajanananda','https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf'],['The Divine','the-divine.html']]},
+  {n:'Self-Inquiry (Nididhyasana)', type:['Self-inquiry'], lin:['Vedanta'],
+   d:'Tracing the sense of I back to its source, releasing every identification with neti, neti: not this, not this. Alive today in Ramana Maharshi\'s who-am-I inquiry.',
+   links:[['Bhajanananda','https://www.vedanta.gr/wp-content/uploads/2012/03/SwBhajan_TypesMeditation_ENA5.pdf'],['Wisdomlib: Nididhyasana','https://www.wisdomlib.org/definition/nididhyasana']]},
+  {n:'RAIN', type:['Insight','Heart'], lin:['Secular & clinical','Theravada'],
+   d:'Tara Brach\'s four steps for meeting a difficult feeling: Recognize what is happening, Allow it to be there, Investigate with interest and care, and Nurture. She frames the practice as bringing "a kind and clear attention" to what is already here rather than trying to fix it.',
+   links:[['Tara Brach: the RAIN practice','https://www.tarabrach.com/rain/'],['Radical Compassion · publisher','https://www.penguinrandomhouse.com/books/563391/radical-compassion-by-tara-brach/']]},
+  {n:'Tonglen', type:['Heart','Breath','Devotional'], lin:['Tibetan'],
+   d:'Sending and taking: breathing in the pain of another and breathing out relief, deliberately reversing the instinct to push suffering away. Pema Chodron teaches it as a practice that "awakens compassion" precisely because it runs against the grain.',
+   links:[['Lion’s Roar: How to practice Tonglen','https://www.lionsroar.com/how-to-practice-tonglen/'],['Chödrön, When Things Fall Apart · publisher','https://www.penguinrandomhouse.com/books/199958/when-things-fall-apart-by-pema-chodron/']]},
+  {n:'Shamatha (Calm Abiding)', type:['Focus','Breath'], lin:['Tibetan'],
+   d:'The foundational stabilizing practice: settling attention on an object, usually the breath, until the mind can rest without agitation or dullness. Traditionally paired with vipashyana, insight, as the two wings of practice.',
+   links:[['Lion’s Roar: Shamatha','https://www.lionsroar.com/how-to-practice-shamatha-meditation/'],['Tricycle: Calm Abiding','https://tricycle.org/beginners/buddhism/what-is-shamatha/']]},
+  {n:'Anapanasati', type:['Breath'], lin:['Theravada'],
+   d:'Mindfulness of breathing as the Buddha taught it in the Anapanasati Sutta: sixteen steps moving from the plain sensation of a long or short breath through to insight into impermanence and release.',
+   links:[['Anapanasati Sutta (Access to Insight)','https://www.accesstoinsight.org/tipitaka/mn/mn.118.than.html'],['Brahm, Mindfulness, Bliss, and Beyond · publisher','https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/']]},
+  {n:'Jhana (Absorption)', type:['Focus'], lin:['Theravada'],
+   d:'The deep absorptions that arise when concentration becomes effortless and joy takes over the work of holding attention. Ajahn Brahm treats them as the natural fruit of letting go rather than a technique to be forced.',
+   links:[['Brahm, Mindfulness, Bliss, and Beyond · publisher','https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/'],['Access to Insight: Jhana','https://www.accesstoinsight.org/ptf/dhamma/sacca/sacca4/samma-samadhi/jhanas.html']]},
+  {n:'Guru Yoga & Ngondro', type:['Devotional','Visual'], lin:['Tibetan'],
+   d:'The foundational practices of the Tibetan path: prostrations, refuge, mandala offering, and merging one\'s mind with the teacher\'s. Devotion here is a method, not a mood, and it is the doorway to everything that follows.',
+   links:[['Patrul Rinpoche, Words of My Perfect Teacher · publisher','https://www.penguinrandomhouse.com/books/216719/the-words-of-my-perfect-teacher-by-patrul-rinpoche/'],['Lion’s Roar: Ngöndro','https://www.lionsroar.com/whats-ngondro-and-why-do-i-need-it/']]},
+  {n:'Kirtan & Chanting', type:['Sound','Devotional'], lin:['Yoga','Vedanta'],
+   d:'Call-and-response singing of the divine names, practiced in company. The bhakti tradition holds that the name carries the presence, and that voices together do something no solitary sitting can.',
+   links:[['Wisdomlib: Kirtana','https://www.wisdomlib.org/definition/kirtana'],['The stories behind the names','cosmic-banyan.html']]},
+  {n:'Trataka (Candle Gazing)', type:['Visual','Focus'], lin:['Tantra & Kundalini','Yoga'],
+   d:'Steady gazing at a flame until the eyes water, then holding the afterimage behind closed lids. One of the hatha cleansings, and the most concrete on-ramp to dharana.',
+   links:[['Dharana on this site','dharana.html'],['Yoga International: Trataka','https://yogainternational.com/article/view/candlelight-insight-trataka/']]},
+  {n:'Kundalini Kriya', type:['Breath','Movement','Sound'], lin:['Tantra & Kundalini'],
+   d:'Set sequences of posture, breath, mantra, and mudra held for fixed times, aimed at moving energy up the spine. Trials of Kundalini protocols have been run for generalized anxiety and for mild cognitive impairment.',
+   links:[['3HO: What is Kundalini Yoga','https://www.3ho.org/kundalini-yoga/'],['Simon et al. 2020, JAMA Psychiatry','https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2770285']]},
+];
+
+/* MEDITATION DIRECTORY: search + type/lineage facets */
+(function(){
+  const inp   = document.getElementById('med-search');
+  const grid  = document.getElementById('med-grid');
   const count = document.getElementById('med-count');
-  function apply(){
-    const q = inp.value.trim().toLowerCase();
-    let n = 0;
-    cards.forEach(c=>{
-      const show = !q || c.textContent.toLowerCase().includes(q);
-      c.style.display = show ? '' : 'none';
-      if(show) n++;
+  if(!inp || !grid) return;
+
+  const TYPE_ORDER = ['Breath','Sound','Visual','Body','Movement','Focus','Open awareness','Insight','Heart','Devotional','Self-inquiry','Rest'];
+  const activeTypes = new Set(), activeLins = new Set();
+
+  const allTypes = TYPE_ORDER.filter(t=>MED_PRACTICES.some(p=>p.type.includes(t)));
+  const allLins  = [...new Set(MED_PRACTICES.flatMap(p=>p.lin))].sort();
+
+  function chip(label, set, row){
+    const b=document.createElement('button');
+    b.className='fx'; b.textContent=label;
+    b.addEventListener('click',function(){
+      if(set.has(label)){ set.delete(label); b.classList.remove('on'); }
+      else { set.add(label); b.classList.add('on'); }
+      render();
     });
-    count.textContent = n + (n===1 ? ' practice' : ' practices');
+    row.appendChild(b);
   }
-  inp.addEventListener('input', apply);
-  apply();
+  allTypes.forEach(t=>chip(t, activeTypes, document.getElementById('fx-types')));
+  allLins.forEach(l=>chip(l, activeLins, document.getElementById('fx-lineages')));
+
+  function card(p){
+    const meta = p.type.map(t=>`<span class="mt-pill type">${t}</span>`).join('')
+               + p.lin.map(l=>`<span class="mt-pill lin">${l}</span>`).join('');
+    const links = p.links.map(function(l){
+      const ext = /^https?:/.test(l[1]);
+      return `<a class="mt-src" href="${l[1]}"${ext?' target="_blank" rel="noopener"':''}>${l[0]}${ext?' &#8599;':' &rarr;'}</a>`;
+    }).join(' ');
+    return `<div class="mtype"><div class="mt-meta">${meta}</div><h4>${p.n}</h4><p>${p.d}</p>${links}</div>`;
+  }
+
+  function render(){
+    const q = inp.value.trim().toLowerCase();
+    const hits = MED_PRACTICES.filter(function(p){
+      const hay = (p.n+' '+p.d+' '+p.type.join(' ')+' '+p.lin.join(' ')).toLowerCase();
+      if(q && !hay.includes(q)) return false;
+      if(activeTypes.size && !p.type.some(t=>activeTypes.has(t))) return false;
+      if(activeLins.size && !p.lin.some(l=>activeLins.has(l))) return false;
+      return true;
+    });
+    count.textContent = hits.length===MED_PRACTICES.length
+      ? MED_PRACTICES.length+' practices'
+      : hits.length+' of '+MED_PRACTICES.length+' practices';
+    grid.innerHTML = hits.length
+      ? hits.map(card).join('')
+      : '<div class="mt-empty">No practice matches that combination. Loosen a filter and more doors open.</div>';
+  }
+
+  inp.addEventListener('input', render);
+  document.getElementById('fx-clear').addEventListener('click',function(){
+    inp.value=''; activeTypes.clear(); activeLins.clear();
+    document.querySelectorAll('.fx').forEach(b=>b.classList.remove('on'));
+    render();
+  });
+  render();
 })();
 </script>
 

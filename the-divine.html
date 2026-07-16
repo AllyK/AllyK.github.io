@@ -74,6 +74,41 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
 .footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
 .footer a:hover{border-color:var(--gold);color:var(--gold-dk)}
 
+/* STRUCTURE BANDS */
+.band{position:relative;z-index:1;max-width:860px;margin:2.2rem auto .4rem;padding:0 1.2rem;display:flex;align-items:center;gap:.7rem}
+.band-word{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.band-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(240,198,116,.35),transparent)}
+.band-note{font-size:11.5px;color:var(--text-muted);font-style:italic}
+
+/* DOORWAYS */
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem;margin:1rem 0 .4rem}
+.door{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:.85rem 1rem;cursor:pointer;text-decoration:none;display:block;transition:border-color .15s,background .15s}
+.door:hover{border-color:var(--gold);background:rgba(240,198,116,.06)}
+.door-h{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold-dk);margin-bottom:.2rem}
+.door-p{font-size:12.5px;color:var(--text-mid);line-height:1.6}
+
+/* REFUGE WIDGET */
+.refuge-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem}
+.refuge-lines{font-family:'Cormorant Garamond',serif;font-size:1.25rem;line-height:1.9;color:var(--text-mid);margin-bottom:1rem}
+.refuge-lines .lead-line{color:var(--text)}
+#refuge-word{color:var(--gold);border-bottom:1px dashed rgba(240,198,116,.5);padding-bottom:1px}
+.refuge-input{width:100%;padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;margin-bottom:.6rem}
+.refuge-input:focus{border-color:var(--gold)}
+.refuge-chips{display:flex;flex-wrap:wrap;gap:5px}
+.rchip{font-size:11.5px;padding:3px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-muted);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.rchip:hover,.rchip.on{border-color:var(--gold);color:var(--gold);background:rgba(240,198,116,.08)}
+.refuge-hint{font-size:11.5px;color:var(--text-muted);line-height:1.6;margin-top:.7rem}
+
+/* POSITIONALITY */
+.pos{background:rgba(240,198,116,.05);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1.1rem 1.3rem;margin:1rem 0}
+.pos .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.5rem;text-transform:uppercase}
+.pos p{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:.8rem}
+.pos p:last-child{margin-bottom:0}
+blockquote.q-src{border-left:2px solid rgba(240,198,116,.45);margin:1rem 0;padding:.2rem 0 .2rem 1rem;font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-style:italic;color:var(--text-mid);line-height:1.8}
+blockquote.q-src .attrib{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--text-muted);margin-top:.5rem}
+blockquote.q-src .attrib a{color:var(--text-muted);text-decoration:none;border-bottom:1px dotted var(--border)}
+blockquote.q-src .attrib a:hover{color:var(--gold-dk)}
+
 /* FEEDBACK FORM */
 .lp-feedback{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem}
 .lp-feedback-inner{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
@@ -124,6 +159,68 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
 </header>
 
 <main>
+
+<div class="band"><span class="band-word">Do &amp; interact</span><span class="band-rule"></span><span class="band-note">Start here, with your own word</span></div>
+
+  <section class="section" id="do">
+    <div class="eyebrow">A practice, before any of the theory</div>
+    <h2 class="s-title">Take refuge, in your own language</h2>
+    <p class="lead">Tara Brach teaches the Buddhist practice of taking refuge in a way that makes room for almost anyone. The first refuge, she writes, &ldquo;may be approached on various levels, and we can choose the way most meaningful to our particular temperament.&rdquo; She sometimes says &ldquo;I take refuge in the Beloved.&rdquo; You might say something else. Put your word in and read the three lines slowly.</p>
+    <div class="refuge-box">
+      <div class="refuge-lines">
+        <div class="lead-line">I take refuge in <span id="refuge-word">the Beloved</span>,</div>
+        <div>I take refuge in the dharma, the way things actually are,</div>
+        <div>I take refuge in the sangha, the ones practicing alongside me.</div>
+      </div>
+      <input class="refuge-input" id="refuge-input" type="text" placeholder="Your word for it: the Beloved, Christ, awareness, oneness, the earth, love&hellip;" autocomplete="off"/>
+      <div class="refuge-chips" id="refuge-chips">
+        <button class="rchip on" data-w="the Beloved">the Beloved</button>
+        <button class="rchip" data-w="the Buddha">the Buddha</button>
+        <button class="rchip" data-w="Christ">Christ</button>
+        <button class="rchip" data-w="the Divine Mother">the Divine Mother</button>
+        <button class="rchip" data-w="this awakening heart mind">this awakening heart mind</button>
+        <button class="rchip" data-w="awareness itself">awareness itself</button>
+        <button class="rchip" data-w="the oneness of all things">the oneness of all things</button>
+        <button class="rchip" data-w="the living earth">the living earth</button>
+      </div>
+      <div class="refuge-hint">Nothing is stored or sent. The words stay on your screen. Brach&rsquo;s point is that the refuge is real whichever door you come through: &ldquo;not trying to get rid of fear, but rather letting go into a refuge that is vast enough to hold my fear with love.&rdquo;</div>
+    </div>
+  </section>
+
+  <section class="section" id="doorways">
+    <div class="eyebrow">Three doorways</div>
+    <h2 class="s-title">Choose the way in that is honest for you</h2>
+    <p class="lead">People arrive at this word from different places, and the practice does not require you to pretend. Pick the door that fits, and start there. You can come back for the others.</p>
+    <div class="doors">
+      <a class="door" href="#literal">
+        <div class="door-h">A presence that hears</div>
+        <div class="door-p">You believe in, or are drawn toward, a personal divine: God, Christ, Krishna, the Divine Mother. Devotion is the practice, and surrender is real surrender to someone.</div>
+      </a>
+      <a class="door" href="#archetype">
+        <div class="door-h">Energies and archetypes</div>
+        <div class="door-p">The gods are essences to learn from rather than beings to petition. Shiva is what dissolution feels like; Kali is rage that serves love. This is where I stand.</div>
+      </a>
+      <a class="door" href="#oneness">
+        <div class="door-h">The oneness of all things</div>
+        <div class="door-p">No creator, no petition, and still something worth the word sacred: the seamless whole, and the reciprocity that binds every part of it to every other.</div>
+      </a>
+    </div>
+  </section>
+
+<div class="band"><span class="band-word">Say &amp; read</span><span class="band-rule"></span><span class="band-note">Where I stand, and what the traditions hold</span></div>
+
+  <section class="section" id="positionality">
+    <div class="eyebrow">Positionality</div>
+    <h2 class="s-title">This is the hardest one for me</h2>
+    <div class="pos">
+      <div class="label">A note from Ally</div>
+      <p>Of the eight limbs, this is the one I understand least, and I would rather say that plainly than write around it. Every other page here I can ground in anatomy, in a text, in a study. This one asks me what I believe, and my honest answer is still moving.</p>
+      <p>Where I am writing from: I am an American woman, raised Catholic, and I do not identify as a theist, at least not in the creator-god sense. That upbringing gave me a vocabulary of reverence and a deep suspicion of certainty, and I carry both. So when I meet the gods of yoga I do not meet them as beings who made the world and watch it. I understand them as energetic stories: essences and archetypes to learn from. Kali is what it is like when rage serves love. Shiva is what dissolution feels like from the inside. Hanuman is devotion that does not calculate. These are true in the way that a story is true, which is not a lesser kind of true.</p>
+      <p>That is my reading, and it is only mine. Some practitioners find the divine exactly where the texts put it, as a literal presence who hears them, and their practice is not naive; it is a relationship, and it works. Others find it where I tend to, in the oneness of all things and the reciprocity that runs between them. The tradition is old enough and large enough to hold all of us, and this page is written so that none of those readers has to convert to keep reading.</p>
+      <p>What I have stopped doing is arguing about it in my own head while I am on the mat. The instruction that follows, from Tara Brach, is most of the reason why.</p>
+    </div>
+  </section>
+
   <section class="section" id="intro">
     <div class="eyebrow">Niyama &middot; Ishvara pranidhana</div>
     <h2 class="s-title">What we mean by the divine</h2>
@@ -137,8 +234,48 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
     <p>Two streams of the tradition carry this understanding. The first looks inward and finds that the many are one. The second looks outward and finds that the one lives as mutual relationship. They meet in the middle, and the practice is how we learn to feel them.</p>
   </section>
 
+  <section class="section" id="refuge">
+    <div class="eyebrow">Tara Brach &middot; Radical Acceptance</div>
+    <h2 class="s-title">The word is a door, not a gate</h2>
+    <p class="lead">In <em>Radical Acceptance</em>, Tara Brach describes the Buddhist practice of taking refuge, and in doing so quietly solves the problem this page keeps circling. The formal practice recites three lines: I take refuge in the Buddha, in the dharma, in the sangha. Brach names the three as &ldquo;the Buddha (our awakened nature), the dharma (the path or the way) and the sangha (the community of spiritual aspirants).&rdquo; What she does next is the useful part.</p>
+    <p>She does not treat the first refuge as a loyalty test. &ldquo;Taking refuge in the Buddha,&rdquo; she writes, &ldquo;may be approached on various levels, and we can choose the way most meaningful to our particular temperament.&rdquo; You might take refuge in the historical man who sat under the tree and met his fear. You might, if you are devotional by nature, take refuge in a presence: &ldquo;Much like praying to Christ or the Divine Mother, we can take refuge in a being or presence that cares about our suffering.&rdquo; Brach names her own substitution directly:</p>
+    <blockquote class="q-src">
+      &ldquo;In taking this first refuge, I sometimes say, &lsquo;I take refuge in the Beloved&rsquo; and surrender into what I experience as the boundlessness of compassion. When I am feeling fear, I surrender it to the Beloved. By this, I am not trying to get rid of fear, but rather letting go into a refuge that is vast enough to hold my fear with love.&rdquo;
+      <span class="attrib">TARA BRACH, <a href="https://www.penguinrandomhouse.com/books/16998/radical-acceptance-by-tara-brach-phd/" target="_blank" rel="noopener">RADICAL ACCEPTANCE</a> (BANTAM), &ldquo;OPENING OUR HEART IN THE FACE OF FEAR,&rdquo; P. 175</span>
+    </blockquote>
+    <p>And then she turns it inward, so that even the presence is optional. &ldquo;In the most fundamental way,&rdquo; she writes, &ldquo;taking refuge in the Buddha means taking refuge in our own potential for liberation.&rdquo; After the Beloved, her next line is &ldquo;I take refuge in this awakening heart mind,&rdquo; letting go of &ldquo;any notion that Buddha nature is something beyond or outside my awareness.&rdquo; The refuge ends up in the least mystical place imaginable: &ldquo;We are taking refuge in the truth of who we are.&rdquo;</p>
+    <div class="callout">
+      <div class="label">Why this matters for the divine</div>
+      <p>Brach is not saying the words are interchangeable because nothing means anything. She is saying the refuge is a real place, and that people come to it through the door their temperament opens. Buddha, the Beloved, Christ, the Divine Mother, awakening awareness: the noun changes, and the act of letting go into something vast enough to hold your fear does not. Read <em>Ishvara pranidhana</em> that way and surrender stops requiring a metaphysics you do not have. It asks instead what you are willing to stop carrying alone.</p>
+    </div>
+    <p>The second refuge helps too, because it needs no belief at all. Brach notes that dharma &ldquo;means the truth, the way of things, the law of nature,&rdquo; and that taking refuge in it is taking refuge in &ldquo;the truth that everything within and around us is subject to change.&rdquo; Impermanence is not a doctrine you accept. It is a fact you stop fighting. That is available to the theist and the atheist on identical terms.</p>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.penguinrandomhouse.com/books/16998/radical-acceptance-by-tara-brach-phd/" target="_blank" rel="noopener">Radical Acceptance (Bantam) &middot; publisher</a>
+      <a class="source-link" href="https://www.tarabrach.com/books/radical-acceptance/" target="_blank" rel="noopener">Tara Brach: Radical Acceptance</a>
+      <a class="source-link" href="https://www.lionsroar.com/what-are-the-three-refuges/" target="_blank" rel="noopener">Lion&rsquo;s Roar: The Three Refuges</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/sharana" target="_blank" rel="noopener">Wisdomlib: Sharana (refuge)</a>
+    </div>
+  </section>
+
+  <section class="section" id="archetype">
+    <div class="eyebrow">The second doorway &middot; energies and archetypes</div>
+    <h2 class="s-title">The gods as essences to learn from</h2>
+    <p class="lead">This is the door I use, so I will describe it carefully rather than sell it. Read this way, the deities of yoga are not beings who made the world. They are compressed accounts of forces that run through a life, given a face so they can be studied, remembered, and practiced.</p>
+    <p>The advantage is that the stories stay demanding. If Kali is a goddess I do not believe in, I can dismiss her. If Kali is the name for the ferocity that destroys what I have outgrown, including the parts of my self-image I am fond of, then she has something to ask of me on a Tuesday. Under the <a class="inl" href="cosmic-banyan.html">Cosmic Banyan</a> you can see this at work: <a class="inl" href="cosmic-banyan.html#section-s1">Shiva&rsquo;s grief</a> becoming Virabhadra is not a fact about the past, it is an account of what happens when sorrow finds its footing, and the Warrior poses put you in the shape of it. <a class="inl" href="cosmic-banyan.html#section-s11">Shiva holding the poison at his throat</a> is a teaching about what a practiced nervous system can do with something toxic: neither swallow it nor spit it at whoever is nearest.</p>
+    <p>The honest risk of this door is that it can become a way of keeping the tradition at arm&rsquo;s length, taking the psychology and leaving the devotion, which is a thing Western practitioners do to living traditions rather routinely. I try to hold that risk in view. Reading the gods as archetypes is a reading, and the people whose ancestors have prayed to them for millennia are not making a category error I have kindly corrected.</p>
+  </section>
+
+  <section class="section" id="literal">
+    <div class="eyebrow">The first doorway &middot; a presence that hears</div>
+    <h2 class="s-title">If the divine is someone, not something</h2>
+    <p class="lead">The texts this site draws on mostly assume this door. The <a class="inl" href="cosmic-banyan.html">Bhagavatam</a> is not a psychology manual with a deity motif; it is a devotional work by people in a relationship with someone they loved. Reading it as anything else is a choice, and it should be named as one.</p>
+    <p>If this is your door, the practice is bhakti, and it is arguably the most direct one the tradition offers. <a class="inl" href="cosmic-banyan.html#section-s2">Prahlada</a> under poison and fire, <a class="inl" href="cosmic-banyan.html#section-s5">Draupadi</a> raising both hands when nothing else worked, the gopis dropping everything at the sound of the flute: none of these are metaphors to the people who told them. They are accounts of being answered. <em>Ishvara pranidhana</em> in this reading is exactly what it sounds like, surrender of your actions and their fruits to someone real, and the tradition holds it as a complete path on its own, needing no philosophy underneath it.</p>
+    <p>Nothing on this site is written to talk you out of that. Where I read energy and essence, you may read presence, and the pages will still work: the poses, the breath, the stories, and the ethics are the same. Brach&rsquo;s point stands from your side of it too. The refuge is real; we differ on the name.</p>
+  </section>
+
   <section class="section" id="oneness">
-    <div class="eyebrow">The first stream &middot; non-duality</div>
+    <div class="eyebrow">The third doorway &middot; non-duality</div>
     <h2 class="s-title">The many are one: Advaita</h2>
     <p class="lead">The Upanishads, the contemplative heart of the Vedas, return again and again to a single discovery: behind the countless forms of the world there is one reality, <em>Brahman</em>, and that reality is also the innermost Self, <em>Atman</em>, in every being. The divine is the wholeness, and you are not outside it.</p>
     <div class="verse">
@@ -187,6 +324,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
   <section class="section" id="practice">
     <div class="eyebrow">The divine in practice</div>
     <h2 class="s-title">How this lives on the mat</h2>
+    <p class="lead" style="margin-bottom:1rem">Whichever door you came through, the practice from here is the same, which is the quiet argument of this whole page.</p>
     <p class="lead">This is the second limb, <em>Niyama</em>, and its final observance is <em>Ishvara pranidhana</em>, surrender to the divine. Read in this way, surrender is the practice of remembering oneness and acting from reciprocity. It threads through the whole of yoga.</p>
     <p>In the <a class="inl" href="cosmic-banyan.html">Yamas</a>, the ethical roots, reciprocity becomes action: <em>ahimsa</em>, non-harming, is the simplest acknowledgment that another&rsquo;s life is woven with your own. In <a class="inl" href="yoga-family-tree.html">Asana</a>, the body learns that it is made of breath traded with the world. In <a class="inl" href="meditation.html">meditation</a>, the practitioner rests in the wholeness directly, until the boundary between self and all-that-is grows quiet.</p>
     <p>Surrender to the divine, then, asks very little belief and a great deal of attention. It asks that you notice, in the pose and in the breath and in the meeting with another being, that you were never separate. The remembering is the worship.</p>
@@ -199,11 +337,53 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
       <div class="q"><span class="n">2.</span><span class="t">If the divine is reciprocity, what are you receiving without yet giving back, and what might balance look like?</span></div>
       <div class="q"><span class="n">3.</span><span class="t">Tat tvam asi: thou art That. Sitting quietly, can you sense the awareness in you as the same awareness that lights all things?</span></div>
     </div>
-    <div class="src-label">Sources &amp; further reading</div>
+  </section>
+
+<div class="band"><span class="band-word">Follow up &amp; resources</span><span class="band-rule"></span><span class="band-note">Where to take this next</span></div>
+
+  <section class="section" id="resources">
+    <div class="eyebrow">Everything cited on this page</div>
+    <h2 class="s-title">Follow up</h2>
+    <p class="lead">Books link to their publisher, and texts link to a freely published edition. Nothing here is hosted on this site.</p>
+
+    <div class="src-label">On refuge, and choosing your own word</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.penguinrandomhouse.com/books/16998/radical-acceptance-by-tara-brach-phd/" target="_blank" rel="noopener">Brach, <em>Radical Acceptance</em> (Bantam) &middot; publisher</a>
+      <a class="source-link" href="https://www.penguinrandomhouse.com/books/16999/true-refuge-by-tara-brach-phd/" target="_blank" rel="noopener">Brach, <em>True Refuge</em> (Bantam) &middot; publisher</a>
+      <a class="source-link" href="https://www.tarabrach.com/books/radical-acceptance/" target="_blank" rel="noopener">Tara Brach&rsquo;s own page for the book</a>
+      <a class="source-link" href="https://www.lionsroar.com/what-are-the-three-refuges/" target="_blank" rel="noopener">Lion&rsquo;s Roar: The Three Refuges</a>
+    </div>
+
+    <div class="src-label">On oneness and non-duality</div>
+    <div class="sources">
+      <a class="source-link" href="https://shlokam.org/text/isha-upanishad.htm" target="_blank" rel="noopener">Shlokam: Isha Upanishad (full)</a>
+      <a class="source-link" href="https://www.wisdomlib.org/hinduism/book/ishavasya-upanishad-shankara-bhashya/d/doc143810.html" target="_blank" rel="noopener">Wisdomlib: Ishavasya with Shankara&rsquo;s commentary</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/advaita" target="_blank" rel="noopener">Wisdomlib: Advaita</a>
+      <a class="source-link" href="https://plato.stanford.edu/entries/advaita-vedanta/" target="_blank" rel="noopener">Stanford Encyclopedia: Advaita Vedanta</a>
+    </div>
+
+    <div class="src-label">On reciprocity and interbeing</div>
+    <div class="sources">
+      <a class="source-link" href="https://plumvillage.org/community/order-of-interbeing" target="_blank" rel="noopener">Plum Village: The Order of Interbeing</a>
+      <a class="source-link" href="https://plumvillage.app/to-be-means-to-inter-be/" target="_blank" rel="noopener">Plum Village: To be means to inter-be</a>
+      <a class="source-link" href="https://plato.stanford.edu/entries/buddhism-huayan/" target="_blank" rel="noopener">Stanford Encyclopedia: Huayan and Indra&rsquo;s Net</a>
+      <a class="source-link" href="https://camlab.fas.harvard.edu/project/indras-net/" target="_blank" rel="noopener">Harvard CAMLab: Indra&rsquo;s Net</a>
+    </div>
+
+    <div class="src-label">On surrender, and reading the tradition honestly</div>
     <div class="sources">
       <a class="source-link" href="https://www.wisdomlib.org/definition/ishvara-pranidhana" target="_blank" rel="noopener">Wisdomlib: Ishvara Pranidhana</a>
-      <a class="source-link" href="https://www.wisdomlib.org/definition/advaita" target="_blank" rel="noopener">Wisdomlib: Advaita</a>
-      <a class="source-link" href="https://shlokam.org/text/isha-upanishad.htm" target="_blank" rel="noopener">Shlokam: Isha Upanishad (full)</a>
+      <a class="source-link" href="https://www.penguinrandomhouse.com/books/604856/embrace-yogas-roots-by-susanna-barkataki/" target="_blank" rel="noopener">Barkataki, <em>Embrace Yoga&rsquo;s Roots</em> &middot; publisher</a>
+      <a class="source-link" href="https://www.penguinrandomhouse.com/books/609844/skill-in-action-by-michelle-cassandra-johnson/" target="_blank" rel="noopener">Johnson, <em>Skill in Action</em> &middot; publisher</a>
+      <a class="source-link" href="https://press.princeton.edu/books/paperback/9780691197074/the-yoga-sutra-of-patanjali" target="_blank" rel="noopener">White, <em>The Yoga Sutra of Patanjali: A Biography</em> &middot; publisher</a>
+    </div>
+
+    <div class="src-label">Continue on this site</div>
+    <div class="sources">
+      <a class="source-link" href="cosmic-banyan.html">The stories, under the Cosmic Banyan</a>
+      <a class="source-link" href="meditation.html#sec-sca">Samadhi and sat-chit-ananda</a>
+      <a class="source-link" href="yama.html">The ethical ground: the yamas</a>
+      <a class="source-link" href="about.html">Why this site exists</a>
     </div>
   </section>
 </main>
@@ -245,6 +425,30 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
   </div>
 </section>
 <script>
+/* TAKE REFUGE: substitute your own word.
+   Tara Brach, Radical Acceptance: the first refuge "may be approached on
+   various levels, and we can choose the way most meaningful to our particular
+   temperament." Nothing here is stored or transmitted. */
+(function(){
+  var word = document.getElementById('refuge-word');
+  var input = document.getElementById('refuge-input');
+  var chips = document.querySelectorAll('.rchip');
+  if(!word || !input) return;
+  function setWord(w, from){
+    word.textContent = w && w.trim() ? w.trim() : 'the Beloved';
+    chips.forEach(function(c){
+      c.classList.toggle('on', from==='chip' && c.dataset.w===w);
+    });
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      input.value = '';
+      setWord(c.dataset.w, 'chip');
+    });
+  });
+  input.addEventListener('input', function(){ setWord(this.value, 'input'); });
+})();
+
 document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   e.preventDefault();
   var em=document.getElementById('lp-fb-email').value.trim();

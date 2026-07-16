@@ -104,6 +104,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 .prov-pill.yogic{color:var(--violet);border-color:rgba(183,148,246,.4);background:rgba(183,148,246,.08)}
 .prov-pill.western{color:#7FA8FF;border-color:rgba(127,168,255,.4);background:rgba(127,168,255,.08)}
 .prov-pill.kundalini{color:var(--dawn);border-color:rgba(255,158,128,.45);background:rgba(255,158,128,.09)}
+.prov-pill.tibetan{color:#E8A87C;border-color:rgba(232,168,124,.45);background:rgba(232,168,124,.09)}
 .filter-pills.prov-filters{margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border-lt)}
 .filter-pill.prov{border-style:dashed}
 .filter-legend{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem;display:block}
@@ -121,6 +122,20 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 .tech-precaution{background:rgba(255,158,128,.07);border:1px solid rgba(255,158,128,.22);border-radius:10px;padding:.7rem .9rem;margin-top:.3rem}
 .tech-precaution p{font-size:13px;color:var(--text-mid);margin:0;line-height:1.65}
 .tech-precaution .label{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dawn);margin-bottom:.3rem;display:block}
+
+/* MUDRA CARDS */
+.mudra-note{background:rgba(255,158,128,.06);border:1px solid rgba(255,158,128,.28);border-left:3px solid var(--dawn);border-radius:0 10px 10px 0;padding:.85rem 1.1rem;margin:1rem 0 1.3rem;font-size:12.5px;color:var(--text-mid);line-height:1.7}
+.mudra-note strong{color:var(--dawn)}
+.mudra-card .m-skt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;color:var(--violet);margin:-.15rem 0 .5rem}
+.mudra-card .m-when{margin-top:.6rem;padding-top:.55rem;border-top:1px solid var(--border-lt);font-size:12.5px;color:var(--text-mid);line-height:1.65}
+.m-when-l{display:block;font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.25rem}
+.mudra-card p strong{color:var(--text)}
+
+/* STRUCTURE BANDS */
+.band{position:relative;z-index:1;max-width:900px;margin:2.2rem auto .4rem;padding:0 1.2rem;display:flex;align-items:center;gap:.7rem}
+.band-word{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
+.band-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(183,148,246,.35),transparent)}
+.band-note{font-size:11.5px;color:var(--text-muted);font-style:italic}
 
 .sources-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 .2rem}
 .source-link{font-size:11px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 10px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
@@ -188,28 +203,12 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 
 <main id="content">
 
-<section class="section-wrap" id="sec-intro">
-  <div class="section-header">
-    <div class="section-eyebrow">What pranayama is</div>
-    <h2 class="section-title">The deliberate shaping of breath</h2>
-  </div>
-  <p class="lead"><em>Pranayama</em> joins two Sanskrit roots: <em>prana</em>, the breath of life, and <em>ayama</em>, expansion or regulation. It is the deliberate modification of breathing, ranging from rapid diaphragmatic breathing to slow, deep breathing, alternate-nostril breathing, and breath retention, most often practiced seated. The tradition names four parts to every round: <em>puraka</em> (inhalation), <em>recaka</em> (exhalation), <em>antah kumbhaka</em> (breath held in), and <em>bahih kumbhaka</em> (breath held out). In Patanjali's Yoga Sutras, pranayama is the fourth limb of the eight-fold path.</p>
-  <p>A 2020 systematic review in the <em>International Journal of Yoga</em> gathered eighteen controlled trials on pranayama alone and found real, measurable effects: improved pulse rate, blood pressure, and lung function in bronchial asthma; better symptom and activity scores in COPD; reduced fatigue and anxiety in cancer patients; and lower blood pressure in hypertension. The proposed mechanisms are physiological and specific: slow, deep breathing stretches lung tissue in a way that shifts the autonomic nervous system from sympathetic toward parasympathetic dominance, largely through the vagus nerve, while forceful practices like Bhastrika and Kapalabhati train the inspiratory and expiratory muscles directly.</p>
-  <div class="callout">
-    <div class="label">Before you begin</div>
-    <p>Practice in a well-ventilated room, seated with an erect spine, on a fairly empty stomach. Keep the face and shoulders relaxed. Every technique below can be built slowly: fewer rounds, gentler force, shorter holds, always. If anything produces dizziness, breathlessness, or strain, return to normal breathing and ease off.</p>
-  </div>
-  <p>Use the search bar and the tags below to find a technique by name, in English or Sanskrit, or by what you need it for: calm, focus, warmth, sleep. Each card opens into full instructions, a note on the benefit and purpose, the hand position it uses, an adaptation for restricted or uneven nostril breathing, precautions, and the sources behind it. Each card also carries a small diagram of how the air flows.</p>
-  <div class="legend-flow">
-    <span><span class="dot" style="border-color:#5AE8C8"></span> Inhale</span>
-    <span><span class="dot" style="border-color:#F0C674"></span> Exhale</span>
-  </div>
-</section>
+<div class="band"><span class="band-word">Do &amp; interact</span><span class="band-rule"></span><span class="band-note">Find a breath, then read why it works</span></div>
 
 <section class="section-wrap" id="sec-directory">
   <div class="section-header">
     <div class="section-eyebrow">The directory</div>
-    <h2 class="section-title">Twenty-eight breathing techniques</h2>
+    <h2 class="section-title">Thirty-three breathing techniques</h2>
   </div>
   <p class="lead">Not every breath practice below comes from the same place. Some are named in the classical Hatha Yoga texts (the Hatha Yoga Pradipika and Gheranda Samhita); others belong to the broader living yogic tradition, including modern teaching lineages and programs like Sudarshan Kriya Yoga and the Kundalini Yoga of Yogi Bhajan; and several are Western clinical or physiological techniques, some borrowed from pranayama and re-tested in hospitals and labs, others developed independently. Each card names its source, and the provenance filter below lets you sort by it. Within each card, peer-reviewed studies are listed first and marked in teal; the more accessible teaching sources follow.</p>
 
@@ -232,17 +231,194 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <button class="filter-pill" data-tag="balance">Balance</button>
       <button class="filter-pill" data-tag="cognitive">Cognitive</button>
     </div>
-    <span class="filter-legend">Filter by source</span>
+    <span class="filter-legend">Filter by lineage</span>
     <div class="filter-pills prov-filters" id="prov-pills">
       <button class="filter-pill prov" data-prov="classical">Classical Pranayama Text</button>
       <button class="filter-pill prov" data-prov="yogic">Yogic Tradition</button>
       <button class="filter-pill prov" data-prov="western">Western Medicine</button>
       <button class="filter-pill prov" data-prov="kundalini">Kundalini (Yogi Bhajan)</button>
+      <button class="filter-pill prov" data-prov="tibetan">Tibetan Buddhist</button>
     </div>
     <div class="result-count" id="result-count"></div>
   </div>
 
   <div class="tech-grid" id="tech-grid">
+
+<details class="tech-card" data-name="simhasana lion breath lion's breath simha pranayama roar" data-benefits="tension jaw throat release energizing warming confidence face" data-tags="energizing warming respiratory" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="52" rx="28" ry="34" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="41" cy="46" r="3" fill="#8d85a8"/><circle cx="59" cy="46" r="3" fill="#8d85a8"/><ellipse cx="50" cy="70" rx="11" ry="13" fill="rgba(255,158,128,.18)" stroke="#8d85a8" stroke-width="2"/><path d="M50 70 Q50 84 50 92" stroke="#FF9E80" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M44 84 Q50 94 56 84" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M30 30 Q40 22 50 24 Q60 22 70 30" stroke="#5AE8C8" stroke-width="2" fill="none" stroke-dasharray="3 3"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Lion&rsquo;s Breath</div>
+      <div class="tech-skt">Simhasana &middot; Simha Pranayama</div>
+      <div class="tech-tags"><span class="tag-pill">Energizing</span><span class="tag-pill">Warming</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Kneel with the hips on the heels, or sit tall in any comfortable seat. Place the palms on the knees and spread the fingers wide.</li>
+      <li>Inhale fully through the nose.</li>
+      <li>Open the mouth wide, stretch the tongue out and down toward the chin, and widen the eyes, directing the gaze to the eyebrow centre or the tip of the nose.</li>
+      <li>Exhale forcefully through the mouth with a clear "haaa" from the back of the throat, like a roar. The exhale is audible and complete.</li>
+      <li>Close the mouth, breathe normally for a few cycles, and repeat 3 to 6 times.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The one practice in the directory that asks you to make an undignified noise, which is most of its value. It releases held tension in the jaw, throat, and face, the places we clench without noticing, and it interrupts a self-conscious mood faster than any calming breath. The Gheranda Samhita presents Simhasana as a seat that destroys disease; teachers today use it for the throat and for shaking off staleness. On the <a href="cosmic-banyan.html#section-s2" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Cosmic Banyan</a> it carries Narasimha&rsquo;s roar: the sound that dissolves what cannot be sustained.</p></div>
+    <h4>Hand position</h4>
+    <p>Palms on the knees, fingers actively splayed like a lion&rsquo;s claws. Some traditions cross the wrists or press the palms to the floor between the knees.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Well suited to blocked noses, since the powerful exhale leaves through the mouth. If the nasal inhale is difficult, inhale through the mouth instead and lose nothing.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Ease off with jaw pain or TMJ: keep the mouth comfortably open rather than maximally wide. Do not force the eyes wide if they strain, and skip the sound if it hurts the throat.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.wisdomlib.org/definition/simhasana" class="source-link" target="_blank" rel="noopener">Wisdomlib: Simhasana</a>
+      <a href="https://www.yogabasics.com/practice/lion-pose/" class="source-link" target="_blank" rel="noopener">Yoga Basics: Lion Pose</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="kevala kumbhaka spontaneous retention kevali natural pause hatha yoga pradipika" data-benefits="stillness absorption meditation samadhi retention calm focus" data-tags="calming focus" data-prov="classical">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="52" r="3" fill="#8d85a8"/><circle cx="58" cy="52" r="3" fill="#8d85a8"/><path d="M42 74 Q50 78 58 74" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="54" r="16" fill="none" stroke="#5AE8C8" stroke-width="1.5" stroke-dasharray="2 4"/><circle cx="50" cy="54" r="8" fill="rgba(90,232,200,.12)" stroke="#5AE8C8" stroke-width="1.5"/><path d="M22 30 Q26 26 30 30" stroke="#c3bcd8" stroke-width="1.5" fill="none"/><path d="M70 30 Q74 26 78 30" stroke="#c3bcd8" stroke-width="1.5" fill="none"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Spontaneous Retention</div>
+      <div class="tech-skt">Kevala Kumbhaka &middot; Kevali</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span></div>
+      <div class="tech-provenance"><span class="prov-pill classical">Classical Pranayama Text</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>This is the one technique here that cannot be performed on demand. It is approached rather than done.</li>
+      <li>Practice a long, settled round of any slow breath: Nadi Shodhana, Ujjayi, or Sama Vritti, until the breath is smooth and the count stops mattering.</li>
+      <li>Let the deliberate control fall away. Stop lengthening, stop counting, and simply let the breath breathe itself.</li>
+      <li>Notice the natural pause that already lives at the end of each exhale and each inhale. Do not create it. Only stop interrupting it.</li>
+      <li>The Hatha Yoga Pradipika describes the breath eventually suspending itself, without inhalation or exhalation and without effort. If that happens, it happens; if it does not, the sitting was still complete.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The Hatha Yoga Pradipika (2.71 to 2.75) treats the other seven kumbhakas as training wheels for this one: retention that arrives on its own, with no closing of nostrils and no counting. The text calls the practitioner who attains it a true knower of yoga and links it directly to raja yoga. Its practical value is a corrective. It reframes pranayama as something you gradually stop doing, and it makes the goal of the whole limb a state rather than a manoeuvre.</p></div>
+    <h4>Hand position</h4>
+    <p>Any settled seat: Chin, Jnana, Bhairava, or Dhyana. Since no nostril is closed, the hands are free to rest.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Among the most accessible practices here, since it requires no nostril control at all. Whichever nostril is dominant today, the practice is only to stop interfering.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Never hold the breath to manufacture this. Forced retention is a different practice with real risks; kevala is defined by the absence of force. If you notice yourself gripping the throat or straining, return to normal breathing.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.wisdomlib.org/definition/kevala-kumbhaka" class="source-link" target="_blank" rel="noopener">Wisdomlib: Kevala Kumbhaka</a>
+      <a href="https://www.sacred-texts.com/hin/hyp/hyp05.htm" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika, Chapter 2 (Sacred Texts)</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="anuloma pratiloma viloma iyengar graded ujjayi light on pranayama" data-benefits="control refinement lung capacity focus calm graded" data-tags="calming focus respiratory" data-prov="yogic">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="56" r="3" fill="#8d85a8"/><circle cx="58" cy="56" r="3" fill="#8d85a8"/><path d="M18 44 Q34 52 44 56" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M56 56 Q68 52 74 46" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M78 60 L86 60 M78 66 L86 66 M78 72 L86 72" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/><path d="M14 60 L22 60 M14 66 L22 66" stroke="#c3bcd8" stroke-width="2" stroke-linecap="round"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Graded Nostril Breathing</div>
+      <div class="tech-skt">Anuloma &middot; Pratiloma &middot; Viloma</div>
+      <div class="tech-tags"><span class="tag-pill">Calming</span><span class="tag-pill">Focus</span><span class="tag-pill">Respiratory</span></div>
+      <div class="tech-provenance"><span class="prov-pill yogic">Yogic Tradition</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li><strong>Anuloma:</strong> inhale through both nostrils in Ujjayi, then exhale through one nostril, partially closed by the fingers. Alternate the exhaling side each round. The inhale is free; the exhale is graded.</li>
+      <li><strong>Pratiloma:</strong> the reverse. Inhale through one partially closed nostril, then exhale freely through both in Ujjayi. The inhale is graded; the exhale is free.</li>
+      <li><strong>Viloma:</strong> interrupt the breath itself. Inhale a third, pause two seconds; another third, pause; the last third, pause; then exhale smoothly. Later, interrupt the exhale in the same stepped way.</li>
+      <li>Begin with 5 to 8 rounds of one variation only. These are graded practices and they are meant to be taken in order, over months rather than in one sitting.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Iyengar&rsquo;s <em>Light on Pranayama</em> lays out pranayama as a graded curriculum rather than a set of party tricks, and these are its middle rungs. Partially closing a nostril, rather than fully blocking it, teaches a finer control of airflow than Nadi Shodhana asks for, and the stepped Viloma inhale trains the lungs to fill in sections rather than in one grab. The value is precision: they build the sensitivity that makes the longer practices safe.</p></div>
+    <h4>Hand position</h4>
+    <p>Nasikagra or Vishnu mudra on the breathing hand, but the touch is far lighter than in Nadi Shodhana. The finger narrows the nostril rather than sealing it, so the airflow is throttled, not stopped.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Viloma needs no nostril control at all and is the natural choice if one side is restricted, since it interrupts the breath by timing rather than by finger pressure. For Anuloma and Pratiloma, narrow only the open side and let the restricted side stay free.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Skip the pauses if you are pregnant, have high blood pressure, or feel any breathlessness. Build in stages and stop at the first sign of strain rather than pushing to complete the round.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em> &middot; publisher</a>
+      <a href="https://www.wisdomlib.org/definition/viloma" class="source-link" target="_blank" rel="noopener">Wisdomlib: Viloma</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="tummo inner fire chandali g-tummo tibetan vase breath heat" data-benefits="heat warming energizing focus tibetan inner fire" data-tags="energizing warming focus" data-prov="tibetan">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="48" r="3" fill="#8d85a8"/><circle cx="58" cy="48" r="3" fill="#8d85a8"/><path d="M42 68 Q50 72 58 68" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><ellipse cx="50" cy="86" rx="14" ry="10" fill="rgba(255,158,128,.16)" stroke="#FF9E80" stroke-width="2"/><path d="M50 84 Q44 74 50 64 Q56 74 50 84" fill="rgba(255,158,128,.3)" stroke="#FF9E80" stroke-width="2"/><path d="M26 40 Q34 46 42 48" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M58 48 Q66 46 74 40" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Inner Fire</div>
+      <div class="tech-skt">Tummo &middot; gTum-mo &middot; Chandali</div>
+      <div class="tech-tags"><span class="tag-pill">Energizing</span><span class="tag-pill">Warming</span><span class="tag-pill">Focus</span></div>
+      <div class="tech-provenance"><span class="prov-pill tibetan">Tibetan Buddhist</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit tall. Inhale deeply through the nose and draw the breath down toward the navel.</li>
+      <li>Hold gently and take the "vase" shape: draw the lower belly slightly in and up, and press the diaphragm down a little, so the held breath is contained like water in a pot below the navel.</li>
+      <li>Alongside the breath, visualize a small flame at the navel centre, about the size of a thumb, growing brighter and hotter with each round. The visualization is not decoration here; in the tradition it is half the technique.</li>
+      <li>Release and exhale slowly. Repeat for short rounds, resting whenever the breath asks.</li>
+      <li>The forceful version combines the vase breath with vigorous belly bellows. That form belongs with a qualified teacher, not a web page.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The classic heat practice of Tibetan Buddhism, part of the Six Yogas of Naropa, where warmth is a byproduct rather than the goal: the aim is to melt subtle energy into the central channel for insight. It is also the rare traditional claim to be measured directly. Kozhevnikov and colleagues (2013, PLOS ONE) recorded practitioners in Tibet and Nepal raising core body temperature into the mild fever range and sustaining it, finding that forceful breath produced the heat while visualization sustained it. It is included here as the page&rsquo;s only Tibetan entry, and because it is a genuine bridge between the breath and the imagination.</p></div>
+    <h4>Hand position</h4>
+    <p>Traditionally the hands rest in Dhyana mudra in the lap, or on the knees. No nostril work is involved.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Both nostrils are used together, so no side-specific control is needed. If nasal breathing is restricted, take a slower, gentler inhale rather than a forceful one, and lean on the visualization.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>The forceful form involves vigorous breathing and retention and should be learned in person within a lineage. Avoid retention if pregnant, or with high blood pressure, heart conditions, glaucoma, or epilepsy. This entry is a description, not an instruction manual.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://doi.org/10.1371/journal.pone.0058244" class="source-link" target="_blank" rel="noopener">Kozhevnikov et al. 2013: Tummo and body temperature (PLOS ONE)</a>
+      <a href="https://www.lionsroar.com/what-is-tummo/" class="source-link" target="_blank" rel="noopener">Lion&rsquo;s Roar: What is tummo?</a>
+      <a href="https://www.wisdomlib.org/definition/chandali" class="source-link" target="_blank" rel="noopener">Wisdomlib: Chandali</a>
+    </div>
+  </div>
+</details>
+
+<details class="tech-card" data-name="buteyko method reduced breathing control pause nasal breathing carbon dioxide asthma" data-benefits="asthma respiratory nasal breathing carbon dioxide tolerance calm" data-tags="respiratory calming" data-prov="western">
+  <summary>
+    <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="52" r="3" fill="#8d85a8"/><circle cx="58" cy="52" r="3" fill="#8d85a8"/><path d="M40 74 L60 74" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M30 46 Q38 50 44 52" stroke="#5AE8C8" stroke-width="1.8" fill="none" marker-end="url(#a-in)" stroke-dasharray="2 2"/><path d="M56 52 Q62 50 70 46" stroke="#F0C674" stroke-width="1.8" fill="none" marker-end="url(#a-out)" stroke-dasharray="2 2"/><circle cx="50" cy="20" r="9" fill="none" stroke="#c3bcd8" stroke-width="1.5"/><path d="M50 15 L50 20 L54 23" stroke="#c3bcd8" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
+    <span class="tech-heading">
+      <div class="tech-en">Reduced Breathing</div>
+      <div class="tech-skt">The Buteyko Method</div>
+      <div class="tech-tags"><span class="tag-pill">Respiratory</span><span class="tag-pill">Calming</span></div>
+      <div class="tech-provenance"><span class="prov-pill western">Western Medicine</span></div>
+    </span>
+    <span class="tech-chevron">&#9662;</span>
+  </summary>
+  <div class="tech-body">
+    <h4>How to practice</h4>
+    <ol>
+      <li>Sit upright and breathe through the nose only, with the mouth closed. Nasal breathing is the whole foundation of the method.</li>
+      <li>Measure your control pause: after a normal, quiet exhale, pinch the nose and count the seconds until the first definite urge to breathe. Release and breathe normally. This is a measurement, not a challenge, so never push to the maximum.</li>
+      <li>For reduced breathing, let each breath become slightly smaller and quieter than usual, aiming for a light air hunger you can hold comfortably for several minutes.</li>
+      <li>Breathe low and slow into the diaphragm. The goal is less air, not more.</li>
+      <li>Recheck the control pause after a few minutes of practice.</li>
+    </ol>
+    <h4>Benefit &amp; purpose</h4>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Developed in the 1950s by the Ukrainian physician Konstantin Buteyko, this is the directory&rsquo;s clearest counterexample to the assumption that deeper is better. It proposes that chronic over-breathing lowers carbon dioxide and that gently tolerating a little more of it eases airway constriction. Randomized trials in asthma consistently find reduced symptoms and, notably, reduced reliever medication use; the evidence for changed underlying lung function is much weaker. Worth practicing for the shift it produces in how you breathe all day, and worth citing carefully.</p></div>
+    <h4>Hand position</h4>
+    <p>Hands rest on the thighs or lightly on the belly and chest so you can feel the movement shrink. The nose is pinched only for the control-pause measurement.</p>
+    <h4>Adaptation for restricted or uneven nostril breathing</h4>
+    <p>Awkward if nasal breathing is genuinely obstructed, since it is the premise. Clear the nose first with a saline rinse or gentle Bhramari; if one side is chronically blocked, the light-breathing part still works through whichever side is open.</p>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Never use this to replace asthma medication, and keep the reliever inhaler to hand. Air hunger should stay mild and comfortable. Avoid breath holds if pregnant, or with heart conditions, uncontrolled hypertension, epilepsy, or diabetes, and speak to your clinician before starting if you have a respiratory diagnosis.</p></div>
+    <div class="src-label">Sources</div>
+    <div class="sources-wrap">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3612343/" class="source-link" target="_blank" rel="noopener">Bruton &amp; Thomas: Breathing exercises in asthma (review)</a>
+      <a href="https://www.nhs.uk/tests-and-treatments/breathing-exercises-for-asthma/" class="source-link" target="_blank" rel="noopener">NHS: Breathing exercises for asthma</a>
+    </div>
+  </div>
+</details>
+
 <details class="tech-card" data-name="nadi shodhana alternate nostril breathing anuloma viloma nari shodhanam" data-benefits="balance autonomic nervous system attention memory calm blood pressure focus" data-tags="calming focus balance blood-pressure cognitive" data-prov="classical">
   <summary>
     <span class="tech-diagram"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="54" rx="28" ry="36" fill="none" stroke="#B794F6" stroke-width="2"/><circle cx="42" cy="58" r="3" fill="#8d85a8"/><circle cx="58" cy="58" r="3" fill="#8d85a8"/><path d="M38 78 Q50 84 62 78" fill="none" stroke="#8d85a8" stroke-width="2" stroke-linecap="round"/><path d="M20 50 Q32 56 42 58" stroke="#5AE8C8" stroke-width="2.5" fill="none" marker-end="url(#a-in)"/><path d="M58 58 Q68 56 80 50" stroke="#F0C674" stroke-width="2.5" fill="none" marker-end="url(#a-out)"/><path d="M35 20 A18 10 0 1 1 65 20" stroke="#c3bcd8" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/></svg></span>
@@ -1269,13 +1445,180 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
   </div>
 </section>
 
+<div class="band"><span class="band-word">Say &amp; read</span><span class="band-rule"></span><span class="band-note">What the breath is, and why it carries</span></div>
+
+<section class="section-wrap" id="sec-intro">
+  <div class="section-header">
+    <div class="section-eyebrow">What pranayama is</div>
+    <h2 class="section-title">The deliberate shaping of breath</h2>
+  </div>
+  <p class="lead"><em>Pranayama</em> joins two Sanskrit roots: <em>prana</em>, the breath of life, and <em>ayama</em>, expansion or regulation. It is the deliberate modification of breathing, ranging from rapid diaphragmatic breathing to slow, deep breathing, alternate-nostril breathing, and breath retention, most often practiced seated. The tradition names four parts to every round: <em>puraka</em> (inhalation), <em>recaka</em> (exhalation), <em>antah kumbhaka</em> (breath held in), and <em>bahih kumbhaka</em> (breath held out). In Patanjali's Yoga Sutras, pranayama is the fourth limb of the eight-fold path.</p>
+  <p>A 2020 systematic review in the <em>International Journal of Yoga</em> gathered eighteen controlled trials on pranayama alone and found real, measurable effects: improved pulse rate, blood pressure, and lung function in bronchial asthma; better symptom and activity scores in COPD; reduced fatigue and anxiety in cancer patients; and lower blood pressure in hypertension. The proposed mechanisms are physiological and specific: slow, deep breathing stretches lung tissue in a way that shifts the autonomic nervous system from sympathetic toward parasympathetic dominance, largely through the vagus nerve, while forceful practices like Bhastrika and Kapalabhati train the inspiratory and expiratory muscles directly.</p>
+  <div class="callout">
+    <div class="label">Before you begin</div>
+    <p>Practice in a well-ventilated room, seated with an erect spine, on a fairly empty stomach. Keep the face and shoulders relaxed. Every technique above can be built slowly: fewer rounds, gentler force, shorter holds, always. If anything produces dizziness, breathlessness, or strain, return to normal breathing and ease off.</p>
+  </div>
+  <div class="legend-flow">
+    <span><span class="dot" style="border-color:#5AE8C8"></span> Inhale</span>
+    <span><span class="dot" style="border-color:#F0C674"></span> Exhale</span>
+  </div>
+</section>
+
+<!-- BREATH AS WAVES (moved here from the meditation page: pranayama lives on its own page) -->
+<section class="section-wrap" id="sec-ujjayi">
+  <div class="section-header">
+    <div class="section-eyebrow">Ujjayi &middot; the breath that carries</div>
+    <h2 class="section-title">Breath as waves, the exhale as the crash</h2>
+  </div>
+  <p class="lead">Before the mind can travel anywhere, the breath must become an ocean. The breath that carries meditation in this tradition is <em>Ujjayi</em>, often translated as the victorious breath, and just as often called the ocean breath, because that is exactly what it sounds like.</p>
+  <p>To breathe Ujjayi, you narrow the passage at the back of the throat, gently bringing the vocal folds toward one another so the air must whisper as it passes. The mouth stays closed; the breath moves only through the nose. The narrowing turns silent air into sound, a soft oceanic hush that rises on the inhale and falls on the exhale. The Sanskrit <em>ujjayi</em> joins <em>ut</em>, meaning upward or expanding, with <em>jaya</em>, meaning victory: the breath that expands and conquers through steadiness.</p>
+  <p>Listen to the surf and you already know the rhythm. The inhale is the wave gathering itself, drawing up and back, swelling as it rises toward the shore. It builds. It lifts. And then the exhale is the crash: the long, surrendered fall of water onto sand, the wave giving everything it gathered back to the beach. The inhale collects the world. The exhale lets it go. A meditation is nothing more than ten thousand of these waves, each one a small rehearsal of holding on and letting go.</p>
+  <p>This is why the exhale is where the practice deepens. A wave that only rises is a wave that never breaks. The crash, the release, the slight emptiness at the bottom of the breath before the next swell gathers, is where the nervous system softens and the mind loosens its grip. Lengthen the exhale and the waters grow calm. When the surface of the breath is calm, the depths beneath it become visible.</p>
+  <div class="practice">
+    <div class="label">Practice &middot; the ocean breath</div>
+    <div class="p-title">Riding the wave</div>
+    <ol>
+      <li>Sit so the spine is tall and the shoulders are soft. Close the mouth. Let the breath move only through the nose.</li>
+      <li>On the inhale, imagine a wave gathering. Let it rise from the belly to the chest to the throat, slightly narrowing the back of the throat so the breath makes a soft oceanic sound, like wind through a shell.</li>
+      <li>At the top of the inhale, the wave is full and poised, about to break. Do not rush it.</li>
+      <li>On the exhale, let the wave crash: a slow, complete release through that same whispering throat, longer than the inhale, until the water has fully returned to the sea.</li>
+      <li>Rest for a heartbeat in the empty trough at the bottom. Then let the next wave gather on its own. Continue for ten breaths, then twenty, listening to the tide you are making.</li>
+    </ol>
+  </div>
+  <div class="callout" style="border-left-color:var(--teal)">
+    <div class="label" style="color:var(--teal)">Where this carries you</div>
+    <p>Ujjayi is the breath most often riding underneath a seated practice. Where it leads, the many doors into stillness, the four reaches, and the two rivers of Vedic and Buddhist practice, is mapped on the <a href="meditation.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Meditation page</a>. The full technique card, with its diagram, hand position, and adaptations, is in the directory above.</p>
+  </div>
+  <div class="src-label">Sources &amp; further reading</div>
+  <div class="sources-wrap">
+    <a href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Art of Living: Ujjayi</a>
+    <a href="https://www.yogabasics.com/practice/ujjayi-pranayama/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Basics: Ujjayi Pranayama</a>
+    <a href="https://www.wisdomlib.org/definition/ujjayi" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ujjayi</a>
+  </div>
+</section>
+
 <section class="section-wrap" id="sec-mudras">
   <div class="section-header">
-    <div class="section-eyebrow">Hand positions</div>
-    <h2 class="section-title">The mudras used in these techniques</h2>
+    <div class="section-eyebrow">Hand positions &amp; seals</div>
+    <h2 class="section-title">The mudras, and when to use each</h2>
   </div>
-  <p class="lead">Three hand positions recur through the directory above. Each card names which one it uses.</p>
+  <p class="lead">A <em>mudra</em> is a seal: a gesture that closes a circuit so that attention, breath, or energy stops leaking outward. Some are purely practical, a way to reach the nostrils without craning the wrist. Others are subtle, and the tradition treats them as directing prana rather than merely holding a shape. Below is what each one is, how to form it, and the situation it belongs in. The technique cards above name the mudra each practice uses.</p>
+
+  <div class="mudra-note">
+    <strong>On illustrations:</strong> Mudra illustrations are pending artistic collaboration.
+  </div>
+
   <div class="mudra-grid">
+
+    <div class="mudra-card">
+      <h5>Chin Mudra</h5>
+      <div class="m-skt">chin mudra &middot; the seal of consciousness</div>
+      <p><strong>Form it:</strong> tip of the thumb and tip of the index finger touch, making a soft circle. The other three fingers stay long and easy. Hands rest on the knees or thighs with the <strong>palms facing down</strong>.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Grounding and settling. Palms down turns the practice earthward, so this is the one for anxious or scattered days, for long seated breathing, and for anyone who feels floaty. The most common seat for Dirga and Sama Vritti.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Jnana Mudra</h5>
+      <div class="m-skt">jnana mudra &middot; the seal of knowledge</div>
+      <p><strong>Form it:</strong> identical to Chin, thumb and index touching, three fingers long, but the hands rest on the knees with the <strong>palms facing up</strong>.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Receptivity and meditation. Palms up opens the practice skyward and is the usual seat for silent sitting, mantra, and self-inquiry. The only difference from Chin is the direction the palm faces, and the tradition considers that difference the whole point.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Chinmaya Mudra</h5>
+      <div class="m-skt">chinmaya mudra &middot; the seal of awareness</div>
+      <p><strong>Form it:</strong> thumb and index touch as in Chin, and the remaining three fingers curl into the palm. Hands on the thighs, palms up.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> The middle step of the classic pranayama sequence Chin, Chinmaya, Adi, Brahma. Practitioners report the breath moving into the mid-chest here. Use it when you want to feel the ribs, not just the belly.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Adi Mudra</h5>
+      <div class="m-skt">adi mudra &middot; the first seal</div>
+      <p><strong>Form it:</strong> place the thumb at the base of the little finger, then fold the other four fingers over it into a soft fist. Rest the fists on the thighs, palms down.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Calming, and to deepen diaphragmatic breath. This is the infant&rsquo;s natural fist, and it tends to draw the breath low. Good before sleep, in Yoga Nidra, and at the start of a session when the breath is still high and shallow.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Brahma Mudra</h5>
+      <div class="m-skt">brahma mudra &middot; the creator&rsquo;s seal</div>
+      <p><strong>Form it:</strong> make Adi Mudra in both hands, then press the two fists together at the knuckles and rest them against the navel, palms turned up.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Full yogic breath. It is the last step of the Chin, Chinmaya, Adi, Brahma sequence, and the one for the complete three-part inhale when you want belly, ribs, and collarbones all working.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Vishnu Mudra</h5>
+      <div class="m-skt">vishnu mudra &middot; the nostril seal</div>
+      <p><strong>Form it:</strong> in the right hand, fold the index and middle fingers fully into the palm. The thumb stays free to close the right nostril; the ring and little fingers stay free to close the left. The wrist stays soft and the elbow drops.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Every nostril technique: Nadi Shodhana, Surya Bhedana, Chandra Bhedana. If the shoulder tires on long rounds, switch to Nasikagra rather than shrugging.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Nasikagra Mudra</h5>
+      <div class="m-skt">nasikagra / nasagra mudra &middot; the nose-tip seal</div>
+      <p><strong>Form it:</strong> rest the index and middle fingers lightly at the eyebrow centre instead of folding them away. Thumb closes the right nostril, ring finger the left, exactly as in Vishnu.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> The same nostril work as Vishnu, but easier on the hand and it parks two fingers at the third eye, which many find steadying. The better choice for long alternate-nostril sessions and for anyone with finger or wrist pain.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Shanmukhi Mudra</h5>
+      <div class="m-skt">shanmukhi mudra &middot; closing the seven gates</div>
+      <p><strong>Form it:</strong> both hands come to the face. Thumbs seal the ears, index fingers rest lightly on the closed eyelids or brow, middle fingers beside the nostrils, ring fingers just above the lips, little fingers just below. Elbows lift out to the sides. The fingers rest; they never press the eyeballs.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Bhramari, and pratyahara generally. Sealing the senses makes the humming resonate inside the skull and pulls attention off the outer world. Ease the pressure at once if there is any strain in the eyes.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Kaki Mudra</h5>
+      <div class="m-skt">kaki mudra &middot; the crow&rsquo;s beak</div>
+      <p><strong>Form it:</strong> purse the lips into a narrow O, like a beak, and draw the breath in through that small opening. The tongue stays flat.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Cooling. This is the fallback for Sheetali when you cannot roll your tongue, which is partly genetic and not a failing. It delivers the same cooled inhale across the wet surfaces of the mouth.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Bhairava &amp; Bhairavi Mudra</h5>
+      <div class="m-skt">bhairava mudra &middot; the fierce seal</div>
+      <p><strong>Form it:</strong> rest both hands in the lap, palms up, one hand cradled inside the other. Right hand on top of left is Bhairava; left on top of right is Bhairavi.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Long sitting, and any time the arms tire of reaching for the knees. It is the least effortful seal in the list, which is exactly why it suits extended kumbhaka and meditation.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Dhyana Mudra</h5>
+      <div class="m-skt">dhyana mudra &middot; the seal of meditation</div>
+      <p><strong>Form it:</strong> hands in the lap, palms up, right resting in left, with the thumb tips lightly touching to form an oval. The thumbs meeting is what distinguishes it from Bhairava.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Seated meditation across Buddhist and yogic traditions. The touching thumbs are a quiet feedback loop: when the mind wanders, the thumbs usually either press together or fall apart, and noticing that is a free attention bell.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Anjali Mudra</h5>
+      <div class="m-skt">anjali mudra &middot; the salutation seal</div>
+      <p><strong>Form it:</strong> palms together at the heart, thumbs lightly touching the sternum, a small hollow left between the palms, shoulders down.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Opening and closing a practice, and any moment of intention or reverence. It is the gesture Arjuna makes before the universal form in <a href="cosmic-banyan.html#section-s9" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Gita 11.14</a>, which is why most classes begin and end inside it.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Prana Mudra</h5>
+      <div class="m-skt">prana mudra &middot; the seal of life force</div>
+      <p><strong>Form it:</strong> bring the tips of the ring finger and little finger to meet the tip of the thumb. Index and middle fingers stay extended. Hands on the knees, palms up.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Fatigue and low energy, traditionally at the start of practice or paired with energizing breath. The tradition frames it as awakening dormant prana; treat that as a claim of the tradition rather than a finding of physiology.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Apana Mudra</h5>
+      <div class="m-skt">apana mudra &middot; the seal of downward flow</div>
+      <p><strong>Form it:</strong> tips of the middle and ring fingers touch the tip of the thumb. Index and little fingers stay long. Palms up on the thighs.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Grounding and release, the counterpart to Prana Mudra. Associated with apana vayu, the downward-moving current governing elimination and letting go. Used when practice needs to settle rather than lift.</div>
+    </div>
+
+    <div class="mudra-card">
+      <h5>Shambhavi Mudra</h5>
+      <div class="m-skt">shambhavi mudra &middot; the eyebrow-centre gaze</div>
+      <p><strong>Form it:</strong> not a hand seal. With the head still, lift the gaze toward the space between the eyebrows, then let the lids half close. Release the instant the eyes ache.</p>
+      <div class="m-when"><span class="m-when-l">When to use</span> Concentration work, and often paired with Bhramari or mantra. It belongs with the practices on the <a href="dharana.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Dharana page</a>. Keep the sessions short; the eyes are muscles and they fatigue.</div>
+    </div>
+
+  </div>
+</section>
+
+<template id="legacy-mudra-diagrams">
     <div class="mudra-card">
       <svg viewBox="0 0 120 120" aria-label="Jnana mudra: thumb and index finger touching in a circle, three fingers extended">
         <rect x="40" y="50" width="44" height="48" rx="12" fill="rgba(183,148,246,.08)" stroke="#c3bcd8" stroke-width="2"/>
@@ -1325,8 +1668,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <h5>Shanmukhi Mudra</h5>
       <p>"Closing the seven gates," both hands on the face: thumbs seal the ears (gold circles), index fingers rest on the brow, middle fingers on the closed eyes, ring fingers beside the nostrils, little fingers at the corners of the mouth. The gold dots mark where each fingertip lands. Used for Bhramari.</p>
     </div>
-  </div>
-</section>
+</template>
 
 <section class="section-wrap" id="sec-adapt">
   <div class="section-header">
@@ -1348,11 +1690,52 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
   </div>
 </section>
 
+<div class="band"><span class="band-word">Follow up &amp; resources</span><span class="band-rule"></span><span class="band-note">Where these techniques come from</span></div>
+
+<section class="section-wrap" id="sec-resources">
+  <div class="section-header">
+    <div class="section-eyebrow">The breath library</div>
+    <h2 class="section-title">Follow up</h2>
+  </div>
+  <p class="lead">Every technique card carries its own sources, with peer-reviewed studies listed first. Gathered here is the wider literature behind the page. Books link to their publisher, texts to a freely published edition, and studies to the journal. Nothing is hosted on this site.</p>
+
+  <div class="src-label">The classical texts</div>
+  <div class="sources-wrap">
+    <a href="https://www.wisdomlib.org/hinduism/book/hatha-yoga-pradipika-sanskrit-english" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika, Chapter 2 (Wisdomlib)</a>
+    <a href="https://www.wisdomlib.org/hinduism/book/gheranda-samhita" class="source-link" target="_blank" rel="noopener">Gheranda Samhita (Wisdomlib)</a>
+    <a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" class="source-link" target="_blank" rel="noopener">Yoga Sutras, Book 2: pranayama as the fourth limb</a>
+    <a href="https://www.wisdomlib.org/definition/pranayama" class="source-link" target="_blank" rel="noopener">Wisdomlib: Pranayama</a>
+  </div>
+
+  <div class="src-label">Books, linked to their publisher</div>
+  <div class="sources-wrap">
+    <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em></a>
+    <a href="https://www.shambhala.com/the-yoga-of-breath-1177.html" class="source-link" target="_blank" rel="noopener">Rosen, <em>The Yoga of Breath</em> (Shambhala)</a>
+    <a href="https://himalayaninstitute.org/shop/science-of-breath/" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute)</a>
+    <a href="https://www.yogapublicationstrust.org/asana-pranayama-mudra-bandha" class="source-link" target="_blank" rel="noopener">Saraswati, <em>Asana Pranayama Mudra Bandha</em> (Bihar School)</a>
+  </div>
+
+  <div class="src-label">Evidence and reviews</div>
+  <div class="sources-wrap">
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link" target="_blank" rel="noopener">Systematic review of pranayama trials (Int J Yoga, 2020)</a>
+    <a href="https://www.nccih.nih.gov/health/yoga-what-you-need-to-know" class="source-link" target="_blank" rel="noopener">NCCIH (NIH): Yoga and breathing, what the evidence shows</a>
+    <a href="https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2770285" class="source-link" target="_blank" rel="noopener">Simon et al. 2020: Kundalini yoga for generalized anxiety (JAMA Psychiatry)</a>
+  </div>
+
+  <div class="src-label">Continue on this site</div>
+  <div class="sources-wrap">
+    <a href="meditation.html" class="source-link">Meditation: where the breath leads</a>
+    <a href="dharana.html" class="source-link">Dharana: the breath as a point of focus</a>
+    <a href="yoga-family-tree.html" class="source-link">Asana: the body that breathes</a>
+    <a href="yoga-muscle-diagram.html" class="source-link">The muscles of breathing</a>
+  </div>
+</section>
+
 </main>
 
 <div class="footer-bridge">
   <span class="footer-bridge-label">Continue the journey:</span>
-  <a href="meditation.html#sec-ujjayi" class="bridge-link">Breath as meditation</a>
+  <a href="meditation.html" class="bridge-link">Breath as meditation</a>
   <a href="dharana.html" class="bridge-link">Dharana</a>
   <a href="index.html" class="bridge-link">Hub</a>
 </div>
