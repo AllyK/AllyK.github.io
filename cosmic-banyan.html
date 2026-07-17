@@ -219,6 +219,17 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 .canto-chip.src{background:transparent;color:var(--text-muted);border:1px solid var(--border-lt)}
 .canto-chip.src:hover{border-color:var(--gold);color:var(--gold-dk)}
 
+/* ARCHETYPAL READING */
+.arch-wrap{background:linear-gradient(160deg,rgba(122,106,138,.07),var(--bg-card));border:1px solid #D8CEDC;border-left:3px solid #7A6A8A;border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;margin-bottom:1.5rem}
+.arch-wrap p{font-size:13.5px;color:var(--text-mid);line-height:1.8;margin-bottom:.75rem}
+.arch-wrap p:last-child{margin-bottom:0}
+.arch-wrap em{color:#5F5170}
+.arch-q{border-left:2px solid #B9A9C4;margin:.85rem 0;padding:.15rem 0 .15rem .9rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:#5F5170;line-height:1.75}
+.arch-cite{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-size:10px;letter-spacing:.1em;color:var(--text-muted);margin-top:.45rem}
+.arch-cite a{color:var(--text-muted);text-decoration:none;border-bottom:1px dotted var(--border)}
+.arch-cite a:hover{color:#5F5170}
+.arch-variant{font-size:12px;color:var(--text-muted);font-style:italic;line-height:1.65;border-top:1px solid var(--border-lt);padding-top:.6rem;margin-top:.2rem}
+
 /* STORY SEQUENCE */
 .seq-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.5rem}
 .seq-intro{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:.9rem}
@@ -270,6 +281,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="ayurveda.html" class="nav-page">Ayurveda</a>
     <a href="about.html" class="nav-page">About</a>
     <a href="support.html" class="nav-page">Support</a>
   </div>
@@ -290,6 +302,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
       <button class="pill" data-target="section-s9">A Thousand Suns</button>
       <button class="pill" data-target="section-s10">The Upside-Down Banyan</button>
       <button class="pill" data-target="section-s11">Churning the Ocean</button>
+      <button class="pill" data-target="section-s13">Kali</button>
       <button class="pill" data-target="section-s12">The Sages</button>
       <button class="pill" data-target="section-characters">Characters</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
@@ -460,6 +473,10 @@ const POSES = {
        conn:'Named for Matsyendra, the listener in the fish\'s belly who overheard Shiva teaching yoga to Parvati and carried the teaching back to the world. The Hatha Yoga Pradipika salutes him by name among the founders of the practice. Every twist is a small act of overhearing.'},
   414:{en:'Sage Marichi\'s Pose',  skt:'Marichyasana A',
        conn:'Named for Marichi, whose name means a ray of light: mind-born son of Brahma, father of Kashyapa, grandfather of the sun itself. The pose draws the spine long as a beam and bows it forward, a candle tipped over to kindle another.'},
+  416:{en:'Goddess Pose',           skt:'Utkata Konasana',
+       conn:'The wide-legged fierce squat, feet turned out, knees open, arms bent and strong. The pose most teachers give to Kali: a shape that takes up room without apology and asks the legs to hold what the face would rather not.'},
+  417:{en:'Garland Pose',          skt:'Malasana',
+       conn:'Mala means garland. Kali wears a garland of fifty severed heads, one for each letter of the Sanskrit alphabet, which Mookerjee reads as the whole repository of knowledge worn as a trophy of what she has cut through. The deep squat is the body low and gathered, close to the ground she dances on.'},
   415:{en:'Flying Pigeon Pose',    skt:'Eka Pada Galavasana',
        conn:'Named for Galava, the student who insisted on paying his teacher and was told to bring eight hundred white horses each with one black ear. The pose is what devotion looks like when it refuses to put itself down: perched, precarious, and entirely committed.'},
 };
@@ -523,6 +540,12 @@ const CHARACTERS = {
     desc:'Krishna\'s foster father, leader of the cowherd community of Vrindavan. When Kaliya coiled around Krishna in the Yamuna, Nanda tried to wade in to rescue him and had to be held back by others. His love, completely unaware that the person he is rushing toward holds all things, is the tradition\'s image of what parental instinct looks like when directed at the divine.'},
   balaram:     {name:'Balaram',         role:'Elder Brother', color:'#4858B0', story:'The Life of Krishna',
     desc:'Krishna\'s elder companion throughout his life. Born of Rohini (another wife of Vasudev), he is technically Krishna\'s half-brother, but the tradition treats them as inseparable brothers. Where Krishna embodies sweetness and beauty, Balaram embodies strength and protection. Together they are understood as two complementary expressions of the divine fullness.'},
+  kali:        {name:'Kali',            role:'The Dark Goddess', color:'#6B4A6B', story:'Kali',
+    desc:'Born from the furrowed brow of Durga at the moment rage became necessary. Black, four-armed, garlanded in severed heads, girdled in severed hands, tongue out. She is the only figure in this tradition who cannot be domesticated, and she is worshipped as mother. Mookerjee calls her "the archetypal image of birth-and-death, giver of life and its destroyer."'},
+  durga:       {name:'Durga',           role:'Warrior Goddess', color:'#6B4A6B', story:'Kali',
+    desc:'The goddess assembled from the combined light of all the gods when none of them could win alone. She rides a lion, carries every god\'s weapon at once, and fights what the male pantheon could not. Kali is what comes out of her when courtesy runs out.'},
+  raktabija:   {name:'Raktabija',       role:'Demon',       color:'#6B4A6B', story:'Kali',
+    desc:'The demon whose name means blood-seed: every drop of his blood that touches the ground becomes another of him. He is the perfect image of a problem that multiplies each time you strike at it, and he cannot be defeated by force, only by refusing to let the blood land.'},
   kurma_av:    {name:'Kurma',           role:'Avatar',      color:'#2F8F9D', story:'The Churning of the Ocean',
     desc:'The second avatar of Vishnu: the tortoise who descended to the floor of the cosmic ocean and let Mount Mandara rest on his back so the churning could proceed. The most self-effacing of the avatars. He does not fight, does not speak, and does not appear in the sky. He simply goes underneath the whole enterprise and bears it.'},
   vasuki:      {name:'Vasuki',          role:'Serpent King', color:'#2F8F9D', story:'The Churning of the Ocean',
@@ -630,6 +653,8 @@ const STORIES = [
       {label:'Wisdomlib: Daksha', url:'https://www.wisdomlib.org/definition/daksha'},
       {label:'Wisdomlib: Shakti Pitha', url:'https://www.wisdomlib.org/definition/shakti-pitha'},
       {label:'Wisdomlib: Virabhadra', url:'https://www.wisdomlib.org/definition/virabhadra'},
+      {label:'Bedi, Awaken the Slumbering Goddess: the Hindu goddess archetypes (author\'s page)', url:'https://pathtothesoul.com/publications/'},
+      {label:'Bedi, Path to the Soul (Weiser Books, 2000)', url:'https://pathtothesoul.com/publications/'},
     ],
     sections:[
       {heading:'Shiva and Shakti',
@@ -643,6 +668,11 @@ Daksha organizes a great yagya, a cosmic gathering of the celestials, and delibe
 Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony is destroyed. But Shiva's ultimate act is forgiveness: he restores what was broken, even restoring Daksha's life. Sati is reborn as Parvati. Through extraordinary <span class="concept-link" data-id="Tapas">tapas</span>, she wins Shiva back. The story does not end in loss. It ends in a new beginning, bought by patience and fire.`},
     ],
     characterIds:['shiva','sati','daksha','virabhadra'],
+    arch:`
+<p>Read archetypally, this story is about what happens when one half of a psyche is refused. Daksha does not merely dislike Shiva; he rules him out of the ceremony. He is the part of us that will not admit the ascetic, the wild, the inconvenient, or the grieving into the official account of who we are, and he calls that exclusion a principle.</p>
+<p>Ashok Bedi, a Jungian analyst who reads the Hindu deities as archetypes, treats the goddess as one energy wearing several faces. <em>&ldquo;Shakti may manifest as lover (Laxmi), mother (Parvati), daughter (Saraswati), creator (Aditi) or destroyer (Kali).&rdquo;</em> Sati and Parvati are the same force before and after a death, which is why the story refuses to end at the fire. What is excluded does not disappear. It returns, having done its <span class="concept-link" data-id="Tapas">tapas</span>, and this time it cannot be left off the guest list.</p>
+<p>Virabhadra is the most useful figure here for anyone who has been told to calm down. He is not rage as a failure of composure; he is what grief becomes when it is finally given somewhere to go. The tradition does not have Shiva transcend his sorrow. It has him produce something from it, let it level the ceremony that caused it, and only then forgive, restoring even Daksha. That order matters. The forgiveness comes after the fury has been fully expressed, not instead of it.</p>
+<p>Bedi&rsquo;s larger frame, Jung&rsquo;s <em>hierosgamos</em> or sacred marriage, is what the arc is reaching toward: Shiva and Shakti apart are a corpse and an undirected current, and the whole point is the reunion. Practiced this way, the Warrior poses are not a costume. They are a rehearsal of holding grief and purpose in the same body without either one cancelling the other.</p>`,
     seq:[
       {n:'Child\'s Pose',s:'Balasana',c:'Begin folded, as grief begins: forehead to the earth.'},
       {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Let feeling move through the spine in waves.'},
@@ -1127,6 +1157,8 @@ The verses are honest about scale. The world\'s entanglements form a living, gro
       {label:'Wisdomlib: Dhanvantari', url:'https://www.wisdomlib.org/definition/dhanvantari'},
       {label:'Wisdomlib: Nilakantha', url:'https://www.wisdomlib.org/definition/nilakantha'},
       {label:'Balkaran 2022, The Stories Behind the Poses (Leaping Hare Press)', url:'https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses'},
+      {label:'Bedi, Awaken the Slumbering Goddess, ch. 10 (author\'s page)', url:'https://pathtothesoul.com/publications/'},
+      {label:'Ashok Bedi: writing on Jungian psychology and Hindu myth', url:'https://pathtothesoul.com/blog/'},
     ],
     sections:[
       {heading:'A truce, a mountain, and a rope',
@@ -1140,6 +1172,17 @@ Shiva came. He gathered the poison and drank it, and Parvati held his throat so 
 Last came Dhanvantari, the divine physician, holding the pot of amrita. The demons snatched it at once. Vishnu appeared as Mohini, and they handed her the pot willingly, and she served the gods. The Bhagavatam does not dress this up: the gods win by a trick, and the trick works only because grasping makes a being easy to lead. The nectar goes to the side that let go of it.`},
     ],
     characterIds:['kurma_av','vasuki','shiva','dhanvantari','mohini','lakshmi_g'],
+    arch:`
+<p>The Jungian analyst Ashok Bedi gives this story an entire chapter, and titles it with the question the story really asks: <em>Why Shiva Holds Poison in His Throat</em>. Read his way, the churning is not an event in the past. It is what a life looks like in its ambitious half.</p>
+<p>Bedi reads the gods and demons hauling the rope as the heroic, acquisitive drive churning away for its ambrosia, and he is unsparing about recognizing himself in it. <em>&ldquo;In this churning by my heroic masculine drive, I marginalized the feminine aspects of my relationship with my wife, my family, and my own soul.&rdquo;</em> The poison is what the churning throws up: the toxicity that any hard, sustained striving produces as a byproduct.</p>
+<p>Then Shiva does what Shiva does. Bedi describes him as an altruist who, <em>&ldquo;as altruistic individuals (codependent types) generally do, he complies without regard for his own well-being or survival,&rdquo;</em> and swallows. What stops him is not his own restraint. It is Parvati, arriving with a hand on his throat:</p>
+<div class="arch-q">
+  &ldquo;I can&rsquo;t stop you from swallowing the poison, but I will not allow you to die.&rdquo; She held him by the throat, saying to him, &ldquo;You can swallow your throat full, but keep it up there; you cannot swallow it all the way down.&rdquo;
+  <span class="arch-cite">ASHOK BEDI, <a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener">AWAKEN THE SLUMBERING GODDESS</a>, CH. 10</span>
+</div>
+<p>Her work is precise and unglamorous: <em>&ldquo;to choke him enough to keep the poison up in his throat, but not so much as to strangle him to death.&rdquo;</em> Bedi sets this beside Jung&rsquo;s <em>hierosgamos</em>, the sacred marriage, which Jung described as <em>&ldquo;earthing the Spirit and spiritualizing the Earth, the union of opposites and the reconciliation of the divided.&rdquo;</em> The blue throat is that marriage held in one image: the drive that would swallow everything, and the counterforce that will not let it.</p>
+<p>The chapter&rsquo;s title for this is blunter than anything the scripture says: <strong>don&rsquo;t swallow the poison</strong>. Bedi watches people symbolically grab a partner by the neck to say the relationship needs more than promises, and notes that the hoped-for ambrosia often fails to arrive at all: <em>&ldquo;the outer success does not nourish the soul.&rdquo;</em> The practical instruction he draws is to learn to stay at your own throat, in a reflective mode, rather than needing someone else to monitor the balance for you. That is a fair description of what a practice is for.</p>
+<div class="arch-variant">A note on the variant: Bedi has the venom coming from Vasuki as the serpent tires of being hauled, while the Bhagavatam has the halahala rising from the ocean itself. The tellings differ, and the difference is interesting. In Bedi&rsquo;s, the poison is produced by the instrument that is being worn out by the work.</div>`,
     seq:[
       {n:'Easy Pose',s:'Sukhasana',c:'Two sides that do not trust each other agree to pull the same rope. Sit with that.'},
       {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'The rope moves back and forth; the ocean begins to turn.'},
@@ -1163,6 +1206,66 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
       'Shiva holds the poison at the throat: he neither swallows it nor spits it out. What would it take for you to hold a difficult feeling that way, without internalizing it and without handing it to someone else?',
       'Vasuki is the instrument, and the friction runs through his body. Who or what absorbs the friction of the work you benefit from?',
       'The demons lose the nectar because they grab it. Where has grasping cost you the very thing you were reaching for?',
+    ],
+  },
+  {
+    id:'s13', color:'#6B4A6B',
+    title:'Kali: the one who ends what is finished',
+    source:'The Devi Mahatmya, in the Markandeya Purana',
+    thisStory:'The goddess who steps out of Durga\'s forehead when courtesy runs out, drinks a demon who multiplies every time he is struck, and stops only when she recognizes what is under her foot.',
+    sources:[
+      {label:'Wisdomlib: The Markandeya Purana (full English text)', url:'https://www.wisdomlib.org/hinduism/book/the-markandeya-purana'},
+      {label:'The Devi Mahatmya: the slaying of Chanda and Munda (Canto LXXXVII)', url:'https://www.wisdomlib.org/hinduism/book/the-markandeya-purana/d/doc117166.html'},
+      {label:'The Devi Mahatmya: the eulogy of the goddess (Canto XCI)', url:'https://www.wisdomlib.org/hinduism/book/the-markandeya-purana/d/doc117171.html'},
+      {label:'Wisdomlib: Devimahatmya', url:'https://www.wisdomlib.org/definition/devimahatmya'},
+      {label:'Wisdomlib: Kali', url:'https://www.wisdomlib.org/definition/kali'},
+      {label:'Wisdomlib: Chamunda', url:'https://www.wisdomlib.org/definition/chamunda'},
+      {label:'Wisdomlib: Raktabija', url:'https://www.wisdomlib.org/definition/raktabija'},
+      {label:'Mookerjee, Kali: The Feminine Force (Destiny Books) &middot; publisher', url:'https://www.innertraditions.com/author/ajit-mookerjee'},
+      {label:'Bedi, "Kali, the Dark Goddess," in Moonlit Path (author\'s page)', url:'https://pathtothesoul.com/publications/'},
+    ],
+    sections:[
+      {heading:'The brow of the goddess',
+       text:`The gods could not win. Shumbha and Nishumbha had taken the three worlds, and the pantheon that had handled every previous crisis was simply outmatched. So the gods pooled their light and from it made Durga, a goddess carrying every one of their weapons at once, riding a lion, and she began to win where all of them had failed.
+The demons sent Chanda and Munda against her. And here the story does something it has not done before: Durga does not reach for a weapon. Her face goes black with anger, and out of the furrow of her brow steps Kali, already armed, already garlanded, already laughing. She is not summoned from elsewhere. She comes out of the forehead of a goddess who has run out of patience. She takes Chanda and Munda by the hair, and afterward Durga gives her a name for it: Chamunda.`},
+      {heading:'The blood-seed',
+       text:`Then came Raktabija, whose name means blood-seed, and whose boon was precise: every drop of his blood that touched the earth would rise as another Raktabija, fully armed. Durga struck him and made two. She struck those and made four. The battlefield filled with him. This is the one demon in the tradition who is not a test of strength at all. He is a test of method. Everything you do to him makes more of him, which is a fair description of shame, of certain arguments, and of most wars.
+Kali solved it by changing the problem. She spread her tongue across the battlefield and drank the blood before it could land, swallowing the copies as fast as they came, until there was nothing left of him to multiply. The solution was not a harder blow. It was refusing to let the thing reach the ground where it feeds.`},
+      {heading:'What stops her',
+       text:`And then she could not stop. The rage that had been exactly right for the battle kept going after the battle was over, and her dance began to break the world she had just saved. Nobody could approach her. Nothing could be said to her.
+So Shiva lay down among the corpses in her path. She danced onto the field, and her foot came down on her own husband, on awareness itself lying inert beneath her, and she stopped. The tradition puts her tongue out at this moment, and it has been read as shock, as shame, as the sudden return of the person underneath the fury. Whatever it is, it is recognition. The force that could not be halted by force is halted the instant it registers what it is standing on. Mookerjee notes that the image is of Kali <em>&ldquo;awakening the unmanifest Siva beneath her feet&rdquo;</em>, which reverses the moral entirely: the corpse is not her victim, it is what her ferocity is for.`},
+    ],
+    characterIds:['kali','durga','raktabija','shiva'],
+    arch:`
+<p>This page has said from the start that these figures can be read as energies rather than beings. Kali is where that reading earns its keep, because she is the one the reading was invented for. Ajit Mookerjee&rsquo;s <em>Kali: The Feminine Force</em> reads her iconography as a diagram of the psyche rather than a costume, and almost every element decodes.</p>
+<p>The garland of fifty severed heads is one head for each letter of the Sanskrit alphabet, which Mookerjee glosses as <em>&ldquo;the repository of knowledge and wisdom&rdquo;</em>: she wears language itself, cut off and strung up. The girdle of severed hands is karma, since <em>&ldquo;hands are the principal instruments of work,&rdquo;</em> a reminder that <em>&ldquo;ultimate freedom is to be attained as the fruit of karmic action.&rdquo;</em> Her three eyes are past, present, and future. Her white teeth are sattva, clarity, and they are shown biting down on the red tongue of rajas, appetite, to stop it dragging down into tamas. Her hands hold a severed head, <em>&ldquo;indicating the annihilation of ego-bound evil force,&rdquo;</em> and a sword <em>&ldquo;with which she cuts the thread of bondage&rdquo;</em>, while the other two say, plainly: do not be afraid, and be strong. She is the only figure in the tradition whose terrifying form is issuing reassurance with half its arms.</p>
+<p>Read this way, Raktabija is the most modern thing on this page. Some problems double when struck. Anyone who has tried to argue themselves out of shame, or to suppress a craving by force, has made two where there was one. Kali&rsquo;s method is the only one that works: stop letting it reach the ground. Do not fight the copy. Catch the thing before it lands.</p>
+<p>And the ending is why Kali belongs to practice rather than to spectacle. The fury is not condemned. It was correct; it won a war nothing else could win. What the story insists on is that it needs something under its foot to recognize, or it will keep going after its usefulness ends. Ally&rsquo;s note on <a href="the-divine.html#archetype" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">The Divine</a> puts it exactly: Kali is what it is like when rage serves love. The serving is the whole distinction, and it lives in one foot, on one chest, in one moment of noticing.</p>`,
+    seq:[
+      {n:'Easy Pose',s:'Sukhasana',c:'Sit with something you are actually angry about. Do not fix it yet.'},
+      {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Let the spine move before the fire is asked for anything.'},
+      {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Ground the hands. Kali needs a floor.'},
+      {n:'Garland Pose',s:'Malasana',c:'Mala, the garland. Low, gathered, close to the earth she dances on.'},
+      {n:'Goddess Pose',s:'Utkata Konasana',c:'The shape itself: feet wide and turned out, knees open, taking up room without apology. Hold past comfortable.'},
+      {n:'Goddess Pose pulses',s:'Utkata Konasana',c:'Bend and straighten with the breath. Let the legs shake. The shaking is not a malfunction.'},
+      {n:'Side Lunge',s:'Skandasana',c:'Shift side to side across the field. Both sides.'},
+      {n:'Lion Pose',s:'Simhasana',c:'The tongue out, the roar. Kali\'s face is the one you have been told not to make.'},
+      {n:'Warrior II',s:'Virabhadrasana II',c:'Ferocity with a horizon: the gaze steady over the front hand. Both sides.'},
+      {n:'Seated Twist',s:'Ardha Matsyendrasana',c:'Wring out what the fire burned off. Both sides.'},
+      {n:'Reclined Bound Angle',s:'Supta Baddha Konasana',c:'The mother underneath the destroyer. Let the front body be soft now.'},
+      {n:'Corpse Pose',s:'Savasana',c:'Shava, the corpse. This is what Kali stopped for: awareness lying still beneath the dance. Lie down as the thing that halts her.'},
+    ],
+    connections:`
+<p><span class="pose-link" data-id="416">Goddess Pose (Utkata Konasana)</span> is the shape most teachers hand to Kali, and it is well chosen: feet wide, knees open, the body taking up room in a way many practitioners have been trained out of. Held past the comfortable point it starts to shake, and the shaking is the practice. <span class="pose-link" data-id="417">Garland Pose (Malasana)</span> carries her name without most people noticing: mala is the garland, and hers is made of fifty heads.</p>
+<p><span class="pose-link" data-id="335">Lion Pose (Simhasana)</span> is the only asana that asks for her actual face. Tongue out, eyes wide, a sound from the belly. It is the pose people laugh through, which is worth sitting with, because Kali&rsquo;s expression is the one most of us were taught to put away early.</p>
+<p>The closing pose is the story. <span class="pose-link" data-id="401">Corpse Pose (Savasana)</span> is <em>shava</em>, the corpse, and the corpse in this story is Shiva, lying in Kali&rsquo;s path so that she will look down and come back. The first story on this page notes that without Shakti, Shiva is <em>shava</em>. Here that grammar becomes a practice: you finish a Kali sequence by lying down as the still thing that ferocity recognizes and stops for. Every Savasana after this one reads a little differently.</p>`,
+    questions:[
+      'Kali comes out of Durga\'s brow at the moment courtesy stops working. When has your own anger been the accurate response, and what did you do with it?',
+      'Raktabija multiplies every time he is struck. What in your life gets bigger each time you attack it, and what would it mean to stop it before it lands rather than fighting the copies?',
+      'The tradition worships Kali as mother, not as a villain. What changes if the most frightening force in you is also the one that protects what you love?',
+      'Her ferocity was right for the battle and wrong for the minute after. How do you know when yours has outlived its usefulness, and what is under your foot that could tell you?',
+      'Mookerjee reads her white teeth as clarity biting down on the red tongue of appetite. Where does your clarity hold your appetite, and where has it lost its grip?',
+      'She stops because she recognizes someone. Who or what can still reach you when you are furious, and have you told them so?',
     ],
   },
   {
@@ -1323,6 +1426,10 @@ const STORY_META = {
     evidence:[
       {label:'Sahdra, Shaver & Brown 2010: measuring nonattachment (J Personality Assessment)',url:'https://www.tandfonline.com/doi/abs/10.1080/00223890903425960'},
     ]},
+  s13:{archetypes:['The Goddess','The Destroyer','The Mother','The Demon King'],yamas:['Ahimsa','Satya'],poses:[416,417,335,401],
+    evidence:[
+      {label:'Ford et al. 2010: anger, when it is adaptive rather than destructive (Emotion Review)',url:'https://journals.sagepub.com/doi/10.1177/1754073910374661'},
+    ]},
   s12:{archetypes:['The Sage','The Student','The Teacher','The King'],yamas:['Satya','Aparigraha','Asteya','Brahmacharya'],poses:[409,410,411,412,413,414,415],
     evidence:[
       {label:'Green & Brock 2000: narrative transportation shapes belief (JPSP)',url:'https://pubmed.ncbi.nlm.nih.gov/11079236/'},
@@ -1360,6 +1467,7 @@ function renderIntro(){
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span>, the law that sustains all things, and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span>, devotion, love, service, which the tradition holds as the path most direct to the divine. <a href="the-divine.html" style="cursor:pointer;color:var(--gold-dk);border-bottom:1px solid var(--gold)">What we mean by &ldquo;the divine&rdquo; &rarr;</a></p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">This page matches each story with the asanas that carry it and with a practice sequence that moves through its arc. Many poses are named directly for these figures: the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in the body changes the quality of attention it asks for. Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">For the pose-by-pose mythology, the fullest guide in print is Raj Balkaran&rsquo;s <a href="https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)"><em>The Stories Behind the Poses</em></a> (Leaping Hare Press, 2022), which treats fifty postures and the tales behind them. Two of its threads shaped what you will find here: <a href="#section-s11" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the churning of the cosmic ocean</a>, a single story that three poses have to share, and <a href="#section-s12" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the sages in the poses</a>, where the asanas turn out to be biographies. The stories below are retold from the primary sources cited under each one.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Some stories also carry <strong style="color:#5F5170">THE ARCHETYPAL READING</strong>, a second pass that asks what the figure is doing inside a person rather than inside the cosmos. That layer leans on Ashok Bedi, a psychiatrist and Jungian analyst who reads the Hindu deities as archetypes, most directly in <a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)"><em>Awaken the Slumbering Goddess</em></a> and <a href="https://pathtothesoul.com/blog/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">his ongoing writing</a>. It is one way of reading, offered alongside the others rather than over them: some practitioners meet these figures as a living presence, and that reading is not corrected by this one. <a href="the-divine.html#archetype" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">The three doorways are laid out on The Divine &rarr;</a></p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone, what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories do more than recount what happened. They work on the listener, through the act of listening itself. Psychology has measured a version of this claim: absorption in a story reshapes what the listener believes after it ends.</p>
     <div class="sources-wrap">
       <a href="https://pubmed.ncbi.nlm.nih.gov/11079236/" class="evidence-link" target="_blank" rel="noopener">${evLink}Green &amp; Brock 2000: narrative transportation shapes belief (JPSP)</a>
@@ -1462,6 +1570,11 @@ function renderStory(s){
        <div class="sources-wrap">${meta.evidence.map(e=>`<a href="${e.url}" class="evidence-link" target="_blank" rel="noopener">${evLink}${e.label}</a>`).join('')}</div>`
     : '';
 
+  const archHTML = s.arch
+    ? `<div class="section-label">THE ARCHETYPAL READING</div>
+       <div class="arch-wrap">${gitaLinkify(s.arch)}</div>`
+    : '';
+
   const seqHTML = (s.seq && s.seq.length)
     ? `<div class="section-label">THE STORY IN SEQUENCE</div>
        <div class="seq-wrap">
@@ -1489,6 +1602,7 @@ function renderStory(s){
     <div class="char-grid">${charCards}</div>
     <div class="section-label">CONNECTIONS TO PRACTICE</div>
     <div class="connections-box">${gitaLinkify(s.connections)}</div>
+    ${archHTML}
     ${seqHTML}
     <div class="section-label">SOURCES &amp; FURTHER READING</div>
     <div class="sources-wrap">${sourcesHTML}</div>
@@ -1685,7 +1799,7 @@ pills.forEach(p=>{
     if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-const sectionIds = ['section-intro','section-directory','section-cantos','section-s1','section-s2','section-s3','section-s4','section-s5','section-s8','section-s6','section-s7','section-s9','section-s10','section-s11','section-s12','section-characters'];
+const sectionIds = ['section-intro','section-directory','section-cantos','section-s1','section-s2','section-s3','section-s4','section-s5','section-s8','section-s6','section-s7','section-s9','section-s10','section-s11','section-s13','section-s12','section-characters'];
 const pillMap = {};
 pills.forEach(p=>{ if(p.dataset.target) pillMap[p.dataset.target]=p; });
 let scrollTimer;

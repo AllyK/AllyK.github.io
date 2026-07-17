@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ayurveda — The Sister Science</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#0a0c08;--bg-2:#0e1410;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#eef0e6;--text-mid:#c2c8b4;--text-muted:#8a917c;
+  --leaf:#9FD9A6;--leaf-dk:#C4E9C9;--gold:#F0C674;--gold-dk:#FFE3A0;
+  --vata:#7FA8FF;--pitta:#FF9E80;--kapha:#5AE8C8;
+  --border:rgba(159,217,166,0.24);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(170deg,#0a0c08 0%,#0e1410 55%,#0a0f0a 100%);background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0a0a0a}::-webkit-scrollbar-thumb{background:#2a3a2a;border-radius:4px}
+
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(10,12,8,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem .5rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border-lt);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--leaf)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border-lt);color:var(--text)}
+.nav-page.current{background:rgba(159,217,166,.12);border-color:var(--border);color:var(--leaf-dk)}
+
+#hero{text-align:center;padding:2.4rem 1rem 1.8rem;border-bottom:1px solid var(--border-lt)}
+.hero-kicker{font-size:10px;letter-spacing:.3em;color:var(--text-muted);margin-bottom:.6rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:400;letter-spacing:.05em;line-height:1.12;margin-bottom:.35rem;
+  background:linear-gradient(135deg,#9FD9A6 0%,#F0C674 45%,#C4E9C9 75%,#E8D9A0 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-muted);letter-spacing:.12em}
+
+main{max-width:900px;margin:0 auto;padding:.5rem 1.2rem 2rem}
+.band{max-width:900px;margin:2.2rem auto .4rem;padding:0 0;display:flex;align-items:center;gap:.7rem}
+.band-word{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--leaf);white-space:nowrap}
+.band-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(159,217,166,.35),transparent)}
+.band-note{font-size:11.5px;color:var(--text-muted);font-style:italic}
+
+.section{margin-bottom:2.4rem}
+.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.3rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;color:var(--text);margin-bottom:.5rem;letter-spacing:.02em}
+.section p{color:var(--text-mid);line-height:1.85;margin-bottom:.9rem;font-size:14.5px}
+.lead{font-size:15px}
+p strong{color:var(--text);font-weight:500}
+em{color:var(--leaf-dk)}
+a.inl{color:var(--gold-dk);border-bottom:1px solid rgba(240,198,116,.45);text-decoration:none}
+a.inl:hover{border-color:var(--gold)}
+
+/* EXPLORER */
+.ex{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.2rem 1.3rem}
+.ex-search{width:100%;padding:.6rem .9rem;font-size:13.5px;border:1px solid var(--border-lt);border-radius:20px;background:rgba(0,0,0,.3);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;margin-bottom:.7rem}
+.ex-search:focus{border-color:var(--leaf)}
+.ex-cats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.8rem}
+.ex-cat{font-size:11px;padding:3px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-muted);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.ex-cat:hover{border-color:var(--leaf);color:var(--leaf)}
+.ex-cat.on{background:rgba(159,217,166,.14);border-color:var(--leaf);color:var(--leaf-dk)}
+.ex-traits{display:flex;flex-wrap:wrap;gap:5px;max-height:260px;overflow-y:auto;padding:.2rem 2px .4rem 0}
+.tr{font-size:12px;padding:4px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .12s;text-align:left}
+.tr:hover{border-color:var(--text-muted);color:var(--text)}
+.tr.on{font-weight:500}
+.tr.on.vata{background:rgba(127,168,255,.16);border-color:var(--vata);color:#CBDCFF}
+.tr.on.pitta{background:rgba(255,158,128,.16);border-color:var(--pitta);color:#FFD5C6}
+.tr.on.kapha{background:rgba(90,232,200,.16);border-color:var(--kapha);color:#BFF5E8}
+.tr-empty{font-size:12.5px;color:var(--text-muted);font-style:italic;padding:.6rem}
+.ex-foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.8rem;padding-top:.7rem;border-top:1px solid var(--border-lt)}
+.ex-count{font-size:11.5px;color:var(--text-muted)}
+.ex-clear{font-size:11.5px;padding:3px 11px;border-radius:20px;border:1px solid var(--border-lt);background:transparent;color:var(--text-muted);cursor:pointer;font-family:'DM Sans',sans-serif}
+.ex-clear:hover{border-color:var(--gold);color:var(--gold)}
+
+/* DOSHA CARDS */
+.doshas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;margin:1rem 0}
+.dosha{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:1.1rem 1.15rem;transition:border-color .2s,box-shadow .2s}
+.dosha.vata{border-left:3px solid var(--vata)}
+.dosha.pitta{border-left:3px solid var(--pitta)}
+.dosha.kapha{border-left:3px solid var(--kapha)}
+.dosha.lead-d{box-shadow:0 0 22px rgba(255,255,255,.05)}
+.dosha.vata.lead-d{border-color:var(--vata)}
+.dosha.pitta.lead-d{border-color:var(--pitta)}
+.dosha.kapha.lead-d{border-color:var(--kapha)}
+.d-head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.d-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1}
+.dosha.vata .d-name{color:var(--vata)}
+.dosha.pitta .d-name{color:var(--pitta)}
+.dosha.kapha .d-name{color:var(--kapha)}
+.d-tally{font-size:11px;letter-spacing:.1em;color:var(--text-muted);white-space:nowrap}
+.d-el{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin:.3rem 0 .5rem}
+.d-q{font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-bottom:.6rem}
+.d-row{font-size:12px;line-height:1.6;margin-bottom:.4rem;color:var(--text-mid)}
+.d-row b{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);font-weight:500;margin-bottom:.1rem}
+.d-bar{height:5px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden;margin-top:.6rem}
+.d-fill{height:100%;width:0;border-radius:20px;transition:width .45s ease}
+.dosha.vata .d-fill{background:var(--vata)}
+.dosha.pitta .d-fill{background:var(--pitta)}
+.dosha.kapha .d-fill{background:var(--kapha)}
+
+/* SIX TASTES */
+.tastes{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.65rem;margin:1.1rem 0}
+.taste{background:var(--panel);border:1px solid var(--border-lt);border-radius:10px;padding:.85rem .95rem}
+.taste-n{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--leaf-dk);line-height:1.1}
+.taste-s{font-size:11px;font-style:italic;color:var(--text-muted);margin-bottom:.4rem}
+.taste-d{font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-bottom:.5rem}
+.taste-e{font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:.5rem}
+.taste-e b{color:var(--text);font-weight:500}
+.taste-fx{display:flex;gap:4px;flex-wrap:wrap}
+.fx-pill{font-size:9.5px;letter-spacing:.06em;padding:2px 7px;border-radius:9px;border:1px solid}
+.fx-pill.dn{opacity:.95}
+.fx-pill.up{opacity:.55}
+.fx-pill.v{color:var(--vata);border-color:rgba(127,168,255,.45);background:rgba(127,168,255,.08)}
+.fx-pill.p{color:var(--pitta);border-color:rgba(255,158,128,.45);background:rgba(255,158,128,.08)}
+.fx-pill.k{color:var(--kapha);border-color:rgba(90,232,200,.45);background:rgba(90,232,200,.08)}
+.care{background:rgba(127,168,255,.05);border:1px solid rgba(127,168,255,.25);border-left:3px solid var(--vata);border-radius:0 10px 10px 0;padding:.95rem 1.15rem;margin:1.1rem 0;font-size:13px;color:var(--text-mid);line-height:1.75}
+.care .lbl{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--vata);margin-bottom:.4rem}
+
+/* CALLOUTS */
+.note{background:rgba(240,198,116,.05);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:.95rem 1.15rem;margin:1.1rem 0;font-size:13px;color:var(--text-mid);line-height:1.75}
+.note .lbl{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.contest{background:rgba(255,158,128,.05);border:1px solid rgba(255,158,128,.22);border-left:3px solid var(--pitta);border-radius:0 10px 10px 0;padding:.95rem 1.15rem;margin:1.1rem 0}
+.contest .lbl{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--pitta);margin-bottom:.4rem}
+.contest p{font-size:13px;line-height:1.75;margin-bottom:.7rem}
+.contest p:last-child{margin-bottom:0}
+.layer{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--leaf);border-radius:0 10px 10px 0;padding:.95rem 1.15rem;margin:1.1rem 0}
+.layer .lbl{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--leaf);margin-bottom:.4rem}
+.layer ol{margin:0 0 0 1.1rem;padding:0}
+.layer li{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:.4rem}
+.layer li b{color:var(--text)}
+blockquote.q{border-left:2px solid rgba(159,217,166,.4);margin:.9rem 0;padding:.15rem 0 .15rem .9rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.75}
+blockquote.q .at{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-size:10px;letter-spacing:.1em;color:var(--text-muted);margin-top:.45rem}
+blockquote.q .at a{color:var(--text-muted);text-decoration:none;border-bottom:1px dotted var(--border-lt)}
+blockquote.q .at a:hover{color:var(--leaf)}
+
+/* LIMB LINKS */
+.limbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.6rem;margin:1rem 0}
+.limb{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--leaf);border-radius:0 10px 10px 0;padding:.85rem 1rem;text-decoration:none;display:block;transition:all .15s}
+.limb:hover{border-color:var(--leaf);background:rgba(159,217,166,.06)}
+.limb-h{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--leaf-dk);margin-bottom:.2rem}
+.limb-p{font-size:12.5px;color:var(--text-mid);line-height:1.6}
+
+.src-label{font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin:1.1rem 0 .35rem}
+.srcs{display:flex;flex-wrap:wrap;gap:.4rem}
+.src{font-size:12px;color:var(--text-mid);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s}
+.src:hover{border-color:var(--leaf);color:var(--leaf)}
+.src.ev{color:#bfe3c6;border-color:rgba(159,217,166,.28);background:rgba(159,217,166,.07)}
+.src.ev:hover{border-color:var(--leaf);color:#dff3e2}
+
+/* DANA + FEEDBACK */
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row select option{background:#101410;color:#eef0e6}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,textarea:focus{border-color:var(--leaf)}
+textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--leaf);border-radius:20px;background:rgba(159,217,166,.1);color:var(--leaf);cursor:pointer;font-family:'DM Sans',sans-serif}
+.lp-fb-send:hover{background:rgba(159,217,166,.2)}
+</style>
+</head>
+<body>
+
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yama.html" class="nav-page">Yama</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="pranayama.html" class="nav-page">Breath</a>
+    <a href="meditation.html" class="nav-page">Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="ayurveda.html" class="nav-page current">Ayurveda</a>
+    <a href="about.html" class="nav-page">About</a>
+    <a href="support.html" class="nav-page">Support</a>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="hero-kicker">THE SISTER SCIENCE</div>
+  <h1 class="hero-title">Ayurveda</h1>
+  <p class="hero-sub">Yoga&rsquo;s sister science, on its own terms</p>
+</header>
+
+<main>
+
+<div class="band"><span class="band-word">Do &amp; interact</span><span class="band-rule"></span><span class="band-note">Learn the vocabulary, keep the verdict</span></div>
+
+<section class="section" id="explore">
+  <div class="eyebrow">The dosha explorer</div>
+  <h2 class="s-title">Search by trait</h2>
+  <p class="lead">Most dosha quizzes ask fifteen questions and then tell you what you are. This one refuses, on purpose. Pick any traits below that genuinely sound like you and watch where Ayurveda files them. The tally is a tally, and it stops there.</p>
+  <div class="ex">
+    <input class="ex-search" id="ex-search" type="text" placeholder="Search a trait: cold hands, sharp appetite, vivid dreams, slow to anger&hellip;" autocomplete="off"/>
+    <div class="ex-cats" id="ex-cats"><span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);align-self:center;margin-right:.2rem">Pick an area</span></div>
+    <div class="ex-traits" id="ex-traits"></div>
+    <div class="ex-foot">
+      <span class="ex-count" id="ex-count"></span>
+      <button class="ex-clear" id="ex-clear">Clear selection</button>
+    </div>
+  </div>
+
+  <div class="doshas" id="doshas"></div>
+
+  <div class="note">
+    <div class="lbl">Why there is no result button</div>
+    A 2025 critical review of prakriti assessment tools found that <strong>no established biomarker for classification exists</strong>, and that the questionnaires used to type people are not yet reliable enough to build on. Classically, prakriti is read by a physician over time, through pulse, observation, and history, not by a visitor to a website answering fifteen questions in ninety seconds. So treat this as a vocabulary. Its usefulness is that it gives you language for patterns you already noticed, and language is worth having even when the instrument is unvalidated.
+  </div>
+</section>
+
+<div class="band"><span class="band-word">Say &amp; read</span><span class="band-rule"></span><span class="band-note">What it is, what it claims, and what is contested</span></div>
+
+<section class="section" id="what">
+  <div class="eyebrow">Ayurveda &middot; the knowledge of life</div>
+  <h2 class="s-title">A sibling science</h2>
+  <p class="lead"><em>Ayurveda</em> joins <em>ayus</em>, life, with <em>veda</em>, knowledge. It is a complete medical system with its own canon, its own institutions, and its own history, and it is older as a written tradition than Patanjali&rsquo;s eight limbs. It is often described as yoga&rsquo;s sister science, which is accurate as long as sister means a separate person.</p>
+  <p>That is why this material has a page rather than a box on every limb. Yoga and Ayurveda grew alongside each other, share a vocabulary of prana, gunas, and elements, and disagree about plenty. Folding one into the other flattens both, and it happens to be the exact move that scholars use to identify a modern, Western reading of Ayurveda. More on that below, because this site would rather name the pattern it is standing in.</p>
+  <p>The classical canon is three texts, and all three are now on the shelf behind this page. The <strong>Charaka Samhita</strong> is the physician&rsquo;s book, concerned with internal medicine, diagnosis, and ethics. The <strong>Sushruta Samhita</strong> is the surgeon&rsquo;s book, and it is startling: it describes cataract couching, rhinoplasty, and the 107 <em>marma</em>, the vital points where flesh, vessels, tendons, bones and joints meet. The <strong>Ashtanga Hridayam</strong> is the later synthesis, and the one most practitioners actually study. Dominik Wujastyk&rsquo;s <em>The Roots of Ayurveda</em> translates the key passages and is the honest entry point.</p>
+</section>
+
+<section class="section" id="doshas-explained">
+  <div class="eyebrow">The three doshas</div>
+  <h2 class="s-title">Not types of people, patterns of behaviour</h2>
+  <p class="lead">The doshas are usually introduced as personality types, which is where most of the trouble starts. Classically they are closer to functional principles: three ways matter and energy behave, present in everyone in different proportion. <em>Vata</em> moves, <em>pitta</em> transforms, <em>kapha</em> holds. You have all three, you need all three, and none of them is a horoscope.</p>
+  <p>The distinction that does the real work is between <strong>prakriti</strong>, the constitution you were born with and keep for life, and <strong>vikriti</strong>, what is out of balance right now. Prakriti is a fixed baseline; vikriti is today&rsquo;s weather. Practically, most of what a practice can address is vikriti, and most of what people call &ldquo;my dosha&rdquo; is actually the imbalance they are currently living inside.</p>
+  <p>The gunas, the twenty qualities, are what the system actually reasons with: dry and oily, cold and hot, heavy and light, rough and smooth, and so on. Treatment follows one rule, <em>like increases like, and opposites balance</em>. A cold, dry, mobile body in a cold, dry, windy month, eating cold, dry, raw food, is not being mysterious when it feels cold, dry, and unsettled. That is the whole logic, and it is more sensible than its reputation.</p>
+</section>
+
+<section class="section" id="dinacharya">
+  <div class="eyebrow">Dinacharya &middot; daily routine</div>
+  <h2 class="s-title">The part with the least mysticism and the most evidence</h2>
+  <p class="lead">If one piece of Ayurveda deserves attention from someone sceptical, it is <em>dinacharya</em>: the claim that the body runs on rhythms, and that keeping regular ones is itself medicine. Wake near the same hour. Eat the largest meal in the middle of the day, when digestion is strongest. Wind down as the light goes. Sleep before the second wind arrives.</p>
+  <p>Nothing there requires a metaphysics. Circadian science arrived at strikingly similar conclusions from an entirely different direction, and meal timing and consistent sleep windows are among the better-supported lifestyle findings of the last two decades. Ayurveda got there by observation, several thousand years earlier, and filed it under <em>ritucharya</em> and <em>dinacharya</em> instead of chronobiology. Cate Stillman&rsquo;s <em>Body Thrive</em> is the most practical modern treatment, and Bri Maya Tiwari&rsquo;s <em>The Path of Practice</em> the most beautiful.</p>
+  <p>The other durable pieces are similar in character: <em>abhyanga</em>, self-massage with warm oil, which is touch and downtime whatever else it is; tongue scraping; warm water; eating without a screen. These ask nothing of your bloodstream, which is the line this site draws.</p>
+</section>
+
+<section class="section" id="food">
+  <div class="eyebrow">Ahara &middot; food</div>
+  <h2 class="s-title">The part everyone means when they say Ayurveda</h2>
+  <p class="lead">Ask most people what Ayurveda is and you will get an answer about food. That is not a distortion. Wujastyk, introducing the classical texts, notes plainly that <em>&ldquo;great attention is given to diet in ayurveda.&rdquo;</em> Food is the system&rsquo;s primary medicine, and it is where its logic is easiest to follow and easiest to sell.</p>
+
+  <p><strong>It starts with agni.</strong> This is the piece popular writing skips, and it inverts the usual question. Ayurveda is less interested in what you eat than in what you can digest. <em>Agni</em> is the digestive fire, and it is the hinge of the whole system: strong agni turns ordinary food into <em>ojas</em>, vitality; weak agni turns even excellent food into <em>ama</em>, the undigested residue the texts blame for a great deal of illness. A perfect meal eaten by a wrecked digestion is not a perfect meal. Practically this means the tradition cares enormously about <em>how</em> you eat: warm rather than cold, cooked rather than raw when agni is low, sitting down, unhurried, without a screen, and not again before the last meal has cleared.</p>
+
+  <p><strong>Then the six tastes.</strong> This is the actual reasoning engine, and it is more interesting than the dosha lists it gets flattened into. Every food carries one or more of six tastes, each built from elements, each with a predictable effect. The classical instruction is that a full meal contains all six, which is a quietly good piece of nutritional advice: it makes a plate of only sweet and salty, which is to say most processed food, structurally incomplete.</p>
+
+  <div class="tastes">
+    <div class="taste">
+      <div class="taste-n">Sweet</div><div class="taste-s">madhura &middot; earth + water</div>
+      <div class="taste-d">Building, cooling, heavy. The taste of grain, milk, root vegetables, most fruit. The bulk of a traditional plate.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> the one modern diets overdose on.</div>
+      <div class="taste-fx"><span class="fx-pill dn v">calms vata</span><span class="fx-pill dn p">calms pitta</span><span class="fx-pill up k">raises kapha</span></div>
+    </div>
+    <div class="taste">
+      <div class="taste-n">Sour</div><div class="taste-s">amla &middot; earth + fire</div>
+      <div class="taste-d">Warming, moistening. Citrus, yoghurt, fermented food, tamarind. Wakes up appetite and saliva.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> heartburn, and a short temper.</div>
+      <div class="taste-fx"><span class="fx-pill dn v">calms vata</span><span class="fx-pill up p">raises pitta</span><span class="fx-pill up k">raises kapha</span></div>
+    </div>
+    <div class="taste">
+      <div class="taste-n">Salty</div><div class="taste-s">lavana &middot; water + fire</div>
+      <div class="taste-d">Warming, moistening, grounding. Salt, seaweed, brine. In small amounts it makes everything else taste like itself.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> retention, heat, and craving.</div>
+      <div class="taste-fx"><span class="fx-pill dn v">calms vata</span><span class="fx-pill up p">raises pitta</span><span class="fx-pill up k">raises kapha</span></div>
+    </div>
+    <div class="taste">
+      <div class="taste-n">Pungent</div><div class="taste-s">katu &middot; fire + air</div>
+      <div class="taste-d">Hot, light, drying. Chilli, ginger, black pepper, garlic, mustard. The taste that lights agni fastest.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> burns an already hot system.</div>
+      <div class="taste-fx"><span class="fx-pill up v">raises vata</span><span class="fx-pill up p">raises pitta</span><span class="fx-pill dn k">calms kapha</span></div>
+    </div>
+    <div class="taste">
+      <div class="taste-n">Bitter</div><div class="taste-s">tikta &middot; air + space</div>
+      <div class="taste-d">Cooling, light, drying, detoxifying. Leafy greens, turmeric, coffee, bitter melon. The taste the modern palate lost.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> depleting if it is most of the plate.</div>
+      <div class="taste-fx"><span class="fx-pill up v">raises vata</span><span class="fx-pill dn p">calms pitta</span><span class="fx-pill dn k">calms kapha</span></div>
+    </div>
+    <div class="taste">
+      <div class="taste-n">Astringent</div><div class="taste-s">kashaya &middot; air + earth</div>
+      <div class="taste-d">Drying, cooling, contracting. The pucker of unripe banana, pomegranate, beans, lentils, strong tea.</div>
+      <div class="taste-e"><b>Where it goes wrong:</b> gas, dryness, constipation.</div>
+      <div class="taste-fx"><span class="fx-pill up v">raises vata</span><span class="fx-pill dn p">calms pitta</span><span class="fx-pill dn k">calms kapha</span></div>
+    </div>
+  </div>
+
+  <p>The rule underneath is the one from the doshas: <em>like increases like, and opposites balance</em>. A cold, dry, mobile body in a cold, dry month eating cold, dry, raw salad is not a mystery when it feels cold, dry and unsettled, and the answer is warm, oily, cooked, and sweet in the classical sense rather than the sugar sense. A hot, sharp person is not helped by chilli and black coffee at noon in July. Kapha, heavy and cool, is the one constitution that actually wants the bitter greens and the ginger. This is not a magic system. It is pattern-matching, done for two thousand years, and it holds up better than most of what replaced it.</p>
+
+  <p>The timing rule matters as much as the content, and it is the claim that has aged best. The largest meal belongs at midday, when the tradition says agni is highest; the evening meal should be lighter and earlier than most of us manage. Chrononutrition research arrived at a strikingly similar place from an entirely different direction: eating in the body&rsquo;s active phase lines up with peak insulin sensitivity and glucose tolerance, while late-night eating is associated with impaired glucose metabolism and increased fat storage. Of everything on this page, this is the piece with the strongest independent support, and Ayurveda got there by watching people, several thousand years early.</p>
+
+  <div class="contest" style="border-left-color:var(--gold);border-color:rgba(240,198,116,.22);background:rgba(240,198,116,.04)">
+    <div class="lbl" style="color:var(--gold)">The vegetarian assumption is modern, and the texts say otherwise</div>
+    <p>This is the correction most worth having, and it comes from the most authoritative source on the shelf. Nearly every Western presentation of Ayurveda assumes it is vegetarian, usually via <em>sattvic</em> food and <a class="inl" href="yama.html">ahimsa</a>. The classical texts do not support that. Dominik Wujastyk, introducing his translations in <em>The Roots of Ayurveda</em>:</p>
+    <blockquote class="q" style="margin-top:.6rem">
+      &ldquo;To someone acquainted with contemporary Hinduism, it may come as a surprise to see that the meat of many kinds of animals is recommended as a normal food. In fact the real surprise is not so much that meat is considered part of the diet, but that its use is presented so completely without apology or explanation. The texts of Caraka and Su&#347;ruta take it utterly for granted, and apparently feel no need even to attempt a justification.&rdquo;
+      <span class="at">DOMINIK WUJASTYK, <a href="https://www.penguinrandomhouse.com/books/286332/the-roots-of-ayurveda-by-various/" target="_blank" rel="noopener">THE ROOTS OF AYURVEDA</a> (PENGUIN CLASSICS), INTRODUCTION</span>
+    </blockquote>
+    <p>He goes further, and the detail is delicious. The tension with ahimsa was noticed not by the original authors but by a commentator a thousand years later: the eleventh-century Cakrapa&#7751;idatta observed that a physician told to cultivate benevolent fellow-feeling is <em>&ldquo;not demonstrating much benevolence to living creatures if he prescribes the fresh meat of young animals to his patients,&rdquo;</em> and is <em>&ldquo;quite obviously implicated in harming a living creature.&rdquo;</em> Yet meat is what Ayurveda prescribes for consumption and as ordinary diet.</p>
+    <p style="margin-bottom:0">None of that is an argument for eating meat. It is an argument against a marketing claim. &ldquo;Ayurveda says eat this way&rdquo; usually means &ldquo;a reformist, largely modern, often Brahminical reading of Ayurveda says eat this way,&rdquo; and the two should not wear the same clothes. If you are vegetarian for ahimsa, that is a yogic and ethical commitment and a good one. It is simply not what Charaka wrote.</p>
+  </div>
+
+  <div class="contest">
+    <div class="lbl">Purity, and who gets to be pure</div>
+    <p style="margin-bottom:0">The sattvic, rajasic, and tamasic food scheme comes from the <a class="inl" href="cosmic-banyan.html">Gita</a> and Samkhya rather than from the medical texts, and in South Asia the language of dietary purity has never been separable from caste. Rules about what is pure, who may cook it, and whose touch pollutes it are among the mechanisms by which caste is enforced daily. Thenmozhi Soundararajan&rsquo;s <em>The Trauma of Caste</em> is unsparing about how those rules land on Dalit bodies. A Western practitioner adopting purity language as a wellness aesthetic is borrowing a vocabulary that has a body count. That is not a reason to refuse the food. It is a reason to know what the word pure has done, and to stop using it as a compliment.</p>
+  </div>
+
+  <div class="contest" style="border-left-color:var(--kapha);border-color:rgba(90,232,200,.22);background:rgba(90,232,200,.04)">
+    <div class="lbl" style="color:var(--kapha)">What the evidence supports, and what it does not</div>
+    <p>Honest scorecard. The pieces with real independent support are the unglamorous ones: <strong>regular meal timing</strong>, a larger midday and lighter evening meal, mostly whole and minimally processed food, plenty of plants and legumes, cooking with spices that turn out to be pharmacologically active, and eating slowly without distraction. None of that requires believing anything.</p>
+    <p style="margin-bottom:0"><strong>Dosha-specific diets are a different claim, and it is not established.</strong> The 2025 review found no validated way to type a person, so a diet prescribed from that typing inherits the problem. The NIH finds little quality evidence for Ayurvedic treatment generally. And the safety findings above concern <em>preparations</em>. The risk lives in the supplements and mineral formulations, not in the dal.</p>
+  </div>
+
+  <div class="care">
+    <div class="lbl">A note on food and restriction</div>
+    Ayurvedic language can be borrowed easily by disordered eating. &ldquo;Eat for your type&rdquo; becomes a rule list; <em>ama</em> becomes a reason to fear food; cleanses, fasting, and detox protocols become permission to restrict, with a spiritual varnish that makes them hard to question. If food is a fraught place for you, the useful parts of this page are the timing, the warmth, and the sitting down, and none of the elimination. Nothing in Ayurveda requires you to earn a meal. If any of this is pulling in that direction, please speak with a clinician, and treat that as the practice rather than an interruption of it.
+  </div>
+
+  <div class="src-label">Food &middot; sources</div>
+  <div class="srcs">
+    <a class="src" href="https://www.penguinrandomhouse.com/books/286332/the-roots-of-ayurveda-by-various/" target="_blank" rel="noopener">D. Wujastyk, <em>The Roots of Ayurveda</em>: what the texts actually say</a>
+    <a class="src" href="https://www.penguinrandomhouse.com/books/179011/the-path-of-practice-by-bri-maya-tiwari/" target="_blank" rel="noopener">Tiwari, <em>The Path of Practice</em>: food and healing</a>
+    <a class="src" href="https://www.lotuspress.com/products/ayurveda-the-science-of-self-healing-990120" target="_blank" rel="noopener">Lad: the six tastes and food guidance</a>
+    <a class="src" href="https://www.soundstrue.com/products/body-thrive" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em>: eating rhythm as habit</a>
+    <a class="src" href="https://www.wisdomlib.org/definition/agni" target="_blank" rel="noopener">Wisdomlib: Agni</a>
+    <a class="src" href="https://www.wisdomlib.org/definition/rasa" target="_blank" rel="noopener">Wisdomlib: Rasa, the six tastes</a>
+    <a class="src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12252119/" target="_blank" rel="noopener">Chrononutrition: how meal timing shapes metabolic health (review)</a>
+    <a class="src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10995378/" target="_blank" rel="noopener">Meal timing and its role in obesity and associated diseases</a>
+    <a class="src ev" href="https://www.nccih.nih.gov/health/ayurvedic-medicine-in-depth" target="_blank" rel="noopener">NCCIH (NIH): what the evidence shows</a>
+  </div>
+</section>
+
+<section class="section" id="honesty">
+  <div class="eyebrow">Evidence, lineage, and contested ground</div>
+  <h2 class="s-title">Three kinds of claim, kept apart</h2>
+  <p class="lead">This is the section the rest of the page is built to earn. Ayurveda makes several sorts of claim at once, and most writing about it, friendly and hostile alike, mixes them. Keeping them apart is what lets the good parts survive scrutiny.</p>
+  <div class="layer">
+    <div class="lbl">The three layers</div>
+    <ol>
+      <li><b>Physiology.</b> Measurable. Regular sleep and meal timing affect metabolic health. Warm oil massage lowers arousal. These stand or fall on evidence, and mostly they stand.</li>
+      <li><b>Tradition.</b> Internal to a lineage. A marma concentrates prana; ojas is the essence of the tissues. Coherent within the system, and beyond the reach of the first layer&rsquo;s methods in either direction.</li>
+      <li><b>History.</b> How the tradition arrived here. This is the layer usually missing, and the one that most changes how you read the other two.</li>
+    </ol>
+  </div>
+  <p><strong>Lineage is part of the validity, and not the whole of it.</strong> Charaka and Sushruta record real clinical observation, refined across centuries by practitioners whose reputations and patients depended on it. That transmission is evidence of a kind: a useless idea rarely survives two thousand years of people needing it to work. What lineage cannot do is settle a question of physiology. Age is not proof, and treating it as proof is the move this page is trying not to make.</p>
+
+  <div class="contest">
+    <div class="lbl">Where Western science contests it</div>
+    <p>Researchers have looked seriously for measurable correlates of constitution. Prasher and colleagues found genome-expression differences between extreme prakriti types, which is a real result worth following. The 2025 review of assessment tools nevertheless concluded that <strong>no established biomarker for classification exists</strong> and that the typing instruments are not yet reliable.</p>
+    <p>On treatment the NIH is blunt: a few trials suggest benefit in osteoarthritis and type 2 diabetes, <em>&ldquo;but most of these trials are small or not well-designed,&rdquo;</em> with <em>&ldquo;little scientific evidence on Ayurveda&rsquo;s value for other health issues.&rdquo;</em></p>
+    <p>And the safety finding is not a footnote. A 2015 survey found <strong>40 percent of people taking Ayurvedic preparations had elevated blood lead</strong>; a quarter of supplements tested carried high lead and nearly half high mercury.</p>
+  </div>
+
+  <div class="contest" style="border-left-color:var(--gold);border-color:rgba(240,198,116,.22);background:rgba(240,198,116,.04)">
+    <div class="lbl" style="color:var(--gold)">Where the tradition&rsquo;s own history contests it</div>
+    <p>The metals are the clearest case, and the history exonerates most of Ayurveda while indicting one part of it precisely. Lead and mercury come overwhelmingly from <em>rasa shastra</em>, the alchemical tradition of processed minerals. Dagmar Wujastyk&rsquo;s <em>Indian Alchemy</em> gathers those Sanskrit sources from the ninth to sixteenth centuries and finds them centrally concerned with mercury, framing alchemy as a knowledge system descending from Shiva. That is a distinct, later stream with its own texts and its own gods. &ldquo;Ayurveda contains heavy metals&rdquo; and &ldquo;this medieval alchemical tradition works with processed mercury&rdquo; are different sentences, and only the second is accurate.</p>
+    <p>The larger correction is that <strong>the Ayurveda most Westerners meet is modern.</strong> Its current institutional shape dates to a nineteenth-century revival under British colonial pressure, when practitioners professionalized and partly rebuilt the system in biomedicine&rsquo;s image in order to survive it. Jean Langford&rsquo;s <em>Fluent Bodies</em> follows how Ayurveda was remade as a sign of national culture, a remedy for colonial as much as bodily disorder. The claim of an unbroken five-thousand-year science is itself a modern artifact.</p>
+    <p>Wujastyk and Smith then name the genre this page belongs to. Following Zysk, the marks of what scholars call <em>New Age Ayurveda</em> are: <em>&ldquo;attributing a remote age to Ayurveda and making it the source of other medical systems,&rdquo;</em> <em>&ldquo;linking Ayurveda closely to Indian spirituality, especially Yoga,&rdquo;</em> <em>&ldquo;making Ayurveda the basis of mind-body medicine,&rdquo;</em> and <em>&ldquo;claiming the &lsquo;scientific&rsquo; basis of Ayurveda and its intrinsic safety as a healing modality.&rdquo;</em></p>
+    <p>Read the second one again. A yoga site adding an Ayurveda page is doing the thing being described. Selby documents how &ldquo;Ayuryoga&rdquo; became a branded commodity in North American spa culture. Giving Ayurveda its own page rather than dissolving it into the eight limbs is the small structural answer to that, and it is not a full defence. Being named accurately is better than pretending to stand outside the pattern.</p>
+    <p style="margin-bottom:0">The same scholars turn this on a source behind this page. Vasant Lad&rsquo;s <em>Textbook of Ayurveda</em> calls the doshas <em>&ldquo;the agents of DNA,&rdquo;</em> locates prana in the hypothalamus, and compares soma to serotonin. Wujastyk and Smith call these <em>&ldquo;speculative equations&rdquo;</em> belonging to a century-long effort to legitimate Ayurveda against European medicine, and note the book is <em>&ldquo;pedagogical but not historically or textually referenced.&rdquo;</em> Lad is worth reading. He is a practitioner teaching a living system, which is a real thing to be. He is not a historian, and a dosha is not a strand of DNA.</p>
+  </div>
+
+  <blockquote class="q">
+    Ayurveda, not homogenous in itself to begin with, had to contend with British colonialism and the dominance of allopathic medicine, the pressures of modernization, and its own diaspora into the world beyond South Asia.
+    <span class="at">PARAPHRASING WUJASTYK &amp; SMITH, <a href="https://www.sunypress.edu/p-4626-modern-and-global-ayurveda.aspx" target="_blank" rel="noopener">MODERN AND GLOBAL AYURVEDA</a> (SUNY PRESS), INTRODUCTION</span>
+  </blockquote>
+  <p>None of this is a reason to put the tradition down. It is a reason to hold it the way you would hold any long, living, argued-over body of knowledge: with respect for what it has carried, curiosity about what it got right before anyone could explain why, and clear eyes about the parts that were added later, sold harder, or bent to survive an empire.</p>
+</section>
+
+<section class="section" id="limbs">
+  <div class="eyebrow">Where it actually meets the practice</div>
+  <h2 class="s-title">Four honest connections</h2>
+  <p class="lead">Popular writing pairs Ayurveda with all eight limbs, one to one. Some of those pairings are real and some are padding, and the padding tends to be where the herbs are. These four earn their place.</p>
+  <div class="limbs">
+    <a class="limb" href="the-divine.html">
+      <div class="limb-h">Niyama &rarr; dinacharya</div>
+      <div class="limb-p">The strongest link. Shaucha, tapas, and santosha are abstractions until they are a daily routine. Dinacharya is what the second limb looks like on a Tuesday morning.</div>
+    </a>
+    <a class="limb" href="yoga-family-tree.html">
+      <div class="limb-h">Asana &rarr; prakriti and vikriti</div>
+      <div class="limb-p">A practice that settles one body aggravates another. Slow and grounding for vata, cooling and less competitive for pitta, warm and vigorous for kapha. The same argument Bernie Clark makes from bone.</div>
+    </a>
+    <a class="limb" href="pranayama.html">
+      <div class="limb-h">Pranayama &rarr; prana</div>
+      <div class="limb-p">The shared vocabulary is most literal here. Both systems treat breath as life force and agree that fast and shallow disturbs while slow and deep settles.</div>
+    </a>
+    <a class="limb" href="yoga-muscle-diagram.html">
+      <div class="limb-h">Anatomy &rarr; marma</div>
+      <div class="limb-p">Ayurveda&rsquo;s own map of the body: 107 vital points, first written down as a surgeon&rsquo;s knowledge of where not to be struck. It sits beside the muscle diagram.</div>
+    </a>
+  </div>
+  <p>The ones left out are left out deliberately. Dharana&rsquo;s usual Ayurvedic pairing is a sattvic diet plus brahmi and ashwagandha, which is mostly herbs, and herbs are the part of this tradition carrying the safety findings above. Samadhi&rsquo;s pairing is that Ayurveda &ldquo;clears the path,&rdquo; which is not a claim so much as a compliment. Leaving them out is a way of taking the other four seriously.</p>
+</section>
+
+<div class="band"><span class="band-word">Follow up &amp; resources</span><span class="band-rule"></span><span class="band-note">Classical, practitioner, critical, and clinical</span></div>
+
+<section class="section" id="resources">
+  <div class="eyebrow">Everything behind this page</div>
+  <h2 class="s-title">Follow up</h2>
+  <p class="lead">Grouped by what kind of source it is, because that distinction is the whole argument of this page. Books link to their publisher; texts link to a freely published edition. Nothing is hosted here.</p>
+
+  <div class="src-label">The classical canon</div>
+  <div class="srcs">
+    <a class="src" href="https://www.penguinrandomhouse.com/books/286332/the-roots-of-ayurveda-by-various/" target="_blank" rel="noopener">D. Wujastyk, <em>The Roots of Ayurveda</em> (Penguin Classics)</a>
+    <a class="src" href="https://www.wisdomlib.org/hinduism/book/charaka-samhita-english" target="_blank" rel="noopener">Charaka Samhita (Wisdomlib)</a>
+    <a class="src" href="https://www.wisdomlib.org/hinduism/book/sushruta-samhita-volume-1-sutrasthana" target="_blank" rel="noopener">Sushruta Samhita (Wisdomlib)</a>
+    <a class="src" href="https://www.wisdomlib.org/concept/ashtanga-hridayam" target="_blank" rel="noopener">Ashtanga Hridayam (Wisdomlib)</a>
+    <a class="src" href="https://www.wisdomlib.org/hinduism/book/ashtanga-hridaya-samhita-sanskrit" target="_blank" rel="noopener">Ashtanga Hridaya Samhita, Sanskrit text</a>
+    <a class="src" href="https://www.wisdomlib.org/definition/marma" target="_blank" rel="noopener">Wisdomlib: Marma</a>
+  </div>
+
+  <div class="src-label">Practitioner sources, read as practitioners</div>
+  <div class="srcs">
+    <a class="src" href="https://www.lotuspress.com/products/ayurveda-the-science-of-self-healing-990120" target="_blank" rel="noopener">Lad, <em>Ayurveda: The Science of Self-Healing</em></a>
+    <a class="src" href="https://store.ayurveda.com/collections/books-by-dr-lad" target="_blank" rel="noopener">Lad, <em>Textbook of Ayurveda</em></a>
+    <a class="src" href="https://www.lotuspress.com/collections/frawley-dr-david" target="_blank" rel="noopener">Frawley, <em>Yoga and Ayurveda</em> (Lotus Press)</a>
+    <a class="src" href="https://www.penguinrandomhouse.com/books/179011/the-path-of-practice-by-bri-maya-tiwari/" target="_blank" rel="noopener">Tiwari, <em>The Path of Practice</em></a>
+    <a class="src" href="https://www.soundstrue.com/products/body-thrive" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em> (Sounds True)</a>
+  </div>
+
+  <div class="src-label">The critical and historical scholarship</div>
+  <div class="srcs">
+    <a class="src" href="https://www.sunypress.edu/p-4626-modern-and-global-ayurveda.aspx" target="_blank" rel="noopener">Wujastyk &amp; Smith (eds.), <em>Modern and Global Ayurveda</em> (SUNY Press)</a>
+    <a class="src" href="https://dukeupress.edu/fluent-bodies" target="_blank" rel="noopener">Langford, <em>Fluent Bodies</em> (Duke University Press)</a>
+    <a class="src" href="https://global.oup.com/academic/product/well-mannered-medicine-9780199856268?cc=us&amp;lang=en" target="_blank" rel="noopener">D. Wujastyk, <em>Well-Mannered Medicine</em> (Oxford)</a>
+    <a class="src" href="https://global.oup.com/academic/product/indian-alchemy-9780197805800" target="_blank" rel="noopener">D. Wujastyk (ed.), <em>Indian Alchemy</em> (Oxford)</a>
+  </div>
+
+  <div class="src-label">The evidence</div>
+  <div class="srcs">
+    <a class="src ev" href="https://www.nccih.nih.gov/health/ayurvedic-medicine-in-depth" target="_blank" rel="noopener">NCCIH (NIH): Ayurvedic medicine, effectiveness and safety</a>
+    <a class="src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12631390/" target="_blank" rel="noopener">Prakriti assessment tools and their scientific validity (2025 review)</a>
+    <a class="src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2562368/" target="_blank" rel="noopener">Prasher et al.: genome expression and constitutional types</a>
+    <a class="src ev" href="https://pubmed.ncbi.nlm.nih.gov/25843124/" target="_blank" rel="noopener">Breeher et al. 2015: lead poisoning among consumers of Ayurvedic medicine</a>
+  </div>
+
+  <div class="src-label">Continue on this site</div>
+  <div class="srcs">
+    <a class="src" href="yoga-muscle-diagram.html">Marma, beside the muscle diagram</a>
+    <a class="src" href="pranayama.html">The breath, and prana</a>
+    <a class="src" href="the-divine.html">Niyama, and what surrender asks</a>
+    <a class="src" href="about.html">Why this site exists</a>
+  </div>
+
+  <div class="note" style="margin-top:1.3rem">
+    <div class="lbl">A standing position</div>
+    Nothing on this site recommends internal remedies, and that is considered rather than timid. The Ayurveda drawn on here concerns constitution, daily rhythm, breath, food, and touch, which is the part that asks nothing of your bloodstream. For anything swallowed, talk to a clinician who knows what is in it. If you are pregnant, nursing, or managing a condition, that goes double.
+  </div>
+</section>
+
+</main>
+
+<!-- DANA -->
+<section id="lp-dana" style="max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(159,217,166,.06);border:1px solid rgba(159,217,166,.22);border-left:3px solid var(--leaf);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--leaf);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(159,217,166,.5);border-radius:20px;background:rgba(159,217,166,.1);color:var(--leaf);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
+
+<!-- QUESTIONS -->
+<section class="lp-feedback" id="lp-feedback" style="max-width:900px;margin:0 auto;padding:1rem 1.2rem 3rem">
+  <div style="background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:0 0 .3rem">Questions, corrections, requests</h2>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.65;margin:0 0 1rem">This site is a living study, and this page especially. If a source deserves a second look, a teaching is held differently in your lineage, or you practice Ayurveda and think something here is wrong, please write. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+
+<script>
+/* ============================
+   THE DOSHA EXPLORER
+   A vocabulary, not a diagnosis. Traits are drawn from the standard
+   descriptions in Lad and Frawley. Each trait names the dosha the tradition
+   files it under. Nothing is stored or sent; selections live in the page only.
+   ============================ */
+const TRAITS = [
+  // Frame & body
+  {t:'Light, thin frame', d:'vata', c:'Body'},
+  {t:'Hard to gain weight', d:'vata', c:'Body'},
+  {t:'Prominent joints, they crack', d:'vata', c:'Body'},
+  {t:'Medium, athletic build', d:'pitta', c:'Body'},
+  {t:'Weight is steady, easy to hold', d:'pitta', c:'Body'},
+  {t:'Solid, sturdy frame', d:'kapha', c:'Body'},
+  {t:'Gain weight easily, lose it slowly', d:'kapha', c:'Body'},
+  {t:'Strong stamina, slow to tire', d:'kapha', c:'Body'},
+  {t:'Bursts of energy, then depleted', d:'vata', c:'Body'},
+  {t:'Hypermobile, flexible joints', d:'vata', c:'Body'},
+  // Skin & hair
+  {t:'Dry skin, dry hair', d:'vata', c:'Skin & hair'},
+  {t:'Cold hands and feet', d:'vata', c:'Skin & hair'},
+  {t:'Warm skin, flushes easily', d:'pitta', c:'Skin & hair'},
+  {t:'Freckles or moles, sensitive to sun', d:'pitta', c:'Skin & hair'},
+  {t:'Early grey or thinning hair', d:'pitta', c:'Skin & hair'},
+  {t:'Thick, oily hair', d:'kapha', c:'Skin & hair'},
+  {t:'Smooth, soft skin', d:'kapha', c:'Skin & hair'},
+  {t:'Sweat easily and a lot', d:'pitta', c:'Skin & hair'},
+  // Digestion
+  {t:'Irregular appetite, forget to eat', d:'vata', c:'Digestion'},
+  {t:'Gas, bloating, irregular', d:'vata', c:'Digestion'},
+  {t:'Sharp appetite, irritable when hungry', d:'pitta', c:'Digestion'},
+  {t:'Strong digestion, can eat anything', d:'pitta', c:'Digestion'},
+  {t:'Heartburn or acidity', d:'pitta', c:'Digestion'},
+  {t:'Slow digestion, heavy after meals', d:'kapha', c:'Digestion'},
+  {t:'Can skip a meal without much fuss', d:'kapha', c:'Digestion'},
+  {t:'Crave warm, oily, grounding food', d:'vata', c:'Digestion'},
+  {t:'Crave cold, sweet, light food', d:'pitta', c:'Digestion'},
+  {t:'Crave spice and stimulation', d:'kapha', c:'Digestion'},
+  // Sleep
+  {t:'Light sleeper, wake often', d:'vata', c:'Sleep'},
+  {t:'Vivid, active dreams', d:'vata', c:'Sleep'},
+  {t:'Moderate sleep, wake alert', d:'pitta', c:'Sleep'},
+  {t:'Intense or vivid dreams of conflict', d:'pitta', c:'Sleep'},
+  {t:'Deep, heavy sleep, hard to wake', d:'kapha', c:'Sleep'},
+  {t:'Could nap any time', d:'kapha', c:'Sleep'},
+  // Mind & mood
+  {t:'Quick mind, learns fast, forgets fast', d:'vata', c:'Mind'},
+  {t:'Many ideas at once, hard to finish', d:'vata', c:'Mind'},
+  {t:'Worry, restlessness, anxiety', d:'vata', c:'Mind'},
+  {t:'Sharp focus, decisive', d:'pitta', c:'Mind'},
+  {t:'Competitive, driven, likes to win', d:'pitta', c:'Mind'},
+  {t:'Critical of self and others', d:'pitta', c:'Mind'},
+  {t:'Calm, steady, hard to rattle', d:'kapha', c:'Mind'},
+  {t:'Slow to learn, never forgets', d:'kapha', c:'Mind'},
+  {t:'Loyal, patient, slow to anger', d:'kapha', c:'Mind'},
+  {t:'Talk fast, lots of words', d:'vata', c:'Mind'},
+  {t:'Speak precisely, argue well', d:'pitta', c:'Mind'},
+  {t:'Speak slowly, comfortable in silence', d:'kapha', c:'Mind'},
+  // Weather
+  {t:'Hate cold and wind', d:'vata', c:'Weather'},
+  {t:'Hate heat and humidity', d:'pitta', c:'Weather'},
+  {t:'Hate damp and grey', d:'kapha', c:'Weather'},
+  {t:'Worse in autumn, better in warmth', d:'vata', c:'Weather'},
+  {t:'Worse in high summer', d:'pitta', c:'Weather'},
+  {t:'Worse in late winter and spring', d:'kapha', c:'Weather'},
+  // Stress
+  {t:'Under stress: anxious and scattered', d:'vata', c:'Under stress'},
+  {t:'Under stress: angry and sharp', d:'pitta', c:'Under stress'},
+  {t:'Under stress: withdrawn and heavy', d:'kapha', c:'Under stress'},
+  {t:'Startle easily', d:'vata', c:'Under stress'},
+  {t:'Push through, ignore the warning signs', d:'pitta', c:'Under stress'},
+  {t:'Avoid, delay, comfort-eat', d:'kapha', c:'Under stress'},
+  // In practice
+  {t:'Love fast flow, resist stillness', d:'vata', c:'In practice'},
+  {t:'Chase the advanced version of a pose', d:'pitta', c:'In practice'},
+  {t:'Prefer long holds and restorative', d:'kapha', c:'In practice'},
+  {t:'Injure by overstretching', d:'pitta', c:'In practice'},
+  {t:'Struggle to start, feel great after', d:'kapha', c:'In practice'},
+  {t:'Struggle to stay in one shape', d:'vata', c:'In practice'},
+];
+
+const DOSHAS = {
+  vata:  {n:'Vata',  el:'Air &amp; space &middot; moves',
+    q:'Light, dry, cold, rough, mobile, subtle. The principle of movement: breath, circulation, nerve impulse, thought.',
+    bal:'Creative, quick, adaptable, enthusiastic, alive to everything.',
+    off:'Anxious, scattered, sleepless, dry, cold, depleted, unable to settle.',
+    prac:'Warmth, weight, slowness, repetition. Fewer novel shapes, longer exhales, a blanket in savasana.'},
+  pitta: {n:'Pitta', el:'Fire &amp; water &middot; transforms',
+    q:'Hot, sharp, light, oily, spreading. The principle of transformation: digestion, metabolism, perception, judgement.',
+    bal:'Focused, courageous, clear, warm, a good decision made quickly.',
+    off:'Irritable, critical, inflamed, overheated, driving past every signal to stop.',
+    prac:'Cooling, and permission to leave a pose before winning it. Practise without a mirror or a target.'},
+  kapha: {n:'Kapha', el:'Earth &amp; water &middot; holds',
+    q:'Heavy, slow, cool, oily, smooth, stable, dense. The principle of cohesion: structure, lubrication, immunity, patience.',
+    bal:'Steady, loyal, strong, calm, the person everyone else leans on.',
+    off:'Stuck, heavy, congested, complacent, holding what should have been let go.',
+    prac:'Heat, pace, novelty, standing back up. The frame that benefits most from being asked to sweat.'}
+};
+
+(function(){
+  const searchEl = document.getElementById('ex-search');
+  const catsEl   = document.getElementById('ex-cats');
+  const traitsEl = document.getElementById('ex-traits');
+  const countEl  = document.getElementById('ex-count');
+  const doshasEl = document.getElementById('doshas');
+  if(!traitsEl || !doshasEl) return;
+
+  const picked = new Set();
+  let activeCat = null;
+  const cats = [...new Set(TRAITS.map(t=>t.c))];
+
+  cats.forEach(function(c){
+    const b=document.createElement('button');
+    b.className='ex-cat'; b.textContent=c;
+    b.addEventListener('click',function(){
+      activeCat = (activeCat===c) ? null : c;
+      document.querySelectorAll('.ex-cat').forEach(x=>x.classList.toggle('on', x.textContent===activeCat));
+      renderTraits();
+    });
+    catsEl.appendChild(b);
+  });
+
+  function renderTraits(){
+    const q = searchEl.value.trim().toLowerCase();
+
+    // Traits stay hidden until you choose a category or search. Sixty-four
+    // chips at once is a wall, not an invitation.
+    if(!activeCat && !q){
+      traitsEl.innerHTML = picked.size
+        ? TRAITS.filter(t=>picked.has(t.t)).map(t=>`<button class="tr on ${t.d}" data-t="${t.t.replace(/"/g,'&quot;')}">${t.t}</button>`).join('')
+          + '<div class="tr-empty" style="width:100%">Your selections stay here. Choose another category above, or search, to add more.</div>'
+        : '<div class="tr-empty">Choose a category above, or type in the search box, to see the traits.</div>';
+      traitsEl.querySelectorAll('.tr').forEach(function(b){
+        b.addEventListener('click',function(){
+          picked.delete(b.dataset.t);
+          renderTraits(); renderDoshas();
+        });
+      });
+      return;
+    }
+
+    const hits = TRAITS.filter(function(t){
+      if(activeCat && t.c!==activeCat) return false;
+      if(q && !(t.t+' '+t.d+' '+t.c).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    traitsEl.innerHTML = hits.length
+      ? hits.map(t=>`<button class="tr ${picked.has(t.t)?'on '+t.d:''}" data-t="${t.t.replace(/"/g,'&quot;')}">${t.t}</button>`).join('')
+      : '<div class="tr-empty">No trait matches that. Try a word like dry, sharp, heavy, cold, or sleep.</div>';
+    traitsEl.querySelectorAll('.tr').forEach(function(b){
+      b.addEventListener('click',function(){
+        const key=b.dataset.t;
+        if(picked.has(key)) picked.delete(key); else picked.add(key);
+        renderTraits(); renderDoshas();
+      });
+    });
+  }
+
+  function tally(){
+    const t={vata:0,pitta:0,kapha:0};
+    TRAITS.forEach(function(x){ if(picked.has(x.t)) t[x.d]++; });
+    return t;
+  }
+
+  function renderDoshas(){
+    const t = tally();
+    const total = t.vata+t.pitta+t.kapha;
+    const max = Math.max(t.vata,t.pitta,t.kapha);
+    doshasEl.innerHTML = ['vata','pitta','kapha'].map(function(k){
+      const d=DOSHAS[k], n=t[k];
+      const pct = total ? Math.round(n/total*100) : 0;
+      const leadCls = (total>=5 && n===max && max>0) ? ' lead-d' : '';
+      return `<div class="dosha ${k}${leadCls}">
+        <div class="d-head">
+          <div class="d-name">${d.n}</div>
+          <div class="d-tally">${n ? n+' selected'+(total?' &middot; '+pct+'%':'') : ''}</div>
+        </div>
+        <div class="d-el">${d.el}</div>
+        <div class="d-q">${d.q}</div>
+        <div class="d-row"><b>In balance</b>${d.bal}</div>
+        <div class="d-row"><b>Out of balance</b>${d.off}</div>
+        <div class="d-row"><b>What practice gives it</b>${d.prac}</div>
+        <div class="d-bar"><div class="d-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('');
+    countEl.innerHTML = total
+      ? total+' trait'+(total===1?'':'s')+' selected. Ayurveda would call this a starting conversation, not a result.'
+      : 'Nothing selected yet. Pick whatever actually sounds like you.';
+  }
+
+  searchEl.addEventListener('input', renderTraits);
+  document.getElementById('ex-clear').addEventListener('click',function(){
+    picked.clear(); searchEl.value=''; activeCat=null;
+    document.querySelectorAll('.ex-cat').forEach(x=>x.classList.remove('on'));
+    renderTraits(); renderDoshas();
+  });
+  renderTraits(); renderDoshas();
+})();
+
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

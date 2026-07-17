@@ -35,6 +35,27 @@ a.inline{color:var(--gold-dk);border-bottom:1px solid var(--gold-lt);text-decora
 a.inline:hover{border-color:var(--gold)}
 .note{background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin:1.25rem 0;font-size:13.5px;color:var(--text-mid);line-height:1.7}
 
+/* REFERENCE LIST */
+.refs{margin:1.2rem 0}
+details.ref{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:.5rem;overflow:hidden}
+details.ref[open]{border-color:var(--gold-lt)}
+details.ref summary{cursor:pointer;padding:.75rem 1rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .15s}
+details.ref summary::-webkit-details-marker{display:none}
+details.ref summary:hover{background:var(--gold-pale)}
+details.ref summary .n{font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);white-space:nowrap}
+details.ref[open] summary{border-bottom:1px solid var(--border-lt);background:var(--gold-pale)}
+.ref-body{padding:.85rem 1rem 1rem}
+.ref-cat{font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin:.7rem 0 .3rem}
+.ref-cat:first-child{margin-top:0}
+.ref-list{list-style:none;margin:0;padding:0}
+.ref-list li{font-size:13px;color:var(--text-mid);line-height:1.6;padding:.22rem 0;border-bottom:1px solid var(--border-lt)}
+.ref-list li:last-child{border-bottom:none}
+.ref-list a{color:var(--gold-dk);text-decoration:none;border-bottom:1px solid var(--gold-lt)}
+.ref-list a:hover{border-color:var(--gold)}
+.ref-list .nolink{color:var(--text-mid)}
+.ref-list .pub{color:var(--text-muted);font-size:11.5px}
+.ref-go{display:inline-block;margin-top:.7rem;font-size:12px;color:var(--gold-dk);text-decoration:none;border-bottom:1px solid var(--gold-lt)}
+
 .lp-feedback{max-width:760px;margin:0 auto;padding:1rem 1.2rem 3rem}
 .lp-feedback-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
 .lp-feedback h2{border:none;margin:0 0 .3rem;padding:0}
@@ -64,6 +85,7 @@ a.inline:hover{border-color:var(--gold)}
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="ayurveda.html" class="nav-page">Ayurveda</a>
     <a href="about.html" class="nav-page current">About</a>
     <a href="support.html" class="nav-page">Support</a>
   </div>
@@ -84,6 +106,193 @@ a.inline:hover{border-color:var(--gold)}
 
   <h2>This site</h2>
   <p>The Living Practice follows the eight limbs. The <a class="inline" href="yama.html">yamas</a> are read with their sutras and the stories that teach them. The <a class="inline" href="yoga-family-tree.html">asana pages</a> map pose families to the muscles that move them on the <a class="inline" href="yoga-muscle-diagram.html">muscle diagram</a>. The <a class="inline" href="cosmic-banyan.html">Cosmic Banyan</a> matches stories from the Vedas with the poses and sequences that carry them. The <a class="inline" href="pranayama.html">breath</a>, <a class="inline" href="meditation.html">meditation</a>, and <a class="inline" href="dharana.html">dharana</a> pages pair traditional instruction with the peer-reviewed literature. Scripture links go to primary sources such as Vedabase and the Valmiki Ramayana, and research links go to the journals themselves.</p>
+
+  <h2>Reference materials, by page</h2>
+  <p>Every page carries its own sources, and this is the whole shelf in one place. Two rules govern it. Books link to their publisher, and texts link to a freely published edition; nothing is hosted here, because most of it is under copyright and hosting it would be theft. And a link only appears if I have opened it. Where I have a book but no verified publisher page, the entry sits here without a link rather than with a plausible-looking guess.</p>
+
+  <div class="refs">
+
+    <details class="ref">
+      <summary>Yama: the guiding principles <span class="n">ethics</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">Primary texts</div>
+        <ul class="ref-list">
+          <li><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">Yoga Sutras of Patanjali, Book 2</a> <span class="pub">· Sacred Texts, public domain</span></li>
+          <li><a href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Bhagavad Gita</a> <span class="pub">· Vedabase, verse by verse</span></li>
+          <li><a href="https://valmikiramayan.net/" target="_blank" rel="noopener">Valmiki Ramayana</a> <span class="pub">· Sanskrit and English</span></li>
+        </ul>
+        <div class="ref-cat">Scholarship</div>
+        <ul class="ref-list">
+          <li><a href="https://press.princeton.edu/books/paperback/9780691197074/the-yoga-sutra-of-patanjali" target="_blank" rel="noopener">White, <em>The Yoga Sutra of Patanjali: A Biography</em></a> <span class="pub">· Princeton University Press</span></li>
+          <li><a href="https://www.atpweb.org/jtparchive/trps-47-15-01-148.pdf" target="_blank" rel="noopener">Sovatsky, review essay on White</a> <span class="pub">· J. Transpersonal Psychology</span></li>
+          <li class="nolink">Adele, <em>The Yamas &amp; Niyamas</em> <span class="pub">· On-Word Bound Books</span></li>
+          <li><a href="https://www.shambhala.com/authors/a-f/susanna-barkataki.html" target="_blank" rel="noopener">Barkataki, <em>Embrace Yoga&rsquo;s Roots</em></a> <span class="pub">· Shambhala</span></li>
+          <li><a href="https://www.shambhala.com/skill-in-action-9781645470489.html" target="_blank" rel="noopener">Johnson, <em>Skill in Action</em></a> <span class="pub">· Shambhala</span></li>
+          <li class="nolink">Soundararajan, <em>The Trauma of Caste</em> <span class="pub">· North Atlantic Books</span></li>
+        </ul>
+        <div class="ref-cat">Evidence</div>
+        <ul class="ref-list">
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3713090/" target="_blank" rel="noopener">Weng et al. 2013: compassion training and altruism</a> <span class="pub">· Psychological Science</span></li>
+          <li><a href="https://www.science.org/doi/10.1126/science.1150952" target="_blank" rel="noopener">Dunn, Aknin &amp; Norton 2008: spending on others</a> <span class="pub">· Science</span></li>
+          <li><a href="https://www.tandfonline.com/doi/abs/10.1080/00223890903425960" target="_blank" rel="noopener">Sahdra et al. 2010: measuring nonattachment</a> <span class="pub">· J. Personality Assessment</span></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4959332/" target="_blank" rel="noopener">From Yama to Samyama</a> <span class="pub">· International Journal of Yoga</span></li>
+        </ul>
+        <a class="ref-go" href="yama.html">Go to the Yama page &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>Cosmic Banyan: the stories <span class="n">13 stories</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">Primary texts</div>
+        <ul class="ref-list">
+          <li><a href="https://vedabase.io/en/library/sb/" target="_blank" rel="noopener">Srimad Bhagavatam, all twelve cantos</a> <span class="pub">· Vedabase</span></li>
+          <li><a href="https://valmikiramayan.net/" target="_blank" rel="noopener">Valmiki Ramayana</a></li>
+          <li><a href="https://www.sacred-texts.com/hin/maha/index.htm" target="_blank" rel="noopener">The Mahabharata, Ganguli translation</a> <span class="pub">· Sacred Texts</span></li>
+          <li><a href="https://www.wisdomlib.org/hinduism/book/the-markandeya-purana" target="_blank" rel="noopener">The Markandeya Purana, containing the Devi Mahatmya</a> <span class="pub">· Wisdomlib</span></li>
+          <li><a href="https://www.sacred-texts.com/hin/rigveda/rv01154.htm" target="_blank" rel="noopener">Rig Veda I.154: Vishnu&rsquo;s three steps</a></li>
+        </ul>
+        <div class="ref-cat">The mythology behind the poses</div>
+        <ul class="ref-list">
+          <li><a href="https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses" target="_blank" rel="noopener">Balkaran, <em>The Stories Behind the Poses</em></a> <span class="pub">· Leaping Hare Press</span></li>
+          <li><a href="https://www.innertraditions.com/author/ajit-mookerjee" target="_blank" rel="noopener">Mookerjee, <em>Kali: The Feminine Force</em></a> <span class="pub">· Destiny Books</span></li>
+        </ul>
+        <div class="ref-cat">The archetypal reading</div>
+        <ul class="ref-list">
+          <li><a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener">Bedi, <em>Awaken the Slumbering Goddess</em></a> <span class="pub">· author&rsquo;s page</span></li>
+          <li><a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener">Bedi, <em>Path to the Soul</em></a> <span class="pub">· Weiser Books</span></li>
+          <li><a href="https://pathtothesoul.com/blog/" target="_blank" rel="noopener">Ashok Bedi: Jungian psychology and Hindu myth</a></li>
+          <li><a href="https://jungchicago.org/blog/speaker/bedi-ashok/" target="_blank" rel="noopener">C.G. Jung Institute of Chicago: Ashok Bedi</a></li>
+        </ul>
+        <a class="ref-go" href="cosmic-banyan.html">Go to the Cosmic Banyan &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>Muscle Diagram: anatomy <span class="n">anatomy + marma</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">Yoga anatomy</div>
+        <ul class="ref-list">
+          <li><a href="https://us.humankinetics.com/products/yoga-anatomy-3rd-edition" target="_blank" rel="noopener">Kaminoff &amp; Matthews, <em>Yoga Anatomy</em></a> <span class="pub">· Human Kinetics</span></li>
+          <li><a href="https://www.bandhayoga.com/" target="_blank" rel="noopener">Long, <em>Scientific Keys</em> Vol. 1 &amp; 2</a> <span class="pub">· Bandha Yoga</span></li>
+          <li><a href="https://www.bodyandbreath.com/" target="_blank" rel="noopener">Coulter, <em>Anatomy of Hatha Yoga</em></a> <span class="pub">· Body and Breath</span></li>
+          <li><a href="https://dk.com/us/book/9781465479358-science-of-yoga" target="_blank" rel="noopener">Swanson, <em>Science of Yoga</em></a> <span class="pub">· DK</span></li>
+          <li><a href="https://yinyoga.com/your-body-your-yoga/" target="_blank" rel="noopener">Clark, <em>Your Body, Your Yoga</em></a></li>
+          <li><a href="https://www.anatomytrains.com/" target="_blank" rel="noopener">Myers, <em>Anatomy Trains</em></a></li>
+        </ul>
+        <div class="ref-cat">The classical body</div>
+        <ul class="ref-list">
+          <li><a href="https://www.wisdomlib.org/hinduism/book/sushruta-samhita-volume-1-sutrasthana" target="_blank" rel="noopener">Sushruta Samhita: the 107 marma</a> <span class="pub">· Wisdomlib</span></li>
+          <li><a href="https://www.penguin.co.uk/books/254332/roots-of-yoga-by-james-mallinson-mark-singleton/9780241253045" target="_blank" rel="noopener">Mallinson &amp; Singleton, <em>Roots of Yoga</em></a> <span class="pub">· Penguin Classics</span></li>
+        </ul>
+        <a class="ref-go" href="yoga-muscle-diagram.html">Go to the Muscle Diagram &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>Breath: pranayama <span class="n">33 techniques</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">Classical texts</div>
+        <ul class="ref-list">
+          <li><a href="https://www.sacred-texts.com/hin/hyp/index.htm" target="_blank" rel="noopener">Hatha Yoga Pradipika, Pancham Sinh translation</a> <span class="pub">· Sacred Texts</span></li>
+          <li><a href="https://www.wisdomlib.org/hinduism/book/hatha-yoga-pradipika-english/d/doc7975.html" target="_blank" rel="noopener">Hatha Yoga Pradipika, Chapter 2: on pranayama</a> <span class="pub">· Wisdomlib</span></li>
+          <li><a href="https://www.wisdomlib.org/definition/gherandasamhita" target="_blank" rel="noopener">Gheranda Samhita</a> <span class="pub">· Wisdomlib</span></li>
+        </ul>
+        <div class="ref-cat">Practitioner manuals</div>
+        <ul class="ref-list">
+          <li class="nolink">Iyengar, <em>Light on Pranayama</em> <span class="pub">· HarperCollins</span></li>
+          <li><a href="https://www.shambhala.com/the-yoga-of-breath-1762.html" target="_blank" rel="noopener">Rosen, <em>The Yoga of Breath</em></a> <span class="pub">· Shambhala</span></li>
+          <li><a href="https://shop.himalayaninstitute.org/products/science-of-breath" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em></a> <span class="pub">· Himalayan Institute</span></li>
+          <li class="nolink">Saraswati, <em>Asana Pranayama Mudra Bandha</em> <span class="pub">· Yoga Publications Trust, Bihar School</span></li>
+        </ul>
+        <a class="ref-go" href="pranayama.html">Go to the Breath page &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>Meditation <span class="n">30 practices</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">Teachers and lineages</div>
+        <ul class="ref-list">
+          <li><a href="https://www.penguinrandomhouse.com/books/89149/full-catastrophe-living-revised-edition-by-jon-kabat-zinn-preface-by-thich-nhat-hanh-foreword-by-joan-borysenko/" target="_blank" rel="noopener">Kabat-Zinn, <em>Full Catastrophe Living</em></a> <span class="pub">· Bantam, the MBSR sourcebook</span></li>
+          <li><a href="https://www.penguinrandomhouse.com/books/16998/radical-acceptance-by-tara-brach-phd/" target="_blank" rel="noopener">Brach, <em>Radical Acceptance</em></a> <span class="pub">· Bantam</span></li>
+          <li><a href="https://www.tarabrach.com/rain/" target="_blank" rel="noopener">Brach: the RAIN practice</a></li>
+          <li><a href="https://www.shambhala.com/when-things-fall-apart-3628.html" target="_blank" rel="noopener">Chödrön, <em>When Things Fall Apart</em></a> <span class="pub">· Shambhala, tonglen</span></li>
+          <li><a href="https://www.shambhala.com/patrul-rinpoche/" target="_blank" rel="noopener">Patrul Rinpoche, <em>The Words of My Perfect Teacher</em></a> <span class="pub">· Yale University Press</span></li>
+          <li class="nolink">Brahm, <em>Mindfulness, Bliss, and Beyond</em> <span class="pub">· Wisdom Publications, jhana</span></li>
+          <li class="nolink">Goleman &amp; Davidson, <em>Altered Traits</em> <span class="pub">· Avery</span></li>
+          <li class="nolink">Kornfield, <em>A Path with Heart</em>; <em>The Wise Heart</em> <span class="pub">· Bantam</span></li>
+          <li class="nolink">Nhat Hanh, <em>The Miracle of Mindfulness</em> <span class="pub">· Beacon Press</span></li>
+        </ul>
+        <div class="ref-cat">Evidence</div>
+        <ul class="ref-list">
+          <li><a href="https://www.nccih.nih.gov/health/meditation-and-mindfulness-what-you-need-to-know" target="_blank" rel="noopener">NCCIH (NIH): meditation and mindfulness</a></li>
+          <li><a href="https://doi.org/10.1371/journal.pone.0124344" target="_blank" rel="noopener">Gotink et al. 2015: standardised MBIs in healthcare</a> <span class="pub">· PLOS ONE</span></li>
+          <li><a href="https://www.jstor.org/stable/41613530" target="_blank" rel="noopener">Hölzel et al. 2011: how does mindfulness meditation work?</a></li>
+          <li><a href="https://doi.org/10.1016/j.ijchp.2023.100388" target="_blank" rel="noopener">Liebmann et al. 2023: three meditation-based training programs, RCT</a></li>
+        </ul>
+        <a class="ref-go" href="meditation.html">Go to the Meditation page &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>The Divine <span class="n">refuge &amp; oneness</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">On refuge</div>
+        <ul class="ref-list">
+          <li><a href="https://www.penguinrandomhouse.com/books/16998/radical-acceptance-by-tara-brach-phd/" target="_blank" rel="noopener">Brach, <em>Radical Acceptance</em></a> <span class="pub">· Bantam; the refuge passage, pp. 174&ndash;176</span></li>
+          <li><a href="https://www.penguinrandomhouse.com/books/16999/true-refuge-by-tara-brach-phd/" target="_blank" rel="noopener">Brach, <em>True Refuge</em></a> <span class="pub">· Bantam</span></li>
+          <li><a href="https://www.lionsroar.com/taking-refuge-in-the-three-jewels/" target="_blank" rel="noopener">Lion&rsquo;s Roar: taking refuge in the Three Jewels</a></li>
+        </ul>
+        <div class="ref-cat">Oneness, reciprocity, and the archetypal reading</div>
+        <ul class="ref-list">
+          <li><a href="https://shlokam.org/text/isha-upanishad.htm" target="_blank" rel="noopener">The Isha Upanishad</a> <span class="pub">· Shlokam</span></li>
+          <li><a href="https://plato.stanford.edu/entries/advaita-vedanta/" target="_blank" rel="noopener">Stanford Encyclopedia: Advaita Vedanta</a></li>
+          <li><a href="https://plumvillage.org/community/order-of-interbeing" target="_blank" rel="noopener">Plum Village: the Order of Interbeing</a></li>
+          <li><a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener">Bedi, <em>Awaken the Slumbering Goddess</em>; <em>Path to the Soul</em></a></li>
+        </ul>
+        <a class="ref-go" href="the-divine.html">Go to The Divine &rarr;</a>
+      </div>
+    </details>
+
+    <details class="ref">
+      <summary>Ayurveda <span class="n">the sister science</span></summary>
+      <div class="ref-body">
+        <div class="ref-cat">The classical canon</div>
+        <ul class="ref-list">
+          <li><a href="https://www.penguinrandomhouse.com/books/286332/the-roots-of-ayurveda-by-various/" target="_blank" rel="noopener">D. Wujastyk, <em>The Roots of Ayurveda</em></a> <span class="pub">· Penguin Classics; the scholarly entry point</span></li>
+          <li><a href="https://www.wisdomlib.org/hinduism/book/charaka-samhita-english" target="_blank" rel="noopener">Charaka Samhita</a> <span class="pub">· Wisdomlib</span></li>
+          <li><a href="https://www.wisdomlib.org/hinduism/book/sushruta-samhita-volume-1-sutrasthana" target="_blank" rel="noopener">Sushruta Samhita</a> <span class="pub">· Wisdomlib</span></li>
+          <li><a href="https://www.wisdomlib.org/concept/ashtanga-hridayam" target="_blank" rel="noopener">Ashtanga Hridayam</a> <span class="pub">· Wisdomlib</span></li>
+        </ul>
+        <div class="ref-cat">Practitioner sources</div>
+        <ul class="ref-list">
+          <li><a href="https://www.lotuspress.com/products/ayurveda-the-science-of-self-healing-990120" target="_blank" rel="noopener">Lad, <em>Ayurveda: The Science of Self-Healing</em></a> <span class="pub">· Lotus Press</span></li>
+          <li><a href="https://store.ayurveda.com/collections/books-by-dr-lad" target="_blank" rel="noopener">Lad, <em>Textbook of Ayurveda</em></a> <span class="pub">· The Ayurvedic Press</span></li>
+          <li><a href="https://www.penguinrandomhouse.com/books/179011/the-path-of-practice-by-bri-maya-tiwari/" target="_blank" rel="noopener">Tiwari, <em>The Path of Practice</em></a> <span class="pub">· Ballantine</span></li>
+          <li><a href="https://www.soundstrue.com/products/body-thrive" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em></a> <span class="pub">· Sounds True; dinacharya</span></li>
+          <li class="nolink">Frawley, <em>Yoga and Ayurveda</em> <span class="pub">· Lotus Press</span></li>
+        </ul>
+        <div class="ref-cat">Critical and historical scholarship</div>
+        <ul class="ref-list">
+          <li><a href="https://www.sunypress.edu/p-4626-modern-and-global-ayurveda.aspx" target="_blank" rel="noopener">Wujastyk &amp; Smith (eds.), <em>Modern and Global Ayurveda</em></a> <span class="pub">· SUNY Press</span></li>
+          <li><a href="https://dukeupress.edu/fluent-bodies" target="_blank" rel="noopener">Langford, <em>Fluent Bodies</em></a> <span class="pub">· Duke University Press</span></li>
+          <li><a href="https://global.oup.com/academic/product/well-mannered-medicine-9780199856268?cc=us&amp;lang=en" target="_blank" rel="noopener">D. Wujastyk, <em>Well-Mannered Medicine</em></a> <span class="pub">· Oxford University Press</span></li>
+          <li><a href="https://global.oup.com/academic/product/indian-alchemy-9780197805800" target="_blank" rel="noopener">D. Wujastyk (ed.), <em>Indian Alchemy</em></a> <span class="pub">· Oxford; the rasa shastra history</span></li>
+        </ul>
+        <div class="ref-cat">Evidence</div>
+        <ul class="ref-list">
+          <li><a href="https://www.nccih.nih.gov/health/ayurvedic-medicine-in-depth" target="_blank" rel="noopener">NCCIH (NIH): Ayurvedic medicine, effectiveness and safety</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12631390/" target="_blank" rel="noopener">Prakriti assessment tools and their scientific validity</a> <span class="pub">· 2025 critical review</span></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2562368/" target="_blank" rel="noopener">Prasher et al.: genome expression and constitutional types</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/25843124/" target="_blank" rel="noopener">Breeher et al. 2015: lead poisoning among consumers of Ayurvedic medicine</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12252119/" target="_blank" rel="noopener">Chrononutrition: meal timing and metabolic health</a></li>
+        </ul>
+        <a class="ref-go" href="ayurveda.html">Go to the Ayurveda page &rarr;</a>
+      </div>
+    </details>
+
+  </div>
 
   <div class="note">A note on authority: I write here as a student and a researcher. For the tradition itself, go to the sources linked throughout these pages and to teachers within living lineages. For medical questions, go to a clinician. This site will always show you where its claims come from so you can weigh them yourself.</div>
 
