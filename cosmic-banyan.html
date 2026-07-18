@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Under the Cosmic Banyan Tree</title>
+<title>Under the Banyan Tree</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -57,14 +57,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',Georgia,sans-s
 
 /* HERO */
 #hero{background:#fdf8ec;overflow:hidden}
-.hero-img-wrap{position:relative;height:clamp(260px,38vw,520px);overflow:hidden}
-.hero-tree-img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;opacity:.97}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,248,236,.15) 0%,transparent 25%,transparent 72%,rgba(253,248,236,.25) 100%)}
-.realm-label{position:absolute;left:50%;transform:translateX(-50%);font-size:8.5px;letter-spacing:3px;font-family:'Cormorant Garamond',Georgia,serif;color:rgba(80,55,20,.7);white-space:nowrap}
-.realm-top{top:12px}
-.realm-bottom{bottom:12px;color:rgba(40,80,30,.7)}
+/* The tree sits in its own padded band so the realm labels have clear air
+   above the canopy and below the roots, and never collide with the drawing. */
+.hero-img-wrap{position:relative;height:clamp(320px,46vw,600px);overflow:hidden;background:#fdf8ec;padding:44px 1.2rem 40px}
+.hero-tree-img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;mix-blend-mode:multiply}
+.hero-overlay{position:absolute;inset:0;pointer-events:none}
+.realm-label{position:absolute;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:3px;font-family:'Cormorant Garamond',Georgia,serif;color:rgba(80,55,20,.72);white-space:nowrap;text-align:center;max-width:92%}
+.realm-top{top:16px}
+.realm-bottom{bottom:14px;color:rgba(40,80,30,.72)}
+@media(max-width:600px){
+  .hero-img-wrap{padding:36px .8rem 32px}
+  .realm-label{font-size:8px;letter-spacing:1.6px;white-space:normal;line-height:1.5}
+}
 .hero-text{text-align:center;padding:1rem 1rem 1.75rem;background:#fdf8ec}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:400;letter-spacing:.05em;line-height:1.15;margin-bottom:.3rem;
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:400;letter-spacing:.05em;line-height:1.3;padding-bottom:.08em;margin-bottom:.3rem;
   background:linear-gradient(135deg,#F0CC60 0%,#FFE8A0 40%,#D4960A 70%,#F5D070 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(100,70,30,.65);letter-spacing:.15em}
@@ -276,12 +282,15 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
     <a href="yama.html" class="nav-page">Yama</a>
     <a href="yoga-family-tree.html" class="nav-page">Asana</a>
     <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
-    <a href="cosmic-banyan.html" class="nav-page current">Cosmic Banyan Tree</a>
+    <a href="cosmic-banyan.html" class="nav-page current">Under the Banyan Tree</a>
     <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="samadhi.html" class="nav-page">Alchemy</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+    <a href="glossary.html" class="nav-page">Glossary</a>
     <a href="about.html" class="nav-page">About</a>
     <a href="support.html" class="nav-page">Support</a>
   </div>
@@ -318,14 +327,14 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 <!-- HERO -->
 <header id="hero">
   <div class="hero-img-wrap">
-    <img src="tree.png" alt="The Cosmic Banyan Tree, branches reaching upward into the spiritual realm, roots descending into the material world" class="hero-tree-img"/>
+    <img src="tree_revised.png" alt="A banyan tree drawn in full: the canopy spreading wide, aerial roots dropping from the branches to become new trunks, and the root system fanning out below the ground line" class="hero-tree-img"/>
     <div class="hero-overlay">
       <div class="realm-label realm-top">THE SPIRITUAL REALM, branches reaching toward the eternal</div>
       <div class="realm-label realm-bottom">THE MATERIAL WORLD, roots extending into manifest creation</div>
     </div>
   </div>
   <div class="hero-text">
-    <div class="hero-title">Under the Cosmic Banyan Tree</div>
+    <div class="hero-title">Under the Banyan Tree</div>
     <div class="hero-subtitle">Stories from the Vedas, matched to the asanas and sequences that carry them</div>
   </div>
 </header>
@@ -339,7 +348,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
     <div style="flex:1;min-width:250px">
       <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold-dk);margin-bottom:.2rem">Dana, the practice of giving</div>
-      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
     </div>
     <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--bg-card);color:var(--gold-dk);text-decoration:none">Support this work &rarr;</a>
   </div>
@@ -349,7 +358,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 <section class="lp-feedback" id="lp-feedback">
   <div class="lp-feedback-inner">
     <h2>Questions, corrections, requests</h2>
-    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div class="lp-fb-row">
         <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
@@ -604,7 +613,7 @@ const GLOSSARY = [
   {term:'Rasa',      skt:'rasa',             url:'https://www.wisdomlib.org/definition/rasa',
    def:'Taste or flavor: the specific emotional-spiritual quality of a devotional experience. Receiving a story\'s rasa is itself a spiritual practice.'},
   {term:'Sat-chit-ananda', skt:'sat-chit-ananda', url:'https://www.wisdomlib.org/definition/sat-cit-ananda',
-   def:'The nature of the spiritual realm: timeless existence (sat), full consciousness (chit), and bliss (ananda). The Cosmic Banyan image makes this concrete: the spiritual roots above are sat-chit-ananda; the material branches below are the reflection.'},
+   def:'The nature of the spiritual realm: timeless existence (sat), full consciousness (chit), and bliss (ananda). The cosmic banyan image makes this concrete: the spiritual roots above are sat-chit-ananda; the material branches below are the reflection.'},
   {term:'Satya',     skt:'satya',            url:'https://www.wisdomlib.org/definition/satya',
    def:'Truthfulness: the second yama. Speaking truthfully, and refusing to live inside a lie even when the lie would be more comfortable. Sita\'s final act is its deepest expression.'},
   {term:'Shakti Pitha', skt:'shakti pitha',  url:'https://www.wisdomlib.org/definition/shakti-pitha',
@@ -631,7 +640,7 @@ const GLOSSARY = [
    def:'The circle dance of Krishna with the gopis under the autumn full moon: the highest symbol of devotional yoga in the Bhakti tradition. Krishna stands at the center; the gopis move on the circumference, holding hands. Their longing toward the center is the structure of all devotional practice.'},
   {term:'Moksha', skt:'moksha', url:'https://www.wisdomlib.org/definition/moksha',
    def:'Liberation; release from the cycle of birth and rebirth into the realization of one\'s true nature. The fourth and final aim of human life, and the destination of the meditative path. Krishna\'s teaching in Chapter 6 reassures Arjuna that no step taken toward moksha is ever lost.'},
-  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/buddhism/buddhanature/',
+  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/why-buddhanature-matters/',
    def:'The Mahayana Buddhist teaching that the potential for full awakening is possessed equally by all beings, covered over like the sun behind clouds. Everyone, without exception, carries the capacity to become a Buddha.'},
   {term:'Bodhisattva', skt:'bodhisattva', url:'https://www.lionsroar.com/the-bodhisattva-vow/',
    def:'One who vows to attain full awakening for the sake of all beings, and to keep returning across lifetimes until every being is free. The bodhisattva vow explicitly extends into future lives.'},
@@ -955,7 +964,7 @@ Then the teaching on the Self. What wears this body was never born and never die
     thisStory:'Unlike every other story in this tradition, the life of Krishna is primarily about sweetness, madhurya. He is born in a prison cell, raised as a cowherd\'s son, and defeats demons through play rather than war. His story is the heart of the Bhakti tradition and its central invitation: to fall completely in love with the divine, no longer at a distance.',
     sources:[
       {label:'Vedabase: SB Canto 10 (The Life of Krishna)', url:'https://vedabase.io/en/library/sb/10/'},
-      {label:'Sacred Texts: Bhagavata Purana Book 10', url:'https://www.sacred-texts.com/hin/sb/sb10a.htm'},
+      {label:'Sacred Texts: Bhagavata Purana Book 10', url:'https://vedabase.io/en/library/sb/10/'},
       {label:'Wisdomlib: Krishna', url:'https://www.wisdomlib.org/definition/krishna'},
       {label:'Wisdomlib: Radha', url:'https://www.wisdomlib.org/definition/radha'},
       {label:'Wisdomlib: Rasalila', url:'https://www.wisdomlib.org/definition/rasalila'},
@@ -1017,7 +1026,7 @@ In the midst of the dance, the gopis felt a moment of pride, surely we are the m
       {label:'Holy Bhagavad Gita: Chapter 6, Verse 37', url:'https://www.holy-bhagavad-gita.org/chapter/6/verse/37/'},
       {label:'Holy Bhagavad Gita: Chapter 6 (Dhyana Yog)', url:'https://www.holy-bhagavad-gita.org/chapter/6/'},
       {label:'Vedabase: Bhagavad Gita Chapter 6', url:'https://vedabase.io/en/library/bg/6/'},
-      {label:'Lion’s Roar: Buddha-nature', url:'https://www.lionsroar.com/buddhism/buddhanature/'},
+      {label:'Lion’s Roar: Buddha-nature', url:'https://www.lionsroar.com/why-buddhanature-matters/'},
       {label:'Lion’s Roar: The Bodhisattva Vow', url:'https://www.lionsroar.com/the-bodhisattva-vow/'},
       {label:'Lion’s Roar: every being has been your mother', url:'https://www.lionsroar.com/motherhood-is-more-than-a-metaphor/'},
     ],

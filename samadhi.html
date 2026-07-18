@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samadhi — The Alchemy of Absorption</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#120817;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#f0e9f5;--text-mid:#cbbdd6;--text-muted:#96859f;
+  --ac:#EA80FC;--ac-dk:#F3B3FF;--gold:#F0C674;--teal:#5AE8C8;
+  --border:rgba(234,128,252,0.26);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1000px 600px at 50% -6%, rgba(234,128,252,0.10), transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, rgba(240,198,116,0.05), transparent 55%),
+    linear-gradient(180deg,#120817 0%,#170b1f 55%,#1b0e26 100%);
+  background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(1.3px 1.3px at 22% 28%,rgba(255,255,255,.5),transparent),radial-gradient(1.1px 1.1px at 68% 18%,rgba(255,255,255,.4),transparent),radial-gradient(1.2px 1.2px at 42% 66%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 84% 58%,rgba(255,255,255,.4),transparent),radial-gradient(1.1px 1.1px at 12% 78%,rgba(255,255,255,.3),transparent)}
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(18,8,23,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;letter-spacing:.06em}
+.nav-home:hover{color:var(--ac)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(234,128,252,.14);border-color:var(--border);color:var(--ac)}
+#hero{position:relative;z-index:1;text-align:center;padding:2.8rem 1rem 1.4rem}
+.focal{width:clamp(150px,34vw,220px);height:clamp(150px,34vw,220px);margin:0 auto 1.3rem}
+.focal svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,6vw,3.6rem);font-weight:400;letter-spacing:.05em;line-height:1.1;
+  background:linear-gradient(110deg,#F3B3FF,#EA80FC 50%,#F0C674);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.hero-skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.18em;font-size:1.05rem;margin-bottom:.2rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:1rem;max-width:620px;margin:.4rem auto 0}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.section{margin-bottom:3rem}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p:last-child{margin-bottom:0}
+.section em{color:var(--gold);font-style:italic}
+.flow{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0}
+.flow .f{flex:1;min-width:120px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.8rem .9rem;text-align:center}
+.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ac-dk)}
+.flow .f .fe{font-size:11px;color:var(--text-muted);letter-spacing:.08em}
+.flow .arrow{align-self:center;color:var(--ac);font-size:1.1rem}
+.practice{background:linear-gradient(180deg,rgba(234,128,252,.1),rgba(240,198,116,.04));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
+.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:.7rem}
+.practice ol{margin:0 0 0 1.1rem}
+.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin:0}
+.callout a,.section a.inl{color:var(--ac-dk);border-bottom:1px solid var(--ac);text-decoration:none}
+.sca{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;margin:1.3rem 0}
+.sca-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.15rem;text-align:center}
+.sca-card .skt{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--ac-dk)}
+.sca-card .en{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:.15rem 0 .5rem}
+.sca-card p{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin:0}
+.questions-list{margin:1.4rem 0 0;display:flex;flex-direction:column;gap:.55rem}
+.q-item{display:flex;gap:.7rem;background:var(--panel);border:1px solid var(--border-lt);border-radius:10px;padding:.75rem .95rem}
+.q-num{font-family:'Cormorant Garamond',serif;color:var(--ac);font-size:1.05rem}
+.q-text{font-size:13.5px;color:var(--text-mid);line-height:1.6}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.source-link:hover{border-color:var(--ac);color:var(--ac-dk)}
+.ev-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:#9FD9A6;text-transform:uppercase;margin:1.1rem 0 .3rem}
+.evidence-link{font-size:12px;color:#bfe3c6;border:1px solid rgba(159,217,166,.28);background:rgba(159,217,166,.08);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.evidence-link:hover{border-color:#9FD9A6;color:#dff3e2}
+.footer{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.footer span{font-size:12px;color:var(--text-muted)}
+.footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
+.footer a:hover{border-color:var(--ac);color:var(--ac-dk)}
+
+/* FEEDBACK FORM */
+.lp-feedback{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.3rem}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row select option{background:#1a1022;color:#f0e9f5}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:rgba(240,198,116,.2)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+</style>
+</head>
+<body>
+<nav id="top-nav">
+  <a href="index.html" class="nav-home">The Living Practice</a>
+  <a href="yama.html" class="nav-page">Yama</a>
+  <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+  <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
+  <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
+  <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="meditation.html" class="nav-page">Meditation</a>
+  <a href="samadhi.html" class="nav-page current">Alchemy</a>
+  <a href="the-divine.html" class="nav-page">The Divine</a>
+  <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+  <a href="glossary.html" class="nav-page">Glossary</a>
+  <a href="about.html" class="nav-page">About</a>
+  <a href="support.html" class="nav-page">Support</a>
+</nav>
+
+<header id="hero">
+  <div class="focal">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none">
+        <circle cx="100" cy="100" r="90" stroke="rgba(234,128,252,.14)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="68" stroke="rgba(234,128,252,.2)" stroke-width="1"/>
+        <g stroke="rgba(240,198,116,.45)" stroke-width="1">
+          <line x1="100" y1="16" x2="100" y2="34"/><line x1="100" y1="166" x2="100" y2="184"/>
+          <line x1="16" y1="100" x2="34" y2="100"/><line x1="166" y1="100" x2="184" y2="100"/>
+          <line x1="41" y1="41" x2="54" y2="54"/><line x1="146" y1="146" x2="159" y2="159"/>
+          <line x1="159" y1="41" x2="146" y2="54"/><line x1="54" y1="146" x2="41" y2="159"/>
+        </g>
+        <circle cx="100" cy="100" r="46" stroke="rgba(243,179,255,.35)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="28" stroke="rgba(243,179,255,.5)" stroke-width="1.2"/>
+      </g>
+      <circle cx="100" cy="100" r="14" fill="#F7DBFF"/>
+      <circle cx="100" cy="100" r="14" fill="none" stroke="#EA80FC" stroke-width="1.5" opacity=".8"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">Samadhi</h1>
+  <div class="hero-skt">samādhi &middot; the eighth limb</div>
+  <p class="hero-sub">The meditator and the world merge: the alchemy where practice becomes being</p>
+</header>
+
+<main>
+  <section class="section" id="practice">
+    <div class="eyebrow">Begin here</div>
+    <h2 class="s-title">Sitting at the edge of absorption</h2>
+    <p class="lead">Samadhi arrives; it resists being performed. What a practitioner can do is set the conditions and stop interfering. This sitting practice walks to the edge and waits there.</p>
+    <div class="practice">
+      <div class="label">Practice &middot; from holding to absorption</div>
+      <div class="p-title">Releasing the effort of watching</div>
+      <ol>
+        <li>Sit steadily and let the breath settle. Gather the senses inward as on the <a class="inl" href="pratyahara.html">Introspect page</a>, and give the mind one object to hold, a breath, a flame&rsquo;s after-image, a mantra, as in <a class="inl" href="dharana.html">dharana</a>.</li>
+        <li>Hold the object until the holding smooths into an unbroken flow. This is dhyana, meditation: attention pouring toward one thing like oil poured from one vessel to another.</li>
+        <li>Now notice the last piece of effort left: the sense of being someone who watches. Release even that. Let the object, the watching, and the watcher soften toward each other.</li>
+        <li>If a moment comes when only the object remains, shining without a commentary, let it be. It may last a breath. The tradition says that breath is samadhi&rsquo;s first taste.</li>
+        <li>When the ordinary mind returns, and it will, welcome it back without grasping at what happened. Absorption deepens through repetition, released each time.</li>
+      </ol>
+    </div>
+    <p>Patanjali describes the arc in three sutras. Concentration binds the mind to one place; meditation is the unbroken flow of attention there; samadhi is when the object alone shines and the mind &ldquo;is as if emptied of itself&rdquo; (Yoga Sutras 3.1&ndash;3.3). Held together the three are <em>samyama</em>, and the whole path has been walking toward this gathering.</p>
+    <div class="flow">
+      <div class="f"><div class="fn">Dharana</div><div class="fe">one point held</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Dhyana</div><div class="fe">unbroken flow</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f" style="border-color:var(--border)"><div class="fn" style="color:var(--ac)">Samadhi</div><div class="fe">absorption</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="kinds">
+    <div class="eyebrow">The texts</div>
+    <h2 class="s-title">What the tradition means by absorption</h2>
+    <p class="lead">The Yoga Sutras open with samadhi; the first of its four books is the Samadhi Pada. Patanjali distinguishes absorption that still carries a seed of thought, <em>samprajnata</em>, absorption with support, from the seedless stillness beyond it, <em>asamprajnata</em>, where even the subtlest movement of mind has settled. The distinction matters practically: early tastes of samadhi keep an object and a flavor of knowing, and the deeper reaches release both.</p>
+    <p>Scholars have argued for a century about how these stages map onto experience. Ian Kesarcodi-Watson&rsquo;s close reading in <em>Philosophy East and West</em> (1982) untangles the terms with care, and a 2024 comparative study by Randika Perera reads samadhi across the Buddhist and Yogic traditions, where the same ladder of absorption appears as the <em>jhanas</em>. The two traditions climb by nearly identical rungs and name different summits: the Yogic path centers consciousness in the true self, <em>purusha</em>, while the Buddhist path finds no self to center. The divergence is the same one traced in the two rivers of <a class="inl" href="meditation.html#sec-rivers">meditation</a>.</p>
+    <p>In practice surveys, samadhi is the limb teachers claim least. In a 2024 study of yoga teachers, samadhi ranked lowest in reported knowledge of all eight limbs (62.2%), and the authors set it apart from the practice questions entirely, since it is the fruit of the whole eightfold path rather than a technique to schedule. An early controlled report on a meditation program named for this limb, Siddha Samadhi Yoga, found reduced anxiety and depression symptoms in a small preliminary trial (Kozasa et al. 2008, Psychological Reports; the journal keeps the article paywalled). The honest summary: the state itself remains beyond the instruments, and what can be measured is the path toward it.</p>
+    <div class="ev-label">Evidence &amp; scholarship</div>
+    <div class="sources">
+      <a class="evidence-link" href="https://www.jstor.org/stable/1398753" target="_blank" rel="noopener">Kesarcodi-Watson 1982: Samādhi in Patañjali&rsquo;s Yoga Sūtras (Philosophy East and West · JSTOR)</a>
+      <a class="evidence-link" href="https://anvesana.sljol.info/articles/10.4038/anvesana.v15i2.17" target="_blank" rel="noopener">Perera 2024: samādhi in Buddhism and Yoga philosophy (Anveṣanā, open access)</a>
+      <a class="evidence-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11142016/" target="_blank" rel="noopener">Alam, Gangwani &amp; Mohan 2024: perception and practice of the eight limbs (J Family Med Prim Care)</a>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.wisdomlib.org/definition/samadhi" target="_blank" rel="noopener">Wisdomlib: Samadhi</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/samyama" target="_blank" rel="noopener">Wisdomlib: Samyama</a>
+      <a class="source-link" href="https://www.accesstoinsight.org/ptf/dhamma/sacca/sacca4/samma-samadhi/index.html" target="_blank" rel="noopener">Access to Insight: the jhanas</a>
+      <a class="source-link" href="https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/" target="_blank" rel="noopener">Brahm, Mindfulness, Bliss, and Beyond · Wisdom Publications</a>
+      <a class="source-link" href="https://sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">Yoga Sutras (Johnston) · Sacred Texts</a>
+    </div>
+    <div class="callout">
+      <div class="label">On the shelf</div>
+      <p>Two practitioner commentaries sit behind this page without public editions to link: Prabhavananda and Isherwood&rsquo;s <em>The Yoga Aphorisms of Patanjali</em> (Vedanta Society of Southern California) and Swami Rama&rsquo;s <em>Samadhi: The Highest State of Wisdom</em> (Himalayan Institute).</p>
+    </div>
+  </section>
+
+  <section class="section" id="sec-sca">
+    <div class="eyebrow">The world beyond &middot; the absolute realm</div>
+    <h2 class="s-title">Sat-Chit-Ananda: where nothing is relative</h2>
+    <p class="lead">At the furthest reach of the practice, past the roots and the ground and the branches, the tradition points to the absolute realm, the one place where nothing is relative to anything else. It cannot be described, only approached, and the approach is made through three words that are not really three. <em>Sat-chit-ananda</em>: being, consciousness, bliss. The name Vedanta gives to the nature of the absolute itself.</p>
+    <div class="sca">
+      <div class="sca-card"><div class="skt">Sat</div><div class="en">Being &middot; Eternal</div><p>Pure existence, beyond time. Timelessness itself: that which simply <em>is</em>, untouched by beginning or end.</p></div>
+      <div class="sca-card"><div class="skt">Chit</div><div class="en">Consciousness &middot; Awake</div><p>Pure awareness, fully conscious of all things and all beings. The light by which anything is known at all.</p></div>
+      <div class="sca-card"><div class="skt">Ananda</div><div class="en">Bliss &middot; Ecstasy</div><p>Boundless joy, bliss, euphoria. The very texture of reality when nothing obstructs it.</p></div>
+    </div>
+    <p>This is what the tradition means by enlightenment, <em>moksha</em>, liberation: a realm entered, in which eternal being, total awareness, and unbroken bliss are revealed to be one single thing, your own deepest nature, never absent, only overlooked. In the map of the four reaches on the <a class="inl" href="pratyahara.html#sec-reaches">Introspect page</a>, this is the universe at the top of the diagram and the depth at the bottom meeting and turning out to be the same place.</p>
+    <div class="callout">
+      <div class="label">A bridge across traditions</div>
+      <p>Many who come to this practice from a Christian background find a familiar shape here. The absolute realm of sat-chit-ananda, eternal, all-knowing, and full of bliss, rhymes with what some Christian mystics have meant by heaven or by union with God: not a place reached after death so much as a reality always present, glimpsed when the veil thins. The vocabulary differs and the theologies are not identical. But the testimony of those who have touched it, in either language, is remarkably consistent: timeless, radiant, and at peace.</p>
+    </div>
+    <p>It is worth saying plainly that this realm is already and eternally the case, waiting only to be uncovered. The waves of the breath, the ethics of the yamas, the gathering of the mind: each one clears the obstructions to it. The work of meditation is to stop standing in its own light, so what was always present can shine through. And if a lifetime of practice does not arrive there, the tradition offers a quiet reassurance, told as a story between Arjuna and Krishna, that no step taken toward it is ever lost.</p>
+    <div class="callout" style="border-left-color:var(--ac)">
+      <div class="label" style="color:var(--ac)">Continue the thread</div>
+      <p>That story, of what happens to the meditator who runs out of life before reaching the world beyond, lives under the banyan tree. <a href="cosmic-banyan.html#section-s7">Read Arjuna&rsquo;s question and Krishna&rsquo;s answer &rarr;</a></p>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.yogapedia.com/definition/5838/sat-chit-ananda" target="_blank" rel="noopener">Yogapedia: Sat-Chit-Ananda</a>
+      <a class="source-link" href="https://www.wisdomlib.org/concept/sat-chit-ananda" target="_blank" rel="noopener">Wisdomlib: Sat-chit-ananda</a>
+      <a class="source-link" href="https://hridaya-yoga.com/knowledge/concepts/sat-chit-ananda-pure-existence-awareness-bliss/" target="_blank" rel="noopener">Hridaya Yoga: Sat-Chit-Ananda</a>
+    </div>
+    <div class="questions-list">
+      <div class="q-item"><span class="q-num">1.</span><span class="q-text">When you picture your own growth, do you see a tree climbing or a universe widening? What changes in the practice when you trade one image for the other?</span></div>
+      <div class="q-item"><span class="q-num">2.</span><span class="q-text">In the ocean breath, the exhale is the crash, the letting go. What in your life are you still only inhaling, gathering and holding, never quite allowing to break?</span></div>
+      <div class="q-item"><span class="q-num">3.</span><span class="q-text">The Vedic path seeks a Self to rest in; the Buddhist path releases the very idea of one. Sitting quietly right now, which feels truer to your own experience, and can you hold the question without rushing to an answer?</span></div>
+      <div class="q-item"><span class="q-num">4.</span><span class="q-text">If sat-chit-ananda is already present and only obscured, what is the obstruction you most often stand in the light of?</span></div>
+    </div>
+  </section>
+</main>
+
+<div class="footer">
+  <span>Continue along the limbs:</span>
+  <a href="dharana.html">&larr; Dharana, the art of focus</a>
+  <a href="meditation.html">Dhyana, meditation</a>
+  <a href="the-divine.html">The Divine &rarr;</a>
+  <a href="index.html">The eight limbs</a>
+</div>
+
+<section id="lp-dana" style="position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(240,198,116,.06);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(240,198,116,.5);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a teaching is held differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

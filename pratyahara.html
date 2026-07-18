@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pratyahara — The Inward Turn</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#06121b;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#e7eef5;--text-mid:#b9c6d3;--text-muted:#7f92a3;
+  --ac:#40C4FF;--ac-dk:#8ED9FF;--gold:#F0C674;--teal:#5AE8C8;
+  --border:rgba(64,196,255,0.26);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1000px 600px at 50% -6%, rgba(64,196,255,0.10), transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, rgba(240,198,116,0.05), transparent 55%),
+    linear-gradient(180deg,#06121b 0%,#081826 55%,#0a1d2e 100%);
+  background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(1.3px 1.3px at 22% 28%,rgba(255,255,255,.5),transparent),radial-gradient(1.1px 1.1px at 68% 18%,rgba(255,255,255,.4),transparent),radial-gradient(1.2px 1.2px at 42% 66%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 84% 58%,rgba(255,255,255,.4),transparent),radial-gradient(1.1px 1.1px at 12% 78%,rgba(255,255,255,.3),transparent)}
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(6,18,27,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;letter-spacing:.06em}
+.nav-home:hover{color:var(--ac)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(64,196,255,.14);border-color:var(--border);color:var(--ac)}
+#hero{position:relative;z-index:1;text-align:center;padding:2.8rem 1rem 1.4rem}
+.focal{width:clamp(150px,34vw,220px);height:clamp(150px,34vw,220px);margin:0 auto 1.3rem}
+.focal svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,6vw,3.6rem);font-weight:400;letter-spacing:.05em;line-height:1.1;
+  background:linear-gradient(110deg,#8ED9FF,#40C4FF 50%,#F0C674);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.hero-skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.18em;font-size:1.05rem;margin-bottom:.2rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:1rem;max-width:620px;margin:.4rem auto 0}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.section{margin-bottom:3rem}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p:last-child{margin-bottom:0}
+.section em{color:var(--gold);font-style:italic}
+.flow{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0}
+.flow .f{flex:1;min-width:120px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.8rem .9rem;text-align:center}
+.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ac-dk)}
+.flow .f .fe{font-size:11px;color:var(--text-muted);letter-spacing:.08em}
+.flow .arrow{align-self:center;color:var(--ac);font-size:1.1rem}
+.practice{background:linear-gradient(180deg,rgba(64,196,255,.1),rgba(240,198,116,.04));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
+.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:.7rem}
+.practice ol{margin:0 0 0 1.1rem}
+.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin:0}
+.callout a,.section a.inl{color:var(--ac-dk);border-bottom:1px solid var(--ac);text-decoration:none}
+.reaches{display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap;margin:1.3rem 0}
+.reach-figure{flex:1;min-width:260px;margin:0}
+.reach-figure img{width:100%;border-radius:14px;border:1px solid var(--border-lt);display:block}
+.reach-list{flex:1.2;min-width:280px;display:flex;flex-direction:column;gap:.7rem}
+.reach-item{background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.9rem 1.05rem}
+.reach-item .rh{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--text)}
+.reach-item .rk{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem}
+.reach-item p{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin:0}
+.reach-universe{border-left:3px solid #EA80FC}
+.reach-branches{border-left:3px solid #CE93D8}
+.reach-ground{border-left:3px solid var(--teal)}
+.reach-roots{border-left:3px solid var(--gold)}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.source-link:hover{border-color:var(--ac);color:var(--ac-dk)}
+.ev-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:#9FD9A6;text-transform:uppercase;margin:1.1rem 0 .3rem}
+.evidence-link{font-size:12px;color:#bfe3c6;border:1px solid rgba(159,217,166,.28);background:rgba(159,217,166,.08);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.evidence-link:hover{border-color:#9FD9A6;color:#dff3e2}
+.footer{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 3rem;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.footer span{font-size:12px;color:var(--text-muted)}
+.footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
+.footer a:hover{border-color:var(--ac);color:var(--ac-dk)}
+
+/* FEEDBACK FORM */
+.lp-feedback{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.3rem}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row select option{background:#0c1622;color:#e7eef5}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--gold)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:rgba(240,198,116,.2)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+</style>
+</head>
+<body>
+<nav id="top-nav">
+  <a href="index.html" class="nav-home">The Living Practice</a>
+  <a href="yama.html" class="nav-page">Yama</a>
+  <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+  <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
+  <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page current">Introspect</a>
+  <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="meditation.html" class="nav-page">Meditation</a>
+  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="the-divine.html" class="nav-page">The Divine</a>
+  <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+  <a href="glossary.html" class="nav-page">Glossary</a>
+  <a href="about.html" class="nav-page">About</a>
+  <a href="support.html" class="nav-page">Support</a>
+</nav>
+
+<header id="hero">
+  <div class="focal">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke-width="1">
+        <circle cx="100" cy="100" r="92" stroke="rgba(64,196,255,.14)"/>
+        <circle cx="100" cy="100" r="72" stroke="rgba(64,196,255,.22)"/>
+        <circle cx="100" cy="100" r="52" stroke="rgba(64,196,255,.32)"/>
+        <circle cx="100" cy="100" r="32" stroke="rgba(142,217,255,.46)"/>
+      </g>
+      <g stroke="rgba(240,198,116,.55)" stroke-width="1.2" fill="none">
+        <path d="M100 12 L100 46 M96 40 L100 47 L104 40"/>
+        <path d="M100 188 L100 154 M96 160 L100 153 L104 160"/>
+        <path d="M12 100 L46 100 M40 96 L47 100 L40 104"/>
+        <path d="M188 100 L154 100 M160 96 L153 100 L160 104"/>
+      </g>
+      <circle cx="100" cy="100" r="12" fill="#BFE8FF"/>
+      <circle cx="100" cy="100" r="21" fill="none" stroke="#40C4FF" stroke-width="1.5" opacity=".7"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">Pratyahara</h1>
+  <div class="hero-skt">pratyāhāra &middot; the fifth limb</div>
+  <p class="hero-sub">Drawing the senses inward to find the threshold where meditation begins</p>
+</header>
+
+<main>
+  <section class="section" id="practice">
+    <div class="eyebrow">Begin here</div>
+    <h2 class="s-title">The tortoise practice</h2>
+    <p class="lead">The Bhagavad Gita gives this limb its lasting image: &ldquo;One who is able to withdraw his senses from sense objects, as the tortoise draws its limbs within the shell, is firmly fixed in perfect consciousness&rdquo; (<a class="inl" href="https://vedabase.io/en/library/bg/2/58/" target="_blank" rel="noopener">Gita 2.58</a>). The practice below draws the limbs in one at a time.</p>
+    <div class="practice">
+      <div class="label">Practice &middot; sense by sense</div>
+      <div class="p-title">Drawing the limbs into the shell</div>
+      <ol>
+        <li>Sit or lie comfortably where you will be undisturbed. Let the breath settle into a slow, even rhythm; a few minutes of <a class="inl" href="pranayama.html">pranayama</a> prepares this ground well.</li>
+        <li>Close the eyes. Sight is the first limb drawn in. Notice how much attention returns the moment the eyes stop reaching.</li>
+        <li>Listen to the sounds around you. Name none of them. Let each one arrive and pass like weather, until hearing rests without grasping.</li>
+        <li>Feel the points of contact: the seat, the hands, the air on the skin. Acknowledge each sensation, then release the attention that holds it.</li>
+        <li>Notice smell and taste, the quietest senses, and let them go last. What remains is awareness resting in its own field, senses present and unentangled.</li>
+        <li>Rest there for a few minutes. When the mind reaches outward again, and it will, draw the limb back in gently. The returning is the practice.</li>
+      </ol>
+    </div>
+    <p>Withdrawal is a soft word here. The senses keep working; the tortoise keeps its limbs. What changes is the entanglement: attention stops running out along each sense to grip its object. Systematic relaxation, <em>yoga nidra</em>, and savasana at the end of an asana practice all train the same release.</p>
+  </section>
+
+  <section class="section" id="what">
+    <div class="eyebrow">The hinge limb</div>
+    <h2 class="s-title">Where the outer practice turns inward</h2>
+    <p class="lead">Patanjali gives pratyahara two sutras, and they are hinges for the whole eight-limbed path. &ldquo;The disengaging of the powers from entanglement in outer things&rdquo; is how Charles Johnston renders <a class="inl" href="https://sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">Yoga Sutra II.54</a>, and II.55 completes the thought: &ldquo;Thereupon follows perfect mastery over the powers.&rdquo; The first four limbs work on the visible life: ethics, discipline, posture, breath. At pratyahara the practice crosses a threshold and disappears from view.</p>
+    <p>The Gheranda Samhita, which arranges its hatha yoga in seven limbs rather than eight, keeps pratyahara at the same hinge: the senses steadied so the mind can be gathered. Whatever the count of limbs, the tradition agrees on the order of operations. Sense-withdrawal comes before concentration because a mind still wired to every sound and itch has nothing left over to concentrate with.</p>
+    <div class="flow">
+      <div class="f"><div class="fn">Pranayama</div><div class="fe">breath steadied</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f" style="border-color:var(--border)"><div class="fn" style="color:var(--ac)">Pratyahara</div><div class="fe">senses withdrawn</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Dharana</div><div class="fe">one point held</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Dhyana</div><div class="fe">unbroken flow</div></div>
+    </div>
+    <p>In a 2024 survey of 37 yoga teachers in Delhi, every limb was reported as part of their practice, but the emphasis fell unevenly: pranayama (91.9%) and asana (89.2%) led, while pratyahara (70.3%) sat among the least emphasized limbs. The thinness of this limb in modern teaching is measurable, and it is exactly the gap this page is for.</p>
+    <div class="ev-label">Evidence &amp; scholarship</div>
+    <div class="sources">
+      <a class="evidence-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11142016/" target="_blank" rel="noopener">Alam, Gangwani &amp; Mohan 2024: perception and practice of the eight limbs (J Family Med Prim Care)</a>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">Yoga Sutras II.54&ndash;55 (Johnston) · Sacred Texts</a>
+      <a class="source-link" href="https://vedabase.io/en/library/bg/2/58/" target="_blank" rel="noopener">Bhagavad Gita 2.58 · Vedabase</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/pratyahara" target="_blank" rel="noopener">Wisdomlib: Pratyahara</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/gherandasamhita" target="_blank" rel="noopener">Wisdomlib: Gheranda Samhita</a>
+    </div>
+  </section>
+
+  <section class="section" id="sec-reaches">
+    <div class="eyebrow">The map of the inward turn</div>
+    <h2 class="s-title">Roots, ground, branches, and the world beyond</h2>
+    <p class="lead">There is a meditation almost every practitioner meets sooner or later. You sit, and you imagine roots growing down from the base of your seat, threading into the earth, anchoring you. Then you imagine light rising up the spine and pouring out through the crown of the head, a column of brightness opening into the sky. In that single image, the whole map is drawn. Once the senses turn inward, the practice reaches in both directions at once: down into what is hidden, up into what is vast.</p>
+    <div class="reaches">
+      <figure class="reach-figure">
+        <img src="meditation-map.png" alt="A meditator seated on a wooden deck beneath a radiant mandala sun, golden roots descending into the earth below: the map of meditation reaching from the subconscious roots, up through the material ground and the metaphysical branches, into the universe beyond."/>
+      </figure>
+      <div class="reach-list">
+        <div class="reach-item reach-universe">
+          <div class="rh">The World Beyond</div>
+          <div class="rk">Universe &middot; the absolute</div>
+          <p>The crown opens and the practice expands past the personal entirely, into the absolute realm where nothing is relative. This is the reach of <a class="inl" href="samadhi.html">samadhi and sat-chit-ananda</a>.</p>
+        </div>
+        <div class="reach-item reach-branches">
+          <div class="rh">The Metaphysical</div>
+          <div class="rk">Branches &middot; subtle worlds</div>
+          <p>Above the dense body lie the subtle and causal sheaths, the symbolic, energetic, dreaming layers the tradition calls the koshas and the realms it calls lokas. Meditation as the discovery of worlds.</p>
+        </div>
+        <div class="reach-item reach-ground">
+          <div class="rh">The Material World</div>
+          <div class="rk">Ground &middot; the body breathing</div>
+          <p>The seat, the bones, the breath, the present moment. Meditation is also the discovery of <em>this</em> world, seen at last without the haze of distraction. The ground is where the practice finally arrives.</p>
+        </div>
+        <div class="reach-item reach-roots">
+          <div class="rh">The Subconscious</div>
+          <div class="rk">Roots &middot; what lies beneath</div>
+          <p>Roots descend from the seat into the dark and sustaining depths: memory, instinct, the buried patterns that move us before we choose. To meet them in stillness is the beginning of freedom from them.</p>
+        </div>
+      </div>
+    </div>
+    <p>Notice that the same practice does two opposite things. It is a discovery of <em>other</em> worlds, the subtle planes the tradition names akasha and the lokas, what later esoteric traditions called the astral. And it is a discovery of <em>this</em> world, the one already here, the breath and the body and the ordinary afternoon, which we have simply never been still enough to see. The mystic who travels furthest inward and the practitioner who arrives most fully in the present are describing the same journey from two ends.</p>
+    <p>And here the cosmic image returns. The roots reaching down and the light reaching up are only a beginner&rsquo;s compass, a way to orient a mind that still believes in up and down. The further the practice goes, the more those directions dissolve, until what remains is an expansion outward in every direction, the seated body a still point and the awareness around it opening like space without limit. The map is a tree. The territory is a universe.</p>
+    <div class="callout">
+      <div class="label">Continue the thread</div>
+      <p>The reaches are traveled by the practices of <a href="meditation.html">meditation</a>, and their furthest edge, the world beyond, has its own page: <a href="samadhi.html">Samadhi, the alchemy of absorption &rarr;</a></p>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.wisdomlib.org/definition/kosha" target="_blank" rel="noopener">Wisdomlib: Kosha (five sheaths)</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/akasha" target="_blank" rel="noopener">Wisdomlib: Akasha</a>
+      <a class="source-link" href="https://www.wisdomlib.org/definition/loka" target="_blank" rel="noopener">Wisdomlib: Loka</a>
+    </div>
+  </section>
+
+  <section class="section" id="interoception">
+    <div class="eyebrow">The measurable neighbor</div>
+    <h2 class="s-title">Interoception: what science can see of the inward turn</h2>
+    <p class="lead">Sense-withdrawal has no laboratory instrument, but its nearest measurable neighbor does. <em>Interoception</em> is the perception of the body from within: the heartbeat, the breath, the gut, the felt sense of being a body at all. When attention stops running outward along the five senses, what it meets first is this inner field, and interoception is where contemplative science has learned to look.</p>
+    <p>The field's consensus roadmap (Khalsa et al. 2018) maps interoception across psychiatric conditions and names it a basic dimension of mental health. A multi-author review (Farb et al. 2015) draws the explicit bridge to contemplative practice: attending inward is trainable, and the training matters for health. The standard measure is a questionnaire, the MAIA (now MAIA-2), which breaks &ldquo;interoceptive awareness&rdquo; into scales like noticing, not-distracting, and trusting, close cousins of what pratyahara cultivates.</p>
+    <p>The evidence is honest rather than tidy. A 2025 meta-analysis of 29 randomized trials found that meditation training reliably improves self-reported interoception. A 2023 yoga study is the counterweight: ten weeks of practice moved no objective measure of cardiac or gastric accuracy. Read together, the research suggests that practice changes the <em>relationship</em> to inner sensation, how it is noticed, trusted, and met, more readily than it sharpens detection itself. The tradition would recognize that distinction: pratyahara cultivates freedom from the pull of what is sensed, and it promised sharper hearing to no one.</p>
+    <div class="ev-label">Evidence &amp; scholarship</div>
+    <div class="sources">
+      <a class="evidence-link" href="https://www.biologicalpsychiatrycnni.org/article/S2451-9022(17)30234-3/fulltext" target="_blank" rel="noopener">Khalsa et al. 2018: interoception and mental health, a roadmap (Biol Psychiatry CNNI)</a>
+      <a class="evidence-link" href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2015.00763/full" target="_blank" rel="noopener">Farb et al. 2015: interoception, contemplative practice, and health (Front Psychol)</a>
+      <a class="evidence-link" href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0208034" target="_blank" rel="noopener">Mehling et al. 2018: the MAIA-2 questionnaire (PLOS ONE)</a>
+      <a class="evidence-link" href="https://www.nature.com/articles/s41598-025-22661-4" target="_blank" rel="noopener">Treves et al. 2025: meta-analysis, meditation training and self-reported interoception (Sci Reports)</a>
+      <a class="evidence-link" href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2014.01504/full" target="_blank" rel="noopener">Bornemann et al. 2015: contemplative training shifts MAIA subscales (Front Psychol)</a>
+      <a class="evidence-link" href="https://link.springer.com/article/10.1007/s42977-023-00195-y" target="_blank" rel="noopener">Koncz et al. 2023: ten weeks of yoga, no objective accuracy gains (Biologia Futura)</a>
+    </div>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://yogainternational.com/article/view/pratyahara/" target="_blank" rel="noopener">Anderson: Pratyahara, the art of sense withdrawal · Yoga International</a>
+      <a class="source-link" href="https://himalayaninstitute.org/online/pratyahara-the-art-of-sense-withdrawal/" target="_blank" rel="noopener">Himalayan Institute: Pratyahara</a>
+      <a class="source-link" href="https://www.nature.com/articles/nrn894" target="_blank" rel="noopener">Craig 2002: interoception defined (Nat Rev Neurosci, abstract; article paywalled)</a>
+    </div>
+  </section>
+</main>
+
+<div class="footer">
+  <span>Continue along the limbs:</span>
+  <a href="pranayama.html">&larr; Pranayama, the breath</a>
+  <a href="dharana.html">Dharana, the art of focus &rarr;</a>
+  <a href="index.html">The eight limbs</a>
+</div>
+
+<section id="lp-dana" style="position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(240,198,116,.06);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(240,198,116,.5);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a practice is taught differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

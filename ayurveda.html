@@ -29,7 +29,7 @@ body{background:linear-gradient(170deg,#0a0c08 0%,#0e1410 55%,#0a0f0a 100%);back
 
 #hero{text-align:center;padding:2.4rem 1rem 1.8rem;border-bottom:1px solid var(--border-lt)}
 .hero-kicker{font-size:10px;letter-spacing:.3em;color:var(--text-muted);margin-bottom:.6rem}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:400;letter-spacing:.05em;line-height:1.12;margin-bottom:.35rem;
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:400;letter-spacing:.05em;line-height:1.3;padding-bottom:.08em;margin-bottom:.35rem;
   background:linear-gradient(135deg,#9FD9A6 0%,#F0C674 45%,#C4E9C9 75%,#E8D9A0 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-muted);letter-spacing:.12em}
@@ -165,12 +165,15 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
     <a href="yama.html" class="nav-page">Yama</a>
     <a href="yoga-family-tree.html" class="nav-page">Asana</a>
     <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
-    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
     <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="samadhi.html" class="nav-page">Alchemy</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="ayurveda.html" class="nav-page current">Ayurveda</a>
+    <a href="glossary.html" class="nav-page">Glossary</a>
     <a href="about.html" class="nav-page">About</a>
     <a href="support.html" class="nav-page">Support</a>
   </div>
@@ -318,7 +321,7 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
     <a class="src" href="https://www.penguinrandomhouse.com/books/286332/the-roots-of-ayurveda-by-various/" target="_blank" rel="noopener">D. Wujastyk, <em>The Roots of Ayurveda</em>: what the texts actually say</a>
     <a class="src" href="https://www.penguinrandomhouse.com/books/179011/the-path-of-practice-by-bri-maya-tiwari/" target="_blank" rel="noopener">Tiwari, <em>The Path of Practice</em>: food and healing</a>
     <a class="src" href="https://www.lotuspress.com/products/ayurveda-the-science-of-self-healing-990120" target="_blank" rel="noopener">Lad: the six tastes and food guidance</a>
-    <a class="src" href="https://www.soundstrue.com/products/body-thrive" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em>: eating rhythm as habit</a>
+    <a class="src" href="https://bodythrive.com/" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em>: eating rhythm as habit</a>
     <a class="src" href="https://www.wisdomlib.org/definition/agni" target="_blank" rel="noopener">Wisdomlib: Agni</a>
     <a class="src" href="https://www.wisdomlib.org/definition/rasa" target="_blank" rel="noopener">Wisdomlib: Rasa, the six tastes</a>
     <a class="src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12252119/" target="_blank" rel="noopener">Chrononutrition: how meal timing shapes metabolic health (review)</a>
@@ -410,9 +413,9 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
   <div class="srcs">
     <a class="src" href="https://www.lotuspress.com/products/ayurveda-the-science-of-self-healing-990120" target="_blank" rel="noopener">Lad, <em>Ayurveda: The Science of Self-Healing</em></a>
     <a class="src" href="https://store.ayurveda.com/collections/books-by-dr-lad" target="_blank" rel="noopener">Lad, <em>Textbook of Ayurveda</em></a>
-    <a class="src" href="https://www.lotuspress.com/collections/frawley-dr-david" target="_blank" rel="noopener">Frawley, <em>Yoga and Ayurveda</em> (Lotus Press)</a>
+    Frawley, <em>Yoga and Ayurveda</em> (Lotus Press)
     <a class="src" href="https://www.penguinrandomhouse.com/books/179011/the-path-of-practice-by-bri-maya-tiwari/" target="_blank" rel="noopener">Tiwari, <em>The Path of Practice</em></a>
-    <a class="src" href="https://www.soundstrue.com/products/body-thrive" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em> (Sounds True)</a>
+    <a class="src" href="https://bodythrive.com/" target="_blank" rel="noopener">Stillman, <em>Body Thrive</em> (Sounds True)</a>
   </div>
 
   <div class="src-label">The critical and historical scholarship</div>
@@ -452,7 +455,7 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(159,217,166,.06);border:1px solid rgba(159,217,166,.22);border-left:3px solid var(--leaf);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
     <div style="flex:1;min-width:250px">
       <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--leaf);margin-bottom:.2rem">Dana, the practice of giving</div>
-      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
     </div>
     <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(159,217,166,.5);border-radius:20px;background:rgba(159,217,166,.1);color:var(--leaf);text-decoration:none">Support this work &rarr;</a>
   </div>
@@ -462,7 +465,7 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
 <section class="lp-feedback" id="lp-feedback" style="max-width:900px;margin:0 auto;padding:1rem 1.2rem 3rem">
   <div style="background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:0 0 .3rem">Questions, corrections, requests</h2>
-    <p style="font-size:13px;color:var(--text-mid);line-height:1.65;margin:0 0 1rem">This site is a living study, and this page especially. If a source deserves a second look, a teaching is held differently in your lineage, or you practice Ayurveda and think something here is wrong, please write. Corrections are welcomed with gratitude.</p>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.65;margin:0 0 1rem">This site is a living resource, and this page especially. If a source deserves a second look, a teaching is held differently in your lineage, or you practice Ayurveda and think something here is wrong, please write. Corrections are welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div class="lp-fb-row">
         <input type="email" id="lp-fb-email" required placeholder="Your email address"/>

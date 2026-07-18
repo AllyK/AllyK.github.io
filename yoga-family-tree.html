@@ -50,13 +50,17 @@ mark{background:rgba(255,215,0,0.35);color:#FFD700;border-radius:2px}
   <a href="index.html" class="home">The Living Practice</a>
   <a href="yama.html">Yama</a>
   <a href="yoga-family-tree.html" class="current">Asana</a>
+  <a href="asana-sequencing.html">Sequencing</a>
   <a href="yoga-muscle-diagram.html">Muscle Diagram</a>
-  <a href="cosmic-banyan.html">Cosmic Banyan Tree</a>
+  <a href="cosmic-banyan.html">Under the Banyan Tree</a>
   <a href="pranayama.html">Breath</a>
+  <a href="pratyahara.html">Introspect</a>
   <a href="meditation.html">Meditation</a>
   <a href="dharana.html">Dharana</a>
+  <a href="samadhi.html">Alchemy</a>
   <a href="the-divine.html">The Divine</a>
   <a href="ayurveda.html">Ayurveda</a>
+  <a href="glossary.html">Glossary</a>
   <a href="about.html">About</a>
   <a href="support.html">Support</a>
 </nav>
@@ -1122,7 +1126,7 @@ function buildInfoModal(){
         '<span style="font-size:0.72rem;margin-right:6px">&#127795;</span>'+
         '<strong style="color:#f0e6d3;font-weight:500">'+esc(st.story)+'</strong>'+
         '<span style="color:#9a8a78"> &middot; '+esc(st.note)+'</span>'+
-        '<span style="color:#e8c060;font-size:0.7rem"> &rarr; read under the Cosmic Banyan</span></a>';
+        '<span style="color:#e8c060;font-size:0.7rem"> &rarr; read it under the banyan tree</span></a>';
       });
       html+='</div></div>';
     }
@@ -1212,10 +1216,11 @@ function render(){
   app.innerHTML=
   '<div style="text-align:center;padding:2rem 1rem 0.8rem">'+
   '<div style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(2rem,5.5vw,3.6rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#FF5555,#FF8C00,#FFD700,#00E676,#40C4FF,#CE93D8,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1">Asana</div>'+
-  '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:#9a8878;letter-spacing:0.25em;font-size:0.88rem;margin-top:0.35rem">Our Yoga Family Tree &middot; the third limb of yoga</div>'+'<div style="max-width:580px;margin:0.7rem auto 0;font-size:0.8rem;line-height:1.65;color:#9a8a78">Asana, the third of yoga&rsquo;s eight limbs, is the body at practice. Each family below branches from a chakra, and the <a href="yoga-muscle-diagram.html" style="color:#CE93D8;text-decoration:none;border-bottom:1px solid #CE93D855">Muscle Diagram</a> reveals the anatomy that moves within it.</div>'+
+  '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:#9a8878;letter-spacing:0.25em;font-size:0.88rem;margin-top:0.35rem">Our Yoga Family Tree &middot; the third limb of yoga</div>'+'<div style="max-width:580px;margin:0.7rem auto 0;font-size:0.8rem;line-height:1.65;color:#9a8a78">Asana, the third of yoga&rsquo;s eight limbs, is the body at practice. Each family below branches from a chakra, and the <a href="yoga-muscle-diagram.html" style="color:#CE93D8;text-decoration:none;border-bottom:1px solid #CE93D855">Muscle Diagram</a> reveals the anatomy that moves within it, while <a href="asana-sequencing.html" style="color:#FFD700;text-decoration:none;border-bottom:1px solid #FFD70055">Sequencing</a> teaches how the poses are woven into a class.</div>'+
   '<div style="margin-top:0.85rem;display:inline-flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;font-size:0.7rem">'+
   '<span style="color:#FFD700;border:1px solid #FFD70055;padding:3px 13px;border-radius:20px;box-shadow:0 0 8px #FFD70020">&#10022; Gold dashes = Vagus activation</span>'+
   '<a href="yoga-muscle-diagram.html" style="color:#CE93D8;border:1px solid #CE93D855;padding:3px 13px;border-radius:20px;text-decoration:none;font-size:0.7rem">&#9884; Muscle Diagram &middot; part of Asana</a>'+
+  '<a href="asana-sequencing.html" style="color:#FFD700;border:1px solid #FFD70055;padding:3px 13px;border-radius:20px;text-decoration:none;font-size:0.7rem">&#127754; Sequencing &middot; the architecture of a class</a>'+
   '<span style="color:#888;border:1px solid #ffffff18;padding:3px 13px;border-radius:20px">Tap any node for details</span>'+
   '</div></div>'+
   '<div class="search-wrap">'+
@@ -1303,7 +1308,7 @@ render();
 
 /* DEEP LINK: open a specific pose from another page, e.g.
    yoga-family-tree.html#pose=Virabhadrasana%20I
-   Used by the story sequences on the Cosmic Banyan page. */
+   Used by the story sequences on the Under the Banyan Tree page. */
 function openPoseByKey(sk){
   if(!sk) return;
   var famId=null;
@@ -1333,7 +1338,7 @@ handlePoseHash();
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.2);border-left:3px solid #FFD700;border-radius:0 12px 12px 0;padding:1rem 1.2rem">
     <div style="flex:1;min-width:250px">
       <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:#FFD700;margin-bottom:.2rem">Dana, the practice of giving</div>
-      <div style="font-size:13px;color:#a89880;line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+      <div style="font-size:13px;color:#a89880;line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
     </div>
     <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(255,215,0,.5);border-radius:20px;background:rgba(255,215,0,.08);color:#FFD700;text-decoration:none">Support this work &rarr;</a>
   </div>
@@ -1342,7 +1347,7 @@ handlePoseHash();
 <section class="lp-feedback" id="lp-feedback" style="max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem">
   <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#e8d9c0;margin:0 0 .3rem">Questions, corrections, requests</h2>
-    <p style="font-size:13px;color:#a89880;line-height:1.65;margin:0 0 1rem">This site is a living study. If a pose deserves a second look, a family is organized differently in your lineage, or there is a pose you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <p style="font-size:13px;color:#a89880;line-height:1.65;margin:0 0 1rem">This site is a living resource. If a pose deserves a second look, a family is organized differently in your lineage, or there is a pose you would like added, write below. Corrections are welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
         <input type="email" id="lp-fb-email" required placeholder="Your email address" style="flex:1;min-width:220px;padding:.55rem .8rem;font-size:13px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(0,0,0,.3);color:#f0e6d3;font-family:'DM Sans',sans-serif;outline:none"/>

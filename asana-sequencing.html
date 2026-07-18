@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sequencing — The Architecture of a Class</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+:root{
+  --bg:#141004;--panel:rgba(255,255,255,0.035);--panel-2:rgba(255,255,255,0.05);
+  --text:#f4eeda;--text-mid:#d3c9ab;--text-muted:#978b68;
+  --ac:#FFD700;--ac-dk:#FFE382;--gold:#F0C674;--teal:#5AE8C8;
+  --border:rgba(255,215,0,0.26);--border-lt:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1000px 600px at 50% -6%, rgba(255,215,0,0.08), transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, rgba(90,232,200,0.04), transparent 55%),
+    linear-gradient(180deg,#141004 0%,#171306 55%,#1a1508 100%);
+  background-attachment:fixed;color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(1.3px 1.3px at 22% 28%,rgba(255,255,255,.5),transparent),radial-gradient(1.1px 1.1px at 68% 18%,rgba(255,255,255,.4),transparent),radial-gradient(1.2px 1.2px at 42% 66%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 84% 58%,rgba(255,255,255,.4),transparent),radial-gradient(1.1px 1.1px at 12% 78%,rgba(255,255,255,.3),transparent)}
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(20,16,4,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-lt);padding:.45rem 1.2rem;display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;letter-spacing:.06em}
+.nav-home:hover{color:var(--ac)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:rgba(255,215,0,.13);border-color:var(--border);color:var(--ac)}
+#hero{position:relative;z-index:1;text-align:center;padding:2.8rem 1rem 1.4rem}
+.focal{width:clamp(150px,34vw,220px);height:clamp(150px,34vw,220px);margin:0 auto 1.3rem}
+.focal svg{width:100%;height:100%;display:block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.6vw,3.4rem);font-weight:400;letter-spacing:.05em;line-height:1.1;
+  background:linear-gradient(110deg,#FFE382,#FFD700 50%,#5AE8C8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.hero-skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);letter-spacing:.18em;font-size:1.05rem;margin-bottom:.2rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:1rem;max-width:640px;margin:.4rem auto 0}
+main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.section{margin-bottom:3rem}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lead{font-size:16px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.section p:last-child{margin-bottom:0}
+.section em{color:var(--gold);font-style:italic}
+.flow{display:flex;align-items:stretch;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0}
+.flow .f{flex:1;min-width:105px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.75rem .7rem;text-align:center}
+.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ac-dk)}
+.flow .f .fe{font-size:10.5px;color:var(--text-muted);letter-spacing:.06em}
+.flow .arrow{align-self:center;color:var(--ac);font-size:1.05rem}
+.practice{background:linear-gradient(180deg,rgba(255,215,0,.08),rgba(90,232,200,.04));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
+.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:.7rem}
+.practice ol{margin:0 0 0 1.1rem}
+.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
+.callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
+.callout p{font-size:14.5px;color:var(--text-mid);margin:0}
+.callout a,.section a.inl{color:var(--ac-dk);border-bottom:1px solid var(--ac);text-decoration:none}
+.rules{display:flex;flex-direction:column;gap:.7rem;margin:1.3rem 0}
+.rule{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;padding:.9rem 1.1rem}
+.rule h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;color:var(--text);margin-bottom:.25rem}
+.rule p{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin:0}
+.seq{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem;margin:1.4rem 0}
+.seq-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--ac-dk);margin-bottom:.35rem}
+.seq-note{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin-bottom:.9rem}
+.seq-phase{border-top:1px solid var(--border-lt);padding:.65rem 0}
+.seq-phase.peak{background:rgba(255,215,0,.05);border-left:3px solid var(--ac);padding-left:.7rem;border-radius:0 8px 8px 0}
+.ph-name{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-bottom:.25rem}
+.ph-count{font-size:10px;color:var(--text-muted);letter-spacing:.05em;text-transform:none;margin-left:.6rem}
+.ph-chain{font-size:13px;color:var(--text-mid);line-height:1.75}
+.ph-chain .arr{color:var(--text-muted)}
+.src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.source-link:hover{border-color:var(--ac);color:var(--ac-dk)}
+.nolink{font-size:12px;color:var(--text-muted);border:1px solid transparent;padding:3px 11px;display:inline-flex}
+.footer{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.2rem 3rem;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.footer span{font-size:12px;color:var(--text-muted)}
+.footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
+.footer a:hover{border-color:var(--ac);color:var(--ac-dk)}
+
+/* FEEDBACK FORM */
+.lp-feedback{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1rem 1.2rem 3rem}
+.lp-feedback-inner{background:var(--panel);border:1px solid var(--border-lt);border-radius:14px;padding:1.5rem 1.5rem 1.25rem}
+.lp-feedback h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.3rem}
+.lp-fb-sub{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.lp-fb-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem}
+.lp-fb-row input,.lp-fb-row select{padding:.55rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.lp-fb-row select option{background:#1c1706;color:#f4eeda}
+.lp-fb-row input{flex:1;min-width:220px}
+.lp-fb-row input:focus,.lp-fb-row select:focus,.lp-feedback textarea:focus{border-color:var(--ac)}
+.lp-feedback textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border-lt);border-radius:8px;background:rgba(0,0,0,.28);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem}
+.lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--ac);border-radius:20px;background:rgba(255,215,0,.1);color:var(--ac);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lp-fb-send:hover{background:rgba(255,215,0,.2)}
+.lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+</style>
+</head>
+<body>
+<nav id="top-nav">
+  <a href="index.html" class="nav-home">The Living Practice</a>
+  <a href="yama.html" class="nav-page">Yama</a>
+  <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+  <a href="asana-sequencing.html" class="nav-page current">Sequencing</a>
+  <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+  <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
+  <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
+  <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="meditation.html" class="nav-page">Meditation</a>
+  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="the-divine.html" class="nav-page">The Divine</a>
+  <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+  <a href="glossary.html" class="nav-page">Glossary</a>
+  <a href="about.html" class="nav-page">About</a>
+  <a href="support.html" class="nav-page">Support</a>
+</nav>
+
+<header id="hero">
+  <div class="focal">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke-width="1.1">
+        <path d="M 20 150 C 45 150, 55 60, 100 60 C 145 60, 155 150, 180 150" stroke="rgba(255,215,0,.55)"/>
+        <path d="M 20 158 C 50 158, 60 90, 100 90 C 140 90, 150 158, 180 158" stroke="rgba(255,227,130,.3)"/>
+        <path d="M 20 166 C 55 166, 65 118, 100 118 C 135 118, 145 166, 180 166" stroke="rgba(90,232,200,.3)"/>
+      </g>
+      <circle cx="100" cy="60" r="5.5" fill="#FFE382"/>
+      <circle cx="43" cy="132" r="3" fill="rgba(255,215,0,.6)"/>
+      <circle cx="157" cy="132" r="3" fill="rgba(90,232,200,.6)"/>
+      <g stroke="rgba(255,255,255,.14)" stroke-width="1">
+        <line x1="20" y1="176" x2="180" y2="176"/>
+      </g>
+    </svg>
+  </div>
+  <h1 class="hero-title">Sequencing</h1>
+  <div class="hero-skt">vinyasa krama &middot; the intelligent ordering of practice</div>
+  <p class="hero-sub">How a class is built: the arc that warms, builds, peaks, and returns the body to rest</p>
+</header>
+
+<main>
+  <section class="section" id="practice">
+    <div class="eyebrow">Begin here</div>
+    <h2 class="s-title">Feel the arc in ten minutes</h2>
+    <p class="lead">Every principle on this page can be felt in a practice short enough to do right now. This miniature class holds the full arc of a longer one.</p>
+    <div class="practice">
+      <div class="label">Practice &middot; a class in miniature</div>
+      <div class="p-title">Warm, build, unwind, rest</div>
+      <ol>
+        <li>Begin on hands and knees. Move through four slow rounds of Cat and Cow, letting the breath set the pace. This is the warming.</li>
+        <li>Tuck the toes and lift the hips to Downward-Facing Dog. Pedal the feet, then walk them forward and roll up to standing.</li>
+        <li>Step wide and open into Warrior II on the right side for five breaths, then the left. This is the building: the body working while fully warm.</li>
+        <li>From the wide stance, hinge into a wide-legged forward fold for five breaths. The fold is the counterpose: the effort of the standing work released.</li>
+        <li>Come down to the back, hug the knees, and take a supine twist to each side. The spine unwinds in both directions.</li>
+        <li>Rest in Savasana for at least two minutes. The rest is part of the sequence; it is where the practice is absorbed.</li>
+      </ol>
+    </div>
+    <p>Notice what the order did. The spine moved before it was loaded. The strongest work came in the middle, when the body was most prepared. Everything that was gathered was then released, and the practice ended below the level of effort where it began. That shape is the whole craft in one paragraph.</p>
+  </section>
+
+  <section class="section" id="arc">
+    <div class="eyebrow">The shape of a class</div>
+    <h2 class="s-title">The arc: warm, build, peak, descend, rest</h2>
+    <p class="lead">A well-built class has the shape of a wave. Mark Stephens, whose <em>Yoga Sequencing</em> is the standard modern text, contrasts three ways classes get built: pure improvisation, fixed set sequences like Ashtanga's, and template teaching. Each has costs, and his answer is the one this page teaches: intentional sequencing, where anatomy, energetics, and the students in the room decide the order.</p>
+    <div class="flow">
+      <div class="f"><div class="fn">Centering</div><div class="fe">arrive &amp; breathe</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Warming</div><div class="fe">spine &amp; joints</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Building</div><div class="fe">standing waves</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f" style="border-color:var(--border)"><div class="fn" style="color:var(--ac)">Peak</div><div class="fe">the summit pose</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Descending</div><div class="fe">counterposes</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Cooling</div><div class="fe">folds &amp; twists</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="f"><div class="fn">Savasana</div><div class="fe">integration</div></div>
+    </div>
+    <p>The older name for this intelligence is <em>vinyasa krama</em>. In T.K.V. Desikachar&rsquo;s <em>The Heart of Yoga</em>, krama is the ordered step: every practice is built toward a chosen goal, each pose prepares the one after it, and the practice ends in a state the practitioner can carry out of the room. Sequencing in this older sense includes the descent. A class that climbs to its hardest pose and simply stops has told half a story; the poses that unwind the peak are as much a part of the krama as the ones that built it.</p>
+    <p>Amber Burke&rsquo;s survey of alternative structures is a useful reminder that the peak-pose wave is one shape among several: poses can be repeated with different entrances, a path can be retraced in reverse, floor and standing work can alternate. The arc is the grammar to learn first, and like any grammar it can be played with once it is in the body.</p>
+    <div class="src-label">Sources &amp; further reading</div>
+    <div class="sources">
+      <a class="source-link" href="https://www.northatlanticbooks.com/shop/yoga-sequencing/" target="_blank" rel="noopener">Stephens, Yoga Sequencing &middot; North Atlantic Books</a>
+      <a class="source-link" href="https://www.northatlanticbooks.com/blog/principles-of-yoga-sequencing/" target="_blank" rel="noopener">Stephens: principles of yoga sequencing (excerpt)</a>
+      <a class="source-link" href="https://www.innertraditions.com/books/the-heart-of-yoga" target="_blank" rel="noopener">Desikachar, The Heart of Yoga &middot; Inner Traditions</a>
+      <a class="source-link" href="https://yogainternational.com/article/view/7-ways-to-sequence-a-yoga-practice/" target="_blank" rel="noopener">Burke: 7 ways to sequence a practice &middot; Yoga International</a>
+    </div>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="eyebrow">How I sequence</div>
+    <h2 class="s-title">Five rules I hold every sequence to</h2>
+    <p class="lead">These rules came out of building and correcting real class plans, including the two sequences further down this page. Each one exists because I broke it once and felt the difference.</p>
+    <div class="rules">
+      <div class="rule">
+        <h4>1. Every transition is written, never assumed</h4>
+        <p>A sequence is a list of journeys, and the journeys deserve rows of their own. When two poses sit in different places, one standing and one supine, the steps between them belong in the plan. A transition left unwritten is a decision left to the most tired moment of the class.</p>
+      </div>
+      <div class="rule">
+        <h4>2. The body must be able to get there</h4>
+        <p>Before a sequence is final I trace the body through every consecutive pair of poses and ask whether the movement is physically possible. Lizard Pose into Happy Baby fails that test; there is no path to the back of the body without intermediate steps. If the trace stumbles, the sequence gains a pose rather than the student gaining an injury.</p>
+      </div>
+      <div class="rule">
+        <h4>3. Vinyasa is the connective tissue</h4>
+        <p>Between pose families, and especially between standing and floor work, a vinyasa (Plank, Low Plank, Upward-Facing Dog, Downward-Facing Dog) carries the body across the gap, resets the breath, and keeps the heat even. It is written into the sequence as its own labeled step.</p>
+      </div>
+      <div class="rule">
+        <h4>4. Every deep action meets its counter</h4>
+        <p>A deep backbend is followed by gentle flexion, a long twist by symmetry, an arm balance by release of the wrists and shoulders. The counterposes for every pose in the library are mapped in the <a class="inl" href="yoga-family-tree.html">family tree</a>&rsquo;s anatomy data, and the descent of a class is built from them.</p>
+      </div>
+      <div class="rule">
+        <h4>5. A mandala physically rotates the mat</h4>
+        <p>A mandala sequence is a journey in space, and the body travels it: facing the front of the mat, turning to one side, facing the back, and returning through the other side, a full circle. Both halves must be completed for the circle to close. The rotation is the meaning; the practice moves the way life does, in cycles that return.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="peak">
+    <div class="eyebrow">The summit and the way down</div>
+    <h2 class="s-title">Building toward a peak</h2>
+    <p class="lead">A peak-pose class reads its summit backward. Choose the peak, name what it demands, and the first two thirds of the class assemble those demands one at a time.</p>
+    <p>Firefly Pose asks for open hamstrings, deep hip flexion, and shoulder-pressing strength, so a class built toward it opens the hamstrings in waves, floor first and standing second, and rehearses the shoulder work in stages long before the full pose appears. A forearm balance asks for shoulder stability and a fearless relationship with being upside down, so dolphin and forearm plank appear in the opening minutes, quietly rehearsing the peak while the body still thinks it is warming up. By the time the summit arrives, nothing about it is new; the class has already practiced every piece of it separately.</p>
+    <p>The way down mirrors the way up. Whatever the peak gathered, the descent releases: folds after deep hip work, gentle flexion after backbends, wrist release after arm balances, symmetry after asymmetry. The class ends in Savasana below the level of effort where it began, and the nervous system files the whole journey as one completed shape.</p>
+  </section>
+
+  <section class="section" id="examples">
+    <div class="eyebrow">Worked examples</div>
+    <h2 class="s-title">Two sequences, phase by phase</h2>
+    <p class="lead">These are two complete class plans I built and teach from, shown as their phases. The peak phases are marked in gold. Read each one against the arc and the five rules: the waves that prepare, the vinyasas that connect, the mandala that rotates, and the descent that unwinds what the peaks gathered.</p>
+<div class="seq"><div class="seq-title">Firefly, Flying Lizard &amp;amp; Compass</div><p class="seq-note">A 72-pose peak class with three arm-balance and deep-hip peaks. The hips and hamstrings are opened in waves, floor first and standing second, before any arm balance is attempted, and the compass work waits until the body is fully warm.</p>
+<div class="seq-phase"><div class="ph-name">Opening / Floor Warm-Up<span class="ph-count">3 poses</span></div><div class="ph-chain">Cat / Cow <span class="arr">&rarr;</span> Puppy Pose <span class="arr">&rarr;</span> Downward-Facing Dog</div></div>
+<div class="seq-phase"><div class="ph-name">Hip Opening Wave, Floor<span class="ph-count">9 poses</span></div><div class="ph-chain">Deep Squat (Garland Pose) <span class="arr">&rarr;</span> Lizard Pose, Right <span class="arr">&rarr;</span> Lizard Pose Twist, Right <span class="arr">&rarr;</span> Lizard Pose, Left <span class="arr">&rarr;</span> Lizard Pose Twist, Left <span class="arr">&rarr;</span> Crescent Low Lunge, Left <span class="arr">&rarr;</span> Half Splits, Left <span class="arr">&rarr;</span> Flowing Low Squat, Left Knee Bent, Right Leg Long <span class="arr">&rarr;</span> Frame Back Foot, Transition to Vinyasa</div></div>
+<div class="seq-phase"><div class="ph-name">Transition<span class="ph-count">4 poses</span></div><div class="ph-chain">Vinyasa, Right to Left Side <span class="arr">&rarr;</span> Vinyasa to Mountain <span class="arr">&rarr;</span> Vinyasa to Three-Legged Dog <span class="arr">&rarr;</span> Optional Vinyasa to Three-Legged Dog</div></div>
+<div class="seq-phase"><div class="ph-name">Hamstring + Standing Opening Wave<span class="ph-count">11 poses</span></div><div class="ph-chain">Mountain Pose <span class="arr">&rarr;</span> Standing Forward Fold <span class="arr">&rarr;</span> Wide-Legged Standing Forward Fold <span class="arr">&rarr;</span> Goddess Pose <span class="arr">&rarr;</span> Goddess Pose, Lean Right <span class="arr">&rarr;</span> Goddess Pose, Lean Left <span class="arr">&rarr;</span> Goddess Pose, Return to Centre <span class="arr">&rarr;</span> Star Pose <span class="arr">&rarr;</span> Pyramid Pose, Left (Facing Back of Mat) <span class="arr">&rarr;</span> Goddess Pose, Between Pyramids <span class="arr">&rarr;</span> Pyramid Pose, Right (Facing Front of Mat)</div></div>
+<div class="seq-phase"><div class="ph-name">Standing Wave, Bird Of Paradise<span class="ph-count">4 poses</span></div><div class="ph-chain">Warrior 2, Right <span class="arr">&rarr;</span> Extended Side Angle, Right <span class="arr">&rarr;</span> Bound Side Angle, Right <span class="arr">&rarr;</span> Bird of Paradise, Right</div></div>
+<div class="seq-phase"><div class="ph-name">Core + Shoulder Stability Wave<span class="ph-count">12 poses</span></div><div class="ph-chain">Plank Pose <span class="arr">&rarr;</span> Side Plank, Right <span class="arr">&rarr;</span> Side Plank, Left <span class="arr">&rarr;</span> Forearm Plank <span class="arr">&rarr;</span> Dolphin Pose <span class="arr">&rarr;</span> Sphinx Pose <span class="arr">&rarr;</span> Fluid Cobra <span class="arr">&rarr;</span> Downward-Facing Dog <span class="arr">&rarr;</span> Deep Squat, Entry for Crow Pose <span class="arr">&rarr;</span> Crow Pose <span class="arr">&rarr;</span> Deep Squat, Transition to Shoulder Pressing Pose <span class="arr">&rarr;</span> Shoulder Pressing Pose</div></div>
+<div class="seq-phase peak"><div class="ph-name">Arm Balance Peaks, Firefly + Side Crow<span class="ph-count">7 poses</span></div><div class="ph-chain">Firefly Pose <span class="arr">&rarr;</span> Child&#x27;s Pose, Rest After Firefly <span class="arr">&rarr;</span> Goddess Pose, Entry for Side Crow <span class="arr">&rarr;</span> Side Crow, Right <span class="arr">&rarr;</span> Happy Baby, After Side Crow Right <span class="arr">&rarr;</span> Side Crow, Left <span class="arr">&rarr;</span> Happy Baby, After Side Crow Left</div></div>
+<div class="seq-phase peak"><div class="ph-name">Flying Lizard Peaks<span class="ph-count">2 poses</span></div><div class="ph-chain">Lizard Pose, Right (Flying Lizard Setup) <span class="arr">&rarr;</span> Flying Lizard, Right</div></div>
+<div class="seq-phase"><div class="ph-name">Seated Hip + Hamstring Wave, Compass<span class="ph-count">12 poses</span></div><div class="ph-chain">Child&#x27;s Pose, Transition to Seated <span class="arr">&rarr;</span> Butterfly Pose <span class="arr">&rarr;</span> Wide-Legged Seated Forward Fold <span class="arr">&rarr;</span> Head-to-Knee Pose, Right <span class="arr">&rarr;</span> Head-to-Knee Pose, Left <span class="arr">&rarr;</span> Heron Pose, Right <span class="arr">&rarr;</span> Heron Pose, Left <span class="arr">&rarr;</span> Seated Forward Fold <span class="arr">&rarr;</span> Revolved Head-to-Knee Pose, Right <span class="arr">&rarr;</span> Revolved Head-to-Knee Pose, Left <span class="arr">&rarr;</span> Seated Compass Pose, Right <span class="arr">&rarr;</span> Seated Compass Pose, Left</div></div>
+<div class="seq-phase"><div class="ph-name">Cool Down<span class="ph-count">6 poses</span></div><div class="ph-chain">Reclined Figure Four, Right <span class="arr">&rarr;</span> Reclined Figure Four, Left <span class="arr">&rarr;</span> Reclined Twist, Right <span class="arr">&rarr;</span> Reclined Twist, Left <span class="arr">&rarr;</span> Happy Baby <span class="arr">&rarr;</span> Savasana</div></div>
+</div>
+
+<div class="seq"><div class="seq-title">Forearm Balance &amp;amp; Wheel</div><p class="seq-note">A 106-pose class pairing an inversion peak with a backbend peak. Wrist and shoulder preparation begins in the first minutes, a full mandala rotates the practitioner around the mat, and the wheel wave arrives only after the shoulders have opened twice.</p>
+<div class="seq-phase"><div class="ph-name">Opening / Floor Warm-Up<span class="ph-count">9 poses</span></div><div class="ph-chain">Cat / Cow with Wrist Circles <span class="arr">&rarr;</span> Puppy Pose <span class="arr">&rarr;</span> Sphinx <span class="arr">&rarr;</span> Forearm Plank <span class="arr">&rarr;</span> Dolphin Pose <span class="arr">&rarr;</span> Cat / Cow (Second Round) <span class="arr">&rarr;</span> Downward Facing Dog <span class="arr">&rarr;</span> Forward Fold, Hang Loose <span class="arr">&rarr;</span> Mountain Pose</div></div>
+<div class="seq-phase"><div class="ph-name">Warm-Up, Standing<span class="ph-count">2 poses</span></div><div class="ph-chain">Standing Side Bend, Right <span class="arr">&rarr;</span> Standing Side Bend, Left</div></div>
+<div class="seq-phase"><div class="ph-name">Sun Salutations<span class="ph-count">8 poses</span></div><div class="ph-chain">Mountain Pose <span class="arr">&rarr;</span> Forward Fold <span class="arr">&rarr;</span> Half Lift / Flat Back <span class="arr">&rarr;</span> Plank Pose <span class="arr">&rarr;</span> Forearm Plank (Sun Salutation) <span class="arr">&rarr;</span> Sphinx <span class="arr">&rarr;</span> Cobra <span class="arr">&rarr;</span> Downward Facing Dog</div></div>
+<div class="seq-phase"><div class="ph-name">Kriya Wave<span class="ph-count">15 poses</span></div><div class="ph-chain">Mountain Pose <span class="arr">&rarr;</span> Standing Side Bend, Right (Kriya) <span class="arr">&rarr;</span> Standing Side Bend, Left (Kriya) <span class="arr">&rarr;</span> Chair Pose with Garudasana Arms <span class="arr">&rarr;</span> Mountain Pose (Release from Chair) <span class="arr">&rarr;</span> Forward Fold <span class="arr">&rarr;</span> Plank Pose <span class="arr">&rarr;</span> Chaturanga Dandasana <span class="arr">&rarr;</span> Upward Facing Dog <span class="arr">&rarr;</span> Downward Facing Dog <span class="arr">&rarr;</span> Mountain Pose <span class="arr">&rarr;</span> Standing Side Bend, Right (2nd Sun Sal) <span class="arr">&rarr;</span> Standing Side Bend, Left (2nd Sun Sal) <span class="arr">&rarr;</span> Chair Pose with Garudasana Arms, Second Side <span class="arr">&rarr;</span> Mountain Pose (End of Kriya)</div></div>
+<div class="seq-phase"><div class="ph-name">Mandala Wave 1, Floor<span class="ph-count">15 poses</span></div><div class="ph-chain">Mountain Pose <span class="arr">&rarr;</span> Forward Fold <span class="arr">&rarr;</span> Plank Pose <span class="arr">&rarr;</span> Forearm Plank (Mandala Entry) <span class="arr">&rarr;</span> Dolphin Pose <span class="arr">&rarr;</span> Side Forearm Plank, Right <span class="arr">&rarr;</span> Forearm Wild Thing, Right <span class="arr">&rarr;</span> Forearm Plank (Return, Centre) <span class="arr">&rarr;</span> Side Forearm Plank, Left <span class="arr">&rarr;</span> Forearm Wild Thing, Left <span class="arr">&rarr;</span> Forearm Plank (Return before Sphinx) <span class="arr">&rarr;</span> Sphinx <span class="arr">&rarr;</span> Fluid Cobra <span class="arr">&rarr;</span> Downward Facing Dog <span class="arr">&rarr;</span> Three-Legged Dog, Right (Standing Splits Prep)</div></div>
+<div class="seq-phase"><div class="ph-name">Mandala Wave 2, Standing (Right Side)<span class="ph-count">16 poses</span></div><div class="ph-chain">Warrior 1 with Bind, Right <span class="arr">&rarr;</span> Open Arms / Chest Open Warrior 1, Right <span class="arr">&rarr;</span> Warrior 1 with Bind, Right (Second) <span class="arr">&rarr;</span> Humble Warrior, Right <span class="arr">&rarr;</span> Warrior 3 with Twisted Arms, Right <span class="arr">&rarr;</span> Standing Splits, Right <span class="arr">&rarr;</span> Tree Pose, Right <span class="arr">&rarr;</span> Knee in Front Balance, Right <span class="arr">&rarr;</span> Extend Leg, Right <span class="arr">&rarr;</span> Leg Goes to Side, Right <span class="arr">&rarr;</span> Release Leg to Back, Right <span class="arr">&rarr;</span> Dancer Pose 1, Right <span class="arr">&rarr;</span> Dancer Pose 2, Right <span class="arr">&rarr;</span> Forward Fold (After Dancer Right) <span class="arr">&rarr;</span> Halfway Lift (After Dancer Right) <span class="arr">&rarr;</span> Plank → Chaturanga → Down Dog</div></div>
+<div class="seq-phase"><div class="ph-name">Mandala Wave 2, Standing (Left Side)<span class="ph-count">13 poses</span></div><div class="ph-chain">Three-Legged Dog, Left (Standing Splits Prep) <span class="arr">&rarr;</span> Warrior 1 with Bind, Left <span class="arr">&rarr;</span> Open Arms Warrior 1, Left <span class="arr">&rarr;</span> Warrior 1 with Bind, Left (Second) <span class="arr">&rarr;</span> Humble Warrior, Left <span class="arr">&rarr;</span> Warrior 3 with Twisted Arms, Left <span class="arr">&rarr;</span> Standing Splits, Left <span class="arr">&rarr;</span> Tree Pose, Left <span class="arr">&rarr;</span> Knee in Front → Extend Leg → Leg to Side → Release to Back, Left <span class="arr">&rarr;</span> Dancer Pose 1, Left <span class="arr">&rarr;</span> Dancer Pose 2, Left <span class="arr">&rarr;</span> Forward Fold → Halfway Lift → Plank → Chaturanga → Down Dog <span class="arr">&rarr;</span> Child&#x27;s Pose / Puppy Dog</div></div>
+<div class="seq-phase peak"><div class="ph-name">Forearm Balance Peaks<span class="ph-count">6 poses</span></div><div class="ph-chain">Forearm Plank (Inversion Prep) <span class="arr">&rarr;</span> Dolphin Pose (Inversion Prep) <span class="arr">&rarr;</span> One-Legged Dolphin, Right (Kick-Up Prep) <span class="arr">&rarr;</span> Forearm Balance with Block, Right <span class="arr">&rarr;</span> Child&#x27;s Pose (Between Forearm Balance Sides) <span class="arr">&rarr;</span> Forearm Plank → Dolphin → One-Legged Dolphin Left → Forearm Balance Left</div></div>
+<div class="seq-phase"><div class="ph-name">Wheel Wave<span class="ph-count">17 poses</span></div><div class="ph-chain">Child&#x27;s Pose (Before Wheel Wave) <span class="arr">&rarr;</span> Hero Pose <span class="arr">&rarr;</span> Reclined Hero Pose <span class="arr">&rarr;</span> Straight Back Lean with Circling Arms <span class="arr">&rarr;</span> Camel Pose, Round 1 <span class="arr">&rarr;</span> Camel Pose, Round 2 (Deeper) <span class="arr">&rarr;</span> Rabbit Pose, Round 1 <span class="arr">&rarr;</span> Half Headstand on Forearms (Prep) <span class="arr">&rarr;</span> Malasana (Garland Pose) <span class="arr">&rarr;</span> Simple Seat (Sukhasana), Transition <span class="arr">&rarr;</span> Seated Forward Bend <span class="arr">&rarr;</span> Apanasana (Hug Legs In) <span class="arr">&rarr;</span> Bridge Pose, Round 1 <span class="arr">&rarr;</span> Bridge Pose, Round 2 (More Intense) <span class="arr">&rarr;</span> Wheel Pose <span class="arr">&rarr;</span> Transition, Wheel to Forearm Wheel <span class="arr">&rarr;</span> Forearm Wheel</div></div>
+<div class="seq-phase"><div class="ph-name">Cool Down<span class="ph-count">5 poses</span></div><div class="ph-chain">Apanasana (Hug on Back) <span class="arr">&rarr;</span> Side Curl / Reclined Twist, Right <span class="arr">&rarr;</span> Side Curl / Reclined Twist, Left <span class="arr">&rarr;</span> Happy Baby <span class="arr">&rarr;</span> Savasana</div></div>
+</div>
+    <p>Both plans exist as full spreadsheets with anatomy, chakra notes, per-pose instructions, and every transition written out; the phase view above is the architecture those details hang on.</p>
+  </section>
+</main>
+
+<div class="footer">
+  <span>Continue in the Asana section:</span>
+  <a href="yoga-family-tree.html">&larr; The pose family tree</a>
+  <a href="yoga-muscle-diagram.html">The muscle diagram</a>
+  <a href="index.html">The eight limbs</a>
+</div>
+
+<section id="lp-dana" style="position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(240,198,116,.06);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(240,198,116,.5);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
+
+<section class="lp-feedback" id="lp-feedback">
+  <div class="lp-feedback-inner">
+    <h2>Questions, corrections, requests</h2>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a sequence is taught differently in your lineage, or there is a transition or peak you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div class="lp-fb-row">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
+        <select id="lp-fb-type">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
+      <button type="submit" class="lp-fb-send">Send</button>
+      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var sub='The Living Practice: '+ty+' ('+document.title+')';
+  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
+  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

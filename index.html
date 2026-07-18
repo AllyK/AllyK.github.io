@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>The Living Practice — Ally Krupar</title>
+<title>The Living Practice</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -12,7 +12,10 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
 .global-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem 1.2rem;background:rgba(5,1,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
 .global-nav a{font-size:11.5px;color:rgba(240,230,211,.45);text-decoration:none;padding:4px 12px;border-radius:16px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
 .global-nav a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.15)}
-.title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#FF5555,#FF8C00,#FFD700,#00E676,#40C4FF,#CE93D8,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:0.4rem;margin-top:1rem}
+/* line-height needs headroom for the descender on "Living": with
+   background-clip:text the glyph is clipped to the line box, so a tight
+   line-height shears the tail off the g. */
+.title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#FF5555,#FF8C00,#FFD700,#00E676,#40C4FF,#CE93D8,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.32;padding-bottom:.1em;margin-bottom:0.4rem;margin-top:1rem}
 .subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:#9a8878;letter-spacing:0.22em;font-size:0.95rem;margin-bottom:1.8rem}
 .intro{max-width:600px;font-size:0.92rem;line-height:1.75;color:#a89880;margin-bottom:2.4rem}
 .intro em{color:#c9bfae;font-style:italic}
@@ -56,19 +59,22 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
   <a href="yama.html">Yama</a>
   <a href="yoga-family-tree.html">Asana · Family Tree</a>
   <a href="yoga-muscle-diagram.html">Muscle Diagram</a>
-  <a href="cosmic-banyan.html">Cosmic Banyan</a>
+  <a href="cosmic-banyan.html">Under the Banyan Tree</a>
   <a href="pranayama.html">Breath</a>
+  <a href="pratyahara.html">Introspect</a>
   <a href="meditation.html">Meditation</a>
   <a href="the-divine.html">The Divine</a>
   <a href="dharana.html">Dharana</a>
+  <a href="samadhi.html">Alchemy</a>
   <a href="ayurveda.html">Ayurveda</a>
+  <a href="glossary.html">Glossary</a>
   <a href="about.html">About</a>
   <a href="support.html">Support</a>
 </nav>
 
 <div class="title">The Living Practice</div>
 <div class="subtitle">Yoga: anatomy, philosophy &amp; rooted teachings</div>
-<p class="intro">The path of yoga has eight limbs of one living body that grow together. Each is a doorway into the practice. Begin anywhere.</p>
+<p class="intro">The path of yoga has eight limbs of one living practice that grow together. Begin anywhere.</p>
 
 <div class="ladder-label">The Eight Limbs</div>
 <div class="limbs">
@@ -81,31 +87,31 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
   <a class="limb" href="the-divine.html" style="--ac:#FFA94D;--gl:rgba(255,140,0,.14)">
     <span class="lname">Surrender</span>
     <span class="len">Niyama</span>
-    <span class="ldesc">The discipline turns inward, ending in surrender to the divine. Here we ask what the divine means: oneness, and reciprocity among all things.</span>
-    <span class="lgo">Enter The Divine →<span class="lsub">The divine as oneness &amp; reciprocity</span></span>
+    <span class="ldesc">The discipline turns inward, ending in surrender to the divine.</span>
+    <span class="lgo">Enter The Divine →<span class="lsub">Interpretations</span></span>
   </a>
   <a class="limb" href="yoga-family-tree.html" style="--ac:#FFD700;--gl:rgba(255,215,0,.13)">
     <span class="lname">Postures</span>
     <span class="len">Asana</span>
-    <span class="ldesc">The body's practice: yoga pose family trees mapped to the chakras, and the muscles that move within it.</span>
+    <span class="ldesc">The body's practice: yoga pose families mapped to the chakras, and the muscles that move within them.</span>
     <span class="lgo">Enter Asana: the Family Tree →<span class="lsub">Includes the Muscle Diagram</span></span>
   </a>
   <a class="limb" href="pranayama.html" style="--ac:#00E676;--gl:rgba(0,230,118,.12)">
     <span class="lname">Breath</span>
     <span class="len">Pranayama</span>
-    <span class="ldesc">The life-force is the breath: a searchable guide to yogic breathing techniques, with instructions, hand positions, and adaptations.</span>
+    <span class="ldesc">Breath is the life-force: a searchable guide to yogic breathing techniques, with instructions, hand positions, and adaptations.</span>
     <span class="lgo">Enter the Breath →<span class="lsub">Pranayama techniques</span></span>
   </a>
-  <a class="limb" href="meditation.html#sec-reaches" style="--ac:#40C4FF;--gl:rgba(64,196,255,.13)">
+  <a class="limb" href="pratyahara.html" style="--ac:#40C4FF;--gl:rgba(64,196,255,.13)">
     <span class="lname">Introspect</span>
     <span class="len">Pratyahara</span>
-    <span class="ldesc">Drawing the senses inward, away from the outer world, to find the threshold where meditation begins.</span>
-    <span class="lgo">Meditation →<span class="lsub">The four reaches, the inward turn</span></span>
+    <span class="ldesc">Drawing the senses inward to find the threshold where meditation begins.</span>
+    <span class="lgo">Enter Introspect →<span class="lsub">The four reaches, the inward turn</span></span>
   </a>
   <a class="limb" href="dharana.html" style="--ac:#7FA8FF;--gl:rgba(110,150,255,.14)">
     <span class="lname">Concentration</span>
     <span class="len">Dharana</span>
-    <span class="ldesc">Gathering the whole mind onto a single point: a flame, a gaze, a breath, a sound. The art of focus.</span>
+    <span class="ldesc">Gathering the whole mind onto a single point. The art of focus.</span>
     <span class="lgo">Enter Dharana →<span class="lsub">The practices of one-pointed focus</span></span>
   </a>
   <a class="limb" href="meditation.html#sec-types" style="--ac:#CE93D8;--gl:rgba(206,147,216,.14)">
@@ -114,24 +120,28 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
     <span class="ldesc">When focus becomes effortless and unbroken, it ripens into meditation. The many doors into stillness.</span>
     <span class="lgo">Meditation →<span class="lsub">Types of meditation</span></span>
   </a>
-  <a class="limb" href="meditation.html#sec-sca" style="--ac:#EA80FC;--gl:rgba(234,128,252,.15)">
+  <a class="limb" href="samadhi.html" style="--ac:#EA80FC;--gl:rgba(234,128,252,.15)">
     <span class="lname">Alchemy</span>
     <span class="len">Samadhi</span>
     <span class="ldesc">The meditator and the world merge. The absolute realm of sat-chit-ananda, eternal being, non-discrimination, awareness, and bliss.</span>
-    <span class="lgo">Meditation →<span class="lsub">Sat-chit-ananda</span></span>
+    <span class="lgo">Enter Alchemy →<span class="lsub">Sat-chit-ananda</span></span>
   </a>
 </div>
 
 <div class="pages-row">
   <a href="yama.html">⚖ Yama: Guiding Principles</a>
   <a href="yoga-family-tree.html">🌿 Asana: Yoga Family Tree</a>
+  <a href="asana-sequencing.html">🌊 Sequencing a Class</a>
   <a href="yoga-muscle-diagram.html">🫀 Muscle Diagram</a>
-  <a href="cosmic-banyan.html">🌳 Cosmic Banyan Tree</a>
+  <a href="cosmic-banyan.html">🌳 Under the Banyan Tree</a>
   <a href="pranayama.html">🌬️ Breath</a>
   <a href="meditation.html">🌌 Meditation</a>
   <a href="the-divine.html">☼ The Divine</a>
+  <a href="pratyahara.html">🐢 Introspect: Pratyahara</a>
   <a href="dharana.html">◉ Dharana</a>
+  <a href="samadhi.html">✨ Alchemy: Samadhi</a>
   <a href="ayurveda.html">🌿 Ayurveda: the sister science</a>
+  <a href="glossary.html">📖 Glossary</a>
   <a href="about.html">✍ About</a>
   <a href="support.html">♡ Support</a>
 </div>
@@ -140,7 +150,7 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.2);border-left:3px solid #FFD700;border-radius:0 12px 12px 0;padding:1rem 1.2rem">
     <div style="flex:1;min-width:230px">
       <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:#FFD700;margin-bottom:.2rem">Dana, the practice of giving</div>
-      <div style="font-size:13px;color:#a89880;line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+      <div style="font-size:13px;color:#a89880;line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
     </div>
     <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(255,215,0,.5);border-radius:20px;background:rgba(255,215,0,.08);color:#FFD700;text-decoration:none">Support this work &rarr;</a>
   </div>
@@ -149,7 +159,7 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
 <section class="lp-feedback" id="lp-feedback">
   <div class="lp-feedback-inner">
     <h2>Questions, corrections, requests</h2>
-    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a story is told differently in your lineage, or there is a pose or topic you would like added, write below. Corrections are welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div class="lp-fb-row">
         <input type="email" id="lp-fb-email" required placeholder="Your email address"/>

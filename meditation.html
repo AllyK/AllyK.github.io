@@ -59,7 +59,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 #hero{position:relative;z-index:1;overflow:hidden;text-align:center;padding:2.6rem 1rem 1.5rem}
 .hero-orbits{position:relative;width:clamp(180px,40vw,260px);height:clamp(180px,40vw,260px);margin:0 auto 1.4rem}
 .hero-orbits svg{width:100%;height:100%;display:block}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.4rem);font-weight:400;letter-spacing:.04em;line-height:1.12;margin-bottom:.4rem;
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.4rem);font-weight:400;letter-spacing:.04em;line-height:1.3;padding-bottom:.08em;margin-bottom:.4rem;
   background:linear-gradient(110deg,#FF9E80 0%,#F0C674 32%,#B794F6 66%,#5AE8C8 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.4vw,1.18rem);color:var(--text-muted);letter-spacing:.1em;max-width:640px;margin:0 auto}
@@ -240,12 +240,15 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <a href="yama.html" class="nav-page">Yama</a>
     <a href="yoga-family-tree.html" class="nav-page">Asana</a>
     <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
-    <a href="cosmic-banyan.html" class="nav-page">Cosmic Banyan Tree</a>
+    <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
     <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page current">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
+    <a href="samadhi.html" class="nav-page">Alchemy</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+    <a href="glossary.html" class="nav-page">Glossary</a>
     <a href="about.html" class="nav-page">About</a>
     <a href="support.html" class="nav-page">Support</a>
   </div>
@@ -253,10 +256,8 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <div class="session-pills">
       <button class="pill active" data-target="sec-practice">Find a Practice</button>
       <button class="pill" data-target="sec-intro">Overview</button>
-      <button class="pill" data-target="sec-reaches">Four Reaches</button>
       <button class="pill" data-target="sec-rivers">Two Rivers</button>
       <button class="pill" data-target="sec-mind">Mind &amp; Cognizer</button>
-      <button class="pill" data-target="sec-sca">Sat-Chit-Ananda</button>
       <button class="pill" data-target="sec-resources">Resources</button>
       <button class="glossary-btn" id="open-glossary">Glossary</button>
     </div>
@@ -322,7 +323,7 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
   <p class="lead">The banyan tree carries much of this tradition's wisdom, picturing inner growth as a trunk rising year by year toward the light. Meditation adds a second image alongside it. Here growth expands in every direction at once, the way the universe expands, with no edge and no center that can be pointed to, each moment of stillness opening more space than the one before.</p>
   <p>The cosmos holds every direction within it. When you sit and the breath grows quiet and the mind settles into ease, you begin to notice this directly. The stillness opens you wider. What seemed a small interior reveals itself as a doorway, and beyond it lies more room than the visible world seems to contain.</p>
-  <p>The tradition gives this expansion a structure, so that we do not get lost in it. It names four reaches that meditation can travel: down into the <em>subconscious</em> where the roots of who we are lie waiting, into the <em>material world</em> where the body sits breathing on the ground, up through the <em>metaphysical</em> where the subtle and the symbolic live, and out into <em>the world beyond</em>, the absolute realm where nothing is relative. This page is a map of those reaches, the breath that carries us between them, and the two great rivers of practice, Vedic and Buddhist, that have charted this territory for thousands of years.</p>
+  <p>The tradition gives this expansion a structure, so that we do not get lost in it. It names four reaches that meditation can travel: down into the <em>subconscious</em> where the roots of who we are lie waiting, into the <em>material world</em> where the body sits breathing on the ground, up through the <em>metaphysical</em> where the subtle and the symbolic live, and out into <em>the world beyond</em>, the absolute realm where nothing is relative. The map of those reaches lives on the <a href="pratyahara.html#sec-reaches" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Introspect page</a>, where the senses first turn inward; their furthest edge has its own page in <a href="samadhi.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Samadhi</a>. This page carries the practices themselves, the breath that moves between the reaches, and the two great rivers, Vedic and Buddhist, that have charted this territory for thousands of years.</p>
   <div class="callout">
     <div class="label">How to read this page</div>
     <p>Words underlined with a dotted line, like <span class="concept-link" data-id="Samadhi">samadhi</span>, open the glossary. Each section ends with the sources it draws on, so you can follow any thread back to its root. Take it slowly. None of this is meant to be finished in one sitting, any more than a practice is.</p>
@@ -340,8 +341,8 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <div class="mtype"><span class="mt-tag">Insight</span><h4>Vipassana</h4><p>Observing sensations with steady equanimity to see directly into the changing, flowing nature of experience.</p><a class="mt-src" href="https://www.dhamma.org/en-US/about/vipassana" target="_blank" rel="noopener">Dhamma.org ↗</a></div>
     <div class="mtype"><span class="mt-tag">Zen</span><h4>Zazen</h4><p>"Just sitting" in upright, alert stillness, attentive to breath and posture, letting each thought arise and pass.</p><a class="mt-src" href="https://www.lionsroar.com/how-to-practice-zazen/" target="_blank" rel="noopener">Lion’s Roar ↗</a></div>
     <div class="mtype"><span class="mt-tag">Yogic rest</span><h4>Yoga Nidra</h4><p>"Yogic sleep": lying down and following guided stages into a deep, conscious relaxation that rests the whole system while awareness stays awake.</p><a class="mt-src" href="https://health.clevelandclinic.org/what-is-yoga-nidra" target="_blank" rel="noopener">Cleveland Clinic ↗</a></div>
-    <div class="mtype"><span class="mt-tag">In motion</span><h4>Walking Meditation</h4><p>Carrying meditative attention into movement, feeling each step and the shifting of weight as the object of awareness.</p><a class="mt-src" href="https://www.mindful.org/how-to-meditate-walking-meditation/" target="_blank" rel="noopener">Mindful.org ↗</a></div>
-    <div class="mtype"><span class="mt-tag">Imagery</span><h4>Visualization</h4><p>Holding an inner image, light at the crown, roots from the seat, a sacred form, to focus and transform the mind. The <a href="#sec-reaches" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">four reaches</a> are a visualization.</p><a class="mt-src" href="https://www.headspace.com/meditation/visualization" target="_blank" rel="noopener">Headspace ↗</a></div>
+    <div class="mtype"><span class="mt-tag">In motion</span><h4>Walking Meditation</h4><p>Carrying meditative attention into movement, feeling each step and the shifting of weight as the object of awareness.</p><a class="mt-src" href="https://www.mindful.org/daily-mindful-walking-practice/" target="_blank" rel="noopener">Mindful.org ↗</a></div>
+    <div class="mtype"><span class="mt-tag">Imagery</span><h4>Visualization</h4><p>Holding an inner image, light at the crown, roots from the seat, a sacred form, to focus and transform the mind. The <a href="pratyahara.html#sec-reaches" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">four reaches</a> are a visualization.</p><a class="mt-src" href="https://www.headspace.com/meditation/visualization" target="_blank" rel="noopener">Headspace ↗</a></div>
     <div class="mtype"><span class="mt-tag">Breath</span><h4>Pranayama</h4><p>Meditation carried by the regulation of breath, of which Ujjayi, the ocean breath above, is one of the most beloved forms.</p><a class="mt-src" href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" target="_blank" rel="noopener">Art of Living ↗</a></div>
     <div class="mtype"><span class="mt-tag">Clinical program</span><h4>MBSR</h4><p>Mindfulness-Based Stress Reduction: the eight-week hospital course built from the body scan, sitting practice, and gentle yoga. The most studied meditation format in medicine; overviews across thousands of patients find reduced depression, anxiety, and stress.</p><a class="mt-src" href="https://doi.org/10.1371/journal.pone.0124344" target="_blank" rel="noopener">Gotink et al. 2015 ↗</a> <a class="mt-src" href="https://www.jstor.org/stable/41613530" target="_blank" rel="noopener">Hölzel et al. 2011 ↗</a></div>
     <div class="mtype"><span class="mt-tag">Effortless attention</span><h4>Nondirective Meditation</h4><p>A sound or the breath repeated without effort while thoughts, images, and memories drift freely in the background. Scholars contrast directive practices, which steer the mind toward a goal, with nondirective ones that let the mind work on its own.</p><a class="mt-src" href="https://www.jstor.org/stable/j.ctvvn7fs.6" target="_blank" rel="noopener">Eifring 2016 ↗</a> <a class="mt-src" href="https://www.jstor.org/stable/j.ctvvn7fs.16" target="_blank" rel="noopener">Holen 2016 ↗</a></div>
@@ -373,48 +374,11 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <a href="https://www.jstor.org/stable/20864282" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Haynes: Meditation and Health, an Annotated Bibliography (2004)</a>
   </div>
 
-<!-- FOUR REACHES -->
+<!-- FOUR REACHES (moved to pratyahara.html) -->
 <section class="section-wrap" id="sec-reaches">
-  <div class="section-header">
-    <div class="section-eyebrow">The map of meditation</div>
-    <h2 class="section-title">Roots, ground, branches, and the world beyond</h2>
-  </div>
-  <p class="lead">There is a meditation almost every practitioner meets sooner or later. You sit, and you imagine roots growing down from the base of your seat, threading into the earth, anchoring you. Then you imagine light rising up the spine and pouring out through the crown of the head, a column of brightness opening into the sky. In that single image, the whole map is drawn. Meditation reaches in both directions at once: down into what is hidden, up into what is vast.</p>
-  <div class="reaches">
-    <figure class="reach-figure">
-      <img src="meditation-map.png" alt="A meditator seated on a wooden deck beneath a radiant mandala sun, golden roots descending into the earth below: the map of meditation reaching from the subconscious roots, up through the material ground and the metaphysical branches, into the universe beyond."/>
-    </figure>
-    <div class="reach-list">
-      <div class="reach-item reach-universe">
-        <div class="rh">The World Beyond</div>
-        <div class="rk">Universe &middot; the absolute</div>
-        <p>The crown opens and the practice expands past the personal entirely, into the absolute realm where nothing is relative. This is the reach of <span class="concept-link" data-id="Samadhi">samadhi</span> and <span class="concept-link" data-id="Sat-Chit-Ananda">sat-chit-ananda</span>.</p>
-      </div>
-      <div class="reach-item reach-branches">
-        <div class="rh">The Metaphysical</div>
-        <div class="rk">Branches &middot; subtle worlds</div>
-        <p>Above the dense body lie the subtle and causal sheaths, the symbolic, energetic, dreaming layers the tradition calls the <span class="concept-link" data-id="Pancha Kosha">koshas</span> and the realms it calls <span class="concept-link" data-id="Loka">lokas</span>. Meditation as the discovery of worlds.</p>
-      </div>
-      <div class="reach-item reach-ground">
-        <div class="rh">The Material World</div>
-        <div class="rk">Ground &middot; the body breathing</div>
-        <p>The seat, the bones, the breath, the present moment. Meditation is also the discovery of <em>this</em> world, seen at last without the haze of distraction. The ground is where the practice finally arrives.</p>
-      </div>
-      <div class="reach-item reach-roots">
-        <div class="rh">The Subconscious</div>
-        <div class="rk">Roots &middot; what lies beneath</div>
-        <p>Roots descend from the seat into the dark and sustaining depths: memory, instinct, the buried patterns that move us before we choose. To meet them in stillness is the beginning of freedom from them.</p>
-      </div>
-    </div>
-  </div>
-  <h3 class="sub-heading">Discovery in two directions</h3>
-  <p>Notice that the same practice does two opposite things. It is a discovery of <em>other</em> worlds, the subtle planes the tradition names <span class="concept-link" data-id="Akasha">akasha</span> and the lokas, what later esoteric traditions called the astral. And it is a discovery of <em>this</em> world, the one already here, the breath and the body and the ordinary afternoon, which we have simply never been still enough to see. The mystic who travels furthest inward and the practitioner who arrives most fully in the present are describing the same journey from two ends.</p>
-  <p>And here the cosmic image returns. The roots reaching down and the light reaching up are only a beginner's compass, a way to orient a mind that still believes in up and down. The further the practice goes, the more those directions dissolve, until what remains is an expansion outward in every direction, the seated body a still point and the awareness around it opening like space without limit. The map is a tree. The territory is a universe.</p>
-  <div class="src-label">Sources &amp; further reading</div>
-  <div class="sources-wrap">
-    <a href="https://www.wisdomlib.org/definition/kosha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Kosha (five sheaths)</a>
-    <a href="https://www.wisdomlib.org/definition/akasha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Akasha</a>
-    <a href="https://www.wisdomlib.org/definition/loka" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Loka</a>
+  <div class="callout">
+    <div class="label">The four reaches have moved</div>
+    <p>The map of meditation, roots, ground, branches, and the world beyond, now lives where the inward turn begins: <a href="pratyahara.html#sec-reaches" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Pratyahara, the Introspect page &rarr;</a></p>
   </div>
 </section>
 
@@ -477,39 +441,11 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
 </section>
 
-<!-- SAT CHIT ANANDA -->
+<!-- SAT CHIT ANANDA (moved to samadhi.html) -->
 <section class="section-wrap" id="sec-sca">
-  <div class="section-header">
-    <div class="section-eyebrow">The world beyond &middot; the absolute realm</div>
-    <h2 class="section-title">Sat-Chit-Ananda: where nothing is relative</h2>
-  </div>
-  <p class="lead">At the furthest reach of the practice, past the roots and the ground and the branches, the tradition points to the absolute realm, the one place where nothing is relative to anything else. It cannot be described, only approached, and the approach is made through three words that are not really three. <em>Sat-chit-ananda</em>: being, consciousness, bliss. The name Vedanta gives to the nature of the absolute itself.</p>
-  <div class="sca">
-    <div class="sca-card"><div class="skt">Sat</div><div class="en">Being &middot; Eternal</div><p>Pure existence, beyond time. Timelessness itself: that which simply <em>is</em>, untouched by beginning or end.</p></div>
-    <div class="sca-card"><div class="skt">Chit</div><div class="en">Consciousness &middot; Awake</div><p>Pure awareness, fully conscious of all things and all beings. The light by which anything is known at all.</p></div>
-    <div class="sca-card"><div class="skt">Ananda</div><div class="en">Bliss &middot; Ecstasy</div><p>Boundless joy, bliss, euphoria. The very texture of reality when nothing obstructs it.</p></div>
-  </div>
-  <p>This is what the tradition means by enlightenment, <em>moksha</em>, liberation: a realm entered, in which eternal being, total awareness, and unbroken bliss are revealed to be one single thing, your own deepest nature, never absent, only overlooked. In the map of the four reaches, this is the universe at the top of the diagram and the depth at the bottom meeting and turning out to be the same place.</p>
   <div class="callout">
-    <div class="label">A bridge across traditions</div>
-    <p>Many who come to this practice from a Christian background find a familiar shape here. The absolute realm of sat-chit-ananda, eternal, all-knowing, and full of bliss, rhymes with what some Christian mystics have meant by heaven or by union with God: not a place reached after death so much as a reality always present, glimpsed when the veil thins. The vocabulary differs and the theologies are not identical. But the testimony of those who have touched it, in either language, is remarkably consistent: timeless, radiant, and at peace.</p>
-  </div>
-  <p>It is worth saying plainly that this realm is already and eternally the case, waiting only to be uncovered. The waves of the breath, the ethics of the yamas, the gathering of the mind: each one clears the obstructions to it. The work of meditation is to stop standing in its own light, so what was always present can shine through. And if a lifetime of practice does not arrive there, the tradition offers a quiet reassurance, told as a story between Arjuna and Krishna, that no step taken toward it is ever lost.</p>
-  <div class="callout" style="border-left-color:var(--violet)">
-    <div class="label" style="color:var(--violet)">Continue the thread</div>
-    <p>That story, of what happens to the meditator who runs out of life before reaching the world beyond, lives on the Cosmic Banyan page. <a href="cosmic-banyan.html#section-s7" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Read Arjuna's question and Krishna's answer &rarr;</a></p>
-  </div>
-  <div class="src-label">Sources &amp; further reading</div>
-  <div class="sources-wrap">
-    <a href="https://www.yogapedia.com/definition/5838/sat-chit-ananda" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yogapedia: Sat-Chit-Ananda</a>
-    <a href="https://www.wisdomlib.org/concept/sat-chit-ananda" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Sat-chit-ananda</a>
-    <a href="https://hridaya-yoga.com/knowledge/concepts/sat-chit-ananda-pure-existence-awareness-bliss/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Hridaya Yoga: Sat-Chit-Ananda</a>
-  </div>
-  <div class="questions-list">
-    <div class="q-item"><span class="q-num">1.</span><span class="q-text">When you picture your own growth, do you see a tree climbing or a universe widening? What changes in the practice when you trade one image for the other?</span></div>
-    <div class="q-item"><span class="q-num">2.</span><span class="q-text">In the ocean breath, the exhale is the crash, the letting go. What in your life are you still only inhaling, gathering and holding, never quite allowing to break?</span></div>
-    <div class="q-item"><span class="q-num">3.</span><span class="q-text">The Vedic path seeks a Self to rest in; the Buddhist path releases the very idea of one. Sitting quietly right now, which feels truer to your own experience, and can you hold the question without rushing to an answer?</span></div>
-    <div class="q-item"><span class="q-num">4.</span><span class="q-text">If sat-chit-ananda is already present and only obscured, what is the obstruction you most often stand in the light of?</span></div>
+    <div class="label">Sat-Chit-Ananda has moved</div>
+    <p>The absolute realm, samadhi, and sat-chit-ananda now have a page of their own: <a href="samadhi.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Samadhi, the alchemy of absorption &rarr;</a></p>
   </div>
 </section>
 
@@ -529,7 +465,7 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     <a href="pranayama.html" class="source-link">The Breath: pranayama techniques</a>
     <a href="dharana.html" class="source-link">Dharana: the practice of focus</a>
     <a href="the-divine.html" class="source-link">The Divine: refuge, oneness, and reciprocity</a>
-    <a href="cosmic-banyan.html" class="source-link">The stories under the Cosmic Banyan</a>
+    <a href="cosmic-banyan.html" class="source-link">The stories, under the banyan tree</a>
   </div>
 </section>
 </main>
@@ -547,7 +483,7 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 <!-- FOOTER -->
 <div class="footer-bridge">
   <span class="footer-bridge-label">Continue the journey:</span>
-  <a href="cosmic-banyan.html" class="bridge-link"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12c0-3 2-5 5-5M12 12c0-3-2-5-5-5M12 12c0-2 1.5-4 4-4M12 12c0-2-1.5-4-4-4"/></svg>Cosmic Banyan Tree</a>
+  <a href="cosmic-banyan.html" class="bridge-link"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12c0-3 2-5 5-5M12 12c0-3-2-5-5-5M12 12c0-2 1.5-4 4-4M12 12c0-2-1.5-4-4-4"/></svg>Under the Banyan Tree</a>
   <a href="yoga-family-tree.html" class="bridge-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><line x1="9.5" y1="13.5" x2="6" y2="13"/><line x1="14.5" y1="13.5" x2="18" y2="13"/></svg>Yoga family tree</a>
   <a href="index.html" class="bridge-link"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Hub</a>
 </div>
@@ -595,7 +531,7 @@ const GLOSSARY = [
    def:'Being, consciousness, bliss: the threefold nature of the absolute in Vedanta. Sat is eternal existence beyond time; chit is awareness fully conscious of all; ananda is boundless joy. This is enlightenment, the world beyond.'},
   {term:'Moksha', skt:'moksha', url:'https://www.wisdomlib.org/definition/moksha',
    def:'Liberation; release from the cycle of suffering and rebirth into the realization of one’s true nature. The fourth and final aim of human life.'},
-  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/buddhism/buddhanature/',
+  {term:'Buddha-nature', skt:'tathagatagarbha', url:'https://www.lionsroar.com/why-buddhanature-matters/',
    def:'The Mahayana teaching that the potential for full awakening is possessed equally by all beings, covered over like the sun behind clouds. Everyone, without exception, can become a Buddha.'},
   {term:'Bodhisattva', skt:'bodhisattva', url:'https://www.lionsroar.com/the-bodhisattva-vow/',
    def:'One who vows to attain full awakening for the sake of all beings, and to keep returning across lifetimes until every being is free. The bodhisattva vow extends into future lives.'},
@@ -711,7 +647,7 @@ const MED_PRACTICES = [
    links:[['Cleveland Clinic','https://health.clevelandclinic.org/what-is-yoga-nidra']]},
   {n:'Walking Meditation', type:['Movement'], lin:['Zen'],
    d:'Carrying meditative attention into movement, feeling each step and the shifting of weight as the object of awareness.',
-   links:[['Mindful.org','https://www.mindful.org/how-to-meditate-walking-meditation/'],['Plum Village','https://plumvillage.org/mindfulness/mindful-walking']]},
+   links:[['Mindful.org','https://www.mindful.org/daily-mindful-walking-practice/'],['Plum Village','https://plumvillage.org/mindfulness/mindful-walking']]},
   {n:'Visualization', type:['Visual'], lin:['Cross-tradition'],
    d:'Holding an inner image, light at the crown, roots from the seat, a sacred form, to focus and transform the mind. The four reaches below are a visualization.',
    links:[['Headspace','https://www.headspace.com/meditation/visualization']]},
@@ -759,7 +695,7 @@ const MED_PRACTICES = [
    links:[['Anapanasati Sutta (Access to Insight)','https://www.accesstoinsight.org/tipitaka/mn/mn.118.than.html'],['Brahm, Mindfulness, Bliss, and Beyond · publisher','https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/']]},
   {n:'Jhana (Absorption)', type:['Focus'], lin:['Theravada'],
    d:'The deep absorptions that arise when concentration becomes effortless and joy takes over the work of holding attention. Ajahn Brahm treats them as the natural fruit of letting go rather than a technique to be forced.',
-   links:[['Brahm, Mindfulness, Bliss, and Beyond · publisher','https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/'],['Access to Insight: Jhana','https://www.accesstoinsight.org/ptf/dhamma/sacca/sacca4/samma-samadhi/jhanas.html']]},
+   links:[['Brahm, Mindfulness, Bliss, and Beyond · publisher','https://wisdomexperience.org/product/mindfulness-bliss-and-beyond/'],['Access to Insight: Jhana','https://www.accesstoinsight.org/ptf/dhamma/sacca/sacca4/samma-samadhi/index.html']]},
   {n:'Guru Yoga & Ngondro', type:['Devotional','Visual'], lin:['Tibetan'],
    d:'The foundational practices of the Tibetan path: prostrations, refuge, mandala offering, and merging one\'s mind with the teacher\'s. Devotion here is a method, not a mood, and it is the doorway to everything that follows.',
    links:[['Patrul Rinpoche, Words of My Perfect Teacher','https://www.shambhala.com/patrul-rinpoche/'],['Lion’s Roar: Understanding the Ngöndro','https://www.lionsroar.com/understanding-the-ngondro-preliminary-practices-of-tibetan-buddhism/']]},
@@ -841,7 +777,7 @@ const MED_PRACTICES = [
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:rgba(240,198,116,.06);border:1px solid rgba(240,198,116,.22);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
     <div style="flex:1;min-width:250px">
       <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:.2rem">Dana, the practice of giving</div>
-      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">The teachings here are free and will stay free. If this work has served you and you are able to give, a gift keeps it online and holds the door open behind you.</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
     </div>
     <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid rgba(240,198,116,.5);border-radius:20px;background:rgba(240,198,116,.1);color:var(--gold);text-decoration:none">Support this work &rarr;</a>
   </div>
@@ -850,7 +786,7 @@ const MED_PRACTICES = [
 <section class="lp-feedback" id="lp-feedback">
   <div class="lp-feedback-inner">
     <h2>Questions, corrections, requests</h2>
-    <p class="lp-fb-sub">This site is a living study. If a source deserves a second look, a practice is taught differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <p class="lp-fb-sub">This site is a living resource. If a source deserves a second look, a practice is taught differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
     <form id="lp-fb-form">
       <div class="lp-fb-row">
         <input type="email" id="lp-fb-email" required placeholder="Your email address"/>
