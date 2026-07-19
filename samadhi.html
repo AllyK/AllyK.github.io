@@ -196,7 +196,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
       <div class="sca-card"><div class="skt">Chit</div><div class="en">Consciousness &middot; Awake</div><p>Pure awareness, fully conscious of all things and all beings. The light by which anything is known at all.</p></div>
       <div class="sca-card"><div class="skt">Ananda</div><div class="en">Bliss &middot; Ecstasy</div><p>Boundless joy, bliss, euphoria. The very texture of reality when nothing obstructs it.</p></div>
     </div>
-    <p>This is what the tradition means by enlightenment, <em>moksha</em>, liberation: a realm entered, in which eternal being, total awareness, and unbroken bliss are revealed to be one single thing, your own deepest nature, never absent, only overlooked. In the map of the four reaches on the <a class="inl" href="pratyahara.html#sec-reaches">Introspect page</a>, this is the universe at the top of the diagram and the depth at the bottom meeting and turning out to be the same place.</p>
+    <p>This is what the tradition means by enlightenment, <em>moksha</em>, liberation: a realm entered, in which eternal being, total awareness, and unbroken bliss are revealed to be one single thing, our own deepest nature, never absent, only overlooked. In the map of the four reaches on the <a class="inl" href="pratyahara.html#sec-reaches">Introspect page</a>, this is the universe at the top of the diagram and the depth at the bottom meeting and turning out to be the same place.</p>
     <div class="callout">
       <div class="label">A bridge across traditions</div>
       <p>Many who come to this practice from a Christian background find a familiar shape here. The absolute realm of sat-chit-ananda, eternal, all-knowing, and full of bliss, rhymes with what some Christian mystics have meant by heaven or by union with God: not a place reached after death so much as a reality always present, glimpsed when the veil thins. The vocabulary differs and the theologies are not identical. But the testimony of those who have touched it, in either language, is remarkably consistent: timeless, radiant, and at peace.</p>
@@ -213,10 +213,10 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
       <a class="source-link" href="https://hridaya-yoga.com/knowledge/concepts/sat-chit-ananda-pure-existence-awareness-bliss/" target="_blank" rel="noopener">Hridaya Yoga: Sat-Chit-Ananda</a>
     </div>
     <div class="questions-list">
-      <div class="q-item"><span class="q-num">1.</span><span class="q-text">When you picture your own growth, do you see a tree climbing or a universe widening? What changes in the practice when you trade one image for the other?</span></div>
-      <div class="q-item"><span class="q-num">2.</span><span class="q-text">In the ocean breath, the exhale is the crash, the letting go. What in your life are you still only inhaling, gathering and holding, never quite allowing to break?</span></div>
-      <div class="q-item"><span class="q-num">3.</span><span class="q-text">The Vedic path seeks a Self to rest in; the Buddhist path releases the very idea of one. Sitting quietly right now, which feels truer to your own experience, and can you hold the question without rushing to an answer?</span></div>
-      <div class="q-item"><span class="q-num">4.</span><span class="q-text">If sat-chit-ananda is already present and only obscured, what is the obstruction you most often stand in the light of?</span></div>
+      <div class="q-item"><span class="q-num">1.</span><span class="q-text">When we picture our own growth, do we see a tree climbing or a universe widening? What changes in the practice when we trade one image for the other?</span></div>
+      <div class="q-item"><span class="q-num">2.</span><span class="q-text">In the ocean breath, the exhale is the crash, the letting go. What in our lives are we still only inhaling, gathering and holding, never quite allowing to break?</span></div>
+      <div class="q-item"><span class="q-num">3.</span><span class="q-text">The Vedic path seeks a Self to rest in; the Buddhist path releases the very idea of one. Sitting quietly right now, which feels truer to our own experience, and can we hold the question without rushing to an answer?</span></div>
+      <div class="q-item"><span class="q-num">4.</span><span class="q-text">If sat-chit-ananda is already present and only obscured, what is the obstruction we most often stand in the light of?</span></div>
     </div>
   </section>
 </main>
@@ -254,7 +254,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
       </div>
       <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
       <button type="submit" class="lp-fb-send">Send</button>
-      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+      <div class="lp-fb-hint">Your message sends from this page. If it cannot get through, your email app opens instead.</div>
     </form>
   </div>
 </section>
@@ -264,9 +264,25 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var em=document.getElementById('lp-fb-email').value.trim();
   var ty=document.getElementById('lp-fb-type').value;
   var ms=document.getElementById('lp-fb-msg').value.trim();
-  var sub='The Living Practice: '+ty+' ('+document.title+')';
-  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
-  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  var pg=location.pathname.split('/').pop()||'index.html';
+  var btn=document.querySelector('#lp-fb-form .lp-fb-send');
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,type:ty,message:ms,page:pg,
+      _subject:'The Living Practice: '+ty+' ('+pg+')',_captcha:'false',_template:'table'})
+  }).then(function(r){if(!r.ok)throw new Error('send failed');return r.json();})
+  .then(function(){
+    var inner=document.querySelector('.lp-feedback-inner');
+    inner.innerHTML='<h2>Received with gratitude</h2><p class="lp-fb-sub">Your '+ty.toLowerCase()+' is on its way. Thank you for helping this living resource grow.</p>';
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent=prev;
+    var sub='The Living Practice: '+ty+' ('+pg+')';
+    var body='From: '+em+'\nPage: '+pg+'\nType: '+ty+'\n\n'+ms;
+    location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
 });
 </script>
 </body>

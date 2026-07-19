@@ -370,7 +370,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
       </div>
       <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
       <button type="submit" class="lp-fb-send">Send</button>
-      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+      <div class="lp-fb-hint">Your message sends from this page. If it cannot get through, your email app opens instead.</div>
     </form>
   </div>
 </section>
@@ -380,9 +380,25 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var em=document.getElementById('lp-fb-email').value.trim();
   var ty=document.getElementById('lp-fb-type').value;
   var ms=document.getElementById('lp-fb-msg').value.trim();
-  var sub='The Living Practice: '+ty+' ('+document.title+')';
-  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
-  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  var pg=location.pathname.split('/').pop()||'index.html';
+  var btn=document.querySelector('#lp-fb-form .lp-fb-send');
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,type:ty,message:ms,page:pg,
+      _subject:'The Living Practice: '+ty+' ('+pg+')',_captcha:'false',_template:'table'})
+  }).then(function(r){if(!r.ok)throw new Error('send failed');return r.json();})
+  .then(function(){
+    var inner=document.querySelector('.lp-feedback-inner');
+    inner.innerHTML='<h2>Received with gratitude</h2><p class="lp-fb-sub">Your '+ty.toLowerCase()+' is on its way. Thank you for helping this living resource grow.</p>';
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent=prev;
+    var sub='The Living Practice: '+ty+' ('+pg+')';
+    var body='From: '+em+'\nPage: '+pg+'\nType: '+ty+'\n\n'+ms;
+    location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
 });
 </script>
 
@@ -431,7 +447,7 @@ const POSES = {
   46: {en:'Warrior Pose III',      skt:'Virabhadrasana III',
        conn:'The single-pointed focus of Warrior III embodies Virabhadra\'s concentrated intention: the distillation of grief into precise, unwavering action directed at its purpose.'},
   36: {en:'Tree Pose',             skt:'Vrksasana',
-       conn:'In the tradition of Bali Maharaja, Tree Pose asks: can you be rooted enough to stand on one leg, open enough to give, and still enough to receive? Integrity and surrender held in one shape.'},
+       conn:'In the tradition of Bali Maharaja, Tree Pose asks: can we be rooted enough to stand on one leg, open enough to give, and still enough to receive? Integrity and surrender held in one shape.'},
   73: {en:'Half Splits Pose',      skt:'Ardha Hanumanasana',
        conn:'Named for Hanuman, whose leap across the ocean to Lanka is one of the tradition\'s great acts of devoted service. Half Splits is the preparatory space of surrender just before the leap.'},
   99: {en:'Fish Pose',             skt:'Matsyasana',
@@ -554,7 +570,7 @@ const CHARACTERS = {
   durga:       {name:'Durga',           role:'Warrior Goddess', color:'#6B4A6B', story:'Kali',
     desc:'The goddess assembled from the combined light of all the gods when none of them could win alone. She rides a lion, carries every god\'s weapon at once, and fights what the male pantheon could not. Kali is what comes out of her when courtesy runs out.'},
   raktabija:   {name:'Raktabija',       role:'Demon',       color:'#6B4A6B', story:'Kali',
-    desc:'The demon whose name means blood-seed: every drop of his blood that touches the ground becomes another of him. He is the perfect image of a problem that multiplies each time you strike at it, and he cannot be defeated by force, only by refusing to let the blood land.'},
+    desc:'The demon whose name means blood-seed: every drop of his blood that touches the ground becomes another of him. He is the perfect image of a problem that multiplies each time we strike at it, and he cannot be defeated by force, only by refusing to let the blood land.'},
   kurma_av:    {name:'Kurma',           role:'Avatar',      color:'#2F8F9D', story:'The Churning of the Ocean',
     desc:'The second avatar of Vishnu: the tortoise who descended to the floor of the cosmic ocean and let Mount Mandara rest on his back so the churning could proceed. The most self-effacing of the avatars. He does not fight, does not speak, and does not appear in the sky. He simply goes underneath the whole enterprise and bears it.'},
   vasuki:      {name:'Vasuki',          role:'Serpent King', color:'#2F8F9D', story:'The Churning of the Ocean',
@@ -633,7 +649,7 @@ const GLOSSARY = [
   {term:'Bhagavad Gita', skt:'bhagavad gita', url:'https://www.wisdomlib.org/definition/bhagavad-gita',
    def:'The divine song: 700 verses spoken by Krishna to Arjuna on the battlefield of Kurukshetra, embedded within the Mahabharata. The central teaching is nishkama karma, act fully, without attachment to outcomes. It is the most-cited scripture in the yoga tradition.'},
   {term:'Swadharma', skt:'swadharma',       url:'https://www.wisdomlib.org/definition/svadharma',
-   def:'One\'s own specific path of duty, distinct from dharma in general. The Bhagavad Gita holds that it is better to fulfill one\'s own swadharma imperfectly than another\'s perfectly. The Mahabharata tests this principle in every character: the question is never only what the right action is, but who you are while doing it.'},
+   def:'One\'s own specific path of duty, distinct from dharma in general. The Bhagavad Gita holds that it is better to fulfill one\'s own swadharma imperfectly than another\'s perfectly. The Mahabharata tests this principle in every character: the question is never only what the right action is, but who we are while doing it.'},
   {term:'Madhurya', skt:'madhurya',         url:'https://www.wisdomlib.org/definition/madhurya',
    def:'Sweetness; the intimate quality of Krishna\'s divine aesthetic. Distinguished from aishwarya (majestic reverence), madhurya is the quality of love that meets God as a beloved friend, child, or lover. The Rasalila is its highest expression. The tradition considers it the most direct path to intimacy with the divine.'},
   {term:'Rasalila', skt:'rasalila',         url:'https://www.wisdomlib.org/definition/rasalila',
@@ -701,11 +717,11 @@ Shiva returns with Virabhadra, created from his own grief, and Daksha's ceremony
 <p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> and <span class="pose-link" data-id="346">Shiva Twist</span> are named for Nataraja, Shiva in his cosmic dance. The Tandava is the rhythm of creation and dissolution intertwined: both the destruction of the old and the ecstatic aliveness of the new, held in one shape.</p>
 <p>Daksha's story teaches what Patanjali calls asmita (ego-sense): how spiritual accomplishment without humility becomes the most dangerous trap. Shiva's forgiveness after moving through complete grief and complete ferocity is <span class="concept-link" data-id="Pratipaksha bhavana">pratipaksha bhavana</span> at its fullest: transformation so complete that what remains is capable of the opposite.</p>`,
     questions:[
-      'Daksha\'s harm flows from pride that cannot honor what his daughter loves. Where in your own life does pride disguise itself as discernment, protecting a preference by calling it a principle?',
+      'Daksha\'s harm flows from pride that cannot honor what his daughter loves. Where in our own lives does pride disguise itself as discernment, protecting a preference by calling it a principle?',
       'Shiva\'s grief is so vast it disrupts cosmic order. What does it mean for a spiritual tradition to say that grief this complete belongs to the universe\'s own process of healing?',
-      'Sati chose to remain true to what she loved even at the cost of her life. Without romanticizing that act, what are the things in your life that you will not dishonor regardless of external pressure?',
+      'Sati chose to remain true to what she loved even at the cost of her life. Without romanticizing that act, what are the things in our lives that we will not dishonor regardless of external pressure?',
       'Parvati does not simply wait for Shiva to return. She performs tapas: she earns the reunion through disciplined practice. What does that suggest about the relationship between spiritual discipline and the recovery of what has been lost?',
-      'In Warrior pose, you stand in the shape of a being born of divine grief transformed into action. How does knowing that history change the quality of your attention in the pose?',
+      'In Warrior pose, we stand in the shape of a being born of divine grief transformed into action. How does knowing that history change the quality of our attention in the pose?',
     ],
   },
   {
@@ -751,11 +767,11 @@ Prahlada is a child of perhaps five or six. He heard the teachings of Narada Mun
 <p>The Jaya-Vijaya story speaks to <span class="concept-link" data-id="Karma">karma</span> and <span class="concept-link" data-id="Svadhyaya">svadhyaya</span> (self-study): the quality of attention matters more than its apparent direction. What we give our complete, unbroken attention to, we move toward. Narasimha's emergence from the pillar teaches that the divine is here in the structure of matter, present everywhere Prahlada's chanting has been.</p>
 <p><span class="pose-link" data-id="99">Fish Pose (Matsyasana)</span> is named for Matsya, the first avatar of Vishnu, whose story precedes this arc in the Bhagavatam. The chest-opening quality of the pose reflects the seat of knowledge the avatar came to protect.</p>`,
     questions:[
-      'Jaya and Vijaya chose three intense hostile births over seven devotional ones. What does that say about the spiritual weight of whatever you return to most obsessively, your fears, resentments, fixations?',
-      'Prahlada\'s devotion was not acquired through practice in this life. He carried it as a given. Have you ever known something with that quality of certainty, prior to evidence, prior to argument? What was it, and what happened when it was tested?',
-      'Hiranyakashipu built his invincibility on conditions he believed covered every possibility, until something arrived from a direction he never thought to guard. Where in your own life do you build protections around a belief that feel airtight?',
+      'Jaya and Vijaya chose three intense hostile births over seven devotional ones. What does that say about the spiritual weight of whatever we return to most obsessively, our fears, resentments, fixations?',
+      'Prahlada\'s devotion was not acquired through practice in this life. He carried it as a given. Have we ever known something with that quality of certainty, prior to evidence, prior to argument? What was it, and what happened when it was tested?',
+      'Hiranyakashipu built his invincibility on conditions he believed covered every possibility, until something arrived from a direction he never thought to guard. Where in our own lives do we build protections around a belief that feel airtight?',
       'Narasimha\'s ferocity can only be calmed by Prahlada\'s touch. What does it mean that the most terrifying expression of the divine is soothed only by the most vulnerable expression of devotion?',
-      'Prahlada says Vishnu is everywhere, even in the pillar, even in his father. How does your practice change when you hold the possibility that what you practice on, the body, the breath, the mat, is itself a form of the divine?',
+      'Prahlada says Vishnu is everywhere, even in the pillar, even in his father. How does our practice change when we hold the possibility that what we practice on, the body, the breath, the mat, is itself a form of the divine?',
     ],
   },
   {
@@ -794,15 +810,15 @@ Vamana expands into Trivikrama, the one who traverses all three worlds. With one
       {n:'Corpse Pose',s:'Savasana',c:'Vishnu stands guard at the gate. Rest under that watch.'},
     ],
     connections:`
-<p><span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span>, surrender to the divine, is the fifth niyama in Patanjali's Yoga Sutras and sometimes described as the most direct path to samadhi. Bali's gift is its defining story: giving with full awareness of the cost, trusting that what returns will exceed what was offered. <span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> asks a similar question: can you be rooted enough to stand, open enough to give, and still enough to receive, all at once?</p>
+<p><span class="concept-link" data-id="Ishvara pranidhana">Ishvara pranidhana</span>, surrender to the divine, is the fifth niyama in Patanjali's Yoga Sutras and sometimes described as the most direct path to samadhi. Bali's gift is its defining story: giving with full awareness of the cost, trusting that what returns will exceed what was offered. <span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> asks a similar question: can we be rooted enough to stand, open enough to give, and still enough to receive, all at once?</p>
 <p>The story also illustrates <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> from the Bhagavad Gita: action without attachment to fruits. Bali offers the three worlds and receives a more beautiful kingdom and the personal presence of Vishnu. The return is better than anything calculation could produce.</p>
 <p>Vamana's smallness is the teaching. The divine does not always arrive in forms we recognize. The beginner's pose can contain everything. The student who appears unremarkable may carry depths that have not yet found their expansion.</p>`,
     questions:[
       'Bali gave with full awareness of what it would cost him. What is the difference between giving without knowing the cost and giving with full knowledge? Does awareness change the quality of what is offered?',
-      'Shukracharya gave Bali accurate counsel, and Bali chose not to follow it because something deeper was calling. Have you ever received correct advice and chosen not to take it? What did that feel like, and what happened?',
+      'Shukracharya gave Bali accurate counsel, and Bali chose not to follow it because something deeper was calling. Have we ever received correct advice and chosen not to take it? What did that feel like, and what happened?',
       'Vishnu becomes Bali\'s doorman. The divine does not punish Bali; it comes to live with him. What does it suggest about surrender that the one who receives everything also gives everything back in the most intimate form?',
-      'Bali is a demon who is more virtuous than most celestials in these stories. Where in your own life do you find genuine spiritual quality in unexpected places or people?',
-      'Ishvara pranidhana asks for both the surrender of outcomes and the trust that what returns will be sufficient. Where is that trust easiest for you? Where is it hardest?',
+      'Bali is a demon who is more virtuous than most celestials in these stories. Where in our own lives do we find genuine spiritual quality in unexpected places or people?',
+      'Ishvara pranidhana asks for both the surrender of outcomes and the trust that what returns will be sufficient. Where is that trust easiest for us? Where is it hardest?',
     ],
   },
   {
@@ -849,19 +865,19 @@ The people light lamps through Ayodhya to guide them home. This is Diwali. But t
 <p>The Ramayana is a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span> in its most painful form: Rama acts from dharma in every moment, releasing personal desire from the outcome. <span class="concept-link" data-id="Satya">Satya</span> (truthfulness) is Sita's defining quality. Her final act, calling on the earth rather than returning to prove herself once more, is the most radical expression of satya in all the stories.</p>
 <p>Hanuman's relationship with Rama is one of the tradition's deepest templates for the guru-student relationship. Every gift he possesses is placed entirely in service of Rama with no personal agenda. This is <span class="concept-link" data-id="Bhakti">bhakti</span> in action: wisdom entirely in service of love. Diwali, the festival of lights that marks Rama's return, is understood as the soul recognizing its source: the moment when what was hidden in darkness becomes visible again.</p>`,
     questions:[
-      'Rama walks away from kingship as if removing a garment, without visible struggle. Is this admirable detachment or a concerning absence of human attachment? What does your answer reveal about your own relationship to renunciation?',
-      'Sita refuses Hanuman\'s offer to carry her home, insisting on being rescued by Rama alone. What are the things in your own life you know need to be done in a particular way, even when a faster or easier path is available?',
-      'The trial by fire asks Sita to prove publicly what she already knows privately. When have you been asked to prove your worth to people who should already know it? What did you do?',
-      'Rama does not place his love for Sita above his dharma as king. The Ramayana neither condemns nor easily celebrates this. Where in your own life do your roles come into irreconcilable conflict? How do you choose?',
-      'Hanuman\'s defining image is his chest opened to reveal Rama and Sita within his heart, a being entirely occupied by devotion. What would it mean for your practice, work, or relationships to be that completely given to something?',
-      'The Ramayana\'s final tragedy is caused by social expectation: one washerman\'s comment that Rama cannot ignore. What collective expectations in your own cultural context cause harm that no single person intends?',
+      'Rama walks away from kingship as if removing a garment, without visible struggle. Is this admirable detachment or a concerning absence of human attachment? What does our answer reveal about our own relationship to renunciation?',
+      'Sita refuses Hanuman\'s offer to carry her home, insisting on being rescued by Rama alone. What are the things in our own lives we know need to be done in a particular way, even when a faster or easier path is available?',
+      'The trial by fire asks Sita to prove publicly what she already knows privately. When have we been asked to prove our worth to people who should already know it? What did we do?',
+      'Rama does not place his love for Sita above his dharma as king. The Ramayana neither condemns nor easily celebrates this. Where in our own lives do our roles come into irreconcilable conflict? How do we choose?',
+      'Hanuman\'s defining image is his chest opened to reveal Rama and Sita within his heart, a being entirely occupied by devotion. What would it mean for our practice, work, or relationships to be that completely given to something?',
+      'The Ramayana\'s final tragedy is caused by social expectation: one washerman\'s comment that Rama cannot ignore. What collective expectations in our own cultural context cause harm that no single person intends?',
     ],
   },
   {
     id:'s5', color:'#4A6888',
     title:'The Mahabharata: the war within',
     source:'The Mahabharata and the Bhagavad Gita',
-    thisStory:'The longest poem ever written, the Mahabharata contains the entire human condition, and the Bhagavad Gita, the yoga tradition\'s most central scripture, lives inside it. Unlike the other stories here, it resolves into instruction rather than clarity: act from your deepest nature, without attachment to what follows.',
+    thisStory:'The longest poem ever written, the Mahabharata contains the entire human condition, and the Bhagavad Gita, the yoga tradition\'s most central scripture, lives inside it. Unlike the other stories here, it resolves into instruction rather than clarity: act from our deepest nature, without attachment to what follows.',
     sources:[
       {label:'Sacred Texts: Mahabharata (Ganguli)', url:'https://www.sacred-texts.com/hin/maha/index.htm'},
       {label:'Vedabase: Bhagavad Gita As It Is', url:'https://vedabase.io/en/library/bg/'},
@@ -907,12 +923,12 @@ Krishna\'s response begins with correction. You grieve for those who should not 
 <p><span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is associated with the Gita\'s teaching because it is the pose of the student who has gone completely still, the collapse before the arising. The <span class="pose-link" data-id="20">Warrior poses</span> that come after are the shape of having listened: purposeful action, fully committed, fully grounded, without the noise of attachment to what follows. The sequence from collapse to warrior is the Bhagavad Gita in asana.</p>
 <p>Karna\'s story is one of the tradition\'s deepest teachings on <span class="concept-link" data-id="Karma">karma</span>: the circumstances of birth lay beyond his choosing, and the loyalty he chose within them was entirely his own. His arc asks whether the cards we are dealt are the story, or whether the manner of playing them is.</p>`,
     questions:[
-      'Arjuna sees people he loves on both sides of the battlefield and collapses because he cannot choose without destroying something precious. Where in your own life does paralysis arise because acting rightly will cost you something you love, even when you can see what is right?',
+      'Arjuna sees people he loves on both sides of the battlefield and collapses because he cannot choose without destroying something precious. Where in our own lives does paralysis arise because acting rightly will cost us something we love, even when we can see what is right?',
       'The Bhagavad Gita teaches nishkama karma: act fully, release the outcome completely. Is this the same as not caring what happens? Where is the difference between non-attachment and indifference?',
-      'Draupadi stopped calling on her husbands when they could not help and called only on the divine. What does it take to reach that point of complete surrender, and what in your life still prevents you from reaching it?',
-      'Karna knew his true identity before the war and chose to fight for Duryodhana anyway, out of loyalty. He chose a certain loss with integrity over a possible victory with betrayal. Where in your own life have you made a similar choice, or faced one?',
-      'Yudhishtir is the son of Dharma itself and still loses everything because he cannot refuse a challenge even when the challenge is designed to destroy him. How does holding a principle as a code make it possible for others to exploit that principle against you?',
-      'At the gates of heaven, Yudhishtir refuses to enter without the dog who had accompanied him on the final journey. The test is whether he will abandon the lowest for the highest reward. Where in your life does a similar test arise, and how do you know which choice is dharmic?',
+      'Draupadi stopped calling on her husbands when they could not help and called only on the divine. What does it take to reach that point of complete surrender, and what in our lives still prevents us from reaching it?',
+      'Karna knew his true identity before the war and chose to fight for Duryodhana anyway, out of loyalty. He chose a certain loss with integrity over a possible victory with betrayal. Where in our own lives have we made a similar choice, or faced one?',
+      'Yudhishtir is the son of Dharma itself and still loses everything because he cannot refuse a challenge even when the challenge is designed to destroy him. How does holding a principle as a code make it possible for others to exploit that principle against us?',
+      'At the gates of heaven, Yudhishtir refuses to enter without the dog who had accompanied him on the final journey. The test is whether he will abandon the lowest for the highest reward. Where in our lives does a similar test arise, and how do we know which choice is dharmic?',
     ],
   },
   {
@@ -1009,12 +1025,12 @@ In the midst of the dance, the gopis felt a moment of pride, surely we are the m
 <p><span class="pose-link" data-id="118">Dancer Pose (Natarajasana)</span> evokes the image of the divine in motion, God as dancer rather than judge or ruler. Though named for Shiva's Tandava, the image of the divine dancing belongs equally to Krishna. His dance on Kaliya's heads and his Rasalila with the gopis are both expressions of <span class="concept-link" data-id="Madhurya">madhurya</span>: the sweetness of love in complete freedom.</p>
 <p>The sound of Krishna's flute calling the gopis across the village is the <span class="concept-link" data-id="Bhakti">Bhakti</span> tradition's central image for devotional practice as a path available to all beings at all times, open to anyone with the capacity to hear a call and respond to it. Some gopis could not physically leave their homes. They meditated instead, and the tradition says they received the same gift. The point was the turning toward, not the arriving.</p>`,
     questions:[
-      'Krishna defeats demons through play rather than through war. The tradition presents this as a specific quality of how the divine engages what opposes it. Where in your own life does playfulness disarm what force would only harden?',
-      'The gopis abandon milk boiling on the stove, elders waiting for their evening meal, all their external responsibilities, and run toward the forest. The tradition holds them up as the highest exemplars of devotion. What is the difference between this kind of abandonment and irresponsibility, and has anything in your life ever called you with that same completeness?',
-      'Yashoda does not know she is raising God. She scolds him, chases him, ties him to a stone. The tradition presents this as a higher form of love, one in which no distance of awe remains. Where in your own life do you relate to what is sacred without distance?',
-      'Krishna disappears the moment the gopis feel pride in the midst of the dance. He disappears again from Radha when she feels the same. What does this say about the relationship between pride and genuine connection, and when in your practice or relationships have you felt a similar withdrawal?',
-      'The residents of Vrindavan love Krishna so completely they cannot see him as God, even as he holds a mountain on his little finger. Their cowherd men prop up sticks to help hold it, because love cannot accept that the one it loves needs no help. Is there something you love so completely it removes your ability to see it clearly?',
-      'The Govardhan story redirects reverence from a distant celestial authority to the immediate, local source of nourishment. In your practice and your life, what distant abstractions receive your reverence, and what immediate, present sources of sustenance are going uncelebrated?',
+      'Krishna defeats demons through play rather than through war. The tradition presents this as a specific quality of how the divine engages what opposes it. Where in our own lives does playfulness disarm what force would only harden?',
+      'The gopis abandon milk boiling on the stove, elders waiting for their evening meal, all their external responsibilities, and run toward the forest. The tradition holds them up as the highest exemplars of devotion. What is the difference between this kind of abandonment and irresponsibility, and has anything in our lives ever called us with that same completeness?',
+      'Yashoda does not know she is raising God. She scolds him, chases him, ties him to a stone. The tradition presents this as a higher form of love, one in which no distance of awe remains. Where in our own lives do we relate to what is sacred without distance?',
+      'Krishna disappears the moment the gopis feel pride in the midst of the dance. He disappears again from Radha when she feels the same. What does this say about the relationship between pride and genuine connection, and when in our practice or relationships have we felt a similar withdrawal?',
+      'The residents of Vrindavan love Krishna so completely they cannot see him as God, even as he holds a mountain on his little finger. Their cowherd men prop up sticks to help hold it, because love cannot accept that the one it loves needs no help. Is there something we love so completely it removes our ability to see it clearly?',
+      'The Govardhan story redirects reverence from a distant celestial authority to the immediate, local source of nourishment. In our practice and our lives, what distant abstractions receive our reverence, and what immediate, present sources of sustenance are going uncelebrated?',
     ],
   },
   {
@@ -1038,11 +1054,11 @@ It is a fear about wasted effort. We have all felt it. To give years to a practi
       {heading:'Krishna\'s answer: no effort is ever lost',
        text:`Krishna\'s reply is among the most reassuring passages in all of yoga\'s literature. Never, he says, is one who does good destroyed. Neither in this world nor the next does such a person come to ruin. No sincere step on this path is ever lost.
 The one who falls from the practice, he explains, endures. They dwell for a long time in radiant worlds, and then they are born again into a good and fortunate home, or, if their practice ran deep, into a family of the wise and the devoted, a birth the Gita calls very difficult to attain. And here is the heart of it: in that new life, the wisdom of the former life reawakens. The practitioner takes up the work again from where they left it, carried forward by the momentum of all they had already done. They are drawn toward the practice, Krishna says, even against their will, by the force of their past discipline.
-Nothing is wasted. The account is kept. You do not begin again from zero. Whenever you are reborn, you begin from what you have already reached. The unfinished meditation is a seed planted in soil that will be there waiting for you. Across enough lifetimes, the practitioner is purified of every obstruction and arrives at the supreme goal.`},
+Nothing is wasted. The account is kept. We do not begin again from zero. Whenever we are reborn, we begin from what we have already reached. The unfinished meditation is a seed planted in soil that will be there waiting for us. Across enough lifetimes, the practitioner is purified of every obstruction and arrives at the supreme goal.`},
       {heading:'The shape of rebirth',
        text:`Here the teaching opens into a contemplation, and it is worth being clear about where the scripture ends and the reflection begins. The Gita promises that practice carries forward. What follows is one way of holding that promise.
-If practice is never lost and rebirth is the vehicle that carries it, then rebirth need not be imagined as a straight line, one life neatly after another in a single ascending column. The tradition describes samsara as beginningless and almost unimaginably vast: countless lives across countless ages. Tibetan Buddhism draws a striking conclusion from this vastness. Across beginningless time, it teaches, every single being has at some point been your own mother, has held and fed and protected you. The number of beings is finite; the number of your lives is not. Given enough time, every relationship has already been every relationship.
-Follow that thread and a quiet possibility appears. If the soul has worn every role across the long turning of time, then the distance between us and the most awakened beings who have ever lived can close. The Mahayana names this directly as buddha-nature: the potential for full awakening belongs equally to every being, covered over only like the sun behind passing clouds. And the bodhisattva, by vow, returns again and again across lifetimes precisely so that this potential can ripen in all of us. So we may reasonably hold, as a contemplation rather than a doctrine, that any one of us may, somewhere across the immense arc of our births, walk the path far enough to be born as an awakened one, a buddha or a bodhisattva. The seat you take this morning is one bead on a thread longer than history.`},
+If practice is never lost and rebirth is the vehicle that carries it, then rebirth need not be imagined as a straight line, one life neatly after another in a single ascending column. The tradition describes samsara as beginningless and almost unimaginably vast: countless lives across countless ages. Tibetan Buddhism draws a striking conclusion from this vastness. Across beginningless time, it teaches, every single being has at some point been our own mother, has held and fed and protected us. The number of beings is finite; the number of our lives is not. Given enough time, every relationship has already been every relationship.
+Follow that thread and a quiet possibility appears. If the soul has worn every role across the long turning of time, then the distance between us and the most awakened beings who have ever lived can close. The Mahayana names this directly as buddha-nature: the potential for full awakening belongs equally to every being, covered over only like the sun behind passing clouds. And the bodhisattva, by vow, returns again and again across lifetimes precisely so that this potential can ripen in all of us. So we may reasonably hold, as a contemplation rather than a doctrine, that any one of us may, somewhere across the immense arc of our births, walk the path far enough to be born as an awakened one, a buddha or a bodhisattva. The seat we take this morning is one bead on a thread longer than history.`},
     ],
     characterIds:['arjuna','krishna_mb'],
     seq:[
@@ -1063,12 +1079,12 @@ Follow that thread and a quiet possibility appears. If the soul has worn every r
 <p><span class="pose-link" data-id="55">Lotus Pose (Padmasana)</span> is the seat of this teaching. It is the same posture in which Arjuna receives the instruction and the same one the tradition prescribes for the meditation Krishna describes: the body fully stopped, the spine awake, nothing left to do but be available to what stillness reveals.</p>
 <p>The promise that no effort is lost is itself a teaching on <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>: we practice without grasping at the result precisely because the result is not ours to control or to lose. The work of today\'s meditation is today\'s meditation. Its ripening belongs to a longer arc than this single life, and to a <span class="concept-link" data-id="Karma">karma</span> that keeps a more faithful account than we can. What this asks of us is <span class="concept-link" data-id="Bhakti">bhakti</span> in its quietest form: to keep returning to the seat, trusting the path even when we cannot see its end, on our way toward <span class="concept-link" data-id="Moksha">moksha</span>.</p>`,
     questions:[
-      'Arjuna fears that years of sincere practice could amount to nothing if he runs out of time. Where in your own life do you hold back from beginning something because you are not sure you will live to finish it? What changes if no honest effort is ever truly lost?',
-      'Krishna says the practitioner is drawn back toward the path in the next life "even against their will," by the momentum of past discipline. What practices or longings in you feel less like choices and more like something you arrived already carrying?',
-      'The teaching reframes a lifetime of meditation as one bead on a very long thread. Does that make your daily practice feel smaller, or does it relieve the pressure to arrive? Sit with which response is actually yours.',
-      'The contemplation here holds that, across the vastness of rebirth, any being might one day awaken fully, even into the life of a buddha or bodhisattva. How does it change the way you regard the person beside you on the mat, or on the train, to consider that they carry that same potential?',
-      'The Tibetan teaching that every being has at some point been your mother is offered as a way to dissolve the boundary between self and other. Try holding it toward one person you find difficult. What loosens, and what resists?',
-      'Krishna keeps the account; we do the practice and release the outcome. Where is it hardest for you to act sincerely without needing to see the result in this lifetime?',
+      'Arjuna fears that years of sincere practice could amount to nothing if he runs out of time. Where in our own lives do we hold back from beginning something because we are not sure we will live to finish it? What changes if no honest effort is ever truly lost?',
+      'Krishna says the practitioner is drawn back toward the path in the next life "even against their will," by the momentum of past discipline. What practices or longings in us feel less like choices and more like something we arrived already carrying?',
+      'The teaching reframes a lifetime of meditation as one bead on a very long thread. Does that make our daily practice feel smaller, or does it relieve the pressure to arrive? Sit with which response is actually ours.',
+      'The contemplation here holds that, across the vastness of rebirth, any being might one day awaken fully, even into the life of a buddha or bodhisattva. How does it change the way we regard the person beside us on the mat, or on the train, to consider that they carry that same potential?',
+      'The Tibetan teaching that every being has at some point been our mother is offered as a way to dissolve the boundary between self and other. Try holding it toward one person we find difficult. What loosens, and what resists?',
+      'Krishna keeps the account; we do the practice and release the outcome. Where is it hardest for us to act sincerely without needing to see the result in this lifetime?',
     ],
   },
   {
@@ -1136,14 +1152,14 @@ The verses are honest about scale. The world\'s entanglements form a living, gro
     ],
     characterIds:['krishna_mb','arjuna'],
     seq:[
-      {n:'Mountain Pose',s:'Tadasana',c:'The tree right side up: rooted where you stand.'},
+      {n:'Mountain Pose',s:'Tadasana',c:'The tree right side up: rooted where we stand.'},
       {n:'Interlaced Fingers Overhead',s:'Urdhva Baddhanguliyasana',c:'Branches rising, nourished from below.'},
       {n:'Tree Pose',s:'Vrksasana',c:'Roots, trunk, crown: the familiar orientation. Both sides.'},
       {n:'Eagle Pose',s:'Garudasana',c:'The tangled secondary roots, binding action to consequence. Both sides.'},
       {n:'Standing Forward Fold',s:'Uttanasana',c:'The crown descends toward the roots: the turning over begins.'},
       {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Half inverted: hands and feet both rooted, the world tilting.'},
       {n:'Dolphin Pose',s:'Ardha Pincha Mayurasana',c:'The forearms become the new ground.'},
-      {n:'Downward-Facing Tree, at the wall, or Legs Up the Wall',s:'Adho Mukha Vrksasana',c:'The ashvattha of 15.1: roots above, branches below. Choose the inversion that serves you today.'},
+      {n:'Downward-Facing Tree, at the wall, or Legs Up the Wall',s:'Adho Mukha Vrksasana',c:'The ashvattha of 15.1: roots above, branches below. Choose the inversion that serves us today.'},
       {n:'Child\'s Pose',s:'Balasana',c:'Return from the turned-over world.'},
       {n:'Corpse Pose',s:'Savasana',c:'The axe of detachment set down; the place from which no one returns, glimpsed.'},
     ],
@@ -1190,7 +1206,7 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
   <span class="arch-cite">ASHOK BEDI, <a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener">AWAKEN THE SLUMBERING GODDESS</a>, CH. 10</span>
 </div>
 <p>Her work is precise and unglamorous: <em>&ldquo;to choke him enough to keep the poison up in his throat, but not so much as to strangle him to death.&rdquo;</em> Bedi sets this beside Jung&rsquo;s <em>hierosgamos</em>, the sacred marriage, which Jung described as <em>&ldquo;earthing the Spirit and spiritualizing the Earth, the union of opposites and the reconciliation of the divided.&rdquo;</em> The blue throat is that marriage held in one image: the drive that would swallow everything, and the counterforce that will not let it.</p>
-<p>The chapter&rsquo;s title for this is blunter than anything the scripture says: <strong>don&rsquo;t swallow the poison</strong>. Bedi watches people symbolically grab a partner by the neck to say the relationship needs more than promises, and notes that the hoped-for ambrosia often fails to arrive at all: <em>&ldquo;the outer success does not nourish the soul.&rdquo;</em> The practical instruction he draws is to learn to stay at your own throat, in a reflective mode, rather than needing someone else to monitor the balance for you. That is a fair description of what a practice is for.</p>
+<p>The chapter&rsquo;s title for this is blunter than anything the scripture says: <strong>don&rsquo;t swallow the poison</strong>. Bedi watches people symbolically grab a partner by the neck to say the relationship needs more than promises, and notes that the hoped-for ambrosia often fails to arrive at all: <em>&ldquo;the outer success does not nourish the soul.&rdquo;</em> The practical instruction he draws is to learn to stay at our own throats, in a reflective mode, rather than needing someone else to monitor the balance for us. That is a fair description of what a practice is for.</p>
 <div class="arch-variant">A note on the variant: Bedi has the venom coming from Vasuki as the serpent tires of being hauled, while the Bhagavatam has the halahala rising from the ocean itself. The tellings differ, and the difference is interesting. In Bedi&rsquo;s, the poison is produced by the instrument that is being worn out by the work.</div>`,
     seq:[
       {n:'Easy Pose',s:'Sukhasana',c:'Two sides that do not trust each other agree to pull the same rope. Sit with that.'},
@@ -1200,7 +1216,7 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
       {n:'Cobra Pose',s:'Bhujangasana',c:'Vasuki wraps the mountain and holds. The lift comes from patience, not force.'},
       {n:'Locust Pose',s:'Salabhasana',c:'An age of churning. The strain is the practice, not an interruption of it.'},
       {n:'Fish Pose',s:'Matsyasana',c:'The halahala rises. Shiva holds it at the throat: Nilakantha, blue-throated.'},
-      {n:'Camel Pose, gentle',s:'Ustrasana',c:'The throat open, holding what can be neither swallowed nor spat out. Stay inside your own capacity.'},
+      {n:'Camel Pose, gentle',s:'Ustrasana',c:'The throat open, holding what can be neither swallowed nor spat out. We stay inside our own capacity.'},
       {n:'Lotus, Half Lotus, or Easy Pose',s:'Padmasana',c:'Lakshmi rises on the lotus, opening clean above the water it grew through.'},
       {n:'Corpse Pose',s:'Savasana',c:'Amrita. Rest as what was dissolved all along and still had to be worked for.'},
     ],
@@ -1209,12 +1225,12 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
 <p>The blue throat is the teaching most useful on the mat. Shiva does not absorb the poison and he does not pass it to anyone else. He holds it at the throat, which is exactly what a practice makes possible: the capacity to feel something fully without swallowing it into the body or discharging it onto whoever is nearest. <span class="pose-link" data-id="99">Fish Pose (Matsyasana)</span> and the throat openers are where that capacity gets rehearsed.</p>
 <p>The story also reframes what practice is for. The nectar was never hidden somewhere waiting to be found. It was dissolved through the whole ocean, real but unmanifest, and only sustained work brought it out of solution. That is <span class="concept-link" data-id="Tapas">tapas</span> in its plainest form. It is also honest about sequence: stir anything deeply enough and the poison surfaces before the nectar. Most practitioners meet the halahala first and conclude they are doing it wrong.</p>`,
     questions:[
-      'The gods could not do this alone and had to work the same rope as the demons. Where is the thing you want only reachable in company with what you would rather not cooperate with?',
-      'Kurma bears the entire enterprise from underneath, unseen and silent, and nobody in the story thanks him. What in your own life is being held up by something you never look at?',
-      'The first yield of the churning is poison, not nectar. When your practice has stirred up something difficult, do you read that as failure or as the sequence working exactly as designed?',
-      'Shiva holds the poison at the throat: he neither swallows it nor spits it out. What would it take for you to hold a difficult feeling that way, without internalizing it and without handing it to someone else?',
-      'Vasuki is the instrument, and the friction runs through his body. Who or what absorbs the friction of the work you benefit from?',
-      'The demons lose the nectar because they grab it. Where has grasping cost you the very thing you were reaching for?',
+      'The gods could not do this alone and had to work the same rope as the demons. Where is the thing we want only reachable in company with what we would rather not cooperate with?',
+      'Kurma bears the entire enterprise from underneath, unseen and silent, and nobody in the story thanks him. What in our own lives is being held up by something we never look at?',
+      'The first yield of the churning is poison, not nectar. When our practice has stirred up something difficult, do we read that as failure or as the sequence working exactly as designed?',
+      'Shiva holds the poison at the throat: he neither swallows it nor spits it out. What would it take for us to hold a difficult feeling that way, without internalizing it and without handing it to someone else?',
+      'Vasuki is the instrument, and the friction runs through his body. Who or what absorbs the friction of the work we benefit from?',
+      'The demons lose the nectar because they grab it. Where has grasping cost us the very thing we were reaching for?',
     ],
   },
   {
@@ -1238,7 +1254,7 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
        text:`The gods could not win. Shumbha and Nishumbha had taken the three worlds, and the pantheon that had handled every previous crisis was simply outmatched. So the gods pooled their light and from it made Durga, a goddess carrying every one of their weapons at once, riding a lion, and she began to win where all of them had failed.
 The demons sent Chanda and Munda against her. And here the story does something it has not done before: Durga does not reach for a weapon. Her face goes black with anger, and out of the furrow of her brow steps Kali, already armed, already garlanded, already laughing. She is not summoned from elsewhere. She comes out of the forehead of a goddess who has run out of patience. She takes Chanda and Munda by the hair, and afterward Durga gives her a name for it: Chamunda.`},
       {heading:'The blood-seed',
-       text:`Then came Raktabija, whose name means blood-seed, and whose boon was precise: every drop of his blood that touched the earth would rise as another Raktabija, fully armed. Durga struck him and made two. She struck those and made four. The battlefield filled with him. This is the one demon in the tradition who is not a test of strength at all. He is a test of method. Everything you do to him makes more of him, which is a fair description of shame, of certain arguments, and of most wars.
+       text:`Then came Raktabija, whose name means blood-seed, and whose boon was precise: every drop of his blood that touched the earth would rise as another Raktabija, fully armed. Durga struck him and made two. She struck those and made four. The battlefield filled with him. This is the one demon in the tradition who is not a test of strength at all. He is a test of method. Everything we do to him makes more of him, which is a fair description of shame, of certain arguments, and of most wars.
 Kali solved it by changing the problem. She spread her tongue across the battlefield and drank the blood before it could land, swallowing the copies as fast as they came, until there was nothing left of him to multiply. The solution was not a harder blow. It was refusing to let the thing reach the ground where it feeds.`},
       {heading:'What stops her',
        text:`And then she could not stop. The rage that had been exactly right for the battle kept going after the battle was over, and her dance began to break the world she had just saved. Nobody could approach her. Nothing could be said to her.
@@ -1251,14 +1267,14 @@ So Shiva lay down among the corpses in her path. She danced onto the field, and 
 <p>Read this way, Raktabija is the most modern thing on this page. Some problems double when struck. Anyone who has tried to argue themselves out of shame, or to suppress a craving by force, has made two where there was one. Kali&rsquo;s method is the only one that works: stop letting it reach the ground. Do not fight the copy. Catch the thing before it lands.</p>
 <p>And the ending is why Kali belongs to practice rather than to spectacle. The fury is not condemned. It was correct; it won a war nothing else could win. What the story insists on is that it needs something under its foot to recognize, or it will keep going after its usefulness ends. Ally&rsquo;s note on <a href="the-divine.html#archetype" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">The Divine</a> puts it exactly: Kali is what it is like when rage serves love. The serving is the whole distinction, and it lives in one foot, on one chest, in one moment of noticing.</p>`,
     seq:[
-      {n:'Easy Pose',s:'Sukhasana',c:'Sit with something you are actually angry about. Do not fix it yet.'},
+      {n:'Easy Pose',s:'Sukhasana',c:'We sit with something we are actually angry about. We do not fix it yet.'},
       {n:'Cat Cow',s:'Bitilasana Marjaryasana',c:'Let the spine move before the fire is asked for anything.'},
       {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Ground the hands. Kali needs a floor.'},
       {n:'Garland Pose',s:'Malasana',c:'Mala, the garland. Low, gathered, close to the earth she dances on.'},
       {n:'Goddess Pose',s:'Utkata Konasana',c:'The shape itself: feet wide and turned out, knees open, taking up room without apology. Hold past comfortable.'},
       {n:'Goddess Pose pulses',s:'Utkata Konasana',c:'Bend and straighten with the breath. Let the legs shake. The shaking is not a malfunction.'},
       {n:'Side Lunge',s:'Skandasana',c:'Shift side to side across the field. Both sides.'},
-      {n:'Lion Pose',s:'Simhasana',c:'The tongue out, the roar. Kali\'s face is the one you have been told not to make.'},
+      {n:'Lion Pose',s:'Simhasana',c:'The tongue out, the roar. Kali\'s face is the one we have been told not to make.'},
       {n:'Warrior II',s:'Virabhadrasana II',c:'Ferocity with a horizon: the gaze steady over the front hand. Both sides.'},
       {n:'Seated Twist',s:'Ardha Matsyendrasana',c:'Wring out what the fire burned off. Both sides.'},
       {n:'Reclined Bound Angle',s:'Supta Baddha Konasana',c:'The mother underneath the destroyer. Let the front body be soft now.'},
@@ -1267,14 +1283,14 @@ So Shiva lay down among the corpses in her path. She danced onto the field, and 
     connections:`
 <p><span class="pose-link" data-id="416">Goddess Pose (Utkata Konasana)</span> is the shape most teachers hand to Kali, and it is well chosen: feet wide, knees open, the body taking up room in a way many practitioners have been trained out of. Held past the comfortable point it starts to shake, and the shaking is the practice. <span class="pose-link" data-id="417">Garland Pose (Malasana)</span> carries her name without most people noticing: mala is the garland, and hers is made of fifty heads.</p>
 <p><span class="pose-link" data-id="335">Lion Pose (Simhasana)</span> is the only asana that asks for her actual face. Tongue out, eyes wide, a sound from the belly. It is the pose people laugh through, which is worth sitting with, because Kali&rsquo;s expression is the one most of us were taught to put away early.</p>
-<p>The closing pose is the story. <span class="pose-link" data-id="401">Corpse Pose (Savasana)</span> is <em>shava</em>, the corpse, and the corpse in this story is Shiva, lying in Kali&rsquo;s path so that she will look down and come back. The first story on this page notes that without Shakti, Shiva is <em>shava</em>. Here that grammar becomes a practice: you finish a Kali sequence by lying down as the still thing that ferocity recognizes and stops for. Every Savasana after this one reads a little differently.</p>`,
+<p>The closing pose is the story. <span class="pose-link" data-id="401">Corpse Pose (Savasana)</span> is <em>shava</em>, the corpse, and the corpse in this story is Shiva, lying in Kali&rsquo;s path so that she will look down and come back. The first story on this page notes that without Shakti, Shiva is <em>shava</em>. Here that grammar becomes a practice: we finish a Kali sequence by lying down as the still thing that ferocity recognizes and stops for. Every Savasana after this one reads a little differently.</p>`,
     questions:[
-      'Kali comes out of Durga\'s brow at the moment courtesy stops working. When has your own anger been the accurate response, and what did you do with it?',
-      'Raktabija multiplies every time he is struck. What in your life gets bigger each time you attack it, and what would it mean to stop it before it lands rather than fighting the copies?',
-      'The tradition worships Kali as mother, not as a villain. What changes if the most frightening force in you is also the one that protects what you love?',
-      'Her ferocity was right for the battle and wrong for the minute after. How do you know when yours has outlived its usefulness, and what is under your foot that could tell you?',
-      'Mookerjee reads her white teeth as clarity biting down on the red tongue of appetite. Where does your clarity hold your appetite, and where has it lost its grip?',
-      'She stops because she recognizes someone. Who or what can still reach you when you are furious, and have you told them so?',
+      'Kali comes out of Durga\'s brow at the moment courtesy stops working. When has our own anger been the accurate response, and what did we do with it?',
+      'Raktabija multiplies every time he is struck. What in our lives gets bigger each time we attack it, and what would it mean to stop it before it lands rather than fighting the copies?',
+      'The tradition worships Kali as mother, not as a villain. What changes if the most frightening force in us is also the one that protects what we love?',
+      'Her ferocity was right for the battle and wrong for the minute after. How do we know when ours has outlived its usefulness, and what is under our feet that could tell us?',
+      'Mookerjee reads her white teeth as clarity biting down on the red tongue of appetite. Where does our clarity hold our appetite, and where has it lost its grip?',
+      'She stops because she recognizes someone. Who or what can still reach us when we are furious, and have we told them so?',
     ],
   },
   {
@@ -1312,7 +1328,7 @@ Galava insisted on paying his teacher. Vishvamitra wanted nothing and said so, b
     seq:[
       {n:'Easy Pose',s:'Sukhasana',c:'Sit as the seven seers sit, before any of the stories start.'},
       {n:'Sage Marichi\'s Pose',s:'Marichyasana A',c:'Marichi: the spine long as a ray of light, then bowed to kindle another. Both sides.'},
-      {n:'Bharadvaja\'s Twist',s:'Bharadvajasana',c:'Three lifetimes, three handfuls. Wring out what you are holding. Both sides.'},
+      {n:'Bharadvaja\'s Twist',s:'Bharadvajasana',c:'Three lifetimes, three handfuls. We wring out what we are holding. Both sides.'},
       {n:'Half Lord of the Fishes',s:'Ardha Matsyendrasana',c:'Matsyendra overhears the teaching and carries it back. Both sides.'},
       {n:'Downward Dog',s:'Adho Mukha Svanasana',c:'Steady the ground before the sages ask for strength.'},
       {n:'Plank Pose',s:'Phalakasana',c:'Vasistha\'s foundation: nothing dramatic, everything held.'},
@@ -1321,20 +1337,20 @@ Galava insisted on paying his teacher. Vishvamitra wanted nothing and said so, b
       {n:'Compass Pose, or its prep',s:'Visvamitrasana',c:'Vishvamitra: power and openness bound into one shape. Take the prep if that is today\'s pose. Both sides.'},
       {n:'Eight-Angle Pose',s:'Astavakrasana',c:'Ashtavakra: bent in eight places, balanced anyway, laughing at the assembly.'},
       {n:'Flying Pigeon Pose',s:'Eka Pada Galavasana',c:'Galava: devotion that will not put itself down. Notice what it costs to stay up.'},
-      {n:'Child\'s Pose',s:'Balasana',c:'Indra sets three handfuls of earth in front of you. Rest anyway.'},
-      {n:'Corpse Pose',s:'Savasana',c:'The lineage continues for a few minutes without your effort.'},
+      {n:'Child\'s Pose',s:'Balasana',c:'Indra sets three handfuls of earth in front of us. Rest anyway.'},
+      {n:'Corpse Pose',s:'Savasana',c:'The lineage continues for a few minutes without our effort.'},
     ],
     connections:`
 <p>These poses are the tradition's way of keeping names in circulation. <span class="pose-link" data-id="409">Vasisthasana</span> and <span class="pose-link" data-id="410">Visvamitrasana</span> are two halves of one argument, and it is telling that the sage's pose is a plain steady line while the king's pose is the elaborate bind. Vasistha never needed the complexity. <span class="pose-link" data-id="411">Astavakrasana</span> puts the practitioner in a body bent in eight directions and asks for balance anyway, which is the entire content of Ashtavakra's answer at the court.</p>
-<p><span class="pose-link" data-id="412">Bharadvajasana</span> is the twist as epistemology: three lifetimes of learning came to three handfuls of earth, so wring out what you hold. <span class="pose-link" data-id="413">Ardha Matsyendrasana</span> honors a listener, and the <em>Hatha Yoga Pradipika</em> puts him among the founders, which quietly makes overhearing a legitimate way to receive a teaching. <span class="pose-link" data-id="414">Marichyasana</span> is a ray of light bowing to light something else, and <span class="pose-link" data-id="415">Eka Pada Galavasana</span> is devotion that has stopped listening: perched, committed, and unable to come down.</p>
+<p><span class="pose-link" data-id="412">Bharadvajasana</span> is the twist as epistemology: three lifetimes of learning came to three handfuls of earth, so we wring out what we hold. <span class="pose-link" data-id="413">Ardha Matsyendrasana</span> honors a listener, and the <em>Hatha Yoga Pradipika</em> puts him among the founders, which quietly makes overhearing a legitimate way to receive a teaching. <span class="pose-link" data-id="414">Marichyasana</span> is a ray of light bowing to light something else, and <span class="pose-link" data-id="415">Eka Pada Galavasana</span> is devotion that has stopped listening: perched, committed, and unable to come down.</p>
 <p>Durvasa never got a pose, but he is already on this page. It is Durvasa who hands young Kunti the mantra she tests once, on the sun, which produces Karna, which sets <a href="#section-s5" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the Mahabharata</a> in motion. The sages are not a separate chapter of the tradition. They are the mechanism by which its plots begin.</p>`,
     questions:[
-      'Vishvamitra could not buy, trade, or seize what Vasistha had, and that failure redirected his entire life. What have you wanted that could not be acquired, only become?',
-      'The tradition insists Vishvamitra\'s recognition had to come from Vasistha, the rival he once attacked. Whose acknowledgment would actually settle something in you, and what does it mean that you want it from them specifically?',
-      'Ashtavakra was laughed at for his body by a room of scholars and answered that they were judging the pot instead of the water. Where do you still meet a body, yours or someone else\'s, as though it were the person?',
-      'Kahoda cursed his own child for being right. What happens in you when someone junior corrects you accurately, and what do you do with it?',
-      'Indra told Bharadvaja that three lifetimes of study amounted to three handfuls of earth, and asked what he would do with a fourth. If mastery is off the table, what is your study for?',
-      'Galava would not accept that his teacher wanted nothing, and the debt he invented was paid largely by Madhavi. When your need to give back is refused, can you let the refusal stand, or does someone else end up carrying your insistence?',
+      'Vishvamitra could not buy, trade, or seize what Vasistha had, and that failure redirected his entire life. What have we wanted that could not be acquired, only become?',
+      'The tradition insists Vishvamitra\'s recognition had to come from Vasistha, the rival he once attacked. Whose acknowledgment would actually settle something in us, and what does it mean that we want it from them specifically?',
+      'Ashtavakra was laughed at for his body by a room of scholars and answered that they were judging the pot instead of the water. Where do we still meet a body, ours or someone else\'s, as though it were the person?',
+      'Kahoda cursed his own child for being right. What happens in us when someone junior corrects us accurately, and what do we do with it?',
+      'Indra told Bharadvaja that three lifetimes of study amounted to three handfuls of earth, and asked what he would do with a fourth. If mastery is off the table, what is our study for?',
+      'Galava would not accept that his teacher wanted nothing, and the debt he invented was paid largely by Madhavi. When our need to give back is refused, can we let the refusal stand, or does someone else end up carrying our insistence?',
     ],
   },
 ];
@@ -1390,7 +1406,7 @@ const STORY_META = {
   s1:{archetypes:['The Deity','The Goddess','The Warrior'],yamas:['Ahimsa','Satya','Brahmacharya'],poses:[20,6,46,133,363,118,346],
     evidence:[
       {label:'Norton & Gino 2014: rituals ease grief (JEP: General)',url:'https://www.hbs.edu/ris/Publication%20Files/norton%20gino%202014_e44eb177-f8f4-4f0d-a458-625c1268b391.pdf'},
-      {label:'Bajić & Dimitrijević: the astronomical lore of yoginis (SEAC)',url:'https://www.researchgate.net/publication/372885456_THE_SECRET_ASTRONOMICAL_LORE_OF_YOGINIS_I'},
+      
     ]},
   s2:{archetypes:['The Devotee','The Child','The Avatar','The Demon King','The Sage'],yamas:['Satya','Ahimsa'],poses:[335,99],
     evidence:[
@@ -1470,16 +1486,14 @@ const evLink = `<svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 
 
 function renderIntro(){
   return `<section class="story-section-wrap" id="section-intro">
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);margin-bottom:.75rem">The image of the banyan tree</h2>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into the light, while the roots descend into the dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the manifest world below. To trace any branch back to where it meets the trunk is a form of yoga in itself. These stories are that practice.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories here draw from the <em>Srimad Bhagavatam</em>, Valmiki's <em>Ramayana</em>, the <em>Mahabharata</em>, and the life of Krishna. Each stands fully on its own. Each is also woven into a larger fabric, and those threads are named throughout. The weaving is held by a handful of key ideas, open the <strong style="cursor:pointer;color:var(--gold-dk)" onclick="document.getElementById('glossary-drawer').classList.add('open')">Glossary</strong> at any time to explore the Sanskrit terms as they arise. Every Bhagavad Gita verse cited on this page, such as <a class="gita-vlink" href="https://vedabase.io/en/library/bg/15/1/" target="_blank" rel="noopener">15.1</a>, links directly to the Sanskrit and translation on <a class="gita-vlink" href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Vedabase</a>, so the scripture itself is always one click beneath the story.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">At the heart of these stories is <span class="concept-link" data-id="Dharma">dharma</span>, the law that sustains all things, and the tension that arises when dharmas irreconcilably conflict. Moving through that tension is often what the stories call <span class="concept-link" data-id="Tapas">tapas</span>: the heat that refines. What emerges from that refinement, in every arc here, is some form of <span class="concept-link" data-id="Bhakti">bhakti</span>, devotion, love, service, which the tradition holds as the path most direct to the divine. <a href="the-divine.html" style="cursor:pointer;color:var(--gold-dk);border-bottom:1px solid var(--gold)">What we mean by &ldquo;the divine&rdquo; &rarr;</a></p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">This page matches each story with the asanas that carry it and with a practice sequence that moves through its arc. Many poses are named directly for these figures: the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in the body changes the quality of attention it asks for. Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">For the pose-by-pose mythology, the fullest guide in print is Raj Balkaran&rsquo;s <a href="https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)"><em>The Stories Behind the Poses</em></a> (Leaping Hare Press, 2022), which treats fifty postures and the tales behind them. Two of its threads shaped what you will find here: <a href="#section-s11" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the churning of the cosmic ocean</a>, a single story that three poses have to share, and <a href="#section-s12" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">the sages in the poses</a>, where the asanas turn out to be biographies. The stories below are retold from the primary sources cited under each one.</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Some stories also carry <strong style="color:#5F5170">THE ARCHETYPAL READING</strong>, a second pass that asks what the figure is doing inside a person rather than inside the cosmos. That layer leans on Ashok Bedi, a psychiatrist and Jungian analyst who reads the Hindu deities as archetypes, most directly in <a href="https://pathtothesoul.com/publications/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)"><em>Awaken the Slumbering Goddess</em></a> and <a href="https://pathtothesoul.com/blog/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">his ongoing writing</a>. It is one way of reading, offered alongside the others rather than over them: some practitioners meet these figures as a living presence, and that reading is not corrected by this one. <a href="the-divine.html#archetype" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">The three doorways are laid out on The Divine &rarr;</a></p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things. Each descending <span class="concept-link" data-id="Avatar">avatar</span> carries a specific emotional-spiritual tone, what the tradition calls <span class="concept-link" data-id="Rasa">rasa</span>. Receiving that tone with full attention is itself a form of practice. The stories do more than recount what happened. They work on the listener, through the act of listening itself. Psychology has measured a version of this claim: absorption in a story reshapes what the listener believes after it ends.</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);margin-bottom:.75rem">The banyan tree</h2>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into light, while the roots descend into dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the material world below. To trace any branch back to where it meets the trunk is a yoga practice itself.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Every Bhagavad Gita verse cited on this page, such as <a class="gita-vlink" href="https://vedabase.io/en/library/bg/15/1/" target="_blank" rel="noopener">15.1</a>, links directly to the Sanskrit and translation on <a class="gita-vlink" href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Vedabase</a>, so the scripture itself is always one click beneath the story. The stories below are retold from the primary sources cited under each one.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Since so much of current yoga practice focuses on movement, this page matches each story with relevant asanas and with an example movement practice sequence. The asanas help us embody the story, though, and aren't the purpose of the stories. I find it useful to connect my movement with the underpinning philosophy, like the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in my body changes my attention.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The stories themselves are understood as acts of <span class="concept-link" data-id="Leela">Leela</span>, divine play: a kind of unfolding that reveals the nature of things, and <span class="concept-link" data-id="Rasa">rasa</span>, or the essence of that joy.</p>
     <div class="sources-wrap">
-      <a href="https://pubmed.ncbi.nlm.nih.gov/11079236/" class="evidence-link" target="_blank" rel="noopener">${evLink}Green &amp; Brock 2000: narrative transportation shapes belief (JPSP)</a>
+      <a href="https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses" class="source-link" target="_blank" rel="noopener">${extLink}Balkaran, The Stories Behind the Poses &middot; Leaping Hare Press</a>
     </div>
   </section>`;
 }

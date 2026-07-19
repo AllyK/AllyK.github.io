@@ -210,7 +210,7 @@ a.inline:hover{border-color:var(--gold)}
       </div>
       <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps."></textarea>
       <button type="submit" class="lp-fb-send">Send</button>
-      <div class="lp-fb-hint">Sending opens your email app with the message ready to go.</div>
+      <div class="lp-fb-hint">Your message sends from this page. If it cannot get through, your email app opens instead.</div>
     </form>
   </div>
 </section>
@@ -329,9 +329,25 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var em=document.getElementById('lp-fb-email').value.trim();
   var ty=document.getElementById('lp-fb-type').value;
   var ms=document.getElementById('lp-fb-msg').value.trim();
-  var sub='The Living Practice: '+ty+' ('+document.title+')';
-  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
-  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  var pg=location.pathname.split('/').pop()||'index.html';
+  var btn=document.querySelector('#lp-fb-form .lp-fb-send');
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,type:ty,message:ms,page:pg,
+      _subject:'The Living Practice: '+ty+' ('+pg+')',_captcha:'false',_template:'table'})
+  }).then(function(r){if(!r.ok)throw new Error('send failed');return r.json();})
+  .then(function(){
+    var inner=document.querySelector('.lp-feedback-inner');
+    inner.innerHTML='<h2>Received with gratitude</h2><p class="lp-fb-sub">Your '+ty.toLowerCase()+' is on its way. Thank you for helping this living resource grow.</p>';
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent=prev;
+    var sub='The Living Practice: '+ty+' ('+pg+')';
+    var body='From: '+em+'\nPage: '+pg+'\nType: '+ty+'\n\n'+ms;
+    location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
 });
 </script>
 </body>

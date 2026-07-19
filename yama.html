@@ -99,6 +99,15 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
 .bridge-link{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border);border-radius:20px;transition:all .15s}
 .bridge-link:hover{border-color:var(--gold);color:var(--gold-dk)}
 .bridge-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+
+.yama-block{cursor:pointer;transition:border-color .15s}
+.yama-block:hover{border-color:var(--gold)}
+.yama-block .yama-body{display:none;cursor:auto;margin-top:.7rem}
+.yama-block.open .yama-body{display:block}
+.yama-block .yama-head::after{content:"+";float:right;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);line-height:1;transition:transform .15s}
+.yama-block.open .yama-head::after{content:"\2212"}
+.yama-tap{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#b09a6a;margin-top:.35rem}
+.yama-block.open .yama-tap{display:none}
 </style>
 </head>
 <body>
@@ -152,11 +161,11 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
     <h2 class="section-title">The ground the practice stands on</h2>
     <div class="section-sub">Before posture, before breath, before meditation</div>
   </div>
-  <p>Patanjali opens the eight limbs with five restraints. <a class="inline" href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">Sutra 2.30</a> names them: <em>ahiṁsā-satya-asteya-brahmacarya-aparigrahā yamāḥ</em>. Non-harming, truthfulness, non-stealing, wise use of energy, non-grasping. Sutra 2.31 raises the stakes: practiced without exception for birth, place, time, or circumstance, they become the <em>mahāvratam</em>, the great vow. Ethics comes first in Patanjali&rsquo;s sequence. Posture, breath, and meditation are built on top of it.</p>
-  <p>The yamas are taught twice. Patanjali states them in aphorisms, one line each, with a result attached: sutras 2.35 through 2.39 describe what happens in the presence of a person in whom each restraint has become stable. The epics teach the same principles in blood, love, and impossible choices: <a class="story" href="cosmic-banyan.html#section-s4">Sita&rsquo;s</a> truth carried to its furthest edge, <a class="story" href="cosmic-banyan.html#section-s3">Bali</a> giving away three worlds with his eyes open, <a class="story" href="cosmic-banyan.html#section-s4">Ravana</a> seizing what can only be given. Those stories live under the <a class="inline" href="cosmic-banyan.html">Under the Banyan Tree</a>, <a class="inline" href="cosmic-banyan.html#section-directory">searchable by pose, archetype, and yama</a>. This page is the ground. The stories are how it is walked.</p>
+  <p>Patanjali, the father of yoga, set out the five restraints as the fundamental principles of yoga: <em>ahiṁsā</em> (non-harming), <em>satya</em> (truthfulness), <em>asteya</em> (non-stealing), <em>brahmacarya</em> (wise use of energy), and <em>aparigrahā</em> (non-grasping). These principles must be practiced without exception for birth, place, time, or circumstance, becoming <em>mahāvratam</em>, the great vow. Posture, breath, and meditation are built on top of ethics.</p>
+  <p>Sutras 2.35 through 2.39 describe what happens in the presence of a person in whom each restraint has become stable. The epics teach the same principles in archetypes: <a class="story" href="cosmic-banyan.html#section-s4">Sita&rsquo;s</a> truth carried to its edge, <a class="story" href="cosmic-banyan.html#section-s3">Bali</a> knowingly releasing three worlds, <a class="story" href="cosmic-banyan.html#section-s4">Ravana</a> seizing what can only be given. Those stories live under the <a class="inline" href="cosmic-banyan.html">Banyan Tree</a>, and are <a class="inline" href="cosmic-banyan.html#section-directory">searchable by pose, archetype, and yama</a>.</p>
   <div class="context-note">
-    <div class="context-label">A NOTE ON THE TEXT ITSELF</div>
-    <p>The Yoga Sutras have a biography of their own. Sanskrit historian David Gordon White traces how a text nearly out of circulation by the twelfth century became modern yoga&rsquo;s central scripture in <a class="inline" href="https://press.princeton.edu/books/paperback/9780691197074/the-yoga-sutra-of-patanjali" target="_blank" rel="noopener"><em>The Yoga Sutra of Patanjali: A Biography</em></a> (Princeton, 2014). Stuart Sovatsky&rsquo;s <a class="inline" href="https://www.atpweb.org/jtparchive/trps-47-15-01-148.pdf" target="_blank" rel="noopener">review in the Journal of Transpersonal Psychology</a> is a short doorway into that scholarship. Holding both keeps the study honest: the principles are ancient, and our relationship to the text keeps being remade.</p>
+    <div class="context-label">ORIGINAL TEXT NOTES</div>
+    <p>The philosophy of the Yoga Sutras is the foundation of modern yoga, and its history is a broken and rebuilt one. The text fell out of circulation for centuries before modern, and predominantly Western, practitioners extracted it, added to it, and raised it into yoga&rsquo;s central scripture. David Gordon White traces that whole arc in <a class="inline" href="https://press.princeton.edu/books/paperback/9780691197074/the-yoga-sutra-of-patanjali" target="_blank" rel="noopener"><em>The Yoga Sutra of Patanjali: A Biography</em></a> (Princeton, 2014). The principles are ancient, but how they are kept is remade and reinterpreted in practice.</p>
   </div>
   <div class="sources-wrap">
     <a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Sutras, Book 2 (Sacred Texts)</a>
@@ -169,76 +178,83 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
 <section class="section-wrap" id="the-five">
   <div class="section-header">
     <h2 class="section-title">The five yamas</h2>
-    <div class="section-sub">Each with its sutra, its Gita root, and its stories</div>
+    <div class="section-sub">Each with its sutra, its Gita root, and its practice</div>
   </div>
 
   <div class="yama-block" id="ahimsa">
     <div class="yama-head"><span class="yama-name">Ahimsa</span><span class="yama-translit">ahiṃsā</span></div>
     <div class="yama-meaning">Do no harm</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
     <div class="sutra-line"><em>Ahiṁsā-pratiṣṭhāyāṁ tat-sannidhau vaira-tyāgaḥ.</em> In the presence of one established in non-harming, hostility is abandoned.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.35</a></span></div>
-    <p>Reverence for life in thought, word, and deed, including toward your own body. The Gita lists ahimsa among the marks of knowledge (<a class="gita" href="https://vedabase.io/en/library/bg/13/8-12/" target="_blank" rel="noopener">13.8&ndash;12</a>), the divine qualities (<a class="gita" href="https://vedabase.io/en/library/bg/16/1-3/" target="_blank" rel="noopener">16.2</a>), and the austerity of the body (<a class="gita" href="https://vedabase.io/en/library/bg/17/14/" target="_blank" rel="noopener">17.14</a>). Then it complicates the principle. Arjuna refuses to fight and calls the refusal ahimsa. Krishna answers that the deepest harm can be refusing your own dharma (<a class="gita" href="https://vedabase.io/en/library/bg/2/31/" target="_blank" rel="noopener">2.31</a>&ndash;<a class="gita" href="https://vedabase.io/en/library/bg/2/33/" target="_blank" rel="noopener">33</a>). The first yama is a discipline of discernment as much as restraint.</p>
-    <div class="mini-label">IN THE STORIES</div>
-    <p><a class="story" href="cosmic-banyan.html#section-s1">Shiva forgives Daksha</a> after complete grief and complete ferocity (Srimad Bhagavatam, <a class="inline" href="https://vedabase.io/en/library/sb/4/" target="_blank" rel="noopener">Canto 4</a>): the restraint at ahimsa&rsquo;s center. <a class="story" href="cosmic-banyan.html#section-s8">Krishna&rsquo;s first answer</a> holds the paradox: weapons cannot cut the soul (<a class="gita" href="https://vedabase.io/en/library/bg/2/23/" target="_blank" rel="noopener">2.23</a>), and grief at action differs from grief at harm.</p>
-    <div class="mini-label">ON THE MAT</div>
-    <p>Ahimsa begins with your own joints: honest range, a full warm-up, the kind adjustment over the impressive one. The disposition itself is trainable. In Weng and colleagues&rsquo; 2013 trial, two weeks of compassion practice increased altruistic behavior toward strangers and shifted the neural response to suffering.</p>
+    <p>The Gita lists ahimsa among the marks of knowledge (<a class="gita" href="https://vedabase.io/en/library/bg/13/8-12/" target="_blank" rel="noopener">13.8&ndash;12</a>), the divine qualities (<a class="gita" href="https://vedabase.io/en/library/bg/16/1-3/" target="_blank" rel="noopener">16.2</a>), and the austerity of the body (<a class="gita" href="https://vedabase.io/en/library/bg/17/14/" target="_blank" rel="noopener">17.14</a>). But it is a complicated principle. Arjuna refuses to fight and calls the refusal ahimsa. Krishna answers that the deepest harm can be refusing our own dharma (<a class="gita" href="https://vedabase.io/en/library/bg/2/31/" target="_blank" rel="noopener">2.31</a>&ndash;<a class="gita" href="https://vedabase.io/en/library/bg/2/33/" target="_blank" rel="noopener">33</a>). The first yama is a discipline of discernment as much as restraint.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, ahimsa begins with our own journey: honoring our motion, our body&rsquo;s signals, and doing no harm to ourselves with criticism, pressure, or comparison. In meditation, it is the gentleness that meets a wandering mind, each return to the breath made kindly. In daily life, it shapes how we speak to ourselves and others, how we handle conflict, and how we treat every living thing our day touches.</p>
     <div class="sources-wrap">
       <a href="https://www.wisdomlib.org/definition/ahimsa" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ahimsa</a>
-      <a href="https://vedabase.io/en/library/sb/4/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Vedabase: SB Canto 4</a>
-      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3713090/" class="evidence-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Weng et al. 2013: compassion training increases altruism (Psych Science)</a>
+    </div>
     </div>
   </div>
 
   <div class="yama-block" id="satya">
     <div class="yama-head"><span class="yama-name">Satya</span><span class="yama-translit">satya</span></div>
     <div class="yama-meaning">Live the truth</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
     <div class="sutra-line"><em>Satya-pratiṣṭhāyāṁ kriyā-phala-āśrayatvam.</em> For one established in truthfulness, action and its fruit come to rest on what is said.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.36</a></span></div>
-    <p>Speaking what is, and beyond that, refusing to live inside a lie even when the lie is more comfortable. The Gita pairs satya with ahimsa among the divine qualities (<a class="gita" href="https://vedabase.io/en/library/bg/16/1-3/" target="_blank" rel="noopener">16.2</a>) and defines the austerity of speech: words that are truthful, pleasing, beneficial, unagitating (<a class="gita" href="https://vedabase.io/en/library/bg/17/15/" target="_blank" rel="noopener">17.15</a>). Truth and kindness travel together in this teaching. A truth flung as a weapon fails the austerity twice.</p>
-    <div class="mini-label">IN THE STORIES</div>
-    <p><a class="story" href="cosmic-banyan.html#section-s4">Sita</a> answers the second demand for proof by calling on the earth itself (<a class="inline" href="https://valmikiramayan.net/" target="_blank" rel="noopener">Valmiki Ramayana</a>, Uttara Kanda). <a class="story" href="cosmic-banyan.html#section-s5">Yudhishtir&rsquo;s</a> honesty is absolute, and a rigged dice game turns it against him. <a class="story" href="cosmic-banyan.html#section-s2">Prahlada</a>, under poison and fire, keeps saying what he knows (Srimad Bhagavatam, <a class="inline" href="https://vedabase.io/en/library/sb/7/" target="_blank" rel="noopener">Canto 7</a>).</p>
+    <p>Satya is speaking what is, and refusing to live inside a lie even when the lie is more comfortable. The Gita defines satya as carefully choosing words that are truthful, pleasing, beneficial, and do the most good (<a class="gita" href="https://vedabase.io/en/library/bg/17/15/" target="_blank" rel="noopener">17.15</a>). Truth and kindness travel together in this teaching so truth used as a weapon is not practicing satya.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>Similar to ahimsa, practicing satya in movement is being true to ourselves and our path. Whether that means using props or returning to our breathing, the goal is not to get to the most difficult pose, but to embody our felt truth. In meditation, satya is honest witnessing: seeing what arises as it is, free of decoration or denial. In daily life, it is choosing words that are true, kind, and useful together, and living so the outside of our life matches the inside.</p>
     <div class="sources-wrap">
       <a href="https://www.wisdomlib.org/definition/satya" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Satya</a>
-      <a href="https://valmikiramayan.net/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Valmiki Ramayana (Sanskrit &amp; English)</a>
-      <a href="https://vedabase.io/en/library/sb/7/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Vedabase: SB Canto 7</a>
+    </div>
     </div>
   </div>
 
   <div class="yama-block" id="asteya">
     <div class="yama-head"><span class="yama-name">Asteya</span><span class="yama-translit">asteya</span></div>
     <div class="yama-meaning">Take only what is given</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
     <div class="sutra-line"><em>Asteya-pratiṣṭhāyāṁ sarva-ratna-upasthānam.</em> For one established in non-stealing, all jewels approach.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.37</a></span></div>
-    <p>Asteya reaches past objects into time, credit, attention, and another&rsquo;s freedom. The Gita says it plainly: one who enjoys what is given without offering anything back is <em>stena eva saḥ</em>, a thief (<a class="gita" href="https://vedabase.io/en/library/bg/3/12/" target="_blank" rel="noopener">3.12</a>). The whole third chapter frames life as a cycle of offering; hoarding is theft from that cycle. Research has measured the cycle&rsquo;s other direction: in Dunn, Aknin and Norton&rsquo;s 2008 experiments, money spent on others raised happiness more than money spent on oneself.</p>
-    <div class="mini-label">IN THE STORIES</div>
-    <p><a class="story" href="cosmic-banyan.html#section-s4">Ravana</a> seizes what can only be given, and Lanka burns for it. <a class="story" href="cosmic-banyan.html#section-s3">Bali</a> gives everything, knowingly, and receives a kingdom lovelier than the three worlds (Srimad Bhagavatam, <a class="inline" href="https://vedabase.io/en/library/sb/8/" target="_blank" rel="noopener">Canto 8</a>). <a class="story" href="cosmic-banyan.html#section-s5">The dice game</a> dresses theft in the costume of a fair contest.</p>
+    <p>Asteya reaches past objects into time, credit, attention, and another&rsquo;s freedom. The Gita says one who enjoys what is given without offering anything back is a thief (<a class="gita" href="https://vedabase.io/en/library/bg/3/12/" target="_blank" rel="noopener">3.12</a>). The whole third chapter frames life as a cycle of offering; hoarding is theft from that cycle. There&rsquo;s research that backs up the concept: Dunn, Aknin and Norton (2008) found that when participants spent money on others they felt more happiness than when they spent money on themselves.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, practicing asteya reminds us not to over extend ourselves and take from our energy that could lead to injury, to steal another&rsquo;s progress by comparing their journey to our own, and to share space so everyone has the same freedom to move. In meditation, asteya lets each breath be enough; grasping after a different experience steals the one that is here. In daily life, it means honoring people&rsquo;s time, crediting ideas to their sources, listening without taking over, and taking from the earth only what can be returned.</p>
     <div class="sources-wrap">
       <a href="https://www.wisdomlib.org/definition/asteya" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Asteya</a>
-      <a href="https://vedabase.io/en/library/sb/8/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Vedabase: SB Canto 8</a>
       <a href="https://www.science.org/doi/10.1126/science.1150952" class="evidence-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Dunn, Aknin &amp; Norton 2008: giving predicts happiness (Science)</a>
+    </div>
     </div>
   </div>
 
   <div class="yama-block" id="brahmacharya">
     <div class="yama-head"><span class="yama-name">Brahmacharya</span><span class="yama-translit">brahmacarya</span></div>
     <div class="yama-meaning">Spend energy on what matters</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
     <div class="sutra-line"><em>Brahmacarya-pratiṣṭhāyāṁ vīrya-lābhaḥ.</em> For one established in brahmacharya, vigor is gained.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.38</a></span></div>
-    <p>Literally, walking with Brahman: the stewardship of vital force. The Gita&rsquo;s meditator sits <em>brahmacāri-vrate sthitaḥ</em>, steady in the vow, mind fixed and fearless (<a class="gita" href="https://vedabase.io/en/library/bg/6/14/" target="_blank" rel="noopener">6.14</a>). The same discipline appears in the austerity of the body (<a class="gita" href="https://vedabase.io/en/library/bg/17/14/" target="_blank" rel="noopener">17.14</a>) and at the practitioner&rsquo;s final journey (<a class="gita" href="https://vedabase.io/en/library/bg/8/11/" target="_blank" rel="noopener">8.11</a>). Some lineages read celibacy. The broader reading is allocation: energy spent where devotion actually lives.</p>
-    <div class="mini-label">IN THE STORIES</div>
-    <p><a class="story" href="cosmic-banyan.html#section-s1">Shiva</a> holds both poles at once, total ascetic and total lover (Srimad Bhagavatam, <a class="inline" href="https://vedabase.io/en/library/sb/4/" target="_blank" rel="noopener">Canto 4</a>). <a class="story" href="cosmic-banyan.html#section-s4">Hanuman</a> is the tradition&rsquo;s living image of the vow: every gift, strength, scholarship, flight, poetry, placed in service, nothing leaking sideways (<a class="inline" href="https://valmikiramayan.net/" target="_blank" rel="noopener">Valmiki Ramayana</a>, Sundara Kanda).</p>
+    <p>The Gita&rsquo;s meditator sits <em>brahmacāri-vrate sthitaḥ</em>, steady in the vow, mind fixed and fearless (<a class="gita" href="https://vedabase.io/en/library/bg/6/14/" target="_blank" rel="noopener">6.14</a>). The brahmacarya discipline also appears in the austerity of the body (<a class="gita" href="https://vedabase.io/en/library/bg/17/14/" target="_blank" rel="noopener">17.14</a>), sometimes read as celibacy, and at the practitioner&rsquo;s final journey (<a class="gita" href="https://vedabase.io/en/library/bg/8/11/" target="_blank" rel="noopener">8.11</a>). Broadly, in brahmacarya, energy is self-regulated and focused.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, brahmacarya is the most direct principle guiding us to avoid excess in our practice and to focus on our self-regulation. In meditation, it is the steady vow of 6.14: energy gathered toward one point rather than scattered across every distraction. In daily life, it asks where our vitality actually goes, screens, worry, overcommitment, and returns it to what we most value.</p>
     <div class="sources-wrap">
       <a href="https://www.wisdomlib.org/definition/brahmacharya" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Brahmacharya</a>
-      <a href="https://valmikiramayan.net/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Valmiki Ramayana: Sundara Kanda</a>
+    </div>
     </div>
   </div>
 
   <div class="yama-block" id="aparigraha">
     <div class="yama-head"><span class="yama-name">Aparigraha</span><span class="yama-translit">aparigraha</span></div>
     <div class="yama-meaning">Hold life with open hands</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
     <div class="sutra-line"><em>Aparigraha-sthairye janma-kathaṁtā-sambodhaḥ.</em> When non-grasping is steady, the how and why of birth is understood.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.39</a></span></div>
-    <p>The Gita&rsquo;s meditator lives <em>aparigrahaḥ</em>, free of possessiveness (<a class="gita" href="https://vedabase.io/en/library/bg/6/10/" target="_blank" rel="noopener">6.10</a>). The liberated actor works <em>tyakta-sarva-parigrahaḥ</em>, all sense of ownership released (<a class="gita" href="https://vedabase.io/en/library/bg/4/21/" target="_blank" rel="noopener">4.21</a>). This is the yama closest to the Gita&rsquo;s core instruction: you have a right to the work alone, never to its fruits (<a class="gita" href="https://vedabase.io/en/library/bg/2/47/" target="_blank" rel="noopener">2.47</a>). Psychology has begun to measure the trait: Sahdra, Shaver and Brown&rsquo;s 2010 nonattachment scale tracks it against adaptive functioning and wellbeing.</p>
-    <div class="mini-label">IN THE STORIES</div>
-    <p><a class="story" href="cosmic-banyan.html#section-s3">Bali</a> gives the three worlds away with full knowledge of the cost (Srimad Bhagavatam, <a class="inline" href="https://vedabase.io/en/library/sb/8/" target="_blank" rel="noopener">Canto 8</a>). <a class="story" href="cosmic-banyan.html#section-s4">Rama</a> sets down a kingdom like a garment. <a class="story" href="cosmic-banyan.html#section-s10">Chapter 15 finishes the arc</a>: cut the deeply rooted tree with the axe of detachment, <em>asaṅga-śastreṇa dṛḍhena</em> (<a class="gita" href="https://vedabase.io/en/library/bg/15/3-4/" target="_blank" rel="noopener">15.3&ndash;4</a>).</p>
+    <p>The Gita&rsquo;s meditator lives <em>aparigrahaḥ</em>, free of possessiveness (<a class="gita" href="https://vedabase.io/en/library/bg/6/10/" target="_blank" rel="noopener">6.10</a>). The liberated actor works <em>tyakta-sarva-parigrahaḥ</em>, all sense of ownership released (<a class="gita" href="https://vedabase.io/en/library/bg/4/21/" target="_blank" rel="noopener">4.21</a>). This is the yama closest to the Gita&rsquo;s core instruction: we have a right to the work alone, never to its fruits (<a class="gita" href="https://vedabase.io/en/library/bg/2/47/" target="_blank" rel="noopener">2.47</a>). Psychology has begun to measure the trait: Sahdra, Shaver and Brown&rsquo;s 2010 nonattachment scale tracks it against adaptive functioning and wellbeing.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, aparigraha releases yesterday&rsquo;s pose: the body arrives different each day, and the practice meets it where it is. In meditation, it is the letting go inside every exhale, thoughts and states allowed to pass without being kept. In daily life, it is holding possessions, plans, and people with open hands, doing the work fully and releasing the outcome.</p>
     <div class="sources-wrap">
       <a href="https://www.wisdomlib.org/definition/aparigraha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Aparigraha</a>
       <a href="https://www.tandfonline.com/doi/abs/10.1080/00223890903425960" class="evidence-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Sahdra, Shaver &amp; Brown 2010: measuring nonattachment (J Personality Assessment)</a>
+    </div>
     </div>
   </div>
 </section>
@@ -254,7 +270,7 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
   <div class="research-item">
     <div class="research-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4959332/" target="_blank" rel="noopener">From Yama to Samyama</a></div>
     <div class="research-src">INTERNATIONAL JOURNAL OF YOGA, 2016 &middot; 9(2), 95&ndash;96</div>
-    <div class="research-note">Frames yama as the start and samyama as the culmination of one continuous arc, and argues the eight limbs progress together rather than in sequence: as asana is practiced, the attitude of the yamas is practiced inside it.</div>
+    <div class="research-note">Argues that each of the eight limbs of yoga need to be practiced together, which is the basis of my approach inviting you to &ldquo;begin anywhere&rdquo; through the eight limbs.</div>
   </div>
   <div class="research-item">
     <div class="research-title"><a href="https://journals.lww.com/joacs/fulltext/2021/09010/impact_of_yama_and_niyama_on_psychospiritual.6.aspx" target="_blank" rel="noopener">Impact of yama and niyama on psychospiritual factors in young adults: a randomized controlled trial</a></div>
@@ -267,9 +283,9 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
     <div class="research-note">Two weeks of compassion practice increased altruistic behavior toward strangers and changed how the brain responded to images of suffering. The closest laboratory analogue to ahimsa as Patanjali frames it: a cultivated disposition, strengthened by repetition.</div>
   </div>
   <div class="research-item">
-    <div class="research-title"><a href="https://www.atpweb.org/jtparchive/trps-47-15-01-148.pdf" target="_blank" rel="noopener">Three riffs upon The Yoga Sutra of Patanjali: A Biography</a></div>
-    <div class="research-src">SOVATSKY &middot; JOURNAL OF TRANSPERSONAL PSYCHOLOGY, 2015 &middot; 47(1), 148</div>
-    <div class="research-note">A review essay on David Gordon White&rsquo;s history of the Yoga Sutras: how the text was composed, lost, and rebuilt into modern yoga&rsquo;s scripture. Useful for holding the yamas with devotion and historical honesty at once.</div>
+    <div class="research-title"><a href="https://press.princeton.edu/books/paperback/9780691197074/the-yoga-sutra-of-patanjali" target="_blank" rel="noopener">The Yoga Sutra of Patanjali: A Biography</a></div>
+    <div class="research-src">WHITE &middot; PRINCETON UNIVERSITY PRESS, 2014</div>
+    <div class="research-note">The history of the text itself: composed, lost for centuries, and rebuilt into modern yoga&rsquo;s central scripture, largely by Western revivalists who extracted from it and added to it. The reason this page holds the yamas with devotion and historical honesty at once.</div>
   </div>
 </section>
 
@@ -317,7 +333,7 @@ a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
       </div>
       <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps." style="width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem"></textarea>
       <button type="submit" style="padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);cursor:pointer;font-family:'DM Sans',sans-serif">Send</button>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5">Sending opens your email app with the message ready to go.</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5">Your message sends from this page. If it cannot get through, your email app opens instead.</div>
     </form>
   </div>
 </section>
@@ -327,10 +343,47 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var em=document.getElementById('lp-fb-email').value.trim();
   var ty=document.getElementById('lp-fb-type').value;
   var ms=document.getElementById('lp-fb-msg').value.trim();
-  var sub='The Living Practice: '+ty+' ('+document.title+')';
-  var body='From: '+em+'\nPage: '+location.pathname.split('/').pop()+'\nType: '+ty+'\n\n'+ms;
-  location.href='mailto:allymk@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  var pg=location.pathname.split('/').pop()||'index.html';
+  var btn=document.querySelector('#lp-fb-form .lp-fb-send');
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,type:ty,message:ms,page:pg,
+      _subject:'The Living Practice: '+ty+' ('+pg+')',_captcha:'false',_template:'table'})
+  }).then(function(r){if(!r.ok)throw new Error('send failed');return r.json();})
+  .then(function(){
+    var inner=document.querySelector('.lp-feedback-inner');
+    inner.innerHTML='<h2>Received with gratitude</h2><p class="lp-fb-sub">Your '+ty.toLowerCase()+' is on its way. Thank you for helping this living resource grow.</p>';
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent=prev;
+    var sub='The Living Practice: '+ty+' ('+pg+')';
+    var body='From: '+em+'\nPage: '+pg+'\nType: '+ty+'\n\n'+ms;
+    location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
 });
+</script>
+
+<script>
+(function(){
+  var blocks=document.querySelectorAll('.yama-block');
+  blocks.forEach(function(b){
+    b.addEventListener('click',function(e){
+      if(e.target.closest('a'))return;
+      if(e.target.closest('.yama-body'))return;
+      b.classList.toggle('open');
+    });
+  });
+  function openHash(){
+    var h=location.hash.replace('#','');
+    if(!h)return;
+    var b=document.getElementById(h);
+    if(b&&b.classList.contains('yama-block')){b.classList.add('open');}
+  }
+  window.addEventListener('hashchange',openHash);
+  openHash();
+})();
 </script>
 </body>
 </html>
