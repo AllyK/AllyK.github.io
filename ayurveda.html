@@ -194,7 +194,7 @@ textarea{width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1p
   <h2 class="s-title">Search by trait</h2>
   <p class="lead">Most dosha quizzes ask fifteen questions and then tell you what you are. This one refuses, on purpose. Pick any traits below that genuinely sound like you and watch where Ayurveda files them. The tally is a tally, and it stops there.</p>
   <div class="ex">
-    <input class="ex-search" id="ex-search" type="text" placeholder="Search a trait: cold hands, sharp appetite, vivid dreams, slow to anger&hellip;" autocomplete="off"/>
+    <input class="ex-search" id="ex-search" type="text" placeholder="Search a trait: cold hands, autumn, sharp appetite, vivid dreams, slow to anger&hellip;" autocomplete="off"/>
     <div class="ex-cats" id="ex-cats"><span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);align-self:center;margin-right:.2rem">Pick an area</span></div>
     <div class="ex-traits" id="ex-traits"></div>
     <div class="ex-foot">
@@ -502,25 +502,25 @@ const TRAITS = [
   {t:'Bursts of energy, then depleted', d:'vata', c:'Body'},
   {t:'Hypermobile, flexible joints', d:'vata', c:'Body'},
   // Skin & hair
-  {t:'Dry skin, dry hair', d:'vata', c:'Skin & hair'},
-  {t:'Cold hands and feet', d:'vata', c:'Skin & hair'},
-  {t:'Warm skin, flushes easily', d:'pitta', c:'Skin & hair'},
-  {t:'Freckles or moles, sensitive to sun', d:'pitta', c:'Skin & hair'},
+  {t:'Dry skin, dry hair', d:'vata', c:'Skin & hair', kw:'dry dehydrated flaky autumn fall'},
+  {t:'Cold hands and feet', d:'vata', c:'Skin & hair', kw:'cold chilly icy poor circulation'},
+  {t:'Warm skin, flushes easily', d:'pitta', c:'Skin & hair', kw:'hot warm overheated flushed summer'},
+  {t:'Freckles or moles, sensitive to sun', d:'pitta', c:'Skin & hair', kw:'sun sunburn summer heat'},
   {t:'Early grey or thinning hair', d:'pitta', c:'Skin & hair'},
-  {t:'Thick, oily hair', d:'kapha', c:'Skin & hair'},
-  {t:'Smooth, soft skin', d:'kapha', c:'Skin & hair'},
-  {t:'Sweat easily and a lot', d:'pitta', c:'Skin & hair'},
+  {t:'Thick, oily hair', d:'kapha', c:'Skin & hair', kw:'oily heavy damp'},
+  {t:'Smooth, soft skin', d:'kapha', c:'Skin & hair', kw:'oily moist damp'},
+  {t:'Sweat easily and a lot', d:'pitta', c:'Skin & hair', kw:'hot heat summer overheated'},
   // Digestion
   {t:'Irregular appetite, forget to eat', d:'vata', c:'Digestion'},
-  {t:'Gas, bloating, irregular', d:'vata', c:'Digestion'},
-  {t:'Sharp appetite, irritable when hungry', d:'pitta', c:'Digestion'},
+  {t:'Gas, bloating, irregular', d:'vata', c:'Digestion', kw:'cold gas bloated'},
+  {t:'Sharp appetite, irritable when hungry', d:'pitta', c:'Digestion', kw:'hot hangry'},
   {t:'Strong digestion, can eat anything', d:'pitta', c:'Digestion'},
-  {t:'Heartburn or acidity', d:'pitta', c:'Digestion'},
-  {t:'Slow digestion, heavy after meals', d:'kapha', c:'Digestion'},
+  {t:'Heartburn or acidity', d:'pitta', c:'Digestion', kw:'hot acidic burning'},
+  {t:'Slow digestion, heavy after meals', d:'kapha', c:'Digestion', kw:'heavy sluggish cold damp'},
   {t:'Can skip a meal without much fuss', d:'kapha', c:'Digestion'},
-  {t:'Crave warm, oily, grounding food', d:'vata', c:'Digestion'},
-  {t:'Crave cold, sweet, light food', d:'pitta', c:'Digestion'},
-  {t:'Crave spice and stimulation', d:'kapha', c:'Digestion'},
+  {t:'Crave warm, oily, grounding food', d:'vata', c:'Digestion', kw:'prefers warm food likes hot food cold weather winter autumn'},
+  {t:'Crave cold, sweet, light food', d:'pitta', c:'Digestion', kw:'prefers cold food likes ice cream cold drinks summer heat'},
+  {t:'Crave spice and stimulation', d:'kapha', c:'Digestion', kw:'prefers heat likes spicy food warmth stimulation'},
   // Sleep
   {t:'Light sleeper, wake often', d:'vata', c:'Sleep'},
   {t:'Vivid, active dreams', d:'vata', c:'Sleep'},
@@ -542,12 +542,12 @@ const TRAITS = [
   {t:'Speak precisely, argue well', d:'pitta', c:'Mind'},
   {t:'Speak slowly, comfortable in silence', d:'kapha', c:'Mind'},
   // Weather
-  {t:'Hate cold and wind', d:'vata', c:'Weather'},
-  {t:'Hate heat and humidity', d:'pitta', c:'Weather'},
-  {t:'Hate damp and grey', d:'kapha', c:'Weather'},
-  {t:'Worse in autumn, better in warmth', d:'vata', c:'Weather'},
-  {t:'Worse in high summer', d:'pitta', c:'Weather'},
-  {t:'Worse in late winter and spring', d:'kapha', c:'Weather'},
+  {t:'Hate cold and wind', d:'vata', c:'Weather', kw:'cold chilly windy autumn fall winter prefers warmth prefers heat dislikes cold'},
+  {t:'Hate heat and humidity', d:'pitta', c:'Weather', kw:'hot heat humid summer muggy prefers cool prefers cold dislikes heat'},
+  {t:'Hate damp and grey', d:'kapha', c:'Weather', kw:'damp wet rainy overcast grey winter spring dislikes damp prefers dry prefers sun'},
+  {t:'Worse in autumn, better in warmth', d:'vata', c:'Weather', kw:'autumn fall cold windy dry season prefers warmth prefers heat'},
+  {t:'Worse in high summer', d:'pitta', c:'Weather', kw:'summer hot heat season prefers cool prefers cold weather'},
+  {t:'Worse in late winter and spring', d:'kapha', c:'Weather', kw:'winter spring damp wet cold season prefers dry prefers warmth'},
   // Stress
   {t:'Under stress: anxious and scattered', d:'vata', c:'Under stress'},
   {t:'Under stress: angry and sharp', d:'pitta', c:'Under stress'},
@@ -626,7 +626,7 @@ const DOSHAS = {
 
     const hits = TRAITS.filter(function(t){
       if(activeCat && t.c!==activeCat) return false;
-      if(q && !(t.t+' '+t.d+' '+t.c).toLowerCase().includes(q)) return false;
+      if(q && !(t.t+' '+t.d+' '+t.c+' '+(t.kw||'')).toLowerCase().includes(q)) return false;
       return true;
     });
     traitsEl.innerHTML = hits.length
