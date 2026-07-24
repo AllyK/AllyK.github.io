@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Niyama — The Inner Observances</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root{
+  --bg:#FAF5ED;--bg-card:#FFFBF5;--bg-hero:#F5ECD8;
+  --text:#2C1A0E;--text-mid:#6B4C30;--text-muted:#9A7858;
+  --gold:#C8962E;--gold-dk:#854F0B;--gold-lt:#F5D898;--gold-pale:#FBF2E0;
+  --sage:#5A8A5A;--sage-dk:#3E6B3E;--sage-pale:#EEF4EA;
+  --border:#E0CDB0;--border-lt:#EDE0CA;
+  --rust:#C8762E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',Georgia,sans-serif;font-size:15px;line-height:1.7}
+
+/* NAV */
+#top-nav{position:sticky;top:0;z-index:100;background:rgba(250,245,237,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:.35rem 1.2rem .45rem}
+.nav-global{display:flex;align-items:center;gap:.35rem;padding-bottom:.35rem;border-bottom:1px solid var(--border-lt);margin-bottom:.35rem;flex-wrap:wrap}
+.nav-home{font-size:11px;color:var(--text-muted);text-decoration:none;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.15rem;white-space:nowrap;letter-spacing:.06em}
+.nav-home:hover{color:var(--gold-dk)}
+.nav-page{font-size:11.5px;color:var(--text-muted);text-decoration:none;padding:3px 11px;border-radius:14px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-page:hover{border-color:var(--border);color:var(--text)}
+.nav-page.current{background:var(--gold-pale);border-color:var(--gold-lt);color:var(--gold-dk)}
+.nav-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.session-pills{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.pill{padding:4px 13px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border);color:var(--text-muted);background:transparent;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-block}
+.pill:hover{border-color:var(--gold);color:var(--gold-dk)}
+.pill.active{background:var(--gold-pale);border-color:var(--gold);color:var(--gold-dk);font-weight:500}
+
+/* HERO */
+#hero{background:#fdf8ec;text-align:center;padding:2.6rem 1rem 2rem;border-bottom:1px solid var(--border-lt)}
+.hero-kicker{font-size:10px;letter-spacing:.3em;color:var(--text-muted);margin-bottom:.6rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:400;letter-spacing:.05em;line-height:1.12;margin-bottom:.35rem;
+  background:linear-gradient(135deg,#C8762E 0%,#E5A94E 40%,#854F0B 75%,#D4960A 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(100,70,30,.65);letter-spacing:.14em}
+.hero-to-page{height:28px;background:linear-gradient(to bottom,#fdf8ec,var(--bg))}
+
+/* MAIN */
+main{max-width:860px;margin:0 auto;padding:1.4rem 1.2rem 4rem}
+.section-wrap{margin-bottom:3.2rem;padding-top:.5rem}
+.section-header{margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--rust)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;line-height:1.2;color:var(--text);margin-bottom:.2rem}
+.section-sub{font-size:11px;color:var(--text-muted);letter-spacing:.12em;font-style:italic}
+.section-wrap p{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:.85rem}
+.section-wrap p:last-child{margin-bottom:0}
+a.inline{color:var(--gold-dk);border-bottom:1px solid var(--gold);text-decoration:none}
+a.inline:hover{background:rgba(200,150,46,.1);border-radius:2px}
+a.gita{color:var(--gold-dk);border-bottom:1.5px dotted var(--gold);text-decoration:none;font-style:normal}
+a.gita:hover{background:rgba(200,150,46,.12);border-radius:2px}
+a.story{color:var(--rust);border-bottom:1px solid rgba(200,118,46,.5);text-decoration:none}
+a.story:hover{background:rgba(200,118,46,.08);border-radius:2px}
+
+/* CONTEXT NOTE */
+.context-note{background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1.5rem}
+.context-label{font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--gold-dk);margin-bottom:.35rem}
+.context-note p{font-size:13px;color:var(--text-mid);line-height:1.65}
+
+/* YAMA BLOCKS */
+.yama-block{background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:1.35rem 1.5rem 1.2rem;margin-bottom:1.4rem}
+.yama-head{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.15rem}
+.yama-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--text)}
+.yama-translit{font-size:12px;font-style:italic;color:var(--gold-dk)}
+.yama-meaning{font-size:11px;letter-spacing:.2em;color:var(--rust);text-transform:uppercase;margin-bottom:.8rem;font-weight:500}
+.sutra-line{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-mid);border-left:2px solid var(--gold-lt);padding-left:.8rem;margin-bottom:.9rem;line-height:1.7}
+.sutra-line em{font-style:italic;color:var(--gold-dk)}
+.sutra-line .attr{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.14em;color:var(--text-muted);margin-top:.25rem}
+.sutra-line .attr a{color:var(--text-muted);text-decoration:none;border-bottom:1px dotted var(--border)}
+.sutra-line .attr a:hover{color:var(--gold-dk)}
+.mini-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);margin:.9rem 0 .4rem}
+
+/* SOURCE + EVIDENCE CHIPS */
+.sources-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.source-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.source-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.evidence-link{font-size:12px;color:var(--sage-dk);border:1px solid #CFE0C7;background:var(--sage-pale);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.evidence-link:hover{border-color:var(--sage);color:var(--sage-dk);background:#E4EEDD}
+.evidence-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+/* RESEARCH LIST */
+.research-item{border-bottom:1px solid var(--border-lt);padding:.9rem 0}
+.research-item:last-child{border-bottom:none}
+.research-title{font-size:14px;color:var(--text);margin-bottom:.15rem}
+.research-title a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.research-title a:hover{color:var(--gold-dk);border-color:var(--gold)}
+.research-src{font-size:11px;letter-spacing:.08em;color:var(--sage-dk);margin-bottom:.3rem}
+.research-note{font-size:13px;color:var(--text-mid);line-height:1.7}
+
+/* FOOTER */
+.footer-bridge{border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.footer-bridge-label{font-size:12px;color:var(--text-muted)}
+.bridge-link{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border);border-radius:20px;transition:all .15s}
+.bridge-link:hover{border-color:var(--gold);color:var(--gold-dk)}
+.bridge-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+
+.yama-block{cursor:pointer;transition:border-color .15s}
+.yama-block:hover{border-color:var(--gold)}
+.yama-block .yama-body{display:none;cursor:auto;margin-top:.7rem}
+.yama-block.open .yama-body{display:block}
+.yama-block .yama-head::after{content:"+";float:right;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);line-height:1;transition:transform .15s}
+.yama-block.open .yama-head::after{content:"\2212"}
+.yama-tap{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#b09a6a;margin-top:.35rem}
+.yama-block.open .yama-tap{display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <div class="nav-global">
+    <a href="index.html" class="nav-home">The Living Practice</a>
+    <a href="yama.html" class="nav-page">Yama</a>
+    <a href="niyama.html" class="nav-page current">Niyama</a>
+    <a href="yoga-family-tree.html" class="nav-page">Asana</a>
+    <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
+    <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
+    <a href="pranayama.html" class="nav-page">Breath</a>
+  <a href="pratyahara.html" class="nav-page">Introspect</a>
+    <a href="meditation.html" class="nav-page">Meditation</a>
+    <a href="dharana.html" class="nav-page">Dharana</a>
+  <a href="samadhi.html" class="nav-page">Alchemy</a>
+    <a href="the-divine.html" class="nav-page">The Divine</a>
+    <a href="ayurveda.html" class="nav-page">Ayurveda</a>
+    <a href="glossary.html" class="nav-page">Glossary</a>
+    <a href="about.html" class="nav-page">About</a>
+    <a href="support.html" class="nav-page">Support</a>
+  </div>
+  <div class="nav-row">
+    <div class="session-pills">
+      <a class="pill" href="#intro">Overview</a>
+      <a class="pill" href="#saucha">Saucha</a>
+      <a class="pill" href="#santosha">Santosha</a>
+      <a class="pill" href="#tapas">Tapas</a>
+      <a class="pill" href="#svadhyaya">Svadhyaya</a>
+      <a class="pill" href="#ishvara">Ishvara Pranidhana</a>
+      <a class="pill" href="#research">Research</a>
+      <a class="pill" href="the-divine.html">The Divine &rarr;</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-kicker">THE SECOND LIMB OF YOGA</div>
+  <div class="hero-title">Niyama</div>
+  <div class="hero-subtitle">the inner observances &middot; Yoga Sutra 2.32</div>
+</header>
+<div class="hero-to-page"></div>
+
+<main>
+
+<!-- INTRO -->
+<section class="section-wrap" id="intro">
+  <div class="section-header">
+    <h2 class="section-title">Turning inward</h2>
+    <div class="section-sub">The second limb, after the yamas</div>
+  </div>
+  <p>The niyamas are the second limb of yoga, the inner observances. Where the <a class="inline" href="yama.html">yamas</a> point outward to how we meet the world, the niyamas turn toward how we tend ourselves. In <a class="inline" href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">sutra 2.32</a> Patanjali names five: <em>&#347;auca</em> (purity), <em>santo&#7779;a</em> (contentment), <em>tapas</em> (disciplined effort), <em>sv&#257;dhy&#257;ya</em> (self-study), and <em>&#299;&#347;vara-pra&#7751;idh&#257;na</em> (surrender to the divine). Yoga International reads them as constructive tools for cultivating steadiness and self-confidence, with occasions to practice them arising in an ordinary day.</p>
+  <p>The niyamas are woven together with the yamas rather than stacked on top of them. Purity clears the mind, contentment settles it, disciplined effort tempers it, self-study turns it toward its own depths, and surrender releases it into something larger. The five build toward the last, which this site takes up at length under <a class="inline" href="the-divine.html">The Divine</a>.</p>
+  <div class="context-note">
+    <div class="context-label">ON SOURCES</div>
+    <p>This page draws on Yoga International&rsquo;s overview of the five niyamas and on Maetreyii Ma&rsquo;s <em>Living Love: The Yoga of Yama and Niyama</em> (Ananda Gurukula, 2016), alongside the sutras themselves. Translations of the niyamas vary, and different lineages weigh them differently. Where a reading is one interpretation among several, it is offered as that.</p>
+  </div>
+  <div class="sources-wrap">
+    <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+    <a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Sutras, Book 2 (Sacred Texts)</a>
+    <a href="https://www.wisdomlib.org/definition/niyama" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Niyama</a>
+  </div>
+</section>
+
+<!-- THE FIVE -->
+<section class="section-wrap" id="the-five">
+  <div class="section-header">
+    <h2 class="section-title">The five niyamas</h2>
+    <div class="section-sub">Each with its sutra, its meaning, and its practice</div>
+  </div>
+
+  <div class="yama-block" id="saucha">
+    <div class="yama-head"><span class="yama-name">Saucha</span><span class="yama-translit">&#347;auca</span></div>
+    <div class="yama-meaning">Purity of body and mind</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
+    <div class="sutra-line"><em>Sattva-&#347;uddhi-saumanasya-aik&#257;grya-indriya-jaya-&#257;tma-dar&#347;ana-yogyatv&#257;ni ca.</em> From purity of heart follow cheerfulness, one-pointedness, mastery of the senses, and the fitness to know the Self.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.41</a></span></div>
+    <p>Saucha is the practice of cleansing, of both the body and the mind. Maetreyii Ma describes it as clearing away the clutter that settles on the mind so that a clearer seeing becomes possible, the way a cleaned window lets in more light. Yoga International frames the practice as choosing wisely among the food, the emotions, and the thoughts we let in, since each of these becomes part of us. Purity here is care rather than perfection: an ongoing tending, held lightly, that leaves us clearer than it found us.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, saucha is a clean, attentive practice: a clear space, an unhurried breath, the body cared for rather than pushed. In meditation, it is the settling of muddied water until the depths grow visible. In daily life, it asks what we take in, the food, the images, the running commentary of the mind, and invites us to choose what leaves us clearer.</p>
+    <div class="sources-wrap">
+      <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+      <a href="https://www.wisdomlib.org/definition/shaucha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Saucha</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="yama-block" id="santosha">
+    <div class="yama-head"><span class="yama-name">Santosha</span><span class="yama-translit">santo&#7779;a</span></div>
+    <div class="yama-meaning">Contentment</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
+    <div class="sutra-line"><em>Santo&#7779;&#257;d anuttama&#7717; sukha-l&#257;bha&#7717;.</em> From contentment comes unsurpassed happiness.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.42</a></span></div>
+    <p>Santosha is contentment, an acceptance of our life and of ourselves as they are in this moment. Yoga International describes it as the recognition that whatever we have in the present is enough, which makes happiness a practice rather than a circumstance we wait on. Maetreyii Ma pairs it with saucha as the clear waters of the mind, and names the barrier plainly: when we are wrapped up in our own fears and wants, even a calm mind cannot see to its own depths. Contentment is what quiets that self-absorption.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, santosha meets the body it has today, without measuring it against yesterday or against anyone else on a neighboring mat. In meditation, it lets this breath, this state, be enough, so the practice stops reaching for a better experience than the one that is here. In daily life, it loosens the grip of comparison and craving, and lets sufficiency be something we notice rather than something we earn.</p>
+    <div class="sources-wrap">
+      <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+      <a href="https://www.wisdomlib.org/definition/santosha" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Santosha</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="yama-block" id="tapas">
+    <div class="yama-head"><span class="yama-name">Tapas</span><span class="yama-translit">tapas</span></div>
+    <div class="yama-meaning">Disciplined effort</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
+    <div class="sutra-line"><em>K&#257;ya-indriya-siddhir a&#347;uddhi-k&#7779;ay&#257;t tapasa&#7717;.</em> Through disciplined effort, impurity dwindles and the body and senses are refined.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.43</a></span></div>
+    <p>Tapas means heat, the warmth generated by steady, willing effort. Yoga International reads it as discipline freely accepted, the effort that turns intention into change, present in asana and meditation and in the smallest chosen task. Maetreyii Ma cautions against a harsh reading of it. In her account, true tapas focuses energy through love rather than through self-punishment, burning away the small, defended sense of self in the fire of a larger devotion. The heat is real, and it can be kind.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, tapas is the steady effort that shows up on the mat on the ordinary days, sustainable rather than punishing. In meditation, it is the discipline of returning, again and again, without drama. In daily life, Yoga International suggests holding to one or two changes we can actually keep, and meeting even mundane tasks with full attention, so that discipline becomes a warmth we live in rather than a burden we resent.</p>
+    <div class="sources-wrap">
+      <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+      <a href="https://www.wisdomlib.org/definition/tapas" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Tapas</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="yama-block" id="svadhyaya">
+    <div class="yama-head"><span class="yama-name">Svadhyaya</span><span class="yama-translit">sv&#257;dhy&#257;ya</span></div>
+    <div class="yama-meaning">Self-study</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
+    <div class="sutra-line"><em>Sv&#257;dhy&#257;y&#257;d i&#7779;&#7789;a-devat&#257;-samprayoga&#7717;.</em> Through self-study, one draws near the chosen ideal.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.44</a></span></div>
+    <p>Svadhyaya joins <em>sva</em>, the self, with a root meaning to reflect, study, and contemplate, so the word holds both the study of sacred texts and the study of oneself. Yoga International describes it as the effort to know the innermost core of our being through contemplation, applied and tested in daily life. Maetreyii Ma reads it as reflection upon the nature of the soul, the Atman, the search that turns knowledge inward until it becomes self-knowledge. The two studies feed each other: a text read closely returns us to ourselves, and honest self-observation sends us back to the text.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, svadhyaya is honest witnessing of the body, what it is asking for and what it is bracing against, read without decoration. In meditation, it is self-inquiry, watching the mind well enough to begin to know it. In daily life, it pairs the study of texts that steady us with plain observation of our own patterns, asking whether the way we are living matches what we say we value.</p>
+    <div class="sources-wrap">
+      <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+      <a href="https://www.wisdomlib.org/definition/svadhyaya" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Svadhyaya</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="yama-block" id="ishvara">
+    <div class="yama-head"><span class="yama-name">Ishvara Pranidhana</span><span class="yama-translit">&#299;&#347;vara-pra&#7751;idh&#257;na</span></div>
+    <div class="yama-meaning">Surrender to the divine</div>
+    <div class="yama-tap">Tap to open the teaching</div>
+    <div class="yama-body">
+    <div class="sutra-line"><em>Sam&#257;dhi-siddhir &#299;&#347;vara-pra&#7751;idh&#257;n&#257;t.</em> From surrender to the divine comes the attainment of samadhi.<span class="attr"><a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" target="_blank" rel="noopener">YOGA SUTRA 2.45</a></span></div>
+    <p>Ishvara pranidhana is trustful surrender to the divine, and Yoga International names it the highest of the niyamas. It is a giving-over rather than a giving-up: a release of the small self&rsquo;s insistence on controlling every outcome, in favor of a larger purpose. Maetreyii Ma describes it as self-surrender in deep contemplation of the eternal source of all, and notes that people have named that source differently across history while pointing toward the same thing, a consciousness greater than our individual sense of self. This site takes up that question, and the many doors into it, at length under <a class="inline" href="the-divine.html">The Divine</a>.</p>
+    <div class="mini-label">IN PRACTICE</div>
+    <p>In movement, ishvara pranidhana offers the practice rather than performs it, letting the effort be given rather than displayed. In meditation, it is the letting go into something vast enough to hold us, the release that the deepest absorption asks for. In daily life, it echoes the Gita&rsquo;s core instruction: to do the work fully and release our claim on its fruits, trusting what we cannot control to something larger than ourselves.</p>
+    <div class="sources-wrap">
+      <a href="https://yogainternational.com/article/view/yoga-philosophy-basics-the-5-niyamas/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga International: the five niyamas</a>
+      <a href="https://www.wisdomlib.org/definition/ishvara-pranidhana" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ishvara Pranidhana</a>
+      <a href="the-divine.html" class="source-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>The Divine: surrender in depth</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section-wrap" id="research">
+  <div class="section-header">
+    <h2 class="section-title">What the research sees</h2>
+    <div class="section-sub">Peer-reviewed work on the ethical and observant limbs</div>
+  </div>
+  <p>Like the yamas, the niyamas are among the least studied limbs of yoga in modern research. A starting shelf:</p>
+
+  <div class="research-item">
+    <div class="research-title"><a href="https://journals.lww.com/joacs/fulltext/2021/09010/impact_of_yama_and_niyama_on_psychospiritual.6.aspx" target="_blank" rel="noopener">Impact of yama and niyama on psychospiritual factors in young adults: a randomized controlled trial</a></div>
+    <div class="research-src">XU, ITAGI &amp; THAIYAR &middot; INT. J. YOGA (PHILOSOPHY, PSYCHOLOGY &amp; PARAPSYCHOLOGY), 2021</div>
+    <div class="research-note">One hundred young adults, randomized to three months of yama-niyama training or control. The training group gained on sattva and dropped on rajas and tamas (Vedic Personality Inventory, P&lt;0.001). Early evidence that the observant limbs are trainable, with measurable change in disposition.</div>
+  </div>
+  <div class="research-item">
+    <div class="research-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4959332/" target="_blank" rel="noopener">From Yama to Samyama</a></div>
+    <div class="research-src">INTERNATIONAL JOURNAL OF YOGA, 2016 &middot; 9(2), 95&ndash;96</div>
+    <div class="research-note">Argues that the eight limbs are meant to be practiced together rather than climbed in sequence, the basis of this site&rsquo;s invitation to begin anywhere. The niyamas deepen the yamas rather than follow them.</div>
+  </div>
+  <div class="research-item">
+    <div class="research-title">Living Love: The Yoga of Yama and Niyama</div>
+    <div class="research-src">MAETREYII MA &middot; ANANDA GURUKULA PUBLICATIONS, 2016</div>
+    <div class="research-note">A practitioner&rsquo;s book-length treatment of all ten yamas and niyamas as teachings for daily life. Read here for the framing of tapas as focused love and of svadhyaya as reflection on the soul. A teaching text rather than a study, and offered as one.</div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<div class="footer-bridge">
+  <span class="footer-bridge-label">Where the niyamas sit:</span>
+  <a href="yama.html" class="bridge-link">
+    <svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12c0-5 3-9 7-9s7 4 7 9"/><path d="M5 12c3 1 5 3 7 3s4-2 7-3"/></svg>
+    Yama, the first limb
+  </a>
+  <a href="the-divine.html" class="bridge-link">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+    Ishvara pranidhana, under The Divine
+  </a>
+  <a href="index.html" class="bridge-link">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    Hub
+  </a>
+</div>
+
+</main>
+
+<section id="lp-dana" style="max-width:860px;margin:0 auto;padding:1.5rem 1.2rem 0">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;background:var(--gold-pale);border:1px solid var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.2rem">
+    <div style="flex:1;min-width:250px">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--gold-dk);margin-bottom:.2rem">Dana, the practice of giving</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6">If this work has served you and you are able to give, a gift keeps the Living Practice online and holds the door open behind you.</div>
+    </div>
+    <a href="support.html" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--bg-card);color:var(--gold-dk);text-decoration:none">Support this work &rarr;</a>
+  </div>
+</section>
+
+<section class="lp-feedback" id="lp-feedback" style="max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem">
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.25rem">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin:0 0 .3rem">Questions, corrections, requests</h2>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.65;margin:0 0 1rem">This site is a living resource. If a source deserves a second look, a principle is taught differently in your lineage, or there is a topic you would like added, write below. Corrections are welcomed with gratitude.</p>
+    <form id="lp-fb-form">
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
+        <input type="email" id="lp-fb-email" required placeholder="Your email address" style="flex:1;min-width:220px;padding:.55rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none"/>
+        <select id="lp-fb-type" style="padding:.55rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none">
+          <option>Question</option>
+          <option>Correction</option>
+          <option>Request</option>
+        </select>
+      </div>
+      <textarea id="lp-fb-msg" required placeholder="Your question, correction, or request. For corrections, a source helps." style="width:100%;min-height:90px;padding:.6rem .8rem;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;margin-bottom:.7rem"></textarea>
+      <button type="submit" class="lp-fb-send" style="padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--gold);border-radius:20px;background:var(--gold-pale);color:var(--gold-dk);cursor:pointer;font-family:'DM Sans',sans-serif">Send</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5">Your message sends from this page. If it cannot get through, your email app opens instead.</div>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('lp-fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var em=document.getElementById('lp-fb-email').value.trim();
+  var ty=document.getElementById('lp-fb-type').value;
+  var ms=document.getElementById('lp-fb-msg').value.trim();
+  var pg=location.pathname.split('/').pop()||'index.html';
+  var btn=document.querySelector('#lp-fb-form .lp-fb-send');
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:em,type:ty,message:ms,page:pg,
+      _subject:'The Living Practice: '+ty+' ('+pg+')',_captcha:'false',_template:'table'})
+  }).then(function(r){if(!r.ok)throw new Error('send failed');return r.json();})
+  .then(function(){
+    var inner=document.querySelector('.lp-feedback-inner');
+    inner.innerHTML='<h2>Received with gratitude</h2><p class="lp-fb-sub">Your '+ty.toLowerCase()+' is on its way. Thank you for helping this living resource grow.</p>';
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent=prev;
+    var sub='The Living Practice: '+ty+' ('+pg+')';
+    var body='From: '+em+'\nPage: '+pg+'\nType: '+ty+'\n\n'+ms;
+    location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+  });
+});
+</script>
+
+<script>
+(function(){
+  var blocks=document.querySelectorAll('.yama-block');
+  blocks.forEach(function(b){
+    b.addEventListener('click',function(e){
+      if(e.target.closest('a'))return;
+      if(e.target.closest('.yama-body'))return;
+      b.classList.toggle('open');
+    });
+  });
+  function openHash(){
+    var h=location.hash.replace('#','');
+    if(!h)return;
+    var b=document.getElementById(h);
+    if(b&&b.classList.contains('yama-block')){b.classList.add('open');}
+  }
+  window.addEventListener('hashchange',openHash);
+  openHash();
+})();
+</script>
+</body>
+</html>
