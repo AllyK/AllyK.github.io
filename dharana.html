@@ -92,6 +92,18 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
 .lp-fb-send:hover{background:rgba(240,198,116,.2)}
 .lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
 </style>
+<style id="lp-responsive">
+/* Readability + responsive pass (2026): larger, viewport-adaptive body text and
+   comfortable device-aware side margins. Remove this whole block to revert. */
+main p, main li, main blockquote, main dd{
+  font-size:clamp(1rem, 0.94rem + 0.42vw, 1.2rem) !important;
+  line-height:1.78;
+}
+main{
+  padding-left:clamp(1.15rem, 4vw, 2.75rem) !important;
+  padding-right:clamp(1.15rem, 4vw, 2.75rem) !important;
+}
+</style>
 </head>
 <body>
 <nav id="top-nav">
@@ -105,7 +117,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
   <a href="meditation.html" class="nav-page">Meditation</a>
   <a href="the-divine.html" class="nav-page">The Divine</a>
   <a href="dharana.html" class="nav-page current">Dharana</a>
-  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="samadhi.html" class="nav-page">Peace</a>
   <a href="ayurveda.html" class="nav-page">Ayurveda</a>
   <a href="glossary.html" class="nav-page">Glossary</a>
   <a href="about.html" class="nav-page">About</a>
@@ -139,8 +151,9 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
     <div class="eyebrow">The bridge limb</div>
     <h2 class="s-title">Binding the mind to one point</h2>
     <p class="lead">Patanjali defines dharana in a single line: <em>desha-bandhah chittasya dharana</em>, the binding of the mind-field to one place (Yoga Sutra 3.1). After the senses have been gathered inward through <a class="inl" href="pratyahara.html" style="color:var(--ac-dk)">pratyahara</a>, dharana gives the quieted mind one thing to hold. The Sanskrit root <em>dhri</em> means to hold, to bear, to keep steady. Dharana is the holding.</p>
-    <p>The quality it builds is <em>ekagrata</em>, one-pointedness. A scattered mind is like sunlight spread across a room, warm but diffuse. Concentration is the same light gathered through a lens onto a single point, where it begins to burn. Nothing about the mind changes except its gathering, and everything changes.</p>
-    <p>Dharana is the bridge. Hold the point until the holding becomes effortless and unbroken, and concentration ripens into <span class="inl"><a href="meditation.html#sec-types">dhyana</a></span>, meditation. Let meditation deepen until the one who watches and the thing watched dissolve into each other, and that is <span class="inl"><a href="samadhi.html">samadhi</a></span>. Patanjali names these three together as <em>samyama</em>, the inner instrument of yoga.</p>
+    <p>The quality it builds is <em>ekagrata</em>, one-pointedness. A scattered mind is like sunlight spread across a room, warm but diffuse. Concentration is the same light gathered through a lens onto a single point, where it begins to burn. The image is Thich Nhat Hanh&rsquo;s: a lens focusing sunlight on one point concentrates its energy so effectively that it can burn a hole in a piece of cloth (How to Focus). Nothing about the mind changes except its gathering, and everything changes.</p>
+    <p>Dharana is the bridge. Hold the point until the holding becomes effortless and unbroken, and concentration ripens into <span class="inl"><a href="meditation.html#sec-types">dhyana</a></span>, meditation. Let meditation deepen until the one who watches and the thing watched dissolve into each other, and that is <span class="inl"><a href="samadhi.html">samadhi</a></span>. Patanjali names these three together as <em>samyama</em>, the inner instrument of yoga. Georg Feuerstein names the two mechanisms precisely: the process underlying concentration is <em>ekagrata</em>, &ldquo;one-pointedness,&rdquo; while the process underlying meditation is <em>ekatanata</em>, &ldquo;one-flowness.&rdquo; The move from a single fixed point to an unbroken flow is exactly how dhyana grows out of dharana. The Sanskrit scholar Edwin Bryant marks the same threshold in plain terms: &ldquo;In concentration, the attention on the object is intermittent or distracted; in meditation, it is unbroken and undistracted.&rdquo; Dharana is the effort of returning again and again; dhyana is when the returning is no longer needed.</p>
+    <p>Ravi Ravindra sketches the same threshold as a change of scale. Dharana (Yoga Sutra 3.1) is the narrow beam picking out one object in a dark room; dhyana, he suggests, &ldquo;is more like a general illumination in a room rather than a flashlight focused on one object,&rdquo; an attention that begins to know the relationships between the parts and the whole, not only a single point.</p>
     <p>Contemplative science studies this limb directly. Lutz, Slagter, Dunne and Davidson (2008) sort meditative practices by how they handle attention, and dharana sits squarely in the family they call focused attention: one object held, attention returned each time it wanders, the monitoring of that wandering growing sharper with practice. The muscle of return is measurable, and it strengthens.</p>
     <div class="flow">
       <div class="f"><div class="fn">Pratyahara</div><div class="fe">senses withdrawn</div></div>
@@ -157,22 +170,25 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
     </div>
     <div class="src-label">Sources &amp; further reading</div>
     <div class="sources">
-      <a class="source-link" href="https://www.wisdomlib.org/hinduism/book/yoga-sutras-study/d/doc628765.html" target="_blank" rel="noopener">Wisdomlib: Yoga Sutra 3.1</a>
-      <a class="source-link" href="https://www.wisdomlib.org/definition/dharana" target="_blank" rel="noopener">Wisdomlib: Dharana</a>
-    </div>
+      <a class="source-link" href="https://www.wisdomlib.org/hinduism/book/yoga-sutras-study/d/doc628765.html" target="_blank" rel="noopener">Yoga Sutra 3.1 (public-domain edition)</a>
+      <a class="source-link" href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener">Goswami, Layayoga (Inner Traditions)</a>
+      <a class="source-link" href="https://www.parallax.org/product/how-to-focus/" target="_blank" rel="noopener">Nhat Hanh, How to Focus (Parallax Press)</a>
+    
+      <a href="https://www.morninglightpress.com/" class="source-link" target="_blank" rel="noopener">Ravi Ravindra, The Wisdom of Pata&ntilde;jali&rsquo;s Yoga Sutras &middot; dharana and dhyana (YS 3.1 to 3.3)</a></div>
   </section>
 
   <section class="section" id="objects">
     <div class="eyebrow">The objects of focus</div>
     <h2 class="s-title">Where the mind can rest</h2>
-    <p class="lead">Dharana needs an object, a single place to bind the mind. The object can be outside us or within. Any of these is a complete doorway; choose one and return to it again and again.</p>
+    <p class="lead">Dharana needs an object, a single place to bind the mind. The object can be outside us or within. Any of these is a complete doorway; choose one and return to it again and again. Patanjali leaves the choice deliberately open, allowing steadiness of mind from meditation on whatever is agreeable to the practitioner (Yoga Sutra 1.39).</p>
     <div class="objects">
-      <div class="obj"><h4>Trataka</h4><div class="skt">trāṭaka &middot; steady gazing</div><p>Resting the open gaze on a candle flame without blinking until the eyes soften and fill, then holding the after-image within. The Hatha Yoga Pradipika (2.31) names it a cleanser of the eyes and the mind.</p><a class="src" href="https://yogainternational.com/article/view/candlelight-insight-trataka/" target="_blank" rel="noopener">Yoga International: Trataka ↗</a></div>
-      <div class="obj"><h4>Drishti</h4><div class="skt">dṛṣṭi &middot; the yogic gaze</div><p>The focal gaze points used inside the asanas: the tip of the nose, the horizon, the thumb. Drishti turns a physical pose into a moving dharana, and threads concentration through the whole <a class="src" href="yoga-family-tree.html" style="color:var(--ac-dk);border-color:var(--ac)">Asana</a> practice.</p><a class="src" href="https://yogainternational.com/article/view/how-to-practice-drishti/" target="_blank" rel="noopener">Yoga Journal: Drishti ↗</a></div>
-      <div class="obj"><h4>The breath</h4><div class="skt">anapana &middot; the anchor</div><p>Counting and following each wave of the breath, returning the moment attention drifts. The breath is the most portable point of all, always present, always moving. It carries dharana straight into the <a class="src" href="pranayama.html#sec-ujjayi" style="color:var(--ac-dk);border-color:var(--ac)">Breath page</a>.</p><a class="src" href="https://www.wisdomlib.org/definition/ekagrata" target="_blank" rel="noopener">Wisdomlib: Ekagrata ↗</a></div>
-      <div class="obj"><h4>Bija mantra &amp; japa</h4><div class="skt">japa &middot; a single sound</div><p>Repeating a seed-sound or sacred phrase, silently or aloud, so a single sound becomes the point the mind holds. Each repetition gathers the attention a little more completely.</p><a class="src" href="https://www.wisdomlib.org/definition/japa" target="_blank" rel="noopener">Wisdomlib: Japa ↗</a></div>
-      <div class="obj"><h4>Yantra &amp; mandala</h4><div class="skt">yantra &middot; a geometric image</div><p>Resting the eyes and mind on a sacred geometric form, letting its center draw the attention inward toward the still point at the heart of the pattern.</p><a class="src" href="https://www.wisdomlib.org/definition/yantra" target="_blank" rel="noopener">Wisdomlib: Yantra ↗</a></div>
-      <div class="obj"><h4>A center in the body</h4><div class="skt">bindu &middot; an inner point</div><p>Fixing attention on a single energetic center: the space between the brows, the heart, the navel. The point is felt rather than seen, and the body itself becomes the field of focus.</p><a class="src" href="https://www.wisdomlib.org/definition/bindu" target="_blank" rel="noopener">Wisdomlib: Bindu ↗</a></div>
+      <div class="obj"><h4>Trataka</h4><div class="skt">trāṭaka &middot; steady gazing</div><p>Resting the open gaze on a candle flame without blinking until the eyes soften and fill, then holding the after-image within. The Hatha Yoga Pradipika (2.31 to 2.32) names it a cleanser of the eyes and the mind.</p><a class="src" href="https://www.sacred-texts.com/hin/hyp/index.htm" target="_blank" rel="noopener">Hatha Yoga Pradipika 2.31 to 2.32 (Pancham Sinh) ↗</a></div>
+      <div class="obj"><h4>Drishti</h4><div class="skt">dṛṣṭi &middot; the yogic gaze</div><p>The focal gaze points used inside the asanas: the tip of the nose, the horizon, the thumb. The nose-tip gaze is old: the Bhagavad Gita already tells the meditator to hold body, head, and neck erect, motionless, and steady, looking fixedly at the tip of his nose (6.13), long before the modern alignment cues named the drishtis. Drishti turns a physical pose into a moving dharana, and threads concentration through the whole <a class="src" href="yoga-family-tree.html" style="color:var(--ac-dk);border-color:var(--ac)">Asana</a> practice.</p><a class="src" href="https://harpercollins.co.uk/products/light-on-yoga-the-definitive-guide-to-yoga-practice-b-k-s-iyengar" target="_blank" rel="noopener">Iyengar, Light on Yoga (the gaze in asana) ↗</a></div>
+      <div class="obj"><h4>The breath</h4><div class="skt">anapana &middot; the anchor</div><p>Counting and following each wave of the breath, returning the moment attention drifts. The breath is the most portable point of all, always present, always moving. It carries dharana straight into the <a class="src" href="pranayama.html#sec-ujjayi" style="color:var(--ac-dk);border-color:var(--ac)">Breath page</a>.</p><a class="src" href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener">Goswami, Layayoga: ekagrata ↗</a></div>
+      <div class="obj"><h4>Bija mantra &amp; japa</h4><div class="skt">japa &middot; a single sound</div><p>Repeating a seed-sound or sacred phrase, silently or aloud, so a single sound becomes the point the mind holds. Each repetition gathers the attention a little more completely. Swami Satyananda describes its ripened form, ajapa japa, as repetition continued until the mantra becomes the spontaneous form of awareness, no longer needing to be said.</p><a class="src" href="https://www.biharyoga.net/kundalini-tantra.php" target="_blank" rel="noopener">Satyananda, Kundalini Tantra: japa ↗</a></div>
+      <div class="obj"><h4>Yantra &amp; mandala</h4><div class="skt">yantra &middot; a geometric image</div><p>Resting the eyes and mind on a sacred geometric form, letting its center draw the attention inward toward the still point at the heart of the pattern.</p><a class="src" href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener">Goswami, Layayoga: yantra ↗</a></div>
+      <div class="obj"><h4>A center in the body</h4><div class="skt">bindu &middot; an inner point</div><p>Fixing attention on a single energetic center: the space between the brows (bhrumadhya, the seat of ajna, a name that means command, the place traditions locate inner vision), the heart, the navel. The point is felt rather than seen, and the body itself becomes the field of focus. Traditions read this center differently: Swami Satyananda names ajna the command or monitoring centre, while Ashok Bedi frames the same chakra psychologically, as the locus of insight and ego integrity. Shyam Sundar Goswami sets the same centers inside <em>laya</em>, the progressive absorption of one level of mind into the next as Kundalini ascends, so a chakra is approached as a doorway rather than only a target. This is a traditional map of consciousness, offered as tradition rather than physiology.</p><a class="src" href="https://www.biharyoga.net/kundalini-tantra.php" target="_blank" rel="noopener">Satyananda, Kundalini Tantra: bhrumadhya ↗</a> <a class="src" href="https://redwheelweiser.com/book/path-to-the-soul-9781578631872/" target="_blank" rel="noopener">Bedi, Path to the Soul: ajna ↗</a> <a class="src" href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener">Goswami, Layayoga: laya ↗</a></div>
+      <div class="obj"><h4>The five elements</h4><div class="skt">pañca dhāraṇā &middot; the elemental fixations</div><p>The Gheranda Samhita gives five dharanas, one for each element, fixing the breath and mind on earth, water, fire, air, and space in turn. Of the first it says, &ldquo;The earth element shines like a piece of yellow orpiment and contains the syllable la&rdquo;, set at the heart, then directs the practitioner: &ldquo;Fix the breath and the mind there for two hours. This is the earthly dharana; it always brings about steadiness and conquers the earth.&rdquo; The object is an element felt within the body rather than an outer point, and each of the five steadies the mind in its own way.</p><a class="src" href="https://www.sacred-texts.com/hin/gs/index.htm" target="_blank" rel="noopener">Gheranda Samhita III (Mallinson tr.) ↗</a></div>
     </div>
   </section>
 
@@ -191,7 +207,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
         <li>When the image fades, open the eyes and begin again, two or three rounds. Close by letting the gaze and the breath rest soft.</li>
       </ol>
     </div>
-    <p>Begin with a few minutes. The point is steadiness, and steadiness grows quietly. If the eyes strain, soften the gaze or shorten the gazing and lengthen the inner holding.</p>
+    <p>Begin with a few minutes. The point is steadiness, and steadiness grows quietly. If the eyes strain, soften the gaze or shorten the gazing and lengthen the inner holding. This two-part shape sits inside a larger distinction Swami Satyananda draws in <a class="inl" href="https://www.biharyoga.net/kundalini-tantra.php" target="_blank" rel="noopener">Kundalini Tantra</a>. He groups both the outward gazing on the flame and the holding of its after-image under <em>bahiranga</em> (outer) trataka, and reserves <em>antaranga</em> (inner) trataka for internal visualization of a chakra, yantra, or chosen image with the eyes closed throughout. Satyananda teaches the practice as a way to steady the mind and awaken ajna, the eyebrow center. In the classical sources gathered by Shyam Sundar Goswami, concentration at this same bhru or ajna center is itself described as holding a knowledge-light &ldquo;as a still flame of the lamp&rdquo; in a windless place (<a class="inl" href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener" style="color:var(--ac-dk)">Layayoga</a>), so the outward gazing of trataka rehearses an inward flame the tradition places between the brows.</p>
     <p>The effect is measurable even in a single sitting. In a 2021 repeated-measures study, one session of trataka improved performance on the Corsi block-tapping task, a standard test of visuospatial attention and working memory, over a matched control condition. The gathered light does gather the mind.</p>
     <div class="ev-label">Evidence &amp; scholarship</div>
     <div class="sources">
@@ -212,7 +228,7 @@ main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1.5rem 1.
     <div class="sources">
       <a class="source-link" href="https://www.swami-krishnananda.org/patanjali/raja_88.html" target="_blank" rel="noopener">Swami Krishnananda: Samyama</a>
       <a class="source-link" href="https://www.wisdomlib.org/definition/samyama" target="_blank" rel="noopener">Wisdomlib: Samyama</a>
-      <a class="source-link" href="https://yogainternational.com/article/view/candlelight-insight-trataka/" target="_blank" rel="noopener">Yoga International: Trataka</a>
+      <a class="source-link" href="https://www.sacred-texts.com/hin/hyp/index.htm" target="_blank" rel="noopener">Hatha Yoga Pradipika 2.31 to 2.32 (Pancham Sinh, Sacred Texts)</a>
     </div>
   </section>
 </main>

@@ -77,7 +77,7 @@ body{background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);back
   <a href="pratyahara.html">Introspect</a>
   <a href="meditation.html">Meditation</a>
   <a href="dharana.html">Dharana</a>
-  <a href="samadhi.html">Alchemy</a>
+  <a href="samadhi.html">Peace</a>
   <a href="the-divine.html">The Divine</a>
   <a href="ayurveda.html">Ayurveda</a>
   <a href="glossary.html">Glossary</a>
@@ -117,7 +117,7 @@ const FAM_INFO={
 const MUSCLES={
   neck:{
     name:"Neck",detail:"Sternocleidomastoid, Anterior Scalenes, Deep Cervical Extensors",
-    note:"Directly surrounds the vagus nerve's cervical pathway. Throat openers and Lion's Breath vibrate the larynx and send direct afferent signals along the superior laryngeal branch.",
+    note:"Directly surrounds the vagus nerve's cervical pathway. Throat openers and Lion's Breath vibrate the larynx and send direct afferent signals along the superior laryngeal branch. It is also the most load-sensitive region on this diagram. William Broad (The Science of Yoga) gathers the medical case reports, from the neurologist W. Ritchie Russell in 1972 onward, in which extreme neck flexion, extension, or rotation, in Shoulderstand, Headstand, and deep backbends such as Cobra and Wheel, tore or clamped a vertebral artery and caused a rare but devastating stroke. The lesson is not to abandon these poses but to keep the neck long and never force the head to its end range. Coulter (Anatomy of Hatha Yoga) explains why the full Shoulderstand in particular loads the neck: the stiff body 'acts as a pry bar to stretch the cervical vertebral column from a fulcrum at the junction of the chin and the sternum', loading it through deep flexion and traction, the opposite of a Headstand, which is why it should be built up only from milder variations.",
     chakra:"throat",view:"front",
     strengthen:["matsyasana","parivrtta","tadasana"],stretch:["matsyasana","virabhadrasana"],
     front:[{cx:197,cy:90,rx:7,ry:18},{cx:213,cy:90,rx:7,ry:18}],back:[]
@@ -145,28 +145,28 @@ const MUSCLES={
   },
   core_rectus:{
     name:"Rectus Abdominis",detail:"Rectus Abdominis (the 'six-pack' muscle)",
-    note:"Contracts in boat pose and Chaturanga; lengthens in backbends. Training the rectus in yoga always pairs with deep core activation, not isolation.",
+    note:"Contracts in boat pose and Chaturanga; lengthens in backbends. Training the rectus in yoga always pairs with deep core activation, not isolation. Coulter (Anatomy of Hatha Yoga) adds that in bending forward and lifting back up under gravity, 'it is increased intra-abdominal pressure far more than the action of individual muscles that protects and braces the back', so the deep pressurized cylinder of the trunk, not the six-pack, does the real work of guarding the lumbar spine.",
     chakra:"solar",view:"front",
     strengthen:["phalakasana","uttanasana","parivrtta"],stretch:["bhujangasana"],
     front:[{cx:205,cy:228,rx:22,ry:55}],back:[]
   },
   obliques:{
     name:"Obliques",detail:"Internal & External Obliques",
-    note:"The spiral stabilizers of the spine. Every twist contracts one side and lengthens the other. Lateral bends engage the QL and obliques together. Core of Manipura (solar plexus) work.",
+    note:"The spiral stabilizers of the spine. Every twist contracts one side and lengthens the other. Coulter (Anatomy of Hatha Yoga) is careful to add that the lumbar spine itself rotates very little, its facet joints block it, so most of a twist happens in the thoracic spine and neck rather than the low back. Lateral bends engage the QL and obliques together. Core of Manipura (solar plexus) work.",
     chakra:"solar",view:"front",
     strengthen:["parivrtta","phalakasana","trikonasana"],stretch:["parivrtta","trikonasana"],
     front:[{cx:170,cy:230,rx:18,ry:52},{cx:240,cy:230,rx:18,ry:52}],back:[]
   },
   hip_flexors:{
     name:"Hip Flexors",detail:"Iliopsoas, Rectus Femoris, Pectineus, Sartorius",
-    note:"The body's primary stress-holding complex. Chronic sitting shortens the psoas, compressing the lumbar spine. Warriors and backbends stretch it; forward folds and boat pose strengthen it.",
+    note:"A polyarticular hip flexor and postural pulley over the pelvic rim. Chronic sitting shortens the psoas, which can compress the lumbar spine. Warriors and backbends stretch it; forward folds and boat pose strengthen it.",
     chakra:"sacral",view:"front",
     strengthen:["uttanasana","viparita"],stretch:["virabhadrasana","bhujangasana","malasana","kapota"],
     front:[{cx:186,cy:310,rx:20,ry:24},{cx:224,cy:310,rx:20,ry:24}],back:[]
   },
   adductors:{
     name:"Inner Thighs",detail:"Adductor Magnus, Longus, Brevis, Gracilis, Pectineus",
-    note:"Often overlooked but critical for hip stability. The adductor magnus also functions as a hip extensor. Wide-stance and external rotation poses create deep inner-thigh lengthening.",
+    note:"Often overlooked but critical for hip stability. The adductor magnus also functions as a hip extensor; Ray Long (Scientific Keys, Vol. 1) treats it as a synergist of the gluteus maximus in backbends such as Wheel. Wide-stance and external rotation poses create deep inner-thigh lengthening.",
     chakra:"sacral",view:"front",
     strengthen:["kapota","malasana"],stretch:["virabhadrasana","kapota","trikonasana","malasana"],
     front:[{cx:197,cy:388,rx:16,ry:58},{cx:213,cy:388,rx:16,ry:58}],back:[]
@@ -236,14 +236,14 @@ const MUSCLES={
   },
   deep_rotators:{
     name:"Deep Hip Rotators",detail:"Piriformis, Gemelli Superior & Inferior, Obturator Internus & Externus, Quadratus Femoris",
-    note:"Six small but powerful external rotators of the hip. The psoas and piriformis are the body's primary stress-storage muscles. Hip opening in yoga directly addresses held emotional and physical tension in this complex.",
+    note:"Six small but powerful external rotators of the hip. The popular idea that the piriformis and psoas store emotional stress is not supported by the anatomy texts (Coulter; Long), which treat them as mechanical rotators and flexors; what is measurable is that sitting tightens them and hip work restores their range.",
     chakra:"sacral",view:"back",
     strengthen:["kapota"],stretch:["kapota"],
     front:[],back:[{cx:592,cy:340,rx:18,ry:18},{cx:638,cy:340,rx:18,ry:18}]
   },
   hamstrings:{
     name:"Hamstrings",detail:"Biceps Femoris, Semitendinosus, Semimembranosus",
-    note:"The most commonly tight muscle group in Western practitioners. Forward folds systematically lengthen the entire posterior fascial chain from heel to skull. Hamstring flexibility is linked to lower back health.",
+    note:"The most commonly tight muscle group in Western practitioners. Forward folds systematically lengthen the entire posterior fascial chain from heel to skull. Hamstring flexibility is linked to lower back health. David Coulter (Anatomy of Hatha Yoga) notes that the first resistance in a forward fold is neurological, from the stretch reflexes, and only the final limit is connective tissue, so lasting length comes from patient, prolonged practice rather than force.",
     chakra:"thirdEye",view:"back",
     strengthen:["virabhadrasana","tadasana"],stretch:["uttanasana","viparita"],
     front:[],back:[{cx:588,cy:400,rx:26,ry:66},{cx:642,cy:400,rx:26,ry:66}]
@@ -523,6 +523,7 @@ render();
     <a class="md-src" href="https://www.wisdomlib.org/hinduism/book/sushruta-samhita-volume-1-sutrasthana" target="_blank" rel="noopener">Sushruta Samhita: the 107 marma (Wisdomlib)</a>
     <a class="md-src" href="https://www.wisdomlib.org/hinduism/book/charaka-samhita-english" target="_blank" rel="noopener">Charaka Samhita (Wisdomlib)</a>
     <a class="md-src" href="https://www.wisdomlib.org/definition/marma" target="_blank" rel="noopener">Wisdomlib: Marma</a>
+    <a class="md-src" href="https://www.chaukhambabooks.com/" target="_blank" rel="noopener">Lele, Ranade &amp; Frawley, Secrets of Marma (Chaukhamba) &middot; popular introduction, not scholarly</a>
   </div>
 
   <div class="md-srclabel">Practitioner sources, read as practitioners</div>
@@ -534,21 +535,6 @@ render();
     <a class="md-src" href="https://yinyoga.com/your-body-your-yoga/" target="_blank" rel="noopener">Clark, <em>Your Body, Your Yoga</em></a>
   </div>
 
-  <div class="md-srclabel">The critical and historical scholarship</div>
-  <div class="md-srcs">
-    <a class="md-src" href="https://www.sunypress.edu/p-4626-modern-and-global-ayurveda.aspx" target="_blank" rel="noopener">Wujastyk &amp; Smith (eds.), <em>Modern and Global Ayurveda</em> (SUNY Press)</a>
-    <a class="md-src" href="https://dukeupress.edu/fluent-bodies" target="_blank" rel="noopener">Langford, <em>Fluent Bodies</em> (Duke University Press)</a>
-    <a class="md-src" href="https://global.oup.com/academic/product/well-mannered-medicine-9780199856268?cc=us&amp;lang=en" target="_blank" rel="noopener">Wujastyk, <em>Well-Mannered Medicine</em> (Oxford University Press)</a>
-    <a class="md-src" href="https://global.oup.com/academic/product/indian-alchemy-9780197805800" target="_blank" rel="noopener">Wujastyk (ed.), <em>Indian Alchemy</em>: the rasa shastra history (OUP)</a>
-  </div>
-
-  <div class="md-srclabel">The evidence</div>
-  <div class="md-srcs">
-    <a class="md-src ev" href="https://www.nccih.nih.gov/health/ayurvedic-medicine-in-depth" target="_blank" rel="noopener">NCCIH (NIH): Ayurvedic medicine, effectiveness and safety</a>
-    <a class="md-src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12631390/" target="_blank" rel="noopener">Prakriti assessment tools and their scientific validity: a critical review (2025)</a>
-    <a class="md-src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2562368/" target="_blank" rel="noopener">Prasher et al.: genome expression and constitutional types</a>
-    <a class="md-src ev" href="https://pubmed.ncbi.nlm.nih.gov/25843124/" target="_blank" rel="noopener">Breeher et al. 2015: a cluster of lead poisoning among consumers of Ayurvedic medicine</a>
-  </div>
   <div class="md-note">Nothing on this site recommends internal remedies, and that is a considered position rather than caution for its own sake. The Ayurveda drawn on here is the part concerning constitution, daily routine, breath, food, and touch, which is the part that asks nothing of the bloodstream. For anything swallowed, talk to a clinician who knows what is in it.</div>
 </template>
 
@@ -578,14 +564,22 @@ render();
     <a class="md-src" href="https://dk.com/us/book/9781465479358-science-of-yoga" target="_blank" rel="noopener">Swanson, <em>Science of Yoga</em> (DK)</a>
     <a class="md-src" href="https://yinyoga.com/your-body-your-yoga/" target="_blank" rel="noopener">Clark, <em>Your Body, Your Yoga</em></a>
   </div>
-  <p style="margin-top:.9rem"><strong>How they differ.</strong> Kaminoff is organized by asana and keeps breath mechanics in view throughout, which is why it is the one most teachers reach for. Long is the one to open when we want a single muscle drawn and named in a specific pose. Coulter is the most demanding and the most rewarding, and his chapters on breathing and the pelvis are better than anything else on this list. Swanson is the visual reference. Clark is the corrective to all of them: the reason a cue that transforms one student does nothing for the next is often skeletal, not muscular, and no amount of effort changes the shape of a hip socket.</p>
+  <p style="margin-top:.9rem"><strong>How they differ.</strong> Kaminoff is organized by asana and keeps breath mechanics in view throughout, which is why it is the one most teachers reach for. Long is the one to open when we want a single muscle drawn and named in a specific pose; his first volume sorts each muscle into the poses that contract it and the poses that stretch it, the same agonist-and-antagonist logic behind the strengthened-by and stretched-by pairing on this page. Long names the reflex beneath that logic: &ldquo;During reciprocal inhibition, the central nervous system signals the target muscle to relax,&rdquo; which is why deliberately contracting one muscle can help its opposite release rather than forcing a stretch through the joint. Coulter is the most demanding and the most rewarding, and his chapters on breathing and the pelvis are better than anything else on this list. Swanson is the visual reference. Clark is the corrective to all of them: the reason a cue that transforms one student does nothing for the next is often skeletal, not muscular, and no amount of effort changes the shape of a hip socket. His central practical distinction is between <em>tension</em>, the pull of tissue that can be stretched further with patient practice and is felt on the side away from the movement, and <em>compression</em>, bone meeting bone or flesh meeting flesh, felt in the direction of the movement and marking a hard limit no stretching will move. Much of what a chart of muscles reads as tightness is really one or the other, and only tension answers to effort. Kaminoff frames the same lesson from the joint outward: a joint&rsquo;s range &ldquo;is the product of the shape of the bones, the tone of the ligaments connecting the bones, and the engagement of the muscles that cross the joint.&rdquo; Only the last of those three is a muscle, which is the deepest reason one chart of muscles cannot predict how far any particular body will travel in a pose.</p>
+    <p>Bernie Clark puts a number on it. Citing a study of what actually limits a joint in its midrange, he reports that the muscles account for roughly 41 percent of the resistance and the joint capsule for about 47 percent, so that &ldquo;tightness in the muscles is not the major factor in limiting our range of motion: the joint capsule has a greater effect on our mobility than the muscles.&rdquo; The tissues a chart of muscles cannot draw are the ones setting most of the limit.</p>
+    <p>A chart also shows muscle only from the outside, while the moving body is felt from within. The somatic teacher Graeme Lynn names the channels that carry that felt information: &ldquo;the six self-senses, or kinaesthetic and proprioceptive senses, are balance, joint articulation, felt movement, tissue pressure, tissue tension and pain.&rdquo; The same tissues the diagram draws are the ones a practitioner reads by sensation from inside the pose.</p>
 
   <div class="md-srclabel">Fascia and the whole-body view</div>
   <div class="md-srcs">
     <a class="md-src" href="https://www.anatomytrains.com/" target="_blank" rel="noopener">Myers, <em>Anatomy Trains</em> (Elsevier)</a>
     <a class="md-src ev" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4295260/" target="_blank" rel="noopener">Fascia research: what is established and what is not</a>
   </div>
-  <p style="margin-top:.9rem">Myers argues that muscles do not act alone but along continuous myofascial lines, so that the plantar fascia, calves, hamstrings, erectors, and scalp behave as one superficial back line. Anyone who has felt a forward fold change after rolling a tennis ball under one foot has met the idea. It is a genuinely useful lens for a yoga practice, and it is more contested in anatomy than its popularity suggests: the lines are a model, and the evidence for force transmission along them is partial. Worth using, worth not overclaiming.</p>
+  <p style="margin-top:.9rem">Myers argues that muscles do not act alone but along continuous myofascial lines, so that the plantar fascia, calves, hamstrings, erectors, and scalp behave as one superficial back line. Anyone who has felt a forward fold change after rolling a tennis ball under one foot has met the idea. It is a genuinely useful lens for a yoga practice, and it is more contested in anatomy than its popularity suggests. The continuity is not only theory: Myers has had this line dissected out intact from fresh tissue, one connected sheet from heel to skull. What stays partial is the evidence that force actually transmits along the whole length of it in a living, moving body. The lines are a real structure and a model of function at once, worth using and worth not overclaiming. Swanson&rsquo;s <em>Science of Yoga</em> adds the tissue-scale version, and hedges it the same way: research suggests the collagen of healthy fascia lies in an organized criss-cross lattice, that inactivity and ageing let that order break down, and that steady movement may help reorganize it.</p>
+
+  <div class="md-srclabel">Risk, safe loading, and honest limits</div>
+  <div class="md-srcs">
+    <a class="md-src" href="https://www.simonandschuster.com/books/The-Science-of-Yoga/William-J-Broad/9781451641431" target="_blank" rel="noopener">Broad, <em>The Science of Yoga: The Risks and the Rewards</em> (Simon &amp; Schuster)</a>
+  </div>
+  <p style="margin-top:.9rem">Every &ldquo;strengthened by&rdquo; and &ldquo;stretched by&rdquo; pairing above describes what a muscle <em>can</em> do, not what a given body <em>should</em> do on a given day, and that gap is where injuries live. Broad&rsquo;s book is the honest counterweight to the rest of this shelf. He gathers the medical case literature the founding gurus stayed silent about: torn Achilles tendons from forcing Downward Dog, hips worn to the point of replacement, sciatic nerve injury after falling asleep in a seated forward fold, and the rare but catastrophic strokes traced to extreme neck loading. His account is contested, and fairly so, since critics found the framing alarmist and the stroke cases are rare enough that the risk to a careful practitioner is small. What is not contested is the reform it helped drive, the shift from the guru&rsquo;s promise that a well-made pose is inherently safe to the plainer truth that a body registers load, not shape. The teacher Glenn Black, whom Broad quotes, puts the hard edge of it plainly, that a vigorous general class is the wrong container for bodies carrying hidden weaknesses. That is worth holding next to this diagram, which can name a muscle and its action but cannot see the hip socket, the artery, or the day. Leslie Kaminoff reads the oldest name for that balance, <em>sthira</em> and <em>sukha</em>, steadiness and ease, right down into the tissue, the same pairing Patanjali asks of a pose and the same one every living structure has to strike, so the anatomy mapped here and the stories told <a href="cosmic-banyan.html" style="color:inherit;border-bottom:1px dotted currentColor;text-decoration:none">under the banyan tree</a> are describing one body from two sides.</p>
 
   <div class="md-srclabel">The classical body</div>
   <div class="md-srcs">

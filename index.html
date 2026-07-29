@@ -7,37 +7,41 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100%;background:linear-gradient(170deg,#05010c 0%,#030e05 55%,#0e0308 100%);background-attachment:fixed;font-family:'DM Sans',Georgia,sans-serif;color:#f0e6d3}
+html,body{min-height:100%;background:#000;font-family:'DM Sans',Georgia,sans-serif;color:#f0e6d3}
 body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:3.5rem 1rem 2rem;text-align:center}
-.global-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem 1.2rem;background:rgba(5,1,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
+.global-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem 1.2rem;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
 .global-nav a{font-size:11.5px;color:rgba(240,230,211,.45);text-decoration:none;padding:4px 12px;border-radius:16px;border:1px solid transparent;transition:all .15s;white-space:nowrap}
 .global-nav a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.15)}
 /* line-height needs headroom for the descender on "Living": with
    background-clip:text the glyph is clipped to the line box, so a tight
    line-height shears the tail off the g. */
 .title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:0.1em;background:linear-gradient(92deg,#FF5555,#FF8C00,#FFD700,#00E676,#40C4FF,#CE93D8,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.32;padding-bottom:.1em;margin-bottom:0.4rem;margin-top:1rem}
-.subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:#9a8878;letter-spacing:0.22em;font-size:0.95rem;margin-bottom:1.8rem}
-.intro{max-width:600px;font-size:0.92rem;line-height:1.75;color:#a89880;margin-bottom:2.4rem}
+.subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:#9a8878;letter-spacing:0.22em;font-size:0.95rem;margin-bottom:1.4rem}
+.intro{max-width:600px;font-size:0.95rem;line-height:1.75;color:#a89880;margin-bottom:2.6rem}
 .intro em{color:#c9bfae;font-style:italic}
 
 .ladder-label{font-size:0.64rem;letter-spacing:0.28em;text-transform:uppercase;color:#6a5a4a;margin-bottom:1rem}
 .limbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;width:100%;max-width:940px}
 @media(max-width:860px){.limbs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.limbs{grid-template-columns:1fr}}
-.limb{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:1.15rem 1.15rem 1rem;background:rgba(255,255,255,0.03);border:1px solid var(--ac,rgba(255,255,255,.12));border-radius:16px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,background .18s;overflow:hidden}
+.limb{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:1.15rem 1.15rem 1rem;background:rgba(255,255,255,0.03);border:1px solid var(--ac,rgba(255,255,255,.12));border-radius:16px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,background .18s;overflow:hidden;min-height:172px;justify-content:flex-start}
 .limb::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 0% 0%, var(--gl,transparent), transparent 60%);opacity:.5;pointer-events:none}
 .limb:hover{transform:translateY(-4px);background:rgba(255,255,255,0.055);box-shadow:0 10px 40px var(--gl,rgba(0,0,0,.3))}
-.limb .lnum{font-size:0.7rem;letter-spacing:0.18em;color:#6a5a4a;font-weight:500}
-.limb .lname{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;letter-spacing:.02em;color:var(--ac);line-height:1.1;margin:.1rem 0 .05rem}
-.limb .len{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:#9a8878;margin-bottom:.55rem;font-style:italic}
-.limb .ldesc{font-size:0.8rem;line-height:1.55;color:#9a8a78;margin-bottom:.85rem;flex:1}
-.limb .lgo{font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ac);font-weight:500;opacity:.92}
-.limb .lsub{display:block;font-size:0.62rem;letter-spacing:.04em;text-transform:none;color:#6a5a4a;margin-top:.15rem}
+.limb .lnum{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:#6a5a4a;font-weight:500}
+.limb .lname{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;letter-spacing:.02em;color:var(--ac);line-height:1.1;margin:.35rem 0 .05rem}
+.limb .len{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:#9a8878;margin-bottom:1.2rem;font-style:italic}
+.limb .lgo{font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ac);font-weight:500;opacity:.92;margin-top:auto}
 
-.pages-row{margin-top:2.6rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;max-width:780px}
-.pages-row a{font-size:11.5px;letter-spacing:.04em;color:#8a7868;text-decoration:none;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:5px 14px;transition:all .15s}
-.pages-row a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.25)}
-.byline{margin-top:2.6rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#3a2a1a}
+/* the intentional deeper door: what lies beyond the eight limbs */
+.deeper{width:100%;max-width:760px;margin-top:3rem}
+.deeper-inner{border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,0.025);padding:2rem 1.6rem;text-align:center}
+.deeper h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.4rem,3.6vw,1.9rem);background:linear-gradient(92deg,#FF5555,#FFD700,#40C4FF,#EA80FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.3;padding-bottom:.08em;margin-bottom:.5rem}
+.deeper p{color:#9a8a78;font-size:0.85rem;line-height:1.65;max-width:48ch;margin:0 auto 1.3rem}
+.deeper .more-links{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+.deeper .more-links a{font-size:12px;letter-spacing:.03em;color:#a89880;text-decoration:none;border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:5px 14px;transition:all .15s}
+.deeper .more-links a:hover{color:#f0e6d3;border-color:rgba(255,255,255,.3)}
+
+.byline{margin-top:2.8rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#3a2a1a}
 
 .lp-feedback{width:100%;max-width:640px;margin-top:2.8rem;text-align:left}
 .lp-feedback-inner{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:1.4rem 1.5rem 1.2rem}
@@ -59,6 +63,8 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
   <a href="yama.html">Yama</a>
   <a href="niyama.html">Niyama</a>
   <a href="yoga-family-tree.html">Asana · Family Tree</a>
+  <a href="asana-sequencing.html">Sequencing</a>
+  <a href="yoga-styles.html">Styles</a>
   <a href="yoga-muscle-diagram.html">Muscle Diagram</a>
   <a href="cosmic-banyan.html">Under the Banyan Tree</a>
   <a href="pranayama.html">Breath</a>
@@ -66,7 +72,7 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
   <a href="meditation.html">Meditation</a>
   <a href="the-divine.html">The Divine</a>
   <a href="dharana.html">Dharana</a>
-  <a href="samadhi.html">Alchemy</a>
+  <a href="samadhi.html">Peace</a>
   <a href="ayurveda.html">Ayurveda</a>
   <a href="glossary.html">Glossary</a>
   <a href="about.html">About</a>
@@ -76,77 +82,75 @@ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;padd
 <div class="title">The Living Practice</div>
 <div class="subtitle">Yoga: anatomy, philosophy &amp; rooted teachings</div>
 <p class="intro">The path of yoga has eight limbs of one living practice that grow together. Begin anywhere.</p>
-<p class="intro" style="margin-top:-1.4rem;font-size:0.82rem;color:#8a7a68;max-width:560px">The pages come in two colors. Warm light holds the reading, on ethics, philosophy, and context. The dark holds the practice, on breath, meditation, and the inward limbs. The color tells you which room you are in.</p>
 
 <div class="ladder-label">The Eight Limbs</div>
 <div class="limbs">
   <a class="limb" href="yama.html" style="--ac:#FF7A7A;--gl:rgba(255,85,85,.14)">
+    <span class="lnum">Limb 1</span>
     <span class="lname">Guiding Principles</span>
     <span class="len">Yama</span>
-    <span class="ldesc">The guiding principles that root the practice, "restraints for proper behavior": non-harming, truth, non-stealing, moderation, non-grasping. Each with its sutra, its Gita root, and its stories.</span>
-    <span class="lgo">Enter Yama →<span class="lsub">The five principles, with the stories that teach them</span></span>
+    <span class="lgo">Enter Yama →</span>
   </a>
   <a class="limb" href="niyama.html" style="--ac:#FFA94D;--gl:rgba(255,140,0,.14)">
+    <span class="lnum">Limb 2</span>
     <span class="lname">Observances</span>
     <span class="len">Niyama</span>
-    <span class="ldesc">The five inner observances: purity, contentment, disciplined effort, self-study, and surrender to the divine. The practice turns from the world toward the self.</span>
-    <span class="lgo">Enter Niyama →<span class="lsub">The five observances, and the door to the divine</span></span>
+    <span class="lgo">Enter Niyama →</span>
   </a>
   <a class="limb" href="yoga-family-tree.html" style="--ac:#FFD700;--gl:rgba(255,215,0,.13)">
+    <span class="lnum">Limb 3</span>
     <span class="lname">Postures</span>
     <span class="len">Asana</span>
-    <span class="ldesc">The body's practice: yoga pose families mapped to the chakras, and the muscles that move within them.</span>
-    <span class="lgo">Enter Asana: the Family Tree →<span class="lsub">Includes the Muscle Diagram</span></span>
+    <span class="lgo">Enter Asana →</span>
   </a>
   <a class="limb" href="pranayama.html" style="--ac:#00E676;--gl:rgba(0,230,118,.12)">
+    <span class="lnum">Limb 4</span>
     <span class="lname">Breath</span>
     <span class="len">Pranayama</span>
-    <span class="ldesc">Breath is the life-force: a searchable guide to yogic breathing techniques, with instructions, hand positions, and adaptations.</span>
-    <span class="lgo">Enter the Breath →<span class="lsub">Pranayama techniques</span></span>
+    <span class="lgo">Enter the Breath →</span>
   </a>
   <a class="limb" href="pratyahara.html" style="--ac:#40C4FF;--gl:rgba(64,196,255,.13)">
+    <span class="lnum">Limb 5</span>
     <span class="lname">Introspect</span>
     <span class="len">Pratyahara</span>
-    <span class="ldesc">Drawing the senses inward to find the threshold where meditation begins.</span>
-    <span class="lgo">Enter Introspect →<span class="lsub">The four reaches, the inward turn</span></span>
+    <span class="lgo">Enter Introspect →</span>
   </a>
   <a class="limb" href="dharana.html" style="--ac:#7FA8FF;--gl:rgba(110,150,255,.14)">
+    <span class="lnum">Limb 6</span>
     <span class="lname">Concentration</span>
     <span class="len">Dharana</span>
-    <span class="ldesc">Gathering the whole mind onto a single point. The art of focus.</span>
-    <span class="lgo">Enter Dharana →<span class="lsub">The practices of one-pointed focus</span></span>
+    <span class="lgo">Enter Dharana →</span>
   </a>
   <a class="limb" href="meditation.html#sec-types" style="--ac:#CE93D8;--gl:rgba(206,147,216,.14)">
+    <span class="lnum">Limb 7</span>
     <span class="lname">Meditation</span>
     <span class="len">Dhyana</span>
-    <span class="ldesc">When focus becomes effortless and unbroken, it ripens into meditation. The many doors into stillness.</span>
-    <span class="lgo">Meditation →<span class="lsub">Types of meditation</span></span>
+    <span class="lgo">Enter Meditation →</span>
   </a>
   <a class="limb" href="samadhi.html" style="--ac:#EA80FC;--gl:rgba(234,128,252,.15)">
-    <span class="lname">Alchemy</span>
+    <span class="lnum">Limb 8</span>
+    <span class="lname">Peace</span>
     <span class="len">Samadhi</span>
-    <span class="ldesc">The meditator and the world merge. The absolute realm of sat-chit-ananda, eternal being, non-discrimination, awareness, and bliss.</span>
-    <span class="lgo">Enter Alchemy →<span class="lsub">Sat-chit-ananda</span></span>
+    <span class="lgo">Enter Peace →</span>
   </a>
 </div>
 
-<div class="pages-row">
-  <a href="yama.html">⚖ Yama: Guiding Principles</a>
-  <a href="yoga-family-tree.html">🌿 Asana: Yoga Family Tree</a>
-  <a href="asana-sequencing.html">🌊 Sequencing Asana</a>
-  <a href="yoga-styles.html">🪷 Styles of Yoga</a>
-  <a href="yoga-muscle-diagram.html">🫀 Muscle Diagram</a>
-  <a href="cosmic-banyan.html">🌳 Under the Banyan Tree</a>
-  <a href="pranayama.html">🌬️ Breath</a>
-  <a href="meditation.html">🌌 Meditation</a>
-  <a href="the-divine.html">☼ The Divine</a>
-  <a href="pratyahara.html">🐢 Introspect: Pratyahara</a>
-  <a href="dharana.html">◉ Dharana</a>
-  <a href="samadhi.html">✨ Alchemy: Samadhi</a>
-  <a href="ayurveda.html">🌿 Ayurveda: the sister science</a>
-  <a href="glossary.html">📖 Glossary</a>
-  <a href="about.html">✍ About</a>
-  <a href="support.html">♡ Support</a>
+<div class="deeper">
+  <div class="deeper-inner">
+    <h2>And there is more than the path</h2>
+    <p>Around the eight limbs sit the pose library and family tree, the muscle diagram, the lineages, sequencing, ayurveda, the stories under the banyan, and a full glossary.</p>
+    <div class="more-links">
+      <a href="asana-sequencing.html">Sequencing</a>
+      <a href="yoga-styles.html">Styles of Yoga</a>
+      <a href="yoga-muscle-diagram.html">Muscle Diagram</a>
+      <a href="cosmic-banyan.html">Under the Banyan Tree</a>
+      <a href="the-divine.html">The Divine</a>
+      <a href="ayurveda.html">Ayurveda</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+    </div>
+  </div>
 </div>
 
 <section id="lp-dana" style="width:100%;max-width:640px;margin-top:2.6rem;text-align:left">
@@ -188,7 +192,7 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var ms=document.getElementById('lp-fb-msg').value.trim();
   var pg=location.pathname.split('/').pop()||'index.html';
   var btn=document.querySelector('#lp-fb-form .lp-fb-send');
-  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending…';
   fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},

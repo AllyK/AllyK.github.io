@@ -84,6 +84,18 @@ a.inline:hover{border-color:var(--gold)}
 .byline{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);padding-bottom:2rem}
 .byline a{color:inherit;text-decoration:none}
 </style>
+<style id="lp-responsive">
+/* Readability + responsive pass (2026): larger, viewport-adaptive body text and
+   comfortable device-aware side margins. Remove this whole block to revert. */
+main p, main li, main blockquote, main dd{
+  font-size:clamp(1rem, 0.94rem + 0.42vw, 1.2rem) !important;
+  line-height:1.78;
+}
+main{
+  padding-left:clamp(1.15rem, 4vw, 2.75rem) !important;
+  padding-right:clamp(1.15rem, 4vw, 2.75rem) !important;
+}
+</style>
 </head>
 <body>
 
@@ -99,7 +111,7 @@ a.inline:hover{border-color:var(--gold)}
   <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
-  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="samadhi.html" class="nav-page">Peace</a>
     <a href="ayurveda.html" class="nav-page">Ayurveda</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="glossary.html" class="nav-page">Glossary</a>

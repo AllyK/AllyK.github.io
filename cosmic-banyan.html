@@ -272,6 +272,18 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
 .bridge-link:hover{border-color:var(--gold);color:var(--gold-dk)}
 .bridge-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
 </style>
+<style id="lp-responsive">
+/* Readability + responsive pass (2026): larger, viewport-adaptive body text and
+   comfortable device-aware side margins. Remove this whole block to revert. */
+main p, main li, main blockquote, main dd{
+  font-size:clamp(1rem, 0.94rem + 0.42vw, 1.2rem) !important;
+  line-height:1.78;
+}
+main{
+  padding-left:clamp(1.15rem, 4vw, 2.75rem) !important;
+  padding-right:clamp(1.15rem, 4vw, 2.75rem) !important;
+}
+</style>
 </head>
 <body>
 
@@ -288,7 +300,7 @@ a.gita-vlink:hover{background:rgba(200,150,46,.12);border-radius:2px}
   <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
-  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="samadhi.html" class="nav-page">Peace</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="ayurveda.html" class="nav-page">Ayurveda</a>
     <a href="glossary.html" class="nav-page">Glossary</a>
@@ -601,7 +613,7 @@ const CHARACTERS = {
   durvasa:     {name:'Durvasa',         role:'Sage',        color:'#8A6E3A', story:'The Sages',
     desc:'The sage of the short fuse, understood in some tellings as a portion of Shiva\'s own wrath housed in a human frame. His curses drive whole epics: it is Durvasa who gives young Kunti the mantra she tests once, on the sun, producing Karna and setting the Mahabharata in motion.'},
   radha:       {name:'Sri Radha',       role:'Eternal Consort', color:'#4858B0', story:'The Life of Krishna',
-    desc:'The foremost of the gopis of Vrindavan and Krishna\'s eternal consort. There is no Krishna without Radha, and no Radha without Krishna: they are one being in two forms. The Bhakti tradition holds their love as the highest model of the soul\'s relationship with the divine. In Vrindavan, devotees call out simply: Radhe. The tradition considers this sufficient.'},
+    desc:'The foremost of the gopis of Vrindavan and Krishna\'s eternal consort. There is no Krishna without Radha, and no Radha without Krishna: they are one being in two forms. The Bhakti tradition holds their love as the highest model of the soul\'s relationship with the divine. In Vrindavan, devotees call out simply: Radhe. The tradition considers this sufficient. Their love also names a devotional mode the scholar Neha Patel calls viraha-bhakti, "a particular type of bhakti, centred in the experience of viraha," where viraha "can be literally translated as separation": an oscillation, in her reading, of agony in separation and rejoicing at union, only to be followed by further spirals of separation. It is this cultivated longing, not its resolution, that the tradition treats as the practice.'},
 };
 
 const GLOSSARY = [
@@ -830,10 +842,7 @@ Vamana expands into Trivikrama, the one who traverses all three worlds. With one
     sources:[
       {label:'Valmiki Ramayana (Sanskrit & English)', url:'https://valmikiramayan.net/'},
       {label:'Sacred Texts: Ramayana (Griffith)', url:'https://www.sacred-texts.com/hin/rama/'},
-      {label:'Wisdomlib: Rama', url:'https://www.wisdomlib.org/definition/rama'},
-      {label:'Wisdomlib: Sita', url:'https://www.wisdomlib.org/definition/sita'},
-      {label:'Wisdomlib: Hanuman', url:'https://www.wisdomlib.org/definition/hanuman'},
-      {label:'Wisdomlib: Ravana', url:'https://www.wisdomlib.org/definition/ravana'},
+      {label:'Dharma, Krishna (Kenneth Anderson). Ramayana: India\'s Immortal Tale of Adventure, Love, and Wisdom. Torchlight Publishing (edition consulted); Mandala Publishing reissue &middot; publisher', url:'https://www.simonandschuster.com/books/Ramayana/Krishna-Dharma/9781683839194'},
     ],
     sections:[
       {heading:'Rama: the avatar who lives as a man',
@@ -883,14 +892,14 @@ The people light lamps through Ayodhya to guide them home. This is Diwali. But t
       {label:'Sacred Texts: Mahabharata (Ganguli)', url:'https://www.sacred-texts.com/hin/maha/index.htm'},
       {label:'Vedabase: Bhagavad Gita As It Is', url:'https://vedabase.io/en/library/bg/'},
       {label:'Wisdomlib: Mahabharata', url:'https://www.wisdomlib.org/definition/mahabharata'},
-      {label:'Wisdomlib: Bhagavad Gita', url:'https://www.wisdomlib.org/definition/bhagavad-gita'},
+      {label:'Miller, The Bhagavad-Gita: Krishna\'s Counsel in Time of War (Bantam Classics) &middot; publisher', url:'https://www.penguinrandomhouse.com/books/114492/the-bhagavad-gita-by-barbara-miller/'},
       {label:'Wisdomlib: Draupadi', url:'https://www.wisdomlib.org/definition/draupadi'},
       {label:'Wisdomlib: Arjuna', url:'https://www.wisdomlib.org/definition/arjuna'},
       {label:'Wisdomlib: Krishna', url:'https://www.wisdomlib.org/definition/krishna'},
     ],
     sections:[
       {heading:'The epic and its families',
-       text:`The Mahabharata was composed by the sage Vyasadeva, who also appears within it as a character, the author who wrote himself into his own poem. At more than 100,000 verses, it contains four times the combined length of the Iliad and Odyssey. Embedded within it are 700 verses spoken by Krishna to Arjuna on a battlefield: the Bhagavad Gita. The epic has been called the fifth Veda and contains the declaration that whatever concerns <span class="concept-link" data-id="Dharma">dharma</span>, artha, kama, and moksha that exists elsewhere can be found here, but what is not here is found nowhere.
+       text:`The Mahabharata was composed by the sage Vyasadeva, who also appears within it as a character, the author who wrote himself into his own poem. At more than 100,000 verses, it runs to roughly seven times the combined length of the Iliad and Odyssey. Embedded within it are 700 verses spoken by Krishna to Arjuna on a battlefield: the Bhagavad Gita. The epic has been called the fifth Veda and contains the declaration that whatever concerns <span class="concept-link" data-id="Dharma">dharma</span>, artha, kama, and moksha that exists elsewhere can be found here, but what is not here is found nowhere.
 At its center are two families of cousins: the five Pandava brothers (Yudhishtir, Bhima, Arjuna, Nakula, Sahadeva) and the one hundred sons of the blind king Dhritarashtra, led by Duryodhana. Where the Ramayana presents dharma and adharma in relative clarity, the Mahabharata refuses to. Almost every character is capable of both extraordinary virtue and grave error. That is the teaching: how to act from dharma when the ground is inseparably gray.`},
       {heading:'Kunti\'s mantra and the shadow of Karna',
        text:`The Pandavas\' mother Kunti was given a mantra by the sage Durvasa to summon any deity and bear their child. As a young woman, untested and curious, she tried it once. The sun god appeared. Terrified, she placed the radiant newborn, armored and earringed at birth with divine gifts, in a basket and set him adrift on the river, as Moses would be set adrift centuries later. That child was Karna: raised by a charioteer, given the skill of the greatest warriors, denied the recognition that would have allowed him to use it freely. She would watch him die on the battlefield of Kurukshetra without ever publicly acknowledging whose son he was.
@@ -941,8 +950,8 @@ Krishna\'s response begins with correction. You grieve for those who should not 
       {label:'Vedabase: Bhagavad Gita Chapter 2', url:'https://vedabase.io/en/library/bg/2/'},
       {label:'Shlokam: verse 2.58 with commentaries', url:'https://shlokam.org/bhagavad-gita/2-58/'},
       {label:'Holy Bhagavad Gita: 2.58', url:'https://www.holy-bhagavad-gita.org/chapter/2/verse/58/'},
-      {label:'Wisdomlib: Sthitaprajna', url:'https://www.wisdomlib.org/definition/sthitaprajna'},
-      {label:'Tummee: Kurmasana and pratyahara', url:'https://www.tummee.com/yoga-poses/kurmasana'},
+      {label:'Miller, The Bhagavad-Gita: Krishna\'s Counsel in Time of War (Bantam Classics) &middot; publisher', url:'https://www.penguinrandomhouse.com/books/114492/the-bhagavad-gita-by-barbara-miller/'},
+      {label:'Iyengar, Light on Yoga, Kurmasana (quoting Gita 2.58 on the tortoise withdrawing its limbs) &middot; HarperCollins', url:'https://harpercollins.co.uk/products/light-on-yoga-the-definitive-guide-to-yoga-practice-b-k-s-iyengar'},
       {label:'Yoga Journal: Corpse Pose', url:'https://www.yogajournal.com/poses/corpse-pose-2/'},
       {label:'Insight Timer: the meaning of Savasana', url:'https://insighttimer.com/blog/savasana-meaning/'},
     ],
@@ -951,7 +960,7 @@ Krishna\'s response begins with correction. You grieve for those who should not 
        text:`Arjuna\'s collapse is articulate. He has reasons: the men across the field are his teachers, cousins, and grandfather. Krishna hears him out and answers with the oldest teaching in the book. You grieve for those who should not be grieved for, yet you speak words of wisdom (2.11). The wise, he says, grieve neither for the living nor for the dead.
 Then the teaching on the Self. What wears this body was never born and never dies (2.20). As a person discards worn garments and puts on new ones, the embodied Self discards worn bodies and takes on new ones (2.22). Weapons cannot cut it, fire cannot burn it, water cannot wet it, wind cannot dry it (2.23). Arjuna is grieving for garments.`},
       {heading:'Evenness is yoga',
-       text:`Krishna then gives the working definition the whole tradition leans on. You have a right to the work alone, never to its fruits (2.47). This is <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>, and the next verse names its result: established in yoga, act, releasing attachment, the same in success and failure. Samatvam yoga uchyate, <span class="concept-link" data-id="Samatva">evenness is yoga</span> (2.48).`},
+       text:`Krishna then gives the working definition the whole tradition leans on. You have a right to the work alone, never to its fruits (2.47). Barbara Stoler Miller, whose translation this page cites, renders the verse &ldquo;Be intent on action, not on the fruits of action; avoid attraction to the fruits and attachment to inaction!&rdquo; This is <span class="concept-link" data-id="Nishkama karma">nishkama karma</span>, and the next verse names its result: established in yoga, act, releasing attachment, the same in success and failure. Samatvam yoga uchyate, <span class="concept-link" data-id="Samatva">evenness is yoga</span> (2.48).`},
       {heading:'How does such a person sit?',
        text:`Arjuna\'s first question about realization is a question about the body. What does a person of steady wisdom look like, he asks: how do they speak, how do they sit, how do they walk (2.54)? Krishna answers with an animal. When a person can draw the senses back from their objects the way a tortoise draws its limbs into its shell, wisdom stands steady (2.58). The tradition would later name this movement <span class="concept-link" data-id="Pratyahara">pratyahara</span>, the fifth limb, and this verse is its oldest image. What is night for all beings, Krishna adds, the awakened one is awake in (2.69).`},
     ],
@@ -1041,7 +1050,7 @@ In the midst of the dance, the gopis felt a moment of pride, surely we are the m
     thisStory:'A quiet, intimate exchange in the middle of the Gita, set apart from the battlefield drama. Arjuna asks the most human question a meditator can ask: what if I try, and die before I arrive? Krishna\'s answer reframes an entire lifetime of practice, and opens onto a contemplation about the shape of rebirth itself.',
     sources:[
       {label:'Holy Bhagavad Gita: Chapter 6, Verse 37', url:'https://www.holy-bhagavad-gita.org/chapter/6/verse/37/'},
-      {label:'Holy Bhagavad Gita: Chapter 6 (Dhyana Yog)', url:'https://www.holy-bhagavad-gita.org/chapter/6/'},
+      {label:'Miller, The Bhagavad-Gita: Krishna\'s Counsel in Time of War (Bantam Classics), Sixth Teaching &middot; publisher', url:'https://www.penguinrandomhouse.com/books/114492/the-bhagavad-gita-by-barbara-miller/'},
       {label:'Vedabase: Bhagavad Gita Chapter 6', url:'https://vedabase.io/en/library/bg/6/'},
       {label:'Lion’s Roar: Buddha-nature', url:'https://www.lionsroar.com/why-buddhanature-matters/'},
       {label:'Lion’s Roar: The Bodhisattva Vow', url:'https://www.lionsroar.com/the-bodhisattva-vow/'},
@@ -1096,7 +1105,7 @@ Follow that thread and a quiet possibility appears. If the soul has worn every r
     sources:[
       {label:'Vedabase: Bhagavad Gita Chapter 11', url:'https://vedabase.io/en/library/bg/11/'},
       {label:'Holy Bhagavad Gita: Chapter 11', url:'https://www.holy-bhagavad-gita.org/chapter/11/'},
-      {label:'Wisdomlib: Vishvarupa', url:'https://www.wisdomlib.org/definition/vishvarupa'},
+      {label:'Miller, The Bhagavad-Gita: Krishna\'s Counsel in Time of War (Bantam Classics), Eleventh Teaching &middot; publisher', url:'https://www.penguinrandomhouse.com/books/114492/the-bhagavad-gita-by-barbara-miller/'},
       {label:'Yoga Journal: Anjali Mudra', url:'https://www.yogajournal.com/yoga-101/for-beginners-anjali-mudra/'},
       {label:'Yoga Journal: Child\'s Pose', url:'https://www.yogajournal.com/poses/child-s-pose/'},
     ],
@@ -1105,7 +1114,7 @@ Follow that thread and a quiet possibility appears. If the soul has worn every r
        text:`Ten chapters in, Arjuna believes. Now he wants to see. Show me the imperishable form, he asks, if you think I can bear it (11.3-4). Krishna grants him a divine eye, because no ordinary eye can hold what comes next (11.8).`},
       {heading:'The form',
        text:`What Arjuna sees has no edges. Faces, eyes, arms, and mouths in every direction, ornaments and weapons without number, the light of a thousand suns rising at once (11.12), the entire universe gathered in one place inside one body (11.13). He also sees the terrifying part: the warriors of both armies streaming into blazing mouths like rivers running to the sea (11.26-28). His hair stands on end. He bows his head and presses his palms together (11.14).
-I am time, Krishna tells him, the destroyer of worlds; even without you, every warrior on this field will cease to be. Therefore arise, and be my instrument (11.32-33).`},
+I am time, Krishna tells him; even without Arjuna, every warrior on this field will cease to be, so he must arise and be the instrument (11.32-33). Barbara Stoler Miller, whose translation these pages cite, gives the full line as &ldquo;I am time grown old, creating world destruction set in motion to annihilate the worlds,&rdquo; a rendering that steps back from the more familiar &ldquo;destroyer of worlds&rdquo; and holds the emphasis on time itself.`},
       {heading:'The apology and the return',
        text:`Arjuna, still shaking, apologizes for every casual word. For calling him Krishna, Yadava, friend. For the teasing at meals, on walks, resting on the same couch (11.41-42). Then he asks for the gentle form back (11.45-46). Krishna returns, first four-armed, then simply human (11.50), and Arjuna exhales: seeing your pleasant human form, I am composed and restored (11.51).
 The tradition reads tenderness here. The immensity is real, and the friendship is real, and practice happens mostly inside the friendship.`},
@@ -1137,19 +1146,21 @@ The tradition reads tenderness here. The immensity is real, and the friendship i
     thisStory:'The shortest story on this page and the source of its central image. The tree you have been scrolling under comes from these verses.',
     sources:[
       {label:'Vedabase: Bhagavad Gita Chapter 15', url:'https://vedabase.io/en/library/bg/15/'},
-      {label:'Shlokam: Chapter 15', url:'https://shlokam.org/gita/chapter-15.htm'},
-      {label:'Pragmatic Gita: the wisdom of the ashvattha tree', url:'https://pragmaticgita.com/inspiring-wisdom-of-the-ashvattha-tree/'},
-      {label:'Yoga International: the mythology behind Vrikshasana', url:'https://yogainternational.com/article/view/the-mythology-behind-vrikshasana-tree-pose/'},
+      {label:'Bhagavad Gita: Annotated &amp; Explained, trans. Shri Purohit Swami, annot. Kendra Crossen Burroughs (SkyLight Illuminations, Turner Publishing), note on 15.1 &middot; publisher', url:'https://turnerpublishing.com/products/bhagavad-gita'},
+      {label:'Miller, The Bhagavad-Gita: Krishna\'s Counsel in Time of War (Bantam Classics), Fifteenth Teaching &middot; publisher', url:'https://www.penguinrandomhouse.com/books/114492/the-bhagavad-gita-by-barbara-miller/'},
+      {label:'Chandogya Upanishad VI.12, the banyan seed and the subtle essence, in Muller, The Upanishads (Sacred Books of the East, Vol. 1, Clarendon Press 1879)', url:'https://www.sacred-texts.com/hin/sbe01/index.htm'},
+      {label:'Balkaran, The Stories Behind the Poses (Leaping Hare Press)', url:'https://www.quarto.com/books/9780711271883/the-stories-behind-the-poses'},
       {label:'Yoga Journal: Handstand', url:'https://www.yogajournal.com/poses/types/handstand/'},
-      {label:'Yogapedia: Adho Mukha Vrksasana', url:'https://www.yogapedia.com/definition/6316/adho-mukha-vrksasana'},
       {label:'Yoga Journal: Tree Pose', url:'https://www.yogajournal.com/poses/tree-pose-2/'},
     ],
     sections:[
       {heading:'Roots above, branches below',
-       text:`Krishna describes a tree unlike any tree in the world: an eternal ashvattha with its roots above and its branches below, whose leaves are the Vedic hymns. One who knows this tree, he says, knows the Vedas (15.1). Translators, including the Vedabase edition these pages draw on, often render the tree as a banyan. Its branches spread upward and downward, nourished by the <span class="concept-link" data-id="Guna">gunas</span>; its buds are the objects of the senses; and its secondary roots reach down into the human world, binding action to consequence (15.2).`},
+       text:`Krishna describes a tree unlike any tree in the world: an eternal ashvattha with its roots above and its branches below, whose leaves are the Vedic hymns. One who knows this tree, he says, knows the Vedas (15.1). Barbara Stoler Miller, whose translation these pages cite, renders it as the tree of life: &ldquo;Roots in the air, branches below, the tree of life is unchanging, they say; its leaves are hymns, and he who knows it knows sacred lore&rdquo; (Fifteenth Teaching, p. 130). Shri Purohit Swami&rsquo;s translation renders the verse as a creation &ldquo;both ephemeral and eternal ... having its seed above in the Highest, and its ramifications on this earth below,&rdquo; with the scriptures as its leaves (15.1). Translators, including the Vedabase edition these pages draw on, often render the tree as a banyan. Its branches spread upward and downward, nourished by the <span class="concept-link" data-id="Guna">gunas</span>; its buds are the objects of the senses; and its secondary roots reach down into the human world, binding action to consequence (15.2).`},
       {heading:'The axe',
        text:`From inside the tree, its shape stays hidden: no end, no beginning, no foundation can be seen (15.3). So the instruction arrives with an edge. Cut down this deeply rooted tree with the strong axe of detachment, asanga-shastrena dridhena, and then seek the place from which no one returns (15.3-4).
 The verses are honest about scale. The world\'s entanglements form a living, growing system, and the practice\'s answer is a sharp tool, used deliberately, again and again.`},
+      {heading:'The two birds',
+       text:`The Rig-Veda holds an older tree-image, and the tradition reads it as the heart of the matter. Two birds sit in one tree: one bird is eating the tree's fruit, while the other is simply watching. Georg Feuerstein, following the scholar Christopher Chapple, traces the image to the Rig-Veda (1.164.20) and the Shvetashvatara Upanishad, and reads the two birds as the individuated self (jiva) and the transcendental Self (atman): the one caught up in tasting its experience, the other the pure witness behind it. Mircea Eliade called that witness one of India's greatest discoveries, consciousness freed from its psychophysiological structures and their conditioning. The banyan and the inverted ashvattha say it in another key: the branching world we are entangled in, and the still awareness that watches it without being consumed.`},
     ],
     characterIds:['krishna_mb','arjuna'],
     seq:[
@@ -1167,7 +1178,8 @@ The verses are honest about scale. The world\'s entanglements form a living, gro
     connections:`
 <p><span class="pose-link" data-id="36">Tree Pose (Vrksasana)</span> grows the tree right side up: foot rooting into the earth, trunk steady, crown and branches rising. Teachers map the eight limbs onto its parts, with the yamas and niyamas as roots and samadhi as the fruit, and the tradition of tree reverence behind the pose runs deep in Vedic culture.</p>
 <p><span class="pose-link" data-id="406">Downward-Facing Tree (Adho Mukha Vrksasana)</span> is the handstand\'s actual Sanskrit name, and it is Chapter 15 in the body. The feet that root Vrksasana rise into the sky, the hands press down as new roots, and for a breath or two the practitioner stands as the ashvattha of 15.1: roots above, branches below. Every inversion carries a trace of this verse, the practice of seeing the familiar world turned over.</p>
-<p>This story is also the reason this page looks the way it does. The banyan you entered under, branches reaching toward the eternal and roots extending into the manifest world, is the Gita\'s tree, drawn right side up so the stories can hang from its branches.</p>`,
+<p>This story is also the reason this page looks the way it does. The banyan you entered under, branches reaching toward the eternal and roots extending into the manifest world, is the Gita\'s tree, drawn right side up so the stories can hang from its branches.</p>
+<p>A note of honesty about the tree. The ashvattha of Chapter 15 is properly the pipal or sacred fig (ficus religiosa), the tree under which the Buddha is said to have woken; Kendra Crossen Burroughs\'s SkyLight Illuminations edition notes that some commentators equate it instead with the banyan (ficus benghalensis), because, like the fig, its branches reach down to root in the earth. Barbara Stoler Miller renders it simply as the tree of life; translators reach for the banyan mainly because its aerial roots make the inverted image legible. The banyan proper has a teaching of its own in the Chandogya Upanishad. The sage Uddalaka asks his son Svetaketu to break open a fruit of the nyagrodha (banyan), then one of its seeds, until the boy can see nothing at all, and tells him that the subtle essence he can no longer perceive is what the whole great tree grows from. In Max Muller&rsquo;s translation, &ldquo;That which is the subtile essence, in it all that exists has its self. It is the True. It is the Self, and thou, O Svetaketu, art it&rdquo; (Chandogya VI.12, in Muller, The Upanishads, Sacred Books of the East, Vol. 1). This is the refrain later compressed to tat tvam asi, thou art that.</p>`,
     questions:[],
   },
   {
@@ -1249,6 +1261,7 @@ Last came Dhanvantari, the divine physician, holding the pot of amrita. The demo
       {label:'Wisdomlib: Raktabija', url:'https://www.wisdomlib.org/definition/raktabija'},
       {label:'Mookerjee, Kali: The Feminine Force (Destiny Books) &middot; publisher', url:'https://www.innertraditions.com/author/ajit-mookerjee'},
       {label:'Bedi, "Kali, the Dark Goddess," in Moonlit Path (author\'s page)', url:'https://pathtothesoul.com/publications/'},
+      {label:'Bedi, Awaken the Slumbering Goddess, ch. 7, "The Latent Code of Kali, the Dark Goddess" (author\'s page)', url:'https://pathtothesoul.com/publications/'},
     ],
     sections:[
       {heading:'The brow of the goddess',
@@ -1266,6 +1279,7 @@ So Shiva lay down among the corpses in her path. She danced onto the field, and 
 <p>This page has said from the start that these figures can be read as energies rather than beings. Kali is where that reading earns its keep, because she is the one the reading was invented for. Ajit Mookerjee&rsquo;s <em>Kali: The Feminine Force</em> reads her iconography as a diagram of the psyche rather than a costume, and almost every element decodes.</p>
 <p>The garland of fifty severed heads is one head for each letter of the Sanskrit alphabet, which Mookerjee glosses as <em>&ldquo;the repository of knowledge and wisdom&rdquo;</em>: she wears language itself, cut off and strung up. The girdle of severed hands is karma, since <em>&ldquo;hands are the principal instruments of work,&rdquo;</em> a reminder that <em>&ldquo;ultimate freedom is to be attained as the fruit of karmic action.&rdquo;</em> Her three eyes are past, present, and future. Her white teeth are sattva, clarity, and they are shown biting down on the red tongue of rajas, appetite, to stop it dragging down into tamas. Her hands hold a severed head, <em>&ldquo;indicating the annihilation of ego-bound evil force,&rdquo;</em> and a sword <em>&ldquo;with which she cuts the thread of bondage&rdquo;</em>, while the other two say, plainly: do not be afraid, and be strong. She is the only figure in the tradition whose terrifying form is issuing reassurance with half its arms.</p>
 <p>Read this way, Raktabija is the most modern thing on this page. Some problems double when struck. Anyone who has tried to argue themselves out of shame, or to suppress a craving by force, has made two where there was one. Kali&rsquo;s method is the only one that works: stop letting it reach the ground. Do not fight the copy. Catch the thing before it lands.</p>
+<p>A second reading sharpens the same point from a different tradition. The Jungian analyst Ashok Bedi, in <em>Awaken the Slumbering Goddess</em>, treats Kali not as iconography but as an emergency function of the psyche: the latent code that activates when a crisis outruns the ego, and whose work is to destroy what has gone dysfunctional so something new can grow. In his account her force <em>&ldquo;helps us transmute and assimilate this darkness and consciously harvest the potential for light embedded in the shadow.&rdquo;</em> But Bedi adds a caution the myth only implies. Once the crisis passes, he writes, <em>&ldquo;Kali refuses to relinquish control, and it is the task of the individual to gradually reclaim management of their personality from the Kali archetype.&rdquo;</em> The two readings locate the stopping differently. Mookerjee and the story have her halt the instant she recognizes Shiva beneath her foot; Bedi puts the halting on us, because the defense does not always dismount on its own, and part of the practice is taking management back.</p>
 <p>And the ending is why Kali belongs to practice rather than to spectacle. The fury is not condemned. It was correct; it won a war nothing else could win. What the story insists on is that it needs something under its foot to recognize, or it will keep going after its usefulness ends. Ally&rsquo;s note on <a href="the-divine.html#archetype" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">The Divine</a> puts it exactly: Kali is what it is like when rage serves love. The serving is the whole distinction, and it lives in one foot, on one chest, in one moment of noticing.</p>`,
     seq:[
       {n:'Easy Pose',s:'Sukhasana',c:'We sit with something we are actually angry about. We do not fix it yet.'},
@@ -1488,7 +1502,8 @@ const evLink = `<svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 
 function renderIntro(){
   return `<section class="story-section-wrap" id="section-intro">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text);margin-bottom:.75rem">The banyan tree</h2>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into light, while the roots descend into dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the material world below. To trace any branch back to where it meets the trunk is a yoga practice itself.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The banyan tree is one of yoga's most resonant symbols. Its branches spread upward and outward into light, while the roots descend into dark and sustaining earth. In the Bhagavad Gita, Krishna describes the universe itself as an eternal banyan: branches reaching into the spiritual realm above, roots feeding the material world below. To trace any branch back to where it meets the trunk is a yoga practice itself. The same book holds the tree's terrifying counterpart. When Krishna finally shows Arjuna his universal form, he names himself as time: <em>&ldquo;I am time grown old, creating world destruction, set in motion to annihilate the worlds&rdquo;</em> (<a class="gita-vlink" href="https://vedabase.io/en/library/bg/11/32/" target="_blank" rel="noopener">11.32</a>, in Barbara Stoler Miller's translation). The banyan that shelters and the time that devours are one vision seen from two sides.</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">The oneness the banyan points to need not be reached only by philosophy. In the devotional traditions it is often felt rather than argued, arriving through the shared act of telling and hearing a story. The scholar Karen Pechilis, writing on the poetry of the women bhakti saints, describes how &ldquo;the communion enabled by interpretation (both the poet&rsquo;s experience and the audience&rsquo;s experience) engages a feeling of non-duality &hellip; in which difference and similarity exist simultaneously.&rdquo; Read that way, the moment a story lands, when the teller, the divine figure, and the listener briefly become one attention, is itself a small experience of the tree&rsquo;s unity, difference and sameness held together at once.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Every Bhagavad Gita verse cited on this page, such as <a class="gita-vlink" href="https://vedabase.io/en/library/bg/15/1/" target="_blank" rel="noopener">15.1</a>, links directly to the Sanskrit and translation on <a class="gita-vlink" href="https://vedabase.io/en/library/bg/" target="_blank" rel="noopener">Vedabase</a>, so the scripture itself is always one click beneath the story. The stories below are retold from the primary sources cited under each one.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Since so much of current yoga practice focuses on movement, this page matches each story with relevant asanas and with an example movement practice sequence. The asanas help us embody the story, though, and aren't the purpose of the stories. I find it useful to connect my movement with the underpinning philosophy, like the Warriors for Virabhadra, the Splits for Hanuman, the Fish for Matsya, the Dancer for Nataraja. Practicing the pose with its story in my body changes my attention.</p>
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:1rem;font-size:15px">Every story below closes with THE STORY IN SEQUENCE, a short flow built from the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">pose library</a>, and every pose named in a story links to its place on the <a href="yoga-family-tree.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Asana family tree</a> and the <a href="yoga-muscle-diagram.html" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">muscle diagram</a>.</p>
@@ -1544,7 +1559,7 @@ function renderCantos(){
       <h2 class="story-title">The twelve cantos</h2>
       <div class="story-source">Srimad Bhagavatam, the whole shape of it, in the order the text tells it</div>
     </div>
-    <p class="canto-intro">Most of the stories on this page come out of one book, and that book has a shape worth seeing whole. The stories above are arranged the way a practice is arranged, by theme and by what follows what. This list is arranged the way the <em>Bhagavatam</em> arranges itself, Canto 1 through Canto 12, because a map of a text is only useful in the text's own order. Read down the column and you can watch the arc: creation, then cosmology, then the long descent through dynasties into the life of Krishna at the heart of it, then dissolution and the child on the banyan leaf at the end. Each canto below links to the full text on <a href="https://vedabase.io/en/library/sb/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Vedabase</a>, to the stories on this page that live inside it, and to the poses those stories carry.</p>
+    <p class="canto-intro">Most of the stories on this page come out of one book, and that book has a shape worth seeing whole. The stories above are arranged the way a practice is arranged, by theme and by what follows what. This list is arranged the way the <em>Bhagavatam</em> arranges itself, Canto 1 through Canto 12, because a map of a text is only useful in the text's own order. Read down the column and you can watch the arc: creation, then cosmology, then the long descent through dynasties into the life of Krishna at the heart of it, then dissolution and the child on the banyan leaf at the end. The book is candid about why it tells these stories at all. It calls a literature &ldquo;full with descriptions of the transcendental glories of the name, fame, form and pastimes of the unlimited Supreme Lord&rdquo; a creation &ldquo;meant to bring about a revolution in the impious life of a misdirected civilization&rdquo; (1.5.11, in Prabhupada's devotional translation), which is to say the stories are told to change the listener, not merely to record the past. That is a devotional and sectarian framing, given here as the text's own account of its purpose. Each canto below links to the full text on <a href="https://vedabase.io/en/library/sb/" target="_blank" rel="noopener" style="color:var(--gold-dk);border-bottom:1px solid var(--gold)">Vedabase</a>, to the stories on this page that live inside it, and to the poses those stories carry.</p>
     <div class="canto-list">${cards}</div>
   </section>`;
 }

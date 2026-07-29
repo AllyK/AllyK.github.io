@@ -158,6 +158,18 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 .bridge-link{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid);text-decoration:none;padding:.4rem .85rem;border:1px solid var(--border-lt);border-radius:20px;transition:all .15s}
 .bridge-link:hover{border-color:var(--violet);color:var(--violet)}
 </style>
+<style id="lp-responsive">
+/* Readability + responsive pass (2026): larger, viewport-adaptive body text and
+   comfortable device-aware side margins. Remove this whole block to revert. */
+main p, main li, main blockquote, main dd{
+  font-size:clamp(1rem, 0.94rem + 0.42vw, 1.2rem) !important;
+  line-height:1.78;
+}
+main{
+  padding-left:clamp(1.15rem, 4vw, 2.75rem) !important;
+  padding-right:clamp(1.15rem, 4vw, 2.75rem) !important;
+}
+</style>
 </head>
 <body>
 
@@ -180,7 +192,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
   <a href="pratyahara.html" class="nav-page">Introspect</a>
     <a href="meditation.html" class="nav-page">Meditation</a>
     <a href="dharana.html" class="nav-page">Dharana</a>
-  <a href="samadhi.html" class="nav-page">Alchemy</a>
+  <a href="samadhi.html" class="nav-page">Peace</a>
     <a href="the-divine.html" class="nav-page">The Divine</a>
     <a href="ayurveda.html" class="nav-page">Ayurveda</a>
     <a href="glossary.html" class="nav-page">Glossary</a>
@@ -208,7 +220,11 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 
 <main id="content">
 
-<div class="band"><span class="band-word">Do &amp; interact</span><span class="band-rule"></span><span class="band-note">Find a breath, then read why it works</span></div>
+<div class="band"><span class="band-rule"></span><span class="band-note">Find a breath, then read why it works</span></div>
+
+<section class="section-wrap" id="sec-why-breath">
+  <p class="lead">Long before yoga was identified with posture, it was identified with the breath. As James Mallinson and Mark Singleton put it in <em>Roots of Yoga</em>, their anthology of the primary sources, &ldquo;Today, the physical practice of yoga is popularly identified with bodily postures, but in pre-modern India it was breath-control that was the defining practice of physical yoga.&rdquo; The classical Hatha texts make the reason plain. The <em>Hatha Yoga Pradipika</em> ties the breath directly to the mind: &ldquo;Respiration being disturbed, the mind becomes disturbed. By restraining respiration, the Yogi gets steadiness of mind&rdquo; (II.2). Patanjali had already set <em>pranayama</em> as the fourth of the eight limbs, defining it in the Yoga Sutras as the pause that follows a steady seat, when the flow of inhalation and exhalation is stilled (2.49). The techniques gathered below are branches of that old root.</p>
+</section>
 
 <section class="section-wrap" id="sec-directory">
   <div class="section-header">
@@ -278,7 +294,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="tech-precaution"><span class="label">Precautions</span><p>Ease off with jaw pain or TMJ: keep the mouth comfortably open rather than maximally wide. Do not force the eyes wide if they strain, and skip the sound if it hurts the throat.</p></div>
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
-      <a href="https://www.wisdomlib.org/definition/simhasana" class="source-link" target="_blank" rel="noopener">Wisdomlib: Simhasana</a>
+      <a href="https://www.yogavidya.com/gheranda-samhita.html" class="source-link" target="_blank" rel="noopener">Gheranda Samhita, ch. 2 (Simhasana), trans. Mallinson (YogaVidya.com)</a>
       <a href="https://www.yogabasics.com/asana/lion/" class="source-link" target="_blank" rel="noopener">Yoga Basics: Lion Pose</a>
     </div>
   </div>
@@ -305,7 +321,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>The Hatha Yoga Pradipika describes the breath eventually suspending itself, without inhalation or exhalation and without effort. If that happens, it happens; if it does not, the sitting was still complete.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The Hatha Yoga Pradipika (2.71 to 2.75) treats the other seven kumbhakas as training wheels for this one: retention that arrives on its own, with no closing of nostrils and no counting. The text calls the practitioner who attains it a true knower of yoga and links it directly to raja yoga. Its practical value is a corrective. It reframes pranayama as something we gradually stop doing, and it makes the goal of the whole limb a state rather than a manoeuvre.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The Hatha Yoga Pradipika (2.71 to 2.75) treats the eight kumbhakas it names (2.44) as training wheels for this one: retention that arrives on its own, with no closing of nostrils and no counting. The text links it directly to raja yoga. Its practical value is a corrective. It reframes pranayama as something we gradually stop doing, and it makes the goal of the whole limb a state rather than a manoeuvre. The Gheranda Samhita teaches the same effortless retention but frames it differently, calling the one who attains it a knower of yoga and counting Kevali as one of its own eight kumbhakas rather than as the state that lies beyond them.</p></div>
     <h4>Hand position</h4>
     <p>Any settled seat: Chin, Jnana, Bhairava, or Dhyana. Since no nostril is closed, the hands are free to rest.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -313,7 +329,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="tech-precaution"><span class="label">Precautions</span><p>Never hold the breath to manufacture this. Forced retention is a different practice with real risks; kevala is defined by the absence of force. If we catch ourselves gripping the throat or straining, we return to normal breathing.</p></div>
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
-      <a href="https://www.wisdomlib.org/definition/kevala-kumbhaka" class="source-link" target="_blank" rel="noopener">Wisdomlib: Kevala Kumbhaka</a>
+      <a href="https://www.yogavidya.com/gheranda-samhita.html" class="source-link" target="_blank" rel="noopener">Gheranda Samhita, ch. 5 (Kevali kumbhaka), trans. Mallinson (YogaVidya.com)</a>
       <a href="https://www.sacred-texts.com/hin/hyp/index.htm" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika, Pancham Sinh translation (Sacred Texts)</a>
     </div>
   </div>
@@ -339,7 +355,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Begin with 5 to 8 rounds of one variation only. These are graded practices and they are meant to be taken in order, over months rather than in one sitting.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>Iyengar&rsquo;s <em>Light on Pranayama</em> lays out pranayama as a graded curriculum rather than a set of party tricks, and these are its middle rungs. Partially closing a nostril, rather than fully blocking it, teaches a finer control of airflow than Nadi Shodhana asks for, and the stepped Viloma inhale trains the lungs to fill in sections rather than in one grab. The value is precision: they build the sensitivity that makes the longer practices safe.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Iyengar&rsquo;s <em>Light on Pranayama</em> lays out pranayama as a graded curriculum rather than a set of party tricks, and these are its middle rungs. Partially closing a nostril, rather than fully blocking it, teaches a finer control of airflow than Nadi Shodhana asks for, and the stepped Viloma inhale trains the lungs to fill in sections rather than in one grab. In Anuloma the fingers throttle only the exhale, so the out-breath grows longer than the in-breath; in Pratiloma they throttle only the inhale, so the in-breath is the one that lengthens. Iyengar is strict about the order: master Ujjayi and Viloma before attempting Anuloma, and treat Anuloma and Pratiloma as the foundation for the harder ratio work that follows. The value is precision, the sensitivity that makes the longer practices safe rather than forced.</p></div>
     <h4>Hand position</h4>
     <p>Nasikagra or Vishnu mudra on the breathing hand, but the touch is far lighter than in Nadi Shodhana. The finger narrows the nostril rather than sealing it, so the airflow is throttled, not stopped.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -347,8 +363,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="tech-precaution"><span class="label">Precautions</span><p>Skip the pauses during pregnancy, with high blood pressure, or at any sign of breathlessness. Build in stages and stop at the first sign of strain rather than pushing to complete the round.</p></div>
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
-      <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em> &middot; publisher</a>
-      <a href="https://www.wisdomlib.org/definition/viloma" class="source-link" target="_blank" rel="noopener">Wisdomlib: Viloma</a>
+      <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em> (the source of Anuloma, Pratiloma, and Viloma as taught here) &middot; publisher</a>
     </div>
   </div>
 </details>
@@ -446,7 +461,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Continue for 5&ndash;10 rounds, keeping the breath smooth and unforced.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The tradition's great balancing breath, evening the flow between the two nadis (ida and pingala) and quieting the mind before meditation. Controlled trials in the systematic review report lower blood pressure and pulse; a 2016 study in <em>Scientific Reports</em> found a single session improved fine-motor and spatial-memory retention, pointing to real gains in attention and cognitive control.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The tradition's great balancing breath, evening the flow between the two nadis (ida and pingala) and quieting the mind before meditation. Controlled trials in the systematic review report lower blood pressure and pulse; a 2016 study in <em>Scientific Reports</em> found a single session improved fine-motor and spatial-memory retention, pointing to real gains in attention and cognitive control. In the tantric map these two nadis flank a central channel, the <em>sushumna</em>, and evening them is the classical preparation for drawing prana into that center, which is the ground of kundalini and chakra practice. That thread is not a separate page here; it runs through the Trataka and Kundalini Kriya practices on the <a href="meditation.html" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--border)">meditation</a> page and the chakra work on <a href="dharana.html" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--border)">dharana</a>, with Satyananda&rsquo;s <a href="https://www.biharyoga.net/kundalini-tantra.php" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--border)">Kundalini Tantra</a> and Goswami&rsquo;s <a href="https://www.innertraditions.com/books/layayoga" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--border)">Layayoga</a> as the fuller sources.</p></div>
     <h4>Hand position</h4>
     <p>Vishnu mudra on the breathing hand: index and middle fingers folded to the palm; thumb closes the right nostril, ring and little fingers close the left. The opposite hand rests in Jnana mudra on the knee.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -456,9 +471,9 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020 (systematic review)</a>
       <a href="https://doi.org/10.1038/srep37069" class="source-link peer" target="_blank" rel="noopener">Yadav &amp; Mutha, Sci Rep 2016 (motor memory retention)</a>
+      <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute)</a>
       <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
       <a href="https://health.osu.edu/health/mental-health/breathing-exercises" class="source-link" target="_blank" rel="noopener">Ohio State Health</a>
-      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
     </div>
   </div>
 </details>
@@ -485,7 +500,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Continue for 5&ndash;10 minutes, or sustain it through an asana practice.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The audible throat friction naturally slows and lengthens each breath, exactly the slow-breathing pattern shown to raise vagal (parasympathetic) tone and steady the mind. It gently warms the body, builds concentration, and is the breath most often paired with a moving asana practice to keep attention anchored.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The audible throat friction naturally slows and lengthens each breath, exactly the slow-breathing pattern shown to raise vagal (parasympathetic) tone and steady the mind. It gently warms the body, builds concentration, and is the breath most often paired with a moving asana practice to keep attention anchored.</p><p>The Krishnamacharya lineage makes that pairing stronger than mere accompaniment: the breath leads. In Desikachar&rsquo;s <em>Heart of Yoga</em> the order of causation is explicit, that &ldquo;we make sure that the breathing initiates the movement. The length of the breath will determine the speed of the movement,&rdquo; so breath and asana become one process rather than two.</p></div>
     <h4>Hand position</h4>
     <p>Jnana mudra resting on the knees; no nostril work is required.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -524,7 +539,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Repeat for 5&ndash;10 rounds.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The humming both lengthens the exhale and vibrates the sinuses, associated with a marked rise in nasal nitric oxide. Studied for lowering blood pressure and heart rate and calming the nervous system, it is a reliable pre-sleep and anti-anxiety practice that quiets mental chatter and draws the senses inward (pratyahara).</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The humming both lengthens the exhale and vibrates the sinuses, associated with a marked rise in nasal nitric oxide. Studied for lowering blood pressure and heart rate and calming the nervous system, it is a reliable pre-sleep and anti-anxiety practice that quiets mental chatter and draws the senses inward (pratyahara). One note on lineage: the audible outward hum taught here follows the Hatha Yoga Pradipika. The Gheranda Samhita&rsquo;s Bhramari kumbhaka (ch. 5) is a different, silent practice, done in a quiet place with the ears closed, listening for the inner unstruck sound (nada) that it says leads toward samadhi.</p></div>
     <h4>Hand position</h4>
     <p>Shanmukhi mudra, "closing the seven gates": thumbs seal the ears, index fingers on the brow, middle fingers on closed eyes, ring fingers beside the nostrils, little fingers at the corners of the mouth.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -533,10 +548,10 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.sacred-texts.com/hin/gher/index.htm" class="source-link" target="_blank" rel="noopener">Gheranda Samhita, ch. 5 (Bhramari kumbhaka), trans. Vasu (Sacred Texts)</a>
       <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline (blood pressure)</a>
       <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
       <a href="https://www.stresscoach.app/blog/8-types-of-pranayama-breathing-and-their-benefits/" class="source-link" target="_blank" rel="noopener">Stresscoach</a>
-      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
     </div>
   </div>
 </details>
@@ -603,7 +618,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <p>Jnana mudra on the knees, or hands lightly on the belly for beginners learning to feel the pumping action.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
     <p>Both nostrils stay open, so nasal restriction is rarely a barrier; reduce speed and force if the nose feels irritated or congestion makes the sharp exhale uncomfortable.</p>
-    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid during pregnancy or menstruation, and with high or low blood pressure, heart disease, hernia, gastric ulcer, epilepsy, vertigo, migraine, significant nosebleeds, detached retina, glaucoma, stroke history, or recent abdominal surgery. A published case report links forceful practice to a pneumothorax, so build up gradually and stop with any chest discomfort.</p></div>
+    <div class="tech-precaution"><span class="label">Precautions</span><p>Avoid during pregnancy or menstruation, and with high or low blood pressure, heart disease, hernia, gastric ulcer, epilepsy, vertigo, migraine, significant nosebleeds, detached retina, glaucoma, stroke history, or recent abdominal surgery. A published case report links forceful practice to a pneumothorax, so build up gradually and stop with any chest discomfort. Physicians who work with breath-based therapies add a neuropsychiatric caution: people with respiratory problems, anxiety disorders, post-traumatic stress, bipolar disorder, uncontrolled hypertension, or seizure disorders "can be triggered to have respiratory distress, panic attacks, dissociative episodes, manic episodes, increased blood pressure, or a seizure" by rapid or forceful breathing, which acts as a form of hyperventilation (Gerbarg and Brown).</p></div>
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020 (Johnson et al. 2004 pneumothorax case report)</a>
@@ -635,7 +650,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Repeat for 5&ndash;10 rounds.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>Air drawn across the wet, curled tongue arrives cooled, which is why the tradition prescribes it for excess heat, thirst, and irritability. It calms the nervous system and is a natural choice on hot days, after vigorous practice, or whenever the body or temper runs hot.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Air drawn across the wet, curled tongue arrives cooled, which is why the tradition prescribes it for excess heat, thirst, and irritability. It calms the nervous system and is a natural choice on hot days, after vigorous practice, or whenever the body or temper runs hot. The Gheranda Samhita, which lists Shitali among its eight kumbhakas, frames it as much a digestive breath as a cooling one, saying regular practice wards off indigestion and disorders of kapha and pitta.</p></div>
     <h4>Hand position</h4>
     <p>Jnana mudra on the knees.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -644,9 +659,9 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.sacred-texts.com/hin/gher/index.htm" class="source-link" target="_blank" rel="noopener">Gheranda Samhita, ch. 5 (Shitali kumbhaka), trans. Vasu (Sacred Texts)</a>
       <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
       <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
-      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
     </div>
   </div>
 </details>
@@ -707,7 +722,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>This completes one round; repeat for 5&ndash;10 rounds.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>Right-nostril breathing is traditionally linked to the "solar," heating pingala channel and to greater sympathetic activation and alertness. Used to raise energy, warmth, and drive, a morning or pre-activity breath rather than an evening one.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>Right-nostril breathing is traditionally linked to the "solar," heating pingala channel and to greater sympathetic activation and alertness. Used to raise energy, warmth, and drive, a morning or pre-activity breath rather than an evening one. The Gheranda Samhita, which counts Surya Bhedana among its eight kumbhakas, says it increases the bodily fire, matching the warming intent. <em>Science of Breath</em> places this in svara yoga, the yogic study of the breath&rsquo;s alternation: the right-nostril channel is <em>pingala</em> or <em>surya</em>, and the yogis observed that breathing through the right side inclines a person toward activity, alertness, and the outward, warming processes of the body, digestion among them, so students of svara yoga opened the right nostril before eating.</p></div>
     <h4>Hand position</h4>
     <p>Vishnu mudra, as in Nadi Shodhana, breathing only in the right-in, left-out direction.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -716,8 +731,9 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://www.sacred-texts.com/hin/gher/index.htm" class="source-link" target="_blank" rel="noopener">Gheranda Samhita, ch. 5 (Suryabheda kumbhaka), trans. Vasu (Sacred Texts)</a>
+      <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute) &middot; pingala/surya and the right nostril in svara yoga</a>
       <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
-      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
     </div>
   </div>
 </details>
@@ -743,7 +759,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>This completes one round; repeat for 5&ndash;10 rounds.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The mirror of Surya Bhedana. Left-nostril breathing is linked to the "lunar," cooling ida channel and to parasympathetic (rest-and-digest) activation. Used to cool, calm, and quiet the system, often in the evening or to ease agitation; the left-nostril and vagal emphasis is also associated with lowering blood pressure.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The mirror of Surya Bhedana. Left-nostril breathing is linked to the "lunar," cooling ida channel and to parasympathetic (rest-and-digest) activation. Used to cool, calm, and quiet the system, often in the evening or to ease agitation; the left-nostril and vagal emphasis is also associated with lowering blood pressure. <em>Science of Breath</em> gives the mirror in svara yoga: the left-nostril channel is <em>ida</em> or <em>chandra</em>, and breathing through the left side inclines a person toward a quieter, more passive, inward-oriented state, so more passive intakes such as drinking water were traditionally taken with the left nostril open.</p></div>
     <h4>Hand position</h4>
     <p>Vishnu mudra, breathing in the left-in, right-out direction.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -752,6 +768,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
+      <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute) &middot; ida/chandra and the left nostril in svara yoga</a>
       <a href="https://lifespa.com/ayurvedic-lifestyle/breathwork/pranayama/" class="source-link" target="_blank" rel="noopener">LifeSpa</a>
       <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
     </div>
@@ -779,7 +796,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li>Continue for 5&ndash;10 minutes.</li>
     </ol>
     <h4>Benefit &amp; purpose</h4>
-    <div class="tech-benefit"><span class="label">Why practice it</span><p>The foundational breath of yoga: it teaches full use of the diaphragm and the whole breathing apparatus, which most people underuse. Calming and grounding, it builds breath awareness and lung capacity and is the base on which the more advanced pranayamas are built.</p></div>
+    <div class="tech-benefit"><span class="label">Why practice it</span><p>The foundational breath of yoga: it teaches full use of the diaphragm and the whole breathing apparatus, which most people underuse. Calming and grounding, it builds breath awareness and lung capacity and is the base on which the more advanced pranayamas are built. Rama, Ballentine, and Hymes single out diaphragmatic breathing as the most efficient of the three phases the complete breath combines (diaphragmatic, then thoracic, then clavicular), since the lower lungs hold the most blood; shallow chest breathing does more work for less oxygen. They go further, noting that the reverse habit, chronic chest breathing, has been proposed to perpetuate a state of sympathetic (fight-or-flight) arousal, which reframes the complete breath as much a way of settling the nervous system as of moving air.</p></div>
     <h4>Hand position</h4>
     <p>No mudra required; the hands rest on the belly and chest to feel the three-part movement. Later they can rest in Jnana mudra on the knees.</p>
     <h4>Adaptation for restricted or uneven nostril breathing</h4>
@@ -789,7 +806,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
       <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
-      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute)</a>
       <a href="https://www.onemedical.com/blog/healthy-living/breathing-pranayama-techniques/" class="source-link" target="_blank" rel="noopener">One Medical</a>
     </div>
   </div>
@@ -825,7 +842,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
-      <a href="https://www.healthline.com/health/pranayama-benefits" class="source-link" target="_blank" rel="noopener">Healthline</a>
+      <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em> &middot; publisher</a>
       <a href="https://www.artofliving.org/us-en/breathwork/pranayama/breathing-exercises" class="source-link" target="_blank" rel="noopener">Art of Living</a>
     </div>
   </div>
@@ -969,7 +986,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="src-label">Sources</div>
     <div class="sources-wrap">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7336946/" class="source-link peer" target="_blank" rel="noopener">Jayawardena et al., Int J Yoga 2020</a>
-      <a href="https://www.divayoga.com/blogs/14-types-of-pranayamas" class="source-link" target="_blank" rel="noopener">Diva Yoga</a>
+      <a href="https://www.sacred-texts.com/hin/hyp/index.htm" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika 2.70 (Pancham Sinh, Sacred Texts)</a>
     </div>
   </div>
 </details>
@@ -1449,18 +1466,21 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
   </div>
 </section>
 
-<div class="band"><span class="band-word">Say &amp; read</span><span class="band-rule"></span><span class="band-note">What the breath is, and why it carries</span></div>
+<div class="band"><span class="band-rule"></span><span class="band-note">What the breath is, and why it carries</span></div>
 
 <section class="section-wrap" id="sec-intro">
   <div class="section-header">
     <div class="section-eyebrow">What pranayama is</div>
     <h2 class="section-title">The deliberate shaping of breath</h2>
   </div>
-  <p class="lead"><em>Pranayama</em> joins two Sanskrit roots: <em>prana</em>, the breath of life, and <em>ayama</em>, expansion or regulation. It is the deliberate modification of breathing, ranging from rapid diaphragmatic breathing to slow, deep breathing, alternate-nostril breathing, and breath retention, most often practiced seated. The tradition names four parts to every round: <em>puraka</em> (inhalation), <em>recaka</em> (exhalation), <em>antah kumbhaka</em> (breath held in), and <em>bahih kumbhaka</em> (breath held out). In Patanjali's Yoga Sutras, pranayama is the fourth limb of the eight-fold path.</p>
+  <p class="lead"><em>Pranayama</em> joins two Sanskrit roots: <em>prana</em>, the breath of life, and <em>ayama</em>, expansion or regulation. It is the deliberate modification of breathing, ranging from rapid diaphragmatic breathing to slow, deep breathing, alternate-nostril breathing, and breath retention, most often practiced seated. The tradition names four parts to every round: <em>puraka</em> (inhalation), <em>recaka</em> (exhalation), <em>antah kumbhaka</em> (breath held in), and <em>bahih kumbhaka</em> (breath held out). In Patanjali's Yoga Sutras, pranayama is the fourth limb of the eight-fold path. The reciprocity is the practical basis of the whole practice: a change of state alters the breath on its own, and the relationship also runs the other way, so that, as the teacher Jennifer Cohen Harper puts it in plain terms, &ldquo;when we change our breath, we can change our energetic state, encouraging increased energy or an increased sense of calm.&rdquo; That is accessible framing rather than textual authority; the primary sources on prana lead, and this only restates why they matter.</p>
+  <p class="lead">The classical link between breath and mind is stated plainly in the Hatha Yoga Pradipika, whose second chapter opens on pranayama. In B.K.S. Iyengar&rsquo;s rendering: &ldquo;When the breath is irregular, the mind wavers; when the breath is steady, so is the mind. To attain steadiness, the yogi should restrain his breath.&rdquo; Iyengar reads the held breath, <em>kumbhaka</em>, as the heart of the practice: &ldquo;when the breath is stilled in kumbhaka, the senses are stilled and the mind becomes silent. Breath is the bridge between the body, the senses and the mind.&rdquo; The word itself is drawn from an image, since &ldquo;kumbha means a pot which can be full or empty,&rdquo; and kumbhaka &ldquo;is the art of retaining the breath in a state of suspense,&rdquo; whether the pause falls after an inhalation or after an exhalation. The wording here is Iyengar&rsquo;s own, in a practitioner manual rather than a scholarly edition of the Hatha texts.</p>
+  <p>Modern anatomy adds a caution that runs the other way. The anatomist H. David Coulter names a stress pattern he calls <em>paradoxical breathing</em>, in which the belly is pulled in on the inhale and pushed out on the exhale, the reverse of relaxed abdominal breathing. It is the breath of shock and fright, and in his account &ldquo;paradoxical breathing stimulates the sympathetic nervous system even more than thoracic breathing.&rdquo; The point is a useful mirror to the practice: where this pattern winds the nervous system up, the slow, full, belly-led breath of pranayama is one of the plainest ways to settle it back down. This is Coulter&rsquo;s reading in a practitioner-anatomy manual rather than a peer-reviewed physiology finding.</p>
+  <p>Patanjali says plainly what the practice is for: pranayama thins the covering over the inner light and makes the mind fit for concentration (Yoga Sutra 2.52 to 2.53). B.K.S. Iyengar cautions in <em>Light on Life</em> that this is not the same as deep breathing. Breath, he writes, is the vehicle of consciousness, and by its slow, measured observation we learn to tug attention away from external desire (<em>vasana</em>) toward a clear, intelligent awareness (<em>prajna</em>): as the breath stills the mind, the senses unhook and bend inward. He is emphatic that it cannot be forced. Pranayama is not performed by the power of will; the breath must be enticed, he says, the way one catches a horse in a field, not by chasing it but by standing still with an apple in one&rsquo;s hand. Receptivity, not effort, is what the practice asks, which is why the technique cards below all favor building slowly over pushing to complete a round.</p>
   <p>A 2020 systematic review in the <em>International Journal of Yoga</em> gathered eighteen controlled trials on pranayama alone and found real, measurable effects: improved pulse rate, blood pressure, and lung function in bronchial asthma; better symptom and activity scores in COPD; reduced fatigue and anxiety in cancer patients; and lower blood pressure in hypertension. The proposed mechanisms are physiological and specific: slow, deep breathing stretches lung tissue in a way that shifts the autonomic nervous system from sympathetic toward parasympathetic dominance, largely through the vagus nerve, while forceful practices like Bhastrika and Kapalabhati train the inspiratory and expiratory muscles directly.</p>
   <div class="callout">
     <div class="label">Before we begin</div>
-    <p>Practice in a well-ventilated room, seated with an erect spine, on a fairly empty stomach. Keep the face and shoulders relaxed. Every technique above can be built slowly: fewer rounds, gentler force, shorter holds, always. If anything produces dizziness, breathlessness, or strain, return to normal breathing and ease off.</p>
+    <p>Practice in a well-ventilated room, seated with an erect spine, on a fairly empty stomach. Keep the face and shoulders relaxed. Beginners need not start seated at all. In the Iyengar-lineage method Richard Rosen sets out, pranayama is first practiced lying supine, the torso supported on a folded blanket so the floor holds the body while the breath is learned; &ldquo;You can probably expect to recline for at least the first four months of practice,&rdquo; he writes, before a sitting posture adds its own demand. There is a physiological reason the floor is the easiest teacher. Lying down gives, as David Coulter puts it, &ldquo;the simplest possible method of breathing: the diaphragm is active in both inhalation and exhalation, the intercostal muscles act only to keep the chest stable, and the abdominal muscles remain completely relaxed.&rdquo; Every technique above can be built slowly: fewer rounds, gentler force, shorter holds, always. If anything produces dizziness, breathlessness, or strain, return to normal breathing and ease off.</p>
   </div>
   <div class="legend-flow">
     <span><span class="dot" style="border-color:#5AE8C8"></span> Inhale</span>
@@ -1497,7 +1517,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
   <div class="sources-wrap">
     <a href="https://www.artofliving.org/in-en/yoga/pranayama/ujjayi-breathing" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Art of Living: Ujjayi</a>
     <a href="https://www.yogabasics.com/practice/ujjayi-pranayama/" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Yoga Basics: Ujjayi Pranayama</a>
-    <a href="https://www.wisdomlib.org/definition/ujjayi" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Wisdomlib: Ujjayi</a>
+    <a href="https://www.yogavidya.com/gheranda-samhita.html" class="source-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Gheranda Samhita, ch. 5 (Ujjayi kumbhaka), trans. Mallinson (YogaVidya.com)</a>
   </div>
 </section>
 
@@ -1679,7 +1699,7 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
     <div class="section-eyebrow">Practicing with a deviated septum or nasal restriction</div>
     <h2 class="section-title">When one side doesn't open the way the other does</h2>
   </div>
-  <p class="lead">Many people breathe more easily through one nostril than the other, whether from a deviated septum, chronic congestion, or the nasal cycle everyone experiences (the natural, hours-long alternation in which one nostril is dominant while the other rests). Nostril-specific pranayama can still be practiced with a few adjustments.</p>
+  <p class="lead">Many people breathe more easily through one nostril than the other, whether from a deviated septum, chronic congestion, or the nasal cycle everyone experiences (the natural alternation, which <em>Science of Breath</em> puts at roughly one and three-quarter to two hours, in which one nostril is dominant while the other rests). Nostril-specific pranayama can still be practiced with a few adjustments.</p>
   <div class="callout adapt">
     <div class="label">Adaptations</div>
     <ul>
@@ -1687,10 +1707,15 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
       <li><strong>Let the ratio be uneven.</strong> If air moves more slowly on one side, allow that side a longer count rather than straining to match the open side. The point is a full, unforced breath, not a symmetrical clock.</li>
       <li><strong>Try the visualization variant.</strong> When one nostril cannot be closed or opened at will, breathe naturally through both and simply direct attention to the left side, then the right, in the same rhythm the physical practice would use. Several teachers and clinics describe this mental alternate-nostril breath as carrying much of the calming, focusing effect even without full physical closure.</li>
       <li><strong>Warm the passage first.</strong> A warm shower, a few rounds of gentle Ujjayi, or a saline rinse beforehand can temporarily ease congestion enough to practice normally.</li>
+      <li><strong>Change sides by lying down.</strong> Rest on one side for a few minutes and the upper nostril tends to open while the lower one closes. <em>Science of Breath</em> notes this comes not from gravity but from a reflex triggered by the pressure of the down arm against the ribs. To free a blocked left nostril, lie on the right side, and the reverse to free the right. The old manuals use the same trick deliberately: right nostril open (lying on the left) to warm the body and aid digestion, left nostril open (lying on the right) to calm and prepare for sleep.</li>
       <li><strong>Swap in a two-nostril technique.</strong> Ujjayi, Bhastrika, Kapalabhati, Dirga, Viloma, Sama Vritti, and Bahya all breathe through both nostrils at once and require no single-nostril closure, making them reliable substitutes for Nadi Shodhana, Surya Bhedana, or Chandra Bhedana on days when one side won't cooperate.</li>
       <li><strong>Use a mouth-inhale technique for cooling work.</strong> Sheetali and Sitkari inhale through the mouth, so they deliver a cooling breath even when nasal breathing is difficult on both sides.</li>
     </ul>
     <p>A structural deviated septum that causes significant, chronic obstruction is worth mentioning to an ENT or physician, particularly before attempting forceful practices like Bhastrika or Kapalabhati on the restricted side.</p>
+  </div>
+  <div class="src-label">Sources</div>
+  <div class="sources-wrap">
+    <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute)</a>
   </div>
 </section>
 
@@ -1705,17 +1730,18 @@ main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.2rem 1.
 
   <div class="src-label">The classical texts</div>
   <div class="sources-wrap">
-    <a href="https://www.wisdomlib.org/hinduism/book/hatha-yoga-pradipika-english/d/doc7975.html" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika, Chapter 2: On Pranayama (Wisdomlib)</a>
-    <a href="https://www.wisdomlib.org/definition/gherandasamhita" class="source-link" target="_blank" rel="noopener">Gheranda Samhita (Wisdomlib)</a>
+    <a href="https://www.sacred-texts.com/hin/hyp/index.htm" class="source-link" target="_blank" rel="noopener">Hatha Yoga Pradipika, ch. 2: On Pranayama (Pancham Sinh, Sacred Texts)</a>
+    <a href="https://archive.org/details/Gheranda_Samhita" class="source-link" target="_blank" rel="noopener">Gheranda Samhita (Vasu translation, public domain, Internet Archive)</a>
     <a href="https://www.sacred-texts.com/hin/ysp/ysp04.htm" class="source-link" target="_blank" rel="noopener">Yoga Sutras, Book 2: pranayama as the fourth limb</a>
-    <a href="https://www.wisdomlib.org/definition/pranayama" class="source-link" target="_blank" rel="noopener">Wisdomlib: Pranayama</a>
   </div>
 
   <div class="src-label">Books, linked to their publisher</div>
   <div class="sources-wrap">
     <a href="https://www.harpercollins.com/products/light-on-pranayama-bks-iyengar" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Pranayama</em></a>
+    <a href="https://www.penguinrandomhouse.com/books/292850/light-on-life-by-bks-iyengar/" class="source-link" target="_blank" rel="noopener">Iyengar, <em>Light on Life</em> (Rodale/Penguin Random House) &middot; pranayama as inner attention, not forced breathing</a>
     <a href="https://www.shambhala.com/the-yoga-of-breath-1762.html" class="source-link" target="_blank" rel="noopener">Rosen, <em>The Yoga of Breath</em> (Shambhala)</a>
     <a href="https://shop.himalayaninstitute.org/products/science-of-breath" class="source-link" target="_blank" rel="noopener">Rama, Ballentine &amp; Hymes, <em>Science of Breath</em> (Himalayan Institute)</a>
+    <a href="https://www.yogavidya.com/gheranda-samhita.html" class="source-link" target="_blank" rel="noopener">Mallinson (trans.), <em>The Gheranda Samhita</em> (YogaVidya.com)</a>
     Saraswati, <em>Asana Pranayama Mudra Bandha</em> (Bihar School)
   </div>
 
