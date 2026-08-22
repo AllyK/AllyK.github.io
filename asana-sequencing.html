@@ -42,16 +42,6 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 .section p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
 .section p:last-child{margin-bottom:0}
 .section em{color:var(--gold);font-style:italic}
-.flow{display:flex;align-items:stretch;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0}
-.flow .f{flex:1;min-width:105px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.75rem .7rem;text-align:center}
-.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ac-dk)}
-.flow .f .fe{font-size:10.5px;color:var(--text-muted);letter-spacing:.06em}
-.flow .arrow{align-self:center;color:var(--ac);font-size:1.05rem}
-.practice{background:linear-gradient(180deg,rgba(255,215,0,.08),rgba(90,232,200,.04));border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin:1.4rem 0}
-.practice .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.55rem;text-transform:uppercase}
-.practice .p-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:.7rem}
-.practice ol{margin:0 0 0 1.1rem}
-.practice li{font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:.5rem}
 .callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
 .callout .label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.45rem;text-transform:uppercase}
 .callout p{font-size:14.5px;color:var(--text-mid);margin:0}
@@ -60,15 +50,11 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 .rule{background:var(--panel);border:1px solid var(--border-lt);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;padding:.9rem 1.1rem}
 .rule h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.25rem;color:var(--text);margin-bottom:.25rem}
 .rule p{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin:0}
-.seq{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem;margin:1.4rem 0}
-.seq-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--ac-dk);margin-bottom:.35rem}
-.seq-note{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin-bottom:.9rem}
-.seq-phase{border-top:1px solid var(--border-lt);padding:.65rem 0}
-.seq-phase.peak{background:rgba(255,215,0,.05);border-left:3px solid var(--ac);padding-left:.7rem;border-radius:0 8px 8px 0}
-.ph-name{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-bottom:.25rem}
-.ph-count{font-size:10px;color:var(--text-muted);letter-spacing:.05em;text-transform:none;margin-left:.6rem}
-.ph-chain{font-size:13px;color:var(--text-mid);line-height:1.75}
-.ph-chain .arr{color:var(--text-muted)}
+.flow{display:flex;align-items:stretch;gap:.45rem;flex-wrap:wrap;margin:1.2rem 0}
+.flow .f{flex:1;min-width:105px;background:var(--panel);border:1px solid var(--border-lt);border-radius:12px;padding:.75rem .7rem;text-align:center}
+.flow .f .fn{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ac-dk)}
+.flow .f .fe{font-size:10.5px;color:var(--text-muted);letter-spacing:.06em}
+.flow .arrow{align-self:center;color:var(--ac);font-size:1.05rem}
 .src-label{font-size:10px;font-weight:500;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin:1.3rem 0 .3rem}
 .sources{display:flex;flex-wrap:wrap;gap:.4rem}
 .source-link{font-size:12px;color:var(--text-muted);border:1px solid var(--border-lt);border-radius:20px;padding:3px 11px;text-decoration:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
@@ -78,6 +64,70 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 .footer span{font-size:12px;color:var(--text-muted)}
 .footer a{font-size:13px;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-lt);border-radius:20px;padding:.4rem .85rem;transition:all .15s}
 .footer a:hover{border-color:var(--ac);color:var(--ac-dk)}
+
+/* ---- SEQUENCE BUILDER ---- */
+#builder{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:.5rem 1.2rem 1rem}
+.build-intro{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1.3rem}
+.build-panel{background:linear-gradient(180deg,rgba(255,215,0,.06),rgba(90,232,200,.03));border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.4rem}
+.ctrl{margin-bottom:1.05rem}
+.ctrl:last-of-type{margin-bottom:.4rem}
+.ctrl-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:13px;color:var(--text-mid);background:rgba(0,0,0,.24);border:1px solid var(--border-lt);border-radius:20px;padding:.42rem .95rem;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.chip:hover{border-color:var(--border);color:var(--text)}
+.chip.on{background:rgba(255,215,0,.16);border-color:var(--ac);color:var(--ac-dk)}
+.chip .sub{display:block;font-size:10.5px;color:var(--text-muted);letter-spacing:.02em;margin-top:1px}
+.chip.on .sub{color:var(--gold)}
+.build-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem;align-items:center}
+.btn-build{font-size:14px;font-family:'DM Sans',sans-serif;padding:.6rem 1.6rem;border-radius:22px;border:1px solid var(--ac);background:rgba(255,215,0,.16);color:var(--ac-dk);cursor:pointer;transition:all .15s;letter-spacing:.02em}
+.btn-build:hover{background:rgba(255,215,0,.28)}
+.btn-ghost{font-size:13px;font-family:'DM Sans',sans-serif;padding:.55rem 1.1rem;border-radius:22px;border:1px solid var(--border-lt);background:transparent;color:var(--text-mid);cursor:pointer;transition:all .15s}
+.btn-ghost:hover{border-color:var(--ac);color:var(--ac-dk)}
+.btn-ghost[hidden]{display:none}
+
+/* output */
+#seq-out{margin-top:1.4rem}
+#seq-out[hidden]{display:none}
+.seq-head{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1rem}
+.seq-head .title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--ac-dk);margin-bottom:.15rem}
+.seq-head .meta{font-size:12.5px;color:var(--text-muted);letter-spacing:.03em;margin-bottom:.7rem}
+.seq-bars{display:flex;height:9px;border-radius:6px;overflow:hidden;margin-bottom:.5rem;border:1px solid var(--border-lt)}
+.seg-warm{background:rgba(90,232,200,.55)}
+.seg-main{background:rgba(255,215,0,.5)}
+.seg-shav{background:rgba(240,198,116,.4)}
+.seq-legend{font-size:11px;color:var(--text-muted);display:flex;gap:1rem;flex-wrap:wrap}
+.seq-legend span b{color:var(--text-mid);font-weight:500}
+.spine-note{font-size:12.5px;color:var(--teal);background:rgba(90,232,200,.06);border:1px solid rgba(90,232,200,.22);border-radius:10px;padding:.6rem .9rem;margin-top:.7rem;line-height:1.55}
+.chakra-banner{display:flex;flex-direction:column;gap:.15rem;background:rgba(255,215,0,.06);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:.7rem .95rem;margin:.2rem 0 .5rem}
+.chakra-banner .cb-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ac-dk)}
+.chakra-banner .cb-el{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.chakra-banner .cb-theme{font-size:13px;color:var(--text-mid);line-height:1.6;margin-top:.2rem}
+.adapt-note{font-size:12.5px;color:var(--text-mid);background:var(--panel);border:1px solid var(--border-lt);border-radius:10px;padding:.6rem .9rem;margin-top:.5rem;line-height:1.6}
+.pose-body .lbl.wt{color:var(--gold)}
+.phase-group{margin-bottom:1.1rem}
+.phase-head{display:flex;align-items:baseline;gap:.6rem;margin:.9rem 0 .4rem;padding-bottom:.3rem;border-bottom:1px solid var(--border-lt)}
+.phase-head .pn{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ac)}
+.phase-head .pt{font-size:11px;color:var(--text-muted)}
+.pose{border:1px solid var(--border-lt);border-radius:11px;margin-bottom:.4rem;background:rgba(0,0,0,.16);overflow:hidden}
+.pose-btn{width:100%;text-align:left;background:transparent;border:none;cursor:pointer;padding:.7rem .9rem;display:flex;align-items:center;gap:.7rem;font-family:'DM Sans',sans-serif;color:var(--text)}
+.pose-btn:hover{background:rgba(255,215,0,.05)}
+.pose-tw{font-size:11px;color:var(--text-muted);width:1.1rem;flex:none;transition:transform .18s}
+.pose.open .pose-tw{transform:rotate(90deg);color:var(--ac)}
+.pose-name{font-size:14.5px;color:var(--text);flex:1}
+.pose-name .skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:13px;margin-left:.4rem}
+.pose-dose{font-size:11.5px;color:var(--gold);white-space:nowrap;letter-spacing:.02em}
+.pose-body{display:none;padding:0 .95rem 0 2.7rem;font-size:13.5px;color:var(--text-mid);line-height:1.7}
+.pose.open .pose-body{display:block;padding-top:.2rem;padding-bottom:.85rem}
+.pose-body .lbl{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);display:block;margin:.55rem 0 .2rem}
+.pose-body .lbl.mis{color:var(--gold)}
+.pose-body .step{border-left:2px solid var(--border-lt);padding:.15rem 0 .35rem .7rem;margin:.5rem 0 .1rem}
+.pose-body .step-h{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ac-dk);margin-bottom:.2rem}
+.pose-body .step-h .skt{font-size:12px;margin-left:.45rem}
+.pose-body .step-r{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:.15rem}
+.pose-body .step-r b{color:var(--teal);font-weight:500}
+.pose-body .step-note{font-size:12.5px;color:var(--text-muted);font-style:italic;line-height:1.6;margin-top:.5rem}
+.seq-foot{font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:.8rem;border-top:1px solid var(--border-lt);padding-top:.8rem}
+.empty-note{font-size:13px;color:var(--text-muted);font-style:italic;padding:.5rem 0}
 
 /* FEEDBACK FORM */
 .lp-feedback{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1rem 1.2rem 3rem}
@@ -102,7 +152,7 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   <a href="niyama.html" class="nav-page">Niyama</a>
   <a href="yoga-family-tree.html" class="nav-page">Asana</a>
   <a href="asana-sequencing.html" class="nav-page current">Sequencing</a>
-  <a href="yoga-styles.html" class="nav-page">Lineages</a>
+  <a href="yoga-styles.html" class="nav-page">Styles</a>
   <a href="yoga-muscle-diagram.html" class="nav-page">Muscle Diagram</a>
   <a href="cosmic-banyan.html" class="nav-page">Under the Banyan Tree</a>
   <a href="pranayama.html" class="nav-page">Breath</a>
@@ -135,14 +185,51 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
   <h1 class="hero-title">Sequencing Asana</h1>
   <div class="hero-skt">vinyasa krama &middot; the intelligent ordering of practice</div>
-  <p class="hero-sub">How a class is built: the arc that warms, builds, peaks, and returns the body to rest</p>
+  <p class="hero-sub">Build a class by time, level, style, and focus, then read the thinking and the sources behind every choice</p>
 </header>
+
+<section id="builder">
+  <p class="build-intro">Use the sequencer below to develop sample classes that you can try at home and to supplement how you work with others. Tap any pose to open a teacher's note on how to make it useful and the mistake students most often make in it, with references below.</p>
+
+  <div class="build-panel">
+    <div class="ctrl">
+      <div class="ctrl-label">Length of class</div>
+      <div class="chips" id="c-time"></div>
+    </div>
+    <div class="ctrl">
+      <div class="ctrl-label">Level</div>
+      <div class="chips" id="c-level"></div>
+    </div>
+    <div class="ctrl">
+      <div class="ctrl-label">Style</div>
+      <div class="chips" id="c-style"></div>
+    </div>
+    <div class="ctrl">
+      <div class="ctrl-label">Focus &middot; the back is always stretched in all directions</div>
+      <div class="chips" id="c-focus"></div>
+    </div>
+    <div class="ctrl">
+      <div class="ctrl-label">Chakra theme &middot; optional, draws on the pose families and their muscle groups</div>
+      <div class="chips" id="c-chakra"></div>
+    </div>
+    <div class="ctrl">
+      <div class="ctrl-label">Practice adaptation</div>
+      <div class="chips" id="c-adapt"></div>
+    </div>
+    <div class="build-actions">
+      <button class="btn-build" id="btn-build">Build the sequence</button>
+      <button class="btn-ghost" id="btn-reset" hidden>Reset</button>
+    </div>
+  </div>
+
+  <div id="seq-out" hidden></div>
+</section>
 
 <main>
   <section class="section" id="what">
     <div class="eyebrow">What sequencing is</div>
     <h2 class="s-title">Order is the teaching</h2>
-    <p class="lead">A yoga class is not a set of poses. It is an order of poses, and the order is where most of the teaching lives. Two classes can hold every posture in common and still land in different bodies and different states of mind, decided only by what came before what. This page is about that order. It is not a place to collect classes; it sets out the principles I sequence by and the sources they come from, so you can build a practice rather than borrow one.</p>
+    <p class="lead">A yoga class is not a set of poses. It is an order of poses, and the order is where most of the teaching lives. Two classes can hold every posture in common and still land in different bodies and different states of mind, decided only by what came before what. The builder above is a tool, not an oracle. What follows is the thinking it runs on: the sequencing principles of published yogis, the ways a practice can be ordered, and the sources they come from, to inspire you to build your own sequence rather than borrow one.</p>
     <p>The old name for this intelligence is <em>vinyasa krama</em>. T.K.V. Desikachar breaks the words apart plainly: <em>krama</em> is the step, and <em>nyasa</em> means to place, so <em>vinyasa krama</em> is a correctly organized course of practice in which it is not enough to take a step, the step has to be placed in the right direction. Mark Stephens, whose <em>Yoga Sequencing</em> is the standard modern treatment, reads it the same way and pairs it with <em>parinamavada</em>, the understanding that change is constant and always builds on what came just before. From those two ideas he draws the plainest rule of ordering there is: move from the simple to the complex along the path of least resistance. Both men trace the concept to Tirumalai Krishnamacharya, whose students Desikachar, Indra Devi, B.K.S. Iyengar, and Pattabhi Jois carried it into the practice most of the world now inherits.</p>
     <p>It helps to remember where asana sits in the older map. In Patanjali&rsquo;s eight limbs, posture is the third limb and breath the fourth, and the order of the limbs is itself a sequence. A steady, unstrained seat, <em>sthira sukham asanam</em> in Yoga Sutra 2.46, is what makes the breath quiet enough to work with, and quiet breath is what lets the senses and the mind turn inward. Read this way, an asana class is preparation. Its arc is meant to leave the body settled enough that <a class="inl" href="pranayama.html">breath</a>, the <a class="inl" href="pratyahara.html">withdrawal of the senses</a>, and <a class="inl" href="dharana.html">focus</a> can actually happen. Sequencing that forgets this can build a strong body and a restless mind, which is close to the opposite of the point.</p>
     <div class="src-label">Sources</div>
@@ -153,100 +240,67 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     </div>
   </section>
 
-  <section class="section" id="arc">
-    <div class="eyebrow">The shape of a class</div>
-    <h2 class="s-title">The arc: warm, build, peak, descend, rest</h2>
-    <p class="lead">A well-built class has the shape of a wave. Stephens names five stages in the vinyasa krama arc, and they are the frame worth learning first: initiating the practice, warming the body, the pathway to the peak, the peak itself, and integration. The seven steps below are that same arc drawn a little finer.</p>
-    <div class="flow">
-      <div class="f"><div class="fn">Centering</div><div class="fe">arrive &amp; breathe</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f"><div class="fn">Warming</div><div class="fe">spine &amp; joints</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f"><div class="fn">Building</div><div class="fe">standing waves</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f" style="border-color:var(--border)"><div class="fn" style="color:var(--ac)">Peak</div><div class="fe">the summit pose</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f"><div class="fn">Descending</div><div class="fe">counterposes</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f"><div class="fn">Cooling</div><div class="fe">folds &amp; twists</div></div>
-      <div class="arrow">&rarr;</div>
-      <div class="f"><div class="fn">Savasana</div><div class="fe">integration</div></div>
-    </div>
-    <p>Stephens contrasts three common ways a class gets built: pure improvisation, a fixed set series like the Ashtanga primary sequence, and template teaching. Each has a cost. His answer, and the one this page follows, is intentional sequencing, where anatomy, energetics, and the actual students in the room decide the order rather than habit or a fixed list. He notes plainly that a set series repeated without built-in counterposes, the Ashtanga primary calls for flowing through Chaturanga more than fifty times, can itself cause strain however well aligned each repetition is.</p>
-    <p>The arc is not only the climb. Desikachar is insistent that a practice has to bring you back. It is not enough to climb the tree, he writes, remembering a brother stuck at the top of a coconut palm with no idea how to get down; you have to be able to come down too. A class that reaches its hardest pose and simply stops has told half a story. The poses that unwind the peak, and the rest at the end, are as much a part of the krama as the ones that built it. Amber Burke&rsquo;s survey of alternative structures is a useful reminder that the peak-pose wave is one shape among several: poses can be repeated with new entrances, a path retraced in reverse, floor and standing work alternated. The arc is the grammar to learn first, and like any grammar it can be played with once it is in the body.</p>
-    <div class="src-label">Sources &amp; further reading</div>
-    <div class="sources">
-      <a class="source-link" href="https://www.northatlanticbooks.com/shop/yoga-sequencing/" target="_blank" rel="noopener">Stephens, Yoga Sequencing &middot; North Atlantic Books</a>
-      <a class="source-link" href="https://www.northatlanticbooks.com/blog/principles-of-yoga-sequencing/" target="_blank" rel="noopener">Stephens: principles of yoga sequencing (excerpt)</a>
-      <a class="source-link" href="https://www.innertraditions.com/books/the-heart-of-yoga" target="_blank" rel="noopener">Desikachar, The Heart of Yoga &middot; Inner Traditions</a>
-      <a class="source-link" href="https://yogainternational.com/article/view/7-ways-to-sequence-a-yoga-practice/" target="_blank" rel="noopener">Burke: 7 ways to sequence a practice &middot; Yoga International</a>
-    </div>
-  </section>
-
-  <section class="section" id="principles">
-    <div class="eyebrow">The principles</div>
-    <h2 class="s-title">What decides the order</h2>
-    <p class="lead">These are the principles I hold every sequence to. None of them is mine. Each traces to a teacher or a text, and I have named the source so you can read past my summary of it.</p>
+  <section class="section" id="styles">
+    <div class="eyebrow">How each style is built</div>
+    <h2 class="s-title">A different shape for each style</h2>
+    <p class="lead">The builder does not run one template. Each style in it is ordered on its own logic. Some move as a flowing wave that climbs to a high point and comes back down, some repeat a fixed series the same way every time, and some hold a few shapes still for many minutes. Not every style builds toward a peak. Here is the shape a class takes in each of the five, and where that shape comes from. The fuller genealogy of the styles lives on the <a class="inl" href="yoga-styles.html">styles page</a>.</p>
     <div class="rules">
       <div class="rule">
-        <h4>Warm before you load, simple before complex</h4>
-        <p>Breath and small movements warm and open the spine before more intense work asks anything of the rest of the body. Stephens states the underlying rule as moving progressively from simple to complex actions along the path of least resistance, so that the deepest shape of a practice is also its easiest by the time it arrives. Standing poses are the safest family for general warming, grounding and heating the body while the harder work is still being rehearsed quietly in the background.</p>
+        <h4>Vinyasa: the breath-linked wave</h4>
+        <p>Vinyasa links one breath to one movement and shapes the class as a wave that warms, builds, and returns to rest. Sun Salutations are its warming engine, and a chosen apex pose can give the middle a focus, though it does not have to. A class in this style centres and finds the breath, moves through Sun Salutation A and then B, builds heat in standing flows that quietly rehearse the harder work, rises to a peak if there is one, then unwinds with counterposes and seated or supine cooling before Savasana. Mark Stephens and T.K.V. Desikachar are the clearest guides to this arc.</p>
       </div>
       <div class="rule">
-        <h4>Sequence toward a state, not just a shape</h4>
-        <p>Every order of poses produces an energetic result, and you can aim it. Stephens reads <em>hatha</em> itself as a balance, the <em>ha</em> more heating and the <em>tha</em> more cooling, and points out that the same class can be tilted stimulating or calming by which practices you choose and where you place them. A student who came in anxious and a student who came in flat need the order pitched differently. This is Krishnamacharya&rsquo;s oldest tenet, that practice is fitted to the time, the place, and the person in front of you, and it is why I plan for the room rather than from a template. The <a class="inl" href="yoga-styles.html">lineages page</a> traces where that tenet came from.</p>
+        <h4>Ashtanga Vinyasa: the set series</h4>
+        <p>Ashtanga Vinyasa, the method Pattabhi Jois taught, does not resequence. It is a fixed order of poses practised the same way each time, held together by <em>tristhana</em>, the union of breath, bandha, and drishti. This is not the same as Ashtanga in Patanjali&rsquo;s sense, the eight limbs; the studio practice borrows the name. A class runs several rounds each of Sun Salutation A and B, then the standing sequence, then the seated Primary Series with a vinyasa between poses, then backbends, the finishing sequence of inversions, and rest. The gift is the depth that comes from repeating one order for years; the caution is that a fixed series flows through the low push-up many dozens of times, so the shoulders need real care.</p>
       </div>
       <div class="rule">
-        <h4>Every deep action is neutralized, not merely reversed</h4>
-        <p>A deep action leaves tension behind, and the next poses have to settle it before the practice moves on. How to do that is a real disagreement between two teachers I trust, so I have set it out in its own note below rather than pretend it is settled. The counterposes for every pose in the library are mapped in the <a class="inl" href="yoga-family-tree.html">family tree</a>&rsquo;s anatomy data, and the descent of a class is built from them.</p>
+        <h4>Yin: long holds, ordered by depth</h4>
+        <p>Yin sets the flow aside. Poses are held passively on the floor for three to five minutes to reach the deep connective tissue and to practise stillness, and the order is decided by depth and duration rather than by heat. A class settles the body, then moves through a handful of held shapes that each open a different area, a hip, a fold, a gentle backbend, a twist, a side, with a slow return toward neutral between the deep ones, and ends in a long supported rest. There is no peak and no warming flow. The idea that long holds remodel fascia or move energy along meridians is traditional framing rather than settled physiology, but the practice remains a fine way to meet stiffness and stillness.</p>
       </div>
       <div class="rule">
-        <h4>Every transition is written, and the body must be able to get there</h4>
-        <p>A sequence is a list of journeys, and the journeys deserve rows of their own. Before a plan is final I trace the body through every consecutive pair of poses and ask whether the movement is physically possible. Lizard Pose straight into Happy Baby fails that test; there is no honest path from one to the other without intermediate steps. A transition left unwritten is a decision left to the most tired moment of the class, so between pose families, and especially between standing and floor work, a vinyasa is written in as its own labeled step to carry the body across the gap and reset the breath.</p>
+        <h4>Hatha: held poses and alignment</h4>
+        <p>Hatha, used today as the name for a slower, all-levels class, keeps the shape of the wave but walks it rather than flows it. Poses are held for several breaths with attention on alignment, and the slower pace leaves room to teach the shape. A class centres and warms the spine and joints, works through standing poses held with care, arrives at a main pose or two, cools with seated folds and twists, often closes with a finishing inversion such as Shoulderstand and its counterpose, and rests. The word points back to the Hatha texts, though the modern class is a broad umbrella over many lineages.</p>
       </div>
       <div class="rule">
-        <h4>The descent and the rest are the practice, not the epilogue</h4>
-        <p>Whatever the peak gathered, the descent releases, and then the class rests below the level of effort where it began. Stephens calls Savasana by far the most important asana in the whole practice, the place where everything is finally integrated, and notes that the settled state just before and after it is the ideal ground for <a class="inl" href="pranayama.html">pranayama</a> and <a class="inl" href="meditation.html">meditation</a>. The arc does not really end at the summit; it ends in stillness, pointed at the limbs beyond asana.</p>
+        <h4>Restorative: supported and still</h4>
+        <p>Restorative practice asks almost nothing of the muscles. A few fully supported shapes are held for five to ten minutes on bolsters and blankets so the nervous system can settle, and the aim is rest rather than range. A class settles in, moves slowly through a small number of supported poses, a gentle backbend over a bolster, a supported twist or fold, the legs resting up a wall, and gives a generous, supported Savasana the largest share of the time. There is no building and no heat. Judith Lasater&rsquo;s work and B.K.S. Iyengar&rsquo;s use of props are the ground here.</p>
+      </div>
+      <div class="rule">
+        <h4>Morning: meditation and movement</h4>
+        <p>A morning practice is built to wake the body and steady the mind for the day, so it holds meditation and movement together rather than choosing between them. It opens seated, with a few minutes of quiet breath and meditation before anything moves, then warms the spine and joints and flows through waking standing work, a heart opener to meet the day, a twist, and a balance to sharpen attention. Instead of a long Savasana it closes with a short return to the seat and a simple intention, so the calm carries off the mat rather than tipping back toward sleep. It suits the light and middle-way levels especially, and pairs naturally with the breath practices on the <a class="inl" href="pranayama.html">breath page</a> and the seated practices under <a class="inl" href="dharana.html">focus</a> and <a class="inl" href="meditation.html">meditation</a>.</p>
       </div>
     </div>
-    <div class="callout">
-      <div class="label">A live disagreement &middot; how to counterpose</div>
-      <p>Desikachar teaches the literal counterpose: a powerful forward bend is followed by a gentle back bend, a powerful back bend by a simple forward bend, and a headstand by a shoulderstand to relieve the pressure that would otherwise, in his words, deteriorate or misalign the vertebrae of the neck. Stephens argues that the literal reading is often the wrong one. Following a headstand with Mountain Pose, its true opposite, can leave a student dizzy and falling; the real work of <em>pratikriyasana</em>, action against accumulated tension, is usually done with a similar and simpler pose that releases the strain, and is best planned across the whole class rather than pose by pose. I lean toward Stephens for the middle of a practice and toward Desikachar&rsquo;s caution around the neck and the deep joints, and I tell students which one I am doing and why. Where the two teachers differ, I would rather show the seam than paper over it.</p>
-    </div>
-  </section>
-
-  <section class="section" id="peak">
-    <div class="eyebrow">The summit and the way down</div>
-    <h2 class="s-title">Reading a peak backward</h2>
-    <p class="lead">A peak-pose class is read from its summit down. Choose the peak, name what it physically demands, and the first two thirds of the class assemble those demands one at a time.</p>
-    <p>Firefly Pose asks for open hamstrings, deep hip flexion, and shoulder-pressing strength, so a class built toward it opens the hamstrings in waves, floor first and standing second, and rehearses the shoulder work in stages long before the full pose appears. A forearm balance asks for shoulder stability and a settled relationship with being upside down, so dolphin and forearm plank belong in the opening minutes, quietly rehearsing the peak while the body still thinks it is only warming up. By the time the summit arrives nothing about it is new; the class has already practiced every piece of it separately. This is the pathway-to-the-peak stage of the arc, and it is mostly patience.</p>
-    <p>The way down mirrors the way up. Whatever the peak gathered, the descent releases: folds after deep hip work, gentle flexion after backbends, wrist and shoulder release after arm balances, symmetry after asymmetry. Stephens is precise that this integration is sequenced with as much care as the climb, moving from simple to complex on the way back down before settling into the calming inversions, the seated folds, and finally Savasana. The nervous system files the whole journey as one completed shape.</p>
-  </section>
-
-  <section class="section" id="safety">
-    <div class="eyebrow">Sequencing and safety</div>
-    <h2 class="s-title">The order is also the safety</h2>
-    <p class="lead">Most of what keeps a practice safe is not a cue inside a pose; it is the order of the poses around it. A joint asked for its end range while still cold, or a fragile structure loaded at the peak of fatigue, is a sequencing failure before it is an alignment one.</p>
-    <p>Two facts from the <a class="inl" href="yoga-muscle-diagram.html">muscle diagram</a> shape how I order deep work. First, as Bernie Clark sets out, how far a given body can travel into a pose is often fixed by the shape of its own bones, the point of compression where one bone meets another, not by effort or tightness. That means a sequence should open range gradually and read a stall as information, not as a target to force. Second, the neck is the structure to protect most carefully in the order of a class. Desikachar warns that a headstand practiced without care for the neck can, over time, jam and deteriorate the cervical vertebrae, which is why he counterposes it; William Broad, gathering the medical case literature, records the rarer and graver risk that extreme neck loading in shoulderstand, headstand, and deep backbends has been tied to vertebral-artery injury and stroke. The practical lesson for sequencing is the same from both: warm the shoulders and spine thoroughly first, keep the neck long and unforced, place inversions and deep backbends well inside the arc rather than early or when the body is spent, and give them their counterposes. The full anatomy, with its sources, lives on the <a class="inl" href="yoga-muscle-diagram.html">muscle diagram</a>.</p>
     <div class="src-label">Sources</div>
     <div class="sources">
-      <a class="source-link" href="https://yourbodyyouryoga.com/" target="_blank" rel="noopener">Clark, Your Body, Your Yoga (compression) &middot; Wild Strawberry</a>
-      <a class="source-link" href="https://www.simonandschuster.com/books/The-Science-of-Yoga/William-J-Broad/9781451641431" target="_blank" rel="noopener">Broad, The Science of Yoga &middot; Simon &amp; Schuster</a>
-      <a class="source-link" href="https://www.innertraditions.com/books/the-heart-of-yoga" target="_blank" rel="noopener">Desikachar, The Heart of Yoga (the neck &amp; counterposes) &middot; Inner Traditions</a>
+      <a class="source-link" href="https://www.northatlanticbooks.com/shop/yoga-sequencing/" target="_blank" rel="noopener">Stephens, Yoga Sequencing &middot; North Atlantic Books</a>
+      <a class="source-link" href="https://www.innertraditions.com/books/the-heart-of-yoga" target="_blank" rel="noopener">Desikachar, The Heart of Yoga &middot; Inner Traditions</a>
+      <a class="source-link" href="https://www.arhantayoga.org/blog/ashtanga-yoga-vs-ashtanga-vinyasa-yoga/" target="_blank" rel="noopener">Ashtanga Yoga vs Ashtanga Vinyasa (the distinction) &middot; Arhanta Yoga</a>
+      <span class="nolink">Pattabhi Jois, Yoga Mala (the set series &amp; tristhana)</span>
+      <span class="nolink">Bernie Clark, The Complete Guide to Yin Yoga; Paul Grilley, Yin Yoga</span>
+      <span class="nolink">Judith Lasater, Relax and Renew (restorative)</span>
+      <span class="nolink">Svatmarama, Hatha Yoga Pradipika</span>
     </div>
   </section>
-
-  <section class="section" id="whole">
-    <div class="eyebrow">Where the arc points</div>
-    <h2 class="s-title">A class is a small cycle</h2>
-    <p>The arc of a single class, gathering and then releasing, returning the body lower than it began, is a small version of the cycles the tradition tells in its stories: creation and dissolution, effort and surrender, the going out and the coming home. The steadiness and ease that Patanjali asks of a single pose, <em>sthira</em> and <em>sukha</em>, is the same balance the older texts read into the whole moving world. Those stories, and the poses paired with them, live <a class="inl" href="cosmic-banyan.html">under the banyan tree</a>. Sequencing well is finally just this: to build an order that a body can climb, that a body can come down from, and that leaves a person more settled walking out of the room than they were walking in.</p>
+  <section class="section" id="themes">
+    <div class="eyebrow">Themes and adaptations</div>
+    <h2 class="s-title">Chakras, chairs, and weights</h2>
+    <p class="lead">The sequencer can theme a class to a chakra, and it can adapt any class for a chair or for light hand weights. These are options in the builder rather than separate practices, and they draw on the same pose families and muscle groups mapped across the <a class="inl" href="yoga-family-tree.html">family tree</a> and the <a class="inl" href="yoga-muscle-diagram.html">muscle diagram</a>.</p>
+    <p>The seven chakras are a map from the tantric and hatha traditions that places centres of subtle energy along the spine, each tied to a region of the body, an element, and a quality of experience. The builder treats that map plainly: choose a chakra and it tilts the class toward the poses and muscle groups that tradition associates with that centre, the legs and standing poses for the root, hip openers for the sacral, core and twists for the solar plexus, backbends and chest openers for the heart, throat and shoulder work for the throat, balances and quiet folds for the third eye, and inversions, seat, and rest for the crown. Whether these centres are literal or a useful language for attention is left open. The value here is practical: it gives a class a clear bodily focus and a theme to teach around, while the spine still moves in every direction.</p>
+    <p>The adaptations are about access. Chair yoga rebuilds the whole class from seated and chair-supported shapes, a seated warm-up and sun salutation, seated twists, folds, side bends, and heart openers, and a supported rest, so the practice is available to people who cannot easily get to the floor or stand unaided. Practising with light hand weights, roughly one to three pounds, adds gentle load to the poses where the arms move through space or hold a shape, and the builder marks clearly which poses to leave to free hands, anything balanced at the edge, inverted, or bearing weight on the wrists. Neither is a lesser practice. Both are ways to meet a body where it is, which is the oldest instruction in the tradition.</p>
+    <div class="src-label">Sources</div>
+    <div class="sources">
+      <a class="source-link" href="yoga-family-tree.html">The pose family tree &middot; The Living Practice</a>
+      <a class="source-link" href="yoga-muscle-diagram.html">The muscle diagram &middot; The Living Practice</a>
+      <span class="nolink">Chakra map: tantric and hatha subtle-body tradition (e.g. Sat-Cakra-Nirupana; Georg Feuerstein, The Yoga Tradition)</span>
+      <span class="nolink">Accessible practice: Lakshmi Voelker chair yoga; adaptive and accessible yoga teaching</span>
+    </div>
   </section>
 </main>
 
 <div class="footer">
   <span>Continue in the Asana section:</span>
   <a href="yoga-family-tree.html">&larr; The pose family tree</a>
-  <a href="yoga-styles.html">Lineages</a>
+  <a href="yoga-styles.html">Styles of practice</a>
   <a href="yoga-muscle-diagram.html">The muscle diagram</a>
   <a href="index.html">The eight limbs</a>
 </div>
@@ -280,7 +334,462 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
     </form>
   </div>
 </section>
+
 <script>
+/* ---------------- SEQUENCE BUILDER ---------------- */
+const POSES = [{"n":"Easy Pose, seated breath","s":"Sukhasana","cat":"center","lv":1,"st":"vahyr","sp":"neutral","mu":["core"],"bs":false,"sh":"A simple cross-legged seat, spine tall, hands resting on the knees or thighs, face soft.","cue":"Sit the hips above the knees on a folded blanket so the pelvis tips forward and the low back keeps its curve. Name the breath length you want to hold for the whole class and let students arrive.","mis":"Sitting flat on the floor with the pelvis tucked, rounding the low back and propping up through the shoulders. Give them height.","id":0},{"n":"Child's Pose","s":"Balasana","cat":"center","lv":1,"st":"vahyr","sp":"flex","mu":["hips","spine"],"bs":false,"sh":"Knees folded under, seat settling toward the heels, torso draped forward, forehead down, arms reaching or resting alongside.","cue":"Offer it as the home base students can return to at any time. Widen the knees to let the belly and breath drop between the thighs, and let the forehead feel heavy.","mis":"Forcing the hips to the heels when the ankles or knees complain. A rolled blanket behind the knees or under the seat keeps it restful.","id":1},{"n":"Cat and Cow","s":"Bitilasana Marjaryasana","cat":"warm","lv":1,"st":"vah","sp":"flexext","mu":["spine","core"],"bs":false,"sh":"On hands and knees, the spine alternately rounding up toward the ceiling and dipping as the chest and tail lift.","cue":"Move the wave from the tailbone up to the neck one vertebra at a time, paired to the breath, so the class finds its rhythm here.","mis":"Cranking only from the neck and low back while the mid-back stays stiff. Ask for movement in the sticky part between the shoulder blades.","id":2},{"n":"Thread the Needle","s":"Parsva Balasana","cat":"warm","lv":1,"st":"vahy","sp":"rot","mu":["shoulders","spine","neck"],"bs":true,"sh":"From all fours, one arm threads under the body and that shoulder and temple rest to the floor, hips staying over the knees.","cue":"Keep the hips stacked over the knees as the arm threads through, so the rotation comes from the upper back rather than a collapsing pelvis.","mis":"Letting the hips drift toward the lifted-arm side, which turns it into a slump. Keep weight even in the knees.","id":3},{"n":"Seated Side Bend","s":"Parivrtta Parsva Sukhasana","cat":"warm","lv":1,"st":"vahyr","sp":"lat","mu":["spine","shoulders"],"bs":true,"sh":"Seated tall, one hand grounding as the other arm reaches overhead and the torso curves out to the side.","cue":"Keep both sitting bones heavy as the arm reaches up and over, so the ribs open on the top side rather than the seat lifting.","mis":"Collapsing the chest toward the floor so it becomes a diagonal fold. Roll the top shoulder back and keep the heart facing forward.","id":4},{"n":"Downward Facing Dog","s":"Adho Mukha Svanasana","cat":"warm","lv":1,"st":"vah","sp":"neutral","mu":["hamstrings","shoulders","spine"],"bs":false,"sh":"An inverted V, hands and feet down, hips lifted high, spine long from wrists to hips.","cue":"Cue length in the spine first and straight legs second: bend the knees generously to tip the sitting bones up and lengthen the back, then let the heels settle over time.","mis":"Reaching the heels down at the cost of a rounded upper back. A long spine with bent knees does far more good than flat heels with a hunch.","id":5},{"n":"Low Lunge","s":"Anjaneyasana","cat":"warm","lv":1,"st":"vah","sp":"ext","mu":["hips","legs"],"bs":true,"sh":"Front knee stacked over the ankle, back knee resting on the mat, hips sinking forward, torso upright or arms overhead.","cue":"Reach the back thigh long and drop the tailbone so the stretch lands in the hip flexor, not the low back.","mis":"Letting the front knee collapse inward or slide past the ankle. Track the knee over the middle toes and stack it above the heel.","id":6},{"n":"Sun Salutation A","s":"Surya Namaskar A","cat":"warm","lv":1,"st":"va","sp":"flexext","mu":["core","shoulders","hamstrings"],"bs":false,"sh":"A flowing round that links standing, folding, plank, and dog, one movement to each breath.","cue":"Teach one breath to one movement so the round builds heat without rushing, and use the first few rounds to rehearse shapes the peak will need later.","mis":"Speeding up until the breath is chasing the body. Slow the count so the inhale finishes the reach and the exhale finishes the fold.","steps":[{"n":"Mountain","s":"Samasthiti / Tadasana","sh":"Standing tall and even, feet together or hip-width, arms alongside the body, weight balanced through both feet.","cue":"Ground the four corners of the feet and lift the crown, breath easy. Treat it as the still point the whole flow returns to.","mis":"Locking the knees and hiking the shoulders. Soften both and let the length stay quiet."},{"n":"Upward Salute","s":"Urdhva Hastasana","sh":"On an inhale the arms sweep out and overhead, with a small lift through the chest.","cue":"Reach the arms up from the side ribs and lengthen upward, keeping the front ribs knitting in.","mis":"Cranking into a backbend and jamming the low back. Lift up more than back."},{"n":"Standing Forward Fold","s":"Uttanasana","sh":"On an exhale the torso folds over the legs, spine long, crown dropping toward the floor.","cue":"Hinge from the hips with the knees soft, letting the spine lengthen down over the thighs.","mis":"Rounding hard to reach the floor. Bend the knees and keep the front of the torso long."},{"n":"Halfway Lift","s":"Ardha Uttanasana","sh":"On an inhale the back comes to flat, hands to the shins or floor, spine parallel to the mat.","cue":"Draw the crown forward and the tailbone back into one long flat line, gaze just ahead of the toes.","mis":"Popping the head up so the neck kinks, or leaving the back rounded. Keep the neck in line with the spine."},{"n":"Plank","s":"Phalakasana","sh":"Step or float back to a straight line from crown to heels, shoulders stacked over the wrists.","cue":"Reach the heels back and the crown forward, low belly lifting, before lowering.","mis":"Hips sagging or piking up. Press the floor away and firm the belly."},{"n":"Low Push-up","s":"Chaturanga Dandasana","sh":"On an exhale the body lowers halfway, elbows bent to a right angle and hugging the ribs, torso parallel to the floor.","cue":"Shift forward onto the toes and lower only to a right angle with the elbows in. Set the knees down first to keep the shoulders safe.","mis":"Dropping the chest below the elbows and letting the shoulders roll forward. Stop at the right angle or lower the knees."},{"n":"Upward-Facing Dog","s":"Urdhva Mukha Svanasana","sh":"On an inhale the body rolls over the toes, chest lifting and thighs off the floor, arms straight.","cue":"Press the hands down to lift the chest and thighs clear of the mat, shoulders drawing back and down.","mis":"Sinking into the shoulders and dumping into the low back. Lift out of the hands and lengthen the tailbone down."},{"n":"Downward-Facing Dog","s":"Adho Mukha Svanasana","sh":"On an exhale the hips lift back and up into an inverted V, usually held for five breaths here.","cue":"Send the hips up and back with a long spine, bending the knees as needed so the back stays long. Rest and breathe.","mis":"Chasing the heels down at the cost of a rounded back. Length in the spine first, heels second."}],"note":"One breath moves one shape. After Downward Dog, step or hop the feet forward and rise back through the Halfway Lift, the Forward Fold, and the Upward Salute to standing.","id":7},{"n":"Sun Salutation B","s":"Surya Namaskar B","cat":"warm","lv":2,"st":"va","sp":"flexext","mu":["legs","core","shoulders"],"bs":true,"sh":"Sun Salutation A with a Chair at the start and a Warrior I woven in on each side, so it builds leg heat.","cue":"Give students permission to leave out the vinyasa between sides and simply step back through when stamina fades.","mis":"Flying through the low push-up with the chest dropping below the elbows. Lower only to a right angle, or set the knees down, so the shoulders stay safe across repetitions.","steps":[{"n":"Chair","s":"Utkatasana","sh":"On an inhale from standing, the knees bend and the hips sit back as the arms sweep overhead.","cue":"Sink the weight into the heels and draw the front ribs down as the arms lift.","mis":"Knees shooting past the toes and the low back arching. Sit back and keep the belly quiet."},{"n":"Standing Forward Fold","s":"Uttanasana","sh":"On an exhale the torso folds over the legs, crown toward the floor.","cue":"Fold from the hips with soft knees and let the spine hang long.","mis":"Rounding to reach the floor. Bend the knees and lengthen the front body."},{"n":"Halfway Lift","s":"Ardha Uttanasana","sh":"On an inhale the back comes to flat, hands to the shins, spine parallel to the mat.","cue":"Lengthen crown forward and tailbone back into one flat line.","mis":"Head popping up or back rounded. Keep the neck in line with the spine."},{"n":"Low Push-up","s":"Chaturanga Dandasana","sh":"On an exhale, through Plank, the body lowers to a right angle at the elbows, hugging the ribs.","cue":"Lower only to a right angle, elbows in, or set the knees down first.","mis":"Chest dropping below the elbows. Stop at the right angle or take the knees down."},{"n":"Upward-Facing Dog","s":"Urdhva Mukha Svanasana","sh":"On an inhale the chest lifts and the thighs come off the floor, arms straight.","cue":"Press the hands down, lift the chest, and draw the shoulders back and down.","mis":"Collapsing into the shoulders. Lift out of the hands and lengthen the tailbone."},{"n":"Downward-Facing Dog","s":"Adho Mukha Svanasana","sh":"On an exhale the hips lift back and up into the inverted V.","cue":"Hips up and back, spine long, knees soft as needed.","mis":"Rounding the back to force the heels down. Spine long first."},{"n":"Warrior I","s":"Virabhadrasana I","sh":"On an inhale one foot steps forward between the hands, the front knee bends, the back heel plants at an angle, and the arms lift overhead.","cue":"Draw the back hip forward and soften the front ribs so the length comes from the whole front body.","mis":"Over-squaring until the back heel lifts, or the front knee caving in. Let the back foot turn in and track the front knee to the pinky-toe side."}],"note":"Warrior I is taken on the right, then a vinyasa (Low Push-up, Upward Dog, Downward Dog) carries you across to Warrior I on the left. From there flow through the Forward Fold and Chair back to standing. One breath moves one shape throughout.","id":8},{"n":"Chair Pose","s":"Utkatasana","cat":"build","lv":1,"st":"vah","sp":"flex","mu":["legs","core"],"bs":false,"sh":"Feet together or hip-width, knees bent deeply as if sitting back into a chair, arms reaching up alongside the ears.","cue":"Shift the weight back into the heels until the toes can lift, and draw the front ribs down so the backbend does not creep into the low back.","mis":"Knees shooting forward and the low back arching. Sit back as if toward a chair behind you and keep the belly quietly engaged.","id":9},{"n":"Warrior I","s":"Virabhadrasana I","cat":"build","lv":1,"st":"vah","sp":"ext","mu":["legs","hips","chest"],"bs":true,"sh":"Front knee bent over the ankle, back foot planted at an angle, hips facing forward, arms lifted overhead.","cue":"Draw the back hip forward and soften the front ribs so the length comes from the whole front body rather than a jammed low back.","mis":"Squaring the hips so hard the back heel lifts, or the front knee wandering inward. Let the back foot turn in and track the front knee toward the pinky-toe side.","id":10},{"n":"Warrior II","s":"Virabhadrasana II","cat":"build","lv":1,"st":"vah","sp":"neutral","mu":["legs","hips","shoulders"],"bs":true,"sh":"A wide stance, front knee bent toward a right angle, torso stacked over the pelvis, arms reaching front and back at shoulder height, gaze over the front hand.","cue":"Keep the front knee deep while the torso stays upright over the hips, arms alive but shoulders down.","mis":"Leaning the torso out over the front thigh and letting the front knee cave in. Keep the shoulders over the hips and the knee tracking the middle toes.","id":11},{"n":"Extended Side Angle","s":"Utthita Parsvakonasana","cat":"build","lv":2,"st":"vah","sp":"lat","mu":["legs","core","hips"],"bs":true,"sh":"From a Warrior II base, the bottom hand lowers toward the floor and the top arm reaches over the ear in one long line from back heel to fingertips.","cue":"Keep the bottom hand light on a block or the shin so the work stays in the legs and side body rather than dumping into the lower arm.","mis":"Collapsing the chest toward the floor. Roll the top shoulder open and turn the heart toward the ceiling.","id":12},{"n":"Triangle Pose","s":"Trikonasana","cat":"build","lv":2,"st":"vah","sp":"lat","mu":["hamstrings","core","hips"],"bs":true,"sh":"Straight legs in a wide stance, torso tipping out over the front leg, bottom hand to the shin or a block, top arm to the sky.","cue":"Reach the top hand out first to lengthen both sides evenly, then lower, rather than folding straight down and shortening the bottom waist.","mis":"Locking the front knee and hanging on the joint. Keep a whisper of a bend and lift the kneecap by engaging the thigh.","id":13},{"n":"Reverse Warrior","s":"Viparita Virabhadrasana","cat":"build","lv":2,"st":"vh","sp":"lat","mu":["core","legs"],"bs":true,"sh":"From Warrior II the front knee stays bent as the torso leans back, top arm reaching overhead and back hand sliding down the rear leg.","cue":"Keep the front knee deeply bent as the torso leans back, so the stretch travels up the underside waist, not into the low back.","mis":"Straightening the front leg the moment the torso leans back. Keep the lunge alive so the legs hold the pose.","id":14},{"n":"Gate Pose","s":"Parighasana","cat":"build","lv":1,"st":"vah","sp":"lat","mu":["spine","hips"],"bs":true,"sh":"Kneeling on one knee with the other leg extended to the side, torso bending over the straight leg, top arm arcing overhead.","cue":"Stack both hips over the kneeling knee and reach the top arm up and over, chest turning toward the ceiling.","mis":"Letting the hips sway back so it becomes a fold on a diagonal. Keep the pelvis over the knee and reach up before reaching over.","id":15},{"n":"Goddess Pose","s":"Utkata Konasana","cat":"build","lv":1,"st":"vh","sp":"neutral","mu":["legs","hips"],"bs":false,"sh":"A wide stance with toes turned out, knees bent and tracking over the toes, chest lifted, arms bent like a cactus or at the heart.","cue":"Drop the tailbone and press the knees open over the toes so the inner thighs and glutes do the work.","mis":"Knees falling inward and the seat tipping back. Widen the stance and gently pry the knees open.","id":16},{"n":"Pyramid Pose","s":"Parsvottanasana","cat":"build","lv":2,"st":"vah","sp":"flex","mu":["hamstrings"],"bs":true,"sh":"A short-legged forward fold over a straight front leg, hips square and even, spine long over the thigh.","cue":"Set the hands to blocks and reach a long spine over the front leg before any rounding.","mis":"Rounding straight down to reach the floor. Keep the front of the torso long and hinge from the hip, blocks as high as needed.","id":17},{"n":"Wide-Legged Forward Fold","s":"Prasarita Padottanasana","cat":"build","lv":1,"st":"vah","sp":"flex","mu":["hamstrings","hips"],"bs":false,"sh":"Feet wide and parallel, torso folding down between the legs, crown toward the floor, hands on the mat.","cue":"Bring the weight slightly forward into the balls of the feet so the hips stay over the ankles and the crown drops.","mis":"Letting the hips drift behind the heels, loading the low back. Shift forward until the hips stack over the feet.","id":18},{"n":"Tree Pose","s":"Vrksasana","cat":"balance","lv":1,"st":"vh","sp":"balance","mu":["legs","hips","balance"],"bs":true,"sh":"Standing on one leg with the other foot pressed to the inner calf or thigh, hips level, hands at the heart or overhead.","cue":"Spread and grip the standing foot lightly, open the lifted knee without hiking the hip, and fix the gaze on one unmoving point.","mis":"Pressing the foot into the side of the knee. Place it above or below the joint and press foot and thigh into each other.","id":19},{"n":"Eagle Pose","s":"Garudasana","cat":"balance","lv":2,"st":"vh","sp":"balance","mu":["shoulders","hips","balance"],"bs":true,"sh":"Standing on a bent leg with the other leg wrapped over it, arms crossed and wound in front, elbows lifted.","cue":"Sit low and hug the midline, lifting the elbows to shoulder height to free the upper back.","mis":"Standing tall to keep balance, which empties the pose. Bend the standing knee and sink so the wrap challenges the body.","id":20},{"n":"Warrior III","s":"Virabhadrasana III","cat":"balance","lv":2,"st":"vh","sp":"balance","mu":["legs","core","balance"],"bs":true,"sh":"Balancing on one straight leg with the torso and lifted leg forming one horizontal line parallel to the floor.","cue":"Draw the lifted-leg hip down level with the other so the pelvis stays square to the floor.","mis":"Letting the lifted hip roll open and the chest turn. Point the lifted toes down and keep both hip points facing the floor.","id":21},{"n":"Half Moon","s":"Ardha Chandrasana","cat":"balance","lv":3,"st":"vh","sp":"lat","mu":["legs","core","balance"],"bs":true,"sh":"Balancing on one straight leg, bottom hand to a block, top leg lifted parallel to the floor, chest opening to the side.","cue":"Set the block well forward of the standing foot and stack the top hip over the bottom before opening the chest.","mis":"Reaching the hand to the floor and hunching to get there. Use a block so the spine stays long and the chest opens upward.","id":22},{"n":"Plank Pose","s":"Phalakasana","cat":"core","lv":1,"st":"vah","sp":"neutral","mu":["core","shoulders"],"bs":false,"sh":"A straight line from crown to heels, shoulders stacked over the wrists, low belly lifted.","cue":"Reach the heels back and the crown forward into one long line, pressing the floor away so the upper back stays broad.","mis":"Hips sagging or piking up. Firm the belly so the low back is supported and press the ground away.","id":23},{"n":"Forearm Plank","s":"Makara Adho Mukha Svanasana","cat":"core","lv":1,"st":"vh","sp":"neutral","mu":["core","shoulders"],"bs":false,"sh":"A plank on the forearms, elbows under the shoulders, the whole body one long line.","cue":"Keep the forearms parallel and pressing down, chest lifting away from the floor.","mis":"Sinking between the shoulder blades. Push the ground away and widen across the upper back.","id":24},{"n":"Boat Pose","s":"Navasana","cat":"core","lv":2,"st":"vah","sp":"flex","mu":["core"],"bs":false,"sh":"Balancing on the sitting bones, chest lifted, legs raised with the shins parallel to the floor or straight, arms reaching forward.","cue":"Sit tall and lean back only as far as the chest stays lifted, bending the knees as much as needed to keep the low back from rounding.","mis":"Collapsing the chest and rounding onto the tailbone. Keep the shins parallel and the sternum bright rather than straightening the legs and slumping.","id":25},{"n":"Side Plank","s":"Vasisthasana","cat":"core","lv":2,"st":"vh","sp":"neutral","mu":["core","shoulders","balance"],"bs":true,"sh":"Balanced on one hand and the outer edge of one foot, body in a straight diagonal, top arm reaching up.","cue":"Stack the bottom shoulder over the wrist and lift the hips high, the underside waist doing the lift.","mis":"Letting the hips drop toward the floor. Stagger or drop the bottom knee so the pose stays lifted and honest.","id":26},{"n":"Low Push-up","s":"Chaturanga Dandasana","cat":"core","lv":2,"st":"va","sp":"neutral","mu":["core","shoulders"],"bs":false,"sh":"A low plank with the body hovering parallel to the floor, elbows bent to a right angle and hugging the ribs.","cue":"Hug the elbows to the ribs and lower only to a right angle, shoulders never dipping below the elbows.","mis":"Dropping the chest to the floor and letting the shoulders roll forward. Lowering the knees first keeps the shoulders safe across repetitions.","id":27},{"n":"Crow Pose","s":"Bakasana","cat":"peak","lv":3,"st":"va","sp":"flex","mu":["core","shoulders","balance"],"bs":false,"sh":"A squat lifted onto the hands, knees resting high on the backs of the upper arms, feet floating, gaze forward.","cue":"Set the knees high onto the upper arms, round the upper back, and shift the weight forward until the feet grow light before lifting.","mis":"Trying to jump the feet up before the weight has moved forward over the hands. The lift is a slow lean, not a hop; a block under the feet builds courage.","id":28},{"n":"Firefly Pose","s":"Tittibhasana","cat":"peak","lv":3,"st":"va","sp":"flex","mu":["hamstrings","core","shoulders"],"bs":false,"sh":"Seated on the hands with the shoulders threaded behind the thighs, legs extending out to the sides and lifting off the floor.","cue":"Burrow the shoulders behind the thighs and plant the hands flat before straightening the legs.","mis":"Reaching for the leg extension before the shoulders are deep enough behind the knees. Get the seat low and the shoulders high on the legs first.","id":29},{"n":"Sphinx Pose","s":"Salamba Bhujangasana","cat":"backbend","lv":1,"st":"vhy","sp":"ext","mu":["spine","chest"],"bs":false,"sh":"Lying face down, propped on the forearms with the elbows under or ahead of the shoulders, chest lifted, legs relaxed.","cue":"Press the pubic bone down and the forearms forward so the low back stays long and the bend spreads up the spine.","mis":"Cranking the chin up and dumping into the low back. Keep the back of the neck long.","id":30},{"n":"Cobra Pose","s":"Bhujangasana","cat":"backbend","lv":1,"st":"vah","sp":"ext","mu":["spine","chest"],"bs":false,"sh":"Face down, hands by the ribs, chest lifting into a gentle backbend with the elbows bent and the low ribs still on the floor.","cue":"Lift the chest with the spinal muscles first and let the hands add only a little, elbows bent and hugging in.","mis":"Pushing tall with straight arms so all the bend piles into the lumbar spine. Lower a little and lengthen forward as you lift.","id":31},{"n":"Locust Pose","s":"Salabhasana","cat":"backbend","lv":2,"st":"vah","sp":"ext","mu":["spine","legs"],"bs":false,"sh":"Face down, chest, arms, and legs lifting off the floor at once, gaze down.","cue":"Lift the legs and chest on an inhale with the gaze down, arms reaching back to broaden the collarbones.","mis":"Throwing the head back to gain height. Keep the neck a long continuation of the spine and lift from the back.","id":32},{"n":"Bridge Pose","s":"Setu Bandha Sarvangasana","cat":"backbend","lv":1,"st":"vhr","sp":"ext","mu":["hips","chest","legs"],"bs":false,"sh":"On the back, knees bent and feet planted, hips lifting toward the ceiling, shoulders rolled underneath.","cue":"Set the feet hip-width and parallel, knees tracking forward, and lift the hips from the press of the feet rather than a squeeze of the glutes.","mis":"Knees splaying wide and the chin jamming into the chest. Keep the knees over the ankles and a small space at the back of the neck.","id":33},{"n":"Camel Pose","s":"Ustrasana","cat":"backbend","lv":2,"st":"vh","sp":"ext","mu":["chest","spine","hips"],"bs":false,"sh":"Kneeling, hips stacked over the knees, chest lifting and arching back, hands reaching for the heels.","cue":"Press the shins down and keep the hips over the knees as the chest lifts and opens up and back, reaching the hands back only if the chest can stay lifted.","mis":"Leading with the head and pushing the hips back past the knees. Keep the hips forward and lift the sternum before reaching back.","id":34},{"n":"Bow Pose","s":"Dhanurasana","cat":"backbend","lv":3,"st":"vh","sp":"ext","mu":["spine","chest","legs"],"bs":false,"sh":"Face down, knees bent, hands holding the ankles, chest and thighs lifting as the feet press back into the hands.","cue":"Kick the feet back into the hands to lift the chest, rather than only pulling with the arms.","mis":"Yanking with the arms and clenching the buttocks, which compresses the low back. Press the shins away and lengthen the tailbone toward the heels.","id":35},{"n":"Wheel Pose","s":"Urdhva Dhanurasana","cat":"peak","lv":3,"st":"vh","sp":"ext","mu":["chest","spine","shoulders"],"bs":false,"sh":"A deep backbend from the floor, hands by the ears and feet planted, the whole body pressing up into an arch.","cue":"Set the hands by the ears with fingers toward the heels, press up to the crown to set the shoulders, then straighten the arms.","mis":"Pressing up with the elbows winging out and the knees splaying. Keep the elbows shoulder-width and the feet parallel so the force spreads through the whole spine.","id":36},{"n":"Lizard Pose","s":"Utthan Pristhasana","cat":"hipopener","lv":2,"st":"vhy","sp":"ext","mu":["hips","legs"],"bs":true,"sh":"A deep lunge with the front foot to the outer edge of the mat and the forearms or hands to blocks or the floor inside the front leg.","cue":"Reach the back thigh long and sink the hips rather than collapsing the chest.","mis":"Letting the front knee drop inward. Guide the knee gently toward the pinky-toe edge, tracking over the ankle.","id":37},{"n":"Half Pigeon","s":"Ardha Kapotasana","cat":"hipopener","lv":2,"st":"vh","sp":"flex","mu":["hips"],"bs":true,"sh":"Front shin angled across the mat, back leg extending straight behind, hips square, torso upright or folded forward.","cue":"Angle the front shin to comfort and draw the back hip forward, a folded blanket under the front seat to keep both hips level.","mis":"Letting the pelvis collapse to the bent-knee side, which torques the front knee. Prop the near hip until the weight is even.","id":38},{"n":"Garland Pose","s":"Malasana","cat":"hipopener","lv":1,"st":"vhy","sp":"flex","mu":["hips"],"bs":false,"sh":"A deep squat, feet flat, elbows pressing the knees wide, chest lifted.","cue":"Press the elbows into the knees to open them wide and lift the chest, a blanket under the heels if they lift off the floor.","mis":"Rounding forward and hanging in the low back with the heels floating. Prop the heels and lift the chest.","id":39},{"n":"Reclined Figure Four","s":"Supta Kapotasana","cat":"hipopener","lv":1,"st":"vhr","sp":"neutral","mu":["hips"],"bs":true,"sh":"On the back, one ankle crossed over the opposite thigh, hands drawing the back thigh toward the chest.","cue":"Flex the crossed ankle to protect the knee and keep the tailbone heavy so the low back stays grounded.","mis":"Pulling so hard the hips peel off the floor and the neck tenses. Keep the head and shoulders soft and let the stretch be moderate.","id":40},{"n":"Revolved Chair","s":"Parivrtta Utkatasana","cat":"twist","lv":2,"st":"vah","sp":"rot","mu":["core","legs"],"bs":true,"sh":"Chair pose with the palms at the heart and one elbow hooked outside the opposite knee, chest turning to the side.","cue":"Even the knees with each other before twisting, then rotate from the mid-back with the bottom hand pressing to lengthen.","mis":"Letting one knee slide forward to gain rotation, twisting from the hips and low back. Even the knees first, then turn the ribs.","id":41},{"n":"Half Lord of the Fishes","s":"Ardha Matsyendrasana","cat":"twist","lv":1,"st":"vahy","sp":"rot","mu":["spine","hips"],"bs":true,"sh":"Seated with one knee bent and the foot crossed over the opposite thigh, torso twisting toward the top knee.","cue":"Lengthen the spine on each inhale and turn a little more on each exhale, twisting from the base of the spine upward.","mis":"Hauling on the knee with the arm and collapsing the chest. Use the arm only to stay tall and lead the twist with the breath.","id":42},{"n":"Supine Twist","s":"Supta Matsyendrasana","cat":"twist","lv":1,"st":"vahyr","sp":"rot","mu":["spine","hips"],"bs":true,"sh":"On the back, knees dropping to one side while both shoulders stay heavy on the floor, gaze soft the other way.","cue":"Let the knees drop to one side while both shoulders stay down, gaze the opposite direction.","mis":"Chasing the knees to the floor at the cost of a lifting shoulder. Let the top knee float on a block or blanket so both shoulders rest down.","id":43},{"n":"Standing Forward Fold","s":"Uttanasana","cat":"fold","lv":1,"st":"vah","sp":"flex","mu":["hamstrings","spine"],"bs":false,"sh":"Standing, folding at the hips, torso hanging over the legs, crown toward the floor.","cue":"Keep a generous bend in the knees so the belly rests on the thighs and the spine hangs long, straightening the legs only as far as the back stays long.","mis":"Straightening the legs to touch the floor and rounding the back hard. Length in the spine matters more than distance to the floor.","id":44},{"n":"Seated Forward Fold","s":"Paschimottanasana","cat":"fold","lv":1,"st":"vahy","sp":"flex","mu":["hamstrings","spine"],"bs":false,"sh":"Seated with the legs extended, torso folding forward over the thighs, spine long.","cue":"Hinge from the hips and lead with the chest, sitting up on a blanket if the pelvis cannot tip forward.","mis":"Reaching for the feet by rounding the whole back. Bend the knees and keep the spine long, moving the belly toward the thighs first.","id":45},{"n":"Head to Knee Pose","s":"Janu Sirsasana","cat":"fold","lv":1,"st":"vahy","sp":"flex","mu":["hamstrings","spine"],"bs":true,"sh":"Seated with one leg extended and the other foot to the inner thigh, torso folding over the straight leg.","cue":"Turn the torso to face the straight leg before folding, so both sides of the waist stay even.","mis":"Folding past the bent-knee side and shortening one waist. Square the chest to the extended leg first.","id":46},{"n":"Wide-Angle Seated Fold","s":"Upavistha Konasana","cat":"fold","lv":2,"st":"vhy","sp":"flex","mu":["hamstrings","hips"],"bs":false,"sh":"Seated with the legs wide apart, torso hinging forward between them, spine long.","cue":"Sit up on a blanket and walk the hands forward only as far as the front of the torso can stay long.","mis":"Rounding forward to reach and rolling onto the back of the sitting bones. Add height under the seat and hinge from the hips.","id":47},{"n":"Dolphin Pose","s":"Ardha Pincha Mayurasana","cat":"inversion","lv":2,"st":"vh","sp":"inv","mu":["shoulders","core"],"bs":false,"sh":"Downward Dog on the forearms, hips lifted, head hovering off the floor.","cue":"Keep the forearms parallel and pressing evenly, drawing the shoulders back over the elbows so the neck stays free.","mis":"Letting the elbows splay wider than the shoulders. Press a block between the hands or a strap around the arms to hold them parallel.","id":48},{"n":"Shoulderstand","s":"Sarvangasana","cat":"inversion","lv":2,"st":"h","sp":"inv","mu":["shoulders","core"],"bs":false,"sh":"On the shoulders with the legs and hips stacked straight up, hands supporting the back, neck long on folded blankets.","cue":"Set folded blankets under the shoulders with the head off the edge so the neck keeps its curve, and lift from the strength of the back and hands.","mis":"Turning the head to look around while the neck is loaded, or practicing flat on the floor. Keep the gaze straight up and always use blanket height.","id":49},{"n":"Headstand","s":"Sirsasana","cat":"inversion","lv":3,"st":"h","sp":"inv","mu":["shoulders","core","balance"],"bs":false,"sh":"Inverted on the forearms and crown with the body stacked in one vertical line, most of the weight in the arms.","cue":"Root most of the weight into the forearms so the crown is light, stacking the hips over the shoulders with the front ribs knitting in. Build it at a wall.","mis":"Dumping weight into the head and neck and arching the back. Root the forearms and keep the line stacked rather than kicking up.","id":50},{"n":"Dancer's Pose","s":"Natarajasana","cat":"peak","lv":3,"st":"vh","sp":"ext","mu":["legs","chest","balance"],"bs":true,"sh":"Balancing on one leg, the other foot held behind and lifting as the chest reaches forward, the body arcing like a bow.","cue":"Lift the chest and kick the foot back and up into the hand evenly, keeping the standing hip from swinging out.","mis":"Collapsing the chest forward to hoist the foot higher. Lead with the sternum lifting and let the height of the leg follow.","id":51},{"n":"Caterpillar (Yin fold)","s":"Paschimottanasana","cat":"yin","lv":1,"st":"y","sp":"flex","mu":["hamstrings","spine"],"bs":false,"sh":"A seated forward fold left soft and rounded, head and arms hanging heavy over the legs.","cue":"Let the spine round softly and the head hang, resting the hands on the legs or a bolster, softening rather than pulling.","mis":"Treating it like an active fold and straining toward the feet. Back off to a stretch you can hold for minutes and breathe into.","id":52},{"n":"Sleeping Swan (Yin pigeon)","s":"Yin Kapotasana","cat":"yin","lv":1,"st":"y","sp":"flex","mu":["hips"],"bs":true,"sh":"A supported pigeon, front shin across the mat, back leg long behind, torso draped forward over a bolster.","cue":"Support the front hip generously so the body can stay for three to five minutes, folding forward only once the hip softens.","mis":"Forcing the fold before the hip releases and letting the front knee torque. Prop generously and let time open the hip.","id":53},{"n":"Butterfly (Yin)","s":"Baddha Konasana","cat":"yin","lv":1,"st":"y","sp":"flex","mu":["hips","hamstrings"],"bs":false,"sh":"Seated with the soles together and feet a comfortable distance from the pelvis, back rounding gently as the torso folds over the legs.","cue":"Keep the feet a little away from the pelvis and let the back round gently as the body folds.","mis":"Pressing the knees down toward the floor. Leave the knees alone and hold the shape soft and still.","id":54},{"n":"Dragon (Yin lunge)","s":"Anjaneyasana","cat":"yin","lv":1,"st":"y","sp":"ext","mu":["hips","legs"],"bs":true,"sh":"A low lunge held long, hands framing the front foot on blocks, hips sinking toward the floor.","cue":"Set the hands to blocks and let the hips sink slowly over minutes, breathing into the front of the back-leg hip.","mis":"Bouncing or muscling deeper. Settle and wait; the tissue gives way to time, not force.","id":55},{"n":"Melting Heart","s":"Anahatasana","cat":"yin","lv":1,"st":"y","sp":"ext","mu":["shoulders","chest","spine"],"bs":false,"sh":"Hips stacked over the knees, arms walked forward and chest melting toward the floor, forehead or chin resting down.","cue":"Keep the hips over the knees while the chest melts toward the floor and the forehead or chin rests down.","mis":"Letting the hips sink toward the heels, which turns it into a lazy child's pose. Keep the hips stacked high over the knees.","id":56},{"n":"Banana Pose","s":"Bananasana","cat":"yin","lv":1,"st":"yr","sp":"lat","mu":["spine"],"bs":true,"sh":"Lying on the back in a crescent, both hips grounded, feet and hands traveling to one side.","cue":"Keep both hips grounded as the feet and hands travel to one side into a long crescent.","mis":"Letting the top hip lift off the floor to reach further. Keep the pelvis anchored so the stretch stays along the side waist.","id":57},{"n":"Supported Child's Pose","s":"Salamba Balasana","cat":"restore","lv":1,"st":"r","sp":"flex","mu":["hips","spine"],"bs":false,"sh":"Child's pose with the torso resting along a bolster, knees wide, head turned to one side.","cue":"Set the knees wide around a bolster tall enough to drape over, turning the head halfway through so the neck stays even.","mis":"Using a prop too low so the chest still reaches for support. Build it high enough that the body can completely let go.","id":58},{"n":"Reclined Bound Angle","s":"Supta Baddha Konasana","cat":"restore","lv":1,"st":"r","sp":"neutral","mu":["hips","chest"],"bs":false,"sh":"Lying back over a bolster, soles of the feet together, knees wide and supported.","cue":"Lay a bolster along the spine and prop blocks or blankets under each thigh so the hips release without effort.","mis":"Leaving the thighs unsupported so the hips grip to hold the shape. Prop under the legs until the body can let go.","id":59},{"n":"Supported Bridge","s":"Salamba Setu Bandha","cat":"restore","lv":1,"st":"r","sp":"ext","mu":["chest","hips"],"bs":false,"sh":"Bridge with a block or bolster under the sacrum so the pose is held without effort.","cue":"Set the support under the bony pelvis, not the low back, so the pose is a rest rather than a stretch to manage.","mis":"Placing the prop too high on the waist. Set it under the sacrum at a height the body can settle onto for minutes.","id":60},{"n":"Legs Up the Wall","s":"Viparita Karani","cat":"restore","lv":1,"st":"r","sp":"inv","mu":["hips"],"bs":false,"sh":"On the back with the seat near the wall and the legs resting straight up it, arms open.","cue":"Bring the seat close to the wall on a folded blanket, arms wide, and let the breath slow.","mis":"Locking the knees and gripping to keep the legs up. Let the wall hold the legs and soften the thighs.","id":61},{"n":"Supported Fish","s":"Salamba Matsyasana","cat":"restore","lv":1,"st":"r","sp":"ext","mu":["chest","shoulders"],"bs":false,"sh":"Reclined along a bolster set under the spine so the chest opens and the head is supported.","cue":"Lay a bolster along the spine so the chest opens gently, adding a blanket under the head so the throat stays soft.","mis":"Choosing a prop so high the neck strains. Use a modest height and support the head.","id":62},{"n":"Corpse Pose","s":"Savasana","cat":"shavasana","lv":1,"st":"vah","sp":"neutral","mu":["core"],"bs":false,"sh":"Flat on the back, arms and legs relaxed and slightly apart, the whole body still.","cue":"Invite stillness and warmth, let the breath return to its own rhythm, and hold the silence long enough for the body to file the whole journey.","mis":"Cutting it short or leaving the body cold. Give a full share of the class to rest, offer a blanket, and bring students out slowly.","id":63},{"n":"Supported Savasana","s":"Salamba Savasana","cat":"shavasana","lv":1,"st":"yr","sp":"neutral","mu":["core"],"bs":false,"sh":"Corpse pose with a bolster under the knees and a blanket over the body.","cue":"Set a bolster under the knees to release the low back and a blanket over the body for warmth, then hold a long, unhurried stay.","mis":"Ending abruptly. In yin and restorative especially, let the final rest be generous and the return gradual.","id":64},{"n":"Seated Meditation","s":"Dhyana","cat":"center","lv":1,"st":"m","sp":"neutral","mu":["core"],"bs":false,"md":"sit","sh":"A tall, easy seat on the floor or a cushion, spine stacked, hands resting on the thighs, eyes closed or softly lowered.","cue":"Begin here before moving. Let the class arrive by following the natural breath for a few minutes, resting attention on the rise and fall so the mind settles before the body wakes.","mis":"Straining to empty the mind or forcing a rigid spine. Let thoughts come and go, return to the breath, and sit on enough height that the hips can settle.","id":65},{"n":"Awakening Breath","s":"Dirgha Pranayama","cat":"center","lv":1,"st":"m","sp":"neutral","mu":["core"],"bs":false,"md":"breath","sh":"Still seated and tall, breathing fully into the belly, ribs, and chest, then emptying slowly from the top down.","cue":"Draw a few rounds of long, even three-part breaths to wake the body gently. Keep the inhale unhurried and the exhale a little longer so the practice starts calm rather than rushed.","mis":"Forcing or gasping the breath. Keep it smooth and quiet; if there is any strain, return to an easy natural breath.","id":66},{"n":"Closing Meditation and Intention","s":"Sankalpa","cat":"close","lv":1,"st":"m","sp":"neutral","mu":["core"],"bs":false,"md":"close","sh":"A short return to a tall, easy seat at the end, eyes closed, the body warm and awake.","cue":"Close by sitting again for a minute or two and setting one simple intention for the day, so the practice carries off the mat rather than ending on the floor.","mis":"Skipping the close to get on with the day. Even a minute of stillness lets the nervous system keep the calm the practice built.","id":67}];
+const CHAIR = [{"n":"Seated Mountain","s":"Chair Tadasana","cat":"center","lv":1,"sp":"neutral","mu":["core"],"bs":false,"sh":"Sitting tall at the front of the chair, feet flat and hip-width, hands on the thighs, crown lifting.","cue":"Ground both feet, stack the spine over the hips, and soften the shoulders. Set the breath you will keep for the class.","mis":"Leaning into the backrest so the spine collapses. Sit forward so the body holds itself.","id":0},{"n":"Seated Breath and Neck Release","s":"Griva Sanchalana","cat":"center","lv":1,"sp":"neutral","mu":["neck"],"bs":true,"sh":"Sitting tall, the ear drawing slowly toward one shoulder and then the other, gaze soft.","cue":"Move slowly with the breath and keep the opposite shoulder heavy so the side of the neck lengthens.","mis":"Rolling the head all the way back. Keep the circles gentle and avoid crunching the back of the neck.","id":1},{"n":"Seated Cat and Cow","s":"Chair Bitilasana Marjaryasana","cat":"warm","lv":1,"sp":"flexext","mu":["spine"],"bs":false,"sh":"Hands on the knees, the back rounding on an exhale and the chest opening on an inhale.","cue":"Move the whole spine with the breath, from the tailbone up to the neck, so the back bends both ways.","mis":"Bending only at the two ends. Ask for movement through the stiff middle of the back.","id":2},{"n":"Seated Sun Salutation","s":"Chair Surya Namaskar","cat":"warm","lv":1,"sp":"flexext","mu":["shoulders","spine"],"bs":false,"sh":"A gentle seated round linking a tall reach, a fold, and an open chest, one movement to each breath.","cue":"Move one breath to one shape so the round warms the shoulders and spine without rushing.","mis":"Speeding up until the breath is chasing the body. Let the inhale finish the reach and the exhale finish the fold.","steps":[{"n":"Seated Mountain","s":"Chair Tadasana","sh":"Sitting tall at the front of the chair, feet flat and hip-width, hands resting on the thighs.","cue":"Ground the feet and lift the crown, softening the shoulders. This is the still point the seated flow returns to.","mis":"Slumping back into the chair. Sit forward off the backrest so the spine can hold itself."},{"n":"Seated Upward Salute","s":"Chair Urdhva Hastasana","sh":"On an inhale the arms sweep out and up alongside the ears.","cue":"Reach up from the side ribs and lengthen the spine, keeping the shoulders sliding down.","mis":"Shrugging the shoulders to the ears. Lift the arms from the back, not the neck."},{"n":"Seated Forward Fold","s":"Chair Uttanasana","sh":"On an exhale the torso folds over the thighs, hands and head releasing toward the knees or floor.","cue":"Hinge from the hips and let the spine round softly, resting the belly toward the thighs.","mis":"Yanking the head down. Let gravity do the work and come up slowly on an inhale."},{"n":"Seated Cat and Cow","s":"Chair Bitilasana Marjaryasana","sh":"Hands on the knees, the spine rounding on an exhale and opening the chest on an inhale.","cue":"Move the whole spine with the breath, arching and rounding from tail to neck.","mis":"Moving only the low back. Let the mid-back and chest join the wave."}],"note":"One breath moves one shape: reach up on the inhale, fold on the exhale, lift the chest, and return to sitting tall.","id":3},{"n":"Seated Side Bend","s":"Chair Parsva Sukhasana","cat":"build","lv":1,"sp":"lat","mu":["spine","shoulders"],"bs":true,"sh":"One hand rests on the chair or thigh as the other arm reaches up and over to the side.","cue":"Keep both sitting bones heavy and reach up before reaching over so the top ribs open.","mis":"Collapsing the chest forward. Roll the top shoulder back and keep the heart facing forward.","id":4},{"n":"Seated Twist","s":"Chair Bharadvajasana","cat":"twist","lv":1,"sp":"rot","mu":["spine"],"bs":true,"sh":"One or both hands hold the side or back of the chair as the torso turns to look over the shoulder.","cue":"Lengthen the spine on the inhale and turn a little more on the exhale, twisting from the base upward.","mis":"Cranking with the arms and collapsing the chest. Use the hands only to stay tall and lead with the breath.","id":5},{"n":"Seated Forward Fold","s":"Chair Uttanasana","cat":"fold","lv":1,"sp":"flex","mu":["hamstrings","spine"],"bs":false,"sh":"The torso folds over the thighs, hands and head releasing toward the knees or floor.","cue":"Hinge from the hips and let the spine round softly, the belly resting toward the thighs.","mis":"Forcing the reach to the floor. Let it be passive and rise slowly on an inhale.","id":6},{"n":"Seated Heart Opener","s":"Chair Ustrasana","cat":"backbend","lv":1,"sp":"ext","mu":["chest","spine"],"bs":false,"sh":"Hands resting behind on the backrest or the hips, the chest lifting and opening upward.","cue":"Lift the sternum and draw the shoulder blades gently together, keeping the back of the neck long.","mis":"Dropping the head back and jamming the low back. Lift up through the chest more than you lean back.","id":7},{"n":"Seated Eagle Arms","s":"Chair Garudasana Hasta","cat":"build","lv":1,"sp":"neutral","mu":["shoulders"],"bs":true,"sh":"The arms cross and wind in front of the chest, elbows lifting to shoulder height.","cue":"Wrap the arms, lift the elbows, and reach the hands away to spread the upper back.","mis":"Letting the shoulders creep up and the chest collapse. Lift the elbows and keep the chest tall.","id":8},{"n":"Seated Figure Four","s":"Chair Sucirandhrasana","cat":"hipopener","lv":1,"sp":"neutral","mu":["hips"],"bs":true,"sh":"One ankle crosses over the opposite thigh, the shin parallel to the floor, torso tall or folding gently forward.","cue":"Flex the crossed ankle to protect the knee and hinge forward from the hips to deepen the outer-hip stretch.","mis":"Rounding the back to fold and letting the crossed knee lift high. Keep the shin level and hinge from the hips.","id":9},{"n":"Seated Wide-Leg Fold","s":"Chair Upavistha Konasana","cat":"fold","lv":1,"sp":"flex","mu":["hips","hamstrings"],"bs":false,"sh":"The knees open wide over the feet, the torso hinging forward between the thighs, hands to the floor or shins.","cue":"Open the knees over the ankles and hinge from the hips with a long spine before rounding.","mis":"Letting the knees fall past the toes. Track the knees over the ankles.","id":10},{"n":"Seated Core Lift","s":"Chair Utthita Hasta","cat":"core","lv":1,"sp":"flex","mu":["core"],"bs":false,"sh":"Sitting tall and holding the chair sides, one knee or both lifting toward the chest with control.","cue":"Draw the low belly in and lift the knee slowly, keeping the spine tall rather than rounding back.","mis":"Throwing the leg up with momentum. Move slowly so the belly, not the hip flexor alone, does the work.","id":11},{"n":"Seated Warrior Arms","s":"Chair Virabhadrasana Hasta","cat":"build","lv":1,"sp":"neutral","mu":["shoulders","chest"],"bs":false,"sh":"Sitting tall, the arms reaching wide to the sides at shoulder height, palms down, gaze past one hand.","cue":"Reach actively from the centre of the chest out through the fingertips, shoulders down.","mis":"Letting the arms sag and the chest collapse. Keep the arms alive and the sternum lifted.","id":12},{"n":"Seated Savasana","s":"Chair Savasana","cat":"shavasana","lv":1,"sp":"neutral","mu":["core"],"bs":false,"sh":"Sitting back with support, or resting the torso folded over a padded table, eyes closed and body still.","cue":"Let the whole body be held by the chair, soften the breath, and rest without holding anything.","mis":"Cutting the rest short. Give it a full share of the time and return slowly.","id":13},{"n":"Chair-Supported Standing Fold","s":"Ardha Uttanasana at Chair","cat":"fold","lv":2,"sp":"flex","mu":["hamstrings","spine"],"bs":false,"sh":"Standing behind or beside the chair, hands on the seat or back, hips drawing back into a flat-backed fold.","cue":"Walk the feet back and hinge at the hips with the hands on the chair, lengthening the spine toward flat.","mis":"Rounding the back and hanging on the arms. Reach the hips back and keep the spine long.","id":14},{"n":"Chair-Supported Crescent Lunge","s":"Ashta Chandrasana at Chair","cat":"build","lv":2,"sp":"ext","mu":["legs","hips"],"bs":true,"sh":"Standing with one hand on the chair for balance, one foot stepping back into a lunge, back heel lifted.","cue":"Keep a hand on the chair, sink the hips, and reach the back thigh long so the front of the hip opens.","mis":"Letting the front knee pass the ankle. Stack the knee over the heel and use the chair for steadiness.","id":15},{"n":"Chair-Supported Tree","s":"Vrksasana at Chair","cat":"balance","lv":2,"sp":"balance","mu":["legs","balance"],"bs":true,"sh":"Standing beside the chair with one hand resting on it, the other foot to the calf or inner thigh.","cue":"Root the standing foot and use the chair only as much as needed, opening the lifted knee to the side.","mis":"Pressing the foot into the side of the knee. Place it above or below the joint.","id":16},{"n":"Chair-Supported Warrior II","s":"Virabhadrasana II at Chair","cat":"build","lv":2,"sp":"neutral","mu":["legs","hips"],"bs":true,"sh":"A wide stance beside the chair, front knee bent over the ankle, a hand light on the chair, arms open.","cue":"Bend the front knee toward a right angle over the ankle and keep the torso stacked, hand light on the chair.","mis":"Leaning the weight into the chair. Let the legs hold the pose and the hand only steady it.","id":17}];
+const CHAKRA_LIST = [{"k":"root","n":"Root","skt":"Muladhara","el":"Earth","seat":"the base of the spine and the pelvic floor","theme":"grounding, stability, and the feeling of being safely supported through the legs and feet","tags":["legs","hips","hamstrings"],"cats":["build","fold","balance","hipopener"],"note":"Standing poses, forward folds, and squats that root the legs and settle the weight down through the feet."},{"k":"sacral","n":"Sacral","skt":"Svadhisthana","el":"Water","seat":"the lower belly and sacrum","theme":"flow, feeling, and creativity, worked through the hips and pelvis","tags":["hips","hamstrings"],"cats":["hipopener","fold","twist"],"note":"Hip openers and fluid, rounded movement through the pelvis, with side and inner-thigh space."},{"k":"solar","n":"Solar Plexus","skt":"Manipura","el":"Fire","seat":"the navel and solar plexus","theme":"will, warmth, and personal power, built through the core","tags":["core"],"cats":["core","twist","peak","balance"],"note":"Core work, twists, and standing balances that build heat at the navel."},{"k":"heart","n":"Heart","skt":"Anahata","el":"Air","seat":"the centre of the chest","theme":"love, compassion, and openness, met through the chest and upper back","tags":["chest","shoulders"],"cats":["backbend"],"note":"Backbends and heart openers that broaden the chest and free the upper back, with their counterposes."},{"k":"throat","n":"Throat","skt":"Vishuddha","el":"Ether","seat":"the throat","theme":"voice, expression, and honest speech, opened through the neck and shoulders","tags":["neck","shoulders","chest"],"cats":["backbend","inversion"],"note":"Throat and shoulder openers such as Fish, Bridge, Camel, and Shoulderstand, with the neck warmed and unforced."},{"k":"thirdeye","n":"Third Eye","skt":"Ajna","el":"Light","seat":"the space between the brows","theme":"insight, focus, and steadiness of gaze, gathered through balance and inward attention","tags":["balance"],"cats":["balance","inversion","fold"],"note":"Balances and quiet forward folds that steady the gaze and turn attention inward."},{"k":"crown","n":"Crown","skt":"Sahasrara","el":"Consciousness","seat":"the crown of the head","theme":"stillness and connection beyond the self, approached through inversion, seat, and rest","tags":[],"cats":["inversion","shavasana","center"],"note":"Inversions, a still seat, and a long rest, letting effort fall away toward stillness."}];
+const CHAKRAS = {}; CHAKRA_LIST.forEach(function(c){ CHAKRAS[c.k]=c; });
+const WT = {"Virabhadrasana I":"Hold a light weight in each hand and press the arms overhead, or curl the biceps as you bend the front knee, keeping the shoulders down.","Virabhadrasana II":"Hold a weight in each hand at shoulder height and reach actively front and back, letting the weights ask more of the shoulders.","Viparita Virabhadrasana":"Keep a light weight in the top hand and let it draw the arm overhead as you lean back, the bottom hand light on the leg.","Utthita Parsvakonasana":"Hold a weight in the top hand and reach it over the ear along the long line, bottom hand on the block.","Utkatasana":"Hold a weight in each hand at the shoulders or reach them overhead, drawing the front ribs down as you sit back.","Utkata Konasana":"Hold a weight in each hand at the shoulders and press them overhead as you sink the hips, or pulse the shoulders.","Parighasana":"Hold a light weight in the top hand and let it lengthen the reach up and over, both hips grounded.","Vrksasana":"Once the balance is steady, hold a light weight in each hand and float the arms overhead.","Virabhadrasana III":"Only if the balance is solid, hold very light weights and reach them alongside the ears or back by the hips.","Anjaneyasana":"Hold a weight in each hand and curl or press overhead while the hips stay sunk in the lunge.","Salabhasana":"Hold light weights in the hands and reach the arms back to broaden the collarbones as the chest lifts.","Navasana":"Hold a single weight at the chest and, if steady, twist it side to side, keeping the spine tall.","Tadasana":"Hold a weight in each hand and practise slow overhead presses or lateral raises to warm the shoulders.","Bharmanasana":"From all fours, hold a light weight in one hand and row it toward the ribs, keeping the torso level.","Chair Virabhadrasana Hasta":"Hold a light weight in each hand and reach wide at shoulder height, or press overhead.","Chair Garudasana Hasta":"Skip the weights here; keep the arms free to wrap.","Chair Urdhva Hastasana":"Hold a weight in each hand and press slowly overhead with the inhale, lowering with the exhale.","Chair Parsva Sukhasana":"Hold a light weight in the reaching hand to lengthen the side body.","Chair Tadasana":"Hold a weight in each hand for slow biceps curls or overhead presses to warm the arms."};
+const WT_INTRO = "Use light hand weights, roughly one to three pounds. Add them only where the arms move through space or hold a shape, keep every movement slow and controlled, and breathe. Set the weights down for anything on the hands, upside down, or balanced at your edge, where free hands keep you safe.";
+
+const TIMES = [10,15,20,30,45,60];
+const LEVELS = [
+  {k:1, n:"Light", sub:"beginner"},
+  {k:2, n:"Middle way", sub:"intermediate"},
+  {k:3, n:"Challenging", sub:"advanced"}
+];
+const STYLES = [
+  {k:"v", n:"Vinyasa", sub:"breath-linked flow"},
+  {k:"a", n:"Ashtanga", sub:"set flowing series"},
+  {k:"y", n:"Yin", sub:"long held floor poses"},
+  {k:"h", n:"Hatha", sub:"held, aligned poses"},
+  {k:"r", n:"Restorative", sub:"supported rest"},
+  {k:"m", n:"Morning", sub:"meditation &amp; movement"}
+];
+const FOCUS = [
+  {k:"whole", n:"Whole body", sub:"balanced", mu:null, cats:[]},
+  {k:"hipsham", n:"Hips &amp; hamstrings", sub:"", mu:["hips","hamstrings"], cats:["hipopener","fold"]},
+  {k:"shchest", n:"Shoulders &amp; chest", sub:"", mu:["shoulders","chest"], cats:["backbend"]},
+  {k:"core", n:"Core &amp; arm balance", sub:"", mu:["core"], cats:["core","peak"]},
+  {k:"back", n:"Backbends &amp; spine", sub:"", mu:["spine"], cats:["backbend"]},
+  {k:"balance", n:"Balance &amp; legs", sub:"", mu:["balance","legs"], cats:["balance"]}
+];
+const CHAKRA_CHIPS = [{k:"none", n:"None", sub:"muscle focus only"}].concat(
+  CHAKRA_LIST.map(function(c){ return {k:c.k, n:c.n, sub:c.skt}; }));
+const ADAPTS = [
+  {k:"standard", n:"Standard", sub:"mat"},
+  {k:"chair", n:"Chair yoga", sub:"seated &amp; supported"},
+  {k:"weights", n:"Light weights", sub:"1 to 3 lb"}
+];
+
+const state = {time:30, level:2, style:"v", focus:"whole", chakra:"none", adapt:"standard"};
+
+/* pace: average minutes per pose by style */
+const PACE = {v:1.4, a:1.4, h:2.2, y:3.2, r:5.5};
+const ACTIVE = {v:1,a:1,h:1};
+
+/* spine direction labels */
+const DIRWORD = {flex:"forward folds", ext:"backbends", rot:"twists", lat:"side bends"};
+
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+
+/* build the chip rows */
+function chipRow(host, items, cur, onPick){
+  host.innerHTML="";
+  items.forEach(function(it){
+    const c = el("button","chip");
+    const val = it.k!==undefined?it.k:it;
+    const label = it.n!==undefined?it.n:(it+" min");
+    c.innerHTML = it.sub ? label+'<span class="sub">'+it.sub+'</span>' : label;
+    if(val===cur) c.classList.add("on");
+    c.onclick=function(){ onPick(val); [].forEach.call(host.children,function(x){x.classList.remove("on");}); c.classList.add("on"); };
+    host.appendChild(c);
+  });
+}
+
+function renderChips(){
+  chipRow(document.getElementById("c-time"), TIMES, state.time, function(v){state.time=v;});
+  chipRow(document.getElementById("c-level"), LEVELS, state.level, function(v){state.level=v;});
+  chipRow(document.getElementById("c-style"), STYLES, state.style, function(v){state.style=v;});
+  chipRow(document.getElementById("c-focus"), FOCUS, state.focus, function(v){state.focus=v;});
+  chipRow(document.getElementById("c-chakra"), CHAKRA_CHIPS, state.chakra, function(v){state.chakra=v;});
+  chipRow(document.getElementById("c-adapt"), ADAPTS, state.adapt, function(v){state.adapt=v;});
+}
+renderChips();
+
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i];a[i]=a[j];a[j]=t; } return a; }
+
+function pool(cats, styleKey, level){
+  return POSES.filter(function(p){
+    return p.st.indexOf(styleKey)>=0 && p.lv<=level && cats.indexOf(p.cat)>=0;
+  });
+}
+/* a pose is available if neither its id nor its Sanskrit name is already used */
+function avail(p, used){
+  if(used.indexOf(p.id)>=0) return false;
+  for(var i=0;i<used.length;i++){ if(POSES[used[i]].s===p.s) return false; }
+  return true;
+}
+/* the active theme = chakra (if any) plus the muscle focus, as tags + categories */
+function themeTagsCats(){
+  var tags=[], cats=[];
+  if(state.chakra && state.chakra!=="none"){ var ch=CHAKRAS[state.chakra]; tags=tags.concat(ch.tags); cats=cats.concat(ch.cats); }
+  var f=FOCUS.filter(function(x){return x.k===state.focus;})[0];
+  if(f && f.mu) tags=tags.concat(f.mu);
+  if(f && f.cats) cats=cats.concat(f.cats);
+  return {tags:tags, cats:cats};
+}
+function scoreFocus(p){
+  var tc=themeTagsCats(); var s=0;
+  p.mu.forEach(function(m){ if(tc.tags.indexOf(m)>=0) s++; });
+  if(tc.cats.indexOf(p.cat)>=0) s+=2;
+  if(tc.tags.indexOf("spine")>=0 && p.sp==="ext") s++;
+  return s;
+}
+/* pick one pose from a category pool, focus-weighted, avoiding used ids */
+function pick(cats, styleKey, level, used){
+  let cand = pool(cats, styleKey, level).filter(function(p){return avail(p,used);});
+  if(!cand.length) return null;
+  cand = shuffle(cand).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);});
+  const chosen = cand[0];
+  used.push(chosen.id);
+  return chosen;
+}
+function pickMany(cats, styleKey, level, used, n){
+  const out=[]; for(let i=0;i<n;i++){ const p=pick(cats,styleKey,level,used); if(p)out.push(p); else break; } return out;
+}
+
+/* dose text per style */
+function dose(p){
+  const s=state.style;
+  if(s==="m" && state.adapt!=="chair"){
+    if(p.md==="sit") return "3 to 5 min";
+    if(p.md==="breath") return "2 to 3 min";
+    if(p.md==="close") return "2 to 3 min";
+    if(p.cat==="shavasana") return "2 to 3 min";
+    if(p.s==="Surya Namaskar A"||p.s==="Surya Namaskar B") return (state.level===1?"3":state.level===2?"4":"5")+" rounds";
+    return p.bs?"5 breaths each side":"5 breaths";
+  }
+  if(state.adapt==="chair"){
+    if(p.cat==="shavasana") return Math.max(1,Math.round(state.time*0.10))+" min";
+    if(p.cat==="center") return "1 to 2 min";
+    if(p.s==="Chair Surya Namaskar") return (state.level===1?"3":state.level===2?"4":"5")+" rounds";
+    return p.bs?"5 to 8 breaths each side":"5 to 8 breaths";
+  }
+  if(p.cat==="shavasana"){ return Math.max(1,Math.round(state.time*0.10))+" min"; }
+  if(p.cat==="center"){ return ACTIVE[s]?"1 to 2 min":"2 to 3 min"; }
+  if(p.s==="Surya Namaskar A"||p.s==="Surya Namaskar B"){ return (state.level===1?"3":state.level===2?"4":"5")+" rounds"; }
+  if(s==="y"){ return p.bs?"3 to 5 min each side":"3 to 5 min"; }
+  if(s==="r"){ return "5 to 8 min"; }
+  if(s==="h"){ return p.bs?"6 to 8 breaths each side":"6 to 8 breaths"; }
+  return p.bs?"5 breaths each side":"5 breaths"; /* vinyasa, ashtanga */
+}
+
+/* arc order rank for the main body */
+const RANK = {build:1, balance:2, core:3, peak:4, inversion:4.5, backbend:5, hipopener:6, twist:7, sidebend:7.5, fold:8, yin:5, restore:5};
+
+function buildActive(){
+  const s=state.style, lv=state.level, used=[];
+  const warmMin = state.time*(lv===1?0.10:lv===2?0.15:0.20);
+  const shavMin = state.time*0.10;
+  const mainMin = state.time - warmMin - shavMin;
+
+  /* ----- warm-up ----- */
+  const warm=[];
+  if(state.time>=20){ const c=pick(["center"],s,lv,used); if(c)warm.push(c); }
+  const cc=pool(["warm"],s,lv,lv).filter(function(p){return p.sp==="flexext";})[0];
+  if(cc){ used.push(cc.id); warm.push(cc); }              /* Cat and Cow: flexion + extension */
+  const nWarm = Math.max(warm.length+1, Math.round(warmMin/1.1));
+  /* prefer a sun salutation for vinyasa/ashtanga */
+  if(s==="v"||s==="a"){ const sun=pool(["warm"],s,lv,lv).filter(function(p){return p.s.indexOf("Surya")===0 && avail(p,used);}); if(sun.length){ used.push(sun[0].id); warm.push(sun[0]); } }
+  warm.push.apply(warm, pickMany(["warm"],s,lv,used, Math.max(0,nWarm-warm.length)));
+
+  /* ----- main body: guarantee the four spinal directions ----- */
+  /* reset the used-set to just the warm-up poses, then choose the main body */
+  used.length=0;
+  warm.forEach(function(p){used.push(p.id);});
+
+  function pickDir(dir, cats){
+    let cand = pool(cats,s,lv).filter(function(p){return avail(p,used) && p.sp===dir;});
+    if(!cand.length) return null;
+    cand = shuffle(cand).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);});
+    used.push(cand[0].id); return cand[0];
+  }
+  const need=[];
+  const latP = pickDir("lat",["build","backbend","hipopener"]); if(latP)need.push(latP);
+  const extP = pickDir("ext",["backbend","hipopener","build"]); if(extP)need.push(extP);
+  const rotP = pickDir("rot",["twist"]); if(rotP)need.push(rotP);
+  const flexP = pickDir("flex",["fold","hipopener"]); if(flexP)need.push(flexP);
+
+  /* how many poses fit in main */
+  const nMain = Math.max(need.length, Math.round(mainMin/PACE[s]));
+  const extras=[];
+  /* standing build */
+  extras.push.apply(extras, pickMany(["build"],s,lv,used, 2));
+  /* balance if level or focus calls for it */
+  if(lv>=2 || state.focus==="balance"){ extras.push.apply(extras, pickMany(["balance"],s,lv,used, state.focus==="balance"?2:1)); }
+  /* core / peak */
+  if(lv>=2 && state.time>=30){ const pk=pick(["peak","core"],s,lv,used); if(pk)extras.push(pk); }
+  else { const cr=pick(["core"],s,lv,used); if(cr)extras.push(cr); }
+  /* inversion for hatha at higher levels inside a warm class */
+  if(s==="h" && lv>=2 && state.time>=30){ const inv=pick(["inversion"],s,lv,used); if(inv)extras.push(inv); }
+  /* hip opener, esp for focus */
+  extras.push.apply(extras, pickMany(["hipopener"],s,lv,used, state.focus==="hipsham"?2:1));
+  /* extra backbend / fold for longer classes */
+  extras.push.apply(extras, pickMany(["backbend"],s,lv,used, 1));
+  extras.push.apply(extras, pickMany(["fold","twist","build"],s,lv,used, 4));
+
+  let body = need.concat(extras);
+  /* trim / pad to nMain */
+  body = body.slice(0, Math.max(nMain, need.length));
+  /* order into the arc */
+  body.sort(function(a,b){ return (RANK[a.cat]||5)-(RANK[b.cat]||5); });
+
+  /* ----- shavasana ----- */
+  const shav=[]; const sv=POSES.filter(function(p){return p.cat==="shavasana"&&p.st.indexOf(s)>=0;})[0]||POSES.filter(function(p){return p.s==="Savasana";})[0];
+  if(sv)shav.push(sv);
+
+  return [
+    {name:"Centre &amp; warm", poses:warm},
+    {name:"Body of practice", poses:body},
+    {name:"Rest", poses:shav}
+  ];
+}
+
+function buildQuiet(){ /* yin + restorative */
+  const s=state.style, lv=state.level, used=[];
+  const shavMin=state.time*0.10, warmMin=state.time*0.10;
+  const mainMin=state.time-shavMin-warmMin;
+  const nMain=Math.max(2, Math.round(mainMin/PACE[s]));
+
+  const warm=[];
+  const opener = pick(["center","restore","hipopener","yin"],s,lv,used);
+  if(opener)warm.push(opener);
+
+  const used2=used;
+  function pickDir(dir,cats){ let c=pool(cats,s,lv).filter(function(p){return avail(p,used2)&&p.sp===dir;}); if(!c.length)return null; c=shuffle(c).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);}); used2.push(c[0].id); return c[0]; }
+
+  const need=[];
+  if(s==="y"){
+    const f=pickDir("flex",["yin","fold","hipopener"]); if(f)need.push(f);
+    const e=pickDir("ext",["yin","backbend","hipopener"]); if(e)need.push(e);
+    const r=pickDir("rot",["twist","yin"]); if(r)need.push(r);
+    const l=pickDir("lat",["yin"]); if(l)need.push(l);
+    need.push.apply(need, pickMany(["yin","hipopener","fold"],s,lv,used2, Math.max(0,nMain-need.length)));
+  } else { /* restorative */
+    const e=pickDir("ext",["restore"]); if(e)need.push(e);
+    const l=pickDir("lat",["yin","restore"]); if(l)need.push(l);
+    const f=pickDir("flex",["restore","hipopener","fold"]); if(f)need.push(f);
+    const r=pickDir("rot",["twist"]); if(r)need.push(r);
+    need.push.apply(need, pickMany(["restore","hipopener","inversion"],s,lv,used2, Math.max(0,nMain-need.length)));
+  }
+  let body=need.slice(0,Math.max(nMain,need.length));
+  body.sort(function(a,b){ return (RANK[a.cat]||5)-(RANK[b.cat]||5); });
+
+  const sv=POSES.filter(function(p){return p.cat==="shavasana"&&p.st.indexOf(s)>=0;})[0]||POSES.filter(function(p){return p.s==="Savasana";})[0];
+  return [
+    {name:"Settle", poses:warm},
+    {name:"Held poses", poses:body},
+    {name:"Rest", poses:sv?[sv]:[]}
+  ];
+}
+
+/* CHAIR YOGA: seated and chair-supported, its own pool */
+function chairPool(cats, level){ return CHAIR.filter(function(p){ return p.lv<=level && cats.indexOf(p.cat)>=0; }); }
+function buildChair(){
+  var lv=state.level, usedS=[];
+  function ok(p){ return usedS.indexOf(p.s)<0; }
+  function take(p){ usedS.push(p.s); return p; }
+  function pickC(cats){ var c=chairPool(cats,lv).filter(ok); if(!c.length)return null; c=shuffle(c).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);}); return take(c[0]); }
+  function pickCDir(dir,cats){ var c=chairPool(cats,lv).filter(function(p){return ok(p)&&p.sp===dir;}); if(!c.length)return null; c=shuffle(c).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);}); return take(c[0]); }
+  function pickCMany(cats,n){ var o=[]; for(var i=0;i<n;i++){ var p=pickC(cats); if(p)o.push(p); else break; } return o; }
+
+  var warmMin=state.time*(lv===1?0.10:lv===2?0.15:0.20);
+  var shavMin=state.time*0.10;
+  var mainMin=state.time-warmMin-shavMin;
+  var nMain=Math.max(4, Math.round(mainMin/1.6));
+
+  var warm=[];
+  var c=pickC(["center"]); if(c)warm.push(c);
+  var cc=chairPool(["warm"],lv).filter(function(p){return p.sp==="flexext";})[0];
+  if(cc){ usedS.push(cc.s); warm.push(cc); }
+  warm.push.apply(warm, pickCMany(["warm"],2));
+
+  var need=[];
+  var lat=pickCDir("lat",["build","backbend"]); if(lat)need.push(lat);
+  var ext=pickCDir("ext",["backbend","build"]); if(ext)need.push(ext);
+  var rot=pickCDir("rot",["twist"]); if(rot)need.push(rot);
+  var flex=pickCDir("flex",["fold","hipopener","core"]); if(flex)need.push(flex);
+  var extras=[];
+  extras.push.apply(extras, pickCMany(["build"],2));
+  if(lv>=2 || state.chakra==="thirdeye" || state.chakra==="root"){ extras.push.apply(extras, pickCMany(["balance"],1)); }
+  extras.push.apply(extras, pickCMany(["core"],1));
+  extras.push.apply(extras, pickCMany(["hipopener"],1));
+  extras.push.apply(extras, pickCMany(["build","fold","twist","backbend"],4));
+  var body=need.concat(extras).slice(0, Math.max(nMain,need.length));
+  body.sort(function(a,b){ return (RANK[a.cat]||5)-(RANK[b.cat]||5); });
+
+  var sv=CHAIR.filter(function(p){return p.cat==="shavasana";})[0];
+  return [
+    {name:"Settle &amp; warm", poses:warm},
+    {name:"Body of practice", poses:body},
+    {name:"Rest", poses:sv?[sv]:[]}
+  ];
+}
+
+/* MORNING: meditation bookends around a waking flow */
+function buildMorning(){
+  var lv=state.level, used=[], sK="v";
+  var moveMin = state.time - state.time*0.15 - state.time*0.12;
+  var nMove = Math.max(6, Math.round(moveMin/1.4));
+
+  var open = POSES.filter(function(p){ return p.st.indexOf("m")>=0 && p.cat==="center"; });
+  open.forEach(function(p){ used.push(p.id); });
+
+  var warm=[];
+  var cc=pool(["warm"],sK,lv).filter(function(p){return p.sp==="flexext";})[0]; if(cc){ used.push(cc.id); warm.push(cc); }
+  var sun=pool(["warm"],sK,lv).filter(function(p){return p.s.indexOf("Surya")===0 && avail(p,used);}); if(sun.length){ used.push(sun[0].id); warm.push(sun[0]); }
+  warm.push.apply(warm, pickMany(["warm"],sK,lv,used,2));
+
+  function pickDir(dir,cats){ var c=pool(cats,sK,lv).filter(function(p){return avail(p,used)&&p.sp===dir;}); if(!c.length)return null; c=shuffle(c).sort(function(a,b){return scoreFocus(b)-scoreFocus(a);}); used.push(c[0].id); return c[0]; }
+  var need=[];
+  var lat=pickDir("lat",["build","backbend","hipopener"]); if(lat)need.push(lat);
+  var ext=pickDir("ext",["backbend","build"]); if(ext)need.push(ext);
+  var rot=pickDir("rot",["twist"]); if(rot)need.push(rot);
+  var flex=pickDir("flex",["fold","hipopener"]); if(flex)need.push(flex);
+  var extras=[];
+  extras.push.apply(extras, pickMany(["build"],sK,lv,used,2));
+  extras.push.apply(extras, pickMany(["balance"],sK,lv,used,1));
+  extras.push.apply(extras, pickMany(["backbend","build","twist","fold","hipopener"],sK,lv,used,4));
+  var moveList = need.concat(extras).slice(0, Math.max(need.length, nMove - warm.length));
+  moveList.sort(function(a,b){ return (RANK[a.cat]||5)-(RANK[b.cat]||5); });
+
+  var close=[];
+  var sv=POSES.filter(function(p){return p.n==="Corpse Pose";})[0]; if(sv)close.push(sv);
+  var cm=POSES.filter(function(p){return p.cat==="close" && p.st.indexOf("m")>=0;})[0]; if(cm)close.push(cm);
+
+  return [
+    {name:"Meditation &amp; breath", poses:open},
+    {name:"Wake the body", poses:warm},
+    {name:"Movement", poses:moveList},
+    {name:"Close in stillness", poses:close}
+  ];
+}
+
+function render(){
+  const s=state.style;
+  const groups = state.adapt==="chair" ? buildChair()
+    : (s==="m" ? buildMorning() : (ACTIVE[s] ? buildActive() : buildQuiet()));
+  const styleName = STYLES.filter(function(x){return x.k===s;})[0].n;
+  const levelName = LEVELS.filter(function(x){return x.k===state.level;})[0].n;
+  const focusName = FOCUS.filter(function(x){return x.k===state.focus;})[0].n;
+
+  const warmPct = state.level===1?10:state.level===2?15:20;
+  const shavPct = 10; const mainPct = 100-warmPct-shavPct;
+  const isMorning = (s==="m" && state.adapt!=="chair");
+  let pOpen=warmPct, pMain=mainPct, pClose=shavPct, lOpen="warm-up", lMain="practice", lClose="savasana";
+  if(isMorning){ pOpen=15; pClose=12; pMain=100-pOpen-pClose; lOpen="meditation &amp; breath"; lMain="movement"; lClose="close"; }
+
+  /* spine directions actually covered */
+  const dirs={}; groups.forEach(function(g){g.poses.forEach(function(p){
+    if(p.sp==="flexext"){dirs.flex=1;dirs.ext=1;} else if(DIRWORD[p.sp]) dirs[p.sp]=1;
+  });});
+  const have=["flex","ext","rot","lat"].filter(function(d){return dirs[d];});
+  const missing=["flex","ext","rot","lat"].filter(function(d){return !dirs[d];});
+
+  const out=document.getElementById("seq-out");
+  out.innerHTML="";
+  out.hidden=false;
+
+  const chakra = (state.chakra && state.chakra!=="none") ? CHAKRAS[state.chakra] : null;
+  const titleStyle = state.adapt==="chair" ? "Chair yoga" : styleName;
+  const metaBits = [levelName, "focus: "+focusName];
+  if(state.adapt==="weights") metaBits.push("with light weights");
+  if(chakra) metaBits.push(chakra.n+" chakra");
+
+  const head=el("div","seq-head");
+  head.appendChild(el("div","title", titleStyle+", "+state.time+" minutes"));
+  head.appendChild(el("div","meta", metaBits.join(" &middot; ")));
+  if(chakra){
+    head.appendChild(el("div","chakra-banner",
+      '<span class="cb-name">'+chakra.n+' &middot; '+chakra.skt+'</span>'+
+      '<span class="cb-el">'+chakra.el+' &middot; '+chakra.seat+'</span>'+
+      '<span class="cb-theme">'+chakra.theme.charAt(0).toUpperCase()+chakra.theme.slice(1)+'. '+chakra.note+'</span>'));
+  }
+  if(state.adapt==="chair"){
+    head.appendChild(el("div","adapt-note","Chair yoga: every shape is done seated or with a hand on the chair for support. Use a sturdy chair without wheels, feet flat on the floor or on a block, and skip anything that strains."));
+  } else if(state.adapt==="weights"){
+    head.appendChild(el("div","adapt-note", WT_INTRO));
+  }
+  const bars=el("div","seq-bars");
+  bars.appendChild(el("div","seg-warm")).style.width=pOpen+"%";
+  bars.appendChild(el("div","seg-main")).style.width=pMain+"%";
+  bars.appendChild(el("div","seg-shav")).style.width=pClose+"%";
+  head.appendChild(bars);
+  head.appendChild(el("div","seq-legend",
+     '<span><b>'+pOpen+'%</b> '+lOpen+'</span><span><b>'+pMain+'%</b> '+lMain+'</span><span><b>'+pClose+'%</b> '+lClose+'</span>'));
+  let spineTxt;
+  if(missing.length===0){ spineTxt="The spine moves in all four directions this class: "+have.map(function(d){return DIRWORD[d];}).join(", ")+"."; }
+  else if(have.length){ spineTxt="In a class this length the back is moved through "+have.map(function(d){return DIRWORD[d];}).join(", ")+". A longer or more active class also brings in "+missing.map(function(d){return DIRWORD[d];}).join(" and ")+"."; }
+  else { spineTxt="This is a short, restful class; the back is moved gently rather than in every direction."; }
+  head.appendChild(el("div","spine-note", spineTxt));
+  out.appendChild(head);
+
+  let idx=0;
+  groups.forEach(function(g){
+    if(!g.poses.length) return;
+    const grp=el("div","phase-group");
+    const total=g.poses.length;
+    const ph=el("div","phase-head");
+    ph.appendChild(el("span","pn",g.name));
+    ph.appendChild(el("span","pt",total+(total===1?" pose":" poses")));
+    grp.appendChild(ph);
+    g.poses.forEach(function(p){
+      idx++;
+      const pose=el("div","pose");
+      const btn=el("button","pose-btn");
+      btn.innerHTML='<span class="pose-tw">&#9656;</span>'+
+        '<span class="pose-name">'+p.n+'<span class="skt">'+p.s+'</span></span>'+
+        '<span class="pose-dose">'+dose(p)+'</span>';
+      const body=el("div","pose-body");
+      if(p.steps && p.steps.length){
+        let h='<span class="lbl">How it looks</span>'+p.sh+
+              '<span class="lbl">The flow, pose by pose</span>';
+        p.steps.forEach(function(st){
+          h+='<div class="step"><div class="step-h">'+st.n+'<span class="skt">'+st.s+'</span></div>'+
+             '<div class="step-r"><b>Shape.</b> '+st.sh+'</div>'+
+             '<div class="step-r"><b>Cue.</b> '+st.cue+'</div>'+
+             '<div class="step-r"><b>Watch for.</b> '+st.mis+'</div></div>';
+        });
+        if(p.note) h+='<div class="step-note">'+p.note+'</div>';
+        body.innerHTML=h;
+      } else {
+        var h2='<span class="lbl">How it looks</span>'+p.sh+
+          '<span class="lbl">How to cue</span>'+p.cue+
+          '<span class="lbl mis">Common mistake</span>'+p.mis;
+        if(state.adapt==="weights" && p.cat!=="center" && p.cat!=="close" && p.cat!=="shavasana"){
+          var wt=WT[p.s];
+          var free=(p.cat==="inversion"||p.cat==="peak"||p.sp==="inv"||p.s==="Phalakasana"||p.s==="Chaturanga Dandasana"||p.s==="Adho Mukha Svanasana"||p.s==="Vasisthasana"||p.s==="Ardha Pincha Mayurasana"||p.s==="Makara Adho Mukha Svanasana");
+          h2+='<span class="lbl wt">With light weights</span>'+(wt ? wt : (free ? "Set the weights down for this one; it needs the hands free and light." : "Optional here. If you use weights, keep them light and the movement slow, and set them down if the pose feels loaded or unsteady."));
+        }
+        body.innerHTML=h2;
+      }
+      btn.onclick=function(){ pose.classList.toggle("open"); };
+      pose.appendChild(btn); pose.appendChild(body);
+      grp.appendChild(pose);
+    });
+    out.appendChild(grp);
+  });
+
+  out.appendChild(el("div","seq-foot",
+    "This is a starting plan, not a prescription. Read the body in front of you, add the transitions the room needs, and change anything that does not serve the students you actually have. The reasoning behind every choice is laid out below."));
+
+  document.getElementById("btn-reset").hidden=false;
+}
+
+document.getElementById("btn-build").onclick=render;
+document.getElementById("btn-reset").onclick=function(){
+  state.time=30; state.level=2; state.style="v"; state.focus="whole"; state.chakra="none"; state.adapt="standard";
+  renderChips();
+  var out=document.getElementById("seq-out"); out.hidden=true; out.innerHTML="";
+  document.getElementById("btn-reset").hidden=true;
+  var bd=document.getElementById("builder");
+  if(bd && bd.scrollIntoView) bd.scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+/* ---------------- FEEDBACK FORM ---------------- */
 document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   e.preventDefault();
   var em=document.getElementById('lp-fb-email').value.trim();
@@ -288,7 +797,7 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
   var ms=document.getElementById('lp-fb-msg').value.trim();
   var pg=location.pathname.split('/').pop()||'index.html';
   var btn=document.querySelector('#lp-fb-form .lp-fb-send');
-  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending\u2026';
+  var prev=btn.textContent;btn.disabled=true;btn.textContent='Sending…';
   fetch('https://formsubmit.co/ajax/rootedaction@gmail.com',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
