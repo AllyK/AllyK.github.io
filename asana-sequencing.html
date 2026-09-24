@@ -144,6 +144,78 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
 .lp-fb-send{padding:.55rem 1.4rem;font-size:13px;border:1px solid var(--ac);border-radius:20px;background:rgba(255,215,0,.1);color:var(--ac);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
 .lp-fb-send:hover{background:rgba(255,215,0,.2)}
 .lp-fb-hint{font-size:11px;color:var(--text-muted);margin-top:.6rem;line-height:1.5}
+/* ---- SEQUENCE READER ---- */
+#reader{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:.5rem 1.2rem 1rem}
+.rd-lede{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:1.1rem}
+.rd-craft{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.55rem;margin:0 0 1.3rem}
+.rd-card{background:var(--panel);border:1px solid var(--border-lt);border-top:2px solid var(--teal);border-radius:10px;padding:.7rem .85rem}
+.rd-card h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.12rem;color:var(--ac-dk);margin-bottom:.2rem}
+.rd-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;margin:0}
+.rd-panel{background:linear-gradient(180deg,rgba(90,232,200,.05),rgba(255,215,0,.03));border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.3rem}
+.rd-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.rd-tab{font-size:12.5px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:rgba(0,0,0,.24);border:1px solid var(--border-lt);border-radius:20px;padding:.42rem 1rem;cursor:pointer;transition:all .15s}
+.rd-tab:hover{border-color:var(--border);color:var(--text)}
+.rd-tab.on{background:rgba(90,232,200,.14);border-color:var(--teal);color:var(--teal)}
+.rd-pane{display:none}
+.rd-pane.on{display:block}
+.rd-hint{font-size:12px;color:var(--text-muted);line-height:1.6;margin:.5rem 0 .7rem}
+#rd-paste{width:100%;min-height:120px;background:rgba(0,0,0,.28);border:1px solid var(--border-lt);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;padding:.7rem .85rem;resize:vertical}
+#rd-paste:focus{border-color:var(--teal);outline:none}
+.rd-file{font-size:12.5px;color:var(--text-mid)}
+.rd-file input{font-size:12px;color:var(--text-mid)}
+.rd-search{width:100%;max-width:330px;background:rgba(0,0,0,.28);border:1px solid var(--border-lt);border-radius:20px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:.45rem .9rem}
+.rd-search:focus{border-color:var(--teal);outline:none}
+.rd-menu{max-height:230px;overflow-y:auto;margin-top:.7rem;border:1px solid var(--border-lt);border-radius:10px;background:rgba(0,0,0,.18)}
+.rd-mrow{width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;padding:.5rem .8rem;font-family:'DM Sans',sans-serif;color:var(--text);font-size:13.5px;display:flex;gap:.5rem;align-items:baseline}
+.rd-mrow:hover{background:rgba(90,232,200,.07)}
+.rd-mrow .skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:12.5px}
+.rd-mrow .cat{margin-left:auto;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.rd-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
+.rd-dose{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center;margin-top:.9rem;font-size:12.5px;color:var(--text-mid)}
+.rd-dose label{display:flex;gap:.45rem;align-items:center}
+.rd-dose input[type=number]{width:62px;background:rgba(0,0,0,.28);border:1px solid var(--border-lt);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:.3rem .45rem}
+.rd-dose input[type=checkbox]{accent-color:#5AE8C8}
+
+#rd-out{margin-top:1.4rem}
+#rd-out[hidden]{display:none}
+.rd-notes{margin-bottom:1.1rem}
+.rd-note{display:flex;gap:.6rem;align-items:flex-start;font-size:13px;line-height:1.6;background:var(--panel);border:1px solid var(--border-lt);border-radius:10px;padding:.6rem .85rem;margin-bottom:.4rem}
+.rd-note .tag{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:2px 7px;border-radius:10px;white-space:nowrap;margin-top:2px}
+.rd-note.watch .tag{background:rgba(240,150,120,.16);color:#F0A184;border:1px solid rgba(240,150,120,.35)}
+.rd-note.think .tag{background:rgba(255,215,0,.14);color:var(--gold);border:1px solid var(--border)}
+.rd-note.good .tag{background:rgba(90,232,200,.12);color:var(--teal);border:1px solid rgba(90,232,200,.3)}
+.rd-note span.txt{color:var(--text-mid)}
+.rd-note span.txt b{color:var(--text);font-weight:500}
+
+.rd-stage{background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.18));border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.3rem;text-align:center;margin-bottom:1rem}
+.rd-phase{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);margin-bottom:.5rem;min-height:14px}
+.rd-now{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4.4vw,2.3rem);line-height:1.2;color:var(--text)}
+.rd-now .skt{display:block;font-style:italic;font-size:1rem;color:var(--text-muted);margin-top:.2rem}
+.rd-breath{font-size:13px;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin:.8rem 0 .3rem;min-height:16px}
+.rd-dots{display:flex;gap:.35rem;justify-content:center;flex-wrap:wrap;margin-bottom:.7rem;min-height:10px}
+.rd-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
+.rd-dot.on{background:var(--teal)}
+.rd-cue{font-size:13.5px;color:var(--text-mid);line-height:1.7;max-width:560px;margin:0 auto}
+.rd-next{font-size:11.5px;color:var(--text-muted);margin-top:.9rem;letter-spacing:.04em}
+.rd-bar{height:5px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:1rem}
+.rd-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ac));transition:width .4s linear}
+.rd-play{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
+
+.rd-list{border:1px solid var(--border-lt);border-radius:12px;overflow:hidden}
+.rd-step{display:flex;gap:.6rem;align-items:center;padding:.5rem .8rem;border-bottom:1px solid rgba(255,255,255,.05);font-size:13.5px;color:var(--text-mid)}
+.rd-step:last-child{border-bottom:none}
+.rd-step.now{background:rgba(90,232,200,.09);color:var(--text)}
+.rd-step.flag{border-left:2px solid #F0A184}
+.rd-step .num{font-size:11px;color:var(--text-muted);width:1.5rem;flex:none}
+.rd-step .nm{flex:1;line-height:1.5}
+.rd-step .nm .skt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text-muted);font-size:12.5px;margin-left:.35rem}
+.rd-step .ph{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);display:block}
+.rd-step input[type=number]{width:52px;background:rgba(0,0,0,.28);border:1px solid var(--border-lt);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:12.5px;padding:.22rem .4rem;text-align:center}
+.rd-step .br{font-size:10.5px;color:var(--text-muted);letter-spacing:.1em}
+.rd-mini{background:transparent;border:1px solid var(--border-lt);border-radius:8px;color:var(--text-muted);font-size:12px;cursor:pointer;padding:.12rem .42rem;font-family:'DM Sans',sans-serif}
+.rd-mini:hover{border-color:var(--ac);color:var(--ac-dk)}
+.rd-tools{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;align-items:center}
+.rd-count{font-size:11.5px;color:var(--text-muted);margin-left:auto}
 </style>
 </head>
 <body>
@@ -225,6 +297,84 @@ main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:1.5rem 1.
   </div>
 
   <div id="seq-out" hidden></div>
+</section>
+
+<section id="reader">
+  <div class="eyebrow">Read your own sequence aloud</div>
+  <p class="rd-lede">This is the working method I am learning in teacher training, and a reader that speaks a sequence back to you so you can test it on the mat before you teach it. Load a sequence you have already written, or choose poses from the library, set the breath count for each hold, and press play. The reader also reads the shape of the whole class and leaves notes on what it notices.</p>
+
+  <div class="rd-craft">
+    <div class="rd-card"><h4>Name the peak first</h4><p>We choose the destination, then ask what the body needs in order to arrive there. Every earlier pose answers that question.</p></div>
+    <div class="rd-card"><h4>Work in waves</h4><p>Each wave visits the shape of the peak in a simpler form, so the peak is a known shape by the time we meet it.</p></div>
+    <div class="rd-card"><h4>Every transition is possible</h4><p>A pose is only as good as the way into it. When two shapes are far apart, the steps between them belong in the sequence.</p></div>
+    <div class="rd-card"><h4>Count in breaths</h4><p>Breath sets the length of a hold, so the same sequence can run long or short without losing its arc.</p></div>
+    <div class="rd-card"><h4>Mandala turns</h4><p>A mandala practice travels around the mat, front, side, back, and returns through the other side. The circle is the teaching.</p></div>
+    <div class="rd-card"><h4>Counterpose and land</h4><p>What we open, we settle. Deep work asks for a neutral shape after it, and the class needs a floor to land on.</p></div>
+  </div>
+
+  <div class="rd-panel">
+    <div class="rd-tabs">
+      <button class="rd-tab on" data-pane="pick">Choose poses</button>
+      <button class="rd-tab" data-pane="paste">Paste a row</button>
+      <button class="rd-tab" data-pane="file">Upload a CSV</button>
+    </div>
+
+    <div class="rd-pane on" id="pane-pick">
+      <p class="rd-hint">Search the pose library and tap to add. Poses arrive in the order you choose them, and you can reorder or remove them in the list below.</p>
+      <input type="text" class="rd-search" id="rd-search" placeholder="Search by English or Sanskrit name"/>
+      <div class="rd-menu" id="rd-menu"></div>
+    </div>
+
+    <div class="rd-pane" id="pane-paste">
+      <p class="rd-hint">Copy one row of your sequence out of a spreadsheet and paste it here. Cells can hold several poses separated by arrows or commas, and a cell that begins with something like <em>wave 2:</em> becomes a section heading. One pose per line works too.</p>
+      <textarea id="rd-paste" placeholder="wave 1: dolphin&#9;forearm plank&#9;sphinx to cobra&#9;down dog"></textarea>
+    </div>
+
+    <div class="rd-pane" id="pane-file">
+      <p class="rd-hint">Save your sequence row as CSV, then choose the file. The reader takes every non-empty cell in order, so a single row or a single column both work.</p>
+      <label class="rd-file">Sequence file <input type="file" id="rd-file" accept=".csv,text/csv,text/plain"/></label>
+      <p class="rd-hint" id="rd-file-msg"></p>
+    </div>
+
+    <div class="rd-dose">
+      <label>Breaths per hold <input type="number" id="rd-breaths" min="1" max="30" value="5"/></label>
+      <label>Seconds per breath <input type="number" id="rd-secs" min="2" max="15" value="6"/></label>
+      <label><input type="checkbox" id="rd-voice" checked/> Speak it aloud</label>
+      <label><input type="checkbox" id="rd-cues" checked/> Read the teaching cue</label>
+    </div>
+
+    <div class="rd-actions">
+      <button class="btn-build" id="rd-load">Read this sequence</button>
+      <button class="btn-ghost" id="rd-clear" hidden>Start over</button>
+    </div>
+  </div>
+
+  <div id="rd-out" hidden>
+    <div class="rd-notes" id="rd-notes"></div>
+
+    <div class="rd-stage">
+      <div class="rd-phase" id="rd-phase"></div>
+      <div class="rd-now" id="rd-now">Ready when you are</div>
+      <div class="rd-breath" id="rd-breathline"></div>
+      <div class="rd-dots" id="rd-dots"></div>
+      <p class="rd-cue" id="rd-cue"></p>
+      <div class="rd-next" id="rd-nextup"></div>
+      <div class="rd-bar"><i id="rd-progress"></i></div>
+      <div class="rd-play">
+        <button class="btn-ghost" id="rd-prev">Back</button>
+        <button class="btn-build" id="rd-toggle">Play</button>
+        <button class="btn-ghost" id="rd-next">Skip</button>
+        <button class="btn-ghost" id="rd-restart">Start again</button>
+      </div>
+    </div>
+
+    <div class="rd-list" id="rd-list"></div>
+    <div class="rd-tools">
+      <button class="rd-mini" id="rd-csv">Download as CSV</button>
+      <button class="rd-mini" id="rd-recheck">Check it again</button>
+      <span class="rd-count" id="rd-count"></span>
+    </div>
+  </div>
 </section>
 
 <main>
@@ -914,6 +1064,475 @@ document.getElementById('lp-fb-form').addEventListener('submit',function(e){
     location.href='mailto:rootedaction@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
   });
 });
+</script>
+<script>
+/* ---- SEQUENCE READER: load a written sequence, review it, narrate it ---- */
+(function(){
+  var LIB = (typeof POSES !== 'undefined' && POSES.length) ? POSES : [];
+
+  /* ---------- name matching ---------- */
+  function norm(s){
+    return (s||'').toLowerCase()
+      .replace(/[‘’]/g,"'")
+      .replace(/[^a-z0-9' ]+/g,' ')
+      .replace(/\bpose\b|\basana\b/g,' ')
+      .replace(/\s+/g,' ').trim();
+  }
+  var ALIAS = {
+    'down dog':'downward facing dog','downward dog':'downward facing dog','dog':'downward facing dog',
+    'up dog':'upward facing dog','upward dog':'upward facing dog',
+    'low plank':'four limbed staff','chaturanga':'four limbed staff',
+    'forward fold':'standing forward fold','uttanasana':'standing forward fold',
+    'deep squat':'garland','malasana':'garland','yogi squat':'garland','squat':'garland',
+    'crow':'crow','bakasana':'crow','side crow':'side crow','parsva bakasana':'side crow',
+    'savasana':'corpse','shavasana':'corpse','rest':'corpse',
+    'knees to chest':'knees to chest','apanasana':'knees to chest',
+    'seated forward fold':'seated forward fold','paschimottanasana':'seated forward fold',
+    'butterfly':'bound angle','baddha konasana':'bound angle',
+    'pigeon':'pigeon','eka pada rajakapotasana':'pigeon',
+    'high lunge':'high lunge','crescent lunge':'high lunge','crescent':'high lunge',
+    'forearm plank':'forearm plank','dolphin':'dolphin','sphinx':'sphinx',
+    'wheel':'wheel','urdhva dhanurasana':'wheel','camel':'camel','ustrasana':'camel',
+    'boat':'boat','navasana':'boat','table':'table top','cat cow':'cat and cow',
+    'thread the needle':'thread the needle','gate':'gate','frog':'frog','lizard':'lizard',
+    'firefly':'firefly','tittibhasana':'firefly','flying pigeon':'flying pigeon',
+    'forearm balance':'forearm balance','pincha mayurasana':'forearm balance',
+    'standing splits':'standing splits','half splits':'half splits',
+    'chair':'chair','utkatasana':'chair','goddess':'goddess','mountain':'mountain','tadasana':'mountain',
+    'happy baby':'happy baby','bridge':'bridge','child':"child's",'balasana':"child's",'puppy':'puppy'
+  };
+  var EXACT = {};
+  LIB.forEach(function(p){
+    EXACT[norm(p.n)] = p;
+    if(p.s) EXACT[norm(p.s)] = p;
+  });
+  function matchPose(text){
+    var t = norm(text);
+    if(!t) return null;
+    if(EXACT[t]) return EXACT[t];
+    var ak = Object.keys(ALIAS), i, best = null, bestLen = 0;
+    for(i=0;i<ak.length;i++){
+      if(t.indexOf(ak[i]) >= 0 && ak[i].length > bestLen){
+        var cand = EXACT[norm(ALIAS[ak[i]])] || null;
+        if(cand){ best = cand; bestLen = ak[i].length; }
+      }
+    }
+    LIB.forEach(function(p){
+      [p.n, p.s].forEach(function(nm){
+        var n = norm(nm);
+        if(n.length >= 5 && t.indexOf(n) >= 0 && n.length > bestLen){ best = p; bestLen = n.length; }
+      });
+    });
+    return best;
+  }
+
+  /* a loose match helps the review read a compound step, and only a tight match
+     earns the Sanskrit name and the teaching cue */
+  function isTight(text, pose){
+    if(!pose) return false;
+    var t = norm(text);
+    if(t === norm(pose.n) || (pose.s && t === norm(pose.s))) return true;
+    return t.length <= norm(pose.n).length + 10;
+  }
+
+  /* ---------- where the body is ---------- */
+  var SHAPES = [
+    [/savasana|shavasana|corpse|reclin|supine|happy baby|knees to chest|apanasana|side curl|bicycle|hollow body|bridge|wheel|windshield|bound angle|legs up/i, 1, 'back'],
+    [/sphinx|cobra|locust|salabh|bow pose|full bow|prone|belly|swimmer/i, 1, 'front'],
+    [/seated|butterfly|baddha konasana|janu|heron|compass|paschimottanasana|staff pose|easy pose|sukhasana|boat|fire log|double pigeon|cross leg|meditation|lotus/i, 2, 'seat'],
+    [/deep squat|malasana|garland|squat|crow|bakasana|firefly|tittibhasana|shoulder pressing|bhujapid/i, 2.5, 'hands'],
+    [/table|cat|cow|child|puppy|camel|rabbit|thread the needle|gate|kneeling|pigeon|frog|lizard|low lunge|half splits|hanuman|anahata/i, 3, 'knees'],
+    [/plank|dolphin|down dog|downward|up dog|upward facing|vinyasa|chaturanga|forearm balance|headstand|handstand|pincha|side plank|flying|galavasana|koundinya|grasshopper|thread/i, 3, 'hands'],
+    [/mountain|tadasana|chair|warrior|triangle|half moon|pyramid|high lunge|crescent|standing|tree|dancer|natarajasana|eagle|garudasana|goddess|star|wide leg|forward fold|toppling|figure four|airplane|hand to big toe/i, 4, 'feet']
+  ];
+  function shapeOf(text){
+    var lvl = null, face = null;
+    for(var i=SHAPES.length-1;i>=0;i--){
+      if(SHAPES[i][0].test(text)){ lvl = SHAPES[i][1]; face = SHAPES[i][2]; break; }
+    }
+    return {lvl:lvl, face:face};
+  }
+  var CONNECT = /\b(roll|sit through|sit back|sit down|rise|stand|step|walk|press|lower|come to|lie|turn|kneel|land|rock|jump|float|tuck|lift|release|swivel|pivot|vinyasa|to |into )/i;
+
+  /* ---------- parsing ---------- */
+  var PHASE_WORD = /^(wave[^:]*|warm[^:]*|warm-up[^:]*|peak[^:]*|cool ?down[^:]*|counter[^:]*|salutation[^:]*|core[^:]*|phase[^:]*|opening[^:]*|closing[^:]*|centering[^:]*|kriya[^:]*|standing[^:]*|seated[^:]*|floor[^:]*)$/i;
+  function breathsFrom(text, dflt){
+    var m = text.match(/x\s*(\d{1,2})\b/i) || text.match(/(\d{1,2})\s*breath/i)
+         || text.match(/\((\d{1,2})\s*(?:rounds?|breaths?|times?)\)/i) || text.match(/hold\s*(\d{1,2})/i);
+    if(m){ var n = parseInt(m[1],10); if(n>0 && n<=30) return n; }
+    if(/savasana|shavasana|corpse/i.test(text)) return Math.max(dflt*4, 20);
+    if(/rest|restore|yin|settle/i.test(text)) return Math.max(dflt*2, 10);
+    return dflt;
+  }
+  function splitCell(cell){
+    return cell.split(/→|➔|->|=>|;|•|\|/).map(function(s){return s.trim();}).filter(Boolean);
+  }
+  function buildSteps(cells, dflt){
+    var steps = [], phase = '';
+    cells.forEach(function(cell){
+      cell = (cell||'').replace(/\s+/g,' ').trim();
+      if(!cell) return;
+      splitCell(cell).forEach(function(part){
+        var head = part.match(/^([^:]{2,46}):\s*(.*)$/);
+        if(head && PHASE_WORD.test(head[1].trim())){
+          phase = head[1].trim();
+          part = head[2].trim();
+          if(!part) return;
+        }
+        if(!part) return;
+        var hit = matchPose(part);
+        steps.push({
+          text: part,
+          phase: phase,
+          pose: hit,
+          tight: isTight(part, hit),
+          breaths: breathsFrom(part, dflt),
+          flag: false
+        });
+      });
+    });
+    return steps;
+  }
+  function parsePaste(raw, dflt){
+    var lines = raw.split(/\r?\n/), cells = [];
+    lines.forEach(function(line){
+      if(line.indexOf('\t') >= 0) cells = cells.concat(line.split('\t'));
+      else cells.push(line);
+    });
+    return buildSteps(cells, dflt);
+  }
+  function parseCSV(raw, dflt){
+    var out = [], field = '', q = false, i, ch;
+    for(i=0;i<raw.length;i++){
+      ch = raw[i];
+      if(q){
+        if(ch === '"'){ if(raw[i+1] === '"'){ field += '"'; i++; } else q = false; }
+        else field += ch;
+      } else if(ch === '"'){ q = true; }
+      else if(ch === ',' || ch === '\n' || ch === '\r'){ out.push(field); field = ''; }
+      else field += ch;
+    }
+    out.push(field);
+    return buildSteps(out, dflt);
+  }
+
+  /* ---------- reviewing ---------- */
+  function review(steps){
+    var notes = [], i, a, b, sa, sb, jumps = [];
+    for(i=1;i<steps.length;i++){
+      a = steps[i-1]; b = steps[i];
+      sa = shapeOf(a.text); sb = shapeOf(b.text);
+      if(sa.lvl === null || sb.lvl === null) continue;
+      var far = Math.abs(sa.lvl - sb.lvl) >= 2;
+      var flip = sa.lvl === 1 && sb.lvl === 1 && sa.face !== sb.face && sa.face && sb.face;
+      if((far || flip) && !CONNECT.test(b.text)){
+        b.flag = true;
+        jumps.push((i) + '. ' + a.text + ' into ' + b.text);
+      }
+    }
+    if(jumps.length){
+      notes.push({lvl:'watch', txt:'<b>' + jumps.length + ' transition' + (jumps.length>1?'s':'') + ' to fill in.</b> The body travels a long way with nothing in between here: ' + jumps.slice(0,4).join('; ') + (jumps.length>4 ? '; and ' + (jumps.length-4) + ' more' : '') + '. Name the steps between, or add a vinyasa.'});
+    } else if(steps.length > 3){
+      notes.push({lvl:'good', txt:'<b>Every transition lands.</b> Each pose has a way into the next one.'});
+    }
+
+    var peakAt = -1;
+    for(i=0;i<steps.length;i++){
+      if(/peak/i.test(steps[i].text) || (steps[i].tight && steps[i].pose && (steps[i].pose.cat === 'peak' || steps[i].pose.lv >= 4))){ peakAt = i; break; }
+    }
+    if(peakAt < 0){
+      notes.push({lvl:'think', txt:'<b>No peak is marked.</b> Naming the peak, in the row or with the word peak, lets the reader check how much runway it has.'});
+    } else if(peakAt < steps.length * 0.45){
+      notes.push({lvl:'think', txt:'<b>The peak arrives early</b>, at step ' + (peakAt+1) + ' of ' + steps.length + '. Consider another wave of prep before it, or hold it later and repeat it.'});
+    } else {
+      notes.push({lvl:'good', txt:'<b>The peak sits late in the arc</b>, at step ' + (peakAt+1) + ' of ' + steps.length + ', with prep underneath it.'});
+    }
+
+    var all = steps.map(function(s){return s.text;}).join(' | ');
+    var rCount = (all.match(/\bR\b|\bright\b/gi)||[]).length;
+    var lCount = (all.match(/\bL\b|\bleft\b/gi)||[]).length;
+    if(Math.abs(rCount - lCount) > 1){
+      notes.push({lvl:'watch', txt:'<b>The sides are uneven.</b> Right appears ' + rCount + ' times and left ' + lCount + '. Check that both sides get the same work, or say so in the row if the imbalance is on purpose.'});
+    } else if(rCount + lCount > 0){
+      notes.push({lvl:'good', txt:'<b>Right and left are even.</b>'});
+    }
+
+    var deep = /wheel|camel|full bow|forearm wheel|urdhva dhanurasana|drop back|king pigeon|kapotasana/i;
+    var neutral = /knees to chest|apanasana|child|twist|forward fold|savasana|happy baby|rabbit|bridge down|paschimottanasana|curl/i;
+    for(i=0;i<steps.length;i++){
+      if(deep.test(steps[i].text)){
+        var after = steps.slice(i+1).map(function(s){return s.text;}).join(' ');
+        if(!neutral.test(after)){
+          notes.push({lvl:'watch', txt:'<b>Deep backbending with nothing after it.</b> Step ' + (i+1) + ' asks for a neutral shape to follow: knees to chest, a gentle twist, or a fold.'});
+        }
+        break;
+      }
+    }
+
+    var arm = /crow|bakasana|firefly|tittibhasana|forearm balance|pincha|handstand|flying|koundinya|galavasana|grasshopper|shoulder pressing/i;
+    for(i=0;i<steps.length;i++){
+      if(arm.test(steps[i].text)){
+        var before = steps.slice(0, i).map(function(s){return s.text;}).join(' ');
+        if(!/plank|dolphin|down dog|wrist|table|cat/i.test(before)){
+          notes.push({lvl:'watch', txt:'<b>Weight comes into the hands at step ' + (i+1) + ' with no wrist work before it.</b> Wrist circles, plank, or dolphin early on carry that load.'});
+        }
+        break;
+      }
+    }
+
+    var last = steps.length ? steps[steps.length-1].text : '';
+    if(steps.length > 6 && !/savasana|shavasana|corpse|rest|meditation|stillness/i.test(last)){
+      notes.push({lvl:'think', txt:'<b>There is no landing.</b> The last step is ' + last + '. A few minutes of stillness lets the practice settle in the body.'});
+    }
+    return notes;
+  }
+
+  /* ---------- state ---------- */
+  var steps = [], pos = 0, breath = 0, playing = false, timer = null, half = false;
+  var $ = function(id){ return document.getElementById(id); };
+  var out = $('rd-out');
+
+  function dflt(){ return Math.max(1, parseInt($('rd-breaths').value, 10) || 5); }
+  function secs(){ return Math.max(2, parseInt($('rd-secs').value, 10) || 6); }
+
+  /* ---------- rendering ---------- */
+  function renderNotes(){
+    var notes = review(steps);
+    $('rd-notes').innerHTML = notes.map(function(n){
+      var word = n.lvl === 'watch' ? 'Have a look' : (n.lvl === 'think' ? 'Consider' : 'Working');
+      return '<div class="rd-note ' + n.lvl + '"><span class="tag">' + word + '</span><span class="txt">' + n.txt + '</span></div>';
+    }).join('');
+  }
+  function renderList(){
+    var totalBreaths = steps.reduce(function(a,s){ return a + s.breaths; }, 0);
+    var mins = Math.round(totalBreaths * secs() / 60);
+    $('rd-count').textContent = steps.length + ' steps, about ' + mins + ' minutes at ' + secs() + ' seconds a breath';
+    $('rd-list').innerHTML = steps.map(function(s, i){
+      var skt = s.tight && s.pose && s.pose.s ? '<span class="skt">' + s.pose.s + '</span>' : '';
+      var ph = (i === 0 || steps[i-1].phase !== s.phase) && s.phase ? '<span class="ph">' + s.phase + '</span>' : '';
+      return '<div class="rd-step' + (i === pos ? ' now' : '') + (s.flag ? ' flag' : '') + '" data-i="' + i + '">' +
+        '<span class="num">' + (i+1) + '</span>' +
+        '<span class="nm">' + ph + s.text + skt + '</span>' +
+        '<input type="number" min="1" max="60" value="' + s.breaths + '" data-b="' + i + '" aria-label="breaths"/>' +
+        '<span class="br">breaths</span>' +
+        '<button class="rd-mini" data-up="' + i + '">up</button>' +
+        '<button class="rd-mini" data-del="' + i + '">remove</button></div>';
+    }).join('');
+    Array.prototype.forEach.call($('rd-list').querySelectorAll('input[data-b]'), function(inp){
+      inp.addEventListener('change', function(){
+        steps[+inp.getAttribute('data-b')].breaths = Math.max(1, parseInt(inp.value,10) || 1);
+        renderList();
+      });
+    });
+    Array.prototype.forEach.call($('rd-list').querySelectorAll('button[data-up]'), function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-up');
+        if(i > 0){ var t = steps[i-1]; steps[i-1] = steps[i]; steps[i] = t; renderNotes(); renderList(); }
+      });
+    });
+    Array.prototype.forEach.call($('rd-list').querySelectorAll('button[data-del]'), function(b){
+      b.addEventListener('click', function(){
+        steps.splice(+b.getAttribute('data-del'), 1);
+        if(pos >= steps.length) pos = Math.max(0, steps.length - 1);
+        renderNotes(); renderList(); paint();
+      });
+    });
+    Array.prototype.forEach.call($('rd-list').querySelectorAll('.rd-step'), function(row){
+      row.addEventListener('click', function(e){
+        if(e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+        pos = +row.getAttribute('data-i'); breath = 0; paint(); renderList();
+      });
+    });
+  }
+  function paint(){
+    var s = steps[pos];
+    if(!s){ $('rd-now').textContent = 'Nothing loaded yet'; return; }
+    $('rd-phase').textContent = s.phase || '';
+    $('rd-now').innerHTML = s.text + (s.tight && s.pose && s.pose.s ? '<span class="skt">' + s.pose.s + '</span>' : '');
+    $('rd-cue').textContent = $('rd-cues').checked && s.tight && s.pose ? (s.pose.cue || s.pose.sh || '') : '';
+    var nx = steps[pos+1];
+    $('rd-nextup').textContent = nx ? 'Next: ' + nx.text : 'Last step of the sequence';
+    var dots = '';
+    for(var i=0;i<Math.min(s.breaths, 20);i++) dots += '<span class="rd-dot' + (i < breath ? ' on' : '') + '"></span>';
+    $('rd-dots').innerHTML = dots;
+    $('rd-breathline').textContent = playing
+      ? (half ? 'Exhale' : 'Inhale') + ', breath ' + Math.min(breath+1, s.breaths) + ' of ' + s.breaths
+      : s.breaths + ' breaths';
+    var done = steps.slice(0, pos).reduce(function(a,x){ return a + x.breaths; }, 0) + breath;
+    var all = steps.reduce(function(a,x){ return a + x.breaths; }, 0);
+    $('rd-progress').style.width = (all ? Math.round(done / all * 100) : 0) + '%';
+  }
+
+  /* ---------- voice ---------- */
+  var canSpeak = 'speechSynthesis' in window;
+  function say(text){
+    if(!canSpeak || !$('rd-voice').checked || !text) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.92; u.pitch = 1; u.lang = 'en-US';
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+  function announce(){
+    var s = steps[pos];
+    if(!s) return;
+    var line = s.text.replace(/\(PEAK[^)]*\)/i, ', the peak,') + ', ' + s.breaths + ' breaths.';
+    if($('rd-cues').checked && s.tight && s.pose && s.pose.cue) line += ' ' + s.pose.cue;
+    say(line);
+  }
+
+  /* ---------- playback ---------- */
+  function stopTimer(){ if(timer){ clearTimeout(timer); timer = null; } }
+  function step(){
+    var s = steps[pos];
+    if(!s){ stop(); return; }
+    half = !half;
+    if(!half){
+      breath++;
+      if(breath >= s.breaths){
+        if(pos >= steps.length - 1){
+          paint();
+          $('rd-breathline').textContent = 'Sequence complete';
+          say('That is the whole sequence. Rest.');
+          stop();
+          return;
+        }
+        pos++; breath = 0; half = false;
+        renderList();
+        announce();
+      }
+    }
+    paint();
+    timer = setTimeout(step, secs() * 500);
+  }
+  function play(){
+    if(!steps.length) return;
+    playing = true;
+    $('rd-toggle').textContent = 'Pause';
+    half = false;
+    announce();
+    paint();
+    timer = setTimeout(step, secs() * 500);
+  }
+  function stop(){
+    playing = false; half = false;
+    stopTimer();
+    $('rd-toggle').textContent = 'Play';
+    if(canSpeak){ try{ window.speechSynthesis.cancel(); }catch(e){} }
+    paint();
+  }
+
+  /* ---------- pose menu ---------- */
+  function renderMenu(q){
+    q = norm(q || '');
+    var rows = LIB.filter(function(p){
+      return !q || norm(p.n).indexOf(q) >= 0 || norm(p.s).indexOf(q) >= 0;
+    }).slice(0, 80);
+    $('rd-menu').innerHTML = rows.length ? rows.map(function(p){
+      return '<button class="rd-mrow" data-id="' + p.id + '">' + p.n +
+        (p.s ? ' <span class="skt">' + p.s + '</span>' : '') +
+        '<span class="cat">' + p.cat + '</span></button>';
+    }).join('') : '<div class="rd-step">No pose in the library matches that. Paste it as a row instead and the reader will still play it.</div>';
+    Array.prototype.forEach.call($('rd-menu').querySelectorAll('button[data-id]'), function(b){
+      b.addEventListener('click', function(){
+        var p = LIB.filter(function(x){ return x.id === +b.getAttribute('data-id'); })[0];
+        if(!p) return;
+        steps.push({text:p.n, phase:'', pose:p, tight:true, breaths:breathsFrom(p.n, dflt()), flag:false});
+        show();
+      });
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  function show(){
+    out.hidden = false;
+    $('rd-clear').hidden = false;
+    if(pos >= steps.length) pos = Math.max(0, steps.length - 1);
+    renderNotes(); renderList(); paint();
+  }
+  function load(){
+    stop();
+    var pane = document.querySelector('.rd-tab.on').getAttribute('data-pane');
+    if(pane === 'paste'){
+      var raw = $('rd-paste').value.trim();
+      if(!raw){ $('rd-paste').focus(); return; }
+      steps = parsePaste(raw, dflt());
+      try{ localStorage.setItem('lp-reader-paste', raw); }catch(e){}
+    } else if(pane === 'pick'){
+      if(!steps.length){ $('rd-search').focus(); return; }
+    }
+    pos = 0; breath = 0;
+    show();
+    out.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.rd-tab'), function(t){
+    t.addEventListener('click', function(){
+      Array.prototype.forEach.call(document.querySelectorAll('.rd-tab'), function(x){ x.classList.remove('on'); });
+      Array.prototype.forEach.call(document.querySelectorAll('.rd-pane'), function(x){ x.classList.remove('on'); });
+      t.classList.add('on');
+      $('pane-' + t.getAttribute('data-pane')).classList.add('on');
+    });
+  });
+  $('rd-load').addEventListener('click', load);
+  $('rd-clear').addEventListener('click', function(){
+    stop(); steps = []; pos = 0; breath = 0;
+    out.hidden = true; $('rd-clear').hidden = true;
+    $('rd-paste').value = ''; $('rd-file-msg').textContent = '';
+  });
+  $('rd-toggle').addEventListener('click', function(){ playing ? stop() : play(); });
+  $('rd-next').addEventListener('click', function(){
+    if(pos < steps.length - 1){ pos++; breath = 0; paint(); renderList(); if(playing) announce(); }
+  });
+  $('rd-prev').addEventListener('click', function(){
+    if(pos > 0){ pos--; breath = 0; paint(); renderList(); if(playing) announce(); }
+  });
+  $('rd-restart').addEventListener('click', function(){ stop(); pos = 0; breath = 0; renderList(); paint(); });
+  $('rd-recheck').addEventListener('click', renderNotes);
+  $('rd-secs').addEventListener('change', function(){ renderList(); paint(); });
+  $('rd-breaths').addEventListener('change', function(){
+    var d = dflt();
+    steps.forEach(function(s){ s.breaths = breathsFrom(s.text, d); });
+    if(steps.length) renderList();
+  });
+  $('rd-search').addEventListener('input', function(){ renderMenu($('rd-search').value); });
+  $('rd-file').addEventListener('change', function(e){
+    var f = e.target.files && e.target.files[0];
+    if(!f) return;
+    var fr = new FileReader();
+    fr.onload = function(){
+      steps = parseCSV(String(fr.result), dflt());
+      $('rd-file-msg').textContent = f.name + ' loaded, ' + steps.length + ' steps found.';
+      pos = 0; breath = 0; show();
+    };
+    fr.readAsText(f);
+  });
+  $('rd-csv').addEventListener('click', function(){
+    var rows = [['Phase','Pose','Breaths']].concat(steps.map(function(s){
+      return [s.phase, s.text, s.breaths];
+    }));
+    var csv = rows.map(function(r){
+      return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(',');
+    }).join('\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
+    a.download = 'sequence.csv';
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 800);
+  });
+
+  renderMenu('');
+  try{
+    var saved = localStorage.getItem('lp-reader-paste');
+    if(saved) $('rd-paste').value = saved;
+  }catch(e){}
+  if(!canSpeak){
+    $('rd-voice').checked = false;
+    $('rd-voice').disabled = true;
+    $('rd-voice').parentNode.appendChild(document.createTextNode(' (this browser has no voice)'));
+  }
+})();
 </script>
 </body>
 </html>
