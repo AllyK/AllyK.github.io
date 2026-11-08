@@ -155,6 +155,21 @@ main{
 .rule p{color:var(--text-mid);line-height:1.7;margin:0}
 .rule p+p{margin-top:.5rem}
 .step-n{display:inline-block;min-width:1.7rem;height:1.7rem;line-height:1.7rem;text-align:center;border-radius:50%;background:rgba(255,215,0,.12);border:1px solid var(--border);color:var(--ac);font-size:.85rem;margin-right:.5rem;font-family:'DM Sans',sans-serif}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;align-items:start}
+.col{border:1px solid var(--border-lt);border-radius:12px;padding:1rem 1.1rem}
+.col.trad{background:rgba(255,215,0,.045);border-top:3px solid var(--gold)}
+.col.sci{background:rgba(90,232,200,.045);border-top:3px solid var(--teal)}
+.col h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.35rem;color:var(--text)}
+.col .kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+.col.trad .kicker{color:var(--gold)}
+.col.sci .kicker{color:var(--teal)}
+.col p{color:var(--text-mid);line-height:1.75}
+.col p+p{margin-top:.6rem}
+.emo-table{width:100%;border-collapse:collapse;margin:.9rem 0 .2rem;font-size:14px}
+.emo-table th{text-align:left;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border);padding:.45rem .5rem;font-weight:500}
+.emo-table td{vertical-align:top;color:var(--text-mid);border-bottom:1px solid var(--border-lt);padding:.55rem .5rem;line-height:1.6}
+.emo-table td:first-child{color:var(--text);white-space:nowrap}
+@media(max-width:720px){.two-col{grid-template-columns:1fr}.emo-table,.emo-table tbody,.emo-table tr,.emo-table td{display:block;width:100%}.emo-table thead{display:none}.emo-table tr{border-bottom:1px solid var(--border);padding:.4rem 0}.emo-table td{border:none;padding:.2rem 0}}
 .sub-h{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.4rem;color:var(--gold);margin:1.8rem 0 .6rem}
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.7rem;margin:1rem 0}
 .tool{background:var(--panel);border:1px solid var(--border-lt);border-top:2px solid var(--teal);border-radius:10px;padding:.85rem 1rem}
@@ -275,8 +290,8 @@ blockquote.q cite{display:block;font-family:'DM Sans',sans-serif;font-style:norm
     <ol class="practice">
       <li><b>Arrive lying on the back</b>, knees bent, feet on the floor. For six breaths we simply notice where each inhale begins and where each exhale ends.</li>
       <li><b>Arms overhead on the inhale</b>, back down on the exhale, six times. The inhale widens the chest from the top down; the arms follow the breath.</li>
-      <li><b>Apanasana.</b> Hands on the knees, we draw the knees toward the chest on the exhale, gently firming the belly from the pubic bone up toward the navel, and let them move away on the inhale. Six times.</li>
-      <li><b>Cakravakasana</b>, on hands and knees. On the exhale we fold back toward the heels, rounding the back; on the inhale we come forward and lift the chest. Six times, slowly, with the breath leading.</li>
+      <li><b>Apanasana</b> (knees to chest) Hands on the knees, we draw the knees toward the chest on the exhale, gently firming the belly from the pubic bone up toward the navel, and let them move away on the inhale. Six times.</li>
+      <li><b>Cakravakasana</b> (the <a class="inl" href="yoga-family-tree.html#pose=Parsva%20Balasana">table top</a> family), on hands and knees. On the exhale we fold back toward the heels, rounding the back; on the inhale we come forward and lift the chest. Six times, slowly, with the breath leading.</li>
       <li><b>Rest</b> on the back for several breaths, letting the exhale grow a little longer than the inhale.</li>
     </ol>
   </section>
@@ -402,6 +417,89 @@ blockquote.q cite{display:block;font-family:'DM Sans',sans-serif;font-style:norm
     <p>Kraftsow reads most neck and shoulder problems as a poor working relationship among the head, neck, shoulders, arms, rib cage, and upper back, and he works the neck by changing that relationship. Our habit is for the head and shoulders to turn together. We can instead keep the shoulders still while the head turns, or turn the shoulders one way and the head the other, which stretches the muscles on the side opposite the turn more strongly. Turning back and forth alternately contracts and lengthens both sides of the neck, bringing circulation, strength, and relaxation. He names habits that feed the problem: lifting the head as we bend forward, raising the shoulders toward the ears under stress, cradling a phone against the shoulder, and pulling the spine with the head when moving into backbends and out of forward bends. On the sequencing page, the <a class="inl" href="asana-sequencing.html#adapt">regional notes</a> carry the same principle into Triangle, Side Angle, and twists.</p>
   </section>
 
+  <section class="section" id="emotion">
+    <div class="eyebrow">Poses and emotion</div>
+    <h2 class="s-title">Two maps of the same territory</h2>
+    <p class="lead">Every teacher is asked some version of why a backbend lifts the mood and why a long forward fold settles it. There are two answers available, and they come from different places. The tradition answers with the chakras, a map of centres along the spine, each with its own emotional theme. Research answers with posture, breath, and the nervous system, and it answers more narrowly than most of us would like. I keep the two apart on this site, so here they are side by side with a line down the middle.</p>
+
+    <div class="two-col">
+      <div class="col trad">
+        <div class="kicker">The tradition&rsquo;s map</div>
+        <h4>The chakras</h4>
+        <p>The seven centres place qualities of experience along the spine: grounding and safety at the base, creativity and feeling at the sacrum, will and self-worth at the solar plexus, love and grief at the heart, voice and truth at the throat, insight at the brow, and release at the crown. Pose families sit on that map, and the <a class="inl" href="yoga-family-tree.html">family tree</a> shows which family the tradition files where.</p>
+        <p>This is a teaching language with real use. It gives a class a theme, it gives a student a place in the body to put attention, and it names experiences people already have. What it is not is a tested claim. I found no peer-reviewed study measuring chakra-specific emotional associations. The scholarly literature that exists is theoretical mapping, such as Chase&rsquo;s 2018 paper in Medical Acupuncture, which drew a published critical letter from Robinson disputing whether the mapping is justified at all.</p>
+      </div>
+      <div class="col sci">
+        <div class="kicker">What research supports</div>
+        <h4>Posture, breath, and the nervous system</h4>
+        <p>The honest summary is narrow. Collapsing the body downward reliably dampens mood, and uncollapsing helps. Slow breathing reliably shifts a measure of vagal activity. Yoga helps depressive symptoms in trials that mostly lack a strong control. Beyond that, the field is full of claims that did not survive replication.</p>
+        <p>Nothing here maps onto a chakra. It maps onto two plainer ideas: the shape we hold changes what we feel, and the breath is the fastest lever we have on the part of the nervous system that handles arousal.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">What the research actually shows</h3>
+    <div class="rules">
+      <div class="rule">
+        <h4>Posture: uncollapsing helps, expanding does little</h4>
+        <p>This is the best-evidenced piece, and it is more modest than the version that circulates. Elkj&aelig;r and colleagues pooled 73 randomised experiments covering 7,038 people in 2022. Expansive posture compared with contractive gave a moderate effect on emotional outcomes, around g = 0.40. The useful detail is where that came from: contractive posture compared with neutral moved people about g = 0.45, while expansive compared with neutral came to g = 0.06 and did not reach significance. Slumping hurts; puffing up does little. Hormonal effects across the same literature were null.</p>
+        <p>So in practice I cue people out of collapse rather than into display. A chest that is simply not caved, in <span class="inl"><a class="inl" href="yoga-family-tree.html#pose=Tadasana">Mountain</a></span>, <span class="inl"><a class="inl" href="yoga-family-tree.html#pose=Salabhasana">Locust</a></span>, or a supported chest opener, is doing the part that holds up.</p>
+      </div>
+      <div class="rule">
+        <h4>Breath: the fastest measurable lever</h4>
+        <p>Zaccaro and colleagues reviewed fifteen slow-breathing studies covering around 458 people in 2018 and found consistent increases in heart rate variability and respiratory sinus arrhythmia, with reports of greater relaxation and lower anxiety, and some studies finding no mood change at all. Their own caution is the one to carry: no included study estimated the correlation between the physiological change and the psychological one, so the link we assume between calmer numbers and calmer people is still assumed.</p>
+        <p>Thayer and Lane&rsquo;s neurovisceral integration model is the usual explanation offered for why vagal tone and emotion regulation travel together. It is a model with correlational support rather than a demonstrated causal chain.</p>
+      </div>
+      <div class="rule">
+        <h4>Yoga for low mood and anxiety</h4>
+        <p>Streeter and colleagues gave 32 people with major depression twelve weeks of Iyengar yoga with coherent breathing in 2017. Depression scores fell about eighteen points in both the higher and lower dose groups, with no difference between them, and there was no non-yoga control. Sharma and colleagues ran Sudarshan Kriya breathing against a waitlist for 25 people who had not responded to antidepressants, and found a clear difference, with expectancy uncontrolled. The NIH complementary health centre summarises the field as some evidence of benefit for depressive symptoms, and for anxiety reports a 2018 meta-analysis where possible short-term benefit disappeared once the analysis was restricted to diagnosed anxiety disorders.</p>
+      </div>
+      <div class="rule">
+        <h4>Trauma-sensitive yoga</h4>
+        <p>Van der Kolk and colleagues randomised 64 women with chronic, treatment-resistant PTSD in 2014. After ten weekly classes, 52 percent of the yoga group no longer met criteria for PTSD against 21 percent of the comparison group. That trial is the one everyone cites. The pooled picture since is soberer: Nejadghaderi and colleagues combined 20 randomised trials covering 954 people in 2024 and found a moderate improvement in self-reported symptoms immediately after the intervention, no effect at follow-up, no effect on clinician-rated symptoms, and every included trial at high risk of bias.</p>
+        <p>This is still worth teaching. It is worth teaching as a support alongside care, with the limits named, which is also how Kraftsow frames the emotional-health work above.</p>
+      </div>
+      <div class="rule">
+        <h4>Where emotion is felt in the body</h4>
+        <p>Nummenmaa and colleagues had 701 people in Finland, Sweden, and Taiwan colour in body outlines to show where activity rose or fell for each emotion, and the resulting maps were consistent enough across cultures for a classifier to tell emotions apart. What that shows is agreement about where people say they feel things. It does not show that the bodily events occur, or that they cause the feeling. The nearer physiology is interoception, the sensing of internal state, which Critchley and colleagues tied to activity in the insula. One caution worth passing on: the heartbeat-counting task used to measure interoceptive accuracy in much of this literature has been argued by Zamariola and colleagues to measure beliefs about the heart more than the heart.</p>
+      </div>
+    </div>
+
+    <div class="callout care">
+      <div class="label">Claims that did not survive replication</div>
+      <p>Power posing is the cautionary tale. The hormone findings failed to replicate in a larger study by Ranehill and colleagues, and Carney, the first author of the original paper, has since written that she does not believe the effect is real. The pen-in-mouth version of facial feedback failed across seventeen laboratories and 1,894 people in a registered replication led by Wagenmakers, though Coles and the Many Smiles Collaboration later revived the broader idea using posed smiles across 3,878 people. Dose-response in yoga for depression is unsupported: more was no better than less in the Streeter trial. I name these because the body-and-emotion literature is where confident claims go to be quietly withdrawn, and a yoga teacher repeating them inherits the problem.</p>
+    </div>
+
+    <h3 class="sub-h">Teaching with both maps</h3>
+    <p>Here is how I hold them together in a class. The left column is the language the tradition gives, the middle is what I can defend, and the right is where the practice goes. Every pose links to its family on the <a class="inl" href="yoga-family-tree.html">family tree</a>.</p>
+    <table class="emo-table">
+      <thead><tr><th>State</th><th>Chakra language</th><th>What I can defend</th><th>Where the practice goes</th></tr></thead>
+      <tbody>
+        <tr><td>Agitation, worry</td><td>Vata out of balance; attention scattered above the root</td><td>Slow breathing with a long exhale raises vagal measures; meeting the agitation with movement before slowing follows Kraftsow&rsquo;s own sequence</td><td>Active movement first, then <a class="inl" href="yoga-family-tree.html#pose=Uttanasana">Standing Forward Fold</a>, <a class="inl" href="yoga-family-tree.html#pose=Supta%20Matsyendrasana">Supine Twist</a>, <a class="inl" href="yoga-family-tree.html#pose=Balasana">Child&rsquo;s Pose</a>, <a class="inl" href="yoga-family-tree.html#pose=Viparita%20Karani">Legs up the Wall</a>, long exhale</td></tr>
+        <tr><td>Heaviness, low drive</td><td>Kapha heavy; the solar plexus dim</td><td>Uncollapsing the chest is the posture effect that replicates; building practice in the Viniyoga sense favours the inhale and backbends</td><td><a class="inl" href="yoga-family-tree.html#pose=Bhujangasana">Cobra</a>, <a class="inl" href="yoga-family-tree.html#pose=Salabhasana">Locust</a>, <a class="inl" href="yoga-family-tree.html#pose=Setu%20Bandha%20Sarvangasana">Bridge</a>, <a class="inl" href="yoga-family-tree.html#pose=Ustrasana">Camel</a>, quicker pace</td></tr>
+        <tr><td>Anger, heat</td><td>Pitta sharp; fire at the solar plexus</td><td>A lengthened exhale with a short pause is the technique Kraftsow gives, and it is the one slow-breathing research supports for arousal</td><td><a class="inl" href="yoga-family-tree.html#pose=Paschimottanasana">Forward folds</a>, <a class="inl" href="yoga-family-tree.html#pose=Parighasana">Gate Pose</a> and other side bends, <a class="inl" href="yoga-family-tree.html#pose=Parivrtta%20Sukhasana">Seated Twist</a>, cooling breath</td></tr>
+        <tr><td>Grief, holding the chest</td><td>Anahata, the heart centre</td><td>No evidence ties grief to the chest specifically; what is supported is that a collapsed posture lowers mood and that body maps show people locate feeling consistently</td><td>Supported chest openers, <a class="inl" href="yoga-family-tree.html#pose=Parsva%20Balasana">Thread the Needle</a>, <a class="inl" href="yoga-family-tree.html#pose=Anahatasana">Puppy Pose</a>, slow breath</td></tr>
+        <tr><td>Unsafe, ungrounded</td><td>Muladhara, the root</td><td>Trauma-sensitive yoga has one good trial and a weak pooled picture; choice, predictability, and no hands-on are the parts clinicians emphasise</td><td><a class="inl" href="yoga-family-tree.html#pose=Tadasana">Mountain</a>, <a class="inl" href="yoga-family-tree.html#pose=Malasana">Squat</a>, standing poses, <a class="inl" href="yoga-family-tree.html#pose=Savasana">Savasana</a> kept short and optional</td></tr>
+      </tbody>
+    </table>
+    <div class="adapt-note">The chakra column is the tradition&rsquo;s language and carries no evidence claim. The middle column is what I would defend in front of a clinician. A person in crisis belongs with a clinician, and this page is a support beside that care.</div>
+
+    <div class="src-label" style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin:1.4rem 0 .5rem">Sources</div>
+    <div class="sources">
+      <a class="source-link" href="https://journals.sagepub.com/doi/full/10.1177/1745691620919358" target="_blank" rel="noopener">Elkj&aelig;r and colleagues, expansive and contractive posture, meta-analysis</a>
+      <a class="source-link" href="https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2018.00353/full" target="_blank" rel="noopener">Zaccaro and colleagues, how breath control changes the mind (full text)</a>
+      <a class="source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5359682/" target="_blank" rel="noopener">Streeter and colleagues, Iyengar yoga and coherent breathing for depression (full text)</a>
+      <a class="source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12100614" target="_blank" rel="noopener">Nejadghaderi and colleagues, yoga for PTSD, meta-analysis (full text)</a>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/25004196/" target="_blank" rel="noopener">van der Kolk and colleagues, yoga as adjunctive treatment for PTSD (abstract)</a>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/24379370/" target="_blank" rel="noopener">Nummenmaa and colleagues, bodily maps of emotions (abstract)</a>
+      <a class="source-link" href="https://faculty.haas.berkeley.edu/dana_carney/ranehill.pdf" target="_blank" rel="noopener">Ranehill and colleagues, assessing the robustness of power posing (full text)</a>
+      <a class="source-link" href="https://faculty.haas.berkeley.edu/dana_carney/pdf_my%20position%20on%20power%20poses.pdf" target="_blank" rel="noopener">Carney, my position on power poses</a>
+      <a class="source-link" href="https://pure.uva.nl/ws/files/14872420/Registered_Replication_Report.pdf" target="_blank" rel="noopener">Wagenmakers and colleagues, registered replication of facial feedback (full text)</a>
+      <a class="source-link" href="https://www.nccih.nih.gov/health/providers/digest/depression-and-complementary-health-approaches-science" target="_blank" rel="noopener">NCCIH, depression and complementary health approaches</a>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/30671155" target="_blank" rel="noopener">Chase, the geometry of emotions, chakra mapping (abstract)</a>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/32952783" target="_blank" rel="noopener">Robinson, critical letter on chakra mapping (abstract)</a>
+    </div>
+  </section>
+
   <section class="section" id="evidence">
     <div class="eyebrow">Where the evidence stands</div>
     <h2 class="s-title">What has been tested</h2>
@@ -428,6 +526,7 @@ blockquote.q cite{display:block;font-family:'DM Sans',sans-serif;font-style:norm
 
 <div class="footer">
   <span>Continue in the Asana section:</span>
+  <a href="yoga-family-tree.html">The pose family tree</a>
   <a href="asana-sequencing.html#adapt">&larr; Adapting the pose</a>
   <a href="yoga-styles.html">Lineages</a>
   <a href="yoga-muscle-diagram.html">The muscle diagram</a>
